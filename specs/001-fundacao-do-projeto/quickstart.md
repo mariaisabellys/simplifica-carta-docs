@@ -1,6 +1,6 @@
 # Quickstart: Fundacao do Projeto
 
-## Como verificar
+## Como verificar a fundacao documental
 
 1. Abra `README.md`.
 2. Confira se os links de documentacao apontam para arquivos existentes.
@@ -9,17 +9,29 @@
 5. Abra `specs/001-fundacao-do-projeto/`.
 6. Confira se existem `spec.md`, `plan.md`, `tasks.md` e `quickstart.md`.
 
-## Proximo passo recomendado
+## Como verificar a fundacao tecnica depois da implementacao
+
+Quando `/spec:implementar` for usado para esta spec:
+
+1. Instalar dependencias do projeto.
+2. Rodar o servidor local de desenvolvimento.
+3. Abrir a pagina inicial.
+4. Navegar pelas rotas placeholder.
+5. Rodar o build de producao.
+6. Conferir se os arquivos de conteudo, tipos, validacao, armazenamento temporario e CSV existem.
+
+## Proximo passo recomendado agora
 
 Usar:
 
 ```txt
-/spec:criar 002-home-e-navegacao
+/spec:implementar 001-fundacao-do-projeto
 ```
 
-ou, se a fundacao tecnica for a proxima prioridade:
+para criar a base React + TypeScript + Vite.
+
+Depois disso, usar:
 
 ```txt
-/spec:criar criacao-do-projeto-react-vite
+/spec:criar 002-home-e-navegacao
 ```
-

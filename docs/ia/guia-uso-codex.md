@@ -30,6 +30,15 @@ O Codex deve consultar:
 - Figma do prototipo, quando disponivel;
 - Figma Make, quando houver impacto visual.
 
+Para trabalho visual, a consulta ao Figma Make deve ser feita via MCP usando:
+
+```txt
+fileKey: dVm7lEZdBFqOiiySWLWUqp
+nodeId: 0:1
+```
+
+Essa consulta e obrigatoria antes de implementar telas, componentes, tokens ou estilos.
+
 ## Ao finalizar
 
 O Codex deve informar:
@@ -38,4 +47,3 @@ O Codex deve informar:
 - onde os arquivos ficaram;
 - como verificar;
 - proximo passo recomendado.
-

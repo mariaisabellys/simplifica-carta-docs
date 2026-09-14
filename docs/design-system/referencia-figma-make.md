@@ -4,6 +4,14 @@
 
 O Figma Make sera usado como referencia visual e tecnica para o design system do Simplifica Carta.
 
+Referencia oficial do prototipo/design system:
+
+- [Organize Design System - Figma Make](https://www.figma.com/make/dVm7lEZdBFqOiiySWLWUqp/Organize-Design-System--Copy-?t=rgWuly5cbaPi1E9B-20&fullscreen=1)
+
+Este repositorio nao armazena o codigo gerado pelo Figma Make. A fonte visual oficial do design system e o link acima.
+
+O link acima foi verificado via MCP do Figma. A leitura retornou a estrutura de arquivos do Figma Make, incluindo `src/App.tsx`, `src/index.css`, `src/imports/pasted_text/design-system-spec.md`, imagens e arquivos de configuracao do Vite.
+
 Ele deve orientar:
 
 - cores;
@@ -18,15 +26,50 @@ Ele deve orientar:
 - padroes de tela;
 - comportamento visual responsivo.
 
-## Material local disponivel
+## Como usar esta referencia
 
-Existe uma pasta local chamada `Organize Design System/` com uma implementacao gerada a partir do Figma Make.
+Antes de criar ou alterar telas, componentes e estilos, consultar o Figma Make para confirmar:
 
-Arquivos relevantes:
+- tokens visuais;
+- hierarquia tipografica;
+- variacoes de botoes;
+- cards e banners;
+- estados de formularios;
+- navegacao;
+- responsividade;
+- padroes de espacamento.
 
-- `Organize Design System/src/App.tsx`
-- `Organize Design System/src/index.css`
-- `Organize Design System/src/imports/pasted_text/design-system-spec.md`
+## Consulta obrigatoria via MCP
+
+Antes de implementar qualquer tela, componente visual, token ou estilo, o Codex deve consultar este Figma Make via MCP.
+
+Parametros de leitura:
+
+```txt
+fileKey: dVm7lEZdBFqOiiySWLWUqp
+nodeId: 0:1
+skill: figma-design-to-code
+framework: react
+languages: typescript, css
+```
+
+Arquivos de referencia esperados na resposta do MCP:
+
+- `src/App.tsx`
+- `src/index.css`
+- `src/imports/pasted_text/design-system-spec.md`
+- imagens em `src/imports/`
+- arquivos de configuracao do Vite
+
+O Figma Make deve ser tratado como referencia tecnica ativa para desenvolvimento, nao apenas como link de consulta humana.
+
+Se o MCP nao conseguir retornar o conteudo visual ou tecnico necessario, o Codex deve interromper a implementacao visual, informar a limitacao e solicitar uma destas alternativas:
+
+- link Figma em formato `/design/...` com `node-id`;
+- exportacao dos arquivos principais do Figma Make;
+- prints ou assets das telas/componentes necessarios.
+
+As informacoes abaixo sao um resumo operacional para orientar a implementacao. Em caso de divergencia, o Figma Make deve prevalecer.
 
 ## Observacoes extraidas
 
@@ -52,5 +95,6 @@ Fontes identificadas:
 
 ## Regra de uso
 
-Antes de implementar telas, consultar o prototipo Figma para fluxo e composicao, e consultar o Figma Make para tokens e componentes.
+Antes de implementar telas, consultar o prototipo Figma para fluxo e composicao, e consultar o Figma Make via MCP para tokens, componentes e padroes visuais.
 
+Nao criar uma pasta de codigo do design system dentro deste repositorio sem decisao tecnica especifica. A implementacao dos tokens e componentes deve acontecer dentro da aplicacao quando a fundacao tecnica for implementada.
