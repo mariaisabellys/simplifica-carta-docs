@@ -4,11 +4,17 @@
 
 O Figma Make sera usado como referencia visual e tecnica para o design system do Simplifica Carta.
 
-Referencia oficial do prototipo/design system:
+Referencia oficial do design system:
 
 - [Organize Design System - Figma Make](https://www.figma.com/make/dVm7lEZdBFqOiiySWLWUqp/Organize-Design-System--Copy-?t=rgWuly5cbaPi1E9B-20&fullscreen=1)
 
 Este repositorio nao armazena o codigo gerado pelo Figma Make. A fonte visual oficial do design system e o link acima.
+
+O layout e a composicao das telas devem ser guiados pelo arquivo Figma do
+prototipo documentado em
+[`docs/design-system/referencia-figma-prototipo.md`](referencia-figma-prototipo.md).
+O Figma Make nao substitui o prototipo de telas: ele define tokens,
+componentes e padroes visuais reutilizaveis.
 
 O link acima foi verificado via MCP do Figma. A leitura retornou a estrutura de arquivos do Figma Make, incluindo `src/App.tsx`, `src/index.css`, `src/imports/pasted_text/design-system-spec.md`, imagens e arquivos de configuracao do Vite.
 
@@ -28,7 +34,10 @@ Ele deve orientar:
 
 ## Como usar esta referencia
 
-Antes de criar ou alterar telas, componentes e estilos, consultar o Figma Make para confirmar:
+Antes de criar ou alterar telas, componentes e estilos, consultar:
+
+1. o Figma Design do prototipo para layout, fluxo e composicao da tela;
+2. o Figma Make para confirmar:
 
 - tokens visuais;
 - hierarquia tipografica;
@@ -41,7 +50,9 @@ Antes de criar ou alterar telas, componentes e estilos, consultar o Figma Make p
 
 ## Consulta obrigatoria via MCP
 
-Antes de implementar qualquer tela, componente visual, token ou estilo, o Codex deve consultar este Figma Make via MCP.
+Antes de implementar qualquer tela, componente visual, token ou estilo, o Codex
+deve consultar este Figma Make via MCP. Quando houver tela envolvida, tambem
+deve consultar o arquivo Figma Design do prototipo via MCP.
 
 Parametros de leitura:
 
@@ -95,6 +106,6 @@ Fontes identificadas:
 
 ## Regra de uso
 
-Antes de implementar telas, consultar o prototipo Figma para fluxo e composicao, e consultar o Figma Make via MCP para tokens, componentes e padroes visuais.
+Antes de implementar telas, consultar o Figma Design do prototipo para fluxo e composicao, e consultar o Figma Make via MCP para tokens, componentes e padroes visuais.
 
 Nao criar uma pasta de codigo do design system dentro deste repositorio sem decisao tecnica especifica. A implementacao dos tokens e componentes deve acontecer dentro da aplicacao quando a fundacao tecnica for implementada.

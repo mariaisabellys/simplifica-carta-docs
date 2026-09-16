@@ -13,24 +13,16 @@
 
 Quando `/spec:implementar` for usado para esta spec:
 
-1. Instalar dependencias do projeto.
-2. Rodar o servidor local de desenvolvimento.
+1. Instalar dependencias do projeto com `npm install`.
+2. Rodar o servidor local de desenvolvimento com `npm run dev`.
 3. Abrir a pagina inicial.
 4. Navegar pelas rotas placeholder.
-5. Rodar o build de producao.
+5. Rodar o build de producao com `npm run build`.
 6. Conferir se os arquivos de conteudo, tipos, validacao, armazenamento temporario e CSV existem.
 
 ## Proximo passo recomendado agora
 
 Usar:
-
-```txt
-/spec:implementar 001-fundacao-do-projeto
-```
-
-para criar a base React + TypeScript + Vite.
-
-Depois disso, usar:
 
 ```txt
 /spec:criar 002-home-e-navegacao

@@ -31,6 +31,20 @@ Fluxo de trabalho adotado:
 - Banco de dados: minimo, apenas para solicitacoes de atendimento.
 - E-mail: SMTP ou provedor institucional para notificacoes de suporte/atendimento.
 
+## Desenvolvimento local
+
+Depois de instalar as dependencias:
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+O app frontend fica em `src/` e a fundacao tecnica inicial ja contem rotas
+placeholder, tokens CSS, conteudo versionado, modelo inicial da Carta,
+armazenamento de sessao, validacao obrigatoria e CSV local.
+
 ## Documentacao principal
 
 - [Visao do produto](docs/produto/visao-produto.md)
@@ -39,6 +53,8 @@ Fluxo de trabalho adotado:
 - [Fluxos](docs/produto/fluxos.md)
 - [Arquitetura do sistema](docs/arquitetura/arquitetura-sistema.md)
 - [Decisoes tecnicas](docs/arquitetura/decisoes-tecnicas.md)
+- [Referencia Figma do prototipo](docs/design-system/referencia-figma-prototipo.md)
+- [Mapa Figma das telas](docs/design-system/mapa-figma-telas.md)
 - [Referencia Figma Make](docs/design-system/referencia-figma-make.md)
 - [Tokens e componentes](docs/design-system/tokens-e-componentes.md)
 - [Regras para IA](docs/ia/regras-para-ia.md)
@@ -62,9 +78,8 @@ Use estes comandos na conversa com o Codex:
 - `/spec:criar`: cria ou revisa o `spec.md`.
 - `/spec:planejar`: cria ou revisa o `plan.md`.
 - `/spec:tarefas`: cria ou revisa o `tasks.md`.
-- `/spec:validar`: verifica consistencia entre documentacao, ERS, Figma, Figma Make e roadmap.
+- `/spec:validar`: verifica consistencia entre documentacao, ERS, Figma Design, Figma Make e roadmap.
 - `/spec:implementar`: implementa a funcionalidade no codigo.
 - `/spec:revisar`: revisa requisitos, acessibilidade, responsividade e aderencia visual.
 
 Codigo so deve ser implementado quando o comando `/spec:implementar` for usado.
-

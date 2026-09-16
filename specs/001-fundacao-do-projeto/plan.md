@@ -7,7 +7,7 @@ Manter a fundacao documental ja criada e preparar a fundacao tecnica do projeto 
 1. Documentar a arquitetura inicial do app.
 2. Implementar a base React + TypeScript + Vite somente quando for usado `/spec:implementar`.
 
-O README antigo, o ERS e os arquivos do Figma Make permanecem como fontes de contexto.
+O README antigo, o ERS, o Figma Design do prototipo e os arquivos do Figma Make permanecem como fontes de contexto.
 
 ## Entrega ja concluida
 
@@ -111,6 +111,14 @@ src/
 
 ## Estrategia visual
 
+Usar o Figma Design do prototipo como referencia para:
+
+- layout das telas;
+- fluxo de navegacao;
+- composicao das secoes;
+- hierarquia visual;
+- comportamento esperado de cada pagina.
+
 Usar o Figma Make como referencia para:
 
 - tokens de cor;
@@ -148,7 +156,7 @@ O backend de atendimento agendado nao sera implementado nesta primeira fundacao 
 ## Riscos
 
 - Duplicidade entre README antigo e novos documentos.
-- Links finais de Figma/Figma Make ainda podem precisar ser atualizados manualmente.
+- Links finais de Figma Design/Figma Make ainda podem precisar ser atualizados manualmente se houver uma versao mais atual.
 - A criacao do projeto Vite pode exigir reorganizacao caso o repositorio ja contenha arquivos na raiz.
 - Tailwind CSS pode exigir instalacao de dependencias.
 - A escolha entre Tailwind e CSS modular deve preservar aderencia ao Figma Make.

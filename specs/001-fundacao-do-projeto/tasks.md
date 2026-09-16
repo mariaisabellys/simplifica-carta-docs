@@ -27,12 +27,12 @@
 - [x] Definir estrategia de armazenamento temporario.
 - [x] Definir estrategia de exportacao CSV.
 - [x] Confirmar URL final do Figma Make.
-- [ ] Confirmar link final do prototipo Figma, se houver versao mais atual.
-- [ ] Implementar projeto React + TypeScript + Vite.
-- [ ] Configurar base visual.
-- [ ] Criar estrutura inicial de pastas.
-- [ ] Criar placeholders das rotas principais.
-- [ ] Criar modelo inicial da Carta de Servicos.
-- [ ] Criar utilitario inicial de armazenamento temporario.
-- [ ] Criar utilitario inicial de CSV.
-- [ ] Rodar build de verificacao.
+- [x] Confirmar link final do prototipo Figma.
+- [x] Implementar projeto React + TypeScript + Vite.
+- [x] Configurar base visual.
+- [x] Criar estrutura inicial de pastas.
+- [x] Criar placeholders das rotas principais.
+- [x] Criar modelo inicial da Carta de Servicos.
+- [x] Criar utilitario inicial de armazenamento temporario.
+- [x] Criar utilitario inicial de CSV.
+- [x] Rodar build de verificacao.

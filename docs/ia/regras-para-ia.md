@@ -23,16 +23,37 @@ Ordem recomendada:
 
 ## Regra obrigatoria para trabalho visual
 
-Quando a tarefa envolver tela, componente visual, tokens, estilos, layout, responsividade ou aderencia visual, o Codex deve consultar o Figma Make via MCP antes de implementar.
+Quando a tarefa envolver tela, componente visual, tokens, estilos, layout, responsividade ou aderencia visual, o Codex deve consultar as referencias visuais via MCP antes de implementar.
+
+### Figma Design do prototipo
+
+Usar para layout, fluxo, composicao, ordem das secoes, hierarquia visual e comportamento das telas.
+
+Parametros oficiais:
+
+```txt
+fileKey: YaVUdqYa3boHpvGrxf4ZJ5
+pagina raiz: 0:1
+node inicial: 651:317
+link: https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=651-317&m=dev
+skill: figma-design-to-code
+```
+
+Quando a tarefa envolver uma tela especifica, usar preferencialmente um link com `node-id`. Se houver apenas o link do arquivo, usar o MCP para listar paginas/nos e identificar o frame correto antes de implementar.
+
+### Figma Make do design system
+
+Usar para tokens, componentes, tipografia, espacamento, cards, botoes, formularios, navegacao e comportamento responsivo.
 
 Parametros oficiais:
 
 ```txt
 fileKey: dVm7lEZdBFqOiiySWLWUqp
 nodeId: 0:1
+skill: figma-design-to-code
 ```
 
-O objetivo da consulta e usar o Figma Make como referencia tecnica ativa para:
+O objetivo da consulta ao Figma Make e usar o design system como referencia tecnica ativa para:
 
 - tokens;
 - componentes;
@@ -44,7 +65,7 @@ O objetivo da consulta e usar o Figma Make como referencia tecnica ativa para:
 - navegacao;
 - comportamento responsivo.
 
-Se o MCP nao retornar informacao suficiente, o Codex deve avisar antes de implementar visualmente e solicitar link `/design/...`, exportacao ou captura especifica.
+Se o MCP nao retornar informacao suficiente, o Codex deve avisar antes de implementar visualmente e solicitar link `/design/...` com `node-id`, exportacao ou captura especifica.
 
 ## Organizacao de informacoes
 

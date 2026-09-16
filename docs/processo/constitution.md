@@ -28,7 +28,12 @@ As telas devem funcionar em computador, tablet e smartphone, com navegacao clara
 
 ### 6. Design guiado pelo Figma
 
-O prototipo Figma orienta fluxo e telas. O Figma Make orienta tokens, componentes, cores, tipografia, espacamentos, botoes, cards, navegacao e formularios.
+O Figma Design do prototipo orienta fluxo, layout, composicao, ordem das secoes e comportamento das telas. O Figma Make orienta tokens, componentes, cores, tipografia, espacamentos, botoes, cards, navegacao e formularios.
+
+Antes de implementar trabalho visual, o Codex deve consultar via MCP:
+
+- Figma Design do prototipo: `fileKey YaVUdqYa3boHpvGrxf4ZJ5`, pagina raiz `0:1`, node inicial `651:317`.
+- Figma Make do design system: `fileKey dVm7lEZdBFqOiiySWLWUqp`, `nodeId 0:1`.
 
 ### 7. Dados da Carta sem persistencia permanente no MVP
 
@@ -54,7 +59,7 @@ Cria ou revisa o `tasks.md`. Deve quebrar o trabalho em tarefas pequenas, verifi
 
 ### `/spec:validar`
 
-Compara `spec.md`, `plan.md` e `tasks.md` com ERS, Figma, Figma Make, roadmap e constitution.
+Compara `spec.md`, `plan.md` e `tasks.md` com ERS, Figma Design, Figma Make, roadmap e constitution.
 
 ### `/spec:implementar`
 
@@ -70,9 +75,8 @@ Revisa a funcionalidade implementada, considerando requisitos, acessibilidade, r
 - README: orientacao geral para entender e iniciar o projeto.
 - `docs/produto`: visao, MVP, escopo, personas e fluxos.
 - `docs/arquitetura`: arquitetura, stack e decisoes tecnicas.
-- `docs/design-system`: referencias do Figma Make, tokens e componentes.
+- `docs/design-system`: referencias do Figma Design, Figma Make, tokens e componentes.
 - `docs/ia`: regras de uso do Codex e prompts padroes.
 - `docs/decisoes`: ADRs.
 - `specs`: especificacoes, planos, tarefas e quickstarts por funcionalidade.
 - Codigo: implementacao executavel, componentes, paginas, validadores e testes.
-
