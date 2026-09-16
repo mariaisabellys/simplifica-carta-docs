@@ -35,9 +35,9 @@ Parametros oficiais:
 
 ```txt
 fileKey: YaVUdqYa3boHpvGrxf4ZJ5
-pagina raiz: 0:1
-node inicial: 651:317
-link: https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=651-317&m=dev
+pagina raiz atual: 167:2
+node inicial recomendado: 310:175
+link: https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=310-175&m=dev
 skill: figma-design-to-code
 ```
 

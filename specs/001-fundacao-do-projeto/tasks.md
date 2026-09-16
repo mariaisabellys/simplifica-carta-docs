@@ -12,6 +12,8 @@
 - [x] Criar documentos de produto.
 - [x] Criar documentos de arquitetura.
 - [x] Criar documentos de design system.
+- [x] Criar referencia do Figma Design do prototipo.
+- [x] Criar mapa de telas e nodes atuais do Figma Design.
 - [x] Criar documentos de IA.
 - [x] Criar ADRs iniciais.
 - [x] Criar spec, plan, tasks e quickstart da fundacao.
@@ -29,7 +31,8 @@
 - [x] Definir estrategia de armazenamento temporario.
 - [x] Definir estrategia de exportacao CSV.
 - [x] Confirmar URL final do Figma Make.
-- [x] Confirmar link final do prototipo Figma.
+- [x] Confirmar link final do prototipo Figma Design.
+- [x] Atualizar mapa do Figma Design apos ajustes no prototipo.
 - [x] Implementar projeto React + TypeScript + Vite.
 - [x] Configurar base visual.
 - [x] Criar estrutura inicial de pastas.

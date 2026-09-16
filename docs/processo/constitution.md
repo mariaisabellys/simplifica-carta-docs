@@ -34,7 +34,7 @@ O Figma Design do prototipo orienta fluxo, layout, composicao, ordem das secoes 
 
 Antes de implementar trabalho visual, o Codex deve consultar via MCP:
 
-- Figma Design do prototipo: `fileKey YaVUdqYa3boHpvGrxf4ZJ5`, pagina raiz `0:1`, node inicial `651:317`.
+- Figma Design do prototipo: `fileKey YaVUdqYa3boHpvGrxf4ZJ5`, pagina raiz atual `167:2`, node inicial recomendado `310:175`.
 - Figma Make do design system: `fileKey dVm7lEZdBFqOiiySWLWUqp`, `nodeId 0:1`.
 
 ### 7. Dados da Carta sem persistencia permanente no MVP
