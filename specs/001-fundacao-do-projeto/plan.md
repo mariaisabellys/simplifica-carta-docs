@@ -6,6 +6,7 @@ Manter a fundacao documental ja criada e preparar a fundacao tecnica do projeto 
 
 1. Documentar a arquitetura inicial do app.
 2. Implementar a base React + TypeScript + Vite somente quando for usado `/spec:implementar`.
+3. Oficializar `implementation-plan.md` como etapa anterior a `/spec:implementar`.
 
 O README antigo, o ERS, o Figma Design do prototipo e os arquivos do Figma Make permanecem como fontes de contexto.
 
@@ -26,6 +27,7 @@ O README antigo, o ERS, o Figma Design do prototipo e os arquivos do Figma Make 
 - `docs/ia/guia-uso-codex.md`
 - `docs/ia/prompts-padroes.md`
 - `docs/ia/regras-para-ia.md`
+- `docs/implementation-plan.md`
 - `docs/decisoes/adr-001-arquitetura-mvp.md`
 - `docs/decisoes/adr-002-exportacao-csv.md`
 - `docs/decisoes/adr-003-backend-atendimento.md`
@@ -52,6 +54,18 @@ Quando a etapa `/spec:implementar` for solicitada, criar ou ajustar:
 - `src/features/atendimento/`
 - `src/lib/`
 - `src/types/`
+
+## Ajuste metodologico planejado
+
+Atualizar a documentacao para que toda spec possa conter:
+
+- `spec.md`
+- `plan.md`
+- `tasks.md`
+- `implementation-plan.md`
+- `quickstart.md`
+
+O `implementation-plan.md` passa a ser etapa recomendada antes de `/spec:implementar`, e obrigatoria para telas, componentes visuais, formularios, fluxos guiados e funcionalidades complexas.
 
 ## Estrutura tecnica proposta
 
@@ -151,6 +165,7 @@ O backend de atendimento agendado nao sera implementado nesta primeira fundacao 
 - Conferir se a estrutura existe.
 - Conferir se os documentos citados no README existem.
 - Conferir se a spec 001 esta completa.
+- Conferir se `implementation-plan.md` aparece como arquivo esperado nas specs.
 - Na implementacao futura, executar instalacao, desenvolvimento local e build.
 
 ## Riscos

@@ -8,6 +8,8 @@
 4. Confira os mini comandos internos.
 5. Abra `specs/001-fundacao-do-projeto/`.
 6. Confira se existem `spec.md`, `plan.md`, `tasks.md` e `quickstart.md`.
+7. Abra `docs/implementation-plan.md`.
+8. Confira se `specs/README.md` lista `implementation-plan.md` como arquivo esperado.
 
 ## Como verificar a fundacao tecnica depois da implementacao
 
@@ -26,4 +28,7 @@ Usar:
 
 ```txt
 /spec:criar 002-home-e-navegacao
+/spec:planejar 002-home-e-navegacao
+/spec:tarefas 002-home-e-navegacao
+/spec:plano-implementacao 002-home-e-navegacao
 ```

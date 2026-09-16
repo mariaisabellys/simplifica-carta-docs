@@ -12,6 +12,7 @@ Esta spec cobre duas entregas:
 
 - Fundacao documental, ja criada e commitada.
 - Fundacao tecnica, que deve preparar o projeto React + TypeScript + Vite antes das funcionalidades de produto.
+- Ajuste metodologico para incluir `implementation-plan.md` antes da implementacao.
 
 ## Usuarios impactados
 
@@ -32,6 +33,8 @@ Esta spec cobre duas entregas:
 - Documentar referencia ao Figma Make e tokens iniciais.
 - Criar regras de IA e prompts padroes.
 - Criar constitution manual inspirada no Spec Kit.
+- Documentar a estrategia de `implementation-plan.md`.
+- Atualizar o fluxo de specs para incluir `implementation-plan.md`.
 
 ### Fundacao tecnica
 
@@ -76,6 +79,8 @@ Esta spec cobre duas entregas:
 - `docs/` existe com subpastas de produto, arquitetura, design system, IA, decisoes e processo.
 - `specs/` existe com a lista de funcionalidades planejadas.
 - Esta spec possui `spec.md`, `plan.md`, `tasks.md` e `quickstart.md`.
+- A documentacao explica o uso de `implementation-plan.md` antes de `/spec:implementar`.
+- `specs/README.md` lista `implementation-plan.md` como arquivo esperado por spec.
 
 ### Fundacao tecnica
 

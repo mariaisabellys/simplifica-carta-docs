@@ -15,6 +15,7 @@ Use os mini comandos internos:
 - `/spec:criar`
 - `/spec:planejar`
 - `/spec:tarefas`
+- `/spec:plano-implementacao`
 - `/spec:validar`
 - `/spec:implementar`
 - `/spec:revisar`
@@ -29,6 +30,7 @@ O Codex deve consultar:
 - spec da funcionalidade;
 - Figma Design do prototipo, para layout e composicao das telas;
 - Figma Make, quando houver impacto visual.
+- `implementation-plan.md`, quando existir.
 
 Para trabalho visual, a consulta ao Figma Design do prototipo deve ser feita via MCP usando:
 
@@ -51,6 +53,14 @@ skill: figma-design-to-code
 ```
 
 Essas consultas sao obrigatorias antes de implementar telas, componentes, tokens ou estilos.
+
+## Plano de implementacao
+
+Antes de `/spec:implementar`, funcionalidades visuais ou complexas devem ter um `implementation-plan.md` dentro da pasta da spec.
+
+Esse arquivo serve para reduzir uso de tokens e apoiar colaboradores que nao possuem acesso ao MCP do Figma ou a IAs com grande contexto. Ele deve conter mapeamento visual, arquivos afetados, contratos de componentes, codigo base e validacoes.
+
+Quando o arquivo existir, o Codex deve usa-lo como base principal da implementacao.
 
 ## Ao finalizar
 

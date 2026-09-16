@@ -14,9 +14,10 @@ Fluxo de trabalho adotado:
 2. Spec
 3. Plan
 4. Tasks
-5. Implementacao
-6. Testes
-7. Deploy
+5. Implementation Plan
+6. Implementacao
+7. Testes
+8. Deploy
 
 ## Stack definida para o MVP
 
@@ -57,6 +58,7 @@ armazenamento de sessao, validacao obrigatoria e CSV local.
 - [Mapa Figma das telas](docs/design-system/mapa-figma-telas.md)
 - [Referencia Figma Make](docs/design-system/referencia-figma-make.md)
 - [Tokens e componentes](docs/design-system/tokens-e-componentes.md)
+- [Implementation Plan](docs/implementation-plan.md)
 - [Regras para IA](docs/ia/regras-para-ia.md)
 - [Constitution manual](docs/processo/constitution.md)
 
@@ -67,6 +69,7 @@ As funcionalidades serao organizadas em `specs/`, cada uma com:
 - `spec.md`: problema, objetivo, requisitos e criterios de aceite.
 - `plan.md`: abordagem tecnica.
 - `tasks.md`: tarefas pequenas e implementaveis.
+- `implementation-plan.md`: plano de implementacao com mapeamento visual, arquivos afetados e codigo base.
 - `quickstart.md`: como verificar a funcionalidade.
 
 A primeira especificacao do projeto esta em [specs/001-fundacao-do-projeto](specs/001-fundacao-do-projeto/spec.md).
@@ -78,8 +81,9 @@ Use estes comandos na conversa com o Codex:
 - `/spec:criar`: cria ou revisa o `spec.md`.
 - `/spec:planejar`: cria ou revisa o `plan.md`.
 - `/spec:tarefas`: cria ou revisa o `tasks.md`.
-- `/spec:validar`: verifica consistencia entre documentacao, ERS, Figma Design, Figma Make e roadmap.
+- `/spec:plano-implementacao`: cria ou revisa o `implementation-plan.md` com codigo base e referencias visuais.
+- `/spec:validar`: verifica consistencia entre documentacao, ERS, Figma Design, Figma Make, implementation-plan e roadmap.
 - `/spec:implementar`: implementa a funcionalidade no codigo.
 - `/spec:revisar`: revisa requisitos, acessibilidade, responsividade e aderencia visual.
 
-Codigo so deve ser implementado quando o comando `/spec:implementar` for usado.
+Codigo so deve ser implementado quando o comando `/spec:implementar` for usado. Quando existir `implementation-plan.md`, a implementacao deve segui-lo como base principal.
