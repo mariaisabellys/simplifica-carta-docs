@@ -17,6 +17,8 @@
 - [x] Criar spec, plan, tasks e quickstart da fundacao.
 - [x] Transferir documentacao para o repositorio Git.
 - [x] Commitar fundacao documental.
+- [x] Criar documentacao da estrategia de `implementation-plan.md`.
+- [x] Atualizar README, constitution, regras de IA, prompts e specs para incluir `implementation-plan.md`.
 
 ## Fundacao tecnica planejada
 

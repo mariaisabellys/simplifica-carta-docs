@@ -6,9 +6,11 @@ Este documento define as regras de trabalho do projeto. Ele funciona como a noss
 
 ### 1. Documentacao antes do codigo
 
-Toda funcionalidade relevante deve passar por `spec.md`, `plan.md` e `tasks.md` antes da implementacao.
+Toda funcionalidade relevante deve passar por `spec.md`, `plan.md`, `tasks.md` e, quando houver implementacao visual ou complexa, `implementation-plan.md` antes da implementacao.
 
 Codigo so deve ser escrito quando a etapa atual for `/spec:implementar`.
+
+Quando existir `implementation-plan.md`, ele deve ser usado como base principal da implementacao.
 
 ### 2. O produto orienta, nao substitui o Paraiba Digital
 
@@ -57,13 +59,17 @@ Cria ou revisa o `plan.md`. Deve indicar abordagem tecnica, arquivos provaveis, 
 
 Cria ou revisa o `tasks.md`. Deve quebrar o trabalho em tarefas pequenas, verificaveis e implementaveis.
 
+### `/spec:plano-implementacao`
+
+Cria ou revisa o `implementation-plan.md`. Deve consolidar contexto, referencias do Figma, arquivos afetados, contratos de componentes, codigo base em React/TypeScript/CSS, regras de implementacao e validacoes.
+
 ### `/spec:validar`
 
-Compara `spec.md`, `plan.md` e `tasks.md` com ERS, Figma Design, Figma Make, roadmap e constitution.
+Compara `spec.md`, `plan.md`, `tasks.md` e `implementation-plan.md`, quando existir, com ERS, Figma Design, Figma Make, roadmap e constitution.
 
 ### `/spec:implementar`
 
-Implementa codigo seguindo os documentos aprovados.
+Implementa codigo seguindo os documentos aprovados. Quando existir `implementation-plan.md`, deve segui-lo como base principal e adaptar apenas o necessario a estrutura real do projeto.
 
 ### `/spec:revisar`
 
@@ -77,6 +83,7 @@ Revisa a funcionalidade implementada, considerando requisitos, acessibilidade, r
 - `docs/arquitetura`: arquitetura, stack e decisoes tecnicas.
 - `docs/design-system`: referencias do Figma Design, Figma Make, tokens e componentes.
 - `docs/ia`: regras de uso do Codex e prompts padroes.
+- `docs/implementation-plan.md`: estrategia geral de uso do `implementation-plan.md` nas specs.
 - `docs/decisoes`: ADRs.
-- `specs`: especificacoes, planos, tarefas e quickstarts por funcionalidade.
+- `specs`: especificacoes, planos, tarefas, planos de implementacao e quickstarts por funcionalidade.
 - Codigo: implementacao executavel, componentes, paginas, validadores e testes.
