@@ -30,7 +30,7 @@ Objetivo: criar ou revisar `tasks.md` com tarefas pequenas e verificaveis.
 /spec:validar [nome da funcionalidade]
 ```
 
-Objetivo: verificar consistencia entre spec, plan, tasks, ERS, Figma, Figma Make e roadmap.
+Objetivo: verificar consistencia entre spec, plan, tasks, ERS, Figma Design, Figma Make e roadmap.
 
 ## Implementar
 
@@ -47,4 +47,3 @@ Objetivo: implementar codigo seguindo a documentacao aprovada.
 ```
 
 Objetivo: revisar requisitos, acessibilidade, responsividade, aderencia ao Figma e lacunas.
-

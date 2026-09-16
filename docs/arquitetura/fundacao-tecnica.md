@@ -56,7 +56,8 @@ src/
 - Dados da Carta nao devem ser persistidos permanentemente no MVP.
 - Conteudo institucional deve ficar fora dos componentes visuais.
 - Componentes devem nascer reutilizaveis quando houver repeticao real.
-- Tokens visuais devem seguir o Figma Make.
+- Layout e composicao de telas devem seguir o Figma Design do prototipo.
+- Tokens visuais e componentes devem seguir o Figma Make.
 - Rotas podem iniciar como placeholders ate as specs especificas de cada tela.
 - Backend de atendimento deve ser planejado separadamente antes da implementacao.
 

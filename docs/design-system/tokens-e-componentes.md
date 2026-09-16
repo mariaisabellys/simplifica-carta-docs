@@ -2,13 +2,17 @@
 
 ## Fonte oficial
 
-Os tokens e componentes deste documento devem ser tratados como resumo de implementacao. A referencia visual oficial do prototipo/design system e:
+Os tokens e componentes deste documento devem ser tratados como resumo de implementacao. A referencia oficial para design system e:
 
 - [Organize Design System - Figma Make](https://www.figma.com/make/dVm7lEZdBFqOiiySWLWUqp/Organize-Design-System--Copy-?t=rgWuly5cbaPi1E9B-20&fullscreen=1)
 
+A referencia oficial para layout, fluxo e composicao das telas esta documentada em:
+
+- [Referencia Figma do prototipo](referencia-figma-prototipo.md)
+
 Este repositorio nao possui uma pasta com o codigo do design system exportado do Figma Make. Durante a implementacao, os tokens necessarios devem ser criados dentro da aplicacao, por exemplo em `src/styles/tokens.css`, `tailwind.config.*` ou arquivo equivalente definido na fundacao tecnica.
 
-Em caso de divergencia entre este resumo e o Figma Make, usar o Figma Make como fonte principal.
+Em caso de divergencia entre este resumo e o Figma Make, usar o Figma Make como fonte principal para tokens e componentes. Em caso de divergencia sobre layout de tela, usar o Figma Design do prototipo como fonte principal.
 
 ## Regra para implementacao
 
@@ -17,9 +21,10 @@ Antes de transformar estes tokens e componentes em codigo, consultar o Figma Mak
 ```txt
 fileKey: dVm7lEZdBFqOiiySWLWUqp
 nodeId: 0:1
+skill: figma-design-to-code
 ```
 
-Usar este documento apenas como mapa resumido. Os valores finais de cor, tipografia, espacamento, estados e composicao devem ser confirmados no Figma Make no momento da implementacao.
+Usar este documento apenas como mapa resumido. Os valores finais de cor, tipografia, espacamento e estados devem ser confirmados no Figma Make no momento da implementacao. Layout e composicao de paginas devem ser confirmados no Figma Design do prototipo.
 
 ## Cores primitivas
 
