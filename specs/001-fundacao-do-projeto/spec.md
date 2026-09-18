@@ -6,7 +6,10 @@ Organizar a base documental e preparar a fundacao tecnica do Simplifica Carta pa
 
 ## Contexto
 
-O projeto ja possui ERS, prototipo no Figma, referencia de design system no Figma Make e decisao de stack para o MVP.
+O projeto ja possui ERS, prototipo no Figma Design, referencia de design system no Figma Make e decisao de stack para o MVP.
+
+A referencia atual do Figma Design esta no arquivo `YaVUdqYa3boHpvGrxf4ZJ5`,
+com pagina raiz `167:2` e home atual no node `310:175`.
 
 Esta spec cobre duas entregas:
 
@@ -30,6 +33,8 @@ Esta spec cobre duas entregas:
 - Criar estrutura `specs/`.
 - Documentar visao do produto, MVP, escopo, personas e fluxos.
 - Documentar arquitetura e decisoes tecnicas.
+- Documentar referencia ao Figma Design do prototipo.
+- Documentar mapa de telas e nodes atuais do Figma Design.
 - Documentar referencia ao Figma Make e tokens iniciais.
 - Criar regras de IA e prompts padroes.
 - Criar constitution manual inspirada no Spec Kit.
@@ -81,6 +86,8 @@ Esta spec cobre duas entregas:
 - Esta spec possui `spec.md`, `plan.md`, `tasks.md` e `quickstart.md`.
 - A documentacao explica o uso de `implementation-plan.md` antes de `/spec:implementar`.
 - `specs/README.md` lista `implementation-plan.md` como arquivo esperado por spec.
+- A documentacao de design registra o Figma Design atual e evita nodes antigos
+  substituidos no prototipo.
 
 ### Fundacao tecnica
 

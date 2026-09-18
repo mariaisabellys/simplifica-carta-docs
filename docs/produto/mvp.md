@@ -5,6 +5,8 @@
 - Pagina inicial com apresentacao do Manual Simplifica Carta.
 - Navegacao principal entre secoes essenciais.
 - Fluxo guiado por etapas.
+- Pagina "Explorar por etapas" para acesso independente a cada etapa do fluxo
+  de cadastro.
 - Pagina "O que e a Carta de Servicos".
 - Diagnostico interativo para identificacao de servico publico.
 - Tela de resultado do diagnostico.
@@ -37,4 +39,3 @@
 ## Definicao de pronto do MVP
 
 O MVP sera considerado concluido quando o usuario conseguir percorrer o fluxo principal, identificar se uma atividade caracteriza servico publico, preencher as informacoes da Carta, receber validacoes, visualizar previa HTML, exportar CSV, acessar o tutorial do Paraiba Digital, copiar as informacoes preenchidas e solicitar atendimento agendado.
-

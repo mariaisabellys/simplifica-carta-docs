@@ -10,6 +10,12 @@ Manter a fundacao documental ja criada e preparar a fundacao tecnica do projeto 
 
 O README antigo, o ERS, o Figma Design do prototipo e os arquivos do Figma Make permanecem como fontes de contexto.
 
+Referencia atual do Figma Design:
+
+- `fileKey`: `YaVUdqYa3boHpvGrxf4ZJ5`
+- pagina raiz atual: `167:2`
+- home atual: `310:175`
+
 ## Entrega ja concluida
 
 - `README.md`
@@ -23,6 +29,8 @@ O README antigo, o ERS, o Figma Design do prototipo e os arquivos do Figma Make 
 - `docs/arquitetura/arquitetura-sistema.md`
 - `docs/arquitetura/decisoes-tecnicas.md`
 - `docs/design-system/referencia-figma-make.md`
+- `docs/design-system/referencia-figma-prototipo.md`
+- `docs/design-system/mapa-figma-telas.md`
 - `docs/design-system/tokens-e-componentes.md`
 - `docs/ia/guia-uso-codex.md`
 - `docs/ia/prompts-padroes.md`
@@ -93,6 +101,7 @@ src/
     atendimento/
   pages/
     HomePage.tsx
+    ExplorarPorEtapasPage.tsx
     OQueECartaPage.tsx
     DiagnosticoPage.tsx
     OrganizarInformacoesPage.tsx
@@ -112,6 +121,7 @@ src/
 ## Rotas iniciais propostas
 
 - `/`
+- `/explorar-por-etapas`
 - `/o-que-e-carta-de-servicos`
 - `/diagnostico`
 - `/diagnostico/resultado`
@@ -132,6 +142,10 @@ Usar o Figma Design do prototipo como referencia para:
 - composicao das secoes;
 - hierarquia visual;
 - comportamento esperado de cada pagina.
+
+O mapa de nodes atuais fica em `docs/design-system/mapa-figma-telas.md`.
+Nodes antigos substituidos no prototipo nao devem ser usados como referencia
+principal de novas specs.
 
 Usar o Figma Make como referencia para:
 

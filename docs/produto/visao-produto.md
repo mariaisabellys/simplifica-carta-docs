@@ -12,6 +12,7 @@ Servidores precisam transformar informacoes dispersas sobre servicos publicos em
 
 Orientar o usuario em um fluxo didatico que ajude a:
 
+- escolher entre iniciar o fluxo completo ou acessar uma etapa isoladamente;
 - entender o que e a Carta de Servicos;
 - identificar se uma atividade caracteriza servico publico;
 - reunir as informacoes necessarias;
@@ -33,4 +34,3 @@ Reduzir erros, padronizar informacoes, orientar a escrita em linguagem simples e
 ## Limite do produto
 
 O Simplifica Carta nao substitui o Paraiba Digital, nao realiza publicacao automatica, nao autentica usuarios no MVP e nao salva rascunhos permanentes da Carta de Servicos.
-

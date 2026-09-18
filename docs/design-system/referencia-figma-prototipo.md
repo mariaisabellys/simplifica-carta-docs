@@ -7,7 +7,7 @@ fluxo, composicao e hierarquia das telas do Simplifica Carta.
 
 Referencia oficial das telas:
 
-- [Manual de levantamento dos servicos - Figma Design](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=651-317&m=dev)
+- [Manual de levantamento dos servicos - Figma Design](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=310-175&m=dev)
 
 ## Relacao com o Figma Make
 
@@ -30,17 +30,23 @@ Parametros oficiais do arquivo:
 
 ```txt
 fileKey: YaVUdqYa3boHpvGrxf4ZJ5
-pagina raiz: 0:1
-node inicial: 651:317
+pagina raiz atual: 167:2
+node inicial recomendado: 310:175
 tipo: Figma Design
 skill: figma-design-to-code
 framework: react
 languages: typescript, css
 ```
 
-O node inicial `651:317` representa o componente `Label-Row`. O mapa entre
-rotas, specs e frames do prototipo fica em
+O node inicial recomendado `310:175` representa a home atual. O componente
+`Label-Row` permanece disponivel no node `651:317` para formularios. O mapa
+entre rotas, specs e frames do prototipo fica em
 [`docs/design-system/mapa-figma-telas.md`](mapa-figma-telas.md).
+
+A pagina `Explorar por etapas` esta no node `575:483` e deve ser usada pela
+feature `003-explorar-por-etapas`. Ela apresenta quatro cards com acesso
+independente ao diagnostico, organizacao das informacoes, elaboracao da Carta e
+tutorial de publicacao.
 
 Quando a tarefa envolver uma tela especifica, usar preferencialmente um link
 Figma com `node-id` da tela ou componente. Se o link disponivel apontar apenas

@@ -9,6 +9,7 @@ O Simplifica Carta sera uma aplicacao web com frontend em React, TypeScript e Vi
 Responsabilidades:
 
 - renderizar paginas e fluxo guiado;
+- oferecer uma pagina de acesso independente as etapas do cadastro;
 - manter estado temporario da Carta durante a sessao;
 - validar campos obrigatorios;
 - sugerir melhorias de linguagem simples;
@@ -50,4 +51,3 @@ O backend nao deve armazenar dados da Carta de Servicos no MVP.
 ## Deploy
 
 O frontend deve permitir deploy estatico. O backend simples pode ser implantado separadamente ou junto da aplicacao, conforme decisao de infraestrutura.
-
