@@ -106,9 +106,10 @@ Sem uma home bem definida, o usuario pode nao compreender:
   - botao/acao `Iniciar o guia`;
   - botao/acao `Explorar por etapas`;
   - imagem/arte da Carta de Servico quando o asset estiver disponivel.
-- Direcionar `Iniciar o guia` para o inicio do fluxo guiado definido no plano.
-- Direcionar `Explorar por etapas` para a secao de processo da home ou para o
-  primeiro agrupamento de etapas definido no plano.
+- Direcionar `Iniciar o guia` para `/diagnostico`, primeira etapa do fluxo de
+  cadastro de uma Carta de Servicos.
+- Direcionar `Explorar por etapas` para `/explorar-por-etapas`, pagina propria
+  de acesso independente as etapas do fluxo de cadastro.
 - Exibir a secao `Como funciona o processo?` com texto introdutor.
 - Exibir quatro etapas do processo:
   - `Identificar um servico`;
@@ -184,6 +185,8 @@ Sem uma home bem definida, o usuario pode nao compreender:
 ## Dependencias
 
 - Fundacao tecnica criada em `001-fundacao-do-projeto`.
+- Rota `/explorar-por-etapas` planejada para a feature
+  `003-explorar-por-etapas`.
 - Rotas iniciais existentes em `src/app/routes.tsx`.
 - Tokens CSS iniciais em `src/styles/tokens.css`.
 - Componentes iniciais de layout e UI em `src/components/`.
@@ -198,6 +201,7 @@ Sem uma home bem definida, o usuario pode nao compreender:
 - A implementacao futura da home segue o frame Figma `310:175`.
 - A home apresenta claramente o produto e os dois caminhos principais:
   `Iniciar o guia` e `Explorar por etapas`.
+- `Explorar por etapas` direciona para `/explorar-por-etapas`.
 - A home apresenta a secao `Como funciona o processo?` com quatro etapas.
 - A home apresenta CTA para `O que e a Carta de Servicos`.
 - A navegacao principal possui links coerentes com a home atual do prototipo.

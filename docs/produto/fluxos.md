@@ -1,15 +1,19 @@
 # Fluxos
 
-## Fluxo principal
+## Entrada pela home
 
 ```txt
 Usuario acessa o portal
 ↓
 Consulta a pagina inicial
 ↓
-Segue o fluxo guiado ou explora por etapas
-↓
-Entende o que e a Carta de Servicos
+Escolhe "Iniciar o guia" ou "Explorar por etapas"
+```
+
+## Fluxo completo de cadastro
+
+```txt
+Usuario seleciona "Iniciar o guia"
 ↓
 Realiza o diagnostico de servico publico
 ↓
@@ -28,6 +32,26 @@ Acessa o tutorial do Paraiba Digital
 Copia as informacoes preenchidas para cadastrar manualmente na plataforma oficial
 ```
 
+A pagina "O que e a Carta de Servicos" permanece disponivel como conteudo
+educativo, mas nao e a primeira etapa obrigatoria do fluxo de cadastro.
+
+## Acesso independente por etapa
+
+```txt
+Usuario seleciona "Explorar por etapas"
+↓
+Acessa /explorar-por-etapas
+↓
+Visualiza as quatro etapas do cadastro em cards separados
+↓
+Escolhe somente a etapa que deseja consultar
+↓
+Acessa diagnostico, organizacao, elaboracao da Carta ou tutorial de publicacao
+```
+
+Esse caminho nao obriga o usuario a percorrer as etapas anteriores ou concluir
+todo o fluxo de cadastro.
+
 ## Fluxo de atendimento
 
 ```txt
@@ -45,4 +69,3 @@ Sistema registra os dados minimos
 ↓
 Sistema notifica a equipe responsavel
 ```
-

@@ -27,6 +27,7 @@ O frontend deve ser organizado por responsabilidade:
 O MVP deve prever rotas para:
 
 - inicio;
+- exploracao independente das etapas;
 - explicacao sobre Carta de Servicos;
 - diagnostico;
 - resultado do diagnostico;

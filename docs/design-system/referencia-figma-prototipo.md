@@ -43,6 +43,11 @@ O node inicial recomendado `310:175` representa a home atual. O componente
 entre rotas, specs e frames do prototipo fica em
 [`docs/design-system/mapa-figma-telas.md`](mapa-figma-telas.md).
 
+A pagina `Explorar por etapas` esta no node `575:483` e deve ser usada pela
+feature `003-explorar-por-etapas`. Ela apresenta quatro cards com acesso
+independente ao diagnostico, organizacao das informacoes, elaboracao da Carta e
+tutorial de publicacao.
+
 Quando a tarefa envolver uma tela especifica, usar preferencialmente um link
 Figma com `node-id` da tela ou componente. Se o link disponivel apontar apenas
 para o arquivo, o Codex deve usar o MCP para listar paginas/nos e identificar

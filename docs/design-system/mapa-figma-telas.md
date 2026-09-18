@@ -16,6 +16,7 @@ quando o frame oficial mudar.
 | Rota | Tela ou secao no Figma | Node ID | Spec relacionada | Observacao |
 | --- | --- | --- | --- | --- |
 | `/` | home | `310:175` | `002-home-e-navegacao` | Frame oficial atual da home, com hero, processo, CTA sobre Carta de Servicos e footer. |
+| `/explorar-por-etapas` | explorar-por-etapas-v2 | `575:483` | `003-explorar-por-etapas` | Pagina para acesso independente as quatro etapas do cadastro, sem exigir o fluxo completo. |
 | `/diagnostico` | diagnostico | `387:1020` | `005-diagnostico-servico-publico` | Frame atual para a experiencia de diagnostico. Usar somente na spec propria. |
 | `/ajuda` ou FAQ | FAQ | `169:495` | `013-fluxo-de-ajuda` ou spec futura de FAQ | Frame atual para duvidas frequentes e CTA de apoio. Nao faz parte da home atual. |
 | `/formulario-carta` | Form-Card | `811:306` | `007-formulario-carta-servico` | Card de formulario com campos, orientacao e sugestao. Usar na spec propria. |

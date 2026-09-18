@@ -22,7 +22,7 @@ Mais detalhes em [`docs/implementation-plan.md`](../docs/implementation-plan.md)
 
 1. `001-fundacao-do-projeto`
 2. `002-home-e-navegacao`
-3. `003-fluxo-guiado`
+3. `003-explorar-por-etapas`
 4. `004-o-que-e-carta-servico`
 5. `005-diagnostico-servico-publico`
 6. `006-organizar-informacoes`

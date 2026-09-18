@@ -101,6 +101,7 @@ src/
     atendimento/
   pages/
     HomePage.tsx
+    ExplorarPorEtapasPage.tsx
     OQueECartaPage.tsx
     DiagnosticoPage.tsx
     OrganizarInformacoesPage.tsx
@@ -120,6 +121,7 @@ src/
 ## Rotas iniciais propostas
 
 - `/`
+- `/explorar-por-etapas`
 - `/o-que-e-carta-de-servicos`
 - `/diagnostico`
 - `/diagnostico/resultado`
