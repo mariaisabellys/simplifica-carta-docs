@@ -37,8 +37,10 @@ O frame oficial e uma pagina desktop de 1440 px com estas regioes, nesta ordem:
 6. footer institucional em azul escuro.
 
 O frame usa, entre outros valores, azul escuro proximo de `#00395b`, ciano
-`#12b5d0`, laranja `#ff760f`, branco e cinzas. A tipografia combina Outfit em
-titulos e Inter/Rawline em textos e navegacao. Esses valores devem ser
+`#12b5d0`, laranja `#ff760f`, branco e cinzas. A tipografia do frame combina
+Outfit em titulos e Inter/Rawline em textos e navegacao; no codigo, a decisao
+transversal e usar Inter como familia principal para todos esses papeis. Os
+demais valores devem ser
 reconciliados com os tokens semanticos existentes e confirmados novamente no
 Figma Make durante o `implementation-plan.md`; o codigo Tailwind retornado pelo
 MCP e apenas referencia e nao deve ser copiado nem motivar a instalacao de
@@ -92,10 +94,15 @@ visivel dentro do menu, sem sobreposicao.
 - etapa `Simular publicacao`: `/tutorial-paraiba-digital`, deixando claro no
   texto que o cadastro final e manual no Paraiba Digital.
 
-O roteamento interno deve reconhecer `/explorar-por-etapas` como pagina da
-feature `003-explorar-por-etapas`. Mudancas de rota devem levar o foco ao
-conteudo principal ou ao titulo da pagina para nao desorientar usuarios de
-teclado e leitores de tela.
+A feature 002 deve expor `/explorar-por-etapas` como `href` real nos CTAs da
+home e do footer, mas nao deve registrar a pagina nem criar placeholder para
+ela. O registro de `ExplorarPorEtapasPage` pertence exclusivamente a feature
+`003-explorar-por-etapas`, conforme a decisao documentada na spec 001.
+
+Enquanto a feature 003 nao estiver implementada, os testes da 002 validam o
+destino declarado no link, nao a renderizacao da pagina de destino. Mudancas
+para rotas ja registradas devem levar o foco ao conteudo principal ou ao titulo
+da pagina para nao desorientar usuarios de teclado e leitores de tela.
 
 ### 4. Versionar o conteudo
 
@@ -208,9 +215,10 @@ implementacao deve mapear os valores confirmados no Figma para:
 - largura maxima de container e breakpoints responsivos;
 - estados `hover`, `focus-visible`, `active` e `disabled`.
 
-Se Outfit, Inter ou Rawline nao estiverem disponiveis localmente, o
-`implementation-plan.md` deve definir a estrategia de carregamento e fallback
-sem bloquear a renderizacao.
+O `implementation-plan.md` deve usar Inter nos tokens `--font-display` e
+`--font-body`, com `system-ui, sans-serif` como fallback sem bloquear a
+renderizacao. Outfit e Rawline nao devem ser reintroduzidas como fontes
+prioritarias.
 
 ## Validacoes e acessibilidade
 

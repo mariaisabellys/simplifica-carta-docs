@@ -62,6 +62,20 @@ Usar este documento apenas como mapa resumido. Os valores finais de cor, tipogra
 
 ## Tipografia
 
+### Familia principal do projeto
+
+Inter e a familia tipografica principal do Simplifica Carta para titulos,
+corpo, navegacao, rotulos e controles. Os tokens CSS devem usar:
+
+```css
+--font-display: "Inter", system-ui, sans-serif;
+--font-body: "Inter", system-ui, sans-serif;
+```
+
+Outfit, Rawline e Source Sans 3 observadas em frames do Figma permanecem como
+referencias historicas do prototipo, mas nao devem ser priorizadas no codigo.
+Essa e uma divergencia intencional para manter unidade tipografica no produto.
+
 - Display / LG
 - Display / MD
 - Heading / H1

@@ -2,8 +2,8 @@
 
 ## Status
 
-Pronto para validacao documental. A implementacao de codigo deve comecar somente
-depois de `/spec:validar 002-home-e-navegacao`.
+Validado documentalmente em 24 de setembro de 2026, sem bloqueios abertos.
+Pronto para `/spec:implementar 002-home-e-navegacao`.
 
 ## Fontes consultadas
 
@@ -49,6 +49,9 @@ backend, sem persistencia e sem expor `Material de apoio` na header.
   independente do inicio do fluxo de cadastro.
 - `Explorar por etapas` aponta para `/explorar-por-etapas`, rota pertencente a
   futura feature `003-explorar-por-etapas`.
+- A feature 002 cria os links com `href="/explorar-por-etapas"`, mas nao
+  registra `ExplorarPorEtapasPage` nem cria placeholder; essa integracao
+  pertence exclusivamente a feature 003.
 - A pagina de destino segue o Figma Design `575:483`, mas sua estrutura, cards e
   implementacao nao pertencem a feature 002.
 - `Duvidas frequentes` aponta para `/ajuda#duvidas-frequentes`; a pagina de
@@ -67,7 +70,7 @@ backend, sem persistencia e sem expor `Material de apoio` na header.
 | Header | 67 px, fundo branco, borda inferior, marca a esquerda e nav a direita | Header sticky, container fluido limitado e menu recolhivel abaixo de 860 px |
 | Marca | `Simplifica Carta`, destaque ciano em `Carta`, divisor e `Guia de Servicos` | Texto HTML, sem imagem; nome acessivel no link da home |
 | Hero | 559 px, gradiente azul, conteudo a esquerda e arte a direita | Grid de duas colunas; altura por conteudo e padding responsivo |
-| Titulo | Outfit ExtraBold, 64 px no desktop, branco e ciano | `clamp(2.5rem, 5vw, 4rem)`; segunda linha com cor de destaque |
+| Titulo | Outfit ExtraBold no frame, 64 px no desktop, branco e ciano | Inter ExtraBold por decisao transversal; `clamp(2.5rem, 5vw, 4rem)` e segunda linha destacada |
 | CTAs | Laranja primario e azul translucido secundario, raio 8 px | `ButtonLink` com variantes `primary` e `secondary-inverse` |
 | Processo | Titulo central, texto introdutor e quatro etapas ligadas | Lista ordenada em grid; conectores apenas decorativos em desktop |
 | CTA educativo | Painel creme, raio aproximado de 20 px | Grid texto/acao, empilhado no mobile |
@@ -116,11 +119,12 @@ abaixo sem substituir tokens globais de outras features de forma destrutiva.
 
 Tipografia:
 
-- titulos: `--font-display`, priorizando Outfit;
-- corpo e navegacao: `--font-body`, priorizando Source Sans 3/Rawline e Inter;
+- Inter e a familia principal para titulos, corpo, navegacao e controles;
+- `--font-display` e `--font-body` devem priorizar Inter;
+- o uso de Inter no lugar de Outfit/Rawline do frame e uma divergencia
+  intencional definida para todo o projeto;
 - nao adicionar dependencia JavaScript para fontes;
-- usar fallbacks existentes nesta entrega. Carregamento de arquivos de fonte
-  locais ou CDN fica para uma decisao transversal do design system.
+- usar `system-ui, sans-serif` como fallback sem bloquear a renderizacao.
 
 ## Inventario de assets
 
@@ -297,8 +301,9 @@ export const homeContent = {
   },
   introCta: {
     eyebrow: "Não sabe por onde começar?",
-    title: "Entenda o que caracteriza uma Carta de Serviços e qual é a sua finalidade",
-    actionLabel: "Conheça primeiro o que é uma Carta de Serviços",
+    title: "Conheça primeiro o que é uma Carta de Serviços",
+    description: "Entenda o que caracteriza uma Carta de Serviços e qual é a sua finalidade",
+    actionLabel: "O que é a Carta de Serviço?",
     actionHref: "/o-que-e-carta-de-servicos",
   },
 };
@@ -569,6 +574,7 @@ export function HomePage() {
         <div>
           <p className="home-eyebrow">{homeContent.introCta.eyebrow}</p>
           <h2 id="intro-cta-title">{homeContent.introCta.title}</h2>
+          <p>{homeContent.introCta.description}</p>
         </div>
         <ButtonLink href={homeContent.introCta.actionHref} variant="secondary" iconSrc={arrowIcon} onNavigate={navigate}>
           {homeContent.introCta.actionLabel}
@@ -751,7 +757,9 @@ compativeis com Vite 7, TypeScript 5.9 e Node suportado pelo projeto.
 Cenarios obrigatorios:
 
 1. home renderiza um `h1`, os dois CTAs e quatro etapas;
-2. CTAs e etapas possuem os destinos documentados;
+2. CTAs e etapas possuem os destinos documentados; para
+   `/explorar-por-etapas`, validar o `href` sem exigir o registro da pagina da
+   feature 003;
 3. header exibe quatro itens e nao exibe `Material de apoio`;
 4. `Inicio` recebe `aria-current="page"` na home;
 5. menu movel alterna `aria-expanded` e fecha ao navegar;

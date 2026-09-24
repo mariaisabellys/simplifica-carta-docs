@@ -2,8 +2,8 @@
 
 ## Status
 
-Pronto para validacao documental. A implementacao de codigo deve comecar
-somente depois de `/spec:validar 003-explorar-por-etapas`.
+Validado documentalmente em 24 de setembro de 2026, sem bloqueios abertos.
+Pronto para `/spec:implementar 003-explorar-por-etapas`.
 
 ## Fontes consultadas
 
@@ -76,7 +76,8 @@ recriar header ou footer dentro da pagina.
 - Criar `Breadcrumb`, pois e um padrao compartilhavel por paginas internas.
 - Manter hero e CTA final em `ExplorarPorEtapasPage.tsx`; nao criar componentes
   de uso unico sem logica propria.
-- Usar os SVGs exportados do Figma para os quatro icones e o chevron.
+- Usar os SVGs exportados do Figma para os quatro icones e para cada um dos
+  dois chevrons distintos.
 - Icones e chevrons sao decorativos e usam `alt=""`/`aria-hidden="true"`.
 - O CTA final e um link de variante `outline-navy`.
 - Os links dos cards usam a cor semantica do respectivo card.
@@ -96,7 +97,7 @@ O frame desktop possui 1440 px de largura e esta organizado assim:
 | Header | 65 px, fundo branco, marca a esquerda e navegacao a direita | Reutilizar exclusivamente o shell da feature 002 |
 | Hero | gradiente navy para azul, padding horizontal de 80 px e vertical de 64 px | Faixa de largura total com container interno e padding responsivo |
 | Breadcrumb | 14 px, inicio azul claro, chevron de 10 px e pagina atual branca | `nav` acessivel antes do titulo |
-| Titulo | Inter Black, 46 px, branco | `clamp(2.25rem, 4vw, 2.875rem)` e `font-display` |
+| Titulo | Inter Black, 46 px, branco | Inter via `--font-display` e `clamp(2.25rem, 4vw, 2.875rem)` |
 | Introducao | 18 px, linha 1.6, azul muito claro | largura fluida e maximo legivel, sem altura fixa |
 | Area de cards | fundo branco, padding superior de 80 px, container de 1280 px | secao com container e grid 2×2 |
 | Cards | 420 px no frame, padding 32 px, raio 24 px, borda e sombra leve | `min-height` somente no desktop; altura cresce com conteudo |
@@ -151,6 +152,15 @@ com os tokens criados pela feature 002 antes de adicionar novos nomes.
 | Sombra do CTA | `--shadow-explore-cta` | `0 4px 6px rgba(15, 23, 42, 0.02)` |
 | Container | reutilizar/criar `--container-wide` | `1280px` |
 
+Tipografia:
+
+- Inter e a familia principal de todo o projeto;
+- `--font-display` e `--font-body` usam `"Inter", system-ui, sans-serif`;
+- titulo principal e titulos dos cards usam pesos Black/ExtraBold quando
+  disponiveis, com `font-weight: 900` e `800` respectivamente;
+- corpo, breadcrumb, badges e botoes tambem usam Inter;
+- Outfit, Rawline e Source Sans 3 nao devem ser reintroduzidas nesta feature.
+
 Gradiente planejado:
 
 ```css
@@ -177,7 +187,8 @@ O `get_design_context` retornou os seguintes vetores relevantes:
 | Check square | `575:600` | `src/assets/explorar-por-etapas/check-square.svg` | Etapa 2, decorativo |
 | File text | `575:609` | `src/assets/explorar-por-etapas/file-text.svg` | Etapa 3, decorativo |
 | Book open | `575:615` | `src/assets/explorar-por-etapas/book-open.svg` | Etapa 4, decorativo |
-| Chevron right | `575:597` e variantes equivalentes | `src/assets/shared/chevron-right.svg` | Links dos cards e breadcrumb |
+| Chevron do breadcrumb | `575:594` (`imgChevronRight`) | `src/assets/explorar-por-etapas/chevron-breadcrumb.svg` | Separador do breadcrumb, 10 × 10 px, decorativo |
+| Chevron de acao | `575:597`, `575:606`, `575:612`, `575:618` (`imgChevronRight1`) | `src/assets/explorar-por-etapas/chevron-action.svg` | Botoes dos cards, 16 × 16 px, decorativo |
 
 O logo institucional `SEMTD-branco` e os demais elementos do footer pertencem
 ao shell da feature 002 e nao devem ser baixados novamente por esta feature.
@@ -214,8 +225,8 @@ codigo e nunca recriar os SVGs manualmente.
 - `src/assets/explorar-por-etapas/check-square.svg`;
 - `src/assets/explorar-por-etapas/file-text.svg`;
 - `src/assets/explorar-por-etapas/book-open.svg`;
-- `src/assets/shared/chevron-right.svg`, se a 002 nao tiver exportado um
-  chevron equivalente;
+- `src/assets/explorar-por-etapas/chevron-breadcrumb.svg`;
+- `src/assets/explorar-por-etapas/chevron-action.svg`;
 - `src/app/NavigationContext.tsx`, somente se ainda nao existir;
 - `src/test/setup.ts`, somente se ainda nao existir.
 
@@ -359,7 +370,7 @@ trecho acima evita transformar componentes em fonte editorial.
 ### `src/components/explorar/ExploreStepCard.tsx`
 
 ```tsx
-import chevronRight from "../../assets/shared/chevron-right.svg";
+import chevronAction from "../../assets/explorar-por-etapas/chevron-action.svg";
 import type { ExploreStep } from "../../types/explorar";
 import { ButtonLink } from "../ui/ButtonLink";
 
@@ -385,7 +396,7 @@ export function ExploreStepCard({ step }: ExploreStepCardProps) {
 
         <ButtonLink
           href={step.href}
-          iconSrc={chevronRight}
+          iconSrc={chevronAction}
           tone={step.tone}
           variant="step"
         >
@@ -403,7 +414,7 @@ semantica em algumas combinacoes de navegador e tecnologia assistiva.
 ### `src/components/ui/Breadcrumb.tsx`
 
 ```tsx
-import chevronRight from "../../assets/shared/chevron-right.svg";
+import chevronBreadcrumb from "../../assets/explorar-por-etapas/chevron-breadcrumb.svg";
 import type { BreadcrumbItem } from "../../types/explorar";
 import { useNavigation } from "../../app/NavigationContext";
 
@@ -436,7 +447,9 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                   {item.label}
                 </span>
               )}
-              {!isCurrent && <img aria-hidden="true" alt="" src={chevronRight} />}
+              {!isCurrent && (
+                <img aria-hidden="true" alt="" src={chevronBreadcrumb} width="10" height="10" />
+              )}
             </li>
           );
         })}

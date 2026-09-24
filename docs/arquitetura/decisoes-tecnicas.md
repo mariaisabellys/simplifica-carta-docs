@@ -22,6 +22,13 @@ O frontend deve ser organizado por responsabilidade:
 - `src/lib`: utilitarios compartilhados.
 - `src/types`: tipos globais.
 
+## Tipografia principal
+
+Inter e a fonte principal do projeto em titulos e textos de interface. Os
+tokens `--font-display` e `--font-body` devem priorizar Inter e usar
+`system-ui, sans-serif` como fallback. Referencias a Outfit, Rawline ou Source
+Sans 3 nos frames do prototipo nao alteram essa decisao transversal.
+
 ## Rotas iniciais
 
 O MVP deve prever rotas para:

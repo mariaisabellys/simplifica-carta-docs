@@ -68,7 +68,7 @@
   - Evidencia: estrategia e arquivos de teste previstos no
     `implementation-plan.md`.
 
-- [ ] **T007 — Validar a documentacao antes do codigo**
+- [x] **T007 — Validar a documentacao antes do codigo**
   - Executar `/spec:validar 003-explorar-por-etapas`.
   - Comparar `spec.md`, `plan.md`, `tasks.md`, `implementation-plan.md`, MVP,
     fluxos, constitution, Figma Design e Figma Make.
@@ -109,7 +109,8 @@
   - Evidencia: dados e rotas sem divergencias.
 
 - [ ] **T011 — Preparar os assets locais**
-  - Exportar ou baixar do Figma os icones confirmados no inventario.
+  - Exportar ou baixar do Figma os quatro icones, o chevron de breadcrumb e o
+    chevron de acao confirmados no inventario.
   - Salvar os arquivos em `src/assets/explorar-por-etapas/` ou no diretorio
     compartilhado definido no plano detalhado.
   - Conferir formato, integridade, nome e correspondencia de cada arquivo.
