@@ -22,6 +22,10 @@ Quando `/spec:implementar` for usado para esta spec:
 5. Rodar o build de producao com `npm run build`.
 6. Conferir se os arquivos de conteudo, tipos, validacao, armazenamento temporario e CSV existem.
 
+A rota `/explorar-por-etapas` nao faz parte dos placeholders da fundacao. Ela e
+registrada pela spec `003-explorar-por-etapas` no momento de sua implementacao,
+junto da pagina real e do node Figma `575:483`.
+
 ## Proximo passo recomendado agora
 
 Usar:

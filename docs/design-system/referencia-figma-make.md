@@ -100,8 +100,13 @@ Tokens visuais identificados:
 
 Fontes identificadas:
 
-- Display: Outfit
-- Body: Source Sans 3 / Rawline
+- Display observado no Figma Make: Outfit
+- Body observado no Figma Make: Source Sans 3 / Rawline
+
+No codigo do Simplifica Carta, Inter e a familia principal para display e corpo,
+conforme a decisao transversal registrada em `tokens-e-componentes.md` e
+`docs/arquitetura/decisoes-tecnicas.md`. As familias acima documentam a fonte de
+referencia, mas nao substituem a decisao do projeto.
 - Apoio: Inter
 
 ## Regra de uso

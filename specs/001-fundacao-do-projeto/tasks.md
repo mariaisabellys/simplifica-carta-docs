@@ -36,7 +36,9 @@
 - [x] Implementar projeto React + TypeScript + Vite.
 - [x] Configurar base visual.
 - [x] Criar estrutura inicial de pastas.
-- [x] Criar placeholders das rotas principais.
+- [x] Criar placeholders das rotas principais disponiveis na fundacao.
+  - `/explorar-por-etapas` foi delegada a spec `003-explorar-por-etapas` e sera
+    registrada junto de sua pagina em `/spec:implementar 003-explorar-por-etapas`.
 - [x] Criar modelo inicial da Carta de Servicos.
 - [x] Criar utilitario inicial de armazenamento temporario.
 - [x] Criar utilitario inicial de CSV.

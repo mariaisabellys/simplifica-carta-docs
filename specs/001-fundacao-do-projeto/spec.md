@@ -95,7 +95,11 @@ Esta spec cobre duas entregas:
 - Os scripts de desenvolvimento e build estao documentados.
 - A estrutura inicial de pastas esta criada.
 - Existem tokens/estilos base alinhados ao Figma Make.
-- Existe roteamento inicial para as secoes principais do MVP, ainda que com paginas placeholder.
+- Existe um mecanismo inicial de roteamento e existem placeholders para as
+  secoes principais disponiveis na fundacao.
+- Rotas de paginas com spec visual propria podem ser registradas pela respectiva
+  feature. Em particular, `/explorar-por-etapas` pertence a
+  `003-explorar-por-etapas` e nao e criterio de conclusao da fundacao.
 - Existe estrutura inicial para conteudo versionado.
 - Existe tipo/modelo inicial para os dados da Carta de Servicos.
 - Existe decisao registrada sobre armazenamento temporario.

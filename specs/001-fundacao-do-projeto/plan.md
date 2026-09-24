@@ -101,7 +101,6 @@ src/
     atendimento/
   pages/
     HomePage.tsx
-    ExplorarPorEtapasPage.tsx
     OQueECartaPage.tsx
     DiagnosticoPage.tsx
     OrganizarInformacoesPage.tsx
@@ -121,7 +120,6 @@ src/
 ## Rotas iniciais propostas
 
 - `/`
-- `/explorar-por-etapas`
 - `/o-que-e-carta-de-servicos`
 - `/diagnostico`
 - `/diagnostico/resultado`
@@ -132,6 +130,22 @@ src/
 - `/ajuda`
 - `/ajuda/atendimento-agendado`
 - `/ajuda/suporte-email`
+
+### Rota delegada a feature 003
+
+`/explorar-por-etapas` foi identificada durante a fundacao como rota necessaria
+do MVP, mas sua pagina depende de composicao visual, conteudo tipado, cards,
+assets e destinos definidos pela spec `003-explorar-por-etapas`.
+
+Por isso, a fundacao entrega o mecanismo de roteamento, mas nao cria um
+placeholder especifico para essa rota. O registro de
+`/explorar-por-etapas`, com `ExplorarPorEtapasPage`, `figmaNodeId: "575:483"` e
+`specId: "003-explorar-por-etapas"`, deve ocorrer somente em
+`/spec:implementar 003-explorar-por-etapas`.
+
+Essa delegacao evita uma rota que resolva silenciosamente para a home antes da
+pagina existir e impede que a fundacao antecipe a implementacao visual da
+feature 003.
 
 ## Estrategia visual
 
@@ -150,7 +164,8 @@ principal de novas specs.
 Usar o Figma Make como referencia para:
 
 - tokens de cor;
-- fontes Outfit e Source Sans 3/Rawline;
+- fonte Inter como familia principal para titulos e corpo, mantendo
+  Outfit/Source Sans 3/Rawline apenas como referencias observadas no Figma;
 - escala de espacamento;
 - bordas e radius;
 - botoes;

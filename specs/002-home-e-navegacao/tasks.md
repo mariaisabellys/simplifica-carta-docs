@@ -46,7 +46,7 @@
   - Dependencia: T001.
   - Evidencia: decisao registrada no `implementation-plan.md`.
 
-- [ ] **T005 — Validar a documentacao antes do codigo**
+- [x] **T005 — Validar a documentacao antes do codigo**
   - Executar `/spec:validar 002-home-e-navegacao`.
   - Conferir consistencia entre `spec.md`, `plan.md`, `tasks.md`,
     `implementation-plan.md`, MVP, fluxos e Figma.
@@ -77,7 +77,8 @@
 - [ ] **T008 — Ajustar os contratos de navegacao interna**
   - Separar a navegacao editorial da tabela completa de rotas.
   - Preservar pathname e fragmento de URL.
-  - Reconhecer `/explorar-por-etapas` como destino da feature 003.
+  - Manter `/explorar-por-etapas` como `href` real da feature 003, sem registrar
+    a pagina ou criar placeholder nesta feature.
   - Definir o comportamento de `/ajuda#duvidas-frequentes` sem recarregar a
     aplicacao.
   - Definir restauracao de foco apos mudanca de pagina.
@@ -149,7 +150,10 @@
   - Evidencia: quatro etapas renderizadas com destinos corretos.
 
 - [ ] **T017 — Implementar o CTA educativo**
-  - Exibir `Conheca primeiro o que e uma Carta de Servicos`.
+  - Exibir o titulo `Conheca primeiro o que e uma Carta de Servicos`.
+  - Exibir a descricao `Entenda o que caracteriza uma Carta de Servicos e qual
+    e a sua finalidade`.
+  - Exibir no botao `O que e a Carta de Servico?`.
   - Direcionar para `/o-que-e-carta-de-servicos`.
   - Manter hierarquia e contraste compativeis com o frame.
   - Dependencias: T006, T012, T014.
@@ -202,7 +206,8 @@
   - Cobrir hero, CTAs, quatro etapas e destinos.
   - Cobrir item ativo e ausencia de `Material de apoio` na header.
   - Cobrir atributos e interacoes do menu movel.
-  - Cobrir o destino `/explorar-por-etapas` e a restauracao de foco.
+  - Cobrir `href="/explorar-por-etapas"` sem exigir que a pagina da feature 003
+    esteja registrada, e cobrir restauracao de foco nas rotas existentes.
   - Dependencias: T004, T018, T022.
   - Evidencia: suite aprovada sem falhas; se T004 dispensar framework, registrar
     esta tarefa como nao aplicavel com justificativa.
