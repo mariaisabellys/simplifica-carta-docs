@@ -56,12 +56,12 @@
 
 ## Fase 2 — Conteudo e contratos
 
-- [ ] **T006 — Modelar o conteudo versionado da home**
+- [x] **T006 — Modelar o conteudo versionado da home**
   - Expandir `src/content/pages/home.ts` com marca, hero, dois CTAs, introducao,
     quatro etapas e CTA educativo.
   - Incluir destinos e variantes sem duplicar textos no JSX.
-  - Garantir que `Simular publicacao` explique o cadastro manual no Paraiba
-    Digital.
+  - Preservar exatamente a copy aprovada e manter o destino de `Simular
+    publicacao` no tutorial de cadastro manual.
   - Dependencia: T005.
   - Evidencia: conteudo tipado e importavel pela home.
 
@@ -133,9 +133,9 @@
 ## Fase 4 — Home
 
 - [ ] **T015 — Implementar o hero da home**
-  - Exibir frase de apoio, titulo `Menos burocracia, mais praticidade.`, texto
-    explicativo e os dois CTAs.
-  - Direcionar `Iniciar o guia` para `/diagnostico`.
+  - Exibir o titulo `Menos burocracia, mais praticidade.`, o subtitulo aprovado
+    e os dois CTAs.
+  - Direcionar `Iniciar guia` para `/diagnostico`.
   - Direcionar `Explorar por etapas` para `/explorar-por-etapas`.
   - Integrar a arte real do Figma com texto alternativo adequado.
   - Dependencias: T003, T006, T008, T012, T014.
@@ -143,16 +143,17 @@
 
 - [ ] **T016 — Implementar a secao de processo**
   - Criar a ancora `id="processo"`.
-  - Exibir titulo, introducao e quatro etapas em lista semantica.
+  - Exibir titulo, introducao aprovada e quatro etapas em lista semantica.
   - Direcionar as etapas para diagnostico, organizacao, formulario e tutorial.
   - Preservar a ordem visual e textual do Figma.
   - Dependencias: T006, T008, T014.
   - Evidencia: quatro etapas renderizadas com destinos corretos.
 
 - [ ] **T017 — Implementar o CTA educativo**
+  - Exibir a chamada `Nao sabe por onde comecar?`.
   - Exibir o titulo `Conheca primeiro o que e uma Carta de Servicos`.
   - Exibir a descricao `Entenda o que caracteriza uma Carta de Servicos e qual
-    e a sua finalidade`.
+    e sua finalidade`.
   - Exibir no botao `O que e a Carta de Servico?`.
   - Direcionar para `/o-que-e-carta-de-servicos`.
   - Manter hierarquia e contraste compativeis com o frame.

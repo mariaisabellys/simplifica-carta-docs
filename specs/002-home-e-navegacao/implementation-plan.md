@@ -2,7 +2,9 @@
 
 ## Status
 
-Validado documentalmente em 24 de setembro de 2026, sem bloqueios abertos.
+Validado documentalmente em 24 de setembro de 2026 e revisado em 25 de
+setembro de 2026 para incorporar a copy aprovada e versionada da home, sem
+bloqueios abertos.
 Pronto para `/spec:implementar 002-home-e-navegacao`.
 
 ## Fontes consultadas
@@ -43,7 +45,7 @@ backend, sem persistencia e sem expor `Material de apoio` na header.
   componentes de um unico uso sem logica propria.
 - Criar componentes separados apenas para `Brand`, `MainNavigation` e
   `SiteFooter`, pois sao compartilhados e possuem responsabilidades proprias.
-- `Iniciar o guia` aponta para `/diagnostico`, primeira etapa do fluxo de
+- `Iniciar guia` aponta para `/diagnostico`, primeira etapa do fluxo de
   cadastro de uma Carta de Servicos.
 - O CTA educativo aponta para `/o-que-e-carta-de-servicos` e permanece
   independente do inicio do fluxo de cadastro.
@@ -76,22 +78,32 @@ backend, sem persistencia e sem expor `Material de apoio` na header.
 | CTA educativo | Painel creme, raio aproximado de 20 px | Grid texto/acao, empilhado no mobile |
 | Footer | Azul `#002b45`, quatro blocos e divisor | Grid responsivo com links validos, descricao, endereco e copyright |
 
-Textos confirmados no frame:
+Copy aprovada e versionada para a home:
 
-- `Guia para criacao de Cartas de Servicos`;
 - `Menos burocracia, mais praticidade.`;
-- `Iniciar o guia`;
+- `Selecione a experiencia que melhor atende as suas necessidades: um guia
+  completo do inicio ao fim ou acesso livre as secoes da Carta de Servico.`;
+- `Iniciar guia`;
 - `Explorar por etapas`;
 - `Como funciona o processo?`;
-- `Identificar um servico` — `Verifique se e realmente um servico publico`;
-- `Organizar informacoes` — `Reuna todas as informacoes necessarias`;
-- `Elaborar Carta` — `Preencha a Carta seguindo nossas dicas`;
-- `Simular publicacao` — `Siga o tutorial para publicar na plataforma`;
-- `Conheca primeiro o que e uma Carta de Servicos`.
+- `O manual conduz voce de forma simples e intuitiva atraves de quatro etapas
+  essenciais para garantir um servico direto, acessivel e em conformidade com
+  as normas.`;
+- `Entenda` — `Identificar um servico` — `Verifique se e realmente um
+  servico.`;
+- `Reuna` — `Organizar informacoes` — `Reuna todas as informacoes necessarias`;
+- `Desenvolva` — `Elaborar carta` — `Preencha a Carta seguindo nossas dicas.`;
+- `Conclua` — `Simular publicacao` — `Siga o tutorial para publicar a carta na
+  plataforma.`;
+- `Nao sabe por onde comecar?`;
+- `Conheca primeiro o que e uma Carta de Servicos`;
+- `Entenda o que caracteriza uma Carta de Servicos e qual e sua finalidade`;
+- `O que e a Carta de Servico?`.
 
-Na implementacao, aplicar acentuacao correta em portugues. O texto da quarta
-etapa deve acrescentar contexto acessivel de que o cadastro final e manual; nao
-prometer publicacao automatica.
+O arquivo `src/content/pages/home.ts` e a fonte textual oficial desta feature e
+usa acentuacao correta. A quarta etapa mantem a copy aprovada, e seu destino
+`/tutorial-paraiba-digital` preserva o fluxo de cadastro manual; a pagina nao
+deve sugerir que o Simplifica Carta publica automaticamente.
 
 ## Mapeamento do Figma Make e tokens
 
@@ -194,24 +206,11 @@ export type NavigationItem = {
   kind?: "default" | "help";
 };
 
-export type HomeAction = {
-  label: string;
-  href: string;
-  variant: "primary" | "secondary-inverse";
-  icon: "play" | "list";
-};
-
-export type ProcessStep = {
-  id: string;
-  number: number;
-  eyebrow: string;
-  title: string;
-  description: string;
-  href: string;
-};
-
 export type AppNavigate = (href: string) => void;
 ```
+
+Os tipos `HomeAction` e `HomeProcessStep` sao especificos da fonte editorial e
+ficam exportados em `src/content/pages/home.ts`, conforme o arquivo versionado.
 
 ### Props dos componentes
 
@@ -274,39 +273,56 @@ export const footerNavigation = {
 ### `src/content/pages/home.ts`
 
 ```ts
-import type { HomeAction, ProcessStep } from "../../types/content";
+export type HomeAction = {
+  label: string;
+  href: "/diagnostico" | "/explorar-por-etapas";
+  variant: "primary" | "secondary-inverse";
+  icon: "play" | "list";
+};
+
+export type HomeProcessStep = {
+  id: "identificar" | "organizar" | "elaborar" | "simular";
+  number: 1 | 2 | 3 | 4;
+  eyebrow: string;
+  title: string;
+  description: string;
+  href:
+    | "/diagnostico"
+    | "/organizar-informacoes"
+    | "/formulario-carta"
+    | "/tutorial-paraiba-digital";
+};
 
 export const homeContent = {
+  productName: "Simplifica Carta",
   hero: {
-    eyebrow: "Guia para criação de Cartas de Serviços",
-    titleStart: "Menos burocracia,",
-    titleHighlight: "mais praticidade.",
+    title: "Menos burocracia, mais praticidade.",
     description:
       "Selecione a experiência que melhor atende às suas necessidades: um guia completo do início ao fim ou acesso livre às seções da Carta de Serviço.",
     actions: [
-      { label: "Iniciar o guia", href: "/diagnostico", variant: "primary", icon: "play" },
+      { label: "Iniciar guia", href: "/diagnostico", variant: "primary", icon: "play" },
       { label: "Explorar por etapas", href: "/explorar-por-etapas", variant: "secondary-inverse", icon: "list" },
-    ] satisfies HomeAction[],
+    ] satisfies readonly HomeAction[],
   },
   process: {
     title: "Como funciona o processo?",
     description:
-      "O manual conduz você de forma simples e intuitiva pelas etapas essenciais para preparar um serviço claro, acessível e em conformidade com as normas.",
+      "O manual conduz você de forma simples e intuitiva através de quatro etapas essenciais para garantir um serviço direto, acessível e em conformidade com as normas.",
     steps: [
-      { id: "identificar", number: 1, eyebrow: "Entenda", title: "Identificar um serviço", description: "Verifique se é realmente um serviço público", href: "/diagnostico" },
+      { id: "identificar", number: 1, eyebrow: "Entenda", title: "Identificar um serviço", description: "Verifique se é realmente um serviço.", href: "/diagnostico" },
       { id: "organizar", number: 2, eyebrow: "Reúna", title: "Organizar informações", description: "Reúna todas as informações necessárias", href: "/organizar-informacoes" },
-      { id: "elaborar", number: 3, eyebrow: "Desenvolva", title: "Elaborar Carta", description: "Preencha a Carta seguindo nossas dicas", href: "/formulario-carta" },
-      { id: "simular", number: 4, eyebrow: "Conclua", title: "Simular publicação", description: "Siga o tutorial para fazer o cadastro manual na plataforma", href: "/tutorial-paraiba-digital" },
-    ] satisfies ProcessStep[],
+      { id: "elaborar", number: 3, eyebrow: "Desenvolva", title: "Elaborar carta", description: "Preencha a Carta seguindo nossas dicas.", href: "/formulario-carta" },
+      { id: "simular", number: 4, eyebrow: "Conclua", title: "Simular publicação", description: "Siga o tutorial para publicar a carta na plataforma.", href: "/tutorial-paraiba-digital" },
+    ] satisfies readonly HomeProcessStep[],
   },
   introCta: {
     eyebrow: "Não sabe por onde começar?",
     title: "Conheça primeiro o que é uma Carta de Serviços",
-    description: "Entenda o que caracteriza uma Carta de Serviços e qual é a sua finalidade",
+    description: "Entenda o que caracteriza uma Carta de Serviços e qual é sua finalidade",
     actionLabel: "O que é a Carta de Serviço?",
     actionHref: "/o-que-e-carta-de-servicos",
   },
-};
+} as const;
 ```
 
 ## Codigo base React
@@ -527,11 +543,7 @@ export function HomePage() {
       <section className="home-hero" aria-labelledby="home-title">
         <div className="content-container home-hero__inner">
           <div className="home-hero__content">
-            <p className="home-eyebrow">{homeContent.hero.eyebrow}</p>
-            <h1 id="home-title">
-              {homeContent.hero.titleStart}
-              <span>{homeContent.hero.titleHighlight}</span>
-            </h1>
+            <h1 id="home-title">{homeContent.hero.title}</h1>
             <p className="home-hero__description">{homeContent.hero.description}</p>
             <div className="home-actions">
               {homeContent.hero.actions.map((action) => (
@@ -764,7 +776,8 @@ Cenarios obrigatorios:
 4. `Inicio` recebe `aria-current="page"` na home;
 5. menu movel alterna `aria-expanded` e fecha ao navegar;
 6. footer nao possui links vazios ou `#` generico;
-7. `Simular publicacao` menciona cadastro manual;
+7. `Simular publicacao` exibe a copy aprovada e aponta para
+   `/tutorial-paraiba-digital`, fluxo de cadastro manual;
 8. nenhuma chamada de rede ou persistencia e disparada pela home.
 
 ## Regras de implementacao

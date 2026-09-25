@@ -80,7 +80,7 @@
   - Dependencias: T001, T002.
   - Evidencia: estrategia e arquivos previstos no `implementation-plan.md`.
 
-- [ ] **T008 — Validar a documentacao antes do codigo**
+- [x] **T008 — Validar a documentacao antes do codigo**
   - Executar `/spec:validar 004-o-que-e-carta-servico`.
   - Comparar `spec.md`, `plan.md`, `tasks.md`, `implementation-plan.md`, MVP,
     fluxos, constitution, Figma Design e Figma Make.
@@ -90,43 +90,43 @@
 
 ## Fase 2 — Conteudo e contratos
 
-- [ ] **T009 — Definir os tipos do conteudo da pagina**
-  - Modelar breadcrumb, introducao, importancia, fundamentos, campos
-    informativos e legislacao.
+- [x] **T009 — Definir os tipos do conteudo da pagina**
+  - Modelar introducao, importancia, fundamentos, campos informativos e
+    legislacao.
   - Restringir identificadores, tons e tipos de norma com unions TypeScript.
   - Preservar a ordem dos itens por arrays `readonly`.
   - Nao incluir campos de progresso, estado da Carta ou persistencia.
   - Dependencia: T008.
   - Evidencia: tipos TypeScript compilando sem erros.
 
-- [ ] **T010 — Criar o conteudo versionado da introducao**
+- [x] **T010 — Criar o conteudo versionado da introducao**
   - Criar `src/content/pages/o-que-e-carta.ts` ou o caminho consolidado no plano
     detalhado.
-  - Registrar breadcrumb, eyebrow, titulo, destaque e definicao aprovada.
+  - Registrar titulo, subtitulo e definicao aprovada.
   - Registrar os tres itens de `Por que e importante?` na ordem do frame.
   - Corrigir apenas grafia e acentuacao que nao alterem o sentido aprovado.
   - Dependencia: T009.
   - Evidencia: introducao importavel sem copy editorial duplicada no JSX.
 
-- [ ] **T011 — Criar o conteudo versionado de fundamentos**
+- [x] **T011 — Criar o conteudo versionado de fundamentos**
   - Registrar titulo, descricao e os dois destaques `Para o Cidadao` e `Para o
     Orgao Publico`.
-  - Usar somente a redacao aprovada apos a validacao da obrigatoriedade.
+  - Usar a redacao aprovada sobre a obrigatoriedade.
   - Associar tons semanticos sem incluir estilos ou markup no conteudo.
   - Dependencias: T006, T009.
   - Evidencia: fundamentos tipados e editorialmente rastreaveis.
 
-- [ ] **T012 — Criar os dez campos informativos**
+- [x] **T012 — Criar os dez campos informativos**
   - Registrar exatamente dez itens na ordem oficial do frame.
-  - Incluir identificador, icone, titulo e descricao de cada campo.
-  - Confirmar correspondencia entre cada identificador e seu asset.
+  - Incluir identificador, titulo e descricao de cada campo.
+  - Manter a associacao entre identificadores e assets fora da fonte editorial.
   - Nao incluir logica do formulario ou checklist detalhado.
   - Dependencias: T005, T009.
   - Evidencia: array tipado com dez itens corretos e sem duplicacao.
 
-- [ ] **T013 — Criar as referencias legais versionadas**
+- [x] **T013 — Criar as referencias legais versionadas**
   - Registrar tipo, numero, ano, resumo e URL oficial das tres normas.
-  - Incorporar somente o conteudo validado e aprovado em T006.
+  - Incorporar o conteudo aprovado e as URLs oficiais validadas em T006.
   - Manter o rotulo visivel `Consultar` separado do nome acessivel completo.
   - Dependencias: T006, T009.
   - Evidencia: tres referencias tipadas com URLs oficiais validadas.
@@ -199,7 +199,7 @@
 ## Fase 4 — Composicao da pagina
 
 - [ ] **T022 — Implementar a introducao**
-  - Compor breadcrumb, eyebrow, `h1`, definicao e painel de importancia.
+  - Compor breadcrumb, `h1`, subtitulo e painel de importancia.
   - Destacar visualmente `Carta de Servico` sem fragmentar o nome acessivel do
     titulo.
   - Garantir exatamente um `h1` na pagina.

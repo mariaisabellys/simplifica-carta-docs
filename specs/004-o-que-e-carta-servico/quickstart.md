@@ -2,9 +2,8 @@
 
 ## Status documental
 
-A feature 004 foi validada em 24 de setembro de 2026 com o bloqueio editorial
-`B001` aberto. Nao iniciar `/spec:implementar` ate a aprovacao da copy dos
-Decretos nº 9.094/2017 e nº 9.756/2019.
+A copy da feature 004 foi aprovada e versionada em 25 de setembro de 2026. O
+antigo bloqueio editorial `B001` esta resolvido.
 
 ## Pre-condicoes
 
@@ -12,22 +11,14 @@ Decretos nº 9.094/2017 e nº 9.756/2019.
 - node Figma Design `365:265` acessivel;
 - Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, disponivel para reconsulta;
 - feature 002 implementada ou contratos reais do shell novamente conferidos;
-- copy normativa aprovada pela equipe responsavel;
+- copy normativa versionada em `src/content/pages/o-que-e-carta.ts`;
 - assets oficiais baixados para `src/assets/o-que-e-carta/`.
 
-## Resolucao necessaria antes da implementacao
+## Fonte editorial
 
-Aprovar estes resumos baseados nas ementas oficiais:
-
-- Lei nº 13.460/2017: `Dispoe sobre participacao, protecao e defesa dos direitos
-  do usuario dos servicos publicos da administracao publica.`;
-- Decreto nº 9.094/2017: `Dispoe sobre a simplificacao do atendimento prestado
-  aos usuarios dos servicos publicos.`;
-- Decreto nº 9.756/2019: `Institui o portal unico gov.br e dispoe sobre as
-  regras de unificacao dos canais digitais do Governo federal.`.
-
-Depois da aprovacao, registrar a decisao no `implementation-plan.md`, marcar
-T008 como concluida e somente entao executar `/spec:implementar`.
+Validar todos os textos renderizados contra
+`src/content/pages/o-que-e-carta.ts`. Os resumos aprovados dos decretos devem
+ser preservados sem substituicao silenciosa por ementas alternativas.
 
 ## Verificacao funcional
 

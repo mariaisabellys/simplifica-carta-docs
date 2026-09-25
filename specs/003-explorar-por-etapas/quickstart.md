@@ -51,6 +51,10 @@ Confirmar, nesta ordem:
 
 Deve existir exatamente um `h1`.
 
+O subtitulo deve ser exatamente: `Acesse qualquer parte do manual diretamente,
+sem precisar seguir o fluxo completo. Escolha a etapa que você precisa para
+agilizar a criação da sua Carta de Serviço.`
+
 ## Cards e destinos
 
 Confirmar exatamente quatro cards:
@@ -64,8 +68,10 @@ Confirmar exatamente quatro cards:
 
 O CTA `Ir para o guia passo a passo` deve apontar para `/diagnostico`.
 
-Aplicar acentuacao correta aos textos renderizados. O card da etapa 4 deve
-explicar que o cadastro final e realizado manualmente no Paraiba Digital.
+As descricoes e os rotulos renderizados devem corresponder exatamente a
+`src/content/pages/explorar-por-etapas.ts`. O card da etapa 4 deve continuar
+coerente com a regra de que a pagina apenas orienta o cadastro na plataforma
+oficial; ela nao publica o servico automaticamente.
 
 ## Assets
 

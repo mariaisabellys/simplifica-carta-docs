@@ -220,7 +220,6 @@ codigo e nunca recriar os SVGs manualmente.
 - `src/components/explorar/ExploreStepCard.tsx`;
 - `src/components/ui/Breadcrumb.tsx`, se ainda nao existir;
 - `src/content/pages/explorar-por-etapas.ts`;
-- `src/types/explorar.ts`;
 - `src/assets/explorar-por-etapas/help-circle.svg`;
 - `src/assets/explorar-por-etapas/check-square.svg`;
 - `src/assets/explorar-por-etapas/file-text.svg`;
@@ -232,7 +231,7 @@ codigo e nunca recriar os SVGs manualmente.
 
 ## Contratos TypeScript
 
-### `src/types/explorar.ts`
+### `src/content/pages/explorar-por-etapas.ts`
 
 ```ts
 export type ExploreStepId =
@@ -253,24 +252,23 @@ export type ExploreStep = {
   id: ExploreStepId;
   number: 1 | 2 | 3 | 4;
   tone: ExploreStepTone;
-  iconSrc: string;
   title: string;
   description: string;
   actionLabel: string;
   href: ExploreStepHref;
 };
 
-export type BreadcrumbItem = {
-  label: string;
-  href?: "/";
-};
 ```
+
+Os tipos editoriais ficam junto da fonte de conteudo. Os icones serao
+associados separadamente por `ExploreStepId` no componente da pagina.
 
 ### Props dos componentes
 
 ```ts
 type ExploreStepCardProps = {
   step: ExploreStep;
+  iconSrc: string;
 };
 
 type BreadcrumbProps = {
@@ -294,76 +292,62 @@ recebido do conteudo.
 ### `src/content/pages/explorar-por-etapas.ts`
 
 ```ts
-import bookOpen from "../../assets/explorar-por-etapas/book-open.svg";
-import checkSquare from "../../assets/explorar-por-etapas/check-square.svg";
-import fileText from "../../assets/explorar-por-etapas/file-text.svg";
-import helpCircle from "../../assets/explorar-por-etapas/help-circle.svg";
-import type { BreadcrumbItem, ExploreStep } from "../../types/explorar";
-
-export const exploreBreadcrumb = [
-  { label: "Inicio", href: "/" },
-  { label: "Explorar por etapas" },
-] as const satisfies readonly BreadcrumbItem[];
-
 export const explorePageContent = {
   title: "Explorar por etapas",
-  introduction:
-    "Acesse qualquer parte do manual diretamente, sem precisar seguir o fluxo completo. Escolha a etapa de que voce precisa para agilizar a criacao da sua Carta de Servico.",
-  guidePrompt: "Prefere seguir o fluxo completo do manual de forma linear?",
-  guideAction: "Ir para o guia passo a passo",
-  guideHref: "/diagnostico",
-} as const;
-
-export const exploreSteps = [
-  {
-    id: "identificar-servico",
-    number: 1,
-    tone: "cyan",
-    iconSrc: helpCircle,
-    title: "Identificar um servico",
-    description:
-      "Descubra se a atividade que deseja cadastrar e realmente um servico publico por meio de um breve diagnostico.",
-    actionLabel: "Iniciar diagnostico",
+  description:
+    "Acesse qualquer parte do manual diretamente, sem precisar seguir o fluxo completo. Escolha a etapa que você precisa para agilizar a criação da sua Carta de Serviço.",
+  steps: [
+    {
+      id: "identificar-servico",
+      number: 1,
+      tone: "cyan",
+      title: "Identificar um serviço",
+      description:
+        "Descubra se aquilo que deseja cadastrar é realmente um serviço público de acordo com as diretrizes oficiais. Responda um breve diagnóstico interativo.",
+      actionLabel: "Iniciar diagnóstico",
+      href: "/diagnostico",
+    },
+    {
+      id: "organizar-informacoes",
+      number: 2,
+      tone: "orange",
+      title: "Organizar informações",
+      description:
+        "Saiba quais informações e documentos cruciais reunir antes de elaborar a Carta de Serviços. Use nossa lista de verificação para não esquecer nada.",
+      actionLabel: "Ver lista de informações",
+      href: "/organizar-informacoes",
+    },
+    {
+      id: "elaborar-carta",
+      number: 3,
+      tone: "navy",
+      title: "Elaborar a Carta",
+      description:
+        "Preencha, melhore, confira e visualize a Carta em tempo real utilizando técnicas de linguagem simples e acessibilidade. Exporte o CSV e finalize.",
+      actionLabel: "Elaborar e conferir",
+      href: "/formulario-carta",
+    },
+    {
+      id: "tutorial-publicacao",
+      number: 4,
+      tone: "wine",
+      title: "Tutorial de publicação",
+      description:
+        "Veja como cadastrar o serviço na plataforma oficial do Estado da Paraíba passo a passo acompanhado de dicas visuais e orientações.",
+      actionLabel: "Ver tutorial",
+      href: "/tutorial-paraiba-digital",
+    },
+  ],
+  guideCta: {
+    prompt: "Prefere seguir o fluxo completo do manual de forma linear?",
+    actionLabel: "Ir para o guia passo a passo",
     href: "/diagnostico",
   },
-  {
-    id: "organizar-informacoes",
-    number: 2,
-    tone: "orange",
-    iconSrc: checkSquare,
-    title: "Organizar informacoes",
-    description:
-      "Reuna previamente as informacoes e os documentos necessarios para elaborar a Carta de Servicos.",
-    actionLabel: "Ver lista de informacoes",
-    href: "/organizar-informacoes",
-  },
-  {
-    id: "elaborar-carta",
-    number: 3,
-    tone: "navy",
-    iconSrc: fileText,
-    title: "Elaborar a Carta",
-    description:
-      "Preencha, revise, visualize e prepare os dados da Carta de Servicos para a etapa de publicacao.",
-    actionLabel: "Elaborar e conferir",
-    href: "/formulario-carta",
-  },
-  {
-    id: "tutorial-publicacao",
-    number: 4,
-    tone: "wine",
-    iconSrc: bookOpen,
-    title: "Tutorial de publicacao",
-    description:
-      "Veja como cadastrar manualmente o servico na plataforma oficial Paraiba Digital, passo a passo.",
-    actionLabel: "Ver tutorial",
-    href: "/tutorial-paraiba-digital",
-  },
-] as const satisfies readonly ExploreStep[];
+} as const;
 ```
 
-Aplicar acentuacao final diretamente neste arquivo durante a implementacao. O
-trecho acima evita transformar componentes em fonte editorial.
+O arquivo ja contem a copy final aprovada e evita transformar componentes em
+fonte editorial.
 
 ## Codigo base dos componentes
 
@@ -371,20 +355,21 @@ trecho acima evita transformar componentes em fonte editorial.
 
 ```tsx
 import chevronAction from "../../assets/explorar-por-etapas/chevron-action.svg";
-import type { ExploreStep } from "../../types/explorar";
+import type { ExploreStep } from "../../content/pages/explorar-por-etapas";
 import { ButtonLink } from "../ui/ButtonLink";
 
 type ExploreStepCardProps = {
   step: ExploreStep;
+  iconSrc: string;
 };
 
-export function ExploreStepCard({ step }: ExploreStepCardProps) {
+export function ExploreStepCard({ step, iconSrc }: ExploreStepCardProps) {
   return (
     <li className={`explore-card explore-card--${step.tone}`}>
       <article className="explore-card__body">
         <div className="explore-card__header">
           <span className="explore-card__icon" aria-hidden="true">
-            <img src={step.iconSrc} alt="" width="24" height="24" />
+            <img src={iconSrc} alt="" width="24" height="24" />
           </span>
           <span className="explore-card__badge">Etapa {step.number}</span>
         </div>

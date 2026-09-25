@@ -113,9 +113,10 @@ produto e dificuldade para escolher o proximo passo da jornada.
 
 ### Apresentacao da pagina
 
-- Exibir o titulo `O que e a Carta de Servicos`.
-- Apresentar uma introducao curta que permita ao usuario compreender a
-  finalidade da pagina antes de ler o conteudo detalhado.
+- Exibir o titulo aprovado `O que é uma Carta de Serviço?`.
+- Exibir o subtitulo aprovado: `É um documento que informa ao cidadão o que é
+  um serviço público, como acessá-lo, o que levar, quanto tempo demora e quanto
+  custa. Tudo de forma clara e justa.`
 - Organizar o conteudo em secoes curtas, com hierarquia clara de titulos.
 - Usar paragrafos, listas ou destaques somente quando ajudarem a leitura e a
   compreensao.
@@ -125,14 +126,14 @@ produto e dificuldade para escolher o proximo passo da jornada.
 
 ### Conteudo educativo minimo
 
-O texto final deve ser aprovado e versionado. A pagina deve contemplar as
-secoes observadas no frame oficial.
+O texto final aprovado esta versionado em
+`src/content/pages/o-que-e-carta.ts`. A pagina deve contemplar as secoes
+observadas no frame oficial.
 
 #### Contexto e diretrizes
 
-- Exibir a chamada `CONTEXTO E DIRETRIZES`.
-- Exibir o titulo `O que e uma Carta de Servico?`, com destaque visual em
-  `Carta de Servico`.
+- Exibir o titulo `O que é uma Carta de Serviço?`, com destaque visual em
+  `Carta de Serviço` quando previsto pelo layout.
 - Apresentar uma definicao curta em linguagem simples, explicando que o
   documento informa o que e o servico publico, como acessa-lo, o que levar,
   quanto tempo demora e quanto custa.
@@ -151,8 +152,8 @@ secoes observadas no frame oficial.
     de tempo;
   - `Para o Orgao Publico`, com beneficio de padronizacao, reducao de demandas
     incompletas e fortalecimento da confianca.
-- A afirmacao de obrigatoriedade observada no prototipo deve ser validada com
-  fonte oficial antes de integrar o texto final.
+- Usar a redacao aprovada que define a Carta como documento informativo
+  obrigatorio.
 
 #### O que uma Carta de Servico deve informar
 
@@ -187,9 +188,8 @@ secoes observadas no frame oficial.
 - A acao deve abrir a fonte oficial em nova aba e informar essa mudanca de
   contexto de forma acessivel.
 - Ao usar `target="_blank"`, aplicar `rel="noopener noreferrer"`.
-- Numero, vigencia, resumo e URL de cada norma devem ser confirmados em fonte
-  oficial antes da implementacao; divergencias devem ser resolvidas com a
-  equipe responsavel, sem alterar silenciosamente o conteudo aprovado.
+- Preservar os resumos aprovados no arquivo de conteudo; as URLs devem apontar
+  para as fontes oficiais.
 
 ### Conteudo versionado
 
@@ -198,8 +198,8 @@ secoes observadas no frame oficial.
 - Separar a estrutura editorial da apresentacao visual.
 - Evitar textos editoriais extensos fixos diretamente no componente da pagina.
 - Permitir atualizacao do conteudo sem alterar a logica de navegacao.
-- Tratar qualquer copy provisoria do prototipo como referencia, nao como
-  substituto do texto aprovado.
+- Usar `src/content/pages/o-que-e-carta.ts` como fonte editorial de verdade,
+  preservando acentuacao, capitalizacao e pontuacao da copy aprovada.
 
 ## Requisitos nao funcionais
 
@@ -264,8 +264,8 @@ coordenadas absolutas.
   responsabilidades nao devem ser misturadas.
 - A pagina orienta a preparacao das informacoes, mas nao representa nem executa
   a publicacao oficial.
-- O texto editorial final precisa de aprovacao e versionamento antes da
-  implementacao definitiva.
+- O texto editorial final esta aprovado e versionado; alteracoes posteriores
+  devem ocorrer primeiro na fonte de conteudo.
 - O node `365:265` e a referencia visual oficial desta feature.
 - A pagina nao adiciona CTAs finais para `/diagnostico` ou
   `/explorar-por-etapas`, pois essas acoes nao fazem parte do frame oficial; os

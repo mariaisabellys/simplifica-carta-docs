@@ -43,20 +43,23 @@ http://localhost:5173/
 1. Abrir `/` e confirmar que a home nao exibe o placeholder da fundacao.
 2. Confirmar a marca `Simplifica Carta` e o subtitulo `Guia de Servicos`.
 3. Confirmar o hero com:
-   - `Guia para criacao de Cartas de Servicos`;
    - `Menos burocracia, mais praticidade.`;
-   - `Iniciar o guia` com destino `/diagnostico`;
+   - `Selecione a experiencia que melhor atende as suas necessidades: um guia
+     completo do inicio ao fim ou acesso livre as secoes da Carta de Servico.`;
+   - `Iniciar guia` com destino `/diagnostico`;
    - `Explorar por etapas` com `href="/explorar-por-etapas"`.
-4. Confirmar `Como funciona o processo?` e quatro etapas na ordem:
-   - Identificar um servico;
-   - Organizar informacoes;
-   - Elaborar Carta;
-   - Simular publicacao.
-5. Confirmar que `Simular publicacao` explica que o cadastro final e manual no
-   Paraiba Digital.
+4. Confirmar `Como funciona o processo?`, a introducao aprovada e quatro etapas
+   na ordem:
+   - `Entenda` — `Identificar um servico`;
+   - `Reuna` — `Organizar informacoes`;
+   - `Desenvolva` — `Elaborar carta`;
+   - `Conclua` — `Simular publicacao`.
+5. Confirmar que `Simular publicacao` aponta para o tutorial de cadastro manual
+   no Paraiba Digital.
 6. Confirmar o CTA educativo com:
+   - chamada `Nao sabe por onde comecar?`;
    - titulo `Conheca primeiro o que e uma Carta de Servicos`;
-   - descricao `Entenda o que caracteriza uma Carta de Servicos e qual e a sua
+   - descricao `Entenda o que caracteriza uma Carta de Servicos e qual e sua
      finalidade`;
    - botao `O que e a Carta de Servico?` apontando para
      `/o-que-e-carta-de-servicos`.

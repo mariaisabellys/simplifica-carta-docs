@@ -2,13 +2,9 @@
 
 ## Status
 
-Validado documentalmente em 24 de setembro de 2026, com um bloqueio editorial
-aberto.
-
-O layout nao possui bloqueio tecnico. A feature ainda nao esta pronta para
-`/spec:implementar 004-o-que-e-carta-servico` porque a equipe responsavel deve
-aprovar a substituicao dos resumos divergentes dos Decretos nº 9.094/2017 e nº
-9.756/2019 pelas ementas oficiais propostas neste documento.
+Revisado em 25 de setembro de 2026 com a copy aprovada e versionada. O bloqueio
+editorial anterior foi resolvido; nao ha bloqueio documental aberto para o
+conteudo.
 
 ## Fontes consultadas
 
@@ -131,39 +127,38 @@ apenas para leitura do prototipo.
 
 ### Ordem e conteudo confirmado
 
-1. `CONTEXTO E DIRETRIZES`;
-2. `O que e uma Carta de Servico?`;
-3. definicao curta;
-4. `Por que e importante?`, com cidadao, orgao e gestao;
-5. `Fundamentos`, com cidadao e orgao publico;
-6. `O que uma Carta de Servico deve informar?`;
-7. dez campos na ordem definida na spec;
-8. `Legislacao Aplicavel`;
-9. Lei nº 13.460/2017, Decreto nº 9.094/2017 e Decreto nº 9.756/2019.
+1. `O que é uma Carta de Serviço?` e seu subtitulo;
+2. `Por que é importante?`, com cidadao, orgao e gestao;
+3. `Fundamentos`, com cidadao e orgao publico;
+4. `O que uma Carta de Serviço deve informar?`;
+5. dez campos na ordem definida na spec;
+6. `Legislação Aplicável`;
+7. Lei nº 13.460/2017, Decreto nº 9.094/2017 e Decreto nº 9.756/2019.
 
 Aplicar acentuacao correta em portugues no conteudo implementado.
 
 ## Validacao normativa
 
-| Referencia | Confirmacao oficial | Divergencia do Figma | Decisao planejada |
-| --- | --- | --- | --- |
-| Lei nº 13.460/2017 | Art. 7 determina que os orgaos e entidades abrangidos divulguem Carta de Servicos; a lei alcança Uniao, Estados, DF e Municipios | Resumo possui erro em `administracao` | Usar a ementa oficial corrigida |
-| Decreto nº 9.094/2017 | Dispoe sobre simplificacao do atendimento e, no art. 11, exige Carta no Executivo federal | Figma afirma genericamente que ele `regulamenta dispositivos` da Lei nº 13.460 | Substituir pela ementa oficial ou obter aprovacao para resumo equivalente |
-| Decreto nº 9.756/2019 | Institui o portal unico gov.br e trata da unificacao dos canais digitais federais | Figma fala em `regras para migracao dos sitios e portais` | Usar a ementa oficial ou obter aprovacao para resumo equivalente |
+| Referencia | Confirmacao oficial | Decisao editorial |
+| --- | --- | --- |
+| Lei nº 13.460/2017 | URL oficial do Planalto registrada | Usar o resumo aprovado e versionado |
+| Decreto nº 9.094/2017 | URL oficial do Planalto registrada | Usar o resumo aprovado que menciona a Lei nº 13.460/2017 e a simplificacao do atendimento |
+| Decreto nº 9.756/2019 | URL oficial do Planalto registrada | Usar o resumo aprovado sobre o Portal Unico gov.br e a migracao de sitios e portais |
 
 A obrigatoriedade da Carta possui suporte direto no art. 7 da Lei nº
 13.460/2017. Para evitar extrapolacao, a copy deve dizer que os orgaos e
 entidades abrangidos pela lei divulgam a Carta, em vez de formular uma
 obrigacao sem sujeito ou alcance.
 
-Copy proposta para aprovacao:
+Copy aprovada e versionada:
 
 - Lei nº 13.460/2017: `Dispoe sobre participacao, protecao e defesa dos direitos
   do usuario dos servicos publicos da administracao publica.`;
-- Decreto nº 9.094/2017: `Dispoe sobre a simplificacao do atendimento prestado
-  aos usuarios dos servicos publicos.`;
-- Decreto nº 9.756/2019: `Institui o portal unico gov.br e dispoe sobre as
-  regras de unificacao dos canais digitais do Governo federal.`.
+- Decreto nº 9.094/2017: `Regulamenta dispositivos da Lei nº 13.460/2017 e
+  dispõe sobre simplificação do atendimento prestado aos usuários dos serviços
+  públicos federais.`;
+- Decreto nº 9.756/2019: `Institui o Portal Único “gov.br” e dispõe sobre as
+  regras para migração dos sítios e portais da administração pública federal.`.
 
 ## Mapeamento de tokens
 
@@ -257,7 +252,6 @@ marcada como decorativa.
 
 ## Arquivos a criar
 
-- `src/types/o-que-e-carta.ts`;
 - `src/content/pages/o-que-e-carta.ts`;
 - `src/components/o-que-e-carta/ServiceInformationCard.tsx`;
 - `src/components/o-que-e-carta/LegalReferenceItem.tsx`;
@@ -269,7 +263,7 @@ marcada como decorativa.
 
 ## Contratos TypeScript
 
-### `src/types/o-que-e-carta.ts`
+### `src/content/pages/o-que-e-carta.ts`
 
 ```ts
 export type ImportanceId = "citizen" | "agency" | "management";
@@ -289,22 +283,18 @@ export type ServiceInformationFieldId =
 
 export type ImportanceItem = {
   id: ImportanceId;
-  iconSrc: string;
   title: string;
   description: string;
 };
 
 export type FoundationItem = {
   id: FoundationId;
-  iconSrc: string;
-  tone: "orange" | "cyan";
   title: string;
   description: string;
 };
 
 export type ServiceInformationField = {
   id: ServiceInformationFieldId;
-  iconSrc: string;
   title: string;
   description: string;
 };
@@ -315,55 +305,30 @@ export type LegalReference = {
   number: string;
   year: 2017 | 2019;
   summary: string;
-  href: `https://www.planalto.gov.br/${string}`;
-};
-
-export type BreadcrumbItem = {
-  label: string;
-  href?: "/";
+  actionLabel: "Consultar";
+  href: `https://${string}`;
 };
 ```
 
-URLs oficiais podem sofrer variacao de caixa ou host sem `www`. Se o template
-literal acima impedir uma URL oficial valida, relaxar para `https://${string}`
-e validar os tres valores no teste, sem normalizar URLs externamente.
+Os tipos editoriais ficam junto do conteudo. Icones e tons visuais devem ser
+associados separadamente pelos identificadores, sem misturar assets com copy.
 
 ## Conteudo base
 
 ### `src/content/pages/o-que-e-carta.ts`
 
 ```ts
-import additionalIcon from "../../assets/o-que-e-carta/field-additional.svg";
-import audienceIcon from "../../assets/o-que-e-carta/field-audience.svg";
-import channelsIcon from "../../assets/o-que-e-carta/field-channels.svg";
-import costsIcon from "../../assets/o-que-e-carta/field-costs.svg";
-import deadlineIcon from "../../assets/o-que-e-carta/field-deadline.svg";
-import descriptionIcon from "../../assets/o-que-e-carta/field-description.svg";
-import documentsIcon from "../../assets/o-que-e-carta/field-documents.svg";
-import nameIcon from "../../assets/o-que-e-carta/field-name.svg";
-import schedulingIcon from "../../assets/o-que-e-carta/field-scheduling.svg";
-import stepsIcon from "../../assets/o-que-e-carta/field-steps.svg";
-import type {
-  LegalReference,
-  ServiceInformationField,
-} from "../../types/o-que-e-carta";
-
-export const aboutCharterBreadcrumb = [
-  { label: "Início", href: "/" },
-  { label: "O que é a Carta de Serviço?" },
-] as const;
-
 export const serviceInformationFields = [
-  { id: "name", iconSrc: nameIcon, title: "Nome do serviço", description: "Identificação direta e objetiva do serviço." },
-  { id: "description", iconSrc: descriptionIcon, title: "O que é", description: "Descrição simplificada do serviço oferecido." },
-  { id: "audience", iconSrc: audienceIcon, title: "Quem pode utilizar", description: "Público com direito ou necessidade de uso." },
-  { id: "documents", iconSrc: documentsIcon, title: "Documentos necessários", description: "Tudo que o cidadão precisa apresentar." },
-  { id: "steps", iconSrc: stepsIcon, title: "Etapas", description: "Passos do início ao fim do serviço." },
-  { id: "deadline", iconSrc: deadlineIcon, title: "Prazo", description: "Tempo estimado para conclusão." },
-  { id: "costs", iconSrc: costsIcon, title: "Custos", description: "Valores, taxas ou gratuidade." },
-  { id: "channels", iconSrc: channelsIcon, title: "Canais de atendimento", description: "Formas de acessar o serviço." },
-  { id: "scheduling", iconSrc: schedulingIcon, title: "Agendamento", description: "Se é necessário agendar e como." },
-  { id: "additional-information", iconSrc: additionalIcon, title: "Informações adicionais", description: "Outras orientações relevantes." },
+  { id: "name", title: "Nome do serviço", description: "Identificação direta e objetiva do serviço." },
+  { id: "description", title: "O que é", description: "Descrição simplificada do serviço oferecido." },
+  { id: "audience", title: "Quem pode utilizar", description: "Público com direito ou necessidade de uso." },
+  { id: "documents", title: "Documentos necessários", description: "Tudo que o cidadão precisa apresentar." },
+  { id: "steps", title: "Etapas", description: "Passos do início ao fim do serviço." },
+  { id: "deadline", title: "Prazo", description: "Tempo estimado para conclusão." },
+  { id: "costs", title: "Custos", description: "Valores, taxas ou gratuidade." },
+  { id: "channels", title: "Canais de atendimento", description: "Formas de acessar o serviço." },
+  { id: "scheduling", title: "Agendamento", description: "Se é necessário agendar e como." },
+  { id: "additional-information", title: "Informações Adicionais", description: "Outras orientações relevantes." },
 ] as const satisfies readonly ServiceInformationField[];
 
 export const legalReferences = [
@@ -373,6 +338,7 @@ export const legalReferences = [
     number: "13.460",
     year: 2017,
     summary: "Dispõe sobre participação, proteção e defesa dos direitos do usuário dos serviços públicos da administração pública.",
+    actionLabel: "Consultar",
     href: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm",
   },
   {
@@ -380,7 +346,8 @@ export const legalReferences = [
     kind: "Decreto Federal",
     number: "9.094",
     year: 2017,
-    summary: "Dispõe sobre a simplificação do atendimento prestado aos usuários dos serviços públicos.",
+    summary: "Regulamenta dispositivos da Lei nº 13.460/2017 e dispõe sobre simplificação do atendimento prestado aos usuários dos serviços públicos federais.",
+    actionLabel: "Consultar",
     href: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/decreto/d9094.htm",
   },
   {
@@ -388,29 +355,32 @@ export const legalReferences = [
     kind: "Decreto Federal",
     number: "9.756",
     year: 2019,
-    summary: "Institui o portal único gov.br e dispõe sobre as regras de unificação dos canais digitais do Governo federal.",
+    summary: "Institui o Portal Único “gov.br” e dispõe sobre as regras para migração dos sítios e portais da administração pública federal.",
+    actionLabel: "Consultar",
     href: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm",
   },
 ] as const satisfies readonly LegalReference[];
 ```
 
-O arquivo final tambem deve conter introducao, importancia e fundamentos. A
-copy juridica acima e proposta baseada nas fontes oficiais e deve ser aprovada
-antes de entrar no codigo.
+O arquivo contem introducao, importancia, fundamentos, campos e legislacao com
+a copy final aprovada.
 
 ## Codigo base dos componentes
 
 ### `ServiceInformationCard.tsx`
 
 ```tsx
-import type { ServiceInformationField } from "../../types/o-que-e-carta";
+import type { ContentItem, ServiceInformationFieldId } from "../../content/pages/o-que-e-carta";
 
-type Props = { field: ServiceInformationField };
+type Props = {
+  field: ContentItem<ServiceInformationFieldId>;
+  iconSrc: string;
+};
 
-export function ServiceInformationCard({ field }: Props) {
+export function ServiceInformationCard({ field, iconSrc }: Props) {
   return (
     <li className="charter-field-card">
-      <img aria-hidden="true" alt="" src={field.iconSrc} width="35" height="35" />
+      <img aria-hidden="true" alt="" src={iconSrc} width="35" height="35" />
       <div>
         <h3>{field.title}</h3>
         <p>{field.description}</p>
@@ -423,7 +393,7 @@ export function ServiceInformationCard({ field }: Props) {
 ### `LegalReferenceItem.tsx`
 
 ```tsx
-import type { LegalReference } from "../../types/o-que-e-carta";
+import type { LegalReference } from "../../content/pages/o-que-e-carta";
 
 type Props = { reference: LegalReference };
 
@@ -445,7 +415,7 @@ export function LegalReferenceItem({ reference }: Props) {
         rel="noopener noreferrer"
         target="_blank"
       >
-        Consultar
+        {reference.actionLabel}
       </a>
     </li>
   );
@@ -457,13 +427,9 @@ export function LegalReferenceItem({ reference }: Props) {
 ```tsx
 import { LegalReferenceItem } from "../components/o-que-e-carta/LegalReferenceItem";
 import { ServiceInformationCard } from "../components/o-que-e-carta/ServiceInformationCard";
+import { fieldIcons } from "../components/o-que-e-carta/field-icons";
 import { Breadcrumb } from "../components/ui/Breadcrumb";
-import {
-  aboutCharterBreadcrumb,
-  aboutCharterContent,
-  legalReferences,
-  serviceInformationFields,
-} from "../content/pages/o-que-e-carta";
+import { aboutCharterPageContent } from "../content/pages/o-que-e-carta";
 
 export function OQueECartaPage() {
   return (
@@ -471,35 +437,41 @@ export function OQueECartaPage() {
       <section className="charter-intro" aria-labelledby="charter-title">
         <div className="charter-container charter-intro__grid">
           <div>
-            <Breadcrumb items={aboutCharterBreadcrumb} />
-            <p className="charter-eyebrow">{aboutCharterContent.eyebrow}</p>
-            <h1 id="charter-title">
-              O que é uma <span>Carta de Serviço?</span>
-            </h1>
-            <p>{aboutCharterContent.description}</p>
+            <Breadcrumb
+              items={[
+                { label: "Início", href: "/" },
+                { label: "O que é uma Carta de Serviço?" },
+              ]}
+            />
+            <h1 id="charter-title">{aboutCharterPageContent.title}</h1>
+            <p>{aboutCharterPageContent.description}</p>
           </div>
           <aside className="charter-importance" aria-labelledby="importance-title">
-            <h2 id="importance-title">Por que é importante?</h2>
-            <ul>{/* tres itens tipados */}</ul>
+            <h2 id="importance-title">{aboutCharterPageContent.importance.title}</h2>
+            <ul>{/* aboutCharterPageContent.importance.items */}</ul>
           </aside>
         </div>
       </section>
 
       <section className="charter-foundations" aria-labelledby="foundations-title">
         <div className="charter-container">
-          <h2 id="foundations-title">Fundamentos</h2>
-          <p>{aboutCharterContent.foundations.description}</p>
+          <h2 id="foundations-title">{aboutCharterPageContent.foundations.title}</h2>
+          <p>{aboutCharterPageContent.foundations.description}</p>
           <ul className="charter-foundations__grid">{/* dois itens tipados */}</ul>
         </div>
       </section>
 
       <section className="charter-fields" aria-labelledby="fields-title">
         <div className="charter-container charter-container--wide">
-          <h2 id="fields-title">O que uma <span>Carta de Serviço</span> deve informar?</h2>
-          <p>Cada um desses campos deve ser preenchido de forma objetiva.</p>
+          <h2 id="fields-title">{aboutCharterPageContent.information.title}</h2>
+          <p>{aboutCharterPageContent.information.description}</p>
           <ul className="charter-fields__grid">
-            {serviceInformationFields.map((field) => (
-              <ServiceInformationCard field={field} key={field.id} />
+            {aboutCharterPageContent.information.fields.map((field) => (
+              <ServiceInformationCard
+                field={field}
+                iconSrc={fieldIcons[field.id]}
+                key={field.id}
+              />
             ))}
           </ul>
         </div>
@@ -509,7 +481,7 @@ export function OQueECartaPage() {
         <div className="charter-container charter-container--wide">
           <header>{/* icone, h2 e subtitulo */}</header>
           <ul>
-            {legalReferences.map((reference) => (
+            {aboutCharterPageContent.legislation.references.map((reference) => (
               <LegalReferenceItem key={reference.id} reference={reference} />
             ))}
           </ul>
@@ -843,12 +815,10 @@ header, `popstate` e foco se esses contratos forem implementados nesta feature.
 - nenhuma dependencia nova fora da infraestrutura de testes aprovada;
 - nenhuma alteracao em backend, storage ou schema da Carta.
 
-## Pendencia editorial antes do codigo
+## Decisao editorial
 
-A equipe responsavel deve aprovar o uso das ementas oficiais propostas para os
-Decretos nº 9.094/2017 e nº 9.756/2019 no lugar dos resumos divergentes do
-Figma. A validacao da feature deve tratar essa decisao como bloqueio de
-conteudo, nao de layout.
+A copy fornecida em 25 de setembro de 2026 prevalece como versao aprovada. Os
+resumos legais foram registrados com seus links oficiais no arquivo tipado.
 
 ## Resultado da validacao documental
 
@@ -871,17 +841,11 @@ conteudo, nao de layout.
   teclado, contraste, nova aba, zoom e reflow.
 - O inventario cobre os 14 SVGs unicos da pagina e separa os assets do shell.
 
-### Bloqueio B001 — Copy dos decretos diverge do Figma
+### Bloqueio B001 — Resolvido
 
-- Severidade: bloqueante para implementacao do conteudo legal.
-- O Decreto nº 9.094/2017 possui ementa oficial sobre simplificacao do
-  atendimento, enquanto o Figma afirma que ele regulamenta dispositivos da Lei
-  nº 13.460/2017.
-- O Decreto nº 9.756/2019 trata oficialmente da unificacao dos canais digitais,
-  enquanto o Figma usa uma descricao sobre migracao de sitios e portais.
-- Resolucao proposta: aprovar as ementas oficiais documentadas na secao
-  `Validacao normativa`.
-- T008 permanece aberta ate a decisao editorial ser registrada.
+- A equipe forneceu e aprovou a redacao definitiva das tres referencias.
+- O conteudo esta versionado em `src/content/pages/o-que-e-carta.ts`.
+- T008 e as tarefas editoriais T009–T013 estao concluidas.
 
 ### Alertas nao bloqueantes
 

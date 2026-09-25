@@ -99,8 +99,7 @@ minimo necessario.
 
 Criar `src/content/pages/o-que-e-carta.ts` para concentrar:
 
-- breadcrumb;
-- eyebrow, titulo e definicao;
+- titulo e subtitulo;
 - tres motivos de importancia;
 - texto de fundamentos;
 - dois beneficios por publico;
@@ -141,7 +140,6 @@ type ServiceInformationFieldId =
 
 type ServiceInformationField = {
   id: ServiceInformationFieldId;
-  icon: string;
   title: string;
   description: string;
 };
@@ -152,40 +150,36 @@ type LegalReference = {
   number: string;
   year: number;
   summary: string;
+  actionLabel: "Consultar";
   href: string;
 };
 
 type AboutServiceCharterContent = {
-  breadcrumb: ReadonlyArray<{ label: string; href?: "/" }>;
-  introduction: {
-    eyebrow: string;
-    titlePrefix: string;
-    titleHighlight: string;
-    description: string;
-    importanceTitle: string;
-    importanceItems: readonly ImportanceItem[];
+  title: string;
+  description: string;
+  importance: {
+    title: string;
+    items: readonly ImportanceItem[];
   };
   foundations: {
     title: string;
     description: string;
     items: readonly FoundationItem[];
   };
-  informationFields: {
-    titlePrefix: string;
-    titleHighlight: string;
-    titleSuffix: string;
+  information: {
+    title: string;
     description: string;
-    items: readonly ServiceInformationField[];
+    fields: readonly ServiceInformationField[];
   };
   legislation: {
     title: string;
     description: string;
-    items: readonly LegalReference[];
+    references: readonly LegalReference[];
   };
 };
 ```
 
-O campo `icon` deve conter um identificador ou caminho de asset local, nunca
+Os assets devem ser associados separadamente pelos identificadores, nunca por
 markup SVG editorial nem URL temporaria do Figma. O conteudo deve preservar a
 ordem dos arrays como ordem de leitura e renderizacao.
 
@@ -335,16 +329,13 @@ Nao criar header, footer ou roteador exclusivos para esta pagina.
 
 ## Estrategia de validacao de conteudo
 
-O conteudo do Figma sera tratado como copy inicial, nao como aprovacao
-institucional automatica.
+O arquivo `src/content/pages/o-que-e-carta.ts` e a fonte editorial aprovada.
 
-1. Transcrever o conteudo para o arquivo tipado sem alterar seu sentido.
-2. Validar com a equipe responsavel a definicao e a afirmacao de
-   obrigatoriedade.
-3. Conferir as tres referencias normativas em fontes oficiais.
-4. Registrar qualquer divergencia entre fonte oficial, Figma e texto aprovado.
-5. Atualizar somente o arquivo de conteudo depois da decisao editorial, sem
-   alterar componentes ou layout.
+1. Consumir o conteudo do arquivo tipado sem alterar seu sentido.
+2. Conferir as URLs das tres referencias normativas em fontes oficiais.
+3. Registrar qualquer divergencia futura entre fonte oficial, Figma e texto
+   aprovado.
+4. Atualizar primeiro o arquivo de conteudo, sem espalhar copy em componentes.
 
 Erros ortograficos aparentes do frame, como grafia ou acentuacao, devem ser
 corrigidos no conteudo versionado quando nao alterarem o sentido. Mudancas

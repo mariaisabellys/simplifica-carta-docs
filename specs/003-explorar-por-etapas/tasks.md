@@ -78,29 +78,29 @@
 
 ## Fase 2 — Conteudo e contratos
 
-- [ ] **T008 — Definir os tipos do conteudo da pagina**
-  - Modelar identificador, numero, titulo, descricao, acao, destino, icone e
-    variacao visual de cada etapa.
+- [x] **T008 — Definir os tipos do conteudo da pagina**
+  - Modelar identificador, numero, titulo, descricao, acao, destino e variacao
+    visual de cada etapa.
   - Restringir os destinos aos quatro caminhos oficiais.
-  - Modelar breadcrumb, introducao e CTA do guia completo.
+  - Modelar subtitulo e CTA do guia completo.
   - Nao incluir campos de progresso, conclusao, bloqueio ou persistencia.
   - Dependencia: T007.
   - Evidencia: tipos TypeScript compilando sem erros.
 
-- [ ] **T009 — Criar o conteudo versionado**
+- [x] **T009 — Criar o conteudo versionado**
   - Criar `src/content/pages/explorar-por-etapas.ts` ou o caminho consolidado no
     plano detalhado.
-  - Registrar titulo, introducao, quatro cards, rotulos de acao e CTA final.
+  - Registrar titulo, subtitulo, quatro cards, rotulos de acao e CTA final.
   - Preservar a ordem das etapas 1, 2, 3 e 4.
   - Explicar que o tutorial conduz ao cadastro manual no Paraiba Digital.
   - Dependencia: T008.
   - Evidencia: pagina capaz de consumir toda a copy sem textos editoriais
     duplicados no JSX.
 
-- [ ] **T010 — Validar os destinos tipados**
+- [x] **T010 — Validar os destinos tipados**
   - Confirmar os pares de acao e rota:
-    - `Iniciar diagnostico` → `/diagnostico`;
-    - `Ver lista de informacoes` → `/organizar-informacoes`;
+    - `Iniciar diagnóstico` → `/diagnostico`;
+    - `Ver lista de informações` → `/organizar-informacoes`;
     - `Elaborar e conferir` → `/formulario-carta`;
     - `Ver tutorial` → `/tutorial-paraiba-digital`;
     - `Ir para o guia passo a passo` → `/diagnostico`.

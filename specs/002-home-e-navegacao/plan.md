@@ -82,7 +82,7 @@ visivel dentro do menu, sem sobreposicao.
 
 ### 3. Definir os destinos da home
 
-- `Iniciar o guia`: `/diagnostico`, primeira etapa do fluxo de cadastro de uma
+- `Iniciar guia`: `/diagnostico`, primeira etapa do fluxo de cadastro de uma
   Carta de Servicos;
 - `Explorar por etapas`: `/explorar-por-etapas`, pagina propria para escolher e
   acessar uma etapa do cadastro sem percorrer o fluxo completo;
@@ -90,9 +90,10 @@ visivel dentro do menu, sem sobreposicao.
   `/o-que-e-carta-de-servicos`;
 - etapa `Identificar um servico`: `/diagnostico`;
 - etapa `Organizar informacoes`: `/organizar-informacoes`;
-- etapa `Elaborar Carta`: `/formulario-carta`;
-- etapa `Simular publicacao`: `/tutorial-paraiba-digital`, deixando claro no
-  texto que o cadastro final e manual no Paraiba Digital.
+- etapa `Elaborar carta`: `/formulario-carta`;
+- etapa `Simular publicacao`: `/tutorial-paraiba-digital`; a copy aprovada fala
+  em seguir o tutorial para publicar a carta na plataforma, enquanto o destino
+  e os textos de apoio devem manter claro que o cadastro e manual.
 
 A feature 002 deve expor `/explorar-por-etapas` como `href` real nos CTAs da
 home e do footer, mas nao deve registrar a pagina nem criar placeholder para
@@ -107,7 +108,8 @@ da pagina para nao desorientar usuarios de teclado e leitores de tela.
 ### 4. Versionar o conteudo
 
 Expandir `src/content/pages/home.ts` para concentrar marca, hero, CTAs, introducao
-do processo, quatro etapas e CTA educativo. Criar conteudo compartilhado de
+do processo, quatro etapas e CTA educativo, usando exatamente a copy aprovada.
+Criar conteudo compartilhado de
 navegacao e footer somente se ele for consumido pelo shell; evitar duplicar
 rotulos entre JSX e arquivos de conteudo.
 
@@ -122,20 +124,29 @@ type NavigationItem = {
 
 type HomeAction = {
   label: string;
-  href: string;
-  variant: "primary" | "secondary";
-  icon?: "play" | "list" | "arrow";
+  href: "/diagnostico" | "/explorar-por-etapas";
+  variant: "primary" | "secondary-inverse";
+  icon: "play" | "list";
 };
 
-type ProcessStep = {
-  id: string;
-  number: number;
+type HomeProcessStep = {
+  id: "identificar" | "organizar" | "elaborar" | "simular";
+  number: 1 | 2 | 3 | 4;
   eyebrow: string;
   title: string;
   description: string;
-  href: string;
+  href:
+    | "/diagnostico"
+    | "/organizar-informacoes"
+    | "/formulario-carta"
+    | "/tutorial-paraiba-digital";
 };
 ```
+
+`HomeAction` e `HomeProcessStep` permanecem junto de `homeContent` em
+`src/content/pages/home.ts`, porque descrevem exclusivamente a estrutura dessa
+fonte editorial. Tipos compartilhados de navegacao continuam em
+`src/types/content.ts`.
 
 Icones nao devem ser codificados como SVG manual. Quando forem necessarios para
 fidelidade, devem ser exportados do Figma no plano de implementacao e salvos como
