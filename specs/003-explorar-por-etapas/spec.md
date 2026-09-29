@@ -99,8 +99,9 @@ que aumenta tempo, friccao e possibilidade de abandono.
 ### Apresentacao da pagina
 
 - Exibir o titulo `Explorar por etapas`.
-- Explicar que o usuario pode acessar uma parte do manual sem seguir o fluxo
-  completo.
+- Exibir o subtitulo aprovado: `Acesse qualquer parte do manual diretamente,
+  sem precisar seguir o fluxo completo. Escolha a etapa que você precisa para
+  agilizar a criação da sua Carta de Serviço.`
 - Apresentar quatro etapas distintas, na ordem do processo de cadastro.
 - Cada etapa deve exibir:
   - numero ou identificador sequencial;
@@ -114,20 +115,25 @@ que aumenta tempo, friccao e possibilidade de abandono.
 
 ### Etapa 1 — Identificar um servico
 
-- Apresentar o diagnostico como forma de verificar se a atividade caracteriza
-  um servico publico.
+- Exibir a descricao: `Descubra se aquilo que deseja cadastrar é realmente um
+  serviço público de acordo com as diretrizes oficiais. Responda um breve
+  diagnóstico interativo.`
 - Exibir a acao `Iniciar diagnostico`.
 - Direcionar para `/diagnostico`.
 
 ### Etapa 2 — Organizar informacoes
 
-- Apresentar a reuniao previa de informacoes e documentos necessarios.
+- Exibir a descricao: `Saiba quais informações e documentos cruciais reunir
+  antes de elaborar a Carta de Serviços. Use nossa lista de verificação para
+  não esquecer nada.`
 - Exibir a acao `Ver lista de informacoes`.
 - Direcionar para `/organizar-informacoes`.
 
 ### Etapa 3 — Elaborar a Carta
 
-- Apresentar a elaboracao, revisao, visualizacao e preparacao dos dados da Carta.
+- Exibir a descricao: `Preencha, melhore, confira e visualize a Carta em tempo
+  real utilizando técnicas de linguagem simples e acessibilidade. Exporte o
+  CSV e finalize.`
 - Exibir a acao `Elaborar e conferir`.
 - Direcionar para `/formulario-carta`.
 - Nao implementar formulario, validacao, previa ou exportacao dentro desta
@@ -135,8 +141,8 @@ que aumenta tempo, friccao e possibilidade de abandono.
 
 ### Etapa 4 — Tutorial de publicacao
 
-- Apresentar o tutorial para cadastro manual na plataforma oficial do Estado da
-  Paraiba.
+- Exibir a descricao: `Veja como cadastrar o serviço na plataforma oficial do
+  Estado da Paraíba passo a passo acompanhado de dicas visuais e orientações.`
 - Exibir a acao `Ver tutorial`.
 - Direcionar para `/tutorial-paraiba-digital`.
 - Informar de forma coerente que a publicacao final ocorre manualmente no
@@ -160,13 +166,12 @@ que aumenta tempo, friccao e possibilidade de abandono.
 
 ### Conteudo versionado
 
-- Manter titulo, introducao, cards, rotulos de botoes e CTA em arquivo de
-  conteudo versionado quando os textos finais forem adicionados ao projeto.
+- Usar `src/content/pages/explorar-por-etapas.ts` como fonte de verdade para o
+  titulo, subtitulo, cards, rotulos, destinos e CTA aprovados.
 - Manter destinos e identificadores tipados para reduzir divergencias entre
   conteudo e rotas.
 - Evitar textos editoriais fixos diretamente nos componentes visuais.
-- Tratar os textos observados no Figma como referencia inicial, nao como
-  substituto dos textos finais aprovados.
+- Preservar acentuacao, capitalizacao e pontuacao da copy aprovada.
 
 ## Requisitos nao funcionais
 

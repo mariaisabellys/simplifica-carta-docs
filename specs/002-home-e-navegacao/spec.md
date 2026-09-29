@@ -38,7 +38,7 @@ O frame `310:175` apresenta a home atual com:
 - marca `Simplifica Carta` e subtitulo `Guia de Servicos`;
 - hero com a chamada `Menos burocracia, mais praticidade.`;
 - texto de apoio sobre escolher entre guia completo e acesso livre;
-- acoes `Iniciar o guia` e `Explorar por etapas`;
+- acoes `Iniciar guia` e `Explorar por etapas`;
 - imagem/arte de apoio da Carta de Servico;
 - secao `Como funciona o processo?`;
 - quatro etapas visuais do processo:
@@ -100,23 +100,35 @@ Sem uma home bem definida, o usuario pode nao compreender:
 - Apresentar navegacao superior conforme a home atual do prototipo.
 - Apresentar a marca `Simplifica Carta` e o subtitulo `Guia de Servicos`.
 - Exibir hero com:
-  - frase de apoio `Guia para criacao de Cartas de Servicos`;
   - titulo `Menos burocracia, mais praticidade.`;
-  - texto explicando a escolha entre guia completo e acesso livre as secoes;
-  - botao/acao `Iniciar o guia`;
+  - subtitulo `Selecione a experiencia que melhor atende as suas necessidades:
+    um guia completo do inicio ao fim ou acesso livre as secoes da Carta de
+    Servico.`;
+  - botao/acao `Iniciar guia`;
   - botao/acao `Explorar por etapas`;
   - imagem/arte da Carta de Servico quando o asset estiver disponivel.
-- Direcionar `Iniciar o guia` para `/diagnostico`, primeira etapa do fluxo de
+- Direcionar `Iniciar guia` para `/diagnostico`, primeira etapa do fluxo de
   cadastro de uma Carta de Servicos.
 - Direcionar `Explorar por etapas` para `/explorar-por-etapas`, pagina propria
   de acesso independente as etapas do fluxo de cadastro.
-- Exibir a secao `Como funciona o processo?` com texto introdutor.
-- Exibir quatro etapas do processo:
-  - `Identificar um servico`;
-  - `Organizar informacoes`;
-  - `Elaborar Carta`;
-  - `Simular publicacao`.
-- Exibir CTA intermediario para a pagina `O que e a Carta de Servicos`.
+- Exibir a secao `Como funciona o processo?` com o texto `O manual conduz voce
+  de forma simples e intuitiva atraves de quatro etapas essenciais para garantir
+  um servico direto, acessivel e em conformidade com as normas.`.
+- Exibir quatro etapas do processo, nesta ordem:
+  - `Entenda` — `Identificar um servico` — `Verifique se e realmente um
+    servico.`;
+  - `Reuna` — `Organizar informacoes` — `Reuna todas as informacoes
+    necessarias`;
+  - `Desenvolva` — `Elaborar carta` — `Preencha a Carta seguindo nossas
+    dicas.`;
+  - `Conclua` — `Simular publicacao` — `Siga o tutorial para publicar a carta
+    na plataforma.`.
+- Exibir o CTA intermediario com:
+  - chamada `Nao sabe por onde comecar?`;
+  - titulo `Conheca primeiro o que e uma Carta de Servicos`;
+  - descricao `Entenda o que caracteriza uma Carta de Servicos e qual e sua
+    finalidade`;
+  - acao `O que e a Carta de Servico?`.
 - Exibir footer institucional com acesso rapido, recursos/apoio, descricao do
   Simplifica Carta, dados institucionais e copyright.
 
@@ -179,8 +191,9 @@ Sem uma home bem definida, o usuario pode nao compreender:
 - O link `Material de apoio` aparece no prototipo Figma, mas nao deve ser
   incluido na header nesta etapa, pois a area completa de materiais de apoio
   esta fora do MVP conforme `docs/produto/mvp.md`.
-- A etapa visual `Simular publicacao` deve ser interpretada como apoio ao
-  cadastro manual/tutorial, sem publicacao automatica no Paraiba Digital.
+- A etapa visual `Simular publicacao` e sua copy `Siga o tutorial para publicar
+  a carta na plataforma.` devem ser interpretadas como encaminhamento ao
+  tutorial de cadastro manual, sem publicacao automatica pelo Simplifica Carta.
 
 ## Dependencias
 
@@ -200,7 +213,7 @@ Sem uma home bem definida, o usuario pode nao compreender:
   usuarios, requisitos, fora de escopo, dependencias e criterios de aceite.
 - A implementacao futura da home segue o frame Figma `310:175`.
 - A home apresenta claramente o produto e os dois caminhos principais:
-  `Iniciar o guia` e `Explorar por etapas`.
+  `Iniciar guia` e `Explorar por etapas`.
 - `Explorar por etapas` direciona para `/explorar-por-etapas`.
 - A home apresenta a secao `Como funciona o processo?` com quatro etapas.
 - A home apresenta CTA para `O que e a Carta de Servicos`.

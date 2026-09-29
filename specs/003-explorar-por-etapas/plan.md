@@ -91,7 +91,6 @@ usar o contrato de navegacao compartilhado definido pela feature 002, mantendo
 
 Criar `src/content/pages/explorar-por-etapas.ts` para concentrar:
 
-- breadcrumb;
 - titulo e introducao;
 - as quatro etapas na ordem oficial;
 - rotulos e destinos das acoes;
@@ -110,12 +109,11 @@ type ExploreStepId =
   | "elaborar-carta"
   | "tutorial-publicacao";
 
-type ExploreStepTone = "cyan" | "orange" | "purple" | "green";
+type ExploreStepTone = "cyan" | "orange" | "navy" | "wine";
 
 type ExploreStep = {
   id: ExploreStepId;
   number: 1 | 2 | 3 | 4;
-  icon: string;
   title: string;
   description: string;
   actionLabel: string;
@@ -128,21 +126,20 @@ type ExploreStep = {
 };
 
 type ExplorePageContent = {
-  breadcrumb: ReadonlyArray<{ label: string; href?: "/" }>;
   title: string;
-  introduction: string;
+  description: string;
   steps: readonly ExploreStep[];
   guideCta: {
-    title: string;
-    description: string;
+    prompt: string;
     actionLabel: string;
     href: "/diagnostico";
   };
 };
 ```
 
-O campo `icon` deve apontar para um identificador ou asset conhecido, nao para
-markup SVG escrito no arquivo de conteudo. A forma final do contrato sera
+Os assets visuais devem ficar fora da fonte editorial e ser associados por
+`ExploreStepId`, evitando misturar caminhos de arquivos com a copy aprovada. A
+forma final do contrato sera
 confirmada no `implementation-plan.md` apos o inventario dos assets.
 
 ### 3. Compor a pagina com semantica simples
