@@ -19,6 +19,7 @@ quando o frame oficial mudar.
 | `/explorar-por-etapas` | explorar-por-etapas-v2 | `575:483` | `003-explorar-por-etapas` | Pagina para acesso independente as quatro etapas do cadastro, sem exigir o fluxo completo. |
 | `/o-que-e-carta-de-servicos` | O que e a Carta? | `365:265` | `004-o-que-e-carta-servico` | Pagina educativa com contexto, fundamentos, campos da Carta e legislacao aplicavel. |
 | `/diagnostico` | diagnostico | `387:1020` | `005-diagnostico-servico-publico` | Frame atual para a experiencia de diagnostico. Usar somente na spec propria. |
+| `/diagnostico/resultado` | resposta | `387:1362` | `005-diagnostico-servico-publico` | Frame oficial da pagina de resposta. O estado exibido no frame e uma amostra visual; textos e acoes devem seguir o conteudo versionado e o resultado calculado. |
 | `/ajuda` ou FAQ | FAQ | `169:495` | `013-fluxo-de-ajuda` ou spec futura de FAQ | Frame atual para duvidas frequentes e CTA de apoio. Nao faz parte da home atual. |
 | `/formulario-carta` | Form-Card | `811:306` | `007-formulario-carta-servico` | Card de formulario com campos, orientacao e sugestao. Usar na spec propria. |
 | `/formulario-carta` | Form-Card com orientacao aberta | `811:382` | `007-formulario-carta-servico` | Variante com painel de orientacao aberto. |

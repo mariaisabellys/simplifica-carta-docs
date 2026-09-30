@@ -9,7 +9,8 @@
 - Como a funcionalidade e visual e possui regra combinatoria,
   `implementation-plan.md` deve ser criado e validado antes do codigo final.
 - Checkboxes permanecem desmarcados ate existir evidencia correspondente.
-- O Figma Design `387:1020` orienta composicao e fluxo visual.
+- O Figma Design `387:1020` orienta o questionario e `387:1362` orienta a
+  pagina de resultado.
 - O Figma Make `0:1` orienta tokens, controles e estados.
 - Perguntas, textos de resultado e regras nao devem ser duplicados no JSX.
 - O diagnostico nao usa backend, `localStorage`, IA ou persistencia permanente.
@@ -22,7 +23,8 @@
   - Executar `/spec:plano-implementacao 005-diagnostico-servico-publico`.
   - Consolidar contratos, estado, sessao, navegacao, componentes, codigo base,
     CSS, testes, assets e validacoes.
-  - Registrar o Figma Design `387:1020` e o Figma Make `0:1` como fontes.
+  - Registrar os nodes Figma Design `387:1020` e `387:1362`, alem do Figma
+    Make `0:1`, como fontes.
   - Evidencia: `implementation-plan.md` criado e completo.
 
 - [x] **T002 — Conferir shell e navegacao reais**
@@ -35,14 +37,15 @@
   - Evidencia: lacunas e integracoes registradas no plano detalhado.
 
 - [x] **T003 — Consultar e mapear o Figma Design**
-  - Consultar via MCP o arquivo `YaVUdqYa3boHpvGrxf4ZJ5`, node `387:1020`.
+  - Consultar via MCP o arquivo `YaVUdqYa3boHpvGrxf4ZJ5`, nodes `387:1020` e
+    `387:1362`.
   - Confirmar hierarquia, card, progresso, opcoes, botoes, estados, medidas,
     espacamentos, resultado e responsividade observavel.
   - Nao copiar coordenadas absolutas ou classes Tailwind como implementacao.
   - Dependencia: T001.
   - Evidencia: leitura visual detalhada no `implementation-plan.md`.
 
-- [ ] **T004 — Confirmar tokens e estados no Figma Make**
+- [x] **T004 — Confirmar tokens e estados no Figma Make**
   - Consultar via MCP o arquivo `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
   - Mapear Inter, cores, bordas, raios, sombras, espacamentos e estados de
     radio, card, progresso e botoes.
@@ -67,7 +70,7 @@
   - Dependencias: T001, T002.
   - Evidencia: ferramentas, scripts e arquivos de teste definidos.
 
-- [ ] **T007 — Validar a documentacao antes do codigo**
+- [x] **T007 — Validar a documentacao antes do codigo**
   - Executar `/spec:validar 005-diagnostico-servico-publico`.
   - Comparar spec, plan, tasks, implementation-plan, produto, arquitetura,
     constitution, Figma Design, Figma Make e codigo atual.
@@ -225,7 +228,10 @@
   - Diferenciar significado com texto e icone, nunca apenas por cor.
   - Garantir foco programatico no titulo.
   - Dependencias: T004, T010, T017.
-  - Evidencia: um contrato renderiza qualquer um dos cinco resultados.
+  - Reproduzir o indicador informativo, a hierarquia tipografica, a sombra, o
+    raio e a area de acoes observados no node `387:1362`.
+  - Evidencia: um contrato renderiza qualquer um dos cinco resultados sem
+    corte, sobreposicao ou copy duplicada.
 
 ## Fase 5 — Composicao das paginas
 
@@ -254,6 +260,8 @@
   - Evidencia: ultima pergunta conduz a resultado reproduzivel.
 
 - [ ] **T029 — Montar a pagina `/diagnostico/resultado`**
+  - Seguir o node `387:1362`: eyebrow, `Resultado das respostas`, ilustracao a
+    esquerda, card a direita e navegacao inferior.
   - Substituir o placeholder atual.
   - Recalcular o ID usando respostas validadas.
   - Resolver a copy por `respostasDiagnosticoPorId`.
@@ -262,12 +270,13 @@
   - Evidencia: cinco IDs produzem as cinco orientacoes aprovadas.
 
 - [ ] **T030 — Implementar as acoes contextuais do resultado**
-  - Disponibilizar `Refazer diagnóstico` para todos os resultados.
-  - Para servico e autosservico, direcionar a `/organizar-informacoes`.
-  - Para analise adicional, direcionar a `/ajuda`.
-  - Para etapa e processo interno, nao encaminhar automaticamente ao
-    formulario.
-  - Confirmar rotulos finais no Figma e no conteudo aprovado.
+  - Consumir `src/content/diagnostico/acoes.ts`, sem duplicar a matriz no JSX.
+  - Disponibilizar `Refazer diagnóstico` e `Voltar para página inicial` para
+    todos os resultados.
+  - Para servico e autosservico, exibir `Organizar informações` na navegacao
+    inferior com destino `/organizar-informacoes`.
+  - Para analise adicional, etapa e processo interno, exibir `Consultar ajuda`
+    no card com destino `/ajuda`, sem encaminhar ao formulario.
   - Dependencias: T023, T029.
   - Evidencia: cada resultado oferece somente acoes coerentes com o escopo.
 
@@ -275,6 +284,8 @@
 
 - [ ] **T031 — Preparar assets locais**
   - Exportar ou baixar os assets confirmados no inventario.
+  - Incluir a ilustracao em camadas, o indicador informativo e o icone de
+    recomecar do node `387:1362`.
   - Salvar em diretorio semantico dentro de `src/assets/`.
   - Conferir integridade, dimensoes e correspondencia node-a-node.
   - Eliminar dependencia de URLs temporarias.
@@ -290,7 +301,8 @@
   - Evidencia: interface coerente com o design system.
 
 - [ ] **T033 — Implementar layout desktop**
-  - Traduzir o node `387:1020` para fluxo normal, Grid e Flexbox.
+  - Traduzir os nodes `387:1020` e `387:1362` para fluxo normal, Grid e
+    Flexbox.
   - Limitar largura de leitura sem copiar dimensoes absolutas.
   - Manter card, progresso e controles visualmente associados.
   - Dependencia: T032.
@@ -403,7 +415,7 @@
   - Evidencia: checklist responsivo e acessivel concluido.
 
 - [ ] **T047 — Comparar a entrega com o Figma**
-  - Comparar diagnostico e estados com o node `387:1020`.
+  - Comparar o questionario com `387:1020` e o resultado com `387:1362`.
   - Conferir composicao, tipografia, progresso, card, opcoes, botoes e assets.
   - Registrar divergencias intencionais de MVP e acessibilidade.
   - Dependencia: T046.
