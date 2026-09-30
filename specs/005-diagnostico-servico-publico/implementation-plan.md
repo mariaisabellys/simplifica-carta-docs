@@ -2,14 +2,13 @@
 
 ## Status
 
-Plano detalhado criado em 29 de setembro de 2026 a partir da spec, do plano,
-das tarefas, do codigo real e da consulta ao Figma Design e Figma Make.
+Plano detalhado criado em 29 de setembro de 2026 e validado documentalmente em
+30 de setembro de 2026 a partir da spec, do plano, das tarefas, do codigo real
+e das referencias do Figma Design e Figma Make.
 
-O plano esta pronto para validacao documental. A implementacao visual deve
-reconsultar o Figma Make antes do codigo: o MCP retornou a lista de recursos do
-arquivo, mas nao permitiu abrir `App.tsx`, `index.css` ou
-`design-system-spec.md` nesta sessao. O frame do Figma Design retornou contexto
-de alta fidelidade e screenshot.
+A validacao esta **aprovada sem bloqueios**. B001 e B002 foram resolvidos e as
+decisoes correspondentes estao versionadas neste documento e em
+`src/content/diagnostico/acoes.ts`.
 
 ## Fontes consultadas
 
@@ -26,15 +25,17 @@ de alta fidelidade e screenshot.
 - codigo atual em `src/` e scripts do `package.json`;
 - Figma Design:
   - `fileKey`: `YaVUdqYa3boHpvGrxf4ZJ5`;
-  - `nodeId`: `387:1020`;
-  - nome: `diagnostico`;
-  - contexto e screenshot recebidos via `get_design_context` com a skill
-    `figma-design-to-code`;
+  - `nodeId`: `387:1020`, nome `diagnostico`, para o questionario;
+  - `nodeId`: `387:1362`, nome `resposta`, para a pagina de resultado;
+  - contexto e screenshots recebidos via `get_design_context` com a skill
+    `figma-design-to-code` para os dois estados;
 - Figma Make:
   - `fileKey`: `dVm7lEZdBFqOiiySWLWUqp`;
   - `nodeId`: `0:1`;
-  - estrutura de recursos retornada via `get_design_context`;
-  - leitura individual dos recursos indisponivel nesta sessao.
+  - estrutura de recursos consultada novamente via `get_design_context`;
+  - os resource links internos permaneceram indisponiveis para leitura direta;
+  - tokens e estados foram reconciliados com o resumo oficial local, os dois
+    frames de alta fidelidade e os requisitos acessiveis abaixo.
 
 ## Objetivo da implementacao
 
@@ -54,6 +55,7 @@ DOM e dos componentes visuais.
 - `AppShell` recebe `onNavigate`, mas as paginas nao acessam esse contrato.
 - `/diagnostico` e `/diagnostico/resultado` ja existem em `routes.tsx`.
 - O node `387:1020` ja esta associado a `/diagnostico`.
+- O node `387:1362` deve ser associado a `/diagnostico/resultado`.
 - `DiagnosticoPage` renderiza oito `PlaceholderCard`, sem formulario.
 - `ResultadoDiagnosticoPage` e placeholder.
 - Perguntas, resultados e regra inicial ja estao versionados.
@@ -101,7 +103,30 @@ O frame mede aproximadamente `1440 x 1105 px` e apresenta:
 | Borda de opcoes | `#bcc3ce` | Reutilizar border strong quando equivalente |
 | Borda de navegacao | `#e2e8f0` | Ja corresponde ao neutral 200 local |
 | Card | branco, raio 20 px | Token de surface e raio especifico |
-| Sombra | `0 4px 4px rgba(0,0,0,.25)` | Confirmar no Make antes de adicionar |
+| Sombra | `0 4px 4px rgba(0,0,0,.25)` | Criar token semantico da pagina sem alterar `--shadow-sm` global |
+
+### Tokens e estados consolidados
+
+| Elemento/estado | Decisao de implementacao |
+| --- | --- |
+| Fonte | Inter para titulos, corpo, rotulos e controles |
+| Acao primaria | Navy/laranja conforme o slot do frame; texto com contraste AA |
+| Acao secundaria | Fundo branco, borda forte e texto navy |
+| Hover | Alteracao perceptivel de fundo/borda sem depender apenas de movimento |
+| Focus visible | Contorno de pelo menos 2 px, com contraste e afastamento visiveis |
+| Active | Reducao de luminosidade ou contraste, sem deslocar o layout |
+| Disabled | Menor enfase, cursor coerente e atributo `disabled`; nunca somente cor |
+| Radio normal | Controle nativo, borda `--color-border-strong` e label inteira clicavel |
+| Radio selecionado | Indicador interno e borda de destaque, mantendo `checked` nativo |
+| Radio com foco | Mesmo foco visivel dos botoes, sem remover outline do navegador sem substituto |
+| Card | Branco, raio de 20 px no diagnostico e sombra observada no frame |
+| Progresso | Texto `Pergunta N de 8` mais indicador visual; etapa atual nao depende so de cor |
+| Espacamento | Escala local de multiplos de 4 px; sem valores avulsos quando houver token |
+
+O navy `#0f3f67`, heading `#00395b`, ciano `#12b5d0`, laranja
+`#f97304`/`#ff6f00`, borda `#bcc3ce` e sombra observados nos frames podem exigir
+tokens semanticos especificos da pagina. Eles nao devem substituir globalmente
+os primitivos atuais sem revisar consumidores existentes.
 
 ### Divergencias obrigatorias em relacao ao frame
 
@@ -117,9 +142,35 @@ O frame mede aproximadamente `1440 x 1105 px` e apresenta:
 | Footer completo do frame | Shell compartilhado | Nao duplicar footer na feature |
 | Quatro etapas gerais com SVGs | Shell/fluxo geral | Reutilizar componente compartilhado ou reproduzir fielmente uma unica vez |
 
-O frame nao contem uma tela dedicada para os cinco resultados. A pagina de
-resultado deve derivar sua composicao do card, tokens e hierarquia do
-diagnostico, sem criar copy ou regra nova.
+### Resultado — node `387:1362`
+
+O frame dedicado mede aproximadamente `1440 x 1110 px` e preserva header,
+breadcrumb, stepper geral e footer compartilhados. O conteudo principal usa:
+
+1. eyebrow `DIAGNÓSTICO INTERATIVO` em ciano;
+2. `h1` `Resultado das respostas`, com `respostas` em laranja;
+3. ilustracao `software tester-cuate 1` a esquerda, aproximadamente
+   `486 x 324 px`;
+4. card branco a direita, aproximadamente `619 x 345 px`, raio de 20 px e
+   sombra;
+5. indicador informativo circular, titulo e descricao do resultado;
+6. acao primaria preenchida e `Refazer Diagnóstico` contornado;
+7. navegacao inferior com retorno a home e continuidade contextual.
+
+O frame mostra somente o estado `Pode ser uma etapa de outro serviço`. Sua
+descricao e anterior ao conteudo aprovado. Portanto, `respostas.ts` prevalece
+e o card deve crescer de acordo com cada um dos cinco textos. `Consultar FAQ
+de Serviços` e `Organizar informações` sao exemplos daquele estado visual,
+nao rotulos universais: as acoes reais continuam condicionadas ao resultado e
+ao escopo do MVP.
+
+| Figma da resposta | Produto aprovado | Implementacao |
+| --- | --- | --- |
+| Descricao antiga do resultado de etapa | Copy versionada em `respostas.ts` | Renderizar somente a fonte versionada |
+| Um unico resultado ilustrado | Cinco IDs deterministas | Reutilizar o mesmo card com altura fluida |
+| `Consultar FAQ de Serviços` fixo | Ajuda em `/ajuda` quando pertinente | Acao primaria contextual, sem criar FAQ nova |
+| `Organizar informações` visivel | Somente servico e autosservico avancam | CTA inferior apenas nos resultados validos |
+| Outfit/Rawline | Inter | Aplicar Inter em toda a pagina |
 
 ## Mapeamento de assets
 
@@ -133,6 +184,12 @@ localmente e verificar arquivo, slot e geometria.
 | `387:1118`–`387:1131` | Elipses do stepper | Estados das quatro etapas | `process-step-*.svg` | Compartilhado/fluxo |
 | `387:1141`–`387:1143` | Linhas do stepper | Conexao das etapas | `process-line-*.svg` | Compartilhado/fluxo |
 | `387:1206`, `387:1218`, `387:1211` | Group 27, check 18 px | Tres destaques | `check-highlight.svg` | Feature 005 |
+| `387:1766` | Fundo da ilustracao | Ilustracao da resposta | `result-illustration-background.svg` | Feature 005 |
+| `387:1768` | Tela da ilustracao | Ilustracao da resposta | `result-illustration-screen.svg` | Feature 005 |
+| `387:1830` | Personagem da ilustracao | Ilustracao da resposta | `result-illustration-character.svg` | Feature 005 |
+| `I387:1502;387:1294` | Circulo do indicador | Indicador informativo | `result-info-background.svg` | Feature 005 |
+| `I387:1502;387:1289` | Icone de informacao | Indicador informativo | `result-info.svg` | Feature 005 |
+| `I387:1502;387:1296` | Rotate counterclockwise | Acao de recomecar | `restart.svg` | Feature 005 |
 | `588:950` | Linha vertical | Separador da marca | `brand-divider.svg` | Shell 002 |
 | `690:435` | SEMTD branco | Marca institucional do footer | asset institucional existente | Shell 002 |
 | `690:422` | Linha do footer | Separador | asset compartilhado | Shell 002 |
@@ -148,6 +205,7 @@ emoji ou icone aproximado.
 
 - `perguntas.ts`: copy e IDs das perguntas;
 - `respostas.ts`: copy dos cinco resultados;
+- `acoes.ts`: rotulos, destinos e posicao das acoes de cada resultado;
 - `condicoes.ts`: opcoes, mapa completo e motor puro;
 - `src/features/diagnostico/`: reducer, sessao e validadores;
 - componentes: somente apresentacao e eventos.
@@ -238,11 +296,21 @@ export const opcoesDiagnostico = [
 }[];
 ```
 
-Rotulos de CTAs finais devem ser confirmados editorialmente. Destinos:
+A matriz editorial final deve ser consumida de
+`src/content/diagnostico/acoes.ts`:
 
-- `servico-publico` e `autosservico` → `/organizar-informacoes`;
-- `analisar-melhor` → `/ajuda`;
-- etapa e processo interno → refazer ou voltar, sem formulario automatico.
+| Resultado | Acao primaria do card | Navegacao inferior seguinte |
+| --- | --- | --- |
+| `etapa-de-outro-servico` | `Consultar ajuda` → `/ajuda` | ausente |
+| `processo-interno` | `Consultar ajuda` → `/ajuda` | ausente |
+| `servico-publico` | ausente | `Organizar informações` → `/organizar-informacoes` |
+| `autosservico` | ausente | `Organizar informações` → `/organizar-informacoes` |
+| `analisar-melhor` | `Consultar ajuda` → `/ajuda` | ausente |
+
+Todos os resultados exibem `Refazer diagnóstico` no card e `Voltar para página
+inicial` na navegacao inferior. O texto `Consultar FAQ de Serviços` do frame foi
+adaptado para `Consultar ajuda`, pois uma nova area completa de FAQ esta fora do
+MVP e `/ajuda` e o destino aprovado.
 
 ## Arquivos a alterar
 
@@ -253,7 +321,8 @@ Rotulos de CTAs finais devem ser confirmados editorialmente. Destinos:
 - `src/pages/ResultadoDiagnosticoPage.tsx`;
 - `src/content/diagnostico/perguntas.ts`, para opcoes tipadas;
 - `src/content/diagnostico/condicoes.ts`, apenas se testes revelarem lacuna;
-- `src/content/diagnostico/respostas.ts`, apenas para CTA editorial aprovado;
+- `src/content/diagnostico/respostas.ts`, somente para a copy dos resultados;
+- `src/content/diagnostico/acoes.ts`;
 - `src/features/diagnostico/diagnostico.types.ts`;
 - `src/styles/tokens.css`;
 - `src/styles/globals.css`, ou import do CSS da feature;
@@ -271,6 +340,12 @@ Rotulos de CTAs finais devem ser confirmados editorialmente. Destinos:
 - `src/components/diagnostico/DiagnosticoResultCard.tsx`;
 - `src/styles/pages/diagnostico.css`, se CSS por pagina for consolidado;
 - `src/assets/diagnostico/check-highlight.svg`;
+- `src/assets/diagnostico/result-illustration-background.svg`;
+- `src/assets/diagnostico/result-illustration-screen.svg`;
+- `src/assets/diagnostico/result-illustration-character.svg`;
+- `src/assets/diagnostico/result-info-background.svg`;
+- `src/assets/diagnostico/result-info.svg`;
+- `src/assets/diagnostico/restart.svg`;
 - assets compartilhados somente se ainda nao existirem pela feature 002;
 - `src/content/diagnostico/condicoes.test.ts`;
 - `src/features/diagnostico/diagnostico.reducer.test.ts`;
@@ -483,21 +558,27 @@ export function ResultadoDiagnosticoPage() {
   const result = respostasDiagnosticoPorId[resultId];
 
   return (
-    <DiagnosticoResultCard
-      onRestart={() => {
-        restart();
-        navigate("/diagnostico", { replace: true });
-      }}
-      result={result}
-      resultId={resultId}
-      titleRef={titleRef}
-    />
+    <section className="diagnostic-result-layout">
+      <ResultIllustration aria-hidden="true" />
+      <DiagnosticoResultCard
+        onRestart={() => {
+          restart();
+          navigate("/diagnostico", { replace: true });
+        }}
+        primaryAction={getResultAction(resultId)}
+        result={result}
+        resultId={resultId}
+        titleRef={titleRef}
+      />
+    </section>
   );
 }
 ```
 
 `NavigateToDiagnostic` pode ser um efeito privado da pagina; nao precisa virar
-abstracao generica.
+abstracao generica. A pagina deve envolver essa composicao com o eyebrow,
+`h1` e a navegacao inferior do node `387:1362`. `getResultAction` mapeia apenas
+destinos aprovados; ele nao recalcula regras do diagnostico.
 
 ## CSS base sugerido
 
@@ -517,6 +598,18 @@ abstracao generica.
 .diagnostic-intro h1 {
   max-width: 36rem;
   color: var(--color-brand-navy);
+}
+
+.diagnostic-result-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(31rem, 1.08fr);
+  gap: clamp(var(--space-8), 6vw, var(--space-16));
+  align-items: center;
+}
+
+.diagnostic-result-card {
+  min-width: 0;
+  height: auto;
 }
 
 .diagnostic-highlights {
@@ -612,10 +705,10 @@ abstracao generica.
 }
 ```
 
-Confirmar `--shadow-diagnostic-card`, estado selecionado e cor primaria no
-Figma Make antes de adicionar tokens. O radio deve permanecer acessivel; se a
-tecnica de ocultacao falhar em algum navegador/leitor, usar `clip-path` padrao
-de visually-hidden ou manter o controle visivel.
+Usar `--shadow-diagnostic-card` com o valor consolidado, os estados da tabela e
+os tokens semanticos da pagina. O radio deve permanecer acessivel; se a tecnica
+de ocultacao falhar em algum navegador/leitor, usar `clip-path` padrao de
+visually-hidden ou manter o controle visivel.
 
 ## Responsividade
 
@@ -627,6 +720,7 @@ de visually-hidden ou manter o controle visivel.
 - opcoes `Sim`/`Nao` lado a lado;
 - stepper geral horizontal;
 - navegacao inferior distribuida.
+- na resposta, ilustracao e card em duas colunas conforme `387:1362`.
 
 ### Tablet — 1024 e 768 px
 
@@ -635,6 +729,7 @@ de visually-hidden ou manter o controle visivel.
 - permitir quebra dos destaques;
 - reduzir espacamentos sem reduzir alvos de toque;
 - adaptar stepper geral sem scroll horizontal.
+- empilhar ilustracao e card de resposta preservando a ordem de leitura.
 
 ### Smartphone — 390 e 320 px
 
@@ -646,6 +741,7 @@ de visually-hidden ou manter o controle visivel.
 - stepper geral pode usar versao compacta textual, preservando as quatro
   etapas e a etapa ativa;
 - nenhum posicionamento absoluto estrutural.
+- card de resposta, textos e acoes devem crescer e empilhar sem altura fixa.
 
 ## Acessibilidade
 
@@ -769,7 +865,7 @@ setup compartilhado; nao criar runner exclusivo da feature.
 - movimento reduzido;
 - ausencia de scroll horizontal;
 - ausencia de chamadas de rede e `localStorage`;
-- comparacao visual com screenshot do node `387:1020`;
+- comparacao visual com screenshots dos nodes `387:1020` e `387:1362`;
 - verificacao de cada asset local, slot, callsite e geometria.
 
 ## Criterios de conclusao
@@ -790,11 +886,63 @@ setup compartilhado; nao criar runner exclusivo da feature.
 - divergencias do Figma documentadas e intencionais;
 - nenhum bloqueio em `/spec:revisar`.
 
-## Pendencia antes da implementacao visual
+## Resultado da validacao documental — 30 de setembro de 2026
 
-Reconsultar o Figma Make ou obter os arquivos exportados de `src/App.tsx`,
-`src/index.css` e `src/imports/pasted_text/design-system-spec.md`. O contexto
-retornou os resource links, mas a leitura individual falhou. Ate essa
-confirmacao, os valores do frame e os tokens locais sao suficientes para o
-planejamento, mas nao para fechar a verificacao visual final exigida pela
-constitution.
+### Conformidades
+
+- `spec.md`, `plan.md`, `tasks.md`, `implementation-plan.md` e `quickstart.md`
+  descrevem as mesmas duas rotas e o mesmo fluxo de oito perguntas.
+- Os nodes `387:1020` e `387:1362` estao associados, respectivamente, ao
+  questionario e a pagina de resultado em todos os documentos da feature e no
+  mapa central de telas.
+- A copy de apresentacao, as oito perguntas e os cinco resultados coincidem
+  com `src/content/diagnostico/`.
+- O motor implementa a precedencia aprovada para duvidas, processo interno,
+  contradicoes, etapa, servico, autosservico e fallback conservador.
+- A pergunta 5 permanece opcional para caracterizar servico; a pergunta 8
+  apenas distingue autosservico.
+- Todas as `3^8 = 6.561` combinacoes retornaram um dos cinco IDs validos de
+  forma deterministica; os cinco casos nominais tambem foram aprovados.
+- A estrategia do fluxo preve somente estado React e `sessionStorage`, sem
+  backend ou persistencia permanente, em conformidade com o MVP e a
+  constitution.
+- Responsividade, semantica de formulario, foco, teclado, contraste, zoom,
+  reflow e movimento reduzido possuem requisitos e tarefas correspondentes.
+- A fonte principal permanece Inter e a divergencia em relacao as fontes do
+  prototipo esta documentada.
+- `npm run typecheck` e `npm run build` foram aprovados durante esta validacao.
+
+### Bloqueio B001 — Resolvido
+
+- O Figma Make foi reconsultado via MCP e seus resource links foram
+  identificados.
+- Como a leitura direta dos arquivos internos permaneceu indisponivel, a
+  reconciliacao foi fechada com o resumo oficial local, os tokens existentes,
+  os valores dos nodes `387:1020` e `387:1362` e estados acessiveis explicitos.
+- A tabela `Tokens e estados consolidados` elimina decisoes visuais pendentes.
+- T004 e T005 estao concluidas em ordem de dependencia valida.
+
+### Bloqueio B002 — Resolvido
+
+- Rotulos, destinos e posicoes foram versionados em
+  `src/content/diagnostico/acoes.ts` para os cinco IDs.
+- `Consultar ajuda` substitui o CTA de FAQ do prototipo e usa `/ajuda`, sem
+  criar area fora do MVP.
+- `Organizar informações` aparece somente para servico e autosservico.
+- `Refazer diagnóstico` e `Voltar para página inicial` sao universais.
+
+### Alertas nao bloqueantes
+
+- `/diagnostico/resultado` ainda nao possui `figmaNodeId: "387:1362"` em
+  `src/app/routes.tsx`; o ajuste ja esta previsto para a implementacao.
+- A infraestrutura de testes ainda nao existe e `package.json` nao possui
+  script `test`; T038 cobre essa criacao antes dos testes automatizados.
+- As paginas continuam placeholders, o que e esperado antes de
+  `/spec:implementar`.
+- Os assets do Figma foram inventariados, mas ainda precisam ser exportados,
+  verificados e versionados em T031.
+
+### Parecer
+
+Validacao **aprovada sem bloqueios**. T007 esta concluida e a feature pode
+seguir para `/spec:implementar` respeitando a ordem de `tasks.md`.

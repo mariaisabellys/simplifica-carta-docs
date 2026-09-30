@@ -24,7 +24,8 @@ somente deve ocorrer em `/spec:implementar`, depois de `tasks.md`,
 - specs 002 e 003, para shell e entradas no diagnostico;
 - rotas, paginas, componentes, estilos e contratos atuais em `src/`;
 - conteudo aprovado em `src/content/diagnostico/`;
-- Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, node mapeado `387:1020`;
+- Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, nodes mapeados `387:1020`
+  (questionario) e `387:1362` (resultado);
 - Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, conforme a documentacao
   local.
 
@@ -39,6 +40,8 @@ assets antes do codigo definitivo.
   e estado local em `App.tsx`; nao existe React Router.
 - As rotas `/diagnostico` e `/diagnostico/resultado` ja estao registradas.
 - `/diagnostico` ja possui `figmaNodeId: "387:1020"` e `specId` correto.
+- `/diagnostico/resultado` deve usar `figmaNodeId: "387:1362"` e o mesmo
+  `specId`.
 - `DiagnosticoPage.tsx` exibe o cabecalho, os destaques e oito cards
   provisoriamente, mas ainda nao possui formulario, progresso ou navegacao.
 - `ResultadoDiagnosticoPage.tsx` ainda e um placeholder.
@@ -258,21 +261,26 @@ exibir mensagem ligada ao `fieldset` e mover foco para o grupo.
 - calcular o ID pelo motor puro;
 - resolver `respostasDiagnosticoPorId[id]`;
 - exibir somente titulo e descricao do resultado;
+- aplicar a composicao oficial do node `387:1362`: cabecalho de resultado,
+  ilustracao, card informativo e navegacao inferior;
+- manter o texto vindo de `respostas.ts`, inclusive quando divergir da copy de
+  amostra do Figma;
+- dimensionar o card pelo conteudo para acomodar os cinco resultados;
 - nao exibir respostas, criterios, pesos, combinacoes ou pontuacao;
 - oferecer `Refazer diagnóstico`;
 - oferecer continuidade contextual somente quando prevista no escopo.
 
-Destinos planejados:
+Matriz editorial versionada em `src/content/diagnostico/acoes.ts`:
 
-- `servico-publico` e `autosservico`: `/organizar-informacoes` como proximo
-  passo do fluxo;
-- `analisar-melhor`: `/ajuda`;
-- `etapa-de-outro-servico` e `processo-interno`: permitir refazer ou voltar ao
-  conteudo de orientacao, sem encaminhar automaticamente ao formulario.
+- todos: `Refazer diagnóstico` no card e `Voltar para página inicial` na
+  navegacao inferior;
+- `servico-publico` e `autosservico`: `Organizar informações` na navegacao
+  inferior, com destino `/organizar-informacoes`;
+- `analisar-melhor`, `etapa-de-outro-servico` e `processo-interno`:
+  `Consultar ajuda` no card, com destino `/ajuda`, sem CTA para organizacao.
 
-Os rotulos finais dos CTAs devem ser confirmados no Figma e no conteudo
-aprovado durante `/spec:plano-implementacao`; nao fixa-los antecipadamente no
-JSX.
+O JSX deve consumir a matriz versionada e nao definir rotulos ou destinos por
+condicionais locais.
 
 ## Componentes provaveis
 
@@ -284,7 +292,8 @@ JSX.
 - `DiagnosticoQuestionCard`: `form`, `fieldset`, `legend` e opcoes;
 - `DiagnosticoOption`: radio + label visual, somente se reduzir repeticao;
 - `DiagnosticoControls`: voltar, continuar, concluir e recomecar;
-- `DiagnosticoResultCard`: titulo, descricao e acoes do resultado.
+- `DiagnosticoResultCard`: indicador informativo, titulo, descricao e acoes
+  condicionais do resultado, conforme a geometria do node `387:1362`.
 
 Componentes pequenos podem permanecer privados a pagina quando nao houver
 reuso ou ganho de teste. Nao criar abstracoes genericas para um unico caso.
@@ -444,7 +453,8 @@ substituidos apenas por verificacao manual.
 - testar teclado, leitor de tela, foco e anuncio de progresso;
 - testar `prefers-reduced-motion`;
 - verificar ausencia de chamadas de rede e `localStorage`;
-- comparar visualmente com o node `387:1020`.
+- comparar visualmente o questionario com `387:1020` e a pagina de resultado
+  com `387:1362`.
 
 ## Estrategia visual e responsiva
 
@@ -472,10 +482,10 @@ substituidos apenas por verificacao manual.
 Usar fluxo normal, Flexbox e Grid. Nao copiar coordenadas absolutas ou classes
 Tailwind produzidas pelo Figma.
 
-## Tokens e estados a confirmar
+## Tokens e estados consolidados
 
-O plano detalhado deve reconciliar Figma Design, Figma Make e tokens locais
-para:
+O plano detalhado reconciliou Figma Design, a consulta ao Figma Make e os
+tokens locais para:
 
 - cores de fundo, texto, borda, progresso e selecao;
 - tipografia Inter, pesos, tamanhos e alturas de linha;

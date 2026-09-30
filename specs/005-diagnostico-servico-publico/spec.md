@@ -45,13 +45,21 @@ A funcionalidade deve seguir:
 ### Figma Design
 
 - Arquivo: `YaVUdqYa3boHpvGrxf4ZJ5`.
-- Frame principal: `387:1020` (`diagnostico`).
-- Rota associada: `/diagnostico`.
+- Frame do questionario: `387:1020` (`diagnostico`), associado a
+  `/diagnostico`.
+- Frame da resposta: `387:1362` (`resposta`), associado a
+  `/diagnostico/resultado`.
 - Mapeamento: `docs/design-system/mapa-figma-telas.md`.
 
-O frame orienta composicao, hierarquia, card do diagnostico, navegacao entre
-perguntas e comportamento visual. Antes da implementacao definitiva, o node
-deve ser consultado novamente conforme a constitution.
+Os frames orientam composicao, hierarquia, cards, navegacao e comportamento
+visual das duas rotas. O frame `387:1362` define para o resultado: eyebrow
+`DIAGNÓSTICO INTERATIVO`, titulo `Resultado das respostas`, ilustracao a
+esquerda, card de orientacao a direita, acoes no card e navegacao inferior.
+
+O resultado `Pode ser uma etapa de outro serviço` apresentado no frame e uma
+amostra visual. A descricao do prototipo esta desatualizada e nao substitui o
+texto aprovado em `src/content/diagnostico/respostas.ts`. O mesmo componente
+deve acomodar os cinco resultados sem alterar sua semantica ou duplicar copy.
 
 ### Figma Make
 
@@ -290,6 +298,10 @@ atendimento com nossa equipe.`
 ### Comportamento da tela de resultado
 
 - Exibir exatamente um resultado por execucao.
+- Seguir a composicao do frame `387:1362`, com titulo da pagina, ilustracao,
+  card de resultado e navegacao inferior responsiva.
+- Exibir no card um indicador informativo, o titulo e a descricao obtidos de
+  `respostasDiagnosticoPorId`.
 - Nao exibir a matriz de respostas, pontuacao ou regras internas.
 - Nao afirmar que uma classificacao inconclusiva e definitiva.
 - Permitir recomecar o diagnostico.
@@ -297,6 +309,17 @@ atendimento com nossa equipe.`
   proximo passo do fluxo sem publicar ou persistir dados automaticamente.
 - Para `analisar-melhor`, reutilizar o fluxo `/ajuda`; nao criar uma nova area
   de materiais complementares, pois ela esta fora do MVP.
+- Manter `Refazer diagnóstico` em todos os resultados. A acao primaria e o CTA
+  inferior devem ser condicionais ao resultado: servico publico e autosservico
+  podem seguir para `/organizar-informacoes`; casos que exigem analise podem
+  seguir para `/ajuda`; etapa e processo interno nao devem avancar
+  automaticamente para a elaboracao.
+- Exibir `Consultar ajuda` no card de etapa, processo interno e analise
+  adicional. Exibir `Organizar informações` somente na navegacao inferior de
+  servico publico e autosservico. Manter `Voltar para página inicial` na
+  navegacao inferior de todos os resultados.
+- Nao reproduzir de forma fixa `Consultar FAQ de Serviços` nem `Organizar
+  informações` apenas porque aparecem no estado de amostra do Figma.
 
 ## Estado e persistencia
 
@@ -313,6 +336,8 @@ atendimento com nossa equipe.`
 
 - `src/content/diagnostico/perguntas.ts`: apresentacao e perguntas.
 - `src/content/diagnostico/respostas.ts`: textos dos resultados.
+- `src/content/diagnostico/acoes.ts`: rotulos, destinos e posicao das acoes de
+  cada resultado.
 - `src/content/diagnostico/condicoes.ts`: tipos de resposta e motor de decisao.
 - Componentes visuais nao devem duplicar esses textos ou reimplementar as
   regras com condicionais locais.
@@ -372,7 +397,7 @@ atendimento com nossa equipe.`
   classificados.
 - Feature `013-fluxo-de-ajuda`: encaminhamento de casos inconclusivos.
 - `src/app/routes.tsx`: rotas `/diagnostico` e `/diagnostico/resultado`.
-- Frame Figma `387:1020` e design system do Figma Make.
+- Frames Figma `387:1020` e `387:1362`, alem do design system do Figma Make.
 
 ## Riscos e decisoes registradas
 
@@ -414,6 +439,8 @@ explicita retorna `Precisamos analisar melhor`.
 - Combinacoes nao reconhecidas retornam `analisar-melhor`.
 - A tela `/diagnostico/resultado` exibe somente o texto associado ao ID
   retornado.
+- A tela de resultado preserva a hierarquia e a composicao do frame `387:1362`
+  e acomoda os cinco textos versionados sem corte ou sobreposicao.
 - As regras internas nao aparecem no HTML nem em mensagens para o usuario.
 - Acesso direto ao resultado sem respostas nao inventa uma classificacao.
 - As respostas nao sao enviadas a backend nem persistidas permanentemente.

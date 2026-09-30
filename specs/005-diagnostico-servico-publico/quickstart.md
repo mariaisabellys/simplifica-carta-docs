@@ -10,16 +10,16 @@ Verificar o questionario em `/diagnostico`, o motor de decisao e a pagina
 - `spec.md`, `plan.md`, `tasks.md` e `implementation-plan.md` presentes;
 - perguntas, respostas e regras iniciais versionadas em
   `src/content/diagnostico/`;
-- Figma Design `387:1020` consultado com screenshot;
-- leitura detalhada dos recursos internos do Figma Make ainda deve ser
-  concluida antes da implementacao visual definitiva.
+- Figma Design `387:1020` e `387:1362` consultados com screenshots;
+- tokens e estados reconciliados com a consulta ao Figma Make, os frames de
+  alta fidelidade e os tokens locais.
 
 ## Pre-condicoes
 
 - feature 002 implementada ou contratos reais de shell e navegacao novamente
   conferidos;
 - spec 005 validada sem bloqueios;
-- recursos do Figma Make reconsultados ou fornecidos por exportacao;
+- decisoes consolidadas de tokens e estados aplicadas;
 - assets oficiais salvos localmente e sem URLs temporarias;
 - dependencias instaladas;
 - infraestrutura de testes configurada com script `npm run test`.
@@ -30,11 +30,16 @@ Verificar o questionario em `/diagnostico`, o motor de decisao e a pagina
   `src/content/diagnostico/perguntas.ts`;
 - textos dos cinco resultados:
   `src/content/diagnostico/respostas.ts`;
+- matriz de acoes dos resultados:
+  `src/content/diagnostico/acoes.ts`;
 - regras condicionais:
   `src/content/diagnostico/condicoes.ts`.
 
 Componentes visuais nao podem duplicar esses textos nem implementar uma segunda
 arvore de decisao.
+
+Na pagina de resultado, o texto de `respostas.ts` prevalece sobre a descricao
+antiga exibida no estado de amostra do node `387:1362`.
 
 ## Comandos tecnicos
 
@@ -165,6 +170,10 @@ resultado e `Precisamos analisar melhor`.
 
 Para cada um dos cinco IDs:
 
+- confirmar eyebrow `DIAGNÓSTICO INTERATIVO` e titulo `Resultado das
+  respostas`;
+- confirmar ilustracao a esquerda e card a direita no desktop, conforme o node
+  `387:1362`;
 - conferir titulo e descricao contra `respostas.ts`;
 - confirmar ausencia das oito respostas, regras, pesos ou pontuacao;
 - confirmar foco inicial no titulo da orientacao;
@@ -174,6 +183,23 @@ Para cada um dos cinco IDs:
 - confirmar que analise adicional pode seguir para `/ajuda`;
 - confirmar que etapa e processo interno nao abrem o formulario
   automaticamente.
+- confirmar que o card cresce com a copy e que acoes se empilham sem corte em
+  telas estreitas;
+- confirmar que `Consultar FAQ de Serviços` e `Organizar informações` nao sao
+  exibidos indiscriminadamente para todos os resultados.
+
+Matriz esperada:
+
+| Resultado | Acao do card | Proximo passo inferior |
+| --- | --- | --- |
+| Etapa de outro servico | `Consultar ajuda` → `/ajuda` | ausente |
+| Processo interno | `Consultar ajuda` → `/ajuda` | ausente |
+| Servico publico | ausente | `Organizar informações` → `/organizar-informacoes` |
+| Autosservico | ausente | `Organizar informações` → `/organizar-informacoes` |
+| Analisar melhor | `Consultar ajuda` → `/ajuda` | ausente |
+
+`Refazer diagnóstico` permanece no card e `Voltar para página inicial`
+permanece na navegacao inferior em todos os resultados.
 
 ## Sessao e acesso direto
 
@@ -236,7 +262,8 @@ Comparar a versao desktop com:
 
 ```txt
 fileKey: YaVUdqYa3boHpvGrxf4ZJ5
-nodeId: 387:1020
+questionNodeId: 387:1020
+resultNodeId: 387:1362
 ```
 
 Confirmar:
@@ -252,6 +279,8 @@ Confirmar:
 - ausencia intencional de `Material de apoio`;
 - navegacao condicional no lugar do CTA antecipado do prototipo;
 - correspondencia de cada asset local com node, slot e geometria.
+- na resposta, correspondencia da ilustracao, indicador, card e acoes com o
+  node `387:1362`, preservadas as divergencias de conteudo documentadas.
 
 ## Resultado esperado
 
