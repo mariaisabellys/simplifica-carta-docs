@@ -1,0 +1,348 @@
+# Plan: Formulario da Carta de Servicos
+
+## Objetivo e status
+
+Substituir o placeholder de `/formulario-carta` por formulario dividido em
+cinco partes, com dados editaveis e listas, conteudo versionado e uma unica
+Carta temporaria compartilhada entre rotas. Preservar preenchimento parcial,
+permitir revisao sem bloqueio e preparar contratos para 008–012.
+
+Este plano e base para `/spec:tarefas`, sem implementar codigo ou estilos.
+Antes de `/spec:implementar`, criar tarefas e `implementation-plan.md`,
+conciliar pendencias documentais/editoriais e consultar Figma via MCP.
+
+## Fontes e limites
+
+- Spec 007 atual; specs 006 e 008–016 e plano da 006.
+- README, manual textual de requisitos, documentos de produto e arquitetura
+  consultados na criacao das specs.
+- Constitution, regras de IA, prompts padroes e `docs/implementation-plan.md`.
+- Mapa Figma, tokens/componentes e contratos planejados de shell nas features
+  002 e 003.
+- App, rotas, paginas placeholder, FormField, ButtonLink, tipos/schema,
+  storage, validacao, CSV e helpers locais da Carta; `package.json`.
+
+Nao houve consulta direta ao Figma ou leitura do PDF do ERS nesta etapa.
+Os contratos abaixo sao propostas tecnicas locais, sem homologacao externa.
+Conferir ERS e referencias visuais no plano detalhado antes do codigo.
+
+## Estado atual e divergencias
+
+- React 19, TypeScript, Vite e CSS global com tokens; Inter definida.
+- Rota existente com specId 007 e node `811:306`; pagina apenas informativa.
+- App troca componentes por rota e nao possui estado compartilhado da Carta.
+- Storage usa chave `simplifica-carta:sessao`, leitura fora do try/catch e
+  mesclagem superficial de JSON com modelo inicial; escrita tambem pode falhar.
+- Modelo nao possui nome popular, como agendar, IDs de itens ou agendamento
+  nao informado. O default `false` pode ser confundido com resposta.
+- FormField associa label, mas ainda nao oferece contrato de erros e IDs de
+  ajuda. ButtonLink usa link comum, potencialmente recarregando a aplicacao.
+- Cinco obrigatorios iniciais existem no schema; helper de linguagem simples
+  e CSV sao fundacao, sem entrega completa das features consumidoras.
+- Nao ha framework de testes configurado.
+
+A spec 007 atual diz que a elaboracao sucede o diagnostico; `docs/produto/fluxos.md`
+e a 006 incluem organizacao entre diagnostico e formulario. Preservar os acessos
+independentes e a entrada da 006; registrar a conciliacao da descricao da jornada
+em `/spec:validar`, sem alterar a spec silenciosamente.
+
+A nota historica da spec sobre ausencia das pastas 008–011, 013 e 016 descreve
+seu momento de criacao; essas specs agora existem, mas nao estao implementadas.
+A 012 foi alinhada nesta revisao com campos estruturados e condicoes de
+agendamento; implementacao e verificacao conjunta dos consumidores permanecem
+pendentes.
+
+## Abordagem
+
+### 1. Fonte unica acima das rotas
+
+Criar `CartaSessionProvider` e `useCartaSession` em `src/features/carta/`,
+montados em App acima do componente da rota, mantendo a instancia durante
+navegacao. Usar reducer ou atualizacoes funcionais para operar texto e listas
+sem mutacao e sem sobrescrever alteracoes concorrentes de controles.
+
+Contrato de sessao proposto:
+
+- `carta`: valores atuais;
+- operacoes tipadas de atualizacao de campo, adicao/edicao/remocao de item e
+  movimento de etapa;
+- estado de recuperacao e armazenamento: normal, recuperacao parcial,
+  recuperacao impossivel ou memoria apenas;
+- acesso a estado atual pelos consumidores, sem copia editavel por pagina.
+
+Evitar setter generico com path arbitrario. As operacoes precisam respeitar
+tipos e IDs e permitir testes isolados. UI de parte ativa, painel de ajuda e
+foco e estado de apresentacao, separado dos dados da Carta.
+
+### 2. Modelo de edicao compartilhado
+
+Evoluir `CartaServico` para representar preenchimento parcial, sem defaults
+que aparentem resposta confirmada. Contrato proposto:
+
+```ts
+type DocumentoServico = {
+  id: string;
+  nome: string;
+  obrigatorio: boolean | null;
+};
+
+type EtapaServico = {
+  id: string;
+  ordem: number;
+  descricao: string;
+};
+
+type CanalAtendimento = {
+  id: string;
+  tipo: "online" | "presencial" | "telefone" | "email" | "outro" | null;
+  descricao: string;
+};
+
+// Acrescimos ao modelo existente:
+// identificacao.nomePopular: string
+// atendimento.exigeAgendamento: boolean | null
+// atendimento.orientacaoAgendamento: string (opcional, somente com Sim)
+// atendimento.tiposAgendamento: ("online" | "presencial")[]
+// atendimento.sistemaAgendamento: "paraiba-digital" | "externo" | null
+// atendimento.linkAgendamento: string
+// atendimento.exibicaoAgendamento: "dentro-paraiba-digital" | "nova-pagina" | null
+```
+
+Campos textuais iniciam com string vazia; nome popular e informacoes adicionais
+continuam opcionais. Listas iniciam vazias; itens novos recebem ID estavel,
+texto vazio e escolha nao informada onde aplicavel. IDs sao metadados de edicao,
+persistidos na sessao para identidade e nunca exibidos/copíados/exportados.
+
+Agendamento: `null` = nao informado, `true` = Sim e `false` = Nao explicitamente escolhido.
+
+Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
+agendamento (Online, Presencial ou ambos) e Sistema de agendamento (Paraiba Digital ou
+Outro sistema ou site) sao obrigatorios nesse estado. Link do agendamento e Como o
+agendamento sera exibido? sao obrigatorios e visiveis somente para Outro sistema ou
+site. Dentro do Paraiba Digital mantem o cidadao na experiencia; Em uma nova pagina
+redireciona para a URL externa. Paraiba Digital identifica agendamento pelo proprio
+sistema, sem link ou forma de exibicao externa.
+
+Contrato compartilhado da 007: `atendimento.tiposAgendamento: ("online" |
+"presencial")[]`, `sistemaAgendamento: "paraiba-digital" | "externo" | null`,
+`linkAgendamento: string` e `exibicaoAgendamento: "dentro-paraiba-digital" |
+"nova-pagina" | null`. Valores iniciais: [], null, "" e null. Nao confundir tipo de
+agendamento com `atendimento.canais`. `orientacaoAgendamento` permanece texto
+complementar opcional quando Sim; nao substitui esses campos estruturados.
+
+Ao mudar para Nao/nao informado ou de Outro sistema ou site para Paraiba Digital,
+preservar valores previamente preenchidos na mesma sessao, conforme o padrao da 007, sem
+apagar silenciosamente. Valores inativos nao sao exibidos, validados como obrigatorios
+nem transferidos como configuracao ativa; ao retornar a condicao correspondente, ficam
+disponiveis para revisao.
+
+Classificacao de documento e tipo de canal admitem null durante edicao. Itens
+parciais permanecem no modelo para evitar perda de texto. Consumidores devem
+omitir somente itens totalmente vazios e representar atributos nao informados
+sem inventar opcionalidade, tipo ou valores.
+
+Etapas: array define sequencia de edicao; apos adicao, remocao ou movimento,
+normalizar `ordem` para 1..N, preservando IDs e descricoes. Na migracao de lista
+legada, respeitar ordem numerica valida de forma estavel e documentar fallback
+para ordens ausentes/duplicadas antes de renumerar.
+
+### 3. Sessao versionada e recuperacao
+
+Manter a chave atual, com envelope proposto `{ version: 2, carta }`, aceitando
+formato legado sem envelope. Versao 2 marca explicitamente a nova semantica
+de agendamento; nao deduzir origem apenas da presenca de campos adicionais.
+
+- Proteger acesso, leitura, parse e escrita ao sessionStorage separadamente.
+- Recuperar uma vez na inicializacao do provider; criar objetos/arrays novos
+  pelo factory inicial, sem compartilhar referencia mutavel do schema.
+- Validar objetos por propriedade e listas por item; aceitar somente tipos
+  esperados e tipos de canal conhecidos. Ignorar propriedades desconhecidas,
+  sem espalhar JSON arbitrario no estado.
+- Preservar strings validas exatamente, sem trim editorial; trim so participa
+  da verificacao de preenchimento. Recuperar parcialmente dados seguros e
+  informar descartes de valores incompativeis, sem inventar valores.
+- Na sessao legada, preencher campos novos com vazio, criar IDs uma vez e
+  persistir no formato novo. `true` legado pode representar Sim; `false` legado
+  sem evidencia de escolha vira null conforme a spec. Versao 2 preserva false.
+- Tratar versao futura/desconhecida como incompatível, sem afirmar restauracao
+  bem-sucedida ou sobrescrever automaticamente o registro original.
+- Nao escrever modelo vazio antes de concluir hidratacao. Em recuperacao
+  impossivel, permitir edicao em memoria e definir substituicao do registro
+  apenas apos alteracao explicita do usuario, com aviso compreensivel.
+- Persistir alteracoes validas de estrutura, mesmo parciais, durante a sessao.
+  Se houver atraso de escrita, definir flush antes de recarga/navegacao e
+  testar perda de ultimas teclas; preferir estrategia simples sem debounce
+  inicialmente, medindo custo para textos/listas representativos.
+- Em falha de escrita ou quota, manter estado em memoria, informar limite e
+  nao anunciar salvamento. Nao recorrer a localStorage ou backend.
+
+Nao prometer recuperacao entre sessoes nem adicionar sincronizacao entre abas.
+Reentrar na pagina, abrir ajuda ou solicitar previa nao chama limpar sessao.
+
+### 4. Conteudo, partes e controles
+
+Criar `src/content/pages/formulario-carta.ts` com introducao, cinco partes,
+labels, orientacoes, exemplos, avisos de sessao e rotulos de acoes. Manter
+mensagens de validacao e regras em contrato separado compartilhado com 008.
+
+Compor identificacao, requisitos, etapas, atendimento e informacoes adicionais
+na ordem da spec. Proposta inicial: secoes acessiveis e indice de partes, sem
+gates; a consulta Figma definira exibicao simultanea ou uma parte por vez.
+Ambas precisam expor caminho para todos os campos sem validação bloqueadora.
+
+Usar input para nomes, textarea para textos extensos, radio/controle nativo
+para escolhas e editores de listas com botoes adicionar/remover. Movimento de
+etapa usa botoes subir/descer, com limites e anuncio do resultado. Todo botao
+de edicao usa `type="button"` e identifica o item afetado.
+
+Componentes provaveis: `CartaFormSection`, `DocumentosEditor`, `EtapasEditor`,
+`CanaisEditor`, `FieldGuidance` e resumo de pendencias. Extrair apenas repeticao
+ou responsabilidade real; nao criar componente por bloco decorativo.
+
+FormField deve oferecer IDs estaveis para label, hint e mensagens e contrato
+que permita ao controle receber `aria-describedby`, `aria-invalid` e
+obrigatoriedade. Nao adicionar invalidade por sugestao editorial. Listas usam
+ID estavel como key e para foco, nunca indice como identidade.
+
+### 5. Revisao e navegacao
+
+Manter os cinco obrigatorios gerais e regras condicionais de agendamento numa unica
+fonte com 008. Na revisao
+explicita, atualizar pendencias de todas as partes e oferecer acesso ao campo
+sem impedir navegacao para `/previa` com Carta parcial. Nao usar submit nativo
+bloqueador de required como unico fluxo de revisao; conciliar semantica de
+obrigatoriedade com validacao acessivel controlada.
+
+Definir com 008 mensagens tipadas por campo/item e regra. A 007 implementa
+slots de exibicao e orientacoes de campo; heuristicas de linguagem simples
+e catalogo editorial permanecem na 008. Nao duplicar o motor atual no JSX.
+
+Reutilizar navegacao interna da 002, com href real e preservacao de estado em
+memoria, modificadores e historico. Header/footer ficam no AppShell. Reutilizar
+Breadcrumb e links compartilhados ou prever integracao minima se ainda ausentes.
+Foco apos rota pertence ao shell; foco apos editar listas pertence ao editor.
+
+Propor contrato para retorno de pendencia: identificador estavel de campo,
+abertura da parte correspondente e foco no controle; detalhar uso de fragmento
+sem dados pessoais no plano de implementacao. Rotas nao carregam valores da Carta.
+
+### 6. Consumidores e mudancas compativeis
+
+| Consumidor | Contrato a conciliar |
+| --- | --- |
+| 008 | Cinco obrigatorios gerais e condicionais de agendamento, erros por campo/item e sugestoes sem mutacao |
+| 009 | null como Nao informado; listas parciais e configuracoes de agendamento somente quando ativas |
+| 010 | null vazio; nome popular, listas, tipos/sistema/link/exibicao de agendamento e orientacoes opcionais incluidos conforme estado ativo; campos externos somente para Outro sistema ou site; IDs excluidos |
+| 011/012 | Copiar somente valores informados; false somente quando explicito; incluir campos de agendamento ativos e orientacoes opcionais |
+| 006/013–015 | Navegacao preserva fonte unica sem ler/enviar Carta para renderizar ajuda |
+
+A mudanca `boolean | null` torna incorreto o ternario atual do CSV, que trata
+null como Nao. Na implementacao da 007, fazer adaptacao minima de consumidores
+existentes para manter tipos e semantica corretos, sem implementar downloads,
+previa ou copia completos. Registrar essas adaptacoes nas tarefas e verificar
+typecheck. A revisao documental da 012 deve anteceder sua implementacao; este
+plano nao altera a spec de copia silenciosamente.
+
+## Arquivos previstos
+
+| Arquivo | Intervencao |
+| --- | --- |
+| `src/pages/FormularioCartaPage.tsx` | Formulario e composicao de partes |
+| `src/features/carta/carta.types.ts` e `carta.schema.ts` | Modelo parcial, factory inicial e campos novos |
+| `src/features/carta/carta.storage.ts` | Envelope, leitura segura e migracao |
+| `src/features/carta/CartaSessionProvider.tsx` | Criar fonte unica e hook |
+| `src/features/carta/carta.reducer.ts` | Criar operacoes puras tipadas e listas |
+| `src/features/carta/carta.migration.ts` | Criar decoder/migracao com status de recuperacao |
+| `src/content/pages/formulario-carta.ts` | Criar conteudo editorial |
+| `src/components/forms/FormField.tsx` | Associacao de ajuda/erros e contrato de controle |
+| `src/components/forms/carta/` | Editores e partes conforme extracao justificada |
+| `src/app/App.tsx` | Montar provider e integrar navegacao compartilhada |
+| `src/features/carta/carta.validation.ts` e `carta.csv.ts` | Compatibilidade minima com modelo, em conciliacao com 008/010 |
+| `src/styles/globals.css` ou estilo de pagina adotado | Layout e estados confirmados |
+| `src/styles/tokens.css` | Somente tokens novos confirmados e necessarios |
+
+Rotas, ButtonLink, Breadcrumb e AppShell podem exigir integracao minima se os
+contratos da 002 ainda nao estiverem disponiveis. Nao duplicar shell ou roteador.
+Prever testes de reducer, migracao, storage e integracao; localizacao final e
+infraestrutura ficam definidas nas tarefas. Assets apenas apos inventario Figma.
+
+## Visual, responsividade e acessibilidade
+
+Consultar Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, nodes
+`811:306`, `811:382` e `651:317`, e identificar layout completo do formulario.
+Consultar Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Esses nodes sao
+referencias locais, nao consulta executada nesta etapa.
+
+No plano detalhado, registrar partes, campos, help panels, acoes, erros,
+assets, estados e adaptacao responsiva. Resolver campos/interacoes extras antes
+de implementar. Nao copiar coordenadas absolutas ou supor breakpoints oficiais.
+
+Usar Inter, tokens e controles com texto ampliavel; testar desde 320 px,
+teclado virtual, quebra de labels e listas extensas. Garantir ordem DOM,
+labels/fieldsets, foco visivel, contraste e anuncios de alteracoes/erros.
+Reutilizar requisitos da 016 sem aguardar sua implementacao para corrigir barreiras.
+
+## Estrategia de verificacao
+
+Esta etapa e documental: conferir RF01–RF08, CA01–CA24, caminhos citados,
+contratos e pendencias. Nenhum build ou teste de interface foi executado.
+
+Para implementacao, a complexidade de migracao e listas justifica testes
+automatizados de comportamento. Reutilizar infraestrutura existente; se
+continuar ausente, propor Vitest/Testing Library nas tarefas com decisao
+documentada, sem instalar dependencias nesta etapa.
+
+- Decoder: formato legado/v2, grupos ausentes, JSON invalido, null, tipos
+  incorretos, versao futura, strings com HTML/acentos e recuperacao parcial.
+- Sessao: get/set lancando erro, quota, nenhum overwrite antes de hidratacao,
+  factory sem referencias compartilhadas e persistencia dos ultimos valores.
+- Agendamento: false legado vira null; false v2 permanece Nao; Sim e texto
+  preservados; alternar resposta nao apaga orientacao.
+- Listas: IDs unicos/estaveis, remover sem alterar vizinhos, mover etapas e
+  renumerar, preservar itens parciais e dados apos recarga.
+- Integracao: montar provider, editar, visitar outra rota, voltar e recuperar
+  todos os grupos; reabrir formulario nao reinicializa fonte.
+- Revisao: obrigatorios apenas espacos, opcionais vazios, custo `0`, mensagens
+  atuais e previa parcial acessivel sem submit bloqueador.
+
+| Criterios | Evidencia de aceite futura |
+| --- | --- |
+| CA01–CA03 | Acesso direto/recarga/entradas, cobertura das partes e mudanca livre |
+| CA04–CA07 | Listas, reordenacao por teclado, agendamento e desconhecidos |
+| CA08–CA09 | Revisao, associacao de erros e sugestoes sem substituicao |
+| CA10–CA12 | Navegacao, storage valido/indisponivel e migracao legada |
+| CA13 | Consumidores reais usam mesma fonte e campos; pendente ate sua entrega |
+| CA14–CA16 | Teclado/leitor de tela, textos longos, markup como texto |
+| CA17–CA18 | Arquitetura, conteudo, consultas Figma e comunicacao |
+| CA19 | Nao oculta configuracoes e retira obrigatoriedade; valores anteriores preservados |
+| CA20 | Paraiba Digital registra fluxo nativo sem Link/Exibicao |
+| CA21–CA22 | Externo com URL e exibicao dentro/nova pagina, com significados distintos |
+| CA23 | Troca externo/nativo preserva valores na sessao/recarga, excluindo campos externos inativos de apresentacao e transferencia |
+| CA24 | Sim exige Online/Presencial/ambos e sistema; externo exige URL/exibicao; revisao condicional e previa parcial livre, com gate CSV da 008/010 |
+
+Executar typecheck/build e suite configurada apos implementar. Verificar
+1440, 1024, 768, 390 e 320 px, zoom de 200%, reflow e matriz de navegadores da
+spec. Comparar com frame confirmado. Validacao editorial/ERS e aceite integrado
+de consumidores ainda incompletos permanecem pendentes, sem falso resultado positivo.
+
+## Riscos e mitigacoes
+
+- Perda de dados ao desmontar pagina: provider acima das rotas e links internos.
+- Migracao ambigua: envelope versionado, null legado e aviso de recuperacao.
+- Sobrescrita precoce: hidratacao concluida antes de escrita e teste de storage.
+- Perda de identidade/foco: IDs estaveis e operacoes puras por item.
+- Dados parciais interpretados como completos: null nas escolhas e contrato
+  de consumidores sem inferencia de valores.
+- Ampliacao de escopo: apenas slots e contratos de 008–012 e adaptacoes minimas.
+- Referencia visual incompleta: localizar frame e confirmar composicao antes
+  de estilos ou assets.
+- Divergencia da jornada e copia: registrar e resolver em validacao documental.
+
+## Prontidao e proximo passo
+
+O plano define abordagem para `/spec:tarefas 007-formulario-carta-servico`.
+Antes da implementacao, consolidar Figma/ERS, textos e obrigatoriedade, divisao
+visual, comportamento de recuperacao, contratos de retorno/foco e revisao da
+012. Depois de tarefas, executar `/spec:plano-implementacao` e `/spec:validar`.
+Nenhuma alteracao de backend, publicacao externa ou persistencia permanente
+faz parte deste plano.

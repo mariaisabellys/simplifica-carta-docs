@@ -103,7 +103,9 @@ Criar `src/content/pages/o-que-e-carta.ts` para concentrar:
 - tres motivos de importancia;
 - texto de fundamentos;
 - dois beneficios por publico;
-- dez campos informativos na ordem oficial;
+- dez campos informativos na ordem oficial; nome popular opcional explicado
+  dentro do card Nome do servico, como identificacao complementar, sem
+  substituir o nome nem criar um novo card;
 - titulo e subtitulo da legislacao;
 - tres referencias normativas e respectivos links oficiais.
 

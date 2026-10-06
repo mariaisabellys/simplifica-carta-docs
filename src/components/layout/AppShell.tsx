@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { AppRoute } from "../../app/routes";
+import { shouldHandleInternalLink } from "../../lib/navigation";
 
 type AppShellProps = {
   children: ReactNode;
@@ -53,6 +54,7 @@ function handleNav(
   path: string,
   onNavigate: (path: string) => void,
 ) {
+  if (!shouldHandleInternalLink(event)) return;
   event.preventDefault();
   onNavigate(path);
 }

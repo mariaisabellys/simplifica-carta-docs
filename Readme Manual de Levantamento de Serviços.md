@@ -58,7 +58,7 @@ O MVP será considerado concluído quando o usuário conseguir percorrer o fluxo
 - Permitir a navegação entre seções do manual por meio de cards, botões de ação, menu principal e breadcrumb.
 - Auxiliar o usuário na identificação de um serviço público, diferenciando serviços de processos internos, programas, sistemas e outras atividades administrativas.
 - Disponibilizar critérios e perguntas de diagnóstico para validar se determinada atividade pode ser considerada um serviço público.
-- Orientar a organização das informações necessárias para cadastro da Carta de Serviços, como nome, descrição, público-alvo, documentação necessária, etapas, prazos, custos, agendamento, canais de atendimento e demais informações obrigatórias.
+- Orientar a organização das informações necessárias para cadastro da Carta de Serviços, como nome, nome popular opcional (denominação alternativa ou mais conhecida pelo cidadão, complementar ao nome do serviço, sem substituí-lo), descrição, público-alvo, documentação necessária, etapas, prazos, custos, agendamento, canais de atendimento e demais informações obrigatórias.
 - Disponibilizar formulário para preenchimento das informações da Carta de Serviços durante a navegação pelo manual.
 - Exibir prévia dinâmica em HTML com as informações preenchidas pelo usuário.
 - Permitir a exportação das informações preenchidas em arquivo CSV.

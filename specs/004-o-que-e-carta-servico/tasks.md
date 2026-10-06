@@ -216,6 +216,10 @@
 
 - [ ] **T024 — Implementar a secao dos campos da Carta**
   - Renderizar titulo, orientacao e exatamente dez cards a partir do array.
+  - Conciliar a descricao do card Nome do servico com 006/007: incluir nome
+    popular opcional como identificacao complementar, sem substituir o nome
+    nem criar outro card. A atualizacao editorial permanece pendente; T012
+    concluida nao comprova essa revisao posterior.
   - Usar lista ou estrutura semanticamente equivalente.
   - Preservar a ordem do DOM independentemente do numero de colunas.
   - Dependencias: T012, T020, T023.
