@@ -161,7 +161,8 @@ observadas no frame oficial.
 - Exibir a orientacao `Cada um desses campos deve ser preenchido de forma
   objetiva.`.
 - Apresentar exatamente dez cards informativos, nesta ordem de leitura:
-  1. `Nome do servico` — identificacao direta e objetiva do servico;
+  1. `Nome do servico` — identificacao direta e objetiva do servico, com nome popular opcional, quando houver,
+     como denominacao alternativa ou mais conhecida pelo cidadao, sem substituir o nome do servico;
   2. `O que e` — descricao simplificada do servico oferecido;
   3. `Quem pode utilizar` — publico com direito ou necessidade de uso;
   4. `Documentos necessarios` — o que o cidadao precisa apresentar;
@@ -169,7 +170,8 @@ observadas no frame oficial.
   6. `Prazo` — tempo estimado para conclusao;
   7. `Custos` — valores, taxas ou gratuidade;
   8. `Canais de atendimento` — formas de acessar o servico;
-  9. `Agendamento` — se e necessario agendar e como;
+  9. `Agendamento` — se e necessario agendar, tipo (Online, Presencial ou ambos),
+  sistema e, somente para sistema externo, link e forma de exibicao;
   10. `Informacoes adicionais` — outras orientacoes relevantes.
 - Cada card deve possuir icone, titulo e descricao, sem depender somente do
   icone ou da cor para comunicar sua finalidade.

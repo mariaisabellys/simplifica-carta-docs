@@ -319,7 +319,7 @@ associados separadamente pelos identificadores, sem misturar assets com copy.
 
 ```ts
 export const serviceInformationFields = [
-  { id: "name", title: "Nome do serviço", description: "Identificação direta e objetiva do serviço." },
+  { id: "name", title: "Nome do serviço", description: "Identificação direta e objetiva do serviço. O nome popular, quando houver, é um nome alternativo ou mais conhecido pelo cidadão; complementa o nome do serviço sem substituí-lo." },
   { id: "description", title: "O que é", description: "Descrição simplificada do serviço oferecido." },
   { id: "audience", title: "Quem pode utilizar", description: "Público com direito ou necessidade de uso." },
   { id: "documents", title: "Documentos necessários", description: "Tudo que o cidadão precisa apresentar." },
@@ -327,7 +327,7 @@ export const serviceInformationFields = [
   { id: "deadline", title: "Prazo", description: "Tempo estimado para conclusão." },
   { id: "costs", title: "Custos", description: "Valores, taxas ou gratuidade." },
   { id: "channels", title: "Canais de atendimento", description: "Formas de acessar o serviço." },
-  { id: "scheduling", title: "Agendamento", description: "Se é necessário agendar e como." },
+  { id: "scheduling", title: "Agendamento", description: "Se é necessário agendar; tipo e sistema de agendamento; link e forma de exibição somente para outro sistema ou site." },
   { id: "additional-information", title: "Informações Adicionais", description: "Outras orientações relevantes." },
 ] as const satisfies readonly ServiceInformationField[];
 

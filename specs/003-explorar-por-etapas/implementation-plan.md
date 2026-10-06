@@ -401,14 +401,14 @@ semantica em algumas combinacoes de navegador e tecnologia assistiva.
 ```tsx
 import chevronBreadcrumb from "../../assets/explorar-por-etapas/chevron-breadcrumb.svg";
 import type { BreadcrumbItem } from "../../types/explorar";
-import { useNavigation } from "../../app/NavigationContext";
+import { useAppNavigate } from "../../app/NavigationContext";
 
 type BreadcrumbProps = {
   items: readonly BreadcrumbItem[];
 };
 
 export function Breadcrumb({ items }: BreadcrumbProps) {
-  const { navigate } = useNavigation();
+  const navigate = useAppNavigate();
 
   return (
     <nav className="breadcrumb" aria-label="Navegacao estrutural">
@@ -421,8 +421,15 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
                 <a
                   href={item.href}
                   onClick={(event) => {
+                    if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
+                        event.ctrlKey || event.shiftKey || event.altKey ||
+                        event.currentTarget.hasAttribute("download") ||
+                        (event.currentTarget.target && event.currentTarget.target !== "_self")) return;
+                    const destination = new URL(item.href!, window.location.href);
+                    if (destination.origin !== window.location.origin ||
+                        !["http:", "https:"].includes(destination.protocol)) return;
                     event.preventDefault();
-                    navigate(item.href!);
+                    navigate(destination.pathname + destination.search + destination.hash);
                   }}
                 >
                   {item.label}
