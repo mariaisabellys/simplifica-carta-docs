@@ -1,5 +1,8 @@
 # Spec: Diagnostico de Servico Publico
 
+> **Fonte única de navegação — 16 de outubro de 2026:** não criar router ou
+> contexto local; usar `docs/arquitetura/contrato-navegacao.md`.
+
 ## Objetivo
 
 Especificar o diagnostico interativo que ajuda o usuario a avaliar se uma

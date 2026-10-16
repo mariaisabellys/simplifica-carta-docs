@@ -1,5 +1,9 @@
 # Spec: Home e Navegacao
 
+> **Fonte única de navegação — 16 de outubro de 2026:** aplicar
+> `docs/arquitetura/contrato-navegacao.md`. A 002 é dona do shell visual; o
+> provider compartilhado é infraestrutura transversal.
+
 ## Objetivo
 
 Especificar a pagina inicial e a navegacao principal do Simplifica Carta,

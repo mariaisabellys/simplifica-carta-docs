@@ -1,5 +1,8 @@
 # Plan: Home e Navegacao
 
+> **Contrato consolidado — 16 de outubro de 2026:** shell, links, localização,
+> foco e histórico seguem `docs/arquitetura/contrato-navegacao.md`.
+
 ## Objetivo tecnico
 
 Substituir a home placeholder por uma pagina responsiva baseada no frame Figma

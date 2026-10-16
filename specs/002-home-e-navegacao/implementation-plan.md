@@ -1,5 +1,8 @@
 # Implementation Plan: Home e Navegacao
 
+> **Plano de navegação parcialmente superado:** exemplos locais devem ser
+> substituídos pelo contrato de `docs/arquitetura/contrato-navegacao.md`.
+
 ## Status
 
 Validado documentalmente em 24 de setembro de 2026 e revisado em 25 de

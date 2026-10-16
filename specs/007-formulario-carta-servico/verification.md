@@ -23,7 +23,7 @@ anterior; componentes compartilhados ainda nao foram entregues.
 | V007-01 | Matrizes PLAN/IMPLEMENTATION-PLAN completadas com CA19–CA24: sem agendamento, fluxo nativo, externo dentro/fora, troca e obrigatoriedade condicional. Plano detalhado vincula T018/T019/T022–T025. |
 | V007-02 | Removida quebra entre CA18 e CA19 na tabela SPEC, preservando IDs e textos. |
 | V007-03 | Resumo do consumidor 010 atualizado com tipos/sistema/link/exibicao, orientacao opcional e exclusao de campos externos inativos. |
-| P007-02 | Referencia do plano detalhado atualizada para useAppNavigate unico, conforme exemplo 003 alinhado na rodada 006. Entrega/teste do contexto e links reais permanecem pendentes. |
+| P007-02 | Contrato documental consolidado em `docs/arquitetura/contrato-navegacao.md`; entrega e testes do provider, localização, links, histórico e foco permanecem pendentes. |
 | P007-03 | Algoritmo separa listas de objetos de tiposAgendamento, lista de enums; preserva modalidades seguras, distingue ausencia esperada em v2 anterior de dado invalido e exige recuperacao parcial sem sobrescrita inicial. T009/T023 incluem esses casos. |
 | P007-07 | SPEC esclarece jornada diagnostico > organizacao > formulario, mantendo acesso independente sem gate. Ambientes continuam pendentes. |
 

@@ -1,5 +1,8 @@
 # Tasks: Home e Navegacao
 
+> **Contrato consolidado:** não implementar handlers locais em navbar,
+> breadcrumb ou botões; consumir a navegação compartilhada documentada.
+
 ## Convencoes
 
 - As tarefas devem ser executadas na ordem das dependencias indicadas.

@@ -1,5 +1,8 @@
 # Plan: Diagnostico de Servico Publico
 
+> **Contrato consolidado:** o diagnóstico consome a navegação compartilhada e
+> controla apenas pergunta/resposta; não extrai contexto próprio do `App`.
+
 ## Objetivo tecnico
 
 Transformar os placeholders de `/diagnostico` e `/diagnostico/resultado` em um

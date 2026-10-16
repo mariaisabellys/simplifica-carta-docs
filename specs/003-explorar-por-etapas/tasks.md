@@ -1,5 +1,8 @@
 # Tasks: Explorar por Etapas
 
+> **Contrato consolidado:** a 003 registra sua rota e conteúdo, mas não cria
+> infraestrutura de navegação própria.
+
 ## Convencoes
 
 - As tarefas devem ser executadas na ordem das dependencias indicadas.

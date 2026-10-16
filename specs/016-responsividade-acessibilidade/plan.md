@@ -1,5 +1,8 @@
 # Plan: Responsividade e acessibilidade
 
+> **Contrato consolidado:** a 016 verifica, mas não redefine, a política de
+> título, foco, rolagem, fragmentos e histórico da navegação compartilhada.
+
 ## Objetivo e identificador
 
 Consolidar contratos compartilhados e verificar paginas e processos completos

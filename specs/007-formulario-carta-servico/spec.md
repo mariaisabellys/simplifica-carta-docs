@@ -1,5 +1,8 @@
 # Spec: Formulario da Carta de Servicos
 
+> **Navegação compartilhada:** partes, retorno, query/hash e preservação da
+> Carta devem respeitar `docs/arquitetura/contrato-navegacao.md`.
+
 > **Contrato oficial atualizado em 16 de outubro de 2026:** o conteúdo anterior
 > foi substituído. O modelo vigente está em `modelo-central-carta.md` e nos
 > contratos v3. Tabelas abaixo com paths ou campos incompatíveis são históricas.

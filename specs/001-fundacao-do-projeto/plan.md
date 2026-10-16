@@ -1,5 +1,8 @@
 # Plan: Fundacao do Projeto
 
+> **Baseline de navegação — 16 de outubro de 2026:** planejar a infraestrutura
+> conforme `docs/arquitetura/contrato-navegacao.md`; não alterar código nesta rodada.
+
 ## Abordagem
 
 Manter a fundacao documental ja criada e preparar a fundacao tecnica do projeto em duas etapas:

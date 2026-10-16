@@ -115,7 +115,7 @@ pendentes; revisao documental nao equivale a entrega funcional.
 | ERS/Figma | Confrontar PDF e consultar detalhadamente no Design/Make os seis frames agora mapeados. Frames de entrada/previa nao homologam o tutorial. |
 | Estado da conciliacao 012 | PLAN/T004 ainda listam revisoes ja efetuadas como trabalho a realizar, enquanto inventario e plano detalhado reconhecem atualizacao. Ajustar descricao para verificacao cruzada remanescente, sem marcar tarefa concluida ou reaplicar regras antigas. |
 | Contratos reais | Entregar provider/decoder da 007 e CartaCopyFields/seletores/labels da 012. Consolidar props fields e propriedade dos anchors, incluindo IDs ativos/missing e fallback de falha. |
-| Navegacao compartilhada | Conciliar useAppNavigate/useNavigation de 002/003. Fechar AppLink, query `etapa`, popstate e foco sem conflito com shell. |
+| Navegacao compartilhada | Contrato documental fechado em `docs/arquitetura/contrato-navegacao.md`. Implementar AppLink, query `etapa`, popstate e foco no shell e validar a integração. |
 | Conteudo e assets | Completar fontes/checkedAt/reviewedAt reais e inventario autorizado; mover copy ilustrativa do JSX para conteudo. Nao criar objetos de producao com fonte/data/href ficticios. |
 | Integracao/ambientes | Confirmar entradas 003/009 e ajuda, fallback SPA, clipboard/manual, imagens ausentes e tecnologia assistiva real. Registrar o que nao foi executado; placeholders nao comprovam jornada. |
 

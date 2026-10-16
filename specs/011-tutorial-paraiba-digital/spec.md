@@ -1,5 +1,8 @@
 # Spec: Tutorial Paraiba Digital
 
+> **Contrato de URL confirmado:** `?etapa=1..6`, histórico, foco e normalização
+> seguem `docs/arquitetura/contrato-navegacao.md`.
+
 > **Dependência atualizada em 16 de outubro de 2026:** a etapa 4 lê a Carta v3
 > da 007 por meio da projeção da 012; o tutorial não cria nem corrige dados.
 

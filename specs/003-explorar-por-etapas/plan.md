@@ -1,5 +1,8 @@
 # Plan: Explorar por Etapas
 
+> **Contrato consolidado — 16 de outubro de 2026:** usar somente o provider,
+> hook e links definidos em `docs/arquitetura/contrato-navegacao.md`.
+
 ## Objetivo tecnico
 
 Criar a pagina responsiva `/explorar-por-etapas` como um indice navegavel das

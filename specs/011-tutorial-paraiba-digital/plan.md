@@ -1,5 +1,8 @@
 # Plan: Tutorial Paraiba Digital
 
+> **Contrato de etapa consolidado:** ler e escrever `?etapa=1..6` exclusivamente
+> pela navegação compartilhada; não manter uma segunda etapa divergente da URL.
+
 > **Baseline v3 — 16 de outubro de 2026:** referências a dados da Carta devem
 > usar a projeção v3 da 012; campos v2 abaixo são históricos.
 

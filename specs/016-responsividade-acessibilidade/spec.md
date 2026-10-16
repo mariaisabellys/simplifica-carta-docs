@@ -1,5 +1,8 @@
 # Spec: Responsividade e acessibilidade
 
+> **Contrato transversal:** título, skip link, foco, rolagem, fragmentos e
+> histórico seguem `docs/arquitetura/contrato-navegacao.md`.
+
 ## Objetivo
 
 Consolidar e verificar responsividade e acessibilidade em todas as paginas e

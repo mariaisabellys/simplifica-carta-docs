@@ -31,6 +31,11 @@ Sans 3 nos frames do prototipo nao alteram essa decisao transversal.
 
 ## Rotas iniciais
 
+O contrato oficial de localização, histórico, links, query string, fragmentos,
+404, título, foco e rolagem está em
+[`contrato-navegacao.md`](contrato-navegacao.md). Nenhuma feature deve criar
+um contexto ou handler de navegação paralelo.
+
 O MVP deve prever rotas para:
 
 - inicio;

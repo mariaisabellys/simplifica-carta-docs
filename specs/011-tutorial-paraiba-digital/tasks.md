@@ -1,5 +1,8 @@
 # Tasks: Tutorial Paraiba Digital
 
+> **Contrato de etapa consolidado:** testes futuros devem cobrir query,
+> histórico, foco e parâmetros desconhecidos conforme o contrato arquitetural.
+
 > **Baseline v3 — 16 de outubro de 2026:** a etapa 4 consome a Carta v3 sem
 > manter estado editável próprio.
 
