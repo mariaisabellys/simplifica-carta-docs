@@ -1,5 +1,8 @@
 # Verificacao: Exportacao CSV
 
+> **Baseline atualizado em 16 de outubro de 2026:** o helper existe, mas a
+> exportação integrada da Carta v3 continua pendente.
+
 ## Resultado e escopo
 
 Rodada de `/spec:implementar 010-exportacao-csv` em 2026-10-05.

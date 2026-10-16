@@ -1,5 +1,9 @@
 # Spec: Formulario da Carta de Servicos
 
+> **Contrato oficial atualizado em 16 de outubro de 2026:** o conteúdo anterior
+> foi substituído. O modelo vigente está em `modelo-central-carta.md` e nos
+> contratos v3. Tabelas abaixo com paths ou campos incompatíveis são históricas.
+
 ## Objetivo
 
 Permitir que o servidor preencha e revise as informacoes da Carta de Servicos

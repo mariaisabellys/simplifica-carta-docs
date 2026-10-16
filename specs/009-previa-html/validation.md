@@ -1,5 +1,8 @@
 # Validacao: Previa HTML
 
+> **Histórico anterior ao modelo v3:** repetir a validação da projeção sobre a
+> Carta central da 007.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 009-previa-html` em 2026-10-05.

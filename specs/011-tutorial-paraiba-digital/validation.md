@@ -1,5 +1,8 @@
 # Validacao: Tutorial Paraiba Digital
 
+> **Baseline atualizado em 16 de outubro de 2026:** repetir a integração da
+> etapa 4 usando a projeção v3 da 012.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 011-tutorial-paraiba-digital` em 2026-10-05.

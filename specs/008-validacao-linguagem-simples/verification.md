@@ -1,5 +1,8 @@
 # Verificacao: Validacao e linguagem simples
 
+> **Baseline atualizado em 16 de outubro de 2026:** o aceite integrado continua
+> pendente sobre o modelo v3 da 007.
+
 ## Status
 
 Rodada de `/spec:implementar 008` em 2026-10-05.

@@ -1,5 +1,8 @@
 # Plan: Copia de dados no tutorial
 
+> **Baseline v3 — 16 de outubro de 2026:** seletores e formatadores devem ser
+> refeitos sobre o modelo central da 007; paths v2 abaixo são históricos.
+
 ## Objetivo e status
 
 Integrar campos de copia individual em `/tutorial-paraiba-digital`, usando
@@ -136,7 +139,7 @@ cards da etapa. A projecao visual segue `quickCopyFields` do conteudo da 011:
 | `required-documents` | `documentos` | Sim, `copyLabel` versionado |
 | `audience` | `publico-alvo` | Sim, `copyLabel` versionado |
 | `additional-information` | `adicionais` | Nao no conteudo atual |
-| `keywords` | Sem origem na 007 | Nao; nao inferir valor |
+| `keywords` | `informacoesFinais.palavrasChave` | Exibir o valor informado; nao inferir valor |
 | `scheduling` | Projecao informativa de agendamento | Nao no conteudo atual |
 | `cost` | `custos` | Nao no conteudo atual |
 | `service-deadline` | `prazo` | Sim, `copyLabel` versionado |

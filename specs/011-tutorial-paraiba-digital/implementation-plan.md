@@ -1,5 +1,8 @@
 # Implementation Plan: Tutorial Paraiba Digital
 
+> **Plano parcialmente superado:** mappings v2 da Carta devem ser substituídos
+> pela projeção v3 da 012.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao

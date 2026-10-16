@@ -48,10 +48,10 @@ O contrato oficial possui:
 - estado temporario isolado, caso a implementacao restaure marcacoes na mesma
   sessao, sem ler, alterar ou limpar os dados da Carta.
 
-Os 13 itens nao equivalem automaticamente aos campos do schema atual. A
-feature e editorial e preparatoria; categoria, palavras-chave, recorrencia e
-demais conceitos novos devem ser conciliados com a feature 007 sem ampliar seu
-modelo silenciosamente.
+Os 13 itens nao equivalem automaticamente aos campos do modelo central.
+Categoria e palavras-chave integram a Carta v3 da feature 007. Recorrencia
+permanece apenas como orientacao preparatoria da 006 e nao e campo da Carta;
+nenhum item amplia o modelo central por inferencia.
 
 ## Problema e contexto
 

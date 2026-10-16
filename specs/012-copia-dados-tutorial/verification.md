@@ -1,5 +1,8 @@
 # Verificacao: Copia de dados no tutorial
 
+> **Baseline atualizado em 16 de outubro de 2026:** utilitário de clipboard
+> permanece válido; a projeção integrada v3 continua pendente.
+
 ## Resultado e escopo
 
 Implementacao parcial em 2026-10-05, solicitada por
@@ -66,8 +69,9 @@ colagem, selecao manual ou acessibilidade em browser/dispositivo real.
   deve aparecer nas demais etapas.
 - `tutorialParaibaDigitalContent.steps[3]` governa dez blocos, ordem, labels,
   introducao, edicao e CTAs. Somente seis blocos com `copyLabel` sao copiaveis.
-- O contrato interno de 17 campos nao cria 17 cards. `keywords` permanece sem
-  origem na 007 e nao recebe valor ou copia inferidos.
+- O contrato interno nao cria cards adicionais. `keywords` passa a usar
+  exclusivamente `informacoesFinais.palavrasChave`; permanece proibido inferir
+  esse valor a partir de outros campos.
 - Ao sair da etapa 4, controles, timers e feedback transitório desmontam;
   callbacks tardios sao ignorados e a Carta continua preservada no provider.
 

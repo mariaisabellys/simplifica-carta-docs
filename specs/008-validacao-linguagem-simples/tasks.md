@@ -1,5 +1,8 @@
 # Tasks: Validacao e linguagem simples
 
+> **Baseline v3 — 16 de outubro de 2026:** executar tarefas somente contra o
+> modelo central da 007; não reintroduzir campos removidos.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 008; executar conforme dependencias indicadas.

@@ -1,0 +1,59 @@
+# Modelo central da Carta de Serviço — versão 3
+
+## Fonte oficial
+
+Decisão registrada em 16 de outubro de 2026. O conteúdo oficial da feature 007
+é `src/content/pages/formulario-carta.ts`; catálogos e relações condicionais
+ficam em `src/features/carta/carta.catalogs.ts`; o contrato persistido fica em
+`src/features/carta/carta.types.ts` e seu estado inicial em `carta.schema.ts`.
+
+Este documento prevalece sobre tabelas históricas incompatíveis nos artefatos
+006–012. Nenhuma feature consumidora deve manter uma segunda representação
+editável da Carta.
+
+## Cinco partes e campos
+
+1. **Sobre o serviço:** nome, nome popular, descrição de até 20 palavras,
+   categoria, subcategoria condicionada à categoria, tópico e estado ativo.
+2. **Público e requisitos:** até dois públicos específicos, um ou mais perfis,
+   quem pode utilizar, documentos, custo de escolha única e prazo estruturado.
+3. **Como o serviço funciona:** etapas ordenadas com ID, título, orientação ao
+   cidadão e modalidade.
+4. **Atendimento:** resposta explícita sobre agendamento e, quando aplicável,
+   tipos, sistema e dados condicionais do sistema externo.
+5. **Informações finais:** informações adicionais e palavras-chave.
+
+## Regras estruturais
+
+- Descrição: no máximo 20 palavras. A contagem considera tokens alfanuméricos,
+  inclusive compostos por hífen ou apóstrofo.
+- Categoria e subcategoria: valores fechados; trocar categoria invalida a
+  subcategoria que não pertença ao novo catálogo.
+- Público específico: zero a dois entre Servidor, Cidadão e Empresa.
+- Perfil do usuário: múltipla escolha com pelo menos um valor.
+- Custos: `gratuito`, `sob-consulta` ou `com-taxa`, nunca combinações. Detalhe
+  obrigatório para consulta ou taxa.
+- Prazo: valor máximo e unidade do catálogo oficial.
+- Agendamento: `null` significa não informado. Tipos e sistema só são
+  aplicáveis com `true`; link e exibição só são aplicáveis ao sistema externo.
+  Valores condicionais podem ser preservados na sessão, mas consumidores não
+  os apresentam nem transferem quando estiverem inativos.
+- Documentos e etapas possuem IDs estáveis; IDs não são exportados nem exibidos.
+- Palavras-chave têm origem direta na parte 5 e não podem ser inferidas.
+- Recorrência e canais genéricos não integram a versão 3 da Carta.
+
+## Consumidores
+
+- 008 valida o mesmo modelo e não cria campos.
+- 009 apresenta apenas valores aplicáveis e informados.
+- 010 exporta o snapshot da versão 3, omitindo dados condicionais inativos.
+- 011 apenas orienta a transferência.
+- 012 projeta valores da versão 3 na etapa 4 da 011.
+- 006 pode orientar a coleta de informações adicionais, mas seus itens não
+  ampliam automaticamente o modelo central.
+
+## Compatibilidade
+
+O storage usa `versao: 3`. Dados legados sem decoder seguro não são mesclados
+superficialmente; a aplicação inicia uma Carta v3 vazia e deve informar a falha
+de recuperação quando a interface do provider for implementada.

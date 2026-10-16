@@ -1,5 +1,8 @@
 # Tasks: Copia de dados no tutorial
 
+> **Baseline v3 — 16 de outubro de 2026:** projetar exclusivamente campos v3
+> aplicáveis na etapa 4 da 011.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 012; contratos de 007/011 e coerencia com 009/010.

@@ -1,5 +1,8 @@
 # Implementation Plan: Validacao e linguagem simples
 
+> **Plano parcialmente superado:** snippets e paths v2 devem ser substituídos
+> pelo modelo central v3 da 007 antes da implementação.
+
 ## Status e objetivo
 
 Preparado em 2026-10-02. **Plano tecnico pendente de ERS PDF, validacao

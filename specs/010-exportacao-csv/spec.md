@@ -1,5 +1,8 @@
 # Spec: Exportacao CSV
 
+> **Dependência atualizada em 16 de outubro de 2026:** exportar o modelo v3 da
+> 007; tabelas v2 abaixo devem ser reconciliadas antes do aceite funcional.
+
 ## Objetivo
 
 Permitir que o servidor exporte as informacoes atuais da Carta de Servicos em

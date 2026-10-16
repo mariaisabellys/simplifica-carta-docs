@@ -1,5 +1,8 @@
 # Verificacao: Previa HTML
 
+> **Baseline atualizado em 16 de outubro de 2026:** implementação e aceite da
+> prévia v3 continuam pendentes.
+
 ## Status e escopo
 
 Rodada de `/spec:implementar 009` em 2026-10-05.

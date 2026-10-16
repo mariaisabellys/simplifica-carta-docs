@@ -1,5 +1,9 @@
 # Spec: Copia de dados no tutorial
 
+> **Dependência atualizada em 16 de outubro de 2026:** consumir o modelo v3 da
+> 007. Palavras-chave agora possuem origem direta; recorrência e canais
+> genéricos não integram a Carta. A tabela v2 abaixo é histórica.
+
 ## Objetivo
 
 Permitir que o servidor consulte e copie individualmente as informacoes da
@@ -73,8 +77,9 @@ nem consulta direta ao Figma nesta etapa.
   `service-deadline` → `prazo`.
 - Os outros quatro blocos (`additional-information`, `keywords`, `scheduling`
   e `cost`) permanecem na composicao definida pelo conteudo, sem ganhar botao
-  de copia por inferencia. `keywords` nao possui origem no contrato atual da
-  007 e nunca deve ser fabricado a partir de outros campos.
+  de copia por inferencia. `keywords` usa exclusivamente
+  `informacoesFinais.palavrasChave` e nunca deve ser fabricado a partir de
+  outros campos.
 - Os valores existentes em `quickCopyFields` sao exemplos editoriais da tela,
   nao uma segunda Carta. Quando houver dado da sessao para um bloco mapeado,
   ele prevalece; ausente usa o estado `Nao informado`, nunca o exemplo como

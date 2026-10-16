@@ -1,5 +1,8 @@
 # Plan: Validacao e linguagem simples
 
+> **Baseline v3 — 16 de outubro de 2026:** regras e paths devem ser refeitos a
+> partir do modelo central da 007; exemplos v2 abaixo são históricos.
+
 ## Objetivo e status
 
 Implementar avaliacao local, deterministica e sem mutacao para identificar os

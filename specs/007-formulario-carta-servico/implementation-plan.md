@@ -1,5 +1,8 @@
 # Implementation Plan: Formulario da Carta de Servicos
 
+> **Plano parcialmente superado — 16 de outubro de 2026:** não copiar tipos ou
+> snippets v2; implementar o contrato de `modelo-central-carta.md`.
+
 ## Status
 
 Preparado em 2026-10-02. **Plano tecnico pendente de ERS PDF, validacao

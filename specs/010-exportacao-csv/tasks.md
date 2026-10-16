@@ -1,5 +1,8 @@
 # Tasks: Exportacao CSV
 
+> **Baseline v3 — 16 de outubro de 2026:** gerar o CSV somente a partir do
+> snapshot v3 e não exportar IDs ou valores condicionais inativos.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 010, ADR-002 e contratos de 007–009.

@@ -1,5 +1,8 @@
 # Tasks: Tutorial Paraiba Digital
 
+> **Baseline v3 — 16 de outubro de 2026:** a etapa 4 consome a Carta v3 sem
+> manter estado editável próprio.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 011; contratos de 007–010 e integracao com 012.

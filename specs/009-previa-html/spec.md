@@ -1,5 +1,8 @@
 # Spec: Previa HTML
 
+> **Dependência atualizada em 16 de outubro de 2026:** consumir somente o
+> snapshot v3 da 007. Recorrência e canais genéricos não integram a Carta.
+
 ## Objetivo
 
 Permitir que o servidor revise visualmente as informacoes atuais da Carta de

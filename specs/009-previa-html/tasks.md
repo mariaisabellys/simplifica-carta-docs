@@ -1,5 +1,8 @@
 # Tasks: Previa HTML
 
+> **Baseline v3 — 16 de outubro de 2026:** todas as tarefas consomem a Carta v3
+> da 007 e devem ignorar campos removidos.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 009; executar conforme dependencias indicadas.

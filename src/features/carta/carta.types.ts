@@ -1,34 +1,41 @@
-export type EtapaServico = {
-  ordem: number;
-  descricao: string;
-};
+import type { CategoriaServico, ModalidadeEtapa, PerfilUsuario, PublicoEspecifico, SubcategoriaServico, TipoPrazo } from "./carta.catalogs";
 
-export type DocumentoServico = {
-  nome: string;
-  obrigatorio: boolean;
-};
-
-export type CanalAtendimento = {
-  tipo: "online" | "presencial" | "telefone" | "email" | "outro";
-  descricao: string;
-};
+export type DocumentoServico = { id: string; nome: string };
+export type EtapaServico = { id: string; ordem: number; titulo: string; orientacaoCidadao: string; modalidade: ModalidadeEtapa | null };
+export type TipoCusto = "gratuito" | "sob-consulta" | "com-taxa";
+export type TipoAgendamento = "online" | "presencial";
+export type SistemaAgendamento = "paraiba-digital" | "sistema-externo";
+export type ExibicaoAgendamento = "dentro-paraiba-digital" | "nova-pagina";
 
 export type CartaServico = {
-  identificacao: {
+  versao: 3;
+  sobreServico: {
     nome: string;
+    nomePopular: string;
     descricao: string;
-    publicoAlvo: string;
+    categoria: CategoriaServico | null;
+    subcategoria: SubcategoriaServico | null;
+    topico: string;
+    ativo: boolean;
   };
-  requisitos: {
+  publicoRequisitos: {
+    publicosEspecificos: PublicoEspecifico[];
+    perfisUsuario: PerfilUsuario[];
+    quemPodeUtilizar: string;
     documentos: DocumentoServico[];
-    criterios: string;
-  };
-  atendimento: {
-    canais: CanalAtendimento[];
-    prazo: string;
-    custo: string;
-    exigeAgendamento: boolean;
+    custo: { tipo: TipoCusto | null; detalhe: string };
+    prazo: { maximo: string; tipo: TipoPrazo | null };
   };
   etapas: EtapaServico[];
-  informacoesComplementares: string;
+  atendimento: {
+    exigeAgendamento: boolean | null;
+    tiposAgendamento: TipoAgendamento[];
+    sistemaAgendamento: SistemaAgendamento | null;
+    linkAgendamento: string;
+    exibicaoAgendamento: ExibicaoAgendamento | null;
+  };
+  informacoesFinais: {
+    informacoesAdicionais: string;
+    palavrasChave: string;
+  };
 };

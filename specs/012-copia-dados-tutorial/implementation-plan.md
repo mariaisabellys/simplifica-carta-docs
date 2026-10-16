@@ -1,5 +1,8 @@
 # Implementation Plan: Copia de dados no tutorial
 
+> **Plano parcialmente superado:** substituir a união de IDs e os seletores v2
+> pelo modelo central v3 da 007.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao
@@ -109,7 +112,7 @@ nos seis que possuem `copyLabel`. O adapter entre IDs visuais e IDs locais e:
 | required-documents | documentos | Sim |
 | audience | publico-alvo | Sim |
 | additional-information | adicionais | Nao |
-| keywords | Sem origem contratada na 007 | Nao; nunca inferir |
+| keywords | `informacoesFinais.palavrasChave` | Sim quando informado; nunca inferir |
 | scheduling | Projecao informativa dos campos de agendamento | Nao |
 | cost | custos | Nao |
 | service-deadline | prazo | Sim |

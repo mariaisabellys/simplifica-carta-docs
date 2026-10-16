@@ -1,5 +1,8 @@
 # Implementation Plan: Exportacao CSV
 
+> **Plano parcialmente superado:** substituir matriz e snippets v2 pelo
+> contrato central v3 da 007 antes da implementação final.
+
 ## Status e objetivo
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao 010-exportacao-csv`.

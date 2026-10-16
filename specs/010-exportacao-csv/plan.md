@@ -1,5 +1,8 @@
 # Plan: Exportacao CSV
 
+> **Baseline v3 — 16 de outubro de 2026:** a matriz CSV deve acompanhar o
+> modelo central da 007; a matriz v2 abaixo é histórica.
+
 ## Objetivo e status
 
 Exportar a Carta atual em CSV local a partir da previa, com cobertura de todos

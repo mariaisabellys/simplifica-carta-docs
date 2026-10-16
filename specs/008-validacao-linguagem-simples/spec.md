@@ -1,5 +1,8 @@
 # Spec: Validacao e linguagem simples
 
+> **Dependência atualizada em 16 de outubro de 2026:** validar exclusivamente
+> o modelo v3 definido pela feature 007. Paths v2 abaixo são históricos.
+
 ## Objetivo
 
 Identificar informacoes obrigatorias ausentes na Carta de Servicos e oferecer

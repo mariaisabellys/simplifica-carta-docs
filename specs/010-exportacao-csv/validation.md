@@ -1,5 +1,8 @@
 # Validacao: Exportacao CSV
 
+> **Histórico anterior ao modelo v3:** repetir a matriz de exportação contra a
+> Carta central da 007.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 010-exportacao-csv` em 2026-10-05.

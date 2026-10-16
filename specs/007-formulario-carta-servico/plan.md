@@ -1,5 +1,8 @@
 # Plan: Formulario da Carta de Servicos
 
+> **Replanejamento obrigatório — 16 de outubro de 2026:** usar
+> `modelo-central-carta.md`. Exemplos v2 abaixo são históricos.
+
 ## Objetivo e status
 
 Substituir o placeholder de `/formulario-carta` por formulario dividido em

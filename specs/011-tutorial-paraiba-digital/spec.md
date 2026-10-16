@@ -1,5 +1,8 @@
 # Spec: Tutorial Paraiba Digital
 
+> **Dependência atualizada em 16 de outubro de 2026:** a etapa 4 lê a Carta v3
+> da 007 por meio da projeção da 012; o tutorial não cria nem corrige dados.
+
 ## Objetivo
 
 Orientar o servidor no cadastro manual das informacoes da Carta de Servicos no

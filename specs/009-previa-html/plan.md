@@ -1,5 +1,8 @@
 # Plan: Previa HTML
 
+> **Baseline v3 — 16 de outubro de 2026:** a projeção da prévia deve ser refeita
+> a partir do modelo central da 007; tabelas v2 abaixo são históricas.
+
 ## Objetivo e status
 
 Substituir o placeholder de `/previa` por apresentacao HTML da Carta atual,

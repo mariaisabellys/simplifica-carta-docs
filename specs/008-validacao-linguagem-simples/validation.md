@@ -1,5 +1,8 @@
 # Validacao: Validacao e linguagem simples
 
+> **Histórico anterior ao modelo v3:** repetir esta validação contra o contrato
+> central da 007 após atualizar regras e testes.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 008-validacao-linguagem-simples` em 2026-10-05.

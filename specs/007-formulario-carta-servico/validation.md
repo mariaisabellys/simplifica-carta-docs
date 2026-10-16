@@ -1,5 +1,8 @@
 # Validacao: Formulario da Carta de Servicos
 
+> **Validação histórica:** a divergência conteúdo/modelo foi resolvida pelo
+> contrato v3; validação funcional e visual continua pendente.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 007-formulario-carta-servico` em 2026-10-05.

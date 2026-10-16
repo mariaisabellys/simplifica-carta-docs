@@ -1,5 +1,8 @@
 # Verificacao: Formulario da Carta de Servicos
 
+> **Baseline de 16 de outubro de 2026:** modelo e conteúdo foram consolidados
+> na versão 3; interface, provider e aceite integrado continuam pendentes.
+
 ## Status e escopo
 
 Rodada de `/spec:implementar 007-formulario-carta-servico` em 2026-10-05.

@@ -1,5 +1,8 @@
 # Verificacao: Tutorial Paraiba Digital
 
+> **Baseline atualizado em 16 de outubro de 2026:** tutorial e Carta v3 ainda
+> não possuem aceite funcional integrado.
+
 ## Status
 
 Rodada de `/spec:implementar 011-tutorial-paraiba-digital` em 2026-10-05.

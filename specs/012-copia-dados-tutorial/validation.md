@@ -1,5 +1,8 @@
 # Validacao: Copia de dados no tutorial
 
+> **Baseline atualizado em 16 de outubro de 2026:** seletores v2 estão
+> superados; repetir a validação com a projeção da Carta v3.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 012-copia-dados-tutorial` em 2026-10-05.
@@ -46,8 +49,8 @@ detalhada, implementacao e validacao visual.
 O contrato atualizado monta a 012 somente em `fill-information`
 (`/tutorial-paraiba-digital?etapa=4`). `tutorialParaibaDigitalContent.steps[3]`
 e a fonte de ordem, labels, introducao, `copyLabel`, edicao e navegacao: dez
-blocos visuais, seis copiaveis. O seletor de 17 campos e camada interna e nao
-autoriza 17 cards. `keywords` nao tem origem na 007 e nao pode ser inferido.
+blocos visuais, seis copiaveis. O seletor interno nao autoriza criar cards.
+`keywords` tem origem em `informacoesFinais.palavrasChave`, sem inferencia.
 
 ## Inconsistencias e lacunas documentais
 

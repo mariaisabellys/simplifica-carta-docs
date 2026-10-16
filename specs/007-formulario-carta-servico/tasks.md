@@ -1,5 +1,8 @@
 # Tasks: Formulario da Carta de Servicos
 
+> **Baseline v3 — 16 de outubro de 2026:** todas as tarefas devem consumir
+> `modelo-central-carta.md`; itens incompatíveis estão superados.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 007; executar conforme dependencias indicadas.

@@ -1,5 +1,8 @@
 # Implementation Plan: Previa HTML
 
+> **Plano parcialmente superado:** adaptadores e snippets v2 não devem ser
+> implementados; usar o modelo central v3 da 007.
+
 ## Status e objetivo
 
 Preparado em 2026-10-02. **Plano tecnico pendente de consulta Figma,
