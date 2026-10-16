@@ -1,5 +1,10 @@
 # Spec: Atendimento agendado
 
+> **Referencia compartilhada atualizada em 16 de outubro de 2026:** o node
+> `425:201` e a entrada dos canais de ajuda e pertence tambem a 015. O card de
+> atendimento inicia a jornada da 014; o card de e-mail exibe o contato da
+> GESED e a acao `Copie o e-mail`.
+
 ## Objetivo
 
 Permitir que o servidor consulte datas e horarios disponiveis, revise seus
@@ -229,17 +234,19 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
 
 ## Referencias visuais e pendencias
 
-Os quatro frames pertencem a uma unica rota e jornada:
+O primeiro frame e a entrada compartilhada das features 014 e 015; os demais
+representam estados da jornada de atendimento:
 
 | Estado | Node | Referencia |
 | --- | --- | --- |
-| Escolha uma data | `425:201` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
+| Escolha de canal: atendimento ou e-mail | `425:201` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
 | Escolha um horario | `425:296` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-296&m=dev) |
 | Dados e revisao antes do envio | `446:206` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=446-206&m=dev) |
 | Solicitacao registrada | `470:444` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=470-444&m=dev) |
 
-`425:201` e o node principal da rota; os demais sao variantes/etapas, nao novas
-paginas. `169:495` continua sendo a FAQ/entrada de ajuda.
+`425:201` e a composicao compartilhada de entrada; os demais sao
+variantes/etapas do atendimento, nao novas features. `169:495` continua sendo
+a FAQ. A 015 controla o conteudo e a copia do card de e-mail.
 
 O layout deve adaptar-se a `src/content/ajuda/atendimento-agendado.ts` e aos
 estados reais da API. Texto ou exemplo do Figma nao substitui o conteudo

@@ -113,6 +113,7 @@ export const routes: AppRoute[] = [
     path: "/ajuda/suporte-email",
     label: "Suporte por e-mail",
     Component: SuporteEmailPage,
+    figmaNodeId: "425:201",
     specId: "015-suporte-email",
     layoutType: "support",
   },

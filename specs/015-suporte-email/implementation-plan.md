@@ -1,5 +1,9 @@
 # Implementation Plan: Suporte por e-mail
 
+> **Plano parcialmente superado em 16 de outubro de 2026:** a referencia e o
+> node `425:201` e a acao principal e `Copie o e-mail`. Codigo e testes de
+> `mailto:` permanecem historicos, mas nao integram a interface planejada.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao 015-suporte-email`.

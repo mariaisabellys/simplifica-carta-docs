@@ -1,5 +1,9 @@
 # Spec: Fluxo de ajuda
 
+> **Integracao visual atualizada em 16 de outubro de 2026:** o CTA de apoio
+> leva ao node compartilhado `425:201`, onde o usuario encontra os cards de
+> atendimento agendado e suporte por e-mail. A FAQ continua no node `169:495`.
+
 ## Objetivo
 
 Oferecer respostas rapidas para duvidas frequentes durante o cadastro dos
@@ -109,8 +113,9 @@ Disponibilizar exatamente as quatro perguntas versionadas:
 ### RF03 — Encaminhamento para apoio
 
 Apresentar a secao versionada `Precisa de apoio?`, com descricao e destino
-`/ajuda/atendimento-agendado`. A feature 015 continua acessivel por sua rota e
-por outros pontos da jornada, mas nao compoe o conteudo oficial desta FAQ.
+`/ajuda/atendimento-agendado`. Esse destino usa a composicao `425:201`, com os
+dois cards de canal. A feature 015 nao vira card da FAQ; ela compoe a pagina de
+apoio aberta depois do CTA.
 
 - Explicar que selecionar uma opcao apenas abre o fluxo correspondente.
   Nao cria solicitacao, reserva horario, envia mensagem ou notifica a equipe.

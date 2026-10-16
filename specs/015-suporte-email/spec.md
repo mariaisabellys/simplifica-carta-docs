@@ -1,5 +1,21 @@
 # Spec: Suporte por e-mail
 
+## Decisao oficial de tela e acao — 2026-10-16
+
+- Referencia visual: Figma Design node `425:201`, compartilhado com a entrada
+  da feature 014.
+- A tela apresenta os cards `Atendimento Agendado` e `Suporte por e-mail`.
+- O card de e-mail mostra `gesed.semtd@gmail.com`, orienta o usuario a copiar o
+  endereco e usa o botao `Copie o e-mail`.
+- A acao copia somente o endereco. Nao abre `mailto:`, nao envia mensagem e
+  nao permite afirmar envio, entrega, leitura ou recebimento.
+- As fontes compartilhadas sao `src/content/support/contatos.ts`,
+  `src/content/support/canais.ts`, `src/content/ajuda/canais.ts` e
+  `src/content/ajuda/suporte-email.ts`.
+
+Esta decisao substitui trechos historicos abaixo que exigem `mailto:`, tratam o
+contato como `pendente` ou afirmam ausencia de frame proprio.
+
 ## Objetivo
 
 Permitir que o servidor encontre o contato institucional de suporte, entenda
@@ -44,8 +60,8 @@ aprova Cartas ou publica servicos no Paraiba Digital.
   separacao de notificacoes do agendamento.
 - `src/app/routes.tsx` e `src/pages/SuporteEmailPage.tsx`: rota existente e
   placeholder que apresenta o mesmo endereco registrado no material local.
-- `docs/design-system/mapa-figma-telas.md`: ausencia de frame especifico
-  identificado para suporte por e-mail.
+- `docs/design-system/mapa-figma-telas.md`: node compartilhado `425:201` para
+  os cards de atendimento agendado e suporte por e-mail.
 
 Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
 consulta direta ao Figma ou verificacao de atividade, titularidade e recebimento
@@ -110,17 +126,14 @@ na fonte unica `src/content/support/canais.ts`.
 - Manter instrucoes utilizaveis por quem usa webmail, aplicativo de escritorio
   ou dispositivo movel, sem depender de um provedor especifico.
 
-### RF04 — Acao explicita de contato
+### RF04 — Acao explicita de copia
 
-- Oferecer link com rotulo claro, como `Abrir aplicativo de e-mail`, usando
-  `mailto:` para o contato validado.
-- Acionar somente por escolha explicita. Abrir a pagina nao abre o aplicativo,
-  envia mensagem ou solicita atendimento automaticamente.
-- Explicar que a acao abre o aplicativo de e-mail configurado e que o usuario
-  deve revisar e enviar a mensagem nesse aplicativo.
-- O planejamento deve definir se ha assunto ou corpo generico predefinido;
-  se adotado, usar texto versionado, codificacao adequada de parametros e
-  preservar destinatario fixo, sem incluir valores da sessao ou credenciais.
+- Oferecer o botao `Copie o e-mail`, copiando `gesed.semtd@gmail.com` somente
+  apos acao explicita.
+- Abrir a pagina nao copia, abre aplicativo, envia mensagem ou solicita
+  atendimento automaticamente.
+- Orientar o usuario a colar o endereco como destinatario no aplicativo ou
+  servico de e-mail de sua preferencia e escrever a propria mensagem.
 - Nao capturar campos da Carta, respostas do diagnostico ou dados de atendimento
   para embuti-los no link. O usuario decide o conteudo da mensagem externa.
 - Nao exibir `Mensagem enviada`, `Solicitacao recebida`, protocolo ou sucesso
@@ -135,7 +148,7 @@ na fonte unica `src/content/support/canais.ts`.
   o endereco apresentado como destinatario, sem bloquear outras acoes.
 - Nao presumir que o navegador informa confiavelmente se o aplicativo abriu;
   disponibilizar a alternativa manual independentemente dessa deteccao.
-- Oferecer `Copiar endereco de e-mail` como conveniencia, somente por acao
+- Oferecer `Copie o e-mail` como acao principal, somente por acao
   explicita, copiando o endereco sem `mailto:`, assunto, corpo ou markup.
 - Confirmar copia apenas apos sucesso. Em falha ou indisponibilidade, informar
   que o endereco pode ser selecionado e copiado manualmente; permitir tentativa
@@ -185,17 +198,14 @@ na fonte unica `src/content/support/canais.ts`.
 
 ## Referencias visuais e pendencias
 
-O mapa local ainda nao identifica frame especifico de suporte por e-mail.
-O node `169:495` pertence a FAQ/entrada de ajuda e nao define sozinho esta pagina.
-
-Antes da implementacao visual, identificar e consultar o frame via MCP no
-Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
-Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar composicao, contato,
+O frame oficial e o node compartilhado `425:201`. Antes da implementacao
+visual, consultar detalhadamente esse node via MCP e consultar o Figma Make
+`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar composicao, contato,
 acoes, estados de copia, assets e responsividade no `implementation-plan.md`
 e atualizar o mapa. Resolver divergencias antes de implementar.
 
-O planejamento deve conciliar ERS, contato ativo, textos, comportamento do
-`mailto:`, alternativa manual e eventual utilitario de copia. Se o prototipo
+O planejamento deve conciliar ERS, contato ativo, textos, alternativa manual e
+utilitario de copia. Se o prototipo
 trouxer formulario de envio no app, registrar e resolver a divergencia de
 escopo antes de adicionar backend ou coleta de dados.
 

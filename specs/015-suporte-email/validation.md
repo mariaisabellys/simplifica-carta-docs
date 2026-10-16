@@ -1,5 +1,9 @@
 # Validacao: Suporte por e-mail
 
+> **Baseline atualizado em 16 de outubro de 2026:** frame e acao foram
+> definidos. Revalidar a interface futura no node `425:201`, com copia do e-mail
+> da GESED e sem `mailto:`.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 015-suporte-email` em 2026-10-05.

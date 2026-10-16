@@ -1,5 +1,9 @@
 # Verificacao: Suporte por e-mail
 
+> **Atualizacao em 16 de outubro de 2026:** o helper `mailto` entregue nesta
+> rodada historica nao sera usado pela tela atual. O contrato vigente exibe e
+> copia o endereco da GESED no layout do node `425:201`.
+
 ## Resultado
 
 Executado `/spec:implementar 015-suporte-email` em 2026-10-05.
@@ -49,6 +53,13 @@ alteracoes anteriores preservadas.
 
 Essas decisoes resolvem V015-01/V015-02 no contrato editorial. O estado ativo
 continua condicionado a confirmacao da equipe e a testes do fluxo real.
+
+### Atualizacao de produto — 2026-10-16
+
+- O node `425:201` foi definido como referencia visual compartilhada.
+- O canal de e-mail passou a `ativo` para exibicao e copia do endereco.
+- A acao oficial e `Copie o e-mail`; `mailto:` nao integra a tela atual.
+- Essa ativacao editorial nao comprova resposta, prazo, entrega ou leitura.
 
 - Confirmar titularidade/atividade, assunto e textos antes de mudar o canal de
   `pendente` para `ativo`; o endereco editorial nao equivale a canal operacional.

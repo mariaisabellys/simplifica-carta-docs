@@ -1,5 +1,8 @@
 # Implementation Plan: Atendimento agendado
 
+> **Referencia atualizada em 16 de outubro de 2026:** `425:201` e a entrada
+> compartilhada 014/015; trechos que o chamam de escolha de data sao historicos.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao atendimento-agendado`,
@@ -476,7 +479,7 @@ Tente novamente." Aviso de tratamento/participacao depende de aprovacao real.
 Radio nao recebe inline-size 100%: limitar regra aos controles textuais na
 implementacao. Textos/erros com altura natural, Inter/fallbacks/tokens locais,
 foco/contraste medidos e reflow 016. No Figma Design
-YaVUdqYa3boHpvGrxf4ZJ5, consultar detalhadamente `425:201` (data), `425:296`
+YaVUdqYa3boHpvGrxf4ZJ5, consultar detalhadamente `425:201` (canais), `425:296`
 (horario), `446:206` (dados/revisao) e `470:444` (resultado). `425:201` e o
 node principal; os demais sao variantes da mesma rota. `169:495` pertence a FAQ.
 Consultar Make dVm7lEZdBFqOiiySWLWUqp node `0:1` para controles/tokens/estados.

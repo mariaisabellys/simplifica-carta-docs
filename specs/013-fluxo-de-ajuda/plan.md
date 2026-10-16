@@ -1,5 +1,8 @@
 # Plan: Fluxo de ajuda
 
+> **Integracao atualizada em 16 de outubro de 2026:** a FAQ `169:495` encaminha
+> para a escolha de canais `425:201`, compartilhada por 014 e 015.
+
 ## Objetivo e status
 
 Substituir o placeholder de `/ajuda` por entrada de orientacao com FAQ,

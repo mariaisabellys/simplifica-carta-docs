@@ -1,5 +1,8 @@
 # Plan: Atendimento agendado
 
+> **Referencia atualizada em 16 de outubro de 2026:** `425:201` e a entrada
+> compartilhada com a 015, nao a tela exclusiva de escolha de data.
+
 ## Objetivo e status
 
 Planejar disponibilidade, formulario, revisao e registro de solicitacao em
@@ -249,7 +252,7 @@ paralelos. Nao alterar formulario/CSV da Carta para transportar atendimento.
 ## Referencias visuais e acessibilidade
 
 Consultar detalhadamente os frames ja identificados no Figma Design:
-`425:201` (data), `425:296` (horario), `446:206` (dados/revisao) e
+`425:201` (escolha de canal compartilhada), `425:296` (horario), `446:206` (dados/revisao) e
 `470:444` (resultado); consultar Make
 `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, via MCP antes de implementar.
 Node `169:495` e de ajuda/FAQ, nao referencia comprovada do agendamento.

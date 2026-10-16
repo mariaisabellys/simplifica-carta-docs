@@ -21,8 +21,6 @@ export const supportChannels: SupportChannels = {
       "O atendimento agendado ainda não está disponível. A agenda e o fluxo de confirmação aguardam validação operacional.",
   },
   "suporte-email": {
-    status: "pendente",
-    notice:
-      "O endereço está documentado, mas o canal ainda aguarda confirmação operacional antes de receber mensagens.",
+    status: "ativo",
   },
 };

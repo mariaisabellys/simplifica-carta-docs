@@ -5,22 +5,24 @@ const channel = supportChannels["suporte-email"];
 const contact = supportContacts.gesed;
 
 export const emailSupportContent = {
+  sectionLabel: "Ainda precisa de ajuda?",
   title: "Suporte por e-mail",
   description:
-    "Consulte as orientações para entrar em contato com a equipe responsável por dúvidas sobre a Carta de Serviço.",
+    "Copie o e-mail da GESED e use-o no seu aplicativo ou serviço de e-mail para entrar em contato.",
   contact: {
     team: contact.team,
     address: contact.email,
-    addressLabel: "Endereço institucional documentado",
+    addressLabel: "E-mail da GESED",
   },
   channelState: channel,
-  pendingNotice:
-    "Não utilize este endereço para atendimento enquanto o canal estiver em validação operacional.",
-  action:
-    channel.status === "ativo"
-      ? {
-          label: "Abrir aplicativo de e-mail",
-          href: `mailto:${contact.email}`,
-        }
-      : null,
+  copyInstruction:
+    "Copie o endereço disponível e cole-o como destinatário da mensagem no seu e-mail.",
+  copyAction: {
+    label: "Copie o e-mail",
+    value: contact.email,
+    successMessage: "E-mail copiado!",
+    failureMessage: "Não foi possível copiar. Selecione o endereço e copie manualmente.",
+  },
+  pendingNotice: "",
+  action: null as { label: string; href: string } | null,
 } as const;

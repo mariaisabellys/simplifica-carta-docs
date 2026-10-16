@@ -1,5 +1,9 @@
 # Tasks: Suporte por e-mail
 
+> **Contrato atualizado em 16 de outubro de 2026:** node `425:201`, contato
+> GESED visivel e botao `Copie o e-mail`. Tarefas de `mailto:` estao superadas;
+> a entrega atual cobre copia explicita e alternativa manual.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 015; contratos de 002/007/012/013/014/016.
@@ -29,34 +33,28 @@
 
 - [ ] **T002 — Confirmar contato e disponibilidade editorial**
   - Manter `gesed.semtd@gmail.com` como endereco editorial confirmado pelo
-    documento mestre; confirmar titularidade/atividade e equipe responsavel
-    antes de mudar o estado operacional para ativo.
+    documento mestre e pela decisao de produto de 16 de outubro de 2026.
   - Fechar contatos.ts com ID estavel, equipe e endereco; estado
     pendente/ativo/pausado e aviso somente em canais.ts compartilhado com
     013/014/015. Nao duplicar estado nem evidencia interna no bundle.
-  - Definir pausa confirmada, suspensao de mailto/copia como acoes principais
+  - Definir pausa futura confirmada e suspensao da copia como acao principal
     e eventual endereco como referencia indisponivel, conforme texto validado.
-  - Aplicar V015-02: em pendente, mostrar o endereco somente como referencia
-    documentada com aviso e sem mailto/copia; em pausado, manter pagina/aviso/
-    retorno e suspender acoes principais; em ativo, habilitar mailto e copia.
+  - Estado atual: `ativo` para exibição e cópia. Em pausado, manter pagina,
+    aviso e retorno e suspender a acao de copia.
   - Definir retorno a ajuda e alternativa de agendamento quando operacional,
     sem prometer vagas/resposta imediata ou monitoramento em tempo real.
-  - Nao enviar mensagem para verificar sem autorizacao. Contato pendente
-    bloqueia entrega ativa e aceite de CA02, sem substituto inventado.
+  - Nao enviar mensagem para verificar nem prometer resposta ou prazo.
   - Dependencia: T001. Evidencia: contato/estado validados e coerentes com 013;
     RF02/RF07, CA02/CA09/CA12.
 
-- [ ] **T003 — Validar copy e contrato de mailto**
+- [ ] **T003 — Validar copy e contrato de copia**
   - Fechar titulo, finalidade, orientacoes, exemplos e avisos com equipe;
     recomendar nome/orgao/setor/contexto/resultado esperado no e-mail externo.
   - Identificar exemplos como ilustrativos; nao exigir anexos/Carta/CSV nem
     coletar dados no app. Orientar a nao enviar senhas/documentos/dados de cidadaos.
-  - Confirmar proposta de destinatario fixo e assunto versionado
-    Dúvida sobre a elaboração da Carta de Serviços, sem corpo predefinido.
-  - Definir codificacao UTF-8 do parametro subject uma unica vez, sem codificar
-    URI inteiro, cc/bcc/cabecalhos arbitrarios, valores da sessao ou parametros da URL.
-  - Fechar Abrir aplicativo de e-mail e alternativa manual sempre visivel;
-    nao detectar handler por timer nem anunciar envio/protocolo apos clique.
+  - Confirmar destinatario fixo `gesed.semtd@gmail.com`, instrucao de copia e
+    botao `Copie o e-mail`, sem assunto ou corpo predefinidos.
+  - Manter alternativa manual sempre visivel e nao anunciar envio/protocolo.
   - Dependencia: T002. Evidencia: copy validada e contrato de href;
     RF03–04/RF07, CA03–CA04/CA06/CA08/CA12.
 
@@ -75,8 +73,8 @@
     RF05, CA04–CA05/CA08–CA09/CA11.
 
 - [ ] **T005 — Consultar Figma e confirmar composicao**
-  - Identificar via MCP frame proprio de suporte por e-mail no Design
-    YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2; 169:495 da FAQ nao define esta pagina.
+  - Consultar via MCP o node compartilhado `425:201` no Design
+    YaVUdqYa3boHpvGrxf4ZJ5 e conferir os dois cards e o estado de copia.
   - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar contato,
     acoes, alternativa manual, orientacoes, retornos, assets e estados de copia/pausa.
   - Fechar foco, responsividade, endereco longo e tokens; atualizar mapa com

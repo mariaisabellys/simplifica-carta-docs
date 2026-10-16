@@ -1,5 +1,8 @@
 # Tasks: Atendimento agendado
 
+> **Referencia atualizada em 16 de outubro de 2026:** ao consultar `425:201`,
+> validar os dois cards e delegar o card de e-mail ao contrato da 015.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 014, ADR-003 e contratos de 002/007/013/015/016.

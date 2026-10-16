@@ -1,10 +1,14 @@
 # Plan: Suporte por e-mail
 
+> **Contrato atualizado em 16 de outubro de 2026:** usar o node `425:201`,
+> exibir `gesed.semtd@gmail.com` e implementar como acao principal somente
+> `Copie o e-mail`. As secoes de `mailto:` abaixo sao historicas.
+
 ## Objetivo e status
 
 Substituir o placeholder de `/ajuda/suporte-email` por orientacao de contato,
-endereco institucional, abertura explicita do aplicativo de e-mail, copia
-do endereco e alternativa manual. Preservar a Carta e a navegacao da sessao.
+endereco institucional, copia explicita do endereco e alternativa manual.
+Preservar a Carta e a navegacao da sessao.
 
 Este plano prepara `/spec:tarefas`. Nao implementa codigo, formulario de envio,
 SMTP ou backend; notificacoes do agendamento pertencem a 014. Nenhuma mensagem
@@ -49,8 +53,8 @@ publicacao; nao implica resposta imediata ou monitoramento em tempo real.
 Endereco editorial oficial: `gesed.semtd@gmail.com`, conforme a secao
 `E-mail institucional` do documento mestre. Nao substituir por endereco
 inventado ou tentar verificar enviando mensagem sem autorizacao. O estado
-inicial e `pendente`: exibir somente como referencia documentada, com aviso,
-sem `mailto:` ou copia ativa. CA02 continua pendente ate validacao operacional.
+editorial atual e `ativo` para exibicao e copia, conforme decisao de produto.
+Isso nao promete resposta, prazo, entrega ou monitoramento do canal.
 
 Para pausa confirmada, manter pagina acessivel com aviso verdadeiro e retorno
 a ajuda. Suspender mailto/copia como acoes principais do canal pausado; endereco
@@ -64,10 +68,10 @@ Usar `src/content/ajuda/suporte-email.ts` para titulo, introducao, orientacoes,
 exemplos, rotulos, mensagens de copia e destinos. Conteudo e texto estruturado,
 sem HTML interpretado ou dados preenchidos pelo usuario.
 
-Composicao proposta, a confirmar no Figma:
+Composicao baseada no node compartilhado `425:201`, a detalhar via MCP:
 
 1. Titulo e finalidade orientativa do canal.
-2. Contato legivel, link para abrir aplicativo e botao de copia.
+2. Contato legivel e botao `Copie o e-mail`.
 3. Alternativa manual sempre visivel, proxima das acoes.
 4. Orientacoes e exemplo ilustrativo de assunto.
 5. Retorno a ajuda, alternativa de atendimento e formulario da Carta.
@@ -82,7 +86,7 @@ Explicar que o usuario revisa e envia no aplicativo externo. Orientar a nao
 enviar senhas, documentos pessoais ou dados de cidadaos; nao exigir Carta,
 CSV ou anexos. Nao inventar prazo, funcionamento ou promessa de aprovacao.
 
-### 3. Link mailto e abertura explicita
+### 3. Registro historico de mailto — fora da entrega atual
 
 Adotar destinatario fixo e apenas assunto generico versionado:
 `Dúvida sobre a elaboração da Carta de Serviços`. Nao predefinir corpo no MVP;

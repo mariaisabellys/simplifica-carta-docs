@@ -1,5 +1,8 @@
 # Implementation Plan: Fluxo de ajuda
 
+> **Integracao visual atualizada em 16 de outubro de 2026:** a escolha de
+> canais pertence ao node `425:201`; a FAQ permanece `169:495`.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao 013-fluxo-de-ajuda`.

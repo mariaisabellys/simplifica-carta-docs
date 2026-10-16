@@ -25,7 +25,7 @@ quando o frame oficial mudar.
 | `/formulario-carta` | Formulario — parte 1 | `653:1540` | `007-formulario-carta-servico` | Pagina inicial da jornada de cinco partes; node principal da rota. |
 | `/previa` | card-servico-completo | `821:308` | `009-previa-html` | Referencia visual para previa/cartao completo do servico, tambem reutilizado dentro da 007. |
 | `/tutorial-paraiba-digital` | Tutorial — Etapa 1: Acesse a plataforma | `564:635` | `011-tutorial-paraiba-digital` | Pagina principal do tutorial. As etapas 2–6 sao variantes de estado da mesma pagina, detalhadas abaixo. Conteudo e regras vêm do arquivo versionado da feature. |
-| `/ajuda/atendimento-agendado` | Atendimento — escolha de data | `425:201` | `014-atendimento-agendado` | Pagina inicial da jornada; os outros tres frames sao variantes/etapas da mesma rota. |
+| `/ajuda/atendimento-agendado` e `/ajuda/suporte-email` | Ainda precisa de ajuda? — escolha de canal | `425:201` | `014-atendimento-agendado` e `015-suporte-email` | Pagina compartilhada com cards de atendimento agendado e suporte por e-mail. O card de e-mail exibe o contato da GESED e a acao `Copie o e-mail`. |
 
 ## Paginas, partes e componentes do formulario da Carta
 
@@ -82,14 +82,16 @@ O node `564:980` tambem e a referencia visual da feature
 `012-copia-dados-tutorial`. A 012 nao cria pagina nem rota: fornece a projecao,
 os controles e o mecanismo de copia montados exclusivamente na etapa 4 da 011.
 
-## Pagina e estados do atendimento agendado
+## Pagina compartilhada de ajuda e estados do atendimento agendado
 
-Os quatro frames pertencem a `/ajuda/atendimento-agendado` e seguem o conteudo
-de `src/content/ajuda/atendimento-agendado.ts`:
+O node `425:201` e compartilhado pelas features 014 e 015 como entrada dos
+canais de ajuda. Os demais frames pertencem ao fluxo da 014. O conteudo vem de
+`src/content/ajuda/canais.ts`, `src/content/ajuda/suporte-email.ts` e
+`src/content/ajuda/atendimento-agendado.ts`:
 
 | Classificacao | Estado/etapa | Node ID | Link |
 | --- | --- | --- | --- |
-| Pagina — estado inicial | Escolha uma data | `425:201` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
+| Pagina compartilhada — entrada | Escolha de canal: atendimento agendado ou suporte por e-mail | `425:201` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
 | Variante da pagina | Escolha um horario | `425:296` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-296&m=dev) |
 | Variante da pagina | Dados do agendamento e revisao antes do envio | `446:206` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=446-206&m=dev) |
 | Variante da pagina | Solicitacao registrada | `470:444` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=470-444&m=dev) |
@@ -100,6 +102,10 @@ atendimento confirmado e removem promessas de e-mail ou remarcacao. Datas,
 meses, horarios e dados pessoais dos frames sao exemplos, nunca disponibilidade
 real ou valores iniciais. O layout deve adaptar-se aos estados reais da API,
 copy longa, erros e acessibilidade.
+
+No card `Suporte por e-mail`, exibir `gesed.semtd@gmail.com`, a orientação para
+copiar o endereço e o botão `Copie o e-mail`. A ação copia somente o endereço;
+não abre aplicativo, não envia mensagem e não anuncia entrega ou recebimento.
 
 ## Componentes identificados
 

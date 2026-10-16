@@ -3,6 +3,7 @@ import {
   supportDestinations,
   type SupportChannelId,
 } from "../support/canais";
+import { supportContacts } from "../support/contatos";
 
 export type HelpChannelId = SupportChannelId;
 
@@ -18,6 +19,7 @@ export const helpChannelsContent = {
         "Consulte a disponibilidade de orientação com a equipe de governo digital, linguagem simples e carta de serviços.",
       state: supportChannels["atendimento-agendado"],
       action: {
+        kind: "navigate",
         label: "Consultar atendimento",
         href: supportDestinations["atendimento-agendado"],
       },
@@ -26,18 +28,23 @@ export const helpChannelsContent = {
       id: "suporte-email",
       title: "Suporte por e-mail",
       description:
-        "Consulte o endereço e o estado do canal para dúvidas sobre a Carta de Serviço.",
+        "Copie o e-mail da GESED para entrar em contato sobre dúvidas relacionadas à Carta de Serviço.",
+      email: supportContacts.gesed.email,
       state: supportChannels["suporte-email"],
       action: {
-        label: "Consultar canal de e-mail",
-        href: supportDestinations["suporte-email"],
+        kind: "copy-email",
+        label: "Copie o e-mail",
+        value: supportContacts.gesed.email,
       },
     },
   ] satisfies readonly {
     id: HelpChannelId;
     title: string;
     description: string;
+    email?: string;
     state: (typeof supportChannels)[SupportChannelId];
-    action: { label: string; href: string };
+    action:
+      | { kind: "navigate"; label: string; href: string }
+      | { kind: "copy-email"; label: string; value: string };
   }[],
 } as const;

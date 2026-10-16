@@ -1,5 +1,8 @@
 # Tasks: Fluxo de ajuda
 
+> **Integracao atualizada:** validar a transicao de `169:495` para `425:201`;
+> não duplicar os cards de canal dentro da FAQ.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 013; navegacao da 002 e contratos de 006–016.

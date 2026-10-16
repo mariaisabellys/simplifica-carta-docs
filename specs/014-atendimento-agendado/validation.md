@@ -1,5 +1,8 @@
 # Validacao: Atendimento agendado
 
+> **Baseline visual atualizado em 16 de outubro de 2026:** `425:201` e a
+> entrada compartilhada com a 015; revalidar a sequencia interna da agenda.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 014-atendimento-agendado` em 2026-10-05.
@@ -36,9 +39,9 @@ modalidade, politica de dados e textos nao foram homologados pela equipe.
 
 ### Atualizacao das referencias visuais — 2026-10-08
 
-Foram identificados quatro estados da mesma rota: `425:201` para escolha de
-data, `425:296` para horario, `446:206` para dados/revisao e `470:444` para
-solicitacao registrada. `425:201` e o node principal da pagina.
+Foram identificados `425:201` como escolha compartilhada de canal, `425:296`
+para horario, `446:206` para dados/revisao e `470:444` para solicitacao
+registrada. A transicao exata para escolha de data deve ser confirmada no MCP.
 
 O layout deve adaptar-se a `scheduledServiceContent` e aos estados reais da
 API. Copy ou exemplos do Figma nao podem restaurar promessas removidas: o

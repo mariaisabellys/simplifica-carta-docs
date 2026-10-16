@@ -1,5 +1,8 @@
 # Verificacao: Atendimento agendado
 
+> **Baseline visual atualizado em 16 de outubro de 2026:** o significado de
+> `425:201` foi corrigido para entrada compartilhada 014/015.
+
 ## Resultado e escopo
 
 Executado `/spec:implementar 014-atendimento-agendado` em 2026-10-05.
@@ -58,7 +61,7 @@ Esta correcao nao comprova backend, agenda, notificacao ou registro funcional.
 
 ### Atualizacao Figma — 2026-10-08
 
-- `425:201`: pagina inicial/escolha de data.
+- `425:201`: pagina compartilhada de escolha de canal.
 - `425:296`: escolha de horario.
 - `446:206`: dados e revisao antes do envio.
 - `470:444`: solicitacao registrada.
