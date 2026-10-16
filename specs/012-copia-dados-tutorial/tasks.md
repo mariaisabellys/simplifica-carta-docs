@@ -11,6 +11,8 @@
   diagnostico, previa ou CSV. Instrucoes continuam consultaveis sem Carta.
 - A 011 controla pagina/editorial; a 012 controla textos de transferencia,
   selecao, clipboard e retorno por campo, usando a Carta unica da 007.
+- A 012 e montada somente em `fill-information`, etapa 4 da 011, node
+  `564:980`; os seis botoes de copia seguem `copyLabel` do conteudo versionado.
 - RF03/CA06 foram alinhados com false confirmado/null, campos condicionais e
   listas parciais. Validacao e aceite integrado permanecem pendentes.
 - Specs consumidoras agora existem; notas historicas de ausencia e placeholders
@@ -51,10 +53,9 @@ continuam pendentes. A nota de divergencia nas convencoes e historica.
 - [ ] **T003 — Fechar seletores e textos de transferencia**
   - Consolidar CartaTransferFieldId fechado e TransferField present com text
     ou missing, com IDs estaveis compartilhados com ancoras da 011.
-  - Definir cobertura de 17 campos na ordem revisada da 012, com lista visivel conforme
-    aplicabilidade e orientacoes opcionais; incluir nome popular
-    (`identificacao.nomePopular`, ID 
-ome-popular`) separado do nome do
+  - Definir cobertura de 17 campos na ordem revisada da 012, com lista visivel
+    conforme aplicabilidade e orientacoes opcionais; incluir nome popular
+    (`identificacao.nomePopular`, ID `nome-popular`) separado do nome do
     servico, somente quando preenchido;
     labels/avisos/estados ficam fora da string mostrada e enviada a writeText.
   - Strings preservam espacos, acentos, Unicode e CR/LF/CRLF; trim somente
@@ -87,13 +88,15 @@ ome-popular`) separado do nome do
     RF04–05, CA02/CA07–CA09.
 
 - [ ] **T005 — Consultar Figma e fechar composicao/copy**
-  - Identificar frame do tutorial/regiao de copia via MCP Design
-    YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2, em conjunto com a 011; nao usar
-    card de entrada da 003 como layout da pagina.
+  - Consultar via MCP Design a variante da etapa 4 no
+    [node 564:980](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev),
+    em conjunto com a 011; nao usar o card da 003 como layout da pagina.
   - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar tokens,
     controles selecionaveis, foco e estados vazio/valor/pending/copied/failed.
-  - Atualizar mapa de telas com frame confirmado, reutilizando evidencia da
-    011 quando suficiente; registrar lacunas em vez de presumir composicao aprovada.
+  - Confirmar o mapa que classifica `564:980` como variante, nao pagina/rota;
+    registrar lacunas em vez de presumir composicao aprovada.
+  - Comparar o frame com `tutorialParaibaDigitalContent.steps[3]`: dez blocos
+    na ordem versionada, seis `copyLabel`, introducao, edicao e navegacao.
   - Fechar labels, Copiar {campo}, Copiado!, Não informado, estado global vazio
     e falha com instrucao de selecao manual, com acentuacao e linguagem simples.
   - Preferir textarea readOnly rotulada; nao disabled nem mensagem de ausencia
@@ -105,7 +108,7 @@ ome-popular`) separado do nome do
   - Executar `/spec:plano-implementacao 012-copia-dados-tutorial` consolidando
     T001–T005, arquivos, contratos e codigo base de seletores/utilitario/hook/UI.
   - Definir propriedade de CartaCopyFields/CopyField e integracao com 011,
-    provider real, IDs/ancoras, acoes de edicao/preenchimento sem duplicacao.
+    provider real, projecao dos IDs e acoes de edicao sem duplicacao.
   - Definir timers, revisoes/travas e cleanup, selecao manual, anuncios com
     nome de campo, layout longo e estados de recuperacao/memoria apenas.
   - Reutilizar testes de 007/011 ou definir infraestrutura significativa para
@@ -119,7 +122,7 @@ ome-popular`) separado do nome do
     constitution, Figma e contratos finais de 007/009–011/015/016.
   - Resolver revisao de RF03/CA06, listas, composicao, copy e corridas;
     distinguir consulta visual/documental de resultado real de clipboard.
-  - Dependencia: T006. Evidencia: validacao RF01–RF06/CA01–CA15 registrada.
+  - Dependencia: T006. Evidencia: validacao RF01–RF06/CA01–CA18 registrada.
 
 Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
 agendamento (Online, Presencial ou ambos) e Sistema de agendamento (Paraiba Digital ou
@@ -185,17 +188,22 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
     livres em Carta parcial. Retorno anunciado com campo, sem live regions de valores.
   - Aplicar tokens/Inter, texto longo/rolagem interna quando necessario, sem
     ellipsis, corte ou overflow da pagina; markup permanece texto literal.
+  - Consumir labels, ordem e `copyLabel` de `steps[3].quickCopyFields`; nao
+    duplicar textos nem transformar os 17 campos internos em 17 cards.
   - Dependencias: T008–T010/T005. Evidencia: RF03–06, CA02/CA05/CA07/CA11–CA13.
 
 - [ ] **T012 — Integrar sessao e composicao do tutorial**
-  - Montar regiao na pagina da 011 consumindo provider real da 007, sem
+  - Montar regiao somente quando `step.id === "fill-information"`, em
+    `?etapa=4`, consumindo provider real da 007, sem
     montar provider local, ler storage diretamente ou persistir dados de copia.
   - Sem conteudo, mostrar estado vazio e Preencher Carta; parcial permite
     campos presentes sem required/sugestoes/CSV como gate, mantendo instrucoes.
   - Recuperacao/memoria apenas usa dados seguros e avisos da 007; provider
     ausente e lacuna de integracao, nao motivo para criar Carta paralela.
   - Editar/retornar e atualizacoes com pagina montada rederivam valores e
-    invalidam retorno. Reusar acoes/ancoras da 011 e links internos da 002.
+    invalidam retorno. Usar `editPrompt`/`editAction` da 011 e links da 002.
+  - Ao sair da etapa 4, desmontar controles/live regions, limpar timers e
+    ignorar retorno tardio sem apagar a Carta; ao voltar, derivar o estado atual.
   - Nenhuma copia/navegacao limpa Carta, detecta colagem ou anuncia publicacao.
   - Dependencias: T011 e provider/composicao reais da 007/011.
   - Evidencia: RF01–02/RF06, CA01/CA04–CA05/CA08/CA10/CA14.
@@ -209,10 +217,10 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
     ordem de documentos/canais e numeros de etapas com lacunas.
   - Verificar acentos, Unicode, espacos, CR/LF/CRLF e HTML literal, fonte
     inalterada e ausencia de rotulos/avisos/IDs/prefixos CSV no texto.
-  - Conferir igualdade exata entre texto selecionavel e parametro de writeText,
-    sem copiar Não informado, null/undefined ou placeholders.
-  - Resolver V012-01 antes de aceitar igualdade da copia manual com CR/CRLF;
-    nao normalizar a string original enviada a writeText para contornar o DOM.
+  - Conferir igualdade exata entre a string derivada e o parametro de `writeText`,
+    sem copiar Não informado, null/undefined ou placeholders. Na alternativa
+    manual, conferir conteudo e quebras visiveis; registrar eventual normalizacao
+    de CR/CRLF pelo DOM, sistema operacional ou destino, sem alterar a fonte.
   - Cobrir Online, Presencial e ambos; Paraiba Digital e sistema externo nas
     duas formas de exibicao, campos ativos vazios e inativos com texto retido.
   - Dependencia: T008/T011 e infraestrutura de T006.
@@ -235,12 +243,18 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
   - Dependencias: T009–T011/T013. Evidencia: CA02/CA07–CA09.
 
 - [ ] **T015 — Testar jornada e estados integrados**
+  - Verificar ausencia completa da 012 nas etapas 1–3 e 5–6 e montagem unica
+    em `?etapa=4`, sem duplicar campos, botoes ou live regions.
+  - Conferir os dez blocos na ordem de `quickCopyFields`, copia somente nos
+    seis com `copyLabel` e ausencia de valor inventado para `keywords`.
   - Abrir tutorial direto sem Carta, com Carta parcial, obrigatorios/sugestoes
     pendentes, sessao invalida/recuperada e storage indisponivel com memoria valida.
   - Editar formulario e retornar, atualizar provider com tutorial montado e
     recarregar sessao valida; conferir valores atuais e retorno invalidado.
   - Simular falha de copia mantendo instrucoes, outros campos, selecao manual
-    e nova tentativa; conferir ancoras/acoes compartilhadas sem duplicacao.
+    e nova tentativa; conferir acoes compartilhadas sem duplicacao.
+  - Sair da etapa 4 durante pending e apos sucesso, voltar pela URL/historico e
+    confirmar cleanup do feedback, retorno tardio ignorado e Carta preservada.
   - Exibir/copiar HTML/scripts sinteticos como texto sem executar ou gerar
     requisicoes; confirmar independencia de diagnostico/previa/exportacao.
   - Alternar Sim/Nao e externo/Paraiba Digital, restaurar campos retidos e
@@ -248,7 +262,7 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
     externas. Campos inativos nao copiam; campos ativos preenchidos continuam
     copiaveis em Carta parcial, sem confirmacao herdada de tentativa antiga.
   - Dependencias: T012/T013–T014 e features reais de 007/011.
-  - Evidencia: CA01/CA04–CA05/CA07–CA10/CA13–CA15.
+  - Evidencia: CA01/CA04–CA05/CA07–CA10/CA13–CA18.
 
 - [ ] **T016 — Verificar clipboard real, selecao e acessibilidade**
   - Testar writeText por gesto real em HTTPS nos navegadores Chrome/Edge/
@@ -269,7 +283,7 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
     015 se houver reuso real de utilitario sem dependencia da Carta.
   - Criar quickstart.md com campos/convencoes, casos sinteticos, contexto
     seguro, falhas, selecao manual e limites do retorno de copia.
-  - Consolidar resultados CA01–CA15 no documento de verificacao de T006,
+  - Consolidar resultados CA01–CA18 no documento de verificacao de T006,
     com spec revisada, Figma, ambientes, defeitos, retestes e pendencias.
   - Conferir ausencia de leitura de clipboard, logs/envio dos valores,
     storage proprio, segunda Carta, copia integral, arquivos e automacao externa.
@@ -281,6 +295,7 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
 | Requisito/criterios | Tarefas principais |
 | --- | --- |
 | Agendamento condicional, CA15 | T002, T008, T013, T015 |
+| Integracao etapa 4/Figma, CA16–CA18 | T005–T006, T011–T012, T014–T017 |
 | RF01, CA14 | T001, T006, T012, T015, T017 |
 | RF02, CA01/CA08/CA10 | T001, T008, T010, T012, T015 |
 | RF03, CA02–CA03/CA06 | T002–T003, T008, T011, T013, T016 |

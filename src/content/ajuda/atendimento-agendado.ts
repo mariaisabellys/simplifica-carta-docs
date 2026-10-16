@@ -18,22 +18,24 @@ export type AppointmentField = {
 export const scheduledServiceContent = {
   dateSelection: {
     title: "Escolha uma data",
-    availability: "Seg - Sex, horário comercial",
-    exampleMonth: "Agosto de 2026",
-    description: "O calendário apresenta os dias disponíveis para agendamento.",
+    availability: "Consulte a disponibilidade da agenda",
+    illustrativeMonth: "Mês ilustrativo: agosto de 2026",
+    description:
+      "O calendário deve apresentar somente as datas retornadas como disponíveis pela agenda institucional.",
   },
   timeSelection: {
     title: "Escolha um horário",
     description:
       "Após selecionar uma data disponível, o sistema apresenta os horários disponíveis para atendimento.",
     example: {
+      label: "Exemplo ilustrativo",
       date: "12 de agosto de 2026",
       introduction:
-        "Para a data de 12 de agosto de 2026, os seguintes horários estão disponíveis:",
+        "Em uma data selecionada, a lista de horários pode ser apresentada desta forma:",
       availableTimes: ["09:00", "09:30", "10:00", "10:30", "14:00", "15:00", "15:30"],
     },
     instruction:
-      "O usuário deve selecionar um dos horários disponíveis para continuar o agendamento.",
+      "Selecione um dos horários retornados como disponíveis para continuar a solicitação.",
   },
   form: {
     title: "Dados do Agendamento",
@@ -92,13 +94,17 @@ export const scheduledServiceContent = {
         required: false,
       },
     ] satisfies readonly AppointmentField[],
-    actionLabel: "Confirme agendamento",
+    actionLabel: "Confirmar solicitação",
   },
   confirmation: {
-    title: "Atendimento agendado com Sucesso!",
-    emailMessage: "Enviamos a confirmação para o e-mail",
+    title: "Solicitação registrada",
+    message:
+      "Recebemos sua solicitação de atendimento. O registro não confirma que o atendimento já foi agendado.",
+    statusNotice:
+      "Consulte nesta página a referência e o status informados para a solicitação.",
+    summaryTitle: "Resumo da solicitação",
     example: {
-      email: "Maria.silva@orgao.gov.br",
+      reference: "Referência de exemplo",
       date: "12/08/2026",
       time: "15:00",
       name: "Maria Silva",
@@ -106,7 +112,6 @@ export const scheduledServiceContent = {
       mainSubject: "Lorem ipsum",
     },
     actions: [
-      { label: "Reagendar", kind: "reschedule" },
       { label: "Voltar para ajuda", kind: "back-to-help", href: "/ajuda" },
     ],
   },

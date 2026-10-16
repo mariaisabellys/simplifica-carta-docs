@@ -13,3 +13,16 @@ export type SupportChannelState =
 export type SupportChannels = Readonly<
   Record<SupportChannelId, SupportChannelState>
 >;
+
+export const supportChannels: SupportChannels = {
+  "atendimento-agendado": {
+    status: "pendente",
+    notice:
+      "O atendimento agendado ainda não está disponível. A agenda e o fluxo de confirmação aguardam validação operacional.",
+  },
+  "suporte-email": {
+    status: "pendente",
+    notice:
+      "O endereço está documentado, mas o canal ainda aguarda confirmação operacional antes de receber mensagens.",
+  },
+};

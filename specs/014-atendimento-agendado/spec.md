@@ -40,8 +40,8 @@ explicita envia os dados. O atendimento nao aprova Cartas nem publica servicos.
 - `src/app/routes.tsx`, `src/pages/AtendimentoAgendadoPage.tsx` e
   `src/features/atendimento/atendimento.types.ts`: rota, placeholder e tipo
   inicial; ainda nao existem API, banco ou fluxo de envio implementados.
-- `docs/design-system/mapa-figma-telas.md`: nenhum frame especifico de
-  agendamento identificado no mapa atual.
+- `docs/design-system/mapa-figma-telas.md`: quatro frames da jornada de
+  atendimento, com `425:201` como pagina inicial.
 
 Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
 consulta direta ao Figma, agenda operacional ou validacao juridica da politica
@@ -195,6 +195,15 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
   e aviso de tratamento de dados antes da implementacao.
 - Separar configuracao de horarios, credenciais e contatos operacionais de
   textos editoriais; nao incluir segredos no repositorio ou no bundle frontend.
+- O conteudo oficial nao pode afirmar atendimento agendado, envio de e-mail ao
+  solicitante ou disponibilidade real usando dados de exemplo. Depois de uma
+  resposta valida do backend, comunicar apenas `Solicitacao registrada`, com
+  referencia, resumo e aviso de que o registro ainda nao confirma o atendimento.
+- Nao oferecer `Reagendar` enquanto cancelamento/remarcacao self-service estiver
+  fora do escopo. A alternativa segura e retornar a ajuda; novos fluxos dependem
+  de contrato institucional, backend e criterios de aceite proprios.
+- Meses, datas e horarios mantidos para documentacao visual devem ser marcados
+  explicitamente como ilustrativos e nunca compor a disponibilidade operacional.
 
 ## Requisitos nao funcionais
 
@@ -220,15 +229,28 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
 
 ## Referencias visuais e pendencias
 
-O mapa local ainda nao identifica frame de selecao de horario, formulario,
-revisao ou confirmacao de atendimento. `169:495` pertence a FAQ/entrada de
-ajuda e nao define essas telas.
+Os quatro frames pertencem a uma unica rota e jornada:
 
-Antes da implementacao visual, identificar e consultar os frames via MCP no
-Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
-Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar composicao, estados,
-componentes, assets e responsividade no `implementation-plan.md` e atualizar
-o mapa. Resolver divergencias antes de implementar.
+| Estado | Node | Referencia |
+| --- | --- | --- |
+| Escolha uma data | `425:201` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
+| Escolha um horario | `425:296` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-296&m=dev) |
+| Dados e revisao antes do envio | `446:206` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=446-206&m=dev) |
+| Solicitacao registrada | `470:444` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=470-444&m=dev) |
+
+`425:201` e o node principal da rota; os demais sao variantes/etapas, nao novas
+paginas. `169:495` continua sendo a FAQ/entrada de ajuda.
+
+O layout deve adaptar-se a `src/content/ajuda/atendimento-agendado.ts` e aos
+estados reais da API. Texto ou exemplo do Figma nao substitui o conteudo
+versionado. Em especial, manter `Confirmar solicitacao`, `Solicitacao registrada`
+e o aviso de que o registro nao confirma o atendimento; nao restaurar promessa
+de e-mail enviado, sucesso de agendamento ou acao de reagendar.
+
+Mes, datas, horarios, nome, orgao e assunto exibidos no Figma sao exemplos.
+Disponibilidade e resumo reais sempre vem da API/solicitacao. Antes do codigo
+visual, consultar detalhadamente via MCP os quatro nodes e o Figma Make
+`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`; registrar divergencias e responsividade.
 
 O planejamento deve conciliar ERS e ADR-003, definir stack concreta do backend,
 API, banco, oferta de horarios, capacidade, fuso, confirmacao institucional,
@@ -284,6 +306,8 @@ notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 | CA16 | Consultar disponibilidade e acesso operacional aos registros. | Nao expor dados de solicitantes publicamente; restringir registros a processos autorizados. |
 | CA17 | Operar por teclado/leitor de tela e em telas pequenas com ampliacao. | Selecionar, revisar, corrigir e confirmar com estados e foco acessiveis, sem corte ou scroll horizontal. |
 | CA18 | Revisar prontidao para producao. | Encontrar API, agenda, capacidade, fuso, notificacoes, politica de dados e operacao definidos, com consultas Figma e textos validados. |
+| CA19 | Percorrer a jornada visual. | Usar `425:201`, `425:296`, `446:206` e `470:444` como estados da mesma rota, preservando selecoes e dados aplicaveis. |
+| CA20 | Comparar frame e conteudo versionado. | Adaptar layout ao conteudo e aos estados reais, sem reintroduzir disponibilidade ficticia, confirmacao antecipada, e-mail enviado ou remarcacao. |
 
 ## Proximo passo
 

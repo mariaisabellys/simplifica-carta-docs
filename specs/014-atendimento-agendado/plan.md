@@ -115,10 +115,15 @@ pontuacao conforme contrato institucional, preservando a informacao digitada.
 Nao alterar silenciosamente assunto, nome ou telefone durante normalizacao.
 Backend deriva data/horario do horarioId; nao confia em strings do cliente.
 
-Separar orientacoes e mensagens em `src/content/pages/atendimento-agendado.ts`.
+Separar orientacoes e mensagens em `src/content/ajuda/atendimento-agendado.ts`.
 Incluir orientacao para nao informar senhas, documentos ou dados de cidadaos.
 Nao adicionar anexos, CPF ou consentimento generico. Aviso de finalidade e
 tratamento depende de texto institucional versionado e validado.
+
+O conteudo base usa `Confirmar solicitacao` e, somente apos recibo valido,
+`Solicitacao registrada`. Nao afirma atendimento confirmado, envio de e-mail
+ao solicitante ou remarcacao disponivel. Exemplos de calendario/horario sao
+identificados como ilustrativos e nao substituem a consulta ao backend.
 
 ### 5. Transacao, capacidade e idempotencia
 
@@ -228,7 +233,7 @@ tempo e identificadores operacionais permitidos, sem payload ou headers secretos
 | Area | Arquivos ou responsabilidade |
 | --- | --- |
 | Pagina | `src/pages/AtendimentoAgendadoPage.tsx`: composicao e integracao com shell. |
-| Conteudo | `src/content/pages/atendimento-agendado.ts`: textos e mensagens versionados. |
+| Conteudo | `src/content/ajuda/atendimento-agendado.ts`: textos e mensagens versionados. |
 | Feature | `src/features/atendimento/atendimento.types.ts`, `atendimento.api.ts`, `atendimento.validation.ts` e `useAtendimento.ts`. |
 | Componentes | SelecaoHorario, FormularioAtendimento, RevisaoAtendimento e ResultadoAtendimento, dentro da feature. |
 | Estilos | CSS da feature usando tokens existentes; adaptar componentes comuns somente quando necessario. |
@@ -243,11 +248,14 @@ paralelos. Nao alterar formulario/CSV da Carta para transportar atendimento.
 
 ## Referencias visuais e acessibilidade
 
-Identificar frames de selecao, dados, revisao e resultado no Figma Design
-`YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`; consultar Make
+Consultar detalhadamente os frames ja identificados no Figma Design:
+`425:201` (data), `425:296` (horario), `446:206` (dados/revisao) e
+`470:444` (resultado); consultar Make
 `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, via MCP antes de implementar.
 Node `169:495` e de ajuda/FAQ, nao referencia comprovada do agendamento.
 Registrar evidencias, estados, assets e responsividade no implementation-plan.
+O layout deve adaptar-se ao conteudo versionado e aos estados reais da API;
+exemplos de data/horario/dados do Figma nunca viram disponibilidade ou defaults.
 
 Preferir controles nativos de selecao por data/horario com agrupamento e
 rotulos; nao construir calendario complexo sem necessidade demonstrada pelo
@@ -268,6 +276,7 @@ pequenas sem corte/rolagem horizontal, reutilizando Inter e tokens.
 | CA14–16 | Recarga sem POST automatico, storage bloqueado, token invalido, ausencia de enumeracao publica e Carta preservada. |
 | CA17 | Teclado/leitor de tela, foco, anuncios, responsividade e ampliacao nos navegadores previstos. |
 | CA18 | Conferir Figma, regras institucionais, configuracao de agenda, banco, worker, politica de dados e deploy. |
+| CA19–CA20 | Quatro estados na mesma rota, preservacao do fluxo e prevalencia do conteudo/versionamento sobre exemplos do Figma. |
 
 Usar testes de servico/API Django e testes transacionais adequados para locks,
 com PostgreSQL real no ambiente de integracao. Tests unitarios com SQLite nao

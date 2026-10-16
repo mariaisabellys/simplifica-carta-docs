@@ -80,9 +80,9 @@ Organizar os campos nas partes abaixo, com titulos e orientacoes identificaveis:
 - Permitir consultar e editar todas as partes sem exigir completude da parte
   anterior. A divisao organiza o preenchimento, sem criar uma barreira de acesso.
 - Preservar dados ao mudar de parte, retornar ou consultar orientacoes.
-- Identificar semanticamente a parte atual caso a apresentacao exiba uma por
-  vez. A composicao final, inclusive exibicao simultanea ou por etapas, deve
-  ser conciliada com o Figma no planejamento visual.
+- Renderizar uma parte ativa por vez conforme as cinco telas mapeadas, sem
+  criar cinco rotas nem exigir completar a parte anterior. Identificar a parte
+  atual semanticamente e preservar a Carta ao navegar entre elas.
 - Nao tratar mudanca de parte ou preenchimento como aprovacao da Carta.
 
 ### RF03 — Campos e contrato de dados
@@ -187,6 +187,12 @@ Necessita de agendamento?
 - Oferecer orientacao concreta para cada campo e identificar exemplos como
   ilustrativos. Se houver painel expansivel, usar controle com estado
   anunciado, sem apagar ou alterar o valor ao abrir e fechar.
+- Derivar a orientacao do item correspondente em
+  `src/content/pages/organizar-informacoes.ts`, mantendo fonte unica para
+  resumo, identificacao, evite/prefira, exemplos e dicas.
+- Suportar o Form-Card compacto (`811:306`) e com orientacao aberta (`811:382`).
+  Usar `aria-expanded` e associacao ao painel; campos sem orientacao mapeada
+  permanecem compactos e nao recebem texto inventado.
 - Identificar campos obrigatorios por texto e semantica, sem depender apenas
   de asterisco ou cor. Manter rotulos, ajuda e mensagens associados ao controle.
 - Usar como referencia inicial de obrigatoriedade nome, descricao,
@@ -236,6 +242,9 @@ Necessita de agendamento?
 - Disponibilizar acesso a `Preciso de ajuda` em `/ajuda`, reutilizando a acao
   compartilhada quando existir, sem duplicar formulario de suporte.
 - Permitir retorno de `/previa` e do tutorial para editar a mesma Carta.
+- Quando houver previa dentro das telas do formulario, reutilizar o componente
+  `821:308` e a mesma projecao de dados da 009. Nao criar snapshot, seletor ou
+  markup de previa paralelo dentro da 007.
 - Nao implementar geracao de previa, exportacao CSV ou copia como parte da
   007. Os consumidores devem receber um contrato documentado e consistente.
 
@@ -266,17 +275,32 @@ Necessita de agendamento?
 
 ## Referencias visuais e pendencias
 
-O mapa local identifica componentes, sem comprovar o layout completo da pagina:
+A feature possui cinco telas/partes na mesma rota, na ordem do conteudo:
 
-- `811:306`: Form-Card;
-- `811:382`: Form-Card com orientacao aberta;
-- `651:317`: Label-Row com indicacao de obrigatoriedade.
+| Parte | Node | Referencia |
+| --- | --- | --- |
+| 1. Sobre o servico | `653:1540` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=653-1540&m=dev) |
+| 2. Publico e requisitos | `2024:269` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=2024-269&m=dev) |
+| 3. Como o servico funciona | `641:58` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=641-58&m=dev) |
+| 4. Atendimento | `647:650` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=647-650&m=dev) |
+| 5. Informacoes finais | `660:2533` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=660-2533&m=dev) |
 
-Antes da implementacao visual, consultar esses nodes e identificar a composicao
-completa da tela via MCP no Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina
-`167:2`. Consultar tambem o Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
-Registrar no `implementation-plan.md` partes do formulario, controles, estados,
-assets, responsividade e divergencias; atualizar o mapa quando houver novo frame.
+Componentes compartilhados: `811:306` Form-Card compacto, `811:382` Form-Card
+com orientacao, `821:308` previa compartilhada com a 009 e `651:317` Label-Row.
+
+O layout deve se adaptar ao conteudo de
+`src/content/pages/formulario-carta.ts`; o Figma governa composicao e estilo,
+mas nao autoriza truncar, substituir ou duplicar copy. Textos longos aumentam
+a altura natural dos componentes, sem corte, ellipsis ou sobreposicao.
+
+No node `2024:269`, a representacao do formulario em imagem e somente
+referencia visual. Implementar formulario HTML/React real com inputs,
+textareas, selects, radios, checkboxes, fieldsets e listas editaveis, mantendo
+estrutura, hierarquia e estilo. Nao incorporar a imagem, mapear cliques sobre
+ela ou usa-la como substituto dos controles. A previa embutida segue `821:308`.
+
+Antes do codigo visual, consultar detalhadamente via MCP os cinco frames e os
+componentes, alem do Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
 
 O planejamento deve resolver a divisao visual em partes, regras condicionais,
 contrato de agendamento nao informado e sua orientacao, inclusao de nome popular,
@@ -291,7 +315,8 @@ comportamentos adicionais, registrar a divergencia antes de ampliar o escopo.
   sincronizacao entre dispositivos ou abas.
 - Upload de documentos, coleta de documentos pessoais e repositorio de anexos.
 - Motor de linguagem simples, IA para redacao ou alteracao automatica dos textos.
-- Implementacao da previa HTML, exportacao CSV, tutorial e copia de campos.
+- Implementacao interna do componente de previa, exportacao CSV, tutorial e
+  copia de campos. A 007 apenas integra a previa entregue pela 009.
 - Backend de atendimento, agendamento de suporte ou envio de mensagens.
 
 ## Dependencias
@@ -342,6 +367,10 @@ dos consumidores continuam pendentes.
 | CA22 | Dado que o servico necessita de agendamento, quando selecionar Outro sistema ou site, informar URL e Em uma nova pagina. | Entao registrar redirecionamento para o endereco externo informado. |
 | CA23 | Dado que Outro sistema ou site foi selecionado e campos externos preenchidos, quando mudar para Paraiba Digital. | Entao ocultar Link e Exibicao e retirar sua obrigatoriedade; preservar valores na sessao, sem apresenta-los ou transferi-los como ativos. |
 | CA24 | Com Sim, revisar tipos/sistema ausentes; com sistema externo, revisar link/exibicao ausentes ou URL invalida. | Identificar pendencias condicionais e impedir exportacao conforme 008/010; aceitar Online, Presencial ou ambos; permitir previa parcial e edicao. |
+| CA25 | Navegar pelas cinco partes do formulario. | Usar os nodes `653:1540`, `2024:269`, `641:58`, `647:650` e `660:2533` como estados da mesma rota, preservando valores e adaptando layout ao conteudo. |
+| CA26 | Abrir e fechar a orientacao de um campo. | Alternar entre os estados `811:306` e `811:382`, anunciar o estado e mostrar conteudo correspondente da 006 sem alterar o valor. |
+| CA27 | Consultar a previa dentro do formulario. | Reutilizar componente/view model `821:308` da 009, sem duplicar seletores, markup ou estado da Carta. |
+| CA28 | Usar a parte representada no frame `2024:269`. | Interagir com formulario real, sem imagem, overlay ou mapa de cliques, preservando a estrutura visual do frame e semantica acessivel. |
 
 ## Proximo passo
 

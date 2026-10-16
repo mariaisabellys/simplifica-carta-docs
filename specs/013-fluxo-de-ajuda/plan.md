@@ -11,6 +11,11 @@ Este plano prepara `/spec:tarefas`. Antes de codigo/estilos, criar tarefas e
 implementation-plan, validar copy e destinos e consultar Figma via MCP.
 Nao implementa agenda, coleta de solicitacoes ou envio de e-mail.
 
+> Atualizacao editorial de 2026-10-07: a fonte oficial e
+> `src/content/pages/ajuda.ts`, com quatro perguntas e uma secao de apoio para
+> a 014. Propostas anteriores de sete assuntos, titulo `Preciso de ajuda` e dois
+> cards de canal estao substituidas e nao devem orientar a implementacao.
+
 ## Fontes e limites
 
 - Spec 013; specs 014/015/016 e contratos de 006–012.

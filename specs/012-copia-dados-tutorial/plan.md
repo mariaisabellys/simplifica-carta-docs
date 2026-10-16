@@ -34,10 +34,12 @@ divergencia identificada na criacao deste plan. A conciliacao documental
 agora possui proposta consistente na spec e no implementation-plan; validacao
 cruzada, implementacao e aceite continuam pendentes.
 
-- Tutorial ainda usa tres orientacoes e PlaceholderCard, sem regiao de dados.
+- Conteudo do tutorial possui seis etapas; a pagina ainda nao compoe a etapa
+  ativa nem a regiao de dados da etapa 4.
 - Modelo atual nao possui nome popular/como agendar e usa false inicial.
 - A 007 propoe provider compartilhado, decoder v2, boolean|null e IDs de itens.
-- A 011 propoe uma regiao unica de copia, com ancoras referenciadas pelos passos.
+- A 011 define uma etapa ativa por `?etapa=1..6`; a regiao unica de copia e
+  montada somente em `fill-information` (`?etapa=4`, node `564:980`).
 - RF03/CA06 da spec 012 estao alinhados com false explicito, null e campos
   condicionais de agendamento, preservacao na sessao e transferencia somente
   de valores ativos. Validacao cruzada e implementacao permanecem pendentes.
@@ -88,10 +90,13 @@ type TransferField =
   | { id: CartaTransferFieldId; status: "missing" };
 ```
 
-O texto retornado pelo seletor e exatamente o texto mostrado na area
-selecionavel e enviado a writeText. Labels, botoes e mensagens ficam fora
-desse texto, resolvidos pelo conteudo editorial. Nao copiar a partir de innerText
-do card inteiro ou DOM que inclua avisos e elementos de interface.
+O texto retornado pelo seletor e a fonte unica tanto da area selecionavel quanto
+da chamada a `writeText`. O parametro enviado a API deve ser exatamente a string
+derivada, sem normalizacao pelo app. A area manual deve preservar o conteudo e as
+quebras visiveis; o DOM, o sistema operacional ou o destino podem normalizar os
+terminadores CR/CRLF. Labels, botoes e mensagens ficam fora desse texto,
+resolvidos pelo conteudo editorial. Nao copiar a partir de `innerText` do card
+inteiro ou de DOM que inclua avisos e elementos de interface.
 
 ### 2. Cobertura e formatacao
 
@@ -119,6 +124,26 @@ sem usar indice como destino/identidade.
 Avisos de itens incompletos ou de agendamento ficam separados e nao entram
 na copia. Nao aplicar prefixos de protecao do CSV da 010 ao clipboard: a copia
 individual transfere texto para cadastro manual, sem transformacao editorial.
+
+Os 17 campos formam o contrato neutro de transferencia, nao a quantidade de
+cards da etapa. A projecao visual segue `quickCopyFields` do conteudo da 011:
+
+| ID visual | Campo local | Acao de copia |
+| --- | --- | --- |
+| `service-name` | `nome` | Sim, `copyLabel` versionado |
+| `popular-name` | `nome-popular` | Sim, `copyLabel` versionado |
+| `service-description` | `descricao` | Sim, `copyLabel` versionado |
+| `required-documents` | `documentos` | Sim, `copyLabel` versionado |
+| `audience` | `publico-alvo` | Sim, `copyLabel` versionado |
+| `additional-information` | `adicionais` | Nao no conteudo atual |
+| `keywords` | Sem origem na 007 | Nao; nao inferir valor |
+| `scheduling` | Projecao informativa de agendamento | Nao no conteudo atual |
+| `cost` | `custos` | Nao no conteudo atual |
+| `service-deadline` | `prazo` | Sim, `copyLabel` versionado |
+
+Rotulo, ordem, `quickCopyIntroduction`, `editPrompt`, `editAction` e CTAs vem
+de `tutorialParaibaDigitalContent.steps[3]`. Valores de exemplo do arquivo nao
+substituem a Carta nem podem ser enviados ao clipboard como dados do usuario.
 
 Compartilhar helpers puros de formatacao de listas/definicao de conteudo com
 009/010 apenas quando as convencoes forem realmente identicas, sem acoplar
@@ -220,8 +245,8 @@ manual selecionavel. Nao depender de icon/check ou cor para diferenciar estados.
 
 ### 7. Integracao e responsabilidade de arquivos
 
-011 fornece pagina, passos/indice, fontes, acesso externo e anchors para regiao
-de dados. 012 fornece seletores, componentes e mecanismo de copia. Reusar as
+011 fornece pagina, progresso, etapa ativa, fontes, acesso externo e a regiao
+da etapa 4. 012 fornece seletores, projecao, componentes e mecanismo de copia. Reusar as
 acoes Editar informacoes/Preencher Carta da composicao para evitar duplicacao.
 Nao criar rota nova, campos editaveis ou mecanismo externo de cadastro.
 
@@ -244,10 +269,11 @@ esse reuso nao exige carregar Carta em pagina de suporte.
 
 ## Visual e pendencias
 
-Identificar frame do tutorial e regiao de copia via MCP no Figma Design
-`YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar Figma Make
-`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Nao presumir layout do card de entrada
-da 003 como pagina tutorial. Registrar estados vazio/valor/pending/copied/failed,
+Consultar detalhadamente a variante da etapa 4 no
+[Figma node 564:980](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev)
+e o Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Nao presumir layout do
+card de entrada da 003 como pagina tutorial. Registrar estados
+vazio/valor/pending/copied/failed,
 texto selecionavel, foco e responsividade no implementation-plan.
 
 Resolver ERS/copy, revisao documental da 012 e contrato final de 007/011 antes
@@ -256,7 +282,7 @@ nao afirma que seus campos locais correspondem a plataforma homologada.
 
 ## Estrategia de verificacao
 
-Esta etapa e documental. Conferir RF01–RF06, CA01–CA15 e divergencias listadas;
+Esta etapa e documental. Conferir RF01–RF06, CA01–CA18 e divergencias listadas;
 nenhuma area de transferencia foi lida/escrita nem build/interface testados.
 
 Reutilizar infraestrutura de 007/011 quando houver; se ausente, definir nas
@@ -273,7 +299,8 @@ tarefas testes adequados para seletores, promises e integracao, sem instalar ago
 - Retorno: mensagem de falha, selecao manual disponivel, sucesso por campo e
   ausencia de promessa de envio/publicacao ou clipboard atual permanente.
 - Integracao: editar/voltar, provider atualizando, sessao invalida/memoria,
-  Carta parcial sem gate e instrucoes da 011 sempre consultaveis.
+  Carta parcial sem gate, regiao somente na etapa 4 e instrucoes da 011 sempre
+  consultaveis. Sair da etapa desmonta feedback sem apagar a Carta.
 
 | Criterios | Evidencia futura |
 | --- | --- |
@@ -285,6 +312,7 @@ tarefas testes adequados para seletores, promises e integracao, sem instalar ago
 | CA11–CA12 | Teclado/leitor de tela, selecao e textos longos |
 | CA13–CA14 | Texto seguro, acesso livre e ausencia de envio/persistencia |
 | CA15 | Campos ativos/inativos, Online/Presencial/ambos e troca/restauracao do sistema |
+| CA16–CA18 | Montagem exclusiva na etapa 4, projecao do conteudo, node 564:980 e desmontagem segura |
 
 Executar typecheck/build e suite apos codigo. Testar writeText por gesto real
 em ambiente HTTPS nos navegadores Chrome, Edge, Firefox e Safari, incluindo

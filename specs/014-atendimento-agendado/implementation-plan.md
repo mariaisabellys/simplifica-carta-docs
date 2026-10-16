@@ -51,7 +51,7 @@ uma rota nao comprova funcionamento operacional.
 | Operacao/politica | Nao definidas institucionalmente | T002–T005 e procedimentos restritos |
 | Carta | Provider v2 ainda planejado | 007/002 preservam memoria acima das rotas |
 | Canais | 013 propoe fonte editorial; 015 placeholder | Estados compartilhados e alternativa validada |
-| Figma | Sem frames especificos no mapa | Consulta Design/Make antes do visual |
+| Figma | Quatro frames identificados; consulta detalhada pendente | `425:201` principal e tres variantes da mesma rota |
 | Testes/deploy | Sem suites backend/frontend; 017 nao detalhada | Infraestrutura de verificacao e publicacao futura |
 
 ## Decisoes propostas e bloqueios institucionais
@@ -452,9 +452,10 @@ Mudanca de etapa foca heading; erro explicito foca resumo; resultado incerto/
 sucesso com heading focavel e anuncio comedido sem duplicacao. Loading nao
 apaga formulario; teclado nao depende de calendario visual personalizado.
 
-Conteudo versionado em pages/atendimento-agendado.ts: estados de consulta,
-labels/ajuda/erros/revisao e mensagens distintas. Copy candidata: "Solicitação
-registrada. Isso ainda não confirma o atendimento." Incerto: "Não foi possível
+Conteudo versionado em `src/content/ajuda/atendimento-agendado.ts`: estados de
+consulta, labels/ajuda/erros/revisao e mensagens distintas. Copy oficial:
+"Solicitação registrada. Isso ainda não confirma o atendimento." Nao anunciar
+e-mail enviado nem oferecer remarcacao self-service. Incerto: "Não foi possível
 confirmar o resultado. Verifique esta solicitação antes de tentar um novo envio."
 Conflito: "O horário ficou indisponível. Escolha outro horário; seus dados foram
 preservados." Falha de disponibilidade: "Não foi possível consultar os horários.
@@ -474,11 +475,18 @@ Tente novamente." Aviso de tratamento/participacao depende de aprovacao real.
 
 Radio nao recebe inline-size 100%: limitar regra aos controles textuais na
 implementacao. Textos/erros com altura natural, Inter/fallbacks/tokens locais,
-foco/contraste medidos e reflow 016. Figma Design YaVUdqYa3boHpvGrxf4ZJ5,
-pagina 167:2: identificar frames proprios de escolha/dados/revisao/resultado;
-169:495 pertence FAQ. Make dVm7lEZdBFqOiiySWLWUqp node 0:1: confirmar controles/
-tokens/estados. Sem consulta MCP ou assets obtidos nesta etapa; registrar nodes
-e atualizar mapa depois de evidencia, sem reutilizar FAQ como tela de agendamento.
+foco/contraste medidos e reflow 016. No Figma Design
+YaVUdqYa3boHpvGrxf4ZJ5, consultar detalhadamente `425:201` (data), `425:296`
+(horario), `446:206` (dados/revisao) e `470:444` (resultado). `425:201` e o
+node principal; os demais sao variantes da mesma rota. `169:495` pertence a FAQ.
+Consultar Make dVm7lEZdBFqOiiySWLWUqp node `0:1` para controles/tokens/estados.
+Sem consulta MCP ou assets obtidos nesta etapa.
+
+`scheduledServiceContent` prevalece para titulos, instrucoes, campos, acao e
+resultado. O layout se adapta a texto longo, erros e estados loading/empty/
+failed/conflict/uncertain. Exemplos do Figma nao viram datas ou horarios reais.
+Nao reintroduzir `Atendimento agendado com Sucesso!`, e-mail enviado,
+`Reagendar` ou qualquer promessa removida pela revisao editorial.
 
 ## Arquivos, migrations e operacao
 
@@ -556,6 +564,7 @@ PostgreSQL, oferta dry-run, API/CSRF, worker SMTP falso e recuperacao concorrent
 | CA16 | API minima/acesso/CSRF/segredos; T004/T013/T015/T020/T021 |
 | CA17 | Figma/teclado/leitura/reflow; T006/T019/T023 |
 | CA18 | Decisoes/infra/politica/operacao/validacao; T002–T008/T015/T024 |
+| CA19–CA20 | Quatro nodes na mesma rota, conteudo versionado prevalente e exemplos sem virar dados; T006/T017–T019/T022–T024 |
 
 Nao declarar prontidao integral com stack sem lock/ADR, agenda/fuso/politica/
 notificacao sem responsavel e evidencia, Figma/ERS pendentes ou worker ausente.

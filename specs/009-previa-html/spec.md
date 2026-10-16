@@ -223,6 +223,9 @@ de leitura unica no DOM e cobertura integral abaixo.
 ## Referencias visuais e pendencias
 
 O mapa local associa `/previa` ao node `821:308`, `card-servico-completo`.
+Esse mesmo componente e a referencia obrigatoria para as previas embutidas nas
+cinco telas da feature 007. A 007 pode compor o componente em seu layout, mas
+nao deve duplicar seletores, view model, markup semantico ou estados da previa.
 Esse node e uma referencia documentada do cartao, sem comprovar nesta etapa
 todos os estados ou a composicao completa da pagina.
 

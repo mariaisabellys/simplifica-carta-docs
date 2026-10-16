@@ -1,5 +1,11 @@
 # Plan: Organizar informacoes
 
+> **Status em 6 de outubro de 2026:** este plano foi escrito para o contrato
+> antigo de dez assuntos estaticos. A spec agora define como oficial o contrato
+> versionado de tres topicos, 13 informacoes, marcacao independente, progresso
+> de 0 a 13 e orientacoes expansiveis. Nao usar os trechos conflitantes abaixo
+> para implementar; o plano precisa ser reconciliado antes do codigo.
+
 ## Objetivo tecnico e status
 
 Substituir o placeholder de `/organizar-informacoes` por uma pagina de consulta
@@ -51,7 +57,8 @@ ERS e com os arquivos oficiais do Figma deve ocorrer no plano detalhado.
 - Nao existem Breadcrumb ou AppLink compartilhados na estrutura atual.
 - Os scripts disponiveis sao `dev`, `build`, `preview` e `typecheck`; nao ha
   framework de testes configurado.
-- As specs 007, 013 e 016 possuem documentos; a 005 ainda nao possui pasta.
+- As specs 005, 007, 013 e 016 possuem documentos; existencia documental nao
+  equivale a implementacao ou aceite funcional.
   Seus placeholders e contratos iniciais nao comprovam funcionalidades entregues.
 
 Conferir novamente esse estado antes de implementar, principalmente os

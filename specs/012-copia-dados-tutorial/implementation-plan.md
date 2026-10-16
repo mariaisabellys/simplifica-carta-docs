@@ -6,9 +6,11 @@ Preparado em 2026-10-05 para `/spec:plano-implementacao
 012-copia-dados-tutorial`; o comando recebido como `/spec:plano-implentacao`
 foi interpretado conforme a constitution.
 
-Entregar copia individual dos 17 campos previstos da Carta em
-`/tutorial-paraiba-digital`, com texto selecionavel, sucesso verdadeiro por
-campo, tratamento de corridas e alternativa manual independente do clipboard.
+Entregar, na etapa 4 de `/tutorial-paraiba-digital`, a projecao visual dos
+campos prevista em `tutorialParaibaDigitalContent.steps[3]`, apoiada pelo
+seletor neutro dos 17 campos da Carta. Somente os seis blocos com `copyLabel`
+recebem copia individual, com texto selecionavel, sucesso verdadeiro por campo,
+tratamento de corridas e alternativa manual independente do clipboard.
 Sem gate de obrigatorios, sugestoes, diagnostico, previa ou exportacao CSV.
 
 **Implementacao parcial em 2026-10-05: utilitario de clipboard e testes isolados
@@ -45,7 +47,7 @@ como evidencia de clipboard gravado, colagem ou cadastro externo.
 | --- | --- | --- |
 | Modelo | Sem nome popular/como agendar/null/IDs | Tipos/decoder v2 da 007 |
 | Storage | Helpers iniciais, sem provider/recuperacao robusta | Provider unico da 007 acima das rotas |
-| Tutorial | Tres PlaceholderCards | Pagina/composicao real da 011 |
+| Tutorial | Conteudo com seis etapas; pagina ainda provisoria | Composicao por etapa da 011 e montagem exclusiva em `fill-information` |
 | Copia | Sem writeText, utilitario, hook ou componentes | T008–T012 |
 | Navegacao | ButtonLink pode recarregar; contrato interno ainda planejado | 002/003 para preservar memoria |
 | Tests | Sem framework/script test | Reusar suite 007/011 ou configurar na implementacao |
@@ -94,6 +96,27 @@ Tipos ativos usam Online e/ou Presencial separados por LF; sistema/exibicao usam
 da 007. Copia segue independente de validacao global, conforme contrato existente.
 
 ## Contrato dos 17 campos e convencoes
+
+Este contrato e a camada de transferencia, nao a lista de componentes visuais.
+A etapa 4 projeta somente os dez blocos de `quickCopyFields` e habilita copia
+nos seis que possuem `copyLabel`. O adapter entre IDs visuais e IDs locais e:
+
+| ID visual | ID local | Copiavel no conteudo atual |
+| --- | --- | --- |
+| service-name | nome | Sim |
+| popular-name | nome-popular | Sim |
+| service-description | descricao | Sim |
+| required-documents | documentos | Sim |
+| audience | publico-alvo | Sim |
+| additional-information | adicionais | Nao |
+| keywords | Sem origem contratada na 007 | Nao; nunca inferir |
+| scheduling | Projecao informativa dos campos de agendamento | Nao |
+| cost | custos | Nao |
+| service-deadline | prazo | Sim |
+
+O adapter usa labels, ordem, `copyLabel`, `quickCopyIntroduction`, `editPrompt`
+e `editAction` diretamente de `steps[3]`. Os valores editoriais existentes no
+arquivo sao exemplos, nao fallback copiavel nem estado paralelo da Carta.
 
 | Ordem | ID estavel | Fonte / regra |
 | --- | --- | --- |
@@ -246,12 +269,12 @@ browser/sistema/destino podem normalizar quebras. Registrar comportamento
 real por ambiente; nao prometer igualdade de bytes em qualquer aplicativo.
 
 Textarea readOnly recebe a mesma string derivada usada pelo handler, mas seu
-valor DOM normaliza quebras CR/CRLF conforme HTML. Nao usar textarea.value
-como fonte nem teste de igualdade literal de DOM para essas quebras. Testar
-separadamente string original/parametro API e exibicao/alternativa manual.
-Essa limitacao de representacao precisa ser conciliada em /spec:validar com
-exigencia de preservacao; fonte e string enviada continuam intactas. Se aceite
-exigir bytes identicos na copia manual, revisar controle/contrato antes do codigo.
+valor DOM normaliza quebras CR/CRLF conforme HTML. Nao usar `textarea.value`
+como fonte nem exigir igualdade literal dos terminadores no DOM. O contrato
+oficial exige igualdade entre string derivada e parametro da API; para a
+alternativa manual, exige preservacao do conteudo e das quebras visiveis.
+Testar esses dois aspectos separadamente e registrar normalizacoes observadas,
+sem normalizar a Carta ou a string enviada pelo app.
 
 ## Estados, revisoes, trava e operacao demorada
 
@@ -445,6 +468,13 @@ Preencher/Editar por hasContent. Nao duplicar link global vazio na 012 e na
 documentado, mantendo hierarquia de heading ajustavel. A 011 e proprietaria
 do layout/passo/fontes/link oficial; 012 nao importa pagina ou conteudo 011.
 
+A pagina da 011 passa os metadados editoriais da etapa 4 por props ao adapter
+da 012. Assim, componentes da 012 nao importam a pagina nem criam ciclo, e o
+conteudo continua fonte unica. A regiao so monta quando
+`step.id === "fill-information"`; nas outras etapas nao existem controles ou
+live regions da 012. Ao desmontar, timers/feedback sao limpos e callbacks
+tardios nao atualizam UI; a Carta permanece no provider da 007.
+
 Sem foco automatico em sucesso/falha; preservar foco do botao e selecao manual.
 Disabled nativo durante pending pode afetar foco em browsers: verificar retorno
 e, se necessario, usar aria-disabled com handler guardado e explicacao sem
@@ -459,12 +489,14 @@ copiar ou concluir. Nome e estado de cada campo sao independentes.
 
 ## Figma, CSS e responsividade
 
-Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2: localizar frame do tutorial e
-regiao da copia junto da 011; ainda sem node identificado. Make
-dVm7lEZdBFqOiiySWLWUqp, node 0:1: confirmar textarea, botao, focus/feedback,
+Referencia oficial: variante da etapa 4 no
+[Figma node 564:980](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev).
+O node pertence a pagina/rota da 011; nao e uma nova pagina nem o figmaNodeId
+principal da rota. Consultar detalhadamente esse frame e o Make
+`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, para confirmar textarea, botao, foco/feedback,
 tokens e estados missing/present/pending/copied/failed. Sem consulta MCP nesta
-sessao. Nao usar card da entrada 003 como layout nem inventar figmaNodeId.
-Atualizar mapa apos evidencia; sem necessidade de assets raster por antecipacao.
+sessao. O conteudo versionado prevalece sobre textos/placeholders do frame.
+Nao usar o card da entrada 003 como layout nem cadastrar `564:980` como rota.
 
 ```css
 /* globals.css: base semantica proposta, confirmar no Design/Make */
@@ -500,8 +532,8 @@ Offset sticky segue contrato de ancoras da 011/002, sem altura fixa presumida.
 | src/features/carta/useFieldCopy.ts | Requests/revisoes/trava/timers; T010 |
 | src/content/transfer/copia-carta.ts | Labels/convencoes/avisos; T011 |
 | src/components/carta/CopyField.tsx | Texto manual/acao/retorno; T011 |
-| src/components/carta/CartaCopyFields.tsx | Lista de ate 17 campos, conforme aplicabilidade; T011 |
-| Regiao TutorialCartaData e pagina da 011 | Fonte/hasContent/acao/avisos/anchors; T012 |
+| src/components/carta/CartaCopyFields.tsx | Projecao dos dez blocos e seis controles copiaveis; T011 |
+| Regiao TutorialCartaData e pagina da 011 | Montagem em `fill-information`, fonte/hasContent/acao/cleanup; T012 |
 | src/styles/globals.css | Estados/reflow confirmados; T011 |
 | Testes junto a seletores/helper/hook/componentes | T013–T015 |
 | specs/012-copia-dados-tutorial/verification.md | Evidencia por CA/ambiente; T016/T017 |
@@ -533,6 +565,11 @@ Componente/integracao: parametro writeText e string derivada original exatamente
 iguais; DOM exibido preserva texto visivel com normalizacao de quebras prevista
 por HTML. HTML literal nao executa. Ausentes nao copiam mensagem; readOnly
 selecionavel; falha conserva tutorial/outros campos/manual. Editar/retornar,
+atualizar provider e navegar entre etapas preservam a Carta. Verificar dez
+blocos na ordem do conteudo, seis controles copiaveis, nenhum controle nas
+outras etapas e nenhum valor inferido para keywords. Sair da etapa 4 durante
+pending/sucesso desmonta live regions, limpa timers e ignora callbacks tardios;
+retorno a `?etapa=4` deriva novamente os valores atuais.
 provider atualizado, memory-only/recovery seguro, sem gate e sem storage proprio.
 Nao duplicar testes internos da 007: usar contrato real e testar consumidor.
 
@@ -574,6 +611,7 @@ seguro, falhas/manual, demora e limites de confirmacao/normalizacao de quebras.
 | CA13 | Texto literal/fonte integra; T008/T011/T013/T015 |
 | CA14 | Acesso independente e ausencia de envio/storage; T012/T015/T017 |
 | CA15 | Campos ativos/inativos, modalidades e troca/restauracao de sistema; T002/T008/T013/T015 |
+| CA16–CA18 | Etapa 4/node 564:980, projecao de `steps[3]`, ausencia nas demais etapas e cleanup; T005/T011–T012/T014–T017 |
 
 Sem aceite integral enquanto ERS, Figma, validacao editorial/cruzada, contratos
 reais ou ambientes obrigatorios estiverem pendentes. Revisao RF03/CA06 nao
@@ -583,9 +621,11 @@ externa. Sistema pode manter texto copiado apos fim da sessao do app.
 
 ## Proximo passo
 
-Continuar a implementacao apos resolver V012-01 de validation.md (igualdade
-literal da copia manual versus normalizacao de quebras do controle HTML) e
-definir o escopo da trava ao ocultar/remontar um campo com writeText pendente.
+Continuar a implementacao usando a decisao de V012-01 registrada nesta rodada:
+string derivada e parametro de `writeText` devem ser identicos; a alternativa
+manual preserva conteudo e quebras visiveis, sem prometer terminadores identicos
+apos normalizacao do DOM, sistema operacional ou destino. Ainda e necessario
+definir o escopo da trava ao ocultar/remontar um campo com `writeText` pendente.
 O hook por instancia nao garante trava compartilhada entre instancias; nao
 prometer cancelamento de uma escrita ja iniciada. Conferir contratos 007/011,
 Figma, ERS e validacao editorial antes da interface. O utilitario isolado nao

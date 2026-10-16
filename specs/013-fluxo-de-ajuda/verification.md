@@ -7,7 +7,22 @@ Entrega parcial: src/content/support/canais.ts define os dois IDs/destinos
 fechados e os tipos pendente/ativo/pausado, conforme codigo base do plano
 detalhado. Estados nao ativos exigem notice no tipo. Nao foi criado objeto de
 configuracao operacional, aviso institucional ou consumidor visual.
-AjudaPage permanece placeholder; FAQ, links e retorno ainda nao implementados.
+O registro acima descreve a rodada de 2026-10-05. A pagina deixou de ser
+placeholder na atualizacao editorial registrada abaixo.
+
+## Atualizacao editorial — 2026-10-07
+
+- `src/content/pages/ajuda.ts` foi adotado como contrato oficial da FAQ.
+- A pagina passou a renderizar titulo, tagline, subtitulo, CTA interno, quatro
+  perguntas com `details/summary` e a secao `Precisa de apoio?`.
+- Foram substituidas as propostas antigas de sete assuntos, titulo
+  `Preciso de ajuda`, retorno ao formulario e dois cards de canal.
+- O encaminhamento da secao de apoio respeita o estado compartilhado da 014:
+  enquanto pendente, exibe aviso e rotulo neutro sem prometer agendamento.
+- A rota da 015 permanece independente e nao e adicionada como card nesta FAQ.
+
+Esta atualizacao comprova alinhamento de conteudo e renderizacao basica, nao
+homologacao visual do Figma nem operacao do atendimento.
 T003 possui entrega parcial; nenhuma tarefa marcada concluida.
 
 ## Arquivos e consolidacao documental

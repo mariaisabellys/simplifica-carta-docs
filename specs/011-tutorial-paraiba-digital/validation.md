@@ -20,8 +20,8 @@ operacional, correspondencia externa ou implementacao visual.
   obrigatoriedade e continuidade; seletor/contratos do plano detalhado da 012,
   incluindo remocao de campos inativos da lista visivel.
 - `src/content/tutorial/paraiba-digital.ts` e
-  `src/pages/TutorialParaibaDigitalPage.tsx`: tres orientacoes genericas e
-  cards placeholder, sem fontes/data ou integracao de copia.
+  `src/pages/TutorialParaibaDigitalPage.tsx`: conteudo com seis etapas e pagina
+  ainda baseada em cards placeholder, sem composicao por etapa ou copia integrada.
 - Constitution, contexto local de produto/roadmap/design consultados nas
   validacoes anteriores e referencias citadas pelos quatro documentos.
 - [Portal Paraiba Digital](https://paraibadigital.pb.gov.br/) e
@@ -35,9 +35,27 @@ matriz pendente ou usar data deste relatorio como reviewedAt do tutorial.
 
 O ERS PDF nao foi extraido/inspecionado. A verificacao de ferramentas registrada
 na 006 nao encontrou Python/py/Poppler; nao houve instalacao nesta rodada.
-Manual textual nao substitui PDF. Nao ha ferramenta Figma utilizavel exposta;
-frame proprio do tutorial continua sem confirmacao. Nao foram executados testes
-de browser, clipboard, tecnologia assistiva ou validacao pela equipe.
+Manual textual nao substitui PDF. Na rodada original, nao havia ferramenta
+Figma utilizavel nem frame proprio confirmado. Nao foram executados testes de
+browser, clipboard, tecnologia assistiva ou validacao pela equipe.
+
+### Atualizacao das referencias visuais — 2026-10-08
+
+Os nodes oficiais foram fornecidos e mapeados: `564:635` e a pagina no estado
+inicial; `564:730`, `564:852`, `564:980`, `564:1232` e `564:1357` sao variantes
+das etapas 2–6. A lacuna de identificacao de frames esta resolvida. Permanece
+pendente a consulta detalhada via MCP e a verificacao visual da implementacao.
+O conteudo versionado da feature prevalece sobre textos, exemplos e placeholders
+dos frames; os layouts devem se adaptar a ele, com divergencias registradas.
+
+### Consolidacao do contrato de estados — 2026-10-08
+
+Os documentos passaram a definir uma unica etapa ativa por vez, no parametro
+`?etapa=1..6`, com etapa 1 como fallback. Preparacao foi incorporada a
+introducao/etapa 4 e ajuda permanece transversal: nao existem sete telas.
+A copia pertence somente a etapa 4 (`564:980`). A rota recebeu `564:635` como
+node principal. Permanecem pendentes a implementacao, consulta visual detalhada,
+assets e validacao operacional/institucional.
 
 ## Inconsistencias e lacunas documentais
 
@@ -55,7 +73,8 @@ possui localFieldIds finais; a regra deve ser fechada antes de cria-los.
 ## Regras e contratos consistentes
 
 - Tutorial independente de Carta, diagnostico, previa, CSV ou login no app.
-  Sete assuntos editoriais nao pressupõem sete telas ou menus externos.
+  As seis etapas oficiais correspondem aos seis estados visuais; preparacao e
+  ajuda sao conteudos transversais.
 - Cadastro, revisao e acoes oficiais manuais, sem conta externa, credenciais,
   API, automacao ou deteccao de colagem/salvamento/publicacao.
 - Fontes, perfil/contexto e datas reais versionados; salvar/enviar/analisar/
@@ -76,8 +95,8 @@ possui localFieldIds finais; a regra deve ser fechada antes de cria-los.
   essencial permanece compreensivel quando imagem falha.
 - Link oficial confirmado por acao explicita em nova aba, com aviso acessivel
   e rel adequado; nenhuma Carta em URL ou requisicao de fundo.
-- Indice livre, foco/historico de fragmentos e offset do header variavel;
-  sem progresso persistido ou obrigacao de concluir passos.
+- Progresso livre, foco no titulo e historico por `?etapa=1..6`; sem progresso
+  persistido ou obrigacao de concluir passos.
 
 Nao foi encontrada regra principal que copie configuracoes inativas ou infira
 Nao do default legado. A 012 atual ja foi revisada documentalmente para campos
@@ -90,10 +109,10 @@ pendentes; revisao documental nao equivale a entrega funcional.
 | --- | --- |
 | Fonte administrativa | Obter material oficial/institucional autorizado para o perfil de cadastro, com referencia, versao/data, contexto e evidencia por instrucao em T002. Sem isso, CA02–CA04/CA08 nao possuem aceite operacional. |
 | Matriz externa/copy | Verificar todos os campos, rotulos, modos de entrada e estados; submeter a equipe com responsavel/data. Nao substituir lacunas por menus ou URLs supostos. |
-| ERS/Figma | Confrontar PDF, localizar frame proprio e consultar Design/Make. Frames de entrada/previa nao homologam o tutorial. |
+| ERS/Figma | Confrontar PDF e consultar detalhadamente no Design/Make os seis frames agora mapeados. Frames de entrada/previa nao homologam o tutorial. |
 | Estado da conciliacao 012 | PLAN/T004 ainda listam revisoes ja efetuadas como trabalho a realizar, enquanto inventario e plano detalhado reconhecem atualizacao. Ajustar descricao para verificacao cruzada remanescente, sem marcar tarefa concluida ou reaplicar regras antigas. |
 | Contratos reais | Entregar provider/decoder da 007 e CartaCopyFields/seletores/labels da 012. Consolidar props fields e propriedade dos anchors, incluindo IDs ativos/missing e fallback de falha. |
-| Navegacao compartilhada | Conciliar useAppNavigate/useNavigation de 002/003, conforme validacoes anteriores. Fechar AppLink, fragmentos, popstate/hashchange e foco sem conflito com shell. |
+| Navegacao compartilhada | Conciliar useAppNavigate/useNavigation de 002/003. Fechar AppLink, query `etapa`, popstate e foco sem conflito com shell. |
 | Conteudo e assets | Completar fontes/checkedAt/reviewedAt reais e inventario autorizado; mover copy ilustrativa do JSX para conteudo. Nao criar objetos de producao com fonte/data/href ficticios. |
 | Integracao/ambientes | Confirmar entradas 003/009 e ajuda, fallback SPA, clipboard/manual, imagens ausentes e tecnologia assistiva real. Registrar o que nao foi executado; placeholders nao comprovam jornada. |
 
@@ -103,7 +122,7 @@ continua dependente de evidencia institucional; esta rodada nao a homologou.
 
 ## Verificacao e arquivos alterados
 
-O codigo continua com tres orientacoes genericas e pagina placeholder, conforme
+O conteudo possui seis etapas e a pagina continua placeholder, conforme
 inventario. Nao foram instaladas dependencias ou executados build/typecheck
 como evidencia de tutorial futuro. Contagem de cards nao prova instrucoes
 corretas; verificacao posterior deve combinar revisao humana por fonte com

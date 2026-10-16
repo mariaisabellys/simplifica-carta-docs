@@ -21,6 +21,12 @@ destinos e tipos compartilhados em src/content/support/canais.ts. O inventario
 abaixo registra a preparacao anterior. Configuracao de estados/copy, consumidores
 e interface continuam pendentes; evidencias atuais em verification.md.
 
+> Contrato editorial atualizado em 2026-10-07: implementar diretamente
+> `src/content/pages/ajuda.ts`. As sete perguntas candidatas, o titulo
+> `Preciso de ajuda`, o retorno ao formulario e os dois cards descritos abaixo
+> sao registro historico substituido; nao fazem parte da pagina oficial atual.
+> A pagina possui quatro perguntas e uma secao de apoio para a feature 014.
+
 ## Fontes efetivamente consultadas
 
 - Spec, plan e tasks da 013, lidos nesta etapa.

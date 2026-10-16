@@ -32,9 +32,22 @@ real de copia/colagem ou selecao por teclado/toque no ambiente do usuario.
 
 O ERS PDF nao foi extraido/inspecionado. A verificacao de ferramentas registrada
 na 006 nao encontrou Python/py/Poppler; nao houve instalacao nesta rodada.
-Manual textual nao substitui PDF. Nao ha ferramenta Figma utilizavel exposta;
-frame do tutorial/copia nao foi confirmado. Nao houve leitura/escrita do
+Manual textual nao substitui PDF. Na rodada original, nao havia ferramenta
+Figma utilizavel e o frame ainda nao estava confirmado. Nao houve leitura/escrita do
 clipboard, consulta a conta externa, teste de browser ou validacao editorial.
+
+### Atualizacao Figma, conteudo e integracao — 2026-10-08
+
+O frame da area de copia foi identificado: variante da etapa 4 da feature 011,
+[node `564:980`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev).
+A lacuna de identificacao esta resolvida; continuam pendentes consulta MCP
+detalhada, implementacao e validacao visual.
+
+O contrato atualizado monta a 012 somente em `fill-information`
+(`/tutorial-paraiba-digital?etapa=4`). `tutorialParaibaDigitalContent.steps[3]`
+e a fonte de ordem, labels, introducao, `copyLabel`, edicao e navegacao: dez
+blocos visuais, seis copiaveis. O seletor de 17 campos e camada interna e nao
+autoriza 17 cards. `keywords` nao tem origem na 007 e nao pode ser inferido.
 
 ## Inconsistencias e lacunas documentais
 
@@ -77,6 +90,8 @@ de aceite antes do codigo. Nenhum controle novo ou normalizacao foi implementado
   persiste no envelope e app nao promete apagar clipboard no fim da sessao.
 - 011 controla composicao/editorial; 012 controla tipos neutros, seletor e
   mecanismo. Utilitario reutilizavel pela 015 sem carregar Carta ou criar ciclo.
+- A 012 nao monta nas etapas 1–3 ou 5–6. Sair da etapa 4 elimina feedback e
+  callbacks de UI, mas nao limpa a Carta mantida pela 007.
 
 Nao foi encontrada regra principal que copie campos inativos ou infira Nao
 do default legado. A obrigatoriedade condicional da 007 nao vira gate global
@@ -93,7 +108,7 @@ de copia; a 012 nao valida nem executa capacidade de integracao externa.
 | API/falhas/timers | Confirmar duracoes propostas de 5 s/10 s e operacao indefinidamente pendente. Dependencia de teste que rejeita exige catch defensivo, como o plano reconhece; nao liberar lock por timeout fingindo cancelamento. |
 | Feedback/foco | Confirmar retorno pending quando texto mudou e informar tentativa anterior se necessario. Testar disabled nativo e foco; aria-disabled pode exigir handler guardado, sem enfraquecer trava. |
 | Conteudo/componentes | Completar formatadores puros e mapas versionados, avisos separados e props/slots da regiao, sem duplicar Preencher/Editar ou anuncios da 011. Caminhos do PLAN sao propostas; plano detalhado usa components/carta e content/transfer. Consolidar antes de imports. |
-| ERS/Figma/editorial | Confrontar PDF e frame do tutorial/copia com 011; validar copy, fontes e correspondencias externas sem inventar nomes oficiais. |
+| ERS/Figma/editorial | Confrontar PDF e consultar detalhadamente o node `564:980`; validar o frame contra `steps[3]`, copy e correspondencias sem inventar nomes oficiais. |
 | Ambientes | Clipboard real em origem segura, browsers desktop/mobile e leitores/seleção manual; registrar versoes/permissoes/destino de teste e limites. Usar dados sinteticos em ambiente controlado. |
 
 A preservacao de dados condicionais ocultos ja esta definida. O ponto aberto

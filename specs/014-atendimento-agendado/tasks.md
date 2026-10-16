@@ -78,12 +78,17 @@
     RF02–08, CA06–CA08/CA10/CA16/CA18.
 
 - [ ] **T006 — Consultar Figma e fechar fluxo frontend**
-  - Identificar via MCP frames de escolha, dados, revisao e resultado no Design
-    YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2; 169:495 da FAQ nao comprova agendamento.
+  - Consultar via MCP os nodes `425:201`, `425:296`, `446:206` e `470:444`
+    no Design YaVUdqYa3boHpvGrxf4ZJ5; `169:495` pertence a FAQ.
+  - Tratar os nodes como estados da mesma rota: data, horario, dados/revisao e
+    solicitacao registrada. Nao criar quatro rotas ou paginas independentes.
   - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar tokens,
     controles, assets e estados de vazio/falha/conflito/processamento/resultado incerto.
   - Confirmar foco/resumo de erros, selecao nativa quando adequada, responsividade
     e breadcrumb; atualizar mapa de telas com frames efetivamente identificados.
+  - Comparar cada frame com `scheduledServiceContent`; adaptar o layout ao
+    conteudo e nao restaurar copy antiga, exemplos como dados reais, promessa
+    de e-mail, atendimento confirmado ou acao de reagendar.
   - Dependencias: T002–T003. Evidencia: consultas e composicao no plano detalhado;
     CA01/CA17/CA18. Referencia insuficiente permanece pendencia visual.
 
@@ -106,7 +111,7 @@
     constitution, Figma, regras institucionais e contratos de 002/007/013/015/016/017.
   - Resolver bloqueios de campos, agenda, capacidade, fuso, estados, politica,
     notificacao e recuperacao; nao declarar CA18 atendido com decisoes pendentes.
-  - Dependencia: T007. Evidencia: validacao RF01–RF09/CA01–CA18 registrada.
+  - Dependencia: T007. Evidencia: validacao RF01–RF09/CA01–CA20 registrada.
 
 ## Fase 2 — Backend e operacao
 
@@ -265,7 +270,7 @@
     migrations e suites API/transacional/PostgreSQL/notificacao definidas em T007.
   - Criar quickstart.md para ambiente sintetico, agenda, API, worker,
     concorrencia, rede/recuperacao e operacao sem dados institucionais reais.
-  - Consolidar CA01–CA18, Figma/copy, decisoes, ambientes, defeitos/retestes e
+  - Consolidar CA01–CA20, Figma/copy, decisoes, ambientes, defeitos/retestes e
     pendencias; verificar banco/proxy/HTTPS/worker/politica e requisitos de 017.
   - Conferir ausencia de segredos frontend, banco de Cartas, logs pessoais,
     listagem publica, anexos, automacao externa e promessas de entrega unica SMTP.
@@ -287,6 +292,7 @@
 | Acesso e privacidade, CA16 | T004–T005, T011, T013, T015, T020–T021 |
 | Acessibilidade/reflow, CA17 | T006, T017, T019, T023 |
 | RF09/prontidao, CA18 | T001–T009, T015, T021, T023–T024 |
+| Jornada Figma/conteudo, CA19–CA20 | T006–T008, T017–T019, T022–T024 |
 
 ## Proximo passo
 

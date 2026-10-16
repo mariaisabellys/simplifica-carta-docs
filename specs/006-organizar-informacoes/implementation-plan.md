@@ -1,18 +1,26 @@
 # Implementation Plan: Organizar informacoes
 
+> **Status em 6 de outubro de 2026:** plano detalhado superado pela decisao de
+> contrato registrada na spec. O contrato oficial possui tres topicos, 13
+> informacoes, marcacao independente, progresso de 0 a 13 e orientacoes
+> expansiveis. O codigo base e as proibicoes de checkbox/progresso abaixo nao
+> devem ser usados ate a reescrita deste plano.
+
 ## Status e limites
 
-Plano tecnico preparado em 2026-10-02. **Pendente de referencia visual,
-conciliacao com PDF do ERS e validacao editorial; nao pronto para implementacao
-visual nem aceite integral.** Esta etapa escreve apenas este documento.
+Plano tecnico preparado em 2026-10-02 e superado pelo contrato de 2026-10-06.
+O frame `387:1918` foi identificado posteriormente. **Continuam pendentes a
+reescrita deste plano, a consulta visual detalhada via MCP, a conciliacao com o
+PDF do ERS e a validacao editorial; a feature ainda nao esta pronta para
+implementacao visual nem aceite integral.**
 
 Executar `/spec:validar 006-organizar-informacoes` depois de resolver as pendencias,
 antes de `/spec:implementar`. Nenhuma tarefa foi marcada como concluida:
 inventario parcial ou codigo base documental nao conclui T001–T004 integralmente.
 
-Entregar pagina consultiva em `/organizar-informacoes`, com dez assuntos ordenados,
-orientacao de levantamento e acesso livre a formulario/ajuda. Sem checkbox,
-progresso, API, leitura da Carta, diagnostico obrigatorio ou persistencia.
+O texto abaixo descreve o contrato antigo de dez assuntos e deve ser lido como
+registro historico. O contrato vigente possui tres topicos, 13 informacoes,
+marcacao independente e progresso de 0 a 13.
 
 ## Fontes efetivamente consultadas
 
@@ -38,9 +46,9 @@ Conferir requisito original da lista, conteudo e interacoes na proxima revisao.
 
 | Fonte | Referencia | Evidencia nesta etapa |
 | --- | --- | --- |
-| Design | fileKey YaVUdqYa3boHpvGrxf4ZJ5; pagina 167:2 | Sem consulta MCP; frame da 006 desconhecido |
+| Design | fileKey YaVUdqYa3boHpvGrxf4ZJ5; node `387:1918` | Frame identificado no mapa; consulta MCP detalhada pendente |
 | Make | fileKey dVm7lEZdBFqOiiySWLWUqp; node 0:1 | Sem consulta MCP; tokens locais sao inventario, nao confirmacao visual |
-| Mapa local | docs/design-system/mapa-figma-telas.md | Nao contem frame da 006 |
+| Mapa local | docs/design-system/mapa-figma-telas.md | Registra `387:1918` como referencia da 006 |
 | Exploracao | node 575:483 | Entrada da 003; nao usar como layout da 006 |
 
 Foi pesquisada a integracao Figma: plugin disponivel, ainda nao instalado/conectado,
@@ -50,8 +58,8 @@ Design/Make antes de fechar layout, espacamentos, estados ou assets.
 
 Na revisao visual, registrar node/nome do frame, composicao, ordem de regioes,
 posicao das acoes, medidas/tokens, foco, comportamento estreito e assets locais.
-Atualizar o mapa somente com frame confirmado e adicionar figmaNodeId na rota
-somente na implementacao. Se houver upload/checklist interativo, registrar a
+O mapa e a rota devem manter o node confirmado `387:1918`. Se houver
+upload/checklist interativo no frame, registrar a
 divergencia e conciliar ERS/spec antes de incluir qualquer interacao.
 
 O esqueleto e o CSS abaixo representam requisitos semanticos e possibilidades
@@ -61,7 +69,7 @@ tecnicas. **Nao sao layout homologado nem codigo extraido do Figma.**
 
 | Area | Estado verificado | Decisao para a 006 |
 | --- | --- | --- |
-| Rota | Existe, showInNav true, specId 006, layoutType section, sem figmaNodeId | Manter path/identidade |
+| Rota | Existe, showInNav true, specId 006 e layoutType section; deve registrar `387:1918` | Manter path/identidade e metadata visual |
 | Pagina | PageHeader + PlaceholderCard | Substituir somente em /spec:implementar |
 | Shell | Header/nav/main/footer e aria-current por path | Reusar, sem main duplicado |
 | App | history/popstate, scroll no navigate, sem foco/titulo explicitos | Reusar contrato da 002; nao criar router local |
@@ -69,7 +77,7 @@ tecnicas. **Nao sao layout homologado nem codigo extraido do Figma.**
 | AppShell handleNav | Intercepta cliques sem verificar modificadores | Corrigir no dono 002, incluindo regressao |
 | Breadcrumb/contexto | Planejados, ausentes no codigo | Consolidar 002/003 antes de importar |
 | Entrada da 003 | Conteudo etapa 2 aponta para /organizar-informacoes; rota/pagina ainda ausentes | CA02 pendente de entrega real |
-| 005 | Pasta propria ausente no inventario de specs | Encaminhamento pertence a 005; acesso direto livre |
+| 005 | Spec e conteudo do diagnostico presentes; interface ainda incompleta | Encaminhamento pertence a 005; acesso direto livre |
 | 007/008 | Specs/planos presentes; provider v2 nao entregue no codigo inspecionado | CA06 pendente, sem alterar storage pela 006 |
 | 013/016 | Documentos presentes, paginas/contratos nao comprovados entregues | Reusar destinos e alinhar verificacoes |
 | Testes | dev/build/preview/typecheck, sem framework configurado | Roteiro manual; suite compartilhada se entregue antes do codigo |

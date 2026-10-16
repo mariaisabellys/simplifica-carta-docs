@@ -57,10 +57,10 @@ atual. Rotas 013/014 e contatos citados nao provam integracoes operacionais.
 
 ## Contato e estado editorial compartilhados
 
-Referencia inicial unica: `gesed.semtd@gmail.com`, sem substituir por endereco
-inventado. T002 deve registrar fonte institucional, responsavel, data e
-confirmacao de titularidade/atividade; nao testar enviando mensagem sem
-autorizacao. Estado atual documental: pendente. Isso bloqueia entrega ativa
+Endereco editorial oficial unico: `gesed.semtd@gmail.com`, documentado na
+secao `E-mail institucional` do documento mestre. Essa confirmacao editorial
+nao substitui validacao de titularidade/atividade; nao testar enviando mensagem
+sem autorizacao. Estado atual: `pendente`. Isso bloqueia `mailto`, copia ativa
 e aceite CA02, sem significar indisponibilidade operacional confirmada.
 
 Consolidar proposta do plan 015 com plano detalhado 013:
@@ -73,10 +73,10 @@ Consolidar proposta do plan 015 com plano detalhado 013:
   resposta imediata ou monitoramento em tempo real.
 - Validacao/evidencia/responsavel ficam em documento editorial, nao em
   checklist interno no bundle. Avisos ao usuario sao texto validado util.
-- Em pendente, nao apresentar link/copia como canal ativo. Em pausa confirmada,
-  suspender mailto/copia principais e manter explicacao/retorno; endereco
-  pode ficar como referencia selecionavel explicitamente indisponivel se
-  equipe validar essa apresentacao. Nao mostrar instrucao de envio como ativa.
+- Em pendente, apresentar o endereco apenas como referencia documentada, com
+  aviso, sem link/copia ativa. Em pausa confirmada, suspender mailto/copia
+  principais e manter pagina, explicacao e retorno; em ativo, habilitar as
+  duas acoes a partir da mesma fonte. Nao mostrar instrucao de envio como ativa.
 - Agendamento como alternativa operacional somente se estado ativo e destino
   real confirmado. Sem confirmacao, manter retorno a ajuda/formulario; nao
   prometer vagas. API da 014 indisponivel nao bloqueia consulta desta pagina.

@@ -69,8 +69,10 @@ do endereco de suporte. A equipe deve confirmar o contato antes da publicacao.
 
 - Apresentar endereco legivel e selecionavel, com destinatario identico ao
   usado na acao de contato e em eventual acao de copia.
-- Usar `gesed.semtd@gmail.com` como referencia documentada inicial, sujeita a
-  confirmacao da equipe responsavel. Nao substituir por endereco inventado.
+- Usar `gesed.semtd@gmail.com` como endereco editorial oficial documentado em
+  `Readme Manual de Levantamento de Serviços.md`, secao `E-mail institucional`.
+  Essa evidencia confirma o endereco no produto, mas nao comprova titularidade,
+  atividade, recebimento ou autorizacao operacional do canal.
 - Manter contato e rotulos em fonte versionada unica, reutilizavel pela 013,
   evitando destinatarios divergentes em arquivos distintos.
 - Registrar a validacao do contato no planejamento antes da implementacao;
@@ -80,6 +82,19 @@ do endereco de suporte. A equipe deve confirmar o contato antes da publicacao.
   anunciar recebimento de mensagem.
 - Diferenciar o suporte orientativo da GESED de canais tecnicos externos da
   plataforma. Contatos externos adicionais dependem de verificacao e escopo.
+
+Estados oficiais do canal:
+
+- `pendente`: endereco documentado, mas operacao ainda nao validada; pode ser
+  mostrado como referencia, acompanhado de aviso, sem `mailto:` ou copia ativa;
+- `ativo`: equipe confirmou titularidade, atividade, finalidade, copy e
+  autorizacao para publicacao; habilita link e copia do mesmo endereco;
+- `pausado`: canal anteriormente ativo teve suspensao confirmada; manter pagina,
+  aviso e retorno a ajuda, suspendendo `mailto:` e copia como acoes principais.
+
+Falha isolada de navegador, clipboard, aplicativo de e-mail ou recebimento nao
+altera automaticamente o estado editorial. Mudancas exigem decisao publicada
+na fonte unica `src/content/support/canais.ts`.
 
 ### RF03 — Orientacoes para escrever a mensagem
 

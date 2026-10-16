@@ -12,8 +12,8 @@ Nenhum codigo alterado, tarefa concluida ou criterio com aceite funcional.
 
 Conferidos SPEC, PLAN, TASK, IMPLEMENTATION-PLAN e validation.md; conteudo
 e pagina existentes, contratos de sessao/copia e alteracoes previas da 010.
-Codigo permanece tres orientacoes genericas e cards placeholder, sem fontes,
-data efetiva, matriz externa ou copia integrada.
+O conteudo possui seis etapas; a pagina permanece em cards placeholder, sem
+composicao por etapa ativa, data efetiva, matriz externa ou copia integrada.
 
 | Referencia | Resultado documental |
 | --- | --- |
@@ -56,6 +56,37 @@ pendentes em vez de serem marcadas como sem equivalente por falta de fonte.
   ambientes browser/assistivos precisam de entrega/verificacao integrada.
 - Assets somente autorizados/demonstrativos, com fonte/data/legenda/alt;
   nao apresentar mockup como captura autentica ou imagem como unica instrucao.
+
+## Atualizacao do mapeamento Figma — 2026-10-08
+
+- Pagina no estado inicial: etapa 1, node `564:635`.
+- Variantes da mesma pagina: etapas 2–6, nodes `564:730`, `564:852`,
+  `564:980`, `564:1232` e `564:1357`.
+- Os seis nodes foram registrados na spec, no plano, nas tarefas, no plano de
+  implementacao e no mapa central.
+- `src/content/tutorial/paraiba-digital.ts` permanece a fonte dos textos,
+  percentuais, instrucoes, campos e acoes. O Figma orienta a apresentacao e
+  deve ser adaptado quando houver divergencia de conteudo.
+
+Esta atualizacao confirma as referencias e sua classificacao, mas nao equivale
+a consulta MCP dos frames nem a validacao visual de uma implementacao.
+
+## Atualizacao do contrato documental — 2026-10-08
+
+- Uma unica etapa deve ser renderizada por vez em `?etapa=1..6`; valores
+  ausentes ou invalidos abrem a etapa 1.
+- Voltar, avancar, recarregar e compartilhar a URL preservam a etapa sem
+  persistir progresso ou expor dados da Carta.
+- Percentuais esperados: 17%, 33%, 50%, 67%, 83% e 100%.
+- A etapa 1 nao tem acao anterior; etapas 2–5 tem anterior/proxima; etapa 6
+  tem anterior/concluir.
+- A integracao de copia e seus estados vazio, parcial, completo e falha ficam
+  somente na etapa 4 (`564:980`).
+- Preparacao integra a introducao/etapa 4 e ajuda e transversal; nao ha uma
+  setima tela. Textos visiveis permanecem na fonte de conteudo, nao no JSX.
+
+Essas correcoes sao documentais e de metadado da rota. A tela ainda precisa ser
+implementada e confrontada visualmente com os seis frames.
 
 ## Verificacoes e arquivos
 

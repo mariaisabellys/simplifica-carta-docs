@@ -27,13 +27,12 @@
     RF01/RF04, CA01/CA05–CA07/CA13–CA14.
 
 - [ ] **T002 — Consolidar cobertura e validar conteudo institucional**
-  - Redigir FAQ cobrindo funcao do manual, acesso por etapas, informacoes a
-    reunir, continuidade da sessao, validacao/linguagem simples, previa/CSV/
-    copia e escolha de orientacao; numero de perguntas pode variar sem perder cobertura.
-  - Conciliar respostas com contratos finais de 007–012: sessao temporaria,
-    memoria apenas, obrigatorios versus sugestoes e transferencia manual.
-  - Fechar titulo Preciso de ajuda, introducao, descricoes dos dois canais e
-    acao fixa Ir para o formulário da Carta, sem ler dados para escolher rotulo.
+  - Usar `src/content/pages/ajuda.ts` como fonte oficial, sem criar perguntas
+    adicionais: titulo/tagline/subtitulo, CTA interno, quatro itens e secao de apoio.
+  - Conferir literalmente as respostas sobre publico, outro orgao, modalidades
+    digital/presencial e responsabilidade pela atualizacao da Carta.
+  - Manter somente o encaminhamento versionado para a 014; nao reinserir card da
+    015, retorno ao formulario ou os sete assuntos candidatos do plano anterior.
   - Validar redacao com equipe responsavel e registrar fontes/responsavel/data;
     sem promessa de recuperacao futura, importacao CSV, prazo, aprovacao ou
     suporte tecnico externo nao verificado. Nao anunciar placeholders como entrega.

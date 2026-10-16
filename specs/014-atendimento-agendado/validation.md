@@ -30,9 +30,22 @@ nao prontidao para implementacao dependente ou producao.
 
 O ERS PDF nao foi extraido/inspecionado. A verificacao de ferramentas registrada
 na 006 nao encontrou Python/py/Poppler; nao houve instalacao nesta rodada.
-Manual textual nao substitui PDF. Nao ha ferramenta Figma utilizavel exposta
-e frames proprios de agendamento nao foram confirmados. Agenda, contatos,
+Manual textual nao substitui PDF. Na rodada original, nao havia ferramenta
+Figma utilizavel e os frames ainda nao estavam confirmados. Agenda, contatos,
 modalidade, politica de dados e textos nao foram homologados pela equipe.
+
+### Atualizacao das referencias visuais — 2026-10-08
+
+Foram identificados quatro estados da mesma rota: `425:201` para escolha de
+data, `425:296` para horario, `446:206` para dados/revisao e `470:444` para
+solicitacao registrada. `425:201` e o node principal da pagina.
+
+O layout deve adaptar-se a `scheduledServiceContent` e aos estados reais da
+API. Copy ou exemplos do Figma nao podem restaurar promessas removidas: o
+resultado e `Solicitacao registrada`, nao atendimento confirmado; nao anunciar
+e-mail enviado nem oferecer `Reagendar`. Datas, horarios e dados pessoais dos
+frames continuam ilustrativos. Identificacao resolvida; consulta MCP detalhada,
+implementacao e verificacao visual permanecem pendentes.
 
 ## Lacunas e divergencias documentais
 
@@ -94,7 +107,7 @@ protecao explicita. Isso nao certifica configuracao futura ou ausencia de falhas
 | Erros/recuperacao | Fechar V014-02 e classificacao dos erros de proxy/CSRF/payload/429/410 para cada endpoint. Falha de consulta nunca vira ausente; erro nao reconhecido nao autoriza novo envio cego. |
 | Worker/operacao | Validar destinatario/provedor, timeout/lease/backoff, responsavel e processo de execucao, comandos restritos/alertas/backup. Outbox sem worker operacional nao entrega notificacao. |
 | Canais/manutencao | Resolver V014-01/V014-03, com estados reais e intervalo registrado coerente; alternativa por e-mail somente confirmada. |
-| ERS/Figma/navegacao | Confrontar PDF/frames proprios, validar copy e conciliar contexto de navegacao 002/003. FAQ 169:495 nao define formulario de atendimento. |
+| ERS/Figma/navegacao | Confrontar PDF e consultar detalhadamente `425:201`, `425:296`, `446:206`, `470:444`; validar copy e navegacao. FAQ `169:495` nao define formulario de atendimento. |
 | Deploy/ambientes | 017 nao detalhada; confirmar proxy/HTTPS/CSRF/banco/worker e suites PostgreSQL/SMTP falso, browsers/leitores/dispositivos. Nenhum ambiente ou aceite foi executado nesta rodada. |
 
 ## Verificacoes e arquivos alterados

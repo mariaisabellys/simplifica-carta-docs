@@ -66,13 +66,13 @@ permanece manual.
 
 | Area | Estado atual | Condicao para implementacao |
 | --- | --- | --- |
-| Rota | Existe, showInNav true, specId 011, sem figmaNodeId | Preservar URL e identidade; node somente apos consulta |
-| Pagina/conteudo | PageHeader e tres PlaceholderCards; keys por title | Objeto tipado e IDs estaveis, passos/fontes/data reais |
+| Rota | Existe, showInNav true, specId 011, `figmaNodeId: "564:635"` | Preservar URL e identidade; variantes nao criam novas rotas |
+| Pagina/conteudo | PageHeader e PlaceholderCards; conteudo ja possui seis etapas | Compor uma etapa ativa por vez com IDs estaveis e fonte editorial unica |
 | Sessao | Provider/decoder v2 planejados na 007, ausentes em src | Fonte unica acima das rotas |
 | Copia | Sem seletor/componente/clipboard em src | 012 fornece campos e mecanismo, sem duplicacao na 011 |
 | Navegacao | App controla pathname; ButtonLink pode recarregar | Contrato compartilhado 002/003, memoria preservada |
 | Shell | Header/footer/nav atual; nao tem breadcrumb | Reusar shell e breadcrumb, sem shell dentro da pagina |
-| Foco/hash | App nao trata foco/fragmentos; header sticky | Contrato de ancoras e historico abaixo |
+| Foco/URL | App ainda nao trata a query da etapa ou foco apos troca | Contrato de `?etapa=1..6`, historico e foco abaixo |
 | Fontes/assets | Sem data, manual, capturas ou mapeamento confirmado | T002/T003/T006, com evidencia por passo |
 | Testes | Sem suite configurada | Reusar 007/012 ou configurar na implementacao |
 
@@ -89,22 +89,22 @@ efetiva de conferencia, perfil, variante da interface e evidencia por instrucao.
 Conferir URL administrativa, acesso/permissoes, caminho e rotulos das acoes.
 Nao inferir login, menu ou procedimento de publicacao pela interface publica.
 
-Cobertura editorial proposta, sem sequencia de menus confirmada:
+Correspondencia entre os antigos assuntos editoriais e as seis etapas oficiais:
 
 | ID estavel | Assunto | Evidencia necessaria para fechar copy |
 | --- | --- | --- |
-| preparar-dados | Revisar Carta com setor responsavel | Manual/ERS e validacao institucional |
-| acessar-plataforma | Endereco e acesso por perfil | URL e orientacao administrativa confirmadas |
-| localizar-cadastro | Localizar area de cadastro | Caminho/permissoes/rotulos verificados |
-| transferir-informacoes | Copiar e preencher manualmente | Matriz externa, diferencas de listas/opcoes |
-| conferir-cadastro | Revisar valores apos colar | Campos e comportamento externos conferidos |
-| concluir-fluxo | Acao final e estado resultante | Distinguir salvar/enviar/analisar/publicar somente se existentes |
-| resolver-divergencias | Procurar ajuda quando tela divergir | Orientacao validada; /ajuda local, canais externos somente verificados |
+| introducao/etapa 4 | Preparar e conferir a Carta antes da transferencia | Manual/ERS e validacao institucional |
+| access-platform | Acessar a plataforma | URL e orientacao administrativa confirmadas |
+| sign-in | Fazer login | Perfil, credenciais institucionais e redirecionamento verificados |
+| locate-registration | Localizar o cadastro | Caminho/permissoes/rotulos verificados |
+| fill-information | Preencher as informacoes e usar copia | Matriz externa, diferencas de listas/opcoes |
+| review-data | Revisar dados | Campos e comportamento externos conferidos |
+| publish-service | Salvar/enviar/publicar conforme fluxo real | Estados finais verificados e diferenciados |
+| transversal | Resolver divergencias e procurar ajuda | Orientacao validada; /ajuda local, canais externos somente verificados |
 
-Esses IDs representam sete assuntos, nao necessariamente sete telas externas.
-Divisao final pode mudar com evidencia preservando cobertura e redirects de
-ancoras se ja publicadas. Texto generico de preparo/ajuda pode orientar a
-redacao, mas nao comprova CA02–CA04/CA08 de tutorial operacional completo.
+Somente os seis IDs em ingles representam etapas/telas. Preparacao e ajuda sao
+conteudos transversais e nao criam uma setima etapa, rota ou variante. Texto
+generico de preparo/ajuda nao comprova CA02–CA04/CA08 de tutorial operacional.
 
 Copy introdutoria candidata: "Use este tutorial para transferir manualmente
 as informações preparadas. Confira os dados com o setor responsável e revise
@@ -180,17 +180,46 @@ Texto selecionavel e texto enviado sao iguais; labels/avisos nao entram no valor
 
 ## Referencias Figma e inventario de assets
 
+A referencia visual esta organizada como uma pagina e cinco variantes:
+
+| Classificacao | Etapa | Node | Papel na implementacao |
+| --- | --- | --- | --- |
+| Pagina — estado inicial | Acesse a plataforma | `564:635` | Estrutura base da rota e estado da etapa 1 |
+| Variante | Faca login | `564:730` | Estado da etapa 2 |
+| Variante | Localize o cadastro | `564:852` | Estado da etapa 3 |
+| Variante | Cadastre as informacoes de sua Carta | `564:980` | Estado da etapa 4 e integracao visual da copia |
+| Variante | Revise os dados | `564:1232` | Estado da etapa 5 |
+| Variante | Publique o servico | `564:1357` | Estado final da etapa 6 |
+
+Todos os nodes pertencem a `/tutorial-paraiba-digital`. A implementacao deve
+usar uma estrutura de pagina compartilhada e derivar a variante da etapa atual.
+O objeto `tutorialParaibaDigitalContent` e a fonte editorial: qualquer texto,
+percentual, campo, instrucao, CTA ou placeholder divergente no Figma deve ser
+adaptado ao conteudo versionado e anotado como divergencia, nunca copiado como
+uma segunda fonte.
+
 | Referencia | Consulta necessaria | Evidencia atual |
 | --- | --- | --- |
-| Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2 | Localizar frame proprio do tutorial, registrar node | Sem frame identificado; sem ferramenta MCP Figma exposta na sessao |
+| Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2 | Consultar pagina `564:635` e variantes `564:730`, `564:852`, `564:980`, `564:1232`, `564:1357` | Nodes fornecidos como referencias oficiais; consulta detalhada ainda deve ocorrer antes do codigo visual |
 | Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 | Tokens/componentes, foco, feedback, reflow | Resumo local, sem consulta direta |
 
 Nao usar 575:483 (entrada da 003) ou 821:308 (previa) como layout do tutorial.
-Conferir introducao/indice/passos/fontes, acesso oficial, regiao de copia,
+Conferir introducao/progresso/etapa ativa/fontes, acesso oficial, regiao de copia,
 estados vazio/parcial/preenchido/recuperacao/falha e responsividade. Preferir
 uma regiao unica de copia; se Figma intercalar campos, conciliar agrupamento
-sem duplicar controles/identidade. Atualizar mapa somente com node confirmado.
+sem duplicar controles/identidade. O mapa registra os seis nodes confirmados.
 Figma nao valida instrucao administrativa externa.
+
+### Matriz Figma x conteudo versionado
+
+| Etapa | Node | Fonte textual obrigatoria | Ajuste quando houver divergencia |
+| --- | --- | --- | --- |
+| 1 — Acesse a plataforma | [`564:635`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-635&m=dev) | `steps[0]`, 17%, acesso oficial e proxima etapa | Preservar composicao; substituir copy/CTA pelo conteudo versionado |
+| 2 — Faca login | [`564:730`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-730&m=dev) | `steps[1]`, 33%, anterior/proxima | Adaptar altura e listas sem truncar instrucoes |
+| 3 — Localize o cadastro | [`564:852`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-852&m=dev) | `steps[2]`, 50%, anterior/proxima | Manter nomes operacionais somente quando verificados |
+| 4 — Cadastre as informacoes | [`564:980`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev) | `steps[3]`, 67%, `quickCopyFields`, editar Carta | Concentrar aqui estados vazio/parcial/completo/falha da copia; nao duplicar controles |
+| 5 — Revise os dados | [`564:1232`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1232&m=dev) | `steps[4]`, 83%, anterior/proxima | Preservar checklist completo e texto longo |
+| 6 — Publique o servico | [`564:1357`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1357&m=dev) | `steps[5]`, 100%, anterior/concluir | Nao prometer publicacao imediata; adaptar ao fluxo oficial validado |
 
 Nenhum asset foi obtido/autorizado. Inventario atual: vazio. T006 deve registrar
 ID, arquivo local em src/assets/tutorial-paraiba-digital, dimensoes, origem,
@@ -217,9 +246,9 @@ export type TransferField =
 export const transferAnchor = (id: CartaTransferFieldId) => `carta-copia-${id}`;
 
 // src/content/tutorial/paraiba-digital.types.ts — importar ID neutro acima
-export type TutorialStepId = "preparar-dados" | "acessar-plataforma"
-  | "localizar-cadastro" | "transferir-informacoes" | "conferir-cadastro"
-  | "concluir-fluxo" | "resolver-divergencias";
+export type TutorialStepId = "access-platform" | "sign-in"
+  | "locate-registration" | "fill-information" | "review-data"
+  | "publish-service";
 export type TutorialSource = {
   id: string; title: string; reference: string;
   href?: string; checkedAt: string; accessContext: string;
@@ -326,6 +355,8 @@ export function TutorialCartaData() {
 // src/pages/TutorialParaibaDigitalPage.tsx — esqueleto com contratos futuros
 export function TutorialParaibaDigitalPage() {
   const content = tutorialParaibaDigital;
+  const currentStepNumber = parseTutorialStep(window.location.search); // 1..6; default 1
+  const step = content.steps[currentStepNumber - 1];
   return (
     <>
       <Breadcrumb items={[{ label: "Início", href: "/" },
@@ -335,21 +366,16 @@ export function TutorialParaibaDigitalPage() {
       <p>Revisado em <time dateTime={content.reviewedAt}>
         {formatTutorialDate(content.reviewedAt)}
       </time>.</p>
-      <nav aria-label="Etapas do tutorial">
-        <ol>{content.steps.map(step => (
-          <li key={step.id}><a href={`#tutorial-${step.id}`}>{step.title}</a></li>
-        ))}</ol>
-      </nav>
+      <TutorialProgress steps={content.steps} currentStep={currentStepNumber} />
       <a href={content.officialAccess.href} target="_blank" rel="noopener noreferrer">
         {content.officialAccess.label} (abre em nova aba)
       </a>
-      <ol className="tutorial-steps">
-        {content.steps.map(step => (
-          <TutorialStep key={step.id} step={step}
-            asset={step.assetId ? tutorialAssets[step.assetId] : undefined} />
-        ))}
-      </ol>
-      <TutorialCopyBoundary><TutorialCartaData /></TutorialCopyBoundary>
+      <TutorialStep step={step}
+        asset={step.assetId ? tutorialAssets[step.assetId] : undefined} />
+      {step.id === "fill-information" ? (
+        <TutorialCopyBoundary><TutorialCartaData /></TutorialCopyBoundary>
+      ) : null}
+      <TutorialNavigation step={step} currentStep={currentStepNumber} />
       <p>{content.divergenceNotice}</p>
       <AppLink href="/previa">Revisar a Carta</AppLink>
       <AppLink href="/ajuda">Preciso de ajuda</AppLink>
@@ -372,7 +398,7 @@ Constantes JSX visiveis sao exemplos de copy: mover para conteudo versionado
 na implementacao. Nao criar novo main/h1 alem dos fornecidos por shell/PageHeader.
 Regiao unica de copia e posicionamento acima sao proposta, a confirmar no Figma.
 
-## Navegacao, ancoras e foco
+## Navegacao, URL e foco
 
 Manter anchors reais com href, modificadores, clique central e nova aba.
 Links internos usam contrato 002/003; nao interceptar link externo confirmado.
@@ -381,18 +407,21 @@ da Carta em query/hash, abertura automatica ou requests em background.
 Portal publico localizado nao pode preencher officialAccess administrativo
 sem verificacao adicional. Pode ser referencia publica claramente rotulada.
 
-Indice usa links de fragmento para headings, todos os passos expandidos e
-livres, sem progresso persistido. Compartilhar helper de ancoras da navegacao:
+Uma unica etapa fica montada por vez, sem progresso persistido. Compartilhar
+parser/navegador do parametro fechado `etapa`:
 
-1. Clique primario sem modificadores atualiza hash via pushState preservando
-   history.state existente, foca alvo tabindex=-1 com preventScroll e rola.
-2. Link com modificador segue browser. Fragmento desconhecido nao dispara
-   busca de campo via texto pessoal nem erro de pagina.
-3. No load/mount, hashchange e popstate, resolver somente IDs fechados conhecidos
-   apos conteudo montado. Voltar/avancar restaura destino, sem novo pushState.
-4. Ao navegar para rota diferente aplicar foco/titulo da 002. Na mesma rota com
-   hash, nao aplicar scrollTo(0) ou refocar h1 por cima do alvo.
-5. Hook limpa listeners/observers e nao move foco ao atualizar valores da Carta.
+1. Ausencia, texto, zero ou valor fora de 1–6 resolve para etapa 1 e nao quebra.
+2. Anterior/proxima e seletores de progresso atualizam `?etapa=N` preservando
+   outros parametros permitidos, nunca valores da Carta; cada mudanca cria uma
+   entrada de historico apropriada.
+3. No mount e `popstate`, derivar a etapa da URL. Voltar/avancar e recarga
+   restauram o estado sem armazenamento proprio.
+4. Depois da troca iniciada na pagina, focar o heading da etapa com
+   `tabIndex={-1}` e anunciar `Etapa N de 6`; nao mover foco em atualizacoes da Carta.
+5. Etapa 1 nao exibe anterior; etapas 2–5 exibem anterior/proxima; etapa 6
+   exibe anterior/concluir. Todos os controles devem permanecer acessiveis.
+6. Links de campo internos da etapa 4 podem usar anchors fechadas da 012; eles
+   nao substituem o estado da etapa e desaparecem quando o destino nao existe.
 
 Targets de campos missing continuam headings identificados, permitindo achar
 informacao sem inventar valor; se regiao de copia falhar, mostrar alternativa
@@ -408,7 +437,7 @@ smooth, respeitar prefers-reduced-motion. Verificar restauracao em browsers reai
 
 ```css
 /* globals.css; composicao/cores finais dependem de Design/Make */
-.tutorial-steps { display: grid; gap: var(--space-8); padding-inline-start: 1.5rem; }
+.tutorial-page { display: grid; gap: var(--space-8); }
 .tutorial-step { min-inline-size: 0; overflow-wrap: anywhere; }
 .tutorial-step section { display: grid; gap: var(--space-3); }
 .tutorial-step p, .tutorial-step figure { margin: 0; }
@@ -435,14 +464,16 @@ Tailwind de output Figma nem instalar bibliotecas visuais por antecipacao.
 | src/content/tutorial/paraiba-digital.types.ts | Contratos acima; T009 |
 | src/content/tutorial/paraiba-digital.assets.ts | Mapa somente de assets autorizados; T011 |
 | src/components/tutorial/TutorialStep.tsx | Passos/instrucoes/imagens; T010/T011 |
+| src/components/tutorial/TutorialProgress.tsx | Progresso e selecao da etapa ativa; T010 |
+| src/components/tutorial/TutorialNavigation.tsx | Acoes anterior/proxima/concluir; T010 |
 | src/components/tutorial/TutorialSources.tsx | Referencias/contextos/datas; T010 |
 | src/components/tutorial/TutorialCartaData.tsx | Fonte unica e regiao da 012; T012 |
 | src/components/tutorial/TutorialCopyBoundary.tsx | Isolamento de falha de copia; T012 |
 | src/pages/TutorialParaibaDigitalPage.tsx | Composicao integral; T010/T012/T013 |
 | src/assets/tutorial-paraiba-digital/ | Material autorizado, se necessario; T011 |
 | Contratos/seletores/CartaCopyFields da 012 | Propriedade 012; integrar, sem motor paralelo |
-| Navegacao/breadcrumb compartilhados 002/003 | Minimo necessario para links/foco/hash; T013 |
-| src/app/routes.tsx | Node apenas apos consulta; T013 |
+| Navegacao/breadcrumb compartilhados 002/003 | Minimo necessario para links/query/foco; T013 |
+| src/app/routes.tsx | Manter node principal `564:635`; T013 |
 | src/styles/globals.css | Reflow/estados confirmados; T014 |
 | docs/design-system/mapa-figma-telas.md | Frame confirmado, sem node inventado; T005 |
 | specs/012-copia-dados-tutorial/spec.md e documentos relacionados | Conciliacao explicita agendamento/listas; T004 |
@@ -476,6 +507,13 @@ montados. Ativo missing conserva anchor, inativo nao gera link de campo e
 falha da regiao de dados conserva tutorial-dados no fallback. Confirmacao
 antiga de copia nao reaparece apos ocultar/reativar; mecanismos ficam na 012.
 
+Cobrir ainda: fallback da etapa 1 para query ausente/invalida; restauracao por
+recarga e historico; uma unica etapa no DOM; percentuais 17/33/50/67/83/100;
+ausencia de anterior na etapa 1, anterior/proxima nas etapas 2–5 e
+anterior/concluir na etapa 6; foco e anuncio apos troca; texto longo sem corte;
+e ausencia da regiao de copia fora da etapa 4. Garantir que a copy visivel seja
+derivada do arquivo de conteudo, sem duplicacao literal no JSX.
+
 Verificacao editorial humana por instrucao: fonte/perfil/data, rotulos/caminho,
 links, diferenca real entre acoes oficiais, matriz completa, assets autorizados
 e revisao institucional. Teste que conta cards nao prova corretude operacional.
@@ -485,16 +523,16 @@ inventar fonte para passar teste. Registrar revisão efetiva do conteudo.
 
 | Ambiente proposto | Verificacoes |
 | --- | --- |
-| Windows 11, Chrome/Edge/Firefox estaveis | Menu/card/previa/URL direta/recarga, historia/hash, nova aba e preservacao da Carta |
+| Windows 11, Chrome/Edge/Firefox estaveis | Menu/card/previa/URL direta/recarga, historia/query, nova aba e preservacao da Carta |
 | macOS, Safari estavel | Mesma navegacao, assets e selecao/copia manual |
 | iOS Safari; Android Chrome reais | Leitura/reflow, imagem indisponivel, selecao manual e gesto de copia |
-| NVDA com Firefox/Chrome; VoiceOver/Safari | Titulos/indice/foco/links/copia/live region da 012 sem duplicacao |
+| NVDA com Firefox/Chrome; VoiceOver/Safari | Titulos/progresso/foco/links/copia/live region da 012 sem duplicacao |
 
 Registrar sistema/browser/tecnologia assistiva e versoes exatas no dia do teste.
 Larguras 1440/1024/768/390/320 px e intermediarias; texto 200%, zoom 400% para
 reflow desktop, fonte fallback, URL longa, header multiline/sticky e imagem
 indisponivel. Medir contraste/foco, ausencia de corte/overflow/sobreposicao.
-Checar voltar/avancar entre anchors e rotas e recarga com hash conhecido.
+Checar voltar/avancar entre etapas e rotas e recarga com query conhecida.
 URL direta tambem exige fallback de hosting para SPA; verificar configuracao
 real sem implantar site nesta etapa. Ambiente ausente fica pendente.
 

@@ -2,9 +2,27 @@
 
 ## Objetivo
 
-Oferecer uma entrada clara para esclarecer duvidas sobre levantamento,
-organizacao, elaboracao e cadastro manual da Carta de Servicos, com perguntas
-frequentes e acesso ao suporte por e-mail ou atendimento agendado.
+Oferecer respostas rapidas para duvidas frequentes durante o cadastro dos
+servicos e encaminhar o usuario que ainda precisa de apoio para as orientacoes
+de atendimento da feature 014.
+
+## Contrato editorial oficial — 2026-10-07
+
+`src/content/pages/ajuda.ts` e a fonte oficial da pagina `/ajuda`. Prevalece
+sobre listas candidatas ou exemplos anteriores nos demais documentos da 013:
+
+- titulo `Duvidas frequentes`, tagline `Uma resposta quando voce precisa.` e
+  subtitulo versionado;
+- CTA `Ainda preciso de ajuda ->` para `/ajuda#precisa-de-apoio`;
+- secao `Perguntas frequentes` com exatamente quatro itens versionados: diferenca
+  por publico, dependencia de outro orgao, fluxo digital/presencial e
+  responsabilidade pela atualizacao da Carta;
+- secao `Precisa de apoio?`, direcionada a `/ajuda/atendimento-agendado`;
+- nenhum card de suporte por e-mail e nenhuma FAQ adicional nesta pagina.
+
+O CTA da 014 respeita o estado compartilhado: enquanto `pendente`, a pagina
+informa a indisponibilidade e usa rotulo neutro para consultar orientacoes,
+sem prometer visita ou agenda disponivel.
 
 ## Problema e contexto
 
@@ -60,26 +78,22 @@ homologacao editorial das respostas.
   exportacao, login ou solicitacao anterior.
 - Reutilizar header e footer, indicar pagina atual semanticamente na
   navegacao e apresentar breadcrumb com retorno ao inicio.
-- Exibir titulo `Preciso de ajuda` e introducao em linguagem simples indicando
-  que o usuario pode consultar respostas ou escolher um canal de orientacao.
+- Exibir titulo, tagline, subtitulo e CTA exatamente a partir do conteudo
+  versionado, sem substituir `Duvidas frequentes` por `Preciso de ajuda`.
 - Explicar o escopo do suporte: levantamento, organizacao, elaboracao e
   preparacao para cadastro manual, sem prometer aprovacao, publicacao ou
   resolucao de toda demanda da plataforma externa.
 
 ### RF02 — Perguntas frequentes
 
-Disponibilizar respostas de consulta que cubram os assuntos abaixo, com
-redacao institucional a validar antes da implementacao:
+Disponibilizar exatamente as quatro perguntas versionadas:
 
-| Assunto | Cobertura minima |
+| Assunto | Cobertura oficial |
 | --- | --- |
-| Funcao do Simplifica Carta | Preparacao e orientacao; cadastro e publicacao continuam manuais. |
-| Acesso por etapas | Possibilidade de consultar qualquer etapa sem concluir anteriores. |
-| Informacoes a reunir | Encaminhamento a `/organizar-informacoes` e confirmacao com o setor responsavel. |
-| Continuidade do preenchimento | Dados temporarios da sessao, limites de recuperacao e ausencia de rascunho permanente. |
-| Validacao e linguagem simples | Diferenca entre obrigatorios ausentes e sugestoes orientativas, sem aprovacao automatica. |
-| Previa, CSV e copia | Funcao de cada recurso e orientacao para revisar dados antes da transferencia manual. |
-| Como obter orientacao | Diferenca entre suporte por e-mail e solicitacao de atendimento agendado. |
+| Servico diferente conforme o publico | Separar servicos quando regras, documentos, etapas ou resultados mudarem muito; registrar pequenas diferencas no mesmo servico. |
+| Servico dependente de outro orgao | Explicar a responsabilidade de cada orgao e onde buscar atendimento. |
+| Parte digital e parte presencial | Informar todas as etapas em ordem e identificar sua modalidade. |
+| Atualizacao depois da publicacao | Atribuir ao orgao responsavel a manutencao de documentos, etapas, prazos, canais e demais condicoes. |
 
 - Manter respostas coerentes com os contratos finais de 007–012. Nao
   prometer recuperacao futura, importacao CSV ou procedimentos externos nao
@@ -92,14 +106,11 @@ redacao institucional a validar antes da implementacao:
 - A FAQ nao exige busca, filtros, chat, avaliacao de resposta ou registro de
   conclusao. Sua composicao final deve ser conciliada com o Figma.
 
-### RF03 — Escolha do canal
+### RF03 — Encaminhamento para apoio
 
-Apresentar as duas opcoes com descricao objetiva e link de acao identificavel:
-
-| Opcao | Destino | Comportamento nesta feature |
-| --- | --- | --- |
-| Atendimento agendado | `/ajuda/atendimento-agendado` | Encaminhar para consultar disponibilidade e solicitar atendimento na 014. |
-| Suporte por e-mail | `/ajuda/suporte-email` | Encaminhar para orientacoes de contato e uso do canal na 015. |
+Apresentar a secao versionada `Precisa de apoio?`, com descricao e destino
+`/ajuda/atendimento-agendado`. A feature 015 continua acessivel por sua rota e
+por outros pontos da jornada, mas nao compoe o conteudo oficial desta FAQ.
 
 - Explicar que selecionar uma opcao apenas abre o fluxo correspondente.
   Nao cria solicitacao, reserva horario, envia mensagem ou notifica a equipe.
@@ -220,9 +231,9 @@ canais. Testes de encaminhamento completo ficam dependentes dessas features.
 | ID | Cenario | Resultado esperado |
 | --- | --- | --- |
 | CA01 | Abrir `/ajuda` pela acao compartilhada, URL direta ou recarga. | Exibir consulta e opcoes sem login, Carta ou percurso anterior. |
-| CA02 | Consultar apresentacao e FAQ. | Encontrar escopo orientativo e cobertura dos assuntos da tabela, com respostas coerentes e versionadas. |
+| CA02 | Consultar apresentacao e FAQ. | Encontrar titulo, tagline, subtitulo, CTA e as quatro perguntas/respostas exatamente como versionados. |
 | CA03 | Escolher atendimento agendado. | Navegar para `/ajuda/atendimento-agendado` sem reservar, enviar ou confirmar solicitacao. |
-| CA04 | Escolher suporte por e-mail. | Navegar para `/ajuda/suporte-email` sem enviar mensagem ou anunciar recebimento. |
+| CA04 | Procurar suporte por e-mail na FAQ. | Nao encontrar card adicional fora do conteudo versionado; a rota da 015 permanece independente. |
 | CA05 | Abrir ajuda com Carta parcialmente preenchida e retornar ao formulario. | Preservar integralmente os dados e retomar o preenchimento. |
 | CA06 | Acessar ajuda diretamente e usar retorno ao formulario. | Abrir `/formulario-carta` sem depender de historico previo. |
 | CA07 | Consultar ajuda e selecionar canal. | Nao coletar dados, enviar Carta, respostas ou valores de sessao em URL ou mensagem automatica. |

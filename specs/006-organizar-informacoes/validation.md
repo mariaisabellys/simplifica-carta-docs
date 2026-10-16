@@ -1,5 +1,10 @@
 # Validacao: Organizar informacoes
 
+> **Superada em 6 de outubro de 2026:** esta validacao avaliou o contrato antigo
+> de dez assuntos sem progresso. A decisao atual adotou o conteudo versionado de
+> tres topicos e 13 informacoes. Reexecutar `/spec:validar` depois de reconciliar
+> spec, plano, tarefas e plano detalhado.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 006-organizar-informacoes` em 2026-10-05.
@@ -135,7 +140,7 @@ nao foram executados.
 | CA09 | T009/T012 | Larguras/texto/reflow previstos; medicao/interface reais pendentes |
 | CA10 | T003/T006/T007/T014 | Conteudo/escopo coerentes; ajustar proibicao generica de hooks, V006-05 |
 | CA11 | T003/T006/T010 | Comunicacao sem aprovacao/publicacao automatica coerente; validacao editorial pendente |
-| CA12 | T002/T004/T005/T009/T012/T014 | Nao verificavel contra Figma nesta sessao; frame desconhecido |
+| CA12 | T002/T004/T005/T009/T012/T014 | Node `387:1918` identificado posteriormente; consulta MCP detalhada, implementacao e comparacao visual permanecem pendentes |
 
 Todos RF01–RF06 e CA01–CA12 possuem tarefas relacionadas. A existencia da
 rastreabilidade nao resolve inconsistencias, comprova implementacao ou

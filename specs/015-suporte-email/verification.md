@@ -34,11 +34,24 @@ constante. V015-01 corrigido documentalmente; configuracao operacional ainda
 nao implementada. Spec/validation intactos. Relatorio e quickstart adicionados;
 alteracoes anteriores preservadas.
 
-- V015-02 aberto: equipe decide referencia selecionavel/instrucao manual em
-  pendente/pausado e avisos por estado. JSX candidato incondicional recebeu
-  ressalva explicita antes de implementacao; nenhuma regra inventada.
-- Confirmar titularidade/atividade/endereco e assunto/textos. Referencia
-  gesed.semtd@gmail.com continua documental, sem novo contato ou status ativo.
+### Atualizacao de endereco e estados — 2026-10-07
+
+- `gesed.semtd@gmail.com` foi confirmado como endereco editorial oficial a
+  partir do documento mestre, sem inferir que a caixa esta operacional.
+- Criada fonte unica de contato em `src/content/support/contatos.ts`.
+- Criada configuracao compartilhada em `src/content/support/canais.ts` com
+  estados `pendente | ativo | pausado`; suporte por e-mail e atendimento
+  agendado iniciam como `pendente` por falta de validacao operacional.
+- Em `pendente`, a pagina mostra o endereco somente como referencia documentada,
+  com aviso, sem `mailto:` ou copia ativa.
+- A entrada de ajuda passou a consumir IDs, destinos e estados canonicos,
+  sem anunciar envio de e-mail ou agendamento disponivel.
+
+Essas decisoes resolvem V015-01/V015-02 no contrato editorial. O estado ativo
+continua condicionado a confirmacao da equipe e a testes do fluxo real.
+
+- Confirmar titularidade/atividade, assunto e textos antes de mudar o canal de
+  `pendente` para `ativo`; o endereco editorial nao equivale a canal operacional.
 - Constitution secao 6 exige: "Antes de implementar trabalho visual, o Codex
   deve consultar via MCP". Figma MCP indisponivel nesta sessao; Design/Make e
   ERS pendentes. Fonte: ../../docs/processo/constitution.md.

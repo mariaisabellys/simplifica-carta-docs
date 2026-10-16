@@ -46,22 +46,47 @@ sincrono/getter e nova tentativa. Globals de teste restaurados ao final;
 nenhum clipboard do usuario foi sobrescrito. Nao comprovam permissao, gesto,
 colagem, selecao manual ou acessibilidade em browser/dispositivo real.
 
+## Atualizacao documental — 2026-10-07
+
+- V012-01 foi resolvida: a string derivada deve ser enviada integralmente a
+  `writeText`; a alternativa manual deve preservar conteudo e quebras visiveis,
+  sem prometer terminadores CR/LF/CRLF identicos apos normalizacao do DOM,
+  sistema operacional ou destino. Os testes devem observar os dois contratos
+  separadamente e nunca normalizar a Carta para produzir igualdade artificial.
+- CA15 permanece presente nas matrizes de PLAN e IMPLEMENTATION-PLAN e nos
+  cenarios T013–T015, cobrindo modalidades, sistemas, formas externas,
+  aplicabilidade, troca/restauracao/recarga e fonte preservada.
+- Esta atualizacao fecha inconsistencias documentais; nao representa execucao
+  dos testes futuros nem aceite funcional dos componentes ainda pendentes.
+
+## Atualizacao de integracao com a 011 — 2026-10-08
+
+- Referencia visual oficial: variante da etapa 4, [node `564:980`](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev).
+- Montagem exclusiva em `fill-information`, por `?etapa=4`; nenhuma UI da 012
+  deve aparecer nas demais etapas.
+- `tutorialParaibaDigitalContent.steps[3]` governa dez blocos, ordem, labels,
+  introducao, edicao e CTAs. Somente seis blocos com `copyLabel` sao copiaveis.
+- O contrato interno de 17 campos nao cria 17 cards. `keywords` permanece sem
+  origem na 007 e nao recebe valor ou copia inferidos.
+- Ao sair da etapa 4, controles, timers e feedback transitório desmontam;
+  callbacks tardios sao ignorados e a Carta continua preservada no provider.
+
+Esta atualizacao e documental. Nao comprova consulta MCP detalhada, renderizacao
+do node, integracao dos componentes ou comportamento real do clipboard.
+
 ## Pendencias e decisoes
 
-- V012-01: plan/tasks exigem igualdade literal da copia manual, mas textarea
-  normaliza CR/CRLF. Decidir criterio da copia manual antes da interface;
-  preservar a string original enviada a API independentemente dessa decisao.
 - Definir trava por instancia ou identidade do campo/sessao ao ocultar e
   remontar com escrita pendente. Cleanup de UI nao cancela writeText iniciado.
 - Modelo/provider/decoder v2 da 007 e composicao/conteudo da 011 nao estao
   implementados. Nao criar outra Carta/provider para contornar isso.
-- Figma MCP indisponivel na sessao. Constitution, secao 6, determina:
+- O node foi identificado, mas a consulta detalhada via Figma MCP permanece
+  pendente. Constitution, secao 6, determina:
   "Antes de implementar trabalho visual, o Codex deve consultar via MCP".
   Referencia: ../../docs/processo/constitution.md. UI permanece pendente.
 - Conferencia do ERS, revisao editorial/cruzada, testes reais HTTPS e matriz
-  de acessibilidade/mobile ainda pendentes. CA01–CA15 nao possuem aceite
+  de acessibilidade/mobile ainda pendentes. CA01–CA18 nao possuem aceite
   integral; testes isolados apoiam apenas a operacao browser de T009.
 
-V012-02–04 tiveram ajustes documentais; a divergencia V012-01 continua
-explicita, sem inventar comportamento. O reuso do utilitario pela 015 e futuro.
+V012-01–04 tiveram ajustes documentais. O reuso do utilitario pela 015 e futuro.
 Alteracoes anteriores em csv.ts e specs 003–011 foram preservadas.

@@ -29,7 +29,8 @@ Conferir ERS e referencias visuais no plano detalhado antes do codigo.
 ## Estado atual e divergencias
 
 - React 19, TypeScript, Vite e CSS global com tokens; Inter definida.
-- Rota existente com specId 007 e node `811:306`; pagina apenas informativa.
+- Rota existente com specId 007; node principal atualizado para `653:1540`.
+  Pagina ainda informativa, sem jornada funcional de cinco partes.
 - App troca componentes por rota e nao possui estado compartilhado da Carta.
 - Storage usa chave `simplifica-carta:sessao`, leitura fora do try/catch e
   mesclagem superficial de JSON com modelo inicial; escrita tambem pode falhar.
@@ -181,13 +182,14 @@ Reentrar na pagina, abrir ajuda ou solicitar previa nao chama limpar sessao.
 
 ### 4. Conteudo, partes e controles
 
-Criar `src/content/pages/formulario-carta.ts` com introducao, cinco partes,
-labels, orientacoes, exemplos, avisos de sessao e rotulos de acoes. Manter
+Usar `src/content/pages/formulario-carta.ts` como fonte da introducao, cinco
+partes, labels, exemplos, avisos e acoes. Derivar orientacoes por ID de
+`src/content/pages/organizar-informacoes.ts`, sem duplicar sua copy. Manter
 mensagens de validacao e regras em contrato separado compartilhado com 008.
 
 Compor identificacao, requisitos, etapas, atendimento e informacoes adicionais
 na ordem da spec. Proposta inicial: secoes acessiveis e indice de partes, sem
-gates; a consulta Figma definira exibicao simultanea ou uma parte por vez.
+gates. As cinco referencias confirmam uma parte ativa por vez na mesma rota.
 Ambas precisam expor caminho para todos os campos sem validação bloqueadora.
 
 Usar input para nomes, textarea para textos extensos, radio/controle nativo
@@ -268,10 +270,14 @@ infraestrutura ficam definidas nas tarefas. Assets apenas apos inventario Figma.
 
 ## Visual, responsividade e acessibilidade
 
-Consultar Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, nodes
-`811:306`, `811:382` e `651:317`, e identificar layout completo do formulario.
+Consultar Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, telas
+`653:1540`, `2024:269`, `641:58`, `647:650` e `660:2533`; componentes
+`811:306`, `811:382`, `821:308` e `651:317`.
 Consultar Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Esses nodes sao
-referencias locais, nao consulta executada nesta etapa.
+referencias locais, nao consulta detalhada executada nesta etapa. O layout deve
+se adaptar ao conteudo versionado. A previa usa o componente da 009 (`821:308`),
+e as orientacoes usam o conteudo da 006. O formulario ilustrado como imagem em
+`2024:269` deve ser reconstruido com controles reais, nunca incorporado como asset.
 
 No plano detalhado, registrar partes, campos, help panels, acoes, erros,
 assets, estados e adaptacao responsiva. Resolver campos/interacoes extras antes
@@ -284,7 +290,7 @@ Reutilizar requisitos da 016 sem aguardar sua implementacao para corrigir barrei
 
 ## Estrategia de verificacao
 
-Esta etapa e documental: conferir RF01–RF08, CA01–CA24, caminhos citados,
+Esta etapa e documental: conferir RF01–RF08, CA01–CA28, caminhos citados,
 contratos e pendencias. Nenhum build ou teste de interface foi executado.
 
 Para implementacao, a complexidade de migracao e listas justifica testes
@@ -319,6 +325,7 @@ documentada, sem instalar dependencias nesta etapa.
 | CA21–CA22 | Externo com URL e exibicao dentro/nova pagina, com significados distintos |
 | CA23 | Troca externo/nativo preserva valores na sessao/recarga, excluindo campos externos inativos de apresentacao e transferencia |
 | CA24 | Sim exige Online/Presencial/ambos e sistema; externo exige URL/exibicao; revisao condicional e previa parcial livre, com gate CSV da 008/010 |
+| CA25–CA28 | Cinco telas na mesma rota, orientacao da 006, previa 821:308 compartilhada e formulario real em 2024:269 |
 
 Executar typecheck/build e suite configurada apos implementar. Verificar
 1440, 1024, 768, 390 e 320 px, zoom de 200%, reflow e matriz de navegadores da

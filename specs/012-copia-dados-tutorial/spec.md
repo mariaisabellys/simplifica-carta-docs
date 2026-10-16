@@ -16,6 +16,9 @@ o retrabalho e o risco de omissoes.
 A feature complementa `011-tutorial-paraiba-digital` na rota existente
 `/tutorial-paraiba-digital`. Nao cria uma pagina independente. O tutorial deve
 continuar consultavel por quem chega diretamente, mesmo sem preencher a Carta.
+A regiao desta feature pertence exclusivamente a etapa 4, identificada por
+`fill-information`, acessivel em `/tutorial-paraiba-digital?etapa=4` e
+representada no Figma pelo node `564:980`.
 
 ## Usuarios impactados
 
@@ -37,7 +40,8 @@ continuar consultavel por quem chega diretamente, mesmo sem preencher a Carta.
   modelo inicial e armazenamento temporario existentes.
 - `src/pages/TutorialParaibaDigitalPage.tsx`,
   `src/content/tutorial/paraiba-digital.ts` e `src/app/routes.tsx`: ponto de
-  integracao atual, ainda com conteudo placeholder.
+  integracao. `tutorialParaibaDigitalContent.steps[3]` define titulo, descricao,
+  introducao da copia, blocos visuais, acao de edicao e navegacao da etapa 4.
 
 Esta spec usa as fontes textuais acima; nao declara validacao do PDF do ERS
 nem consulta direta ao Figma nesta etapa.
@@ -46,13 +50,35 @@ nem consulta direta ao Figma nesta etapa.
 
 ### RF01 — Acesso e continuidade do tutorial
 
-- Disponibilizar os campos de copia dentro de `/tutorial-paraiba-digital`,
-  junto das orientacoes da feature 011.
+- Disponibilizar os campos de copia somente na etapa 4 de
+  `/tutorial-paraiba-digital`, junto das orientacoes da feature 011.
 - Manter as instrucoes do tutorial disponiveis com ou sem dados da Carta.
 - Explicar que copiar prepara o texto para colagem e que o cadastro e a
   publicacao continuam sendo realizados manualmente no Paraiba Digital.
 - Nao exigir exportacao CSV, conclusao do diagnostico ou percurso sequencial
-  das etapas para consultar o tutorial ou copiar um campo preenchido.
+  das etapas para consultar o tutorial. Para copiar, abrir diretamente
+  `?etapa=4`, sem exigir conclusao das etapas 1–3.
+
+### RF01A — Contrato editorial da etapa 4
+
+- Usar `quickCopyIntroduction`, `quickCopyFields`, `editPrompt`, `editAction`
+  e `actions` de `tutorialParaibaDigitalContent.steps[3]`; nao duplicar esses
+  textos no JSX nem criar uma segunda fonte editorial na 012.
+- Preservar a ordem dos dez blocos versionados. Somente entradas que possuem
+  `copyLabel` recebem acao de copia: nome do servico, nome popular, descricao,
+  documentos, publico e prazo.
+- Projetar esses seis IDs visuais para a Carta: `service-name` → `nome`,
+  `popular-name` → `nome-popular`, `service-description` → `descricao`,
+  `required-documents` → `documentos`, `audience` → `publico-alvo` e
+  `service-deadline` → `prazo`.
+- Os outros quatro blocos (`additional-information`, `keywords`, `scheduling`
+  e `cost`) permanecem na composicao definida pelo conteudo, sem ganhar botao
+  de copia por inferencia. `keywords` nao possui origem no contrato atual da
+  007 e nunca deve ser fabricado a partir de outros campos.
+- Os valores existentes em `quickCopyFields` sao exemplos editoriais da tela,
+  nao uma segunda Carta. Quando houver dado da sessao para um bloco mapeado,
+  ele prevalece; ausente usa o estado `Nao informado`, nunca o exemplo como
+  dado real copiavel.
 
 ### RF02 — Dados da sessao e atualizacao
 
@@ -68,14 +94,15 @@ nem consulta direta ao Figma nesta etapa.
   o tutorial. Usar o estado valido em memoria, quando houver; caso contrario,
   apresentar o estado sem dados com orientacao para preencher o formulario.
 
-### RF03 — Campos identificados para copia
+### RF03 — Campos de transferencia e projecao visual
 
 Revisao documental em 2026-10-05, durante `/spec:plano-implementacao`, conforme
 T002: cobertura e semantica conciliadas com modelo v2/decoder da 007 e
 integracao da 011. Nao representa implementacao, consulta visual ou aceite.
 
-Cada campo deve apresentar rotulo, valor legivel e selecionavel e uma acao
-de copia associada ao proprio campo. A cobertura inicial segue o modelo local:
+O seletor neutro pode cobrir os 17 campos do modelo local para reuso e evolucao,
+mas a etapa 4 renderiza somente a projecao definida em RF01A. Ter um campo no
+seletor nao autoriza criar card ou botao ausente em `quickCopyFields`.
 
 | Campo apresentado | Origem na Carta | Representacao para copia |
 | --- | --- | --- |
@@ -188,16 +215,18 @@ da 007. Copia segue independente de validacao global, conforme contrato existent
   manual quando a copia automatica nao estiver disponivel.
 - Manter mensagens e rotulos editoriais versionados e coerentes com o tutorial.
 
-## Referencias visuais e pendencias de planejamento
+## Referencia visual e pendencias de planejamento
 
-O mapa local ainda nao identifica um frame especifico para o tutorial e seus
-campos de copia. Nao se presume layout aprovado para esta feature.
+A referencia oficial desta feature e a variante da etapa 4 da pagina da 011:
+[Figma node 564:980](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev).
+Ela nao cria rota ou pagina independente; o frame principal da rota continua
+`564:635`. O mapa central ja classifica `564:980` como variante.
 
-Antes da implementacao visual, identificar e consultar via MCP o frame
-correspondente no Figma Design (`YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`) e o
-Figma Make (`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`), conforme a constitution.
-Registrar o node e a composicao no plano de implementacao e atualizar o mapa
-de telas quando identificado. Reutilizar shell, tokens e componentes do projeto.
+Antes do codigo visual, consultar detalhadamente via MCP o node `564:980` e o
+Figma Make (`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`). O Figma orienta layout e
+hierarquia; `src/content/tutorial/paraiba-digital.ts` prevalece para textos,
+ordem, existencia de botoes e acoes. Registrar divergencias sem copiar texto
+antigo do frame para uma segunda fonte.
 
 O planejamento deve conciliar esta tabela com o contrato final da feature 007
 e a organizacao editorial da feature 011, incluindo rotulos das listas,
@@ -249,6 +278,9 @@ concluidas; seus contratos devem ser conciliados no planejamento.
 | CA13 | Copiar conteudo contendo marcacao HTML. | Exibir e copiar como texto, sem executa-lo. |
 | CA14 | Copiar ou navegar sem concluir diagnostico, previa ou CSV. | Manter acesso independente; nao criar backend, envio externo ou persistencia permanente da Carta. |
 | CA15 | Consultar e copiar agendamento em Nao/Sim, interno/externo dentro/fora e apos troca de sistema. | Aplicar 007 CA19–CA24: campos inativos sem exibicao ou copia; preservar dados na sessao; tipos permitem Online, Presencial ou ambos; copiar campos ativos preenchidos sem gate global. |
+| CA16 | Abrir qualquer etapa diferente da 4. | Nao montar campos, botoes ou live regions da 012; manter somente o conteudo da etapa ativa da 011. |
+| CA17 | Abrir `?etapa=4` e comparar com conteudo/Figma. | Usar node `564:980`, os dez blocos na ordem versionada, copia somente nos seis com `copyLabel` e acao `Editar na minha Carta`. |
+| CA18 | Sair da etapa 4 durante ou depois de uma tentativa e retornar. | Desmontar controles e feedback transitório, ignorar retorno tardio e preservar a Carta; ao retornar, derivar valores atuais da sessao. |
 
 ## Proximo passo
 

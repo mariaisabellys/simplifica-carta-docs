@@ -38,10 +38,12 @@ aprova nem publica servicos automaticamente.
 - `specs/012-copia-dados-tutorial/spec.md`: comportamento de campos,
   acionamento, retorno, falha e alternativa de copia manual.
 - `src/app/routes.tsx`, `src/pages/TutorialParaibaDigitalPage.tsx` e
-  `src/content/tutorial/paraiba-digital.ts`: rota existente e tres orientacoes
-  iniciais, ainda sem tutorial detalhado ou integracao de copia.
-- `docs/design-system/mapa-figma-telas.md`: ausencia de frame especifico
-  identificado para este tutorial.
+  `src/content/tutorial/paraiba-digital.ts`: rota existente, pagina ainda
+  provisoria e conteudo editorial completo das seis etapas, ainda sem a
+  composicao visual ou integracao de copia previstas.
+- `docs/design-system/mapa-figma-telas.md`: pagina principal e cinco variantes
+  de etapa do tutorial, nodes `564:635`, `564:730`, `564:852`, `564:980`,
+  `564:1232` e `564:1357`.
 
 Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
 consulta direta ao Figma ou verificacao da interface atual do Paraiba Digital.
@@ -83,9 +85,12 @@ com o fluxo externo verificado no planejamento:
 - Nao tratar a tabela como sequencia de menus ja confirmada. O texto final
   deve usar os nomes e comportamentos verificados, sem supor que salvar
   equivale a publicar ou que todo usuario pode concluir a publicacao.
-- Manter todos os passos acessiveis, sem exigir marcar conclusao ou seguir
-  etapas anteriores. Se houver indice ou navegacao entre passos, preservar
-  ordem de leitura e acesso ao conteudo integral.
+- Exibir uma unica etapa ativa por vez, sem exigir marcar conclusao para abrir
+  outra etapa. A navegacao anterior/proxima deve preservar a ordem das seis
+  etapas e disponibilizar o conteudo correspondente ao estado atual.
+- Representar a etapa em `?etapa=1` a `?etapa=6`; ausencia ou valor invalido
+  abre a etapa 1. Recarga, voltar/avancar e URL compartilhada preservam a etapa,
+  sem colocar valores da Carta na URL e sem criar seis rotas distintas.
 - Nao criar progresso persistido, pontuacao, comprovante ou certificacao.
 - Explicar que o usuario deve conferir os dados depois de colar, especialmente
   quando listas ou escolhas externas demandarem entrada separada.
@@ -216,11 +221,29 @@ permanece manual.
 
 ## Referencias visuais e pendencias
 
-O mapa local ainda nao identifica frame oficial especifico para o tutorial.
+O tutorial possui uma pagina logica em `/tutorial-paraiba-digital` e seis
+estados visuais. O primeiro frame e a pagina no estado inicial; os demais sao
+variantes da mesma pagina, nao novas rotas:
+
+| Tipo | Etapa do conteudo versionado | Node | Referencia |
+| --- | --- | --- | --- |
+| Pagina — estado inicial | 1. Acesse a plataforma | `564:635` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-635&m=dev) |
+| Variante | 2. Faca login | `564:730` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-730&m=dev) |
+| Variante | 3. Localize o cadastro | `564:852` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-852&m=dev) |
+| Variante | 4. Cadastre as informacoes de sua Carta | `564:980` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev) |
+| Variante | 5. Revise os dados | `564:1232` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1232&m=dev) |
+| Variante | 6. Publique o servico | `564:1357` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1357&m=dev) |
+
+`src/content/tutorial/paraiba-digital.ts` e a fonte editorial oficial. Os
+frames orientam layout, composicao, hierarquia, progresso e posicao dos blocos,
+mas devem se adaptar aos titulos, instrucoes, percentuais, campos e acoes
+versionados. Texto antigo, exemplo ou placeholder encontrado no Figma nao pode
+sobrescrever o conteudo. Divergencias devem ser registradas antes do codigo.
+
 Nao usar o card de entrada de `Explorar por etapas` como layout desta pagina.
 
-Antes da implementacao visual, identificar e consultar via MCP o frame no
-Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
+Antes da implementacao visual, consultar via MCP os seis frames no Figma
+Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
 Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar no
 `implementation-plan.md` composicao, passos, integracao da copia, assets,
 estados vazio/parcial/preenchido e responsividade; atualizar o mapa de telas.
@@ -253,12 +276,13 @@ do codigo. Enquanto isso, o tutorial operacional permanece pendente de validacao
 - `013-fluxo-de-ajuda` e `016-responsividade-acessibilidade`: alinhamento
   transversal, sem adiar acessibilidade ou implementar ajuda nesta feature.
 - Fontes operacionais verificadas, assets autorizados, validacao editorial e
-  identificacao do frame.
+  consulta detalhada dos seis frames mapeados.
 
-Na criacao desta spec, 013 e 016 ainda nao possuem pastas em `specs/`.
-As tres orientacoes atuais sao conteudo inicial e nao representam um tutorial
-operacional concluido. O comportamento de agendamento na spec 012 recebeu
-conciliacao com 007 antes da implementacao conjunta.
+Na criacao desta spec, 013 e 016 ainda nao possuiam pastas em `specs/`; ambas
+existem atualmente. O conteudo versionado ja possui seis etapas, mas a pagina
+continua provisoria e nao representa o tutorial visual ou operacional concluido.
+O comportamento de agendamento na spec 012 recebeu conciliacao com 007 antes
+da implementacao conjunta.
 
 ## Criterios de aceite
 

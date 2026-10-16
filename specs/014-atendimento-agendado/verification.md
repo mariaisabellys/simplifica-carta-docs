@@ -42,6 +42,31 @@ continua registro da auditoria anterior. V014-02 recebeu alinhamento documental,
 sem alegar payload final ou classificacao por endpoint resolvidos. Alteracoes
 anteriores do workspace preservadas. Este relatorio e quickstart adicionados.
 
+### Atualizacao editorial — 2026-10-07
+
+O conteudo versionado foi reconciliado com RF06, RF07 e os limites do MVP:
+
+- `Atendimento agendado com Sucesso!` foi substituido por
+  `Solicitacao registrada`, sem confundir registro com confirmacao do atendimento;
+- removida a afirmacao de que um e-mail de confirmacao foi enviado ao solicitante;
+- removida a acao `Reagendar`, pois remarcacao self-service esta fora do escopo;
+- o envio passou a ser chamado de `Confirmar solicitacao`;
+- mes, data e horarios estaticos foram identificados como exemplos ilustrativos,
+  sem representar disponibilidade da agenda institucional.
+
+Esta correcao nao comprova backend, agenda, notificacao ou registro funcional.
+
+### Atualizacao Figma — 2026-10-08
+
+- `425:201`: pagina inicial/escolha de data.
+- `425:296`: escolha de horario.
+- `446:206`: dados e revisao antes do envio.
+- `470:444`: solicitacao registrada.
+- Os quatro frames pertencem a uma rota; o conteudo versionado prevalece e o
+  layout deve acomodar estados reais, erros e textos longos.
+
+Esta atualizacao confirma o mapeamento, nao consulta MCP detalhada nem aceite visual.
+
 ## Pendencias
 
 - V014-01: decidir se pausa editorial tambem bloqueia API, como consultar/
@@ -59,6 +84,6 @@ anteriores do workspace preservadas. Este relatorio e quickstart adicionados.
 - Navegacao/provider v2 e canais 013/015 ainda incompletos; testes de browser,
   acessibilidade, PostgreSQL concorrente e SMTP falso permanecem pendentes.
 
-CA01–CA18 sem aceite integral. Helper nao registra solicitacao, reserva vaga
+CA01–CA20 sem aceite integral. Helper nao registra solicitacao, reserva vaga
 ou prova que atendimento esta operacional. Segredo/timestamp ainda dependem
 da politica futura de validade/relogio; nao estabelecer prazo arbitrario.

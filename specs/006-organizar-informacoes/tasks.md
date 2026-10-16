@@ -1,5 +1,11 @@
 # Tasks: Organizar informacoes
 
+> **Status em 6 de outubro de 2026:** estas tarefas refletem o contrato antigo
+> de dez assuntos estaticos. Devem ser replanejadas para os tres topicos e 13
+> informacoes do conteudo versionado, incluindo marcacao, progresso e
+> orientacoes expansiveis. Nenhuma tarefa conflitante deve ser executada antes
+> dessa reconciliacao.
+
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 006. Executar conforme dependencias abaixo.

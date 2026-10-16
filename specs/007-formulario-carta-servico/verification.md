@@ -29,11 +29,24 @@ nao aprovam fontes, compilacao, migracao ou preservacao real de dados.
 
 ## Dependencias ainda abertas
 
+### Atualizacao Figma — 2026-10-08
+
+- Paginas/partes registradas: `653:1540`, `2024:269`, `641:58`, `647:650` e
+  `660:2533`; a rota usa `653:1540` como node principal.
+- Form-Card possui variantes sem/com orientacao em `811:306` e `811:382`.
+- A previa embutida reutiliza `821:308` e o contrato da feature 009.
+- O layout se adapta ao conteudo versionado; orientacoes vem da feature 006.
+- A imagem de formulario em `2024:269` e referencia visual e deve virar
+  formulario real, sem imagem interativa ou controles falsos.
+
+Esta atualizacao e documental. Nao comprova consulta MCP detalhada,
+implementacao, correspondencia pixel a pixel ou testes funcionais.
+
 - Consulta atual da integracao Figma confirmou installed=false. Nao houve
   confirmacao de conexao ou ferramenta de leitura utilizavel; a sugestao
-  anterior nao foi repetida. Design YaVUdqYa3boHpvGrxf4ZJ5 pagina 167:2,
-  nodes 811:306/811:382/651:317, e Make dVm7lEZdBFqOiiySWLWUqp node 0:1
-  continuam sem consulta. Nodes de cards nao comprovam formulario completo.
+  anterior nao foi repetida. Os cinco frames de pagina, os componentes
+  `811:306`/`811:382`/`821:308`/`651:317` e o Make
+  `dVm7lEZdBFqOiiySWLWUqp` node `0:1` continuam sem consulta detalhada.
 - `docs/ia/regras-para-ia.md` exige consulta visual via MCP antes de
   implementar. Disposicao simultanea/por partes, estados, tokens e assets
   precisam de referencia real, sem inferir layout definitivo dos snippets.

@@ -32,22 +32,39 @@ O PDF do ERS nao foi extraido/validado: Python/Poppler nao foram encontrados
 na verificacao de comandos desta sessao. A leitura do manual textual nao e
 equivalente a leitura do PDF. Regras finais e copy requerem evidencia institucional.
 
-## Mapeamento visual pendente
+## Mapeamento visual e contrato de adaptacao
 
 | Referencia | Uso documental | Situacao |
 | --- | --- | --- |
 | Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2 | Arquivo oficial | Sem consulta MCP nesta sessao |
-| 811:306 | Form-Card | Nao comprova layout completo |
-| 811:382 | Orientacao aberta | Estado a consultar |
+| 653:1540 | Pagina/parte 1 — Sobre o servico | Node principal da rota |
+| 2024:269 | Pagina/parte 2 — Publico e requisitos | Formulario aparece como imagem; reconstruir com controles reais |
+| 641:58 | Pagina/parte 3 — Como o servico funciona | Variante da mesma rota |
+| 647:650 | Pagina/parte 4 — Atendimento | Variante da mesma rota |
+| 660:2533 | Pagina/parte 5 — Informacoes finais | Variante da mesma rota |
+| 811:306 | Form-Card compacto | Sem orientacao expandida |
+| 811:382 | Form-Card com orientacao | Mesmo componente, painel aberto |
+| 821:308 | Previa da Carta | Componente compartilhado com a 009 |
 | 651:317 | Label-Row/obrigatoriedade | Associacoes e contraste a verificar |
 | Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 | Tokens/controles/responsividade | Sem consulta MCP |
 
 A integracao Figma foi localizada no turno anterior, ainda nao instalada/
 conectada; nao houve confirmacao posterior de conexao nem ferramenta Figma
 disponivel. Nao repetir sugestao como se conexao estivesse concluida.
-Antes de estilos, consultar arquivos/nodes, identificar tela completa e registrar
-composicao, exibicao simultanea ou por partes, acoes, orientacoes, estados,
-assets e comportamento estreito. Atualizar mapa apenas com evidencia real.
+Antes de estilos, consultar detalhadamente os nodes e registrar composicao,
+acoes, estados, assets e comportamento estreito. Os cinco frames representam
+cinco partes na mesma rota, uma ativa por vez.
+
+`src/content/pages/formulario-carta.ts` governa titulos, descricoes, campos,
+opcoes e acoes. O layout deve crescer e reorganizar-se para acomodar o conteudo;
+texto do Figma nao substitui copy versionada. Orientacoes vem de
+`src/content/pages/organizar-informacoes.ts`, por mapeamento de IDs. A previa
+embutida reutiliza o componente/view model da 009 e o padrao `821:308`.
+
+O formulario desenhado como imagem em `2024:269` e referencia visual, nao asset
+de producao. Traduzir sua estrutura para form, fieldset, legend, label, input,
+textarea, select, radio, checkbox, botoes e listas reais. Preservar hierarquia,
+alinhamentos e densidade do frame sem posicionar hotspots sobre uma imagem.
 
 Codigo/CSS abaixo sao base tecnica proposta, nao output Figma ou layout aprovado.
 Campos/interacoes extras no prototipo exigem conciliacao de escopo, nao copia cega.
@@ -76,8 +93,8 @@ funcional da sessao a aprovar por mera existencia da rota.
 - Jornada completa: diagnostico > organizacao > formulario; acesso livre por
   003/006/menu/URL. Corrigir descricao da spec em revisao explicita, sem gate.
 - Cinco partes: identificacao, requisitos, etapas, atendimento e adicionais.
-  Base tecnica usa todas visiveis e indice de ancoras; decisao visual final
-  aguarda Figma. Se uma parte por vez for confirmada, retorno abre parte antes de focar.
+  Renderizar uma parte ativa por vez; progresso/navegacao abre qualquer parte
+  sem gate. Retorno de erro abre a parte correspondente antes de focar o campo.
 - Nome popular e adicionais opcionais. Cinco obrigatorios locais: nome,
   descricao, publico-alvo, prazo e custo, em fonte unica compartilhada com 008.
 - Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
@@ -110,9 +127,11 @@ funcional da sessao a aprovar por mera existencia da rota.
 | App.tsx | Provider sem key por rota, junto da navegacao comum | T011/T020 |
 | carta.validation.ts/carta.csv.ts | Compatibilidade minima com v2 | T012 |
 | content/pages/formulario-carta.ts | Labels, partes, orientacoes, avisos/acoes | T013 |
+| content/pages/organizar-informacoes.ts | Fonte compartilhada das orientacoes de campo | T013/T014 |
 | components/forms/FormField.tsx | Label/ajuda/erro e props explicitas de controle | T014 |
 | components/forms/carta/ | DocumentosEditor, EtapasEditor, CanaisEditor e campos conforme reuso | T015–T018 |
 | FormularioCartaPage.tsx | Composicao, revisao, retorno/foco e links | T015/T019–T020 |
+| Componente de previa da 009 | Previa embutida conforme `821:308`, sem view model paralelo | T015/T020 |
 | globals.css ou estilo escopado | Classes carta-form-, sem layout presumido | T021 |
 | Testes de feature/integracao | Reducer, migracao, storage e jornada | T022–T026 |
 | verification.md/quickstart.md | Resultados e roteiro reproduzivel | T027 |
@@ -425,6 +444,33 @@ Conteudo em formulario-carta.ts deve incluir:
 | Atendimento | Prazo e condicoes; custos/gratuidade confirmados; canais/tipo/acesso; Necessita de agendamento?; tipo Online/Presencial ou ambos; sistema Paraiba Digital/Outro sistema ou site; link/exibicao somente externo; orientacoes opcionais com Sim |
 | Adicionais | Orientacoes relevantes ainda nao cobertas, opcionais |
 
+### Mapa de orientacoes compartilhadas com a 006
+
+| Campo/grupo da 007 | ID de orientacao da 006 | Observacao |
+| --- | --- | --- |
+| service-name | service-name | Correspondencia direta |
+| popular-name | popular-name | Correspondencia direta |
+| service-description | service-description | Correspondencia direta |
+| who-can-use / specific-audience | audience | Compartilhar orientacao, mantendo controles proprios da 007 |
+| category / subcategory / topic | category | Uma orientacao para o grupo de classificacao |
+| required-documents | documents | Correspondencia direta |
+| service-steps | steps | Correspondencia direta |
+| requires-scheduling e configuracoes | scheduling | Uma orientacao para o grupo condicional |
+| costs-and-fees | costs | Correspondencia direta |
+| important-additional-information | additional-information | Correspondencia direta |
+
+Campos sem correspondencia nao recebem ajuda inventada. O conteudo atual da
+006 tambem possui `keywords`, `deadline` e `recurrence`, enquanto o conteudo
+atual da 007 nao oferece controles equivalentes; por outro lado, a spec/modelo
+da 007 ainda cita criterios, canais e prazo. Essa divergencia precisa ser
+resolvida na consolidacao de conteudo/modelo antes do codigo, sem o layout
+Figma criar ou remover campos silenciosamente.
+
+Cada Form-Card recebe a orientacao como dado e alterna entre `811:306` e
+`811:382`. Fechar o painel nao altera o campo; trocar de parte preserva o estado
+da Carta. O estado aberto pode ser local/transitorio e nao precisa integrar o
+envelope persistido, salvo decisao posterior explicitamente documentada.
+
 Acrescentar titulo/introducao, aviso de sessao/memoria/recuperacao, nomes das
 partes, labels de adicionar/remover/subir/descer, Revisar informações,
 Ver prévia, Preciso de ajuda e avisos para confirmar desconhecidos. Exemplos
@@ -584,7 +630,7 @@ Reusar infraestrutura se outra feature a entregar antes.
 | Factory/reducer | Objetos independentes, fixture congelada, updates sucessivos, IDs, vizinhos intactos, mover limites/renumerar | T022 |
 | Decoder | Legado/v2/future, falso legado/v2, grupos/tipos invalidos, campos novos, Unicode/HTML, IDs duplicados, ordens, limites sem truncamento | T023 |
 | Storage/provider | get/set/quota, partial/future intocados ate editar, migration completa apos hidratar, StrictMode, ultimas teclas e recarga | T023 |
-| UI/jornada | Cinco partes/17 campos, null, texto como agendar preservado, listas/foco, memoria apenas e links/historico | T024 |
+| UI/jornada | Cinco partes/nodes, campos reais em 2024:269, orientacao 006, previa 821:308, null, listas/foco e links/historico | T024 |
 | Revisao | Espacos/custo 0/opcionais, erro em parte oculta, sugestao sem substituir, previa parcial/failed | T019/T024 |
 | Consumidores | Valores atuais/nome popular/orientacao/null/listas sem IDs | T025, pendente por entrega |
 
@@ -621,6 +667,10 @@ fonte fallback, teclado virtual e listas/textos longos. Ambiente ausente e pende
 | CA22 | Externo com URL e Em uma nova pagina registra redirecionamento; T018/T019/T024–T025 |
 | CA23 | Troca externo/nativo preserva valores na sessao/recarga e exclui inativos dos consumidores; T018/T019/T022–T025 |
 | CA24 | Online/Presencial/ambos, sistema e URL/exibicao condicionais; pendencias sem bloquear previa parcial; gate CSV integrado depende 008/010; T018/T019/T024–T025 |
+| CA25 | Cinco partes/nodes na mesma rota, estado preservado e layout adaptavel; T003/T015/T021/T024/T026 |
+| CA26 | Form-Card `811:306`/`811:382`, aria-expanded e orientacao da 006; T003/T013–T014/T024/T026 |
+| CA27 | Previa compartilhada `821:308` com view model da 009; T003/T015/T020/T024–T025 |
+| CA28 | `2024:269` reconstruido como formulario real e acessivel; T003/T015–T019/T021/T024/T026 |
 
 Checks apos codigo: typecheck, build e suite configurada. T027 registra
 commit/data/ambiente/passos/resultado/evidencia/defeito/reteste em verification.md,

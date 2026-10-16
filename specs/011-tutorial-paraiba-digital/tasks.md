@@ -72,16 +72,22 @@
   - Dependencias: T001/T003. Evidencia: contrato/documentacao conciliados;
     RF04–05, CA06–CA10.
 
-- [ ] **T005 — Identificar frame e consultar referencias visuais**
+- [ ] **T005 — Consultar pagina e variantes visuais do tutorial**
   - Consultar via MCP Figma Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2,
-    identificando frame proprio do tutorial; nao usar 575:483 da entrada da 003.
+    os nodes `564:635`, `564:730`, `564:852`, `564:980`, `564:1232` e
+    `564:1357`; nao usar 575:483 da entrada da 003.
+  - Tratar `564:635` como pagina no estado inicial e os outros cinco como
+    variantes da mesma pagina; nao criar rotas ou paginas duplicadas.
+  - Comparar cada frame com `src/content/tutorial/paraiba-digital.ts`; adaptar
+    layout ao conteudo oficial e registrar textos/placeholders divergentes,
+    sem copiar o Figma de volta para o arquivo editorial.
   - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar composicao,
-    tokens, passos, indice, regiao de copia, imagens, foco e responsividade.
+    tokens, progresso, etapa ativa, regiao de copia, imagens, foco e responsividade.
   - Confirmar estados sem dados/parcial/preenchido/recuperacao/falha de copia.
     Preferir regiao unica de copia; se frame intercalar campos, reconciliar
     agrupamento/identidade com 012 sem duplicar controles do mesmo valor.
-  - Atualizar mapa-figma-telas.md com frame confirmado; rota recebe figmaNodeId
-    somente na implementacao. Referencia insuficiente fica pendencia visual.
+  - Manter mapa-figma-telas.md com os seis frames e `564:635` como figmaNodeId
+    principal da rota. Referencia insuficiente fica pendencia visual.
   - Dependencias: T001/T004. Evidencia: consultas e nodes no implementation-plan;
     CA13–CA14/CA16.
 
@@ -104,8 +110,8 @@
   - Executar `/spec:plano-implementacao 011-tutorial-paraiba-digital`.
   - Consolidar T001–T006, fontes/datas, matriz, frame, assets, arquivos,
     contratos tipados e codigo base de pagina/componentes/conteudo/estilos.
-  - Fechar IDs estaveis de passos/fontes/campos, indice de ancoras e comportamento
-    de foco/rolagem/historico com header sticky; todos os passos ficam livres.
+  - Fechar IDs estaveis de passos/fontes/campos, `?etapa=1..6`, historico e
+    foco no titulo; somente uma etapa fica ativa, mas todas permanecem livres.
   - Definir leitura editorial independente do estado da Carta, regiao da 012,
     estados de sessao, navegacao e link externo em nova aba com aviso acessivel
     e rel="noopener noreferrer", sem valores da Carta em query/hash.
@@ -155,12 +161,14 @@ permanece manual.
   - Dependencia: T008 e comando `/spec:implementar`.
   - Evidencia: RF02–03/RF07, CA02–CA04/CA15–CA16.
 
-- [ ] **T010 — Compor tutorial integral e indice acessivel**
+- [ ] **T010 — Compor tutorial por etapa ativa e progresso acessivel**
   - Substituir placeholder de TutorialParaibaDigitalPage, reutilizando shell,
     PageHeader e breadcrumb; unico h1 e hierarquia coerente de passos.
-  - Renderizar lista ordenada/secoes e indice conforme T007, com IDs estaveis,
-    foco e rolagem adequados. Paineis recolhidos, se adotados, usam controles
-    acessiveis e nunca exigem concluir etapas anteriores.
+  - Renderizar uma etapa ativa por vez conforme `?etapa=1..6`, com progresso,
+    IDs estaveis, historico, foco e anuncios adequados. Ausencia/valor invalido
+    abre a etapa 1; nunca exigir concluir uma etapa para consultar outra.
+  - Aplicar CTAs por posicao: etapa 1 sem anterior; 2–5 anterior/proxima;
+    etapa 6 anterior/concluir. Validar 17/33/50/67/83/100 por etapa.
   - Exibir introducao, data, fontes e todas as instrucoes sem gate de Carta,
     diagnostico, obrigatorios ou CSV; sem progresso persistido/certificacao.
   - Dependencias: T009/T007. Evidencia: RF01–03, CA01–CA05/CA13.
@@ -174,8 +182,9 @@ permanece manual.
     de URLs temporarias do Figma ou imagem remota essencial.
 
 - [ ] **T012 — Integrar fonte da sessao e componentes de copia**
-  - Conectar regiao CartaCopyFields da 012 ao provider real da 007 conforme
-    T004/T007; passos apontam campos por ID sem mecanismos duplicados.
+  - Conectar, somente na etapa 4 (`564:980`), a regiao CartaCopyFields da 012
+    ao provider real da 007 conforme T004/T007; os passos apontam campos por ID
+    sem mecanismos duplicados.
   - Sem dados, mostrar estado vazio da 012 e Preencher Carta; parcial permite
     copiar valores informados sem required como gate ou sugestoes obrigatorias.
   - Recuperacao invalida/memoria apenas usa avisos/dados seguros do provider,
@@ -218,8 +227,8 @@ permanece manual.
   - Conferir cada instrucao operacional contra fonte/perfil/data de T002,
     matriz de T003 e validacao de T006; revisar nomes, links, permissoes e
     diferenca entre salvar/enviar/publicar conforme evidencia real.
-  - Conferir cobertura dos sete assuntos sem usar numero de cards como prova;
-    incluir revisao apos colar, diferencas de listas/campos e ajuda para divergencias.
+  - Conferir as seis etapas oficiais; preparacao pertence a introducao/etapa 4
+    e ajuda e transversal. Incluir revisao apos colar, diferencas e divergencias.
   - Revisar origem/autorizacao/contexto das capturas e data efetiva apresentada.
     Nao declarar tutorial operacional aceito com orientacoes genericas.
   - Dependencias: T009–T013. Evidencia: CA02–CA04/CA08/CA11–CA12/CA15–CA16.
@@ -244,9 +253,9 @@ permanece manual.
   - Evidencia: CA05–CA10/CA12/CA16, sem repetir testes internos de clipboard da 012.
 
 - [ ] **T017 — Verificar navegacao, teclado e reflow nos ambientes definidos**
-  - Exercitar entradas, URL direta/recarga, indice, voltar/avancar, formulario,
+  - Exercitar entradas, URL direta/recarga, `?etapa=1..6`, voltar/avancar, formulario,
     previa, ajuda e nova aba oficial, preservando Carta e sem transmissao de valores.
-  - Usar teclado/leitor de tela: titulos, passos, ancoras, imagens, links,
+  - Usar teclado/leitor de tela: titulos, progresso, etapa ativa, imagens, links,
     campos/acoes de copia, feedback e foco coerentes com header sticky.
   - Conferir Chrome/Edge/Firefox/Safari na matriz da 016, incluindo mobile,
     1440/1024/768/390/320 px e intermediarias, texto 200% e zoom/reflow.

@@ -21,11 +21,18 @@ integracao, chamar copiarTexto diretamente no handler do gesto com a string
 derivada original, aguardar resultado e tratar unavailable/write-failed.
 Nao anunciar sucesso antes da resolucao nem aplicar escape/prefixos de CSV.
 
+Na integracao futura, abrir `/tutorial-paraiba-digital?etapa=4`. A regiao da
+012 corresponde ao Figma `564:980` e deve seguir
+`tutorialParaibaDigitalContent.steps[3]`: dez blocos na ordem versionada e
+copiar somente os seis com `copyLabel`. As outras etapas nao montam a 012.
+
 ## Verificacao futura da jornada
 
 Implementar os 17 campos conforme a ordem e convencoes do implementation-plan,
 respeitando aplicabilidade de agendamento e preservacao de valores inativos.
-Resolver primeiro a copia manual com CR/CRLF e a trava entre instancias.
+Aplicar o contrato de quebras: preservar exatamente a string enviada a
+`writeText`; na copia manual, preservar conteudo e quebras visiveis e registrar
+normalizacoes do ambiente. Resolver tambem a trava entre instancias.
 Testar em HTTPS com dados sinteticos: copiar/colar em destino controlado,
 recusa/API ausente, selecao manual, texto longo e operacao demorada. Registrar
 browser/versao/dispositivo e resultado observado conforme T016. Mocks nao

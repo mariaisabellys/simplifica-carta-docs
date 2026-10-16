@@ -39,10 +39,15 @@
 
 - [ ] **T003 — Consultar Figma e fechar composicao visual**
   - Consultar via MCP Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`,
-    nodes `811:306`, `811:382` e `651:317`; identificar tela completa.
+    telas `653:1540`, `2024:269`, `641:58`, `647:650`, `660:2533` e
+    componentes `811:306`, `811:382`, `821:308`, `651:317`.
   - Consultar Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
-  - Definir exibicao simultanea ou por partes, indice, orientacoes, campos,
-    estados, acoes, assets e responsividade, sem gates de completude.
+  - Mapear as cinco telas para as cinco partes de `charterFormPageContent`,
+    com uma parte ativa por vez e layout adaptavel ao conteudo, sem gates.
+  - Tratar `2024:269` como referencia estrutural: reconstruir a imagem do
+    formulario com controles HTML/React reais, sem usar overlay ou image map.
+  - Reusar previa `821:308` da 009 e variantes compacto/orientacao de
+    `811:306`/`811:382`; orientacoes derivam do conteudo da 006.
   - Atualizar mapa quando houver frame confirmado; resolver campos/interacoes
     adicionais antes de ampliar escopo. Sem referencia suficiente, registrar bloqueio.
   - Dependencias: T001–T002. Evidencia: consultas e decisoes visuais; CA18.
@@ -53,6 +58,9 @@
   - Definir IDs de campos/itens, ajuda/erros, grupos, foco de listas e retorno
     de pendencia em outra parte, sem valores pessoais na URL.
   - Definir integracao de mensagens da 008 sem motor editorial duplicado.
+  - Criar mapa entre campos da 007 e IDs de
+    `organizeInformationPageContent.information`; campo sem correspondencia nao
+    recebe orientacao inventada. Manter painel opcional com aria-expanded.
   - Dependencias: T002–T003. Evidencia: copy validada e contratos de
     componentes/controle; pendencias institucionais permanecem explicitas.
 
@@ -71,7 +79,7 @@
 - [ ] **T006 — Validar documentos antes de codigo**
   - Executar `/spec:validar 007-formulario-carta-servico` contra ERS, MVP,
     constitution, Figma e contratos das features consumidoras.
-  - Conferir RF01–RF08, CA01–CA24, migracao e fora de escopo; resolver bloqueios.
+  - Conferir RF01–RF08, CA01–CA28, migracao e fora de escopo; resolver bloqueios.
   - Dependencia: T005. Evidencia: validacao documental registrada.
 
 ## Fase 2 — Modelo e sessao
@@ -247,6 +255,14 @@
   - Evidencia: CA11–12 sem falsa restauracao/salvamento e sem perda silenciosa.
 
 - [ ] **T024 — Testar formulario, revisao e continuidade**
+  - Verificar as cinco partes contra seus nodes, uma ativa por vez, mantendo
+    valores ao navegar e adaptando altura/layout a copy e listas longas.
+  - No estado de `2024:269`, confirmar controles reais no DOM, labels,
+    fieldsets, teclado e edicao; nenhuma imagem, overlay ou image map representa o formulario.
+  - Alternar Form-Card compacto/orientacao, conferir `aria-expanded` e copy da
+    006 por ID; campo sem mapeamento nao recebe orientacao fabricada.
+  - Conferir a previa embutida com o mesmo componente/view model `821:308` da
+    009, inclusive estados vazio/parcial/completo, sem markup duplicado.
   - Preencher todos os grupos; trocar partes/orientacoes, editar listas e revisar
     obrigatorios vazios/espacos, custo `0` e opcionais vazios.
   - Visitar 006, ajuda, previa e tutorial e retornar por links/historico,
@@ -274,7 +290,7 @@
 - [ ] **T027 — Executar checks e consolidar evidencias**
   - Executar `npm run typecheck`, `npm run build` e suite configurada; verificar
     consumidores de FormField/links alterados e corrigir regressao relevante.
-  - Registrar resultado por CA01–CA24, Figma, validacao editorial e pendencias
+  - Registrar resultado por CA01–CA28, Figma, validacao editorial e pendencias
     em verification.md ou documento adotado pelo implementation-plan.
   - Conferir ausencia de backend, persistencia permanente, envio, coleta/logs
     de valores ou promessas de aprovacao/publicacao.
@@ -296,6 +312,7 @@
 | RF08/arquitetura, CA17 | T004, T013, T027 |
 | Acessibilidade/reflow, CA14–15 | T014, T021, T026 |
 | Visual, CA18 | T003, T005–T006, T021, T026–T027 |
+| Cinco telas, orientacao, previa e formulario real, CA25–CA28 | T003–T005, T013–T015, T020–T021, T024–T027 |
 
 ## Proximo passo
 

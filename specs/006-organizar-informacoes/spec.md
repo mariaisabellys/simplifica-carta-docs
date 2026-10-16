@@ -6,6 +6,53 @@ Orientar o servidor sobre quais informacoes reunir antes de preencher a Carta
 de Servicos, oferecendo uma lista de verificacao clara, consultavel e alinhada
 ao modelo de dados do produto.
 
+## Decisao de contrato oficial
+
+Decisao registrada em 6 de outubro de 2026. O contrato oficial da feature 006
+e o conteudo versionado em `src/content/pages/organizar-informacoes.ts`.
+
+Esse contrato substitui as referencias anteriores a dez assuntos, pagina
+puramente estatica e ausencia de progresso. Ate a reconciliacao integral dos
+demais artefatos, esta secao prevalece sobre trechos contraditorios deste
+documento, de `plan.md`, `tasks.md`, `implementation-plan.md`, `validation.md`
+e `verification.md`.
+
+O contrato oficial possui:
+
+- tres topicos, nesta ordem:
+  1. `Sobre o serviço`;
+  2. `O que é necessário`;
+  3. `Como o serviço funciona`;
+- 13 informacoes, nesta ordem global:
+  1. Nome do serviço;
+  2. Nome popular;
+  3. O que é o serviço;
+  4. Quem pode utilizar?;
+  5. Categoria do serviço;
+  6. Palavras-chave;
+  7. Informações adicionais;
+  8. Documentos necessários;
+  9. Custos;
+  10. Etapas do serviço;
+  11. Agendamento;
+  12. Prazo;
+  13. Recorrência;
+- uma declaracao independente por informacao para indicar que o dado foi
+  reunido, sem preencher ou validar o valor da Carta;
+- progresso derivado entre 0 e 13, com referencia editorial
+  `2 de 13 informadas`;
+- orientacoes expansiveis, exemplos, comparacoes `Evite`/`Prefira` quando
+  fornecidas e dicas;
+- navegacao entre topicos sem gate: nenhuma marcacao bloqueia o acesso a
+  `/formulario-carta`;
+- estado temporario isolado, caso a implementacao restaure marcacoes na mesma
+  sessao, sem ler, alterar ou limpar os dados da Carta.
+
+Os 13 itens nao equivalem automaticamente aos campos do schema atual. A
+feature e editorial e preparatoria; categoria, palavras-chave, recorrencia e
+demais conceitos novos devem ser conciliados com a feature 007 sem ampliar seu
+modelo silenciosamente.
+
 ## Problema e contexto
 
 As informacoes sobre um servico podem estar dispersas entre setores, documentos

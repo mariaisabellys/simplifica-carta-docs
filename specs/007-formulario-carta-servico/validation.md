@@ -33,6 +33,24 @@ locais a nodes nao constituem consulta ao Design ou Make, nem homologacao
 visual. O frame completo do formulario e os textos institucionais ainda
 precisam de confronto com as fontes oficiais.
 
+### Atualizacao das referencias e do contrato visual — 2026-10-08
+
+Foram identificadas cinco telas/partes: `653:1540`, `2024:269`, `641:58`,
+`647:650` e `660:2533`. `653:1540` e o node principal da rota; os demais sao
+partes/variantes da mesma jornada. `811:306`/`811:382` sao estados do Form-Card,
+e `821:308` e a previa compartilhada com a 009.
+
+O layout deve adaptar-se a `src/content/pages/formulario-carta.ts`, sem usar
+copy do Figma como segunda fonte. Orientacoes derivam da 006 por ID. O formulario
+mostrado como imagem em `2024:269` deve ser reconstruido com controles reais,
+nunca incorporado como imagem interativa. A identificacao dos nodes esta
+resolvida; consulta MCP detalhada e validacao visual continuam pendentes.
+
+Permanece uma divergencia de conteudo/modelo: a 006 possui orientacoes para
+keywords, prazo e recorrencia sem controles equivalentes no conteudo atual da
+007, enquanto a spec/modelo 007 ainda cita criterios, canais e prazo. Resolver
+essa consolidacao antes do codigo, sem deixar o Figma decidir campos.
+
 ## Inconsistencias e lacunas documentais
 
 | ID | Gravidade | Evidencia | Impacto e correcao indicada |

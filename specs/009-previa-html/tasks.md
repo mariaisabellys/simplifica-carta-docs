@@ -40,6 +40,8 @@
 - [ ] **T003 — Consultar Figma e validar copy**
   - Consultar via MCP Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`,
     node `821:308`; identificar pagina completa, acoes e estados adicionais.
+  - Definir `821:308` como componente compartilhado: rota `/previa` e previas
+    embutidas da 007 usam a mesma projecao, sem implementacoes paralelas.
   - Consultar Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
   - Registrar secoes, ordem, tokens, assets e estados vazio/parcial/com dados/
     validacao indisponivel; conciliar campos omitidos sem perder cobertura.

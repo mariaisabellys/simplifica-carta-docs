@@ -28,5 +28,5 @@ real de horarios, selecao/dados/revisao sem registro e confirmacao explicita.
 Usar agenda sintetica, PostgreSQL/conexoes concorrentes e SMTP falso; testar
 ultima capacidade, replay, rollback, resposta perdida, lookup, expiracao e
 worker. Nao usar SQLite/mocks como prova de locks nem enviar mensagens reais.
-Registrar CA01–CA18 e ambientes conforme tarefas; nao iniciar migrations ou
+Registrar CA01–CA20 e ambientes conforme tarefas; nao iniciar migrations ou
 oferta operacional a partir deste quickstart antes da implementacao restante.

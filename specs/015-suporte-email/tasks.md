@@ -28,15 +28,17 @@
     RF01/RF06, CA01/CA07/CA10/CA13.
 
 - [ ] **T002 — Confirmar contato e disponibilidade editorial**
-  - Confirmar endereco, titularidade/atividade e equipe responsavel com fonte
-    institucional, registrando responsavel/data/evidencia no planejamento.
+  - Manter `gesed.semtd@gmail.com` como endereco editorial confirmado pelo
+    documento mestre; confirmar titularidade/atividade e equipe responsavel
+    antes de mudar o estado operacional para ativo.
   - Fechar contatos.ts com ID estavel, equipe e endereco; estado
     pendente/ativo/pausado e aviso somente em canais.ts compartilhado com
     013/014/015. Nao duplicar estado nem evidencia interna no bundle.
   - Definir pausa confirmada, suspensao de mailto/copia como acoes principais
     e eventual endereco como referencia indisponivel, conforme texto validado.
-  - Resolver V015-02: definir endereco selecionavel/instrucao manual em
-    pendente e pausado e aviso por estado. JSX candidato nao fecha essa decisao.
+  - Aplicar V015-02: em pendente, mostrar o endereco somente como referencia
+    documentada com aviso e sem mailto/copia; em pausado, manter pagina/aviso/
+    retorno e suspender acoes principais; em ativo, habilitar mailto e copia.
   - Definir retorno a ajuda e alternativa de agendamento quando operacional,
     sem prometer vagas/resposta imediata ou monitoramento em tempo real.
   - Nao enviar mensagem para verificar sem autorizacao. Contato pendente

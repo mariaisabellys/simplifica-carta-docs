@@ -41,15 +41,16 @@ Nao manter constantes independentes no JSX ou duplicar endereco na ajuda.
 Proposta de dados em contatos.ts: id estavel, nome da equipe e endereco.
 Estado editorial `pendente | ativo | pausado` e aviso pertencem somente a
 canais.ts, compartilhado com 013/014/015; contato referencia suporte-email.
-Mapa/tipos de canais ja existem, configuracao real pendente. Evidencia de validacao
+Mapa/tipos de canais e configuracao inicial agora existem. Evidencia de validacao
 (responsavel, data e fonte) fica na documentacao de implementacao, sem dados
 internos desnecessarios no bundle. Estado ativo significa canal validado para
 publicacao; nao implica resposta imediata ou monitoramento em tempo real.
 
-Referencia inicial: `gesed.semtd@gmail.com`. Nao substituir por endereco
-inventado ou tentar verificar enviando mensagem sem autorizacao. Conciliar
-com ERS/equipe antes de codigo. Se contato continuar pendente, registrar
-bloqueio da entrega ativa, em vez de marcar CA02 como atendido.
+Endereco editorial oficial: `gesed.semtd@gmail.com`, conforme a secao
+`E-mail institucional` do documento mestre. Nao substituir por endereco
+inventado ou tentar verificar enviando mensagem sem autorizacao. O estado
+inicial e `pendente`: exibir somente como referencia documentada, com aviso,
+sem `mailto:` ou copia ativa. CA02 continua pendente ate validacao operacional.
 
 Para pausa confirmada, manter pagina acessivel com aviso verdadeiro e retorno
 a ajuda. Suspender mailto/copia como acoes principais do canal pausado; endereco
@@ -59,7 +60,7 @@ configuracao editorial da 013 para nao anunciar estados contraditorios.
 
 ### 2. Conteudo e composicao da pagina
 
-Criar `src/content/pages/suporte-email.ts` para titulo, introducao, orientacoes,
+Usar `src/content/ajuda/suporte-email.ts` para titulo, introducao, orientacoes,
 exemplos, rotulos, mensagens de copia e destinos. Conteudo e texto estruturado,
 sem HTML interpretado ou dados preenchidos pelo usuario.
 

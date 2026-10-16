@@ -12,6 +12,26 @@ pode seguir para `/spec:tarefas`, mas nao representa tutorial pronto para
 implementacao/publicacao. Criar implementation-plan e resolver pendencias
 antes de codigo, sem inventar menus, permissoes ou estados externos.
 
+## Referencias Figma oficiais
+
+A rota representa uma pagina unica com seis variantes de etapa:
+
+| Tipo | Etapa | Node |
+| --- | --- | --- |
+| Pagina — estado inicial | 1. Acesse a plataforma | `564:635` |
+| Variante | 2. Faca login | `564:730` |
+| Variante | 3. Localize o cadastro | `564:852` |
+| Variante | 4. Cadastre as informacoes de sua Carta | `564:980` |
+| Variante | 5. Revise os dados | `564:1232` |
+| Variante | 6. Publique o servico | `564:1357` |
+
+Consultar os seis nodes antes do trabalho visual. A correspondencia com as
+etapas e definida pela ordem de `src/content/tutorial/paraiba-digital.ts`.
+Esse arquivo prevalece para textos, percentuais, instrucoes, campos e acoes;
+o Figma prevalece somente como referencia de composicao e apresentacao. Nao
+criar seis rotas, duplicar o conteudo no componente ou incorporar copy antiga
+do frame. Registrar toda divergencia editorial ou estrutural.
+
 ## Fontes e evidencia
 
 - Spec 011, spec 012 e contratos propostos nos planos 007–010.
@@ -33,9 +53,10 @@ do passo a passo. Esses pontos permanecem pendentes no planejamento detalhado.
 
 ## Estado atual
 
-- Rota ja existe, sem figmaNodeId; pagina usa PageHeader e PlaceholderCard.
-- `src/content/tutorial/paraiba-digital.ts` contem somente tres blocos genericos:
-  revisar campos, copiar informacoes e cadastrar manualmente.
+- Rota existe com `figmaNodeId: "564:635"`; pagina ainda usa PageHeader e
+  PlaceholderCard.
+- `src/content/tutorial/paraiba-digital.ts` contem as seis etapas oficiais,
+  percentuais, instrucoes, acoes e dados de copia da etapa 4.
 - Nao ha tutorial operacional, data de revisao, fontes, assets ou componentes
   de copia integrados.
 - Provider/decoder da 007 e copia da 012 ainda precisam ser implementados.
@@ -50,13 +71,13 @@ do passo a passo. Esses pontos permanecem pendentes no planejamento detalhado.
 ### 1. Estrutura editorial e verificacao operacional
 
 Evoluir o conteudo existente para objeto tipado com titulo, introducao,
-passos ordenados, indice, avisos, fontes, data de revisao e acoes. Cada passo
+passos ordenados, avisos, fontes, data de revisao e acoes. Cada passo
 recebe ID estavel; nao usar titulo como chave, pois a copy pode mudar.
 
-Cobertura proposta: preparar dados, acessar plataforma, localizar cadastro,
-transferir informacoes, conferir cadastro externo, concluir conforme fluxo
-oficial e resolver divergencias. Esses IDs organizam assuntos, sem presumir
-numero de telas, nome de menu ou sequencia de botoes da plataforma.
+As seis etapas oficiais sao: acessar a plataforma, fazer login, localizar o
+cadastro, preencher as informacoes, revisar os dados e publicar o servico.
+Preparar/conferir os dados integra a introducao e a etapa 4; resolver duvidas
+ou divergencias e orientacao transversal, nao uma setima etapa visual.
 
 Antes de finalizar copy operacional:
 
@@ -128,14 +149,15 @@ coleta ou modelo novo no Simplifica Carta sem revisao de escopo.
 
 ### 3. Composicao da pagina
 
-Reutilizar shell e breadcrumb. Pagina propria contem introducao, data de
-revisao, indice/passos, acesso externo, regiao de dados para copia e acoes de
-edicao/revisao/ajuda. Posicionamento visual deve ser confirmado no Figma.
+Reutilizar shell e breadcrumb. A pagina apresenta introducao, progresso e uma
+unica etapa ativa, com acesso externo, recurso visual, acoes anterior/proxima
+e, somente na etapa 4, a regiao de dados para copia e edicao.
 
-Preferir lista ordenada de passos com sections identificadas e indice de
-ancoras. Todo passo fica consultavel sem marcar progresso ou responder campos.
-Se o frame indicar paineis recolhidos, usar controles acessiveis e nao bloquear
-etapas por estado de preenchimento; registrar essa decisao no plano detalhado.
+Usar `?etapa=1..6` como estado navegavel. Ausencia/valor invalido abre a etapa
+1; anterior/proxima atualizam URL, historico e foco no titulo da etapa. A
+recarga preserva a etapa, mas nao existe progresso persistido ou bloqueio por
+preenchimento. Os seletores de progresso podem abrir qualquer etapa e devem
+ter nome acessivel e estado atual anunciado.
 
 Manter fonte editorial independente de dados da sessao: falha do provider ou
 ausencia de Carta nao pode impedir a leitura do tutorial. Erros de integracao
@@ -148,8 +170,8 @@ campos selecionaveis, botoes e feedback de clipboard. Planejar componente
 `CartaCopyFields` ou equivalente com valores derivados da fonte unica da 007.
 Nao implementar outro mecanismo de copia dentro de TutorialStep.
 
-Propor regiao unica `Informações para copiar`, com campos identificados e
-ancoras referenciadas pelos passos de transferencia, evitando duplicar campos
+Propor regiao unica `Informações para copiar` na etapa 4, com campos
+identificados, evitando duplicar campos
 editaveis ou botoes de copia do mesmo valor em varias partes. Se o Figma
 prescrever campos intercalados, reconciliar agrupamento e identidade da 012
 antes do codigo, preservando fonte unica e retorno por campo.
@@ -204,9 +226,9 @@ e rotulo relevante. Imagem indisponivel conserva legenda/instrucao. Planejar
 tamanho e carregamento sem deslocamento excessivo, preservando legibilidade
 em mobile; nao exigir zoom de imagem para compreender instrucao essencial.
 
-Usar unico h1, titulos de passo com hierarquia coerente, listas e ancoras
-acessiveis. Navegacao pelo indice precisa de foco/rolagem compativeis com header
-sticky e historico da 002. Copy continua selecionavel e integral, sem ellipsis.
+Usar unico h1 e titulo de etapa com hierarquia coerente. Ao trocar de etapa,
+mover foco programaticamente para seu titulo e anunciar progresso de forma nao
+redundante. Copy continua selecionavel e integral, sem ellipsis.
 
 Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
 agendamento (Online, Presencial ou ambos) e Sistema de agendamento (Paraiba Digital ou
@@ -236,10 +258,10 @@ permanece manual.
 | `src/content/tutorial/paraiba-digital.types.ts` | Criar contratos se separar melhorar clareza |
 | `src/pages/TutorialParaibaDigitalPage.tsx` | Compor passo a passo, estados e regiao da 012 |
 | `src/components/tutorial/TutorialStep.tsx` | Passo com instrucao e asset, se extracao justificada |
-| `src/components/tutorial/TutorialIndex.tsx` | Indice se composicao confirmada exigir |
+| `src/components/tutorial/TutorialProgress.tsx` | Progresso e selecao acessivel da etapa ativa |
 | `src/assets/tutorial-paraiba-digital/` | Capturas/assets autorizados identificados |
 | Componentes/seletores de copia da 012 | Integracao, sem mecanismo duplicado |
-| `src/app/routes.tsx` | Adicionar frame somente depois de identificacao |
+| `src/app/routes.tsx` | Manter `564:635` como frame principal da rota |
 | Estilos/tokens existentes | Composicao, texto longo, imagens e estados confirmados |
 | `docs/design-system/mapa-figma-telas.md` | Registrar frame confirmado no plano detalhado |
 
@@ -250,9 +272,10 @@ detalhado; nenhum asset ou tela externa foi obtido nesta etapa.
 
 ## Referencias visuais e pendencias
 
-Identificar frame no Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`,
-via MCP; nao usar `575:483`, entrada da 003, como layout do tutorial. Consultar
-Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
+Consultar detalhadamente os seis frames ja identificados no Figma Design
+`YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, via MCP; nao usar `575:483`, entrada
+da 003, como layout do tutorial. Consultar tambem o Figma Make
+`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
 
 Registrar composicao, passos, regiao de copia, assets, estados e responsividade
 no implementation-plan. Consulta Figma orienta apresentacao, sem validar fluxo
@@ -273,7 +296,7 @@ e mudanca da Carta atualiza regiao de transferencia.
 Verificar conteudo por checklist editorial: cada passo operacional com fonte,
 perfil e data, nomes externos corretos, sem confundir salvar/publicar, matriz
 completa, contatos/links confirmados e capturas autorizadas. Nao usar teste
-que apenas conte sete cards como prova de tutorial correto.
+que apenas conte cards como prova de tutorial correto.
 
 | Criterios | Evidencia futura |
 | --- | --- |
@@ -282,7 +305,7 @@ que apenas conte sete cards como prova de tutorial correto.
 | CA09–CA10 | Revisao da 012 e integracao real de valores/copia |
 | CA11 | URL de acesso verificada e nova aba sem valores da Carta |
 | CA12 | Assets autorizados, alternativas textuais e imagem indisponivel |
-| CA13–CA14 | Teclado/leitor de tela, indice, foco, texto longo e imagens responsivas |
+| CA13–CA14 | Teclado/leitor de tela, progresso, foco, texto longo e imagens responsivas |
 | CA15–CA16 | Ajuda para divergencias, arquitetura, copy e consultas visuais |
 | CA17 | Sistemas/modalidades e campos ativos conforme 007; valores externos inativos preservados sem transferencia; links relacionados apenas para anchors visiveis da 012, inclusive troca/restauracao/recarga |
 
