@@ -17,7 +17,6 @@ export function SuporteEmailPage() {
         {content.channelState.status !== "ativo" ? (
           <p>{content.channelState.notice}</p>
         ) : null}
-        {content.channelState.status === "pendente" ? <p>{content.pendingNotice}</p> : null}
         {content.action ? <a href={content.action.href}>{content.action.label}</a> : null}
       </PlaceholderCard>
     </>

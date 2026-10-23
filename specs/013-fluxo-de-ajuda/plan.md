@@ -36,7 +36,7 @@ antes de implementar. Nenhuma mensagem/solicitacao foi enviada nesta etapa.
 
 - Rota `/ajuda` existe, specId 013, layout support e node `169:495`.
 - AjudaPage contem PageHeader e dois PlaceholderCards sem links de acao.
-- FAQ ainda nao existe no codigo; 002 planeja destino compartilhado
+- FAQ com quatro itens já é renderizada por AjudaPage; conferir destino compartilhado
   `/ajuda#duvidas-frequentes`, que esta feature precisa efetivar.
 - Rotas `/ajuda/atendimento-agendado` e `/ajuda/suporte-email` sao placeholders.
 - Shell possui navegacao e aria-current por caminho; contratos de hash/foco
@@ -62,106 +62,34 @@ programatico quando o contrato da 002 exigir, scroll-margin para header sticky
 e hash funcionando por link, acesso direto, recarga e voltar/avancar. Nao criar
 handler global concorrente para hash se ja existir no shell.
 
-### 2. Conteudo tipado versionado
+### 2. Conteúdo versionado e composição
 
-Criar `src/content/pages/ajuda.ts` com titulo, introducao, escopo orientativo,
-FAQ, canais, retorno ao formulario e mensagens de indisponibilidade editorial.
-Proposta de contrato:
+Consumir helpPageContent em src/content/pages/ajuda.ts, preservando as quatro
+perguntas existentes e as âncoras da FAQ/apoio. Não recriar perguntas candidatas
+ou dois cards na FAQ. O título/CTA de apoio precisa da migração por estado
+prevista no [contrato compartilhado de canais](../../docs/arquitetura/contrato-canais-ajuda.md); TypeScript não alterado nesta rodada.
 
-```ts
-type HelpHref =
-  | "/organizar-informacoes" | "/explorar-por-etapas"
-  | "/formulario-carta" | "/previa" | "/tutorial-paraiba-digital"
-  | "/ajuda/atendimento-agendado" | "/ajuda/suporte-email";
+FAQ expansiva pode usar details/summary com múltiplas respostas abertas,
+operação por teclado e foco previsível. Abrir resposta não exige Carta/login.
+A entrada de dois canais pertence ao layout 425:201 nas rotas 014/015.
 
-type FaqItem = {
-  id: string;
-  question: string;
-  paragraphs: readonly string[];
-  links?: readonly { label: string; href: HelpHref }[];
-};
+### 3. Fontes e ações compartilhadas
 
-type HelpChannel = {
-  id: "atendimento-agendado" | "suporte-email";
-  title: string;
-  description: string;
-  actionLabel: string;
-  href: "/ajuda/atendimento-agendado" | "/ajuda/suporte-email";
-};
-```
+Estado/aviso e destinos derivam de supportChannels/supportDestinations;
+endereço de supportContacts. Os objetos existem; estado atual é atendimento
+pendente/e-mail ativo. Não confundir status editorial com agenda vazia,
+falha de rede ou entrega funcional.
 
-Consolidar associacao fechada entre ID e destino (uniao discriminada ou mapa
-tipado), evitando trocar href por indice. Conteudo e texto/links estruturados,
-sem HTML concatenado ou Markdown interpretado para respostas.
+### 4. Estados e transições
 
-FAQ com IDs estaveis e sete assuntos da spec; numero exato de perguntas pode
-variar editorialmente, mantendo cobertura. Respostas propostas:
-
-| Assunto | Mensagem a consolidar |
-| --- | --- |
-| Funcao do manual | Orienta preparacao; cadastro/publicacao continuam manuais |
-| Acesso por etapas | Permite consulta independente e link para exploracao |
-| O que reunir | Lista na 006 e confirmacao com setor responsavel |
-| Continuidade | Sessao temporaria conforme 007; sem promessa de rascunho permanente |
-| Validacao | Ausencia obrigatoria distinta de sugestao; nenhuma aprovacao automatica |
-| Previa/CSV/copia | Revisao, arquivo local e transferencia individual, sem importacao externa prometida |
-| Escolha de suporte | E-mail para orientacao escrita e atendimento conforme disponibilidade real |
-
-Submeter redacao a equipe. Nao afirmar funcionalidade entregue de rotas
-placeholder, prazo de resposta ou recuperacao entre sessoes. Manter fonte
-editorial coerente com decisoes finais de 007–015.
-
-### 3. FAQ e composicao
-
-Propor introducao, FAQ e regiao de dois canais, com acao de retorno ao
-formulario sempre disponivel. Confirmar ordem/layout no Figma; canais nao
-dependem de ler respostas ou abrir todos os itens.
-
-Preferir `details`/`summary` nativos para FAQ expansiva se a referencia visual
-permitir. Alternativa de accordion controlado exige button com aria-expanded,
-associacao ao painel e estado local por ID. Definir uma das estrategias no
-implementation-plan, sem manter implementacoes duplicadas.
-
-Nao impor exclusividade de um painel aberto salvo necessidade confirmada;
-permitir comparar respostas e preservar foco. Conteudo fechado nao recebe
-foco ativo; links abertos permanecem acessiveis. Todos os assuntos consultaveis
-sem login, submissao, hover ou registro de progresso.
-
-Componentes provaveis: `FaqSection`/`FaqItem` e `HelpChannelCard`, extraidos
-se concentrar repeticao e contrato. Regioes estaticas de uso unico podem ficar
-na pagina. IDs da FAQ servem para keys, nao titulos sujeitos a revisao.
-
-### 4. Canais e estados de disponibilidade
-
-Atendimento: link para `/ajuda/atendimento-agendado`, explicando que o destino
-permite consultar horarios e solicitar; escolher canal nao reserva nem envia.
-E-mail: link para `/ajuda/suporte-email`, sem mailto automatico na entrada;
-contato e copia do endereco ficam no fluxo da 015.
-
-Manter descricoes honestas e sem horarios/prazos inventados. A 013 nao consulta
-agenda, verifica SMTP ou chama API de saude para renderizar ajuda. Falha no
-backend de 014 nao remove FAQ nem acesso ao e-mail.
-
-Para indisponibilidade confirmada, proposta de configuracao editorial unica
-por canal em canais.ts: pendente/ativo/pausado, com aviso nos estados nao
-ativos e alternativa somente quando outro canal ativo estiver entregue.
-Pendente significa sem confirmacao editorial, nao falha operacional; ativo
-equivale a publicado. Com ambos nao ativos, manter consulta e retorno sem
-inventar alternativa. Nao usar label "disponivel agora" sem
-evidencia de estado em tempo real; configuracao ativa apenas indica que o
-fluxo foi publicado, nao existencia de vaga/resposta imediata.
-
-Se canal estiver pausado, manter descricao com aviso e link a alternativa
-operacional quando confirmada; manter acesso ao proprio destino para explicacao,
-conforme plano detalhado. O comportamento da pagina 014 em pendente/pausado,
-incluindo tentativa em andamento, ainda exige decisao de seu contrato; o aviso
-na entrada nao desativa API nem cancela solicitacoes. Nao substituir destino
-por href `#` ou botao inerte.
-Uma rota placeholder nao recebe status operacional por existir na tabela.
-
-Antes de declarar aceite dos canais, testar destinos reais de 014/015. A
-entrada pode ser planejada/implementada separadamente, com integracao pendente
-registrada; nao absorber agenda/backend para tornar card funcional.
+Aplicar integralmente o [contrato compartilhado de canais](../../docs/arquitetura/contrato-canais-ajuda.md), incluindo nove combinações,
+configuração inválida, acesso direto e ambos indisponíveis. Na FAQ: CTA neutro
+leva à entrada 014; na própria 014: botão abre calendário interno, nunca link
+para si mesma; na 015: atendimento navega à entrada 014 e e-mail copia localmente.
+Em não ativo, sem ação operacional; e-mail de referência pode ser selecionável
+sem instrução incentivando contato. Não alterar estado por falha de API.
+Pausa durante tentativa não apaga payload/chave/resultado; sem nova solicitação,
+recuperação/replay e regra de API serão fechados pela T014 global.
 
 ### 5. Continuidade e privacidade
 
@@ -193,8 +121,8 @@ fonte compartilhada validada da 015 sem dependencia da UI de suporte.
 
 Breadcrumb, links e navegacao/hash/foco podem exigir ajustes minimos se 002
 ainda nao os entregar. Conferir codigo real antes de criar componentes
-compartilhados. Nao alterar tipos de solicitacao, backend de 014, mailto de
-015 ou estado/storage da Carta como parte da pagina de entrada.
+compartilhados. Não alterar tipos de solicitação, backend da 014, mecanismo
+de cópia da 015 ou estado/storage da Carta como parte da página de entrada.
 
 ## Visual, responsividade e acessibilidade
 
@@ -249,7 +177,8 @@ Nao enviar e-mails ou criar solicitacoes reais para verificar a pagina de entrad
 
 ## Riscos e mitigacoes
 
-- Ancora prevista sem destino: manter `duvidas-frequentes` e testar acesso direto/hash.
+- Âncora `duvidas-frequentes` já possui ID de conteúdo; implementar no shell a
+  resolução, rolagem e transferência de foco em acesso direto e mudança de hash.
 - FAQ vira requisito para canal: ambos links independentes, sem progresso/gate.
 - Card promete canal inexistente: validar entrega de 014/015 e registrar pendencias.
 - Indisponibilidade confundida com agenda vazia: aviso confirmado sem consulta
@@ -263,3 +192,29 @@ Nao enviar e-mails ou criar solicitacoes reais para verificar a pagina de entrad
 Executar `/spec:tarefas 013-fluxo-de-ajuda`. Depois, consolidar FAQ/copy,
 referencias visuais, ancora e estado dos canais em `/spec:plano-implementacao`,
 seguido de `/spec:validar` antes de implementar.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

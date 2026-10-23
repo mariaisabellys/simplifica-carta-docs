@@ -245,3 +245,19 @@ Executar `/spec:plano-implementacao 016-responsividade-acessibilidade`,
 consolidando inventario, meta WCAG, matriz real de ambientes, criterios,
 contratos compartilhados e referencias Figma. Depois executar `/spec:validar`
 antes de `/spec:implementar`. Esta etapa criou somente tarefas.
+
+## Complemento documental T015 — navegação (22/10/2026)
+
+Na implementação das tarefas de navegação, aplicar o [contrato central](../../docs/arquitetura/contrato-navegacao.md) e os cenários NV01–NV12 da [verificação T015](../../docs/verificacoes/t015-navegacao.md). Usar somente NavigationProvider, useAppLocation, useAppNavigate e AppLink; ButtonLink/breadcrumb/marca compõem AppLink, sem handlers locais ou prop onNavigate. Preservar pathname/search/hash, sem perda de query, e separar 404 da aplicação do fallback SPA. Tarefas funcionais continuam pendentes; este complemento não comprova execução.
+
+## Complemento documental T016 — Figma e estados (22/10/2026)
+
+Aplicar o inventário e os métodos do
+[registro T016](../../docs/verificacoes/t016-figma-acessibilidade.md) e da
+[matriz atualizada](accessibility-matrix.md). Antes de trabalho visual,
+consultar cada node por mecanismo autenticado e registrar data, node,
+divergência e adaptação. Cobrir estados ausentes dos frames, sobretudo etapa 4
+ampliada, formulário real, orientação, prévia compartilhada, loading, vazio,
+erro, revisão, falha e conteúdo longo. Screenshot/frame não aprova foco,
+teclado, anúncio, contraste, reflow ou zoom; usar o método específico da matriz.
+Nenhuma tarefa funcional da 016 foi concluída por este complemento.

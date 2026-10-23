@@ -1,63 +1,35 @@
-# Verificacao: Validacao e linguagem simples
+# Verificação: Validação em linguagem simples
 
-> **Baseline atualizado em 16 de outubro de 2026:** o aceite integrado continua
-> pendente sobre o modelo v3 da 007.
+## Registro de 19/10/2026 — T007 documental
 
-## Status
+Autor: Codex. Base: HEAD 7948d35 e alterações locais anteriores preservadas.
+[Registro de 18/10 preservado](historico/2026-10-19-pre-t007-verification.md).
+Escopo: documentação; implementação e aceite funcional/visual não executados.
 
-Rodada de `/spec:implementar 008` em 2026-10-05.
-**Preparacao documental realizada; implementacao dependente nao iniciada.**
-Nenhum codigo, componente, pacote ou teste foi alterado/executado nesta rodada.
-Nenhum criterio recebeu aceite funcional ou tarefa foi marcada concluida.
+## Artefatos
 
-## Conferencia e correcoes
+Criado contrato-validacao-editorial.md. Atualizados spec, plan, tasks,
+implementation-plan e validation/verification da 008, referência MC-12 da
+matriz da 007 e docs/tasks.md. Preservados relatórios/lista de tarefas anteriores
+no histórico. Nenhum arquivo de src foi alterado.
 
-Lidos SPEC, PLAN, TASK, IMPLEMENTATION-PLAN e validation.md; conferidos
-carta.validation.ts, lib/validation.ts, schema/modelo da 007, inventario de
-consumidores e instrucoes locais. Busca nao encontrou AGENTS.md no repositorio.
+## Checks desta rodada
 
-| Referencia | Resultado documental |
-| --- | --- |
-| V008-01 | CA19 corrigido para duas colunas no PLAN e tres no plano detalhado, com tarefas reais em vez de resultado esperado na coluna Tarefas. |
-| V008-02 | PLAN/plano detalhado/T017 detalham null/Nao, Sim sem tipos/sistema, Online/Presencial/ambos, enums/lista invalidos, externo/nativo e troca/restauracao/recarga. T019/T020 incluem retirada de mensagens inativas e equivalencia formulario/CSV. |
-| V008-03 | Snapshot/revisao inclui aplicabilidade, alem do texto. Callback exige alvo existente/ativo e revisao atual; troca de condicao cancela/invalida resultados sem apagar valores. Parte fechada visualmente nao e campo inativo. T012/T019 explicitam a regressao com texto preservado. |
+- Comparação da tabela LS03 antes/depois: preservadas as seis linhas originais
+  e os 21 pares adicionais; aprovação continua pendente.
+- Matriz editorial com 25 definições, incluindo filho document-name proposto;
+  correspondência com matriz v3, sem omitir seletores, URL ou prazo.
+- MSG01–MSG17, VE01–VE18 e CA01–CA18 presentes; rastreabilidade das tarefas.
+- Conferência de 25 links locais válidos, git diff --check sem erros e ausência de diff em src.
+- Conferência textual das seis condições de estado, checklist após edição,
+  LS02 por bloco e não bloqueio editorial de CSV/cópia/prévia/navegação.
 
-validation.md permanece registro historico. Correcoes encerram lacunas de
-texto, sem comprovar controlador implementado, testes ou homologacao.
+Os cenários VE são testes previstos, não execuções do motor. Conferência da
+estrutura documental não comprova algoritmos, offsets, geometria, acessibilidade
+ou integrações. Não foram executados build/typecheck/testes de aplicação.
 
-## Dependencias e decisoes pendentes
+## Pendências
 
-- Modelo v2, provider, IDs e formulario da 007 ainda nao entregues. A pagina
-  permanece placeholder; integracao de blur/revisao/resumo/foco nao tem base real.
-- SPEC RF02 e T002 exigem decidir protocolos/politica da URL antes do codigo.
-  URL absoluta nao e decisao sobre protocolos aceitos; nenhuma politica HTTPS
-  exclusiva ou integracao externa foi inventada nesta rodada.
-- Catalogo versionado (240 pontos de codigo, termos/mensagens, fronteiras de
-  hifen/apostrofo) ainda depende de validacao editorial. Metas/fixtures/timing
-  sao candidatos, sem medicao ou homologacao institucional.
-- ERS PDF continua sem inspecao. Manual textual nao substitui fonte original.
-- Sem confirmacao posterior de instalacao/conexao Figma; consulta Design/Make
-  continua pendente. Nao repetida sugestao de integracao ignorada anteriormente.
-  `docs/ia/regras-para-ia.md` exige consulta via MCP antes de implementar estados
-  visuais; nodes locais nao comprovam estilos, erro, sugestao ou resumo.
-- useAppNavigate da 002/003/006 esta alinhado documentalmente; contexto/links
-  reais e contrato de retorno/foco ainda precisam de entrega/testes.
-- Consumidores 009/010/012 nao entregam jornada completa: CA09/CA10 permanecem
-  pendentes, sem confundir teste unitario de helper com gate integrado.
-
-## Verificacoes e arquivos
-
-Conferidas cardinalidade das linhas CA19 e referencias de aplicabilidade,
-timers, testes e tarefas. git status de src permaneceu sem alteracoes.
-Node 24.20.0/npm 11.19.0 encontrados; node_modules ausente e suite nao
-configurada. Nenhuma instalacao/build/typecheck foi realizada como evidencia
-de funcionalidade ainda nao implementada.
-
-Alterados plan.md, tasks.md e implementation-plan.md da 008; criado este
-registro. SPEC, src, schema/storage, backend e demais alteracoes existentes
-no workspace foram preservados.
-
-Retomar com contratos/decisoes pertinentes fechados: implementar tipos,
-catalogo e motores independentes, testar defensividade/Unicode/pureza/falhas,
-depois integrar controlador/UI/consumidores e executar checks/ambientes reais.
-Nao considerar este registro implementacao ou aceite integral.
+Aprovação V008-01/V008-03; implementação F008-02–09; consumidores, navegador,
+teclado/leitores e build F008-10–12. Helper legado de 240 caracteres permanece,
+assim como contagem total no helper da 007. Não declarar a feature concluída.

@@ -184,25 +184,15 @@ da feature 005 e cobrir recarga e rotas, o plano detalhado pode dispensar
 
 ### 6. Usar navegacao compartilhada
 
-As paginas hoje nao recebem `navigate`. A implementacao deve reutilizar o
-contrato de navegacao consolidado pela feature 002. Se ainda nao existir,
-extrair de `App.tsx` um `NavigationContext` com:
-
-```ts
-type NavigationContextValue = {
-  currentPath: string;
-  navigate: (path: string, options?: { replace?: boolean }) => void;
-};
-```
-
-O contexto deve continuar usando `window.history` e `popstate`. Nao criar um
-segundo roteador dentro do diagnostico e nao manipular `pushState` diretamente
-em cada componente.
+Reutilizar [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md): useAppNavigate retorna a função Navigate,
+useAppLocation expõe pathname/search/hash/href e NavigationProvider é o único
+dono do histórico. Não declarar NavigationContextValue local nem roteador paralelo.
+AppLink preserva cliques modificados e URLs; AppShell coordena foco/scroll.
 
 Ao concluir, usar `navigate("/diagnostico/resultado")`. Ao tentar acessar o
 resultado sem uma sessao completa e valida, usar
-`navigate("/diagnostico", { replace: true })` ou mostrar uma acao equivalente
-definida no plano detalhado.
+`navigate("/diagnostico", { replace: true })` após validar/restaurar a sessão.
+Não renderizar resultado fictício nem redirecionar antes de concluir a recuperação.
 
 ### 7. Renderizar uma pergunta ativa por vez
 

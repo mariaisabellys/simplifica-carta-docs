@@ -1,11 +1,9 @@
 import { ButtonLink } from "../components/ui/ButtonLink";
 import { PageHeader } from "../components/ui/PageHeader";
 import { helpPageContent } from "../content/pages/ajuda";
-import { supportChannels } from "../content/support/canais";
 
 export function AjudaPage() {
   const content = helpPageContent;
-  const appointmentState = supportChannels["atendimento-agendado"];
 
   return (
     <>
@@ -30,11 +28,9 @@ export function AjudaPage() {
         <p>{content.support.sectionTitle}</p>
         <h2 id="support-title">{content.support.title}</h2>
         <p>{content.support.description}</p>
-        {appointmentState.status !== "ativo" ? <p>{appointmentState.notice}</p> : null}
+        {content.support.notice ? <p>{content.support.notice}</p> : null}
         <ButtonLink href={content.support.action.href} variant="secondary">
-          {appointmentState.status === "ativo"
-            ? content.support.action.label
-            : "Consultar atendimento ->"}
+          {content.support.action.label}
         </ButtonLink>
       </section>
     </>

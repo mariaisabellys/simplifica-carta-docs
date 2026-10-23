@@ -1,3 +1,7 @@
+import { getSupportPresentation } from "../support/canais";
+
+const support = getSupportPresentation("atendimento-agendado").faqSupport;
+
 export type FaqItemId =
   | "different-by-audience"
   | "depends-on-another-agency"
@@ -52,12 +56,10 @@ export const helpPageContent = {
   support: {
     id: "precisa-de-apoio",
     sectionTitle: "Precisa de apoio?",
-    title: "Agende uma visita com a equipe de Serviços Digitais",
+    title: support.title,
+    notice: support.notice,
     description:
       "Receba orientações caso sua dúvida não tenha sido esclarecida pelo Manual Simplifica Carta.",
-    action: {
-      label: "Agendar visita ->",
-      href: "/ajuda/atendimento-agendado",
-    },
+    action: support.action,
   },
 } as const;

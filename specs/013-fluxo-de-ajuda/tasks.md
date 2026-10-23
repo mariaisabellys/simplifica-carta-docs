@@ -12,8 +12,9 @@
   `/spec:validar` sem bloqueios relevantes.
 - Entrada de consulta em /ajuda, sem login, coleta, leitura da Carta,
   backend obrigatorio ou persistencia das interacoes de FAQ.
-- Escolher canal apenas navega. Agenda/solicitacao pertencem a 014 e contato/
-  mailto/copia de endereco a 015; nao implementar esses mecanismos na entrada.
+- FAQ apenas navega à entrada. Na 014, botão de atendimento ativo abre
+  calendário interno; na 015, contato ativo copia endereço. Sem mecanismo
+  paralelo de cópia ou cards adicionais na FAQ; seguir contrato compartilhado.
 - Specs 014–016 agora existem; notas historicas e rotas placeholder nao
   comprovam canais entregues. Aceite integrado depende dos destinos reais.
 
@@ -52,11 +53,10 @@
     acessivel para explicacao; sem href #, botao inerte ou alternativa inventada.
   - FAQ renderiza sem consultar agenda, API de saude ou SMTP. Nao duplicar
     contato: se necessario visualmente, consumir fonte validada da 015.
-  - Registrar estado pendente quando nao houver comprovacao de entrega; URL
-    existente/endereco placeholder nao comprovam canal ativo.
-  - Entrega parcial em 2026-10-05: src/content/support/canais.ts define mapa
-    fechado de destinos e tipos compartilhados; configuracao editorial real,
-    consumidores e regra do destino 014 pendente/pausado continuam pendentes.
+  - Não mudar estado editorial por falta de entrega; registrar implementação
+    pendente separadamente. Configuração existe: atendimento pendente/e-mail ativo.
+  - Aplicar apresentação e transições do contrato T013; efeitos da pausa na API
+    e recuperação de tentativa pertencem à T014 global.
   - Dependencias: T001–T002. Evidencia: contrato e estados documentados;
     RF03/RF05, CA03–CA04/CA11–CA13.
 
@@ -221,3 +221,37 @@ Executar `/spec:plano-implementacao 013-fluxo-de-ajuda`, consolidando FAQ/copy,
 referencias Figma, ancora da 002, disponibilidade editorial e destinos de
 014/015. Depois executar `/spec:validar` antes de `/spec:implementar`.
 Esta etapa criou somente tarefas.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Complemento executável após autorização
+
+- [ ] Aplicar a migração de conteúdo do contrato sem duplicar fontes.
+- [ ] Integrar estados/transições e foco conforme contexto de entrada.
+- [ ] Executar CJ01–CJ12, incluindo as nove combinações e acesso direto.
+- [ ] Registrar efeitos de pausa sobre tentativa/API após decisão T014,
+  sem cancelar operação ou criar nova chave por inferência.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

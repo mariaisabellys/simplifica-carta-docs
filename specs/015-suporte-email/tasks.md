@@ -1,222 +1,110 @@
-# Tasks: Suporte por e-mail
+# Tarefas: Suporte por e-mail
 
-> **Contrato atualizado em 16 de outubro de 2026:** node `425:201`, contato
-> GESED visivel e botao `Copie o e-mail`. Tarefas de `mailto:` estao superadas;
-> a entrega atual cobre copia explicita e alternativa manual.
+20/10/2026 — limpeza documental T012 global. IDs locais T001–T015 preservados;
+não confundir T012 local (layout) com a tarefa global.
+Nenhuma tarefa funcional marcada concluída por esta revisão.
+Base: [spec](spec.md), [plan](plan.md), [plano detalhado](implementation-plan.md).
+Todas as ações futuras seguem exclusivamente exibição/cópia do contato.
 
-## Convencoes e status
+## Fontes e contratos
 
-- Base: spec.md e plan.md da 015; contratos de 002/007/012/013/014/016.
-- Todas as tarefas estao pendentes. Esta lista nao comprova contato ativo,
-  validacao editorial, consulta Figma, implementacao ou teste real de clipboard/mailto.
-- Codigo somente em `/spec:implementar`, depois de implementation-plan e
-  `/spec:validar` sem bloqueios relevantes.
-- Canal frontend sem formulario, SMTP, backend de envio ou rascunho de mensagem.
-  Usuario revisa e envia no aplicativo externo; notificacoes da 014 ficam na 014.
-- Referencia gesed.semtd@gmail.com depende de confirmacao institucional.
-  Sintaxe e presenca no placeholder nao comprovam operacao.
-- Consulta independente de Carta/diagnostico/CSV; alternativa manual sempre
-  visivel. Abrir mailto nao comprova abertura, envio, recebimento ou leitura.
-- Specs consumidoras existentes nao comprovam integracao entregue. Testes
-  nao enviam mensagens reais nem sobrescrevem clipboard do usuario automaticamente.
+- [ ] **T001 — Conferir contexto e integrações.** Inventariar ERS, shell,
+  navegação, fontes de conteúdo, página, clipboard e entradas 013/014;
+  separar contrato de implementação entregue. CA01/07/10/13.
+- [ ] **T002 — Conferir fonte e disponibilidade editorial.** Consumir
+  supportContacts e supportChannels existentes. E-mail ativo editorialmente
+  por decisão de 16/10, sem afirmar resposta operacional. Aplicar o contrato T013
+  aos avisos/apresentação não ativa e alternativas; não enviar mensagem
+  de teste. Depende T001; CA02/09/12.
+- [ ] **T003 — Validar conteúdo de orientação/cópia.** Rótulo Copie o e-mail,
+  mensagens da fonte, endereço como destinatário a ser usado manualmente.
+  Sem assunto/corpo predefinidos, coleta, anexos exigidos ou promessa de
+  recebimento. Depende T002; CA03/04/06/08.
+- [ ] **T004 — Fechar controlador neutro.** Reusar copiarTexto, trava por
+  contato, revisão/request/geração, cleanup e alternativa manual; 5 s sucesso
+  e 10 s demora sem liberar operação pendente. Não depender da Carta.
+  Depende T001/003; CA04/05/09/11.
+- [ ] **T005 — Consultar Design/Make.** Node 425:201 compartilhado com 014,
+  dois cards, contato selecionável, cópia/manual, foco/reflow/tokens.
+  Layout adapta-se ao conteúdo; registrar consulta, não apenas link.
+  Depende T003/004; CA11/13.
+- [ ] **T006 — Fechar plano executável.** Conferir arquivos existentes,
+  coordenador/consumidores sem ciclo, matriz EM01–EM12 e dependências de T013
+  global. Depende T001–005; plano atual é documental, não interface entregue.
+- [ ] **T007 — Revalidar antes do código.** Conferir RF01–RF07/CA01–CA13,
+  ERS, consulta visual, conteúdo e estados compartilhados. Não confundir
+  contato ativo editorialmente com teste de atendimento. Depende T006.
 
-## Fase 1 — Fontes e contratos
+## Interface futura
 
-- [ ] **T001 — Inventariar contexto e integracoes reais**
-  - Conferir ERS, manual textual, MVP, ADR-003, constitution e regras de IA.
-  - Inventariar pagina/rota, shell/breadcrumb/links da 002, conteudo e testes;
-    conferir provider da 007 e entradas/alternativas reais de 013/014.
-  - Conferir utilitario neutro de clipboard da 012, se implementado, evitando
-    duplicacao ou dependencia de Carta/tutorial para copiar contato.
-  - Evidencia: fontes lidas e lacunas no implementation-plan;
-    RF01/RF06, CA01/CA07/CA10/CA13.
+- [ ] **T008 — Integrar conteúdo existente.** Consumir contatos/canais e
+  src/content/ajuda/suporte-email.ts; não recriar fontes ou duplicar endereço.
+  Completar mensagens auxiliares versionadas. Depende T007; CA02/06/09/12/13.
+- [ ] **T009 — Apresentar contato e alternativa manual.** Endereço integral,
+  selecionável, instrução de copiar/colar e canal orientativo; não criar
+  abertura de aplicativo ou geração de mensagem. Helper anteriormente entregue
+  fica somente no histórico, sem requisito de integração.
+  Depende T008; CA02–04/06/08.
+- [ ] **T010 — Implementar botão e controlador de cópia.** Rótulo Copie o
+  e-mail, payload apenas endereço, trava imediata e resultado verdadeiro.
+  Cobrir troca de estado/endereço e remount sem sucesso antigo.
+  Depende T004/008; CA03/05/08/09/11.
+- [ ] **T011 — Integrar página/cards e navegação.** Reusar shell/breadcrumb,
+  links reais e estado compartilhado. Não importar Carta nem criar backend.
+  Política dos estados e transições depende T013 global.
+  Depende T009/010; CA01/07/10/12/13.
+- [ ] **T012 — Layout e acessibilidade.** Inter/tokens, ordem DOM, seleção
+  integral, foco/status local e reflow; sem CTA duplicado.
+  Depende T005/011; CA11/13.
 
-- [ ] **T002 — Confirmar contato e disponibilidade editorial**
-  - Manter `gesed.semtd@gmail.com` como endereco editorial confirmado pelo
-    documento mestre e pela decisao de produto de 16 de outubro de 2026.
-  - Fechar contatos.ts com ID estavel, equipe e endereco; estado
-    pendente/ativo/pausado e aviso somente em canais.ts compartilhado com
-    013/014/015. Nao duplicar estado nem evidencia interna no bundle.
-  - Definir pausa futura confirmada e suspensao da copia como acao principal
-    e eventual endereco como referencia indisponivel, conforme texto validado.
-  - Estado atual: `ativo` para exibição e cópia. Em pausado, manter pagina,
-    aviso e retorno e suspender a acao de copia.
-  - Definir retorno a ajuda e alternativa de agendamento quando operacional,
-    sem prometer vagas/resposta imediata ou monitoramento em tempo real.
-  - Nao enviar mensagem para verificar nem prometer resposta ou prazo.
-  - Dependencia: T001. Evidencia: contato/estado validados e coerentes com 013;
-    RF02/RF07, CA02/CA09/CA12.
+## Verificação
 
-- [ ] **T003 — Validar copy e contrato de copia**
-  - Fechar titulo, finalidade, orientacoes, exemplos e avisos com equipe;
-    recomendar nome/orgao/setor/contexto/resultado esperado no e-mail externo.
-  - Identificar exemplos como ilustrativos; nao exigir anexos/Carta/CSV nem
-    coletar dados no app. Orientar a nao enviar senhas/documentos/dados de cidadaos.
-  - Confirmar destinatario fixo `gesed.semtd@gmail.com`, instrucao de copia e
-    botao `Copie o e-mail`, sem assunto ou corpo predefinidos.
-  - Manter alternativa manual sempre visivel e nao anunciar envio/protocolo.
-  - Dependencia: T002. Evidencia: copy validada e contrato de href;
-    RF03–04/RF07, CA03–CA04/CA06/CA08/CA12.
+- [ ] **T013 — Executar EM01–EM10.** Fixtures sintéticas, clipboard mock,
+  fonte única, concorrência, cleanup, preservação da Carta e ausência de
+  abertura/envio automático. Estados não ativos conforme decisão da T013
+  global; registrar pendências sem inventar aceite. Depende T008–012.
+- [ ] **T014 — Executar EM11–EM12 em ambientes reais.** Chrome/Edge/Firefox/
+  Safari, teclado/leitores/toque, 320–1440 px, texto 200%/zoom 400%.
+  Cópia por gesto somente em ambiente controlado; sem envio real.
+  Registrar versões/defeitos/retestes. Depende T012/013; CA04/05/11/13.
+- [ ] **T015 — Consolidar checks e aceite.** Suíte/typecheck/build,
+  quickstart atualizado e evidência por CA01–CA13. Teste do helper legado não
+  aprova UI; não instalar framework para testar só labels.
+  Depende T013/014. Consulta visual/ERS/integração/ambientes ausentes ficam pendentes.
 
-- [ ] **T004 — Fechar copia, retorno e selecao manual**
-  - Copiar apenas endereco exato da fonte unica por acao explicita, sem mailto,
-    assunto, markup, leitura de clipboard ou consulta previa obrigatoria de permissao.
-  - Definir idle/pending/copied/failed, trava imediata, identificador/revisao
-    de contato e callbacks condicionados a tentativa atual/componente montado.
-  - Endereço copiado somente apos promise resolvida; tratar contexto inseguro,
-    API ausente/rejeicao com selecao manual e nova tentativa, sem fallback oculto.
-  - Confirmar duracao candidata de cinco segundos; limpar/reiniciar timers,
-    invalidar retorno ao mudar contato e manter erro ate nova tentativa ou mudanca.
-  - Fechar texto selecionavel sem caracteres inseridos pela quebra visual,
-    foco no botao e status acessivel local, sem sucesso baseado apenas em toast/cor.
-  - Dependencias: T001–T003. Evidencia: contrato neutro reutilizavel com 012;
-    RF05, CA04–CA05/CA08–CA09/CA11.
+Matriz EM01–EM12 no implementation-plan relaciona cada critério aos cenários.
+Não há tarefa futura de construir link de mensagem, assunto ou corpo.
 
-- [ ] **T005 — Consultar Figma e confirmar composicao**
-  - Consultar via MCP o node compartilhado `425:201` no Design
-    YaVUdqYa3boHpvGrxf4ZJ5 e conferir os dois cards e o estado de copia.
-  - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar contato,
-    acoes, alternativa manual, orientacoes, retornos, assets e estados de copia/pausa.
-  - Fechar foco, responsividade, endereco longo e tokens; atualizar mapa com
-    frame confirmado. Referencia insuficiente permanece pendencia visual.
-  - Resolver eventual formulario no prototipo contra ERS/spec antes de codigo,
-    sem ampliar coleta/backend para reproduzir visual.
-  - Dependencias: T002–T004. Evidencia: consultas e composicao no plano detalhado;
-    CA11/CA13.
+## Integração compartilhada — T013, 20/10/2026
 
-- [ ] **T006 — Criar plano detalhado de implementacao**
-  - Executar `/spec:plano-implementacao 015-suporte-email`, consolidando T001–T005.
-  - Definir contatos.ts, canais.ts, suporte-email.ts, arquivos/codigo base e contratos
-    de href/copia/UI/navegacao, com fonte unica para texto/destinatario/clipboard.
-  - Fechar integracao minima com 013, helper neutro da 012 e ausencia de
-    imports/hooks/storage da Carta, formularios ou notificacao da 014.
-  - Reutilizar suite frontend quando existente para contratos/corridas/
-    navegacao; nao instalar framework apenas para testar labels estaticas.
-  - Definir matriz de browsers/apps configurados/ausentes e documento de
-    evidencias; verificacao manual nao envia mensagem institucional.
-  - Dependencias: T001–T005. Evidencia: implementation-plan.md completo.
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. E-mail ativo: Copie o e-mail e alternativa manual. Pendente/pausado: aviso,
+endereço de referência selecionável, sem botão ou instrução incentivando contato.
+Ambos os canais indisponíveis: orientações e retornos, sem ação operacional.
 
-- [ ] **T007 — Validar documentos antes de codigo**
-  - Executar `/spec:validar 015-suporte-email` contra ERS, MVP, constitution,
-    Figma, contato/copy validados e contratos de 002/007/012–014/016.
-  - Resolver divergencias de contato/estado, mailto, retorno de copia e layout;
-    contato pendente nao recebe status ativo por existir no repositorio.
-  - Dependencia: T006. Evidencia: validacao RF01–RF07/CA01–CA13 registrada.
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
 
-## Fase 2 — Contato e acoes
+### Complemento executável após autorização
 
-- [ ] **T008 — Implementar fonte unica e conteudo versionado**
-  - Criar src/content/support/contatos.ts e src/content/pages/suporte-email.ts
-    com contrato de T002/T003, sem contato duplicado no JSX/013.
-  - Derivar endereco exibido, mailto e copia do mesmo objeto; consumir estado/
-    aviso somente de canais.ts, sem promessa de disponibilidade em tempo real.
-  - Dependencia: T007 e comando `/spec:implementar`.
-  - Evidencia: RF02/RF07, CA02/CA06/CA09/CA12–CA13.
+- [ ] Aplicar a migração de conteúdo do contrato sem duplicar fontes.
+- [ ] Integrar estados/transições e foco conforme contexto de entrada.
+- [ ] Executar CJ01–CJ12, incluindo as nove combinações e acesso direto.
+- [ ] Registrar efeitos de pausa sobre tentativa/API após decisão T014,
+  sem cancelar operação ou criar nova chave por inferência.
 
-- [ ] **T009 — Implementar link de contato e alternativa manual**
-  - Entrega parcial em 2026-10-05: src/lib/mailto.ts e cinco testes isolados;
-    nenhum link/contato integrado ou aplicativo aberto. Evidencias em
-    verification.md; contato/assunto finais e interface continuam pendentes.
-  - Construir anchor mailto com destinatario/subject de T003, ativado so por
-    clique/teclado; nao interceptar como rota SPA nem abrir em effect/montagem.
-  - Manter endereco selecionavel e instrucao de webmail/aplicativo antes e
-    depois da tentativa, sem deteccao de abertura ou estado de mensagem enviada.
-  - Nao exigir target=_blank, provedor especifico ou janela auxiliar; estado
-    pausado suspende acao principal conforme T002 e mantem explicacao verdadeira.
-  - Dependencia: T008. Evidencia: RF04–05, CA03–CA04/CA08/CA12.
+### Encerramento T013 — 21/10/2026
 
-- [ ] **T010 — Implementar copia de contato e estados locais**
-  - Reusar/criar helper neutro copiarTexto sem importar feature de Carta;
-    writeText recebe so endereco, diretamente no fluxo do gesto explicito.
-  - Implementar trava/tentativas/timers de T004, sucesso apos resolucao,
-    erro verdadeiro e tentativa posterior; callbacks antigos nao confirmam contato novo.
-  - Limpar timers/desmontagem e manter selecao/foco; botao type=button com
-    nome Copiar endereço de e-mail e status anunciado sem leitura de clipboard.
-  - Dependencias: T008/T004. Evidencia: RF05, CA05/CA08–CA09/CA11.
-
-- [ ] **T011 — Integrar pagina, estados e navegacao**
-  - Substituir placeholder na rota existente, reutilizando shell/PageHeader,
-    breadcrumb Inicio > Preciso de ajuda > Suporte por e-mail e titulo/foco da 002.
-  - Compor contato, acoes, orientacoes/exemplo, alternativa manual e links
-    reais para ajuda, agendamento e formulario; acesso direto tem destinos explicitos.
-  - Integrar estado compartilhado da 013 quando necessario sem formulario,
-    SMTP, rascunho ou leitura de Carta/diagnostico; backend da 014 nao bloqueia consulta.
-  - Preservar provider/navegacao interna e nao limpar sessao em blur/
-    visibilitychange ao abrir aplicativo externo.
-  - Dependencias: T009–T010 e navegacao real da 002.
-  - Evidencia: RF01/RF06, CA01/CA07/CA10/CA12–CA13.
-
-- [ ] **T012 — Aplicar layout responsivo e acessibilidade**
-  - Usar tokens/Inter, hierarquia e assets confirmados; endereco longo quebra
-    visualmente sem inserir caracteres no dado e permanece selecionavel integralmente.
-  - Manter ordem DOM/visual, foco/contraste, icones decorativos ocultos,
-    controles em coluna quando necessario e feedback textual perto do botao.
-  - Sem largura fixa/corte/overflow horizontal; links e copia por teclado,
-    anuncios comedidos e nenhuma mudanca inesperada de foco.
-  - Dependencia: T011/T005. Evidencia: CA11/CA13 e comparacao com Figma.
-
-## Fase 3 — Verificacao e fechamento
-
-- [ ] **T013 — Verificar contratos, corridas e jornada integrada**
-  - Conferir destinatario e subject decodificado, codificacao unica e ausencia
-    de corpo/headers arbitrarios/dados de sessao; montar pagina nao aciona mailto.
-  - Alterar contato em fixture da fonte unica e comparar texto/link/copia;
-    retorno anterior invalida, estado de pausa coincide com 013.
-  - Cobrir ativo/pendente/pausado, acesso direto e troca durante pending;
-    referencia/instrucao manual seguem somente a decisao editorial de T002.
-  - Mockar clipboard resolve/reject/ausente/inseguro, duplo clique, mudanca
-    durante pending, desmontagem e timers antigos; nenhum sucesso antecipado.
-  - Conferir alternativa manual permanente e ausencia de anuncio de envio;
-    simular URI sem abrir/enviar mensagem real nem gravar clipboard do usuario.
-  - Com Carta em memoria, navegar ajuda/e-mail/formulario e comparar dados;
-    sem valores nos hrefs/clipboard/requests, coleta ou dependencia do backend.
-  - Verificar cobertura editorial/exemplos/limites e canais alternativos
-    operacionais; destino placeholder fica pendente de aceite integrado.
-  - Dependencias: T008–T012 e suite/navegacao/provider reais quando aplicavel.
-  - Evidencia: CA01–CA10/CA12–CA13.
-
-- [ ] **T014 — Verificar browsers, aplicativo externo e selecao acessivel**
-  - Testar Chrome/Edge/Firefox/Safari conforme 016, com/sem aplicativo de e-mail
-    configurado; conferir destinatario/assunto e encerrar sem concluir envio.
-  - Verificar copia por gesto com texto sintetico/ambiente controlado e falha
-    da API; selecao manual por teclado/toque continua funcional.
-  - Percorrer breadcrumb/contato/acoes/retornos com teclado/leitor de tela,
-    conferindo foco/status sem dependencia de icone/cor.
-  - Testar 1440/1024/768/390/320 px e intermediarias, texto 200% e zoom/reflow,
-    endereco longo/fonte fallback e contraste medido.
-  - Registrar ambientes/versoes, resultados de abertura, defeitos/retestes;
-    nao generalizar handler instalado para outros dispositivos. Ambiente ausente fica pendente.
-  - Dependencias: T012–T013. Evidencia: CA03–CA05/CA11.
-
-- [ ] **T015 — Executar checks e consolidar aceite**
-  - Executar npm run typecheck, npm run build e suite compartilhada disponivel;
-    conferir 013/012 se fonte/helper comuns forem alterados.
-  - Criar quickstart.md com entradas, fonte do contato/estado, mailto, copia,
-    alternativa manual e verificacao sintetica sem envio real.
-  - Consolidar CA01–CA13, validacao institucional, Figma, ambientes,
-    defeitos/retestes e pendencias no documento de verificacao de T006.
-  - Revisar ausencia de SMTP/backend, formulario/anexos, segredos, rascunho,
-    leitura/transmissao da Carta e promessas de abertura/envio/recebimento.
-  - Dependencias: T013–T014. Evidencia: checks e resultados reais;
-    contato/integracoes/ambientes pendentes impedem declarar aceite integral.
-
-## Rastreabilidade
-
-| Requisito/criterios | Tarefas principais |
-| --- | --- |
-| RF01, CA01 | T001, T003, T011, T013 |
-| RF02, CA02/CA09 | T002, T008–T010, T013 |
-| RF03, CA06 | T003, T008, T011, T013 |
-| RF04, CA03/CA08 | T003, T009, T013–T014 |
-| RF05, CA04/CA05 | T004, T009–T010, T013–T014 |
-| RF06, CA07/CA10 | T001, T011, T013 |
-| Acessibilidade/reflow, CA11 | T004–T006, T010, T012, T014 |
-| Disponibilidade/copy, CA12 | T002–T003, T008–T009, T011, T013 |
-| RF07/arquitetura/visual, CA13 | T001–T008, T011–T013, T015 |
-
-## Proximo passo
-
-Executar `/spec:plano-implementacao 015-suporte-email`, consolidando contato
-validado, copy, mailto, compartilhamento com 013/012 e referencias Figma.
-Depois executar `/spec:validar` antes de `/spec:implementar`.
-Esta etapa criou somente tarefas.
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

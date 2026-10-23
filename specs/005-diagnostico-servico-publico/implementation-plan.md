@@ -215,20 +215,11 @@ tipos canonicos ou remove-lo. Nao manter `nao-sei` nem resultado booleano.
 
 ### Navegacao compartilhada
 
-Extrair o contrato de navegacao de `App.tsx` se a feature 002 ainda nao o
-tiver feito. O diagnostico nao deve chamar `history.pushState` diretamente.
-
-```ts
-export type NavigateOptions = { replace?: boolean };
-
-export type NavigationContextValue = {
-  currentPath: string;
-  navigate: (path: string, options?: NavigateOptions) => void;
-};
-```
-
-`navigate` deve preservar URL real, `popstate`, scroll ao topo e restauracao
-de foco. Acesso invalido ao resultado deve usar `replace`.
+Usar [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md): NavigationProvider/useAppLocation/useAppNavigate/AppLink.
+Nenhum NavigationContextValue ou useNavigation paralelo. navigate é função
+com NavigateOptions central; provider preserva pathname/search/hash.
+Acesso inválido ao resultado usa replace para /diagnostico após recuperação,
+sem respostas na URL. Foco é solicitado ao shell, não efeito concorrente.
 
 ### Estado e sessao
 
@@ -500,7 +491,7 @@ A decisao final deve ser unica no plano validado.
 
 ```tsx
 export function DiagnosticoPage() {
-  const { navigate } = useNavigation();
+  const navigate = useAppNavigate();
   const diagnostic = useDiagnostico();
   const index = perguntasDiagnostico.findIndex(
     ({ id }) => id === diagnostic.state.currentQuestionId,
@@ -544,11 +535,9 @@ Evitar depender da assincronicidade do `dispatch` para gravar `completed`.
 
 ```tsx
 export function ResultadoDiagnosticoPage() {
-  const { navigate } = useNavigation();
+  const navigate = useAppNavigate();
   const { restart, session } = useDiagnostico();
-  const titleRef = useRef<HTMLHeadingElement>(null);
-
-  useEffect(() => titleRef.current?.focus(), []);
+  // O shell aplica foco no título do resultado após a montagem válida.
 
   if (!session || !session.completed || !hasCompleteAnswers(session.answers)) {
     return <NavigateToDiagnostic replace />;
@@ -568,7 +557,6 @@ export function ResultadoDiagnosticoPage() {
         primaryAction={getResultAction(resultId)}
         result={result}
         resultId={resultId}
-        titleRef={titleRef}
       />
     </section>
   );

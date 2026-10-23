@@ -1,50 +1,35 @@
-import {
-  supportChannels,
-  supportDestinations,
-  type SupportChannelId,
-} from "../support/canais";
-import { supportContacts } from "../support/contatos";
+import { getSupportPresentation, type SupportChannelId } from "../support/canais";
 
 export type HelpChannelId = SupportChannelId;
 
-export const helpChannelsContent = {
-  title: "Ainda precisa de ajuda?",
-  description:
-    "Receba orientação da equipe responsável para tirar dúvidas sobre a identificação, organização ou elaboração da Carta de Serviço.",
-  channels: [
-    {
-      id: "atendimento-agendado",
-      title: "Atendimento Agendado",
-      description:
-        "Consulte a disponibilidade de orientação com a equipe de governo digital, linguagem simples e carta de serviços.",
-      state: supportChannels["atendimento-agendado"],
-      action: {
-        kind: "navigate",
-        label: "Consultar atendimento",
-        href: supportDestinations["atendimento-agendado"],
+export function getHelpChannelsContent(context: SupportChannelId) {
+  const presentation = getSupportPresentation(context);
+  return {
+    title: "Ainda precisa de ajuda?",
+    description: "Receba orientação da equipe responsável para tirar dúvidas sobre a identificação, organização ou elaboração da Carta de Serviço.",
+    unavailableNotice: presentation.unavailableNotice,
+    returns: presentation.returns,
+    channels: [
+      {
+        id: "atendimento-agendado",
+        title: "Atendimento Agendado",
+        description: "Consulte a disponibilidade de orientação com a equipe de governo digital, linguagem simples e carta de serviços.",
+        state: presentation.appointment.state,
+        action: presentation.appointment.action,
       },
-    },
-    {
-      id: "suporte-email",
-      title: "Suporte por e-mail",
-      description:
-        "Copie o e-mail da GESED para entrar em contato sobre dúvidas relacionadas à Carta de Serviço.",
-      email: supportContacts.gesed.email,
-      state: supportChannels["suporte-email"],
-      action: {
-        kind: "copy-email",
-        label: "Copie o e-mail",
-        value: supportContacts.gesed.email,
+      {
+        id: "suporte-email",
+        title: "Suporte por e-mail",
+        description: presentation.email.description,
+        email: presentation.email.address,
+        addressLabel: presentation.email.addressLabel,
+        copyInstruction: presentation.email.copyInstruction,
+        state: presentation.email.state,
+        action: presentation.email.action,
       },
-    },
-  ] satisfies readonly {
-    id: HelpChannelId;
-    title: string;
-    description: string;
-    email?: string;
-    state: (typeof supportChannels)[SupportChannelId];
-    action:
-      | { kind: "navigate"; label: string; href: string }
-      | { kind: "copy-email"; label: string; value: string };
-  }[],
-} as const;
+    ],
+  } as const;
+}
+
+// Compatibilidade para a entrada principal; a rota 015 deve passar seu contexto.
+export const helpChannelsContent = getHelpChannelsContent("atendimento-agendado");

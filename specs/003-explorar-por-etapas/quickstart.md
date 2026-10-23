@@ -1,5 +1,8 @@
 # Quickstart: Explorar por Etapas
 
+> Roteiro previsto; não executado na T017. Não existe teste automatizado
+> específico da 003 nem script `test` no package atual.
+
 ## Objetivo
 
 Verificar a pagina `/explorar-por-etapas` depois da implementacao da spec 003.
@@ -17,12 +20,12 @@ Verificar a pagina `/explorar-por-etapas` depois da implementacao da spec 003.
 Executar:
 
 ```bash
-npm run test
 npm run typecheck
 npm run build
 ```
 
-Os comandos devem terminar sem erros.
+Esses comandos verificam tipos/build, não cards, destinos, foco ou visual.
+Adicionar/executar testes de UI na implementação e registrar o resultado real.
 
 ## Executar localmente
 

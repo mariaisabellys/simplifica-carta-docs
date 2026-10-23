@@ -85,6 +85,13 @@ DOM para acessibilidade, fallback, SEO e inspeção.
 
 ## Query string e estados de página
 
+Para a entrada compartilhada 013–015, aplicar o
+[contrato de canais de ajuda](contrato-canais-ajuda.md): FAQ navega à entrada
+014; na própria rota 014, o botão abre calendário por estado interno, sem
+auto-link ou novo parâmetro de URL. Retorno interno usa “Voltar aos canais”;
+histórico do navegador segue rotas reais. Recuperação de tentativa da agenda
+é responsabilidade da 014/T014, nunca dados pessoais em query/hash.
+
 - O tutorial usa `/tutorial-paraiba-digital?etapa=1` a `?etapa=6`.
 - Ausência, repetição ou valor inválido de `etapa` é normalizado para a etapa 1
   com `replaceState`.
@@ -95,7 +102,8 @@ DOM para acessibilidade, fallback, SEO e inspeção.
 
 ## Fragmentos
 
-- `/ajuda#perguntas-frequentes` e `/ajuda#precisa-de-apoio` são destinos válidos.
+- `/ajuda#duvidas-frequentes` e `/ajuda#precisa-de-apoio` são os destinos canônicos, conforme os IDs do conteúdo da FAQ.
+- O fragmento antigo `#perguntas-frequentes` na rota `/ajuda` é um alias documental: normalizar para `#duvidas-frequentes` com replace, preservando search, antes de resolver foco. Não criar uma segunda seção.
 - Quando o fragmento existir, rolar e focar o alvo real após a renderização.
 - O alvo deve aceitar foco programático com `tabIndex={-1}` quando não for
   naturalmente focável.
@@ -149,6 +157,32 @@ aplicação.
 - A navegação não lê ou escreve conteúdo da Carta.
 
 ## Verificações obrigatórias antes do aceite
+
+Revisão documental T015 em 22/10/2026: inventário, retornos e lacunas no
+[registro de verificação](../verificacoes/t015-navegacao.md). Não implica implementação.
+
+O provider também sincroniza `hashchange` nativo e deduplica eventos de uma
+mesma URL. O shell aplica foco somente após o destino estar montado, uma vez
+por navegação. Destinos relativos de query/hash são resolvidos contra a URL
+atual completa. Um href explícito para outra rota não herda automaticamente
+query da origem; preservar os componentes especificados no destino.
+
+Exemplo de consumidor futuro para mudar a etapa sem descartar search/hash:
+
+```tsx
+const location = useAppLocation();
+const navigate = useAppNavigate();
+function goToStep(next: number) {
+  const params = new URLSearchParams(location.search);
+  params.set("etapa", String(next));
+  navigate(`${location.pathname}?${params.toString()}${location.hash}`);
+}
+```
+
+Normalização de etapa inválida usa a mesma preservação com `{ replace: true }`.
+`Concluir Guia` retorna a `/`, preservando a Carta, sem certificar publicação.
+Partes da 007 permanecem internas; não criar `?parte` nesta fase. A matriz de
+retornos e os alvos de correção do registro T015 complementam este contrato.
 
 - URL direta e recarga para todas as rotas.
 - clique interno, clique modificado, clique do meio, `target`, download e URL externa;

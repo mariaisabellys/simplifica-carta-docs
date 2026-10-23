@@ -1,6 +1,6 @@
 # Implementation Plan: Explorar por Etapas
 
-> **Plano parcialmente superado:** snippets de `NavigationContext` e links
+> **Revisão T015 — 21/10/2026:** snippets de navegação e links
 > devem ser substituídos pelo contrato arquitetural compartilhado.
 
 ## Status
@@ -399,63 +399,29 @@ export function ExploreStepCard({ step, iconSrc }: ExploreStepCardProps) {
 O `<li>` nao deve receber `display: contents`, pois isso pode prejudicar a
 semantica em algumas combinacoes de navegador e tecnologia assistiva.
 
-### `src/components/ui/Breadcrumb.tsx`
+### Breadcrumb compartilhado
+
+Reutilizar AppLink do [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md); não copiar guard/handler ou usar navigate
+manualmente em cada breadcrumb. Somente item atual usa span aria-current.
 
 ```tsx
-import chevronBreadcrumb from "../../assets/explorar-por-etapas/chevron-breadcrumb.svg";
-import type { BreadcrumbItem } from "../../types/explorar";
-import { useAppNavigate } from "../../app/NavigationContext";
-
-type BreadcrumbProps = {
-  items: readonly BreadcrumbItem[];
-};
-
-export function Breadcrumb({ items }: BreadcrumbProps) {
-  const navigate = useAppNavigate();
-
+export function Breadcrumb({ items }: { items: readonly BreadcrumbItem[] }) {
   return (
-    <nav className="breadcrumb" aria-label="Navegacao estrutural">
-      <ol>
-        {items.map((item, index) => {
-          const isCurrent = index === items.length - 1;
-          return (
-            <li key={item.label}>
-              {item.href ? (
-                <a
-                  href={item.href}
-                  onClick={(event) => {
-                    if (event.defaultPrevented || event.button !== 0 || event.metaKey ||
-                        event.ctrlKey || event.shiftKey || event.altKey ||
-                        event.currentTarget.hasAttribute("download") ||
-                        (event.currentTarget.target && event.currentTarget.target !== "_self")) return;
-                    const destination = new URL(item.href!, window.location.href);
-                    if (destination.origin !== window.location.origin ||
-                        !["http:", "https:"].includes(destination.protocol)) return;
-                    event.preventDefault();
-                    navigate(destination.pathname + destination.search + destination.hash);
-                  }}
-                >
-                  {item.label}
-                </a>
-              ) : (
-                <span aria-current={isCurrent ? "page" : undefined}>
-                  {item.label}
-                </span>
-              )}
-              {!isCurrent && (
-                <img aria-hidden="true" alt="" src={chevronBreadcrumb} width="10" height="10" />
-              )}
-            </li>
-          );
-        })}
-      </ol>
+    <nav aria-label="Navegação estrutural">
+      <ol>{items.map((item, index) => (
+        <li key={item.label}>
+          {item.href
+            ? <AppLink href={item.href}>{item.label}</AppLink>
+            : <span aria-current={index === items.length - 1 ? "page" : undefined}>{item.label}</span>}
+        </li>
+      ))}</ol>
     </nav>
   );
 }
 ```
 
-Se a feature 002 fornecer um `Link` compartilhado, substituir o manipulador
-manual por esse componente.
+Imports/estilos/assets serão conciliados com componentes reais; snippet não
+comprova que AppLink/Breadcrumb já existem no repositório.
 
 ### `src/pages/ExplorarPorEtapasPage.tsx`
 
@@ -522,20 +488,14 @@ import { ExplorarPorEtapasPage } from "../pages/ExplorarPorEtapasPage";
 },
 ```
 
-### Contrato minimo de navegacao
+### Contrato de navegação
 
-Se `NavigationContext` ainda nao existir, extrair o `navigate` de `App` para um
-provider compartilhado. O metodo deve:
-
-1. preservar `href` nos elementos;
-2. chamar `history.pushState` somente para navegacao interna sem modificadores;
-3. atualizar pathname e hash;
-4. rolar para o topo quando nao houver fragmento;
-5. depois da renderizacao, focar o `h1` ou o `main` sem rolagem adicional;
-6. continuar respondendo a `popstate`.
-
-Nao interceptar clique com `Meta`, `Ctrl`, `Shift`, `Alt`, botao diferente do
-principal, `target` externo ou download.
+Usar o [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md) integralmente: NavigationProvider único, localização
+pathname + search + hash, useAppNavigate para comandos e AppLink para links.
+A 003 não extrai segundo contexto nem registra listener/histórico próprio.
+AppShell coordena foco/título/scroll; popstate não gera pushState.
+Rota 003 permanece ausente do código atual: registrar na implementação desta
+feature, sem substituir fallback por home. Ver inventário T015.
 
 ## CSS base
 

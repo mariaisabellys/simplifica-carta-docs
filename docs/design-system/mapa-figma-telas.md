@@ -11,6 +11,36 @@ quando o frame oficial mudar.
 - Pagina raiz atual: `167:2` (`Prototipo`)
 - Node inicial recomendado para home: `310:175` (`home`)
 
+## Estado da conferência T016 — 22/10/2026
+
+O inventário abaixo foi conciliado com as specs proprietárias e com o conteúdo
+versionado. Nesta rodada, quatro URLs representativas (`310:175`, `2024:269`,
+`564:980` e `425:201`) foram abertas pelo mecanismo web disponível, mas o Figma
+recusou o acesso; não havia navegador conectado nem ferramenta MCP do Figma.
+Como todos os nodes pertencem ao mesmo arquivo protegido, **nenhum frame foi
+visualmente inspecionado na T016**. Identificar um node ou manter seu link não
+equivale a validar layout, tokens, medidas, copy, responsividade ou estados.
+
+O [registro T016](../verificacoes/t016-figma-acessibilidade.md) lista, por tela,
+as referências locais, estados obrigatórios e pendências específicas. Até uma
+consulta autenticada futura, todos os nodes permanecem com evidência visual
+pendente. A implementação deve consultar o frame antes do trabalho visual e
+registrar data, mecanismo, node e divergências encontradas.
+
+## Adendo de disponibilidade T019 — 22/10/2026
+
+O conector Figma autenticado passou a estar disponível e respondeu metadados
+para os 26 nodes ativos deste mapa, incluindo páginas, partes/variantes da 007,
+seis etapas da 011, estados da 014 e componentes compartilhados. IDs e nomes
+foram confirmados no arquivo `YaVUdqYa3boHpvGrxf4ZJ5`.
+
+Esta conferência valida disponibilidade e identidade estrutural, não fidelidade
+visual. Não foram executados `get_design_context` por tela, screenshots,
+extração de assets, medição, comparação com browser ou inspeção responsiva.
+Portanto, as pendências de implementação/aceite visual da T016 continuam
+abertas. Evidência consolidada na
+[verificação T019](../verificacoes/t019-validacoes-features.md).
+
 ## Mapa atual
 
 | Rota | Tela ou secao no Figma | Node ID | Spec relacionada | Observacao |
@@ -74,13 +104,24 @@ etapa altera o estado apresentado, sem criar seis rotas ou seis features.
 | Variante da pagina | Etapa 6: Publique o servico | `564:1357` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1357&m=dev) |
 
 Os frames definem composicao, hierarquia e variacoes visuais. Titulos, textos,
-percentuais, instrucoes, campos de copia e acoes devem ser renderizados a partir
-de `src/content/tutorial/paraiba-digital.ts`. Divergencias editoriais do Figma
+percentuais, instrucoes e acoes editoriais devem ser renderizados a partir
+de `src/content/tutorial/paraiba-digital.ts`; valores da Carta vêm exclusivamente
+da sessão v3 da 007, apresentados pela projeção da 012. Divergencias editoriais do Figma
 nao substituem o conteudo versionado e devem ser registradas no planejamento.
 
 O node `564:980` tambem e a referencia visual da feature
 `012-copia-dados-tutorial`. A 012 nao cria pagina nem rota: fornece a projecao,
 os controles e o mecanismo de copia montados exclusivamente na etapa 4 da 011.
+
+Revisão documental T011 — 20/10/2026: `564:980` é uma variante ampliável,
+sem limite de campos ou altura fixa. Deve acomodar os cinco grupos e todas
+as 25 definições aplicáveis da Carta: 13 abertas copiáveis quando preenchidas
+e 12 escolhas sem botão, com repetição por item e condições K/S/E.
+Layout adapta-se ao conteúdo, sem truncar informações para reproduzir o frame.
+Exemplos e lorem ipsum nunca substituem dados ausentes da sessão.
+O [contrato da 011](../../specs/011-tutorial-paraiba-digital/contrato-integracao-v3.md)
+registra a migração ainda pendente do TypeScript, fontes operacionais e testes.
+Esta atualização do mapa não comprova consulta Figma nem implementação visual.
 
 ## Pagina compartilhada de ajuda e estados do atendimento agendado
 
@@ -106,6 +147,23 @@ copy longa, erros e acessibilidade.
 No card `Suporte por e-mail`, exibir `gesed.semtd@gmail.com`, a orientação para
 copiar o endereço e o botão `Copie o e-mail`. A ação copia somente o endereço;
 não abre aplicativo, não envia mensagem e não anuncia entrega ou recebimento.
+O endereço exibido e copiado deriva de `supportContacts.gesed.email`, sem
+constante independente nos cards. Sucesso e falha seguem o conteúdo da 015;
+seleção manual permanece disponível no canal ativo. A T012 documental de
+20/10/2026 reconciliou o [contrato da 015](../../specs/015-suporte-email/spec.md);
+apresentação não ativa e transições compartilhadas foram definidas documentalmente
+na T013 pelo [contrato de canais](../arquitetura/contrato-canais-ajuda.md).
+O conteúdo TypeScript foi migrado em 21/10/2026 por resolvedor compartilhado;
+a implementação visual dos cards/calendário e a verificação Figma continuam pendentes.
+
+Na FAQ `169:495`, não inserir os cards: a seção de apoio leva à entrada da 014.
+Em `425:201`, na própria rota 014, “Consultar datas e horários” é botão de
+transição interna para calendário, não link para a mesma rota. Na rota 015,
+o card de atendimento navega à entrada 014; o de e-mail ativo copia localmente.
+Calendário é estado interno de expansão da jornada, sem node novo presumido;
+`425:296` referencia seleção de horário. Pendente/pausado mostram avisos, sem
+ação operacional; ambos indisponíveis mantêm orientações e retornos.
+Layout adapta-se a esses estados; definição documental não comprova consulta Figma.
 
 ## Componentes identificados
 

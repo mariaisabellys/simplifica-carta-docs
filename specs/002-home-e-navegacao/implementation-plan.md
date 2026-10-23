@@ -1,7 +1,7 @@
 # Implementation Plan: Home e Navegacao
 
-> **Plano de navegação parcialmente superado:** exemplos locais devem ser
-> substituídos pelo contrato de `docs/arquitetura/contrato-navegacao.md`.
+> **Navegação reconciliada na T015 (22/10/2026):** os exemplos abaixo são
+> consumidores do contrato central; não constituem implementações alternativas.
 
 ## Status
 
@@ -167,7 +167,7 @@ adivinhar a correspondencia pelo indice da resposta.
 ## Arquivos a alterar
 
 - `package.json` — scripts e dependencias de teste;
-- `src/app/App.tsx` — navegacao com pathname/hash e foco;
+- `src/app/App.tsx` — navegação via provider com pathname/search/hash e foco;
 - `src/app/routes.tsx` — remover a responsabilidade editorial de `showInNav`;
 - `src/components/layout/AppShell.tsx` — integrar componentes compartilhados;
 - `src/components/ui/ButtonLink.tsx` — variantes, icone e navegacao SPA;
@@ -209,41 +209,19 @@ export type NavigationItem = {
   kind?: "default" | "help";
 };
 
-export type AppNavigate = (href: string) => void;
+// Navegação importa Navigate do contrato compartilhado; não redefinir API aqui.
 ```
 
 Os tipos `HomeAction` e `HomeProcessStep` sao especificos da fonte editorial e
 ficam exportados em `src/content/pages/home.ts`, conforme o arquivo versionado.
 
-### Props dos componentes
+### Props e responsabilidade de navegação
 
-```ts
-type BrandProps = {
-  onNavigate: AppNavigate;
-};
-
-type MainNavigationProps = {
-  currentPath: string;
-  onNavigate: AppNavigate;
-};
-
-type SiteFooterProps = {
-  onNavigate: AppNavigate;
-};
-
-type ButtonLinkProps = {
-  href: string;
-  children: React.ReactNode;
-  variant?: "primary" | "secondary" | "secondary-inverse";
-  iconSrc?: string;
-  onNavigate?: AppNavigate;
-};
-```
-
-`ButtonLink` deve continuar funcionando como link normal quando `onNavigate`
-nao for informado. Quando informado, deve interceptar apenas clique primario sem
-modificadores; Ctrl/Cmd+click, Shift+click e abertura em nova aba devem manter o
-comportamento nativo.
+Brand, MainNavigation, SiteFooter, Breadcrumb e ButtonLink compõem AppLink.
+Não recebem onNavigate para reimplementar cliques/histórico. ButtonLink adiciona
+somente variantes/ícone; preserva atributos nativos target/download/aria.
+O único handler elegível vive em AppLink, usando o guard compartilhado.
+NavigateOptions/AppLocation são os do [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md), não aliases divergentes.
 
 ## Conteudo base
 
@@ -328,311 +306,49 @@ export const homeContent = {
 } as const;
 ```
 
-## Codigo base React
+## Composição React — navegação unificada
 
-### Contexto pequeno de navegacao — `src/app/NavigationContext.tsx`
+O [contrato de navegação](../../docs/arquitetura/contrato-navegacao.md) define NavigationProvider, useAppLocation, useAppNavigate e AppLink.
+O provider possui leitura e escrita da URL completa; App apenas resolve rota e
+compõe páginas. AppShell coordena título/foco/scroll, não cria outro listener.
+Versão anterior de contexto apenas de função e App baseado em pathname/hash
+foi arquivada; não usar seus handlers ou tipos como base.
 
-```tsx
-import { createContext, useContext } from "react";
-import type { AppNavigate } from "../types/content";
-
-const NavigationContext = createContext<AppNavigate | null>(null);
-
-export const NavigationProvider = NavigationContext.Provider;
-
-export function useAppNavigate() {
-  const navigate = useContext(NavigationContext);
-  if (!navigate) throw new Error("useAppNavigate deve estar dentro de NavigationProvider");
-  return navigate;
-}
-```
-
-O contexto compartilha somente a funcao de navegacao. Nao mover dados de pagina
-ou estado do menu para ele.
-
-### Navegacao da aplicacao — `src/app/App.tsx`
+Exemplos de consumidores futuros, sem implementar provider nesta documentação:
 
 ```tsx
-import { useEffect, useMemo, useState } from "react";
-import { AppShell } from "../components/layout/AppShell";
-import { NavigationProvider } from "./NavigationContext";
-import { findRoute } from "./routes";
-
-type LocationState = { pathname: string; hash: string };
-
-function readLocation(): LocationState {
-  const pathname =
-    window.location.pathname.endsWith("/") && window.location.pathname !== "/"
-      ? window.location.pathname.slice(0, -1)
-      : window.location.pathname;
-  return { pathname, hash: window.location.hash };
-}
-
-export function App() {
-  const [location, setLocation] = useState(readLocation);
-  const route = useMemo(() => findRoute(location.pathname), [location.pathname]);
-
-  useEffect(() => {
-    const syncLocation = () => setLocation(readLocation());
-    window.addEventListener("popstate", syncLocation);
-    return () => window.removeEventListener("popstate", syncLocation);
-  }, []);
-
-  useEffect(() => {
-    if (location.hash) {
-      const target = document.querySelector<HTMLElement>(location.hash);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-        target.focus({ preventScroll: true });
-      }
-      return;
-    }
-    window.scrollTo({ top: 0 });
-    document.querySelector<HTMLElement>("#main-content")?.focus({ preventScroll: true });
-  }, [location]);
-
-  function navigate(href: string) {
-    const target = new URL(href, window.location.origin);
-    if (`${target.pathname}${target.hash}` === `${location.pathname}${location.hash}`) return;
-    window.history.pushState(null, "", `${target.pathname}${target.hash}`);
-    setLocation(readLocation());
-  }
-
-  const CurrentPage = route.Component;
+// imports a ajustar aos arquivos compartilhados efetivamente entregues
+function RouteView() {
+  const location = useAppLocation();
+  const route = findRoute(location.pathname); // futuro: undefined quando desconhecida
   return (
-    <NavigationProvider value={navigate}>
-      <AppShell currentPath={route.path} onNavigate={navigate}>
-        <CurrentPage />
-      </AppShell>
-    </NavigationProvider>
+    <AppShell>
+      {route ? <route.Component /> : <NotFoundPage />}
+    </AppShell>
   );
 }
+// NavigationProvider e CartaSessionProvider permanecem acima de RouteView,
+// sem key derivada de pathname/search/hash.
 ```
 
-Antes de usar `document.querySelector(location.hash)`, escapar ou restringir os
-hashes aceitos. Nesta spec, o fragmento previsto e `#duvidas-frequentes`; a
-implementacao pode usar `document.getElementById` com `location.hash.slice(1)`,
-que e mais seguro.
-
-### `src/components/layout/Brand.tsx`
+Brand e links de menu/rodapé/processo usam AppLink com href real. ButtonLink
+também compõe AppLink, sem prop de navegação paralela:
 
 ```tsx
-import type { AppNavigate } from "../../types/content";
-
-export function Brand({ onNavigate }: { onNavigate: AppNavigate }) {
-  return (
-    <a
-      className="brand"
-      href="/"
-      aria-label="Simplifica Carta — Guia de Serviços"
-      onClick={(event) => {
-        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-        event.preventDefault();
-        onNavigate("/");
-      }}
-    >
-      <strong>Simplifica <span>Carta</span></strong>
-      <i aria-hidden="true" />
-      <small>Guia de Serviços</small>
-    </a>
-  );
-}
+<AppLink href="/" aria-label="Simplifica Carta — Início">Simplifica Carta</AppLink>
+<ButtonLink href={action.href} variant={action.variant}>{action.label}</ButtonLink>
+<AppLink href={step.href}>{step.title}</AppLink>
+<AppLink href="/ajuda#duvidas-frequentes">Dúvidas frequentes</AppLink>
+<AppLink href="#conteudo-principal">Pular para o conteúdo</AppLink>
+<main id="conteudo-principal" tabIndex={-1}>{children}</main>
 ```
 
-### `src/components/layout/MainNavigation.tsx`
-
-```tsx
-import { useEffect, useId, useState } from "react";
-import { mainNavigation } from "../../content/navigation";
-import type { AppNavigate } from "../../types/content";
-
-export function MainNavigation({ currentPath, onNavigate }: {
-  currentPath: string;
-  onNavigate: AppNavigate;
-}) {
-  const [open, setOpen] = useState(false);
-  const menuId = useId();
-
-  useEffect(() => setOpen(false), [currentPath]);
-
-  return (
-    <nav className="main-navigation" aria-label="Navegação principal">
-      <button
-        className="nav-toggle"
-        type="button"
-        aria-controls={menuId}
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span className="sr-only">{open ? "Fechar menu" : "Abrir menu"}</span>
-        <span aria-hidden="true">☰</span>
-      </button>
-      <ul className="nav-list" id={menuId} data-open={open || undefined}>
-        {mainNavigation.map((item) => {
-          const itemPath = new URL(item.href, window.location.origin).pathname;
-          return (
-            <li key={item.href}>
-              <a
-                className={item.kind === "help" ? "nav-link nav-link--help" : "nav-link"}
-                href={item.href}
-                aria-current={itemPath === currentPath ? "page" : undefined}
-                onClick={(event) => {
-                  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                  event.preventDefault();
-                  setOpen(false);
-                  onNavigate(item.href);
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-}
-```
-
-O simbolo `☰` e aceitavel como controle textual simples, mas deve ser validado
-visualmente. Se o Figma fornecer icone especifico, usar o asset exportado.
-
-### `src/components/layout/AppShell.tsx`
-
-```tsx
-import type { ReactNode } from "react";
-import type { AppNavigate } from "../../types/content";
-import { Brand } from "./Brand";
-import { MainNavigation } from "./MainNavigation";
-import { SiteFooter } from "./SiteFooter";
-
-export function AppShell({ children, currentPath, onNavigate }: {
-  children: ReactNode;
-  currentPath: string;
-  onNavigate: AppNavigate;
-}) {
-  return (
-    <div className="app-shell">
-      <header className="site-header">
-        <div className="site-header__inner">
-          <Brand onNavigate={onNavigate} />
-          <MainNavigation currentPath={currentPath} onNavigate={onNavigate} />
-        </div>
-      </header>
-      <main className="site-main" id="main-content" tabIndex={-1}>{children}</main>
-      <SiteFooter onNavigate={onNavigate} />
-    </div>
-  );
-}
-```
-
-### `src/pages/HomePage.tsx`
-
-```tsx
-import arrowIcon from "../assets/home/icon-arrow-right.svg";
-import listIcon from "../assets/home/icon-list.svg";
-import playIcon from "../assets/home/icon-play.svg";
-import { useAppNavigate } from "../app/NavigationContext";
-import heroImage from "../assets/home/carta-servico.png";
-import { ButtonLink } from "../components/ui/ButtonLink";
-import { homeContent } from "../content/pages/home";
-
-const icons = { play: playIcon, list: listIcon };
-
-export function HomePage() {
-  const navigate = useAppNavigate();
-  return (
-    <>
-      <section className="home-hero" aria-labelledby="home-title">
-        <div className="content-container home-hero__inner">
-          <div className="home-hero__content">
-            <h1 id="home-title">{homeContent.hero.title}</h1>
-            <p className="home-hero__description">{homeContent.hero.description}</p>
-            <div className="home-actions">
-              {homeContent.hero.actions.map((action) => (
-                <ButtonLink key={action.href} href={action.href} variant={action.variant} iconSrc={icons[action.icon]} onNavigate={navigate}>
-                  {action.label}
-                </ButtonLink>
-              ))}
-            </div>
-          </div>
-          <img className="home-hero__image" src={heroImage} alt="Ilustração de uma Carta de Serviços" />
-        </div>
-      </section>
-
-      <section className="process-section" id="processo" tabIndex={-1} aria-labelledby="process-title">
-        <div className="content-container">
-          <header className="process-section__header">
-            <h2 id="process-title">{homeContent.process.title}</h2>
-            <p>{homeContent.process.description}</p>
-          </header>
-          <ol className="process-list">
-            {homeContent.process.steps.map((step) => (
-              <li className="process-step" key={step.id}>
-                <a href={step.href} onClick={(event) => {
-                  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-                  event.preventDefault();
-                  navigate(step.href);
-                }}>
-                  <span className="process-step__number" aria-hidden="true">{step.number}</span>
-                  <span className="process-step__eyebrow">{step.eyebrow}</span>
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </a>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-
-      <section className="content-container home-intro-cta" aria-labelledby="intro-cta-title">
-        <div>
-          <p className="home-eyebrow">{homeContent.introCta.eyebrow}</p>
-          <h2 id="intro-cta-title">{homeContent.introCta.title}</h2>
-          <p>{homeContent.introCta.description}</p>
-        </div>
-        <ButtonLink href={homeContent.introCta.actionHref} variant="secondary" iconSrc={arrowIcon} onNavigate={navigate}>
-          {homeContent.introCta.actionLabel}
-        </ButtonLink>
-      </section>
-    </>
-  );
-}
-```
-
-Centralizar a verificacao de clique sem modificadores em um helper compartilhado
-se ela aparecer em tres ou mais componentes; nao alterar o comportamento de
-abertura em nova aba.
-
-### `src/components/layout/SiteFooter.tsx`
-
-```tsx
-import logoSemtd from "../../assets/home/semtd-branco.png";
-import { footerNavigation } from "../../content/navigation";
-import type { AppNavigate } from "../../types/content";
-
-export function SiteFooter({ onNavigate }: { onNavigate: AppNavigate }) {
-  const year = new Date().getFullYear();
-  return (
-    <footer className="site-footer">
-      <div className="content-container site-footer__grid">
-        <FooterLinks title="Acesso rápido" items={footerNavigation.quickAccess} onNavigate={onNavigate} />
-        <FooterLinks title="Recursos e apoio" items={footerNavigation.support} onNavigate={onNavigate} />
-        <section><h2>Simplifica <span>Carta</span></h2><p>O manual completo e interativo para auxiliar órgãos e servidores públicos na elaboração, validação e preparação de Cartas de Serviços.</p></section>
-        <section className="site-footer__institution">
-          <img src={logoSemtd} alt="Secretaria de Estado da Modernização e da Transformação Digital" />
-          <address>Centro Administrativo da Paraíba<br />Avenida João da Mata, 200 — Jaguaribe<br />João Pessoa/PB — CEP 58015-020</address>
-        </section>
-      </div>
-      <p className="site-footer__copyright">© {year} Simplifica Carta. Desenvolvido para servidores públicos.</p>
-    </footer>
-  );
-}
-```
-
-`FooterLinks` deve ser um helper local no mesmo arquivo, nao um novo componente
-publico. Os `h2` do footer podem ser visualmente pequenos, mas devem preservar a
-hierarquia sem pular niveis.
+Menu móvel tem estado de abertura local, fecha depois de navegação elegível;
+não usa preventDefault próprio e não bloqueia clique modificado. Ícones/assets,
+hierarquia visual, conteúdo e CSS continuam conforme seções desta feature.
+404 mantém URL desconhecida, shell/título e retorno à home; findRoute atual
+ainda retorna home e exige correção futura. Foco por fragmento tem precedência,
+URL completa identifica transição, e o shell não disputa foco com a página.
 
 ## CSS base
 

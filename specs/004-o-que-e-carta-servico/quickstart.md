@@ -1,5 +1,8 @@
 # Quickstart: O que e a Carta de Servicos
 
+> Roteiro previsto; não executado na T017. Não existe teste automatizado
+> específico da 004 nem script `test` no package atual.
+
 ## Status documental
 
 A copy da feature 004 foi aprovada e versionada em 25 de setembro de 2026. O
@@ -69,13 +72,12 @@ Validar em 1440, 1024, 768, 390 e 320 px:
 ## Comandos tecnicos
 
 ```sh
-npm run test
 npm run typecheck
 npm run build
 ```
 
-Se `npm run test` ainda nao existir, implementar a infraestrutura prevista no
-plano antes de concluir a feature.
+Typecheck/build não aprovam conteúdo, links, acessibilidade ou visual. Preparar
+e executar os testes previstos antes de concluir a feature.
 
 ## Resultado esperado
 

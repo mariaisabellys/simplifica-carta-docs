@@ -11,9 +11,16 @@ Este documento prevalece sobre tabelas históricas incompatíveis nos artefatos
 006–012. Nenhuma feature consumidora deve manter uma segunda representação
 editável da Carta.
 
+A [matriz canônica de campos v3](matriz-campos-v3.md), registrada em 19/10/2026
+pela T003, detalha IDs, paths, controles, condições, consumidores e divergências
+observadas. A matriz distingue regras estabelecidas de decisões pendentes e
+comportamento atual do código. A reconciliação dos demais artefatos da 007
+foi registrada na T004; a T005 definiu o
+[contrato compartilhado de contagem](../../docs/arquitetura/contrato-contagem-palavras.md).
+
 ## Cinco partes e campos
 
-1. **Sobre o serviço:** nome, nome popular, descrição de até 20 palavras,
+1. **Sobre o serviço:** nome, nome popular, descrição de até 20 palavras significativas,
    categoria, subcategoria condicionada à categoria, tópico e estado ativo.
 2. **Público e requisitos:** até dois públicos específicos, um ou mais perfis,
    quem pode utilizar, documentos, custo de escolha única e prazo estruturado.
@@ -25,8 +32,10 @@ editável da Carta.
 
 ## Regras estruturais
 
-- Descrição: no máximo 20 palavras. A contagem considera tokens alfanuméricos,
-  inclusive compostos por hífen ou apóstrofo.
+- Descrição: no máximo 20 palavras significativas no campo inteiro, conforme
+  contrato compartilhado. O helper atual ainda conta tokens totais; MC-01 está
+  resolvida documentalmente, mas a adaptação do código e seus testes permanecem
+  pendentes. A 008 usa a mesma contagem por frase, somente para revisão editorial.
 - Categoria e subcategoria: valores fechados; trocar categoria invalida a
   subcategoria que não pertença ao novo catálogo.
 - Público específico: zero a dois entre Servidor, Cidadão e Empresa.

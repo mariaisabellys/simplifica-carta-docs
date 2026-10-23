@@ -1,3 +1,6 @@
+import { resolveSupportPresentation } from "./apresentacao";
+import { supportContacts } from "./contatos";
+
 export const supportDestinations = {
   "atendimento-agendado": "/ajuda/atendimento-agendado",
   "suporte-email": "/ajuda/suporte-email",
@@ -24,3 +27,11 @@ export const supportChannels: SupportChannels = {
     status: "ativo",
   },
 };
+
+export function getSupportPresentation(context: SupportChannelId) {
+  return resolveSupportPresentation({
+    channels: supportChannels,
+    destinations: supportDestinations,
+    email: supportContacts.gesed.email,
+  }, context);
+}

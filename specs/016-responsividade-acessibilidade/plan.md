@@ -73,7 +73,7 @@ e alternativas que o Simplifica Carta oferece precisam ser utilizaveis.
 | `/tutorial-paraiba-digital` | 011/012 | Passos, imagens indisponiveis, copia por campo, recusa e retorno. |
 | `/ajuda` | 013 | FAQ expandida/recolhida, hash, canais e pausa editorial. |
 | `/ajuda/atendimento-agendado` | 014 | Agenda, vazio/falha, escolha, revisao, conflito, envio incerto e registro. |
-| `/ajuda/suporte-email` | 015 | Contato, mailto, alternativa manual, copia e falha. |
+| `/ajuda/suporte-email` | 015 | Contato, Copie o e-mail, alternativa manual, cópia e falha; layout 425:201. |
 
 Conferir inventario contra rotas e features efetivamente entregues. A 016
 registra ausencia, mas nao implementa a funcionalidade da feature responsavel.

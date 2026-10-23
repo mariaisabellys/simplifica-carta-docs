@@ -1,3 +1,5 @@
+import { getHelpChannelsContent } from "./canais";
+
 export type AppointmentFieldId =
   | "full-name"
   | "institutional-email"
@@ -16,6 +18,17 @@ export type AppointmentField = {
 };
 
 export const scheduledServiceContent = {
+  entry: getHelpChannelsContent("atendimento-agendado"),
+  calendar: {
+    title: "Datas e horários de atendimento",
+    backAction: { kind: "back-to-channels", label: "Voltar aos canais" },
+    loadingMessage: "Consultando datas e horários…",
+    emptyMessage: "Não há horários disponíveis no período consultado.",
+    failureMessage: "Não foi possível consultar os horários. Tente novamente.",
+    retryLabel: "Tentar novamente",
+    pauseMessage: "Não é possível iniciar uma nova solicitação neste momento. Os dados da sua tentativa foram preservados.",
+    recoveryLabel: "Verificar solicitação",
+  },
   dateSelection: {
     title: "Escolha uma data",
     availability: "Consulte a disponibilidade da agenda",

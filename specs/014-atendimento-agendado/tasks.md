@@ -38,7 +38,8 @@
     RF01–02/RF05–06, CA02–CA03/CA07/CA09/CA18.
 
 - [ ] **T003 — Fechar campos, formatos e copy institucional**
-  - Confirmar seis campos obrigatorios, limites candidatos nome 150, orgao/setor
+  - Confirmar seis campos obrigatórios e descricaoDuvida opcional do conteúdo,
+    seu limite ainda pendente e limites candidatos nome 150, orgao/setor
     200, e-mail 254, telefone 40 e assunto 2000, e formato de telefone.
   - Definir validacao equivalente frontend/backend, campos desconhecidos/tipos,
     texto em branco e sintaxe de e-mail sem lista de dominios inventada.
@@ -64,12 +65,9 @@
 - [ ] **T005 — Consolidar stack, API e contratos transacionais**
   - Registrar escolha Django/DRF e PostgreSQL em arquitetura/ADR, fixando
     versoes suportadas e dependencias; backend/ e proposta de organizacao.
-  - Fechar GET contexto (bootstrap CSRF/configuracao), GET horarios,
-    POST solicitacoes e POST operacoes/consultar conforme
-    plan, payloads minimos, intervalo candidato de 31 dias e erros estaveis
-    400/409/410/429/503; distinguir 201 novo registro e 200 repeticao concluida.
-    Detalhar payload de contexto, recusa CSRF, Retry-After e operation-expired
-    por endpoint; resposta nao reconhecida nao autoriza novo envio cego.
+  - Aplicar os quatro endpoints/payloads/códigos do contrato-agenda.md,
+    incluindo 403/413/415, contexto/CSRF, pausa, replay e 410.
+    Resposta não reconhecida não autoriza novo envio cego.
   - Definir segredo criptografico de pelo menos 256 bits, hash no backend,
     payload canonico, chave unica, referencia aleatoria sem poder de acesso
     e recuperacao minima sem dados pessoais/segredos em URL.
@@ -114,7 +112,7 @@
     constitution, Figma, regras institucionais e contratos de 002/007/013/015/016/017.
   - Resolver bloqueios de campos, agenda, capacidade, fuso, estados, politica,
     notificacao e recuperacao; nao declarar CA18 atendido com decisoes pendentes.
-  - Dependencia: T007. Evidencia: validacao RF01–RF09/CA01–CA20 registrada.
+  - Dependencia: T007. Evidencia: validacao RF01–RF09/CA01–CA22 registrada.
 
 ## Fase 2 — Backend e operacao
 
@@ -190,7 +188,7 @@
 - [ ] **T017 — Implementar dados, validacao e revisao**
   - Criar conteudo versionado e formulario com contrato de T003, controles
     rotulados, ajuda/erros associados e resumo focavel.
-  - Revisao mostra seis campos/data/horario/fuso e aviso validado; voltar
+  - Revisão mostra seis campos, descrição opcional e snapshot de data/horário/fuso e aviso validado; voltar
     preserva preenchimento. Selecionar/preencher/avancar nao faz POST de registro.
   - Dependencia: T016/T003. Evidencia: RF03–04/RF09, CA04–CA05/CA17.
 
@@ -198,11 +196,11 @@
   - Confirmar e a unica acao de envio; gerar chave para payload novo e travar
     imediatamente operacao pendente. Retry da tentativa usa mesma chave/payload.
   - Distinguir sucesso apos resposta de registro, erro anterior, conflito e
-    resultado incerto; conflito atualiza oferta mantendo seis campos.
+    resultado incerto; conflito atualiza oferta preservando todos os campos.
   - Timeout nao gera chave nova nem afirma ausencia de registro. Recuperar
     pela mesma operacao conforme API, sem reenvio cego ou gravacao automatica na recarga.
   - Guardar so segredo/referencia/estado minimo em chave de sessionStorage
-    separada, com try/catch e expiracao; nunca os seis campos ou Carta.
+    separada, com try/catch e expiracao; nunca campos pessoais, descrição opcional ou Carta.
   - Storage bloqueado funciona em memoria; perda de segredo em resultado incerto
     orienta contato validado, sem prometer recuperacao impossivel.
   - Dependencias: T013/T017. Evidencia: RF05–06/RF08, CA08–CA11/CA14–CA15.
@@ -273,7 +271,7 @@
     migrations e suites API/transacional/PostgreSQL/notificacao definidas em T007.
   - Criar quickstart.md para ambiente sintetico, agenda, API, worker,
     concorrencia, rede/recuperacao e operacao sem dados institucionais reais.
-  - Consolidar CA01–CA20, Figma/copy, decisoes, ambientes, defeitos/retestes e
+  - Consolidar CA01–CA22, Figma/copy, decisoes, ambientes, defeitos/retestes e
     pendencias; verificar banco/proxy/HTTPS/worker/politica e requisitos de 017.
   - Conferir ausencia de segredos frontend, banco de Cartas, logs pessoais,
     listagem publica, anexos, automacao externa e promessas de entrega unica SMTP.
@@ -303,3 +301,54 @@ Executar `/spec:plano-implementacao 014-atendimento-agendado`, consolidando
 decisoes institucionais, stack/API/PostgreSQL, notificacao/operacao, recuperacao,
 politica de dados e Figma. Depois executar `/spec:validar` antes de
 `/spec:implementar`. Esta etapa criou somente tarefas.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. Entrada 425:201 com dois cards; atendimento ativo usa botão interno para abrir
+calendário, sem link à própria rota. Pendente/pausado não inicia calendário ou
+nova solicitação; dados/tentativa já existentes não são apagados.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem o contrato-agenda.md da T014.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Complemento executável após autorização
+
+- [ ] Aplicar a migração de conteúdo do contrato sem duplicar fontes.
+- [ ] Integrar estados/transições e foco conforme contexto de entrada.
+- [ ] Executar CJ01–CJ12, incluindo as nove combinações e acesso direto.
+- [ ] Aplicar efeitos de pausa sobre tentativa/API conforme contrato T014,
+  sem cancelar operação ou criar nova chave por inferência.
+
+## Execução por bloqueio — revisão T014, 21/10/2026
+
+Fonte normativa: [contrato-agenda.md](contrato-agenda.md). Usar CA01–CA22,
+AG01–AG13, snapshot imutável e descrição opcional, inclusive nos testes.
+IN01–IN08 relacionam decisões externas, responsáveis por confirmar e impacto.
+T001 e revisão/fixtures documentais estão liberadas no escopo documental.
+T002–T004 dependem de confirmação institucional; T005 depende ADR-004 proposta
+antes da configuração concreta. Tarefas de backend, schema final, oferta,
+worker, ativação e deploy dependem IN01–IN08 e autorização de implementação.
+Nenhuma tarefa funcional local foi marcada concluída nesta revisão.
+
+- [ ] Migrar tipos/helper/conteúdo para descricaoDuvida opcional e snapshots.
+- [ ] Aplicar gate serializado; replay existente precede nova autorização.
+- [ ] Executar AG07/08 com pausa e oferta/fuso alterados antes/depois do registro.
+- [ ] Executar AG09: 410 nunca prova ausência, retenção não reabre duplicidade.
+- [ ] Executar AG10: falha de worker não desfaz solicitação nem duplica evento.
+- [ ] Obter evidência nominal/data/fonte para IN01–IN08 antes de produção.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

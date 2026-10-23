@@ -24,9 +24,10 @@ sobre listas candidatas ou exemplos anteriores nos demais documentos da 013:
 - secao `Precisa de apoio?`, direcionada a `/ajuda/atendimento-agendado`;
 - nenhum card de suporte por e-mail e nenhuma FAQ adicional nesta pagina.
 
-O CTA da 014 respeita o estado compartilhado: enquanto `pendente`, a pagina
-informa a indisponibilidade e usa rotulo neutro para consultar orientacoes,
-sem prometer visita ou agenda disponivel.
+A seção de apoio segue o [contrato compartilhado de canais](../../docs/arquitetura/contrato-canais-ajuda.md): atendimento ativo usa
+“Consultar atendimento ->”; pendente/pausado usa “Ver canais de apoio ->”, com
+aviso verdadeiro. Em ambos, destino canônico da 014 abre a entrada compartilhada.
+Título e CTA fixos “Agende/Agendar visita” no conteúdo atual ainda precisam de migração.
 
 ## Problema e contexto
 
@@ -117,8 +118,9 @@ Apresentar a secao versionada `Precisa de apoio?`, com descricao e destino
 dois cards de canal. A feature 015 nao vira card da FAQ; ela compoe a pagina de
 apoio aberta depois do CTA.
 
-- Explicar que selecionar uma opcao apenas abre o fluxo correspondente.
-  Nao cria solicitacao, reserva horario, envia mensagem ou notifica a equipe.
+- Na FAQ, o CTA apenas navega à entrada compartilhada. Nela, atendimento
+  ativo abre calendário interno na rota 014; e-mail ativo copia o endereço.
+  Nenhuma dessas ações cria solicitação, reserva horário ou envia mensagem.
 - Permitir escolha independente, sem classificar automaticamente a duvida
   ou exigir dados pessoais na pagina de entrada.
 - Nao exibir datas, horarios ou disponibilidade ficticia; esses dados pertencem
@@ -128,8 +130,8 @@ apoio aberta depois do CTA.
   links. Indisponibilidade de um fluxo nao deve impedir a leitura da ajuda.
 - Quando houver indisponibilidade confirmada de um canal, oferecer mensagem
   verdadeira e alternativa disponivel, sem afirmar solicitacao recebida.
-  O mecanismo de disponibilidade deve ser conciliado com 014 e 015, sem criar
-  monitoramento ou agenda nesta feature.
+  A apresentação segue o contrato compartilhado, sem criar monitoramento
+  ou agenda nesta feature; efeitos da pausa sobre API ficam para T014.
 - Rotas placeholder nao comprovam canais operacionais. O aceite integrado
   de encaminhamento depende da implementacao real de 014 e 015.
 
@@ -156,10 +158,9 @@ apoio aberta depois do CTA.
   `src/content/pages/`.
 - Submeter respostas e descricoes a validacao da equipe responsavel e
   preservar linguagem simples e acentuacao.
-- O placeholder de suporte menciona `gesed.semtd@gmail.com`, sem verificacao
-  nesta etapa. A validacao do endereco, forma de uso e contato final pertence
-  ao planejamento da 015; a 013 nao cria um endereco alternativo nem assume
-  que esse canal esta ativo.
+- Endereço vem de supportContacts.gesed e estado/aviso de supportChannels.
+  E-mail atualmente ativo editorialmente; isso não prova recebimento ou resposta.
+  A FAQ não mostra endereço nem cria card adicional; somente a entrada compartilhada.
 - Nao duplicar contatos em varios arquivos nem publicar dados institucionais
   provisórios como definitivos. Reutilizar o contrato de conteudo da 015 se
   houver necessidade de mostrar contato nesta pagina.
@@ -256,3 +257,29 @@ Executar `/spec:planejar 013-fluxo-de-ajuda` para definir conteudo, composicao,
 FAQ, contratos de navegacao e verificacoes. Depois, criar tarefas e
 `implementation-plan.md`, conciliar pendencias e executar `/spec:validar`
 antes de `/spec:implementar`.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

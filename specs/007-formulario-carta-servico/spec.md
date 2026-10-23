@@ -1,387 +1,159 @@
-# Spec: Formulario da Carta de Servicos
+# Spec — Formulário da Carta de Serviço
 
-> **Navegação compartilhada:** partes, retorno, query/hash e preservação da
-> Carta devem respeitar `docs/arquitetura/contrato-navegacao.md`.
+Baseline documental: 19/10/2026, T004. Modelo: v3. Implementação integrada e aceite visual/funcional pendentes.
 
-> **Contrato oficial atualizado em 16 de outubro de 2026:** o conteúdo anterior
-> foi substituído. O modelo vigente está em `modelo-central-carta.md` e nos
-> contratos v3. Tabelas abaixo com paths ou campos incompatíveis são históricas.
+## Objetivo e escopo
 
-## Objetivo
+Permitir elaborar uma Carta em cinco partes, preservar dados parciais na sessão, consultar orientações e prévia e seguir ao tutorial. A jornada sugerida é diagnóstico → organização → formulário, com acesso independente a /formulario-carta. Não exigir login, diagnóstico aprovado ou conclusão da 006.
 
-Permitir que o servidor preencha e revise as informacoes da Carta de Servicos
-em um formulario dividido em partes, com orientacoes de apoio e dados mantidos
-temporariamente durante a sessao, preparando a revisao, a exportacao e o
-cadastro manual no Paraiba Digital.
+Fontes: [modelo central](modelo-central-carta.md), [matriz canônica](matriz-campos-v3.md), conteúdo em src/content/pages/formulario-carta.ts, catálogos e tipos em src/features/carta, [navegação compartilhada](../../docs/arquitetura/contrato-navegacao.md) e [mapa Figma](../../docs/design-system/mapa-figma-telas.md). O levantamento local não comprova consulta visual detalhada nem homologação institucional.
 
-## Problema e contexto
+## RF01 — Acesso e navegação
 
-Depois de reunir as informacoes do servico, o servidor precisa transforma-las
-em dados claros e estruturados sem perder o trabalho ao consultar outras
-etapas. Um formulario unico sem organizacao ou orientacoes dificulta a leitura,
-o preenchimento e a identificacao de informacoes ainda pendentes.
+Usar NavigationProvider, useAppLocation, useAppNavigate e AppLink compartilhados. Preservar href, query, hash, cliques modificados, histórico e recarga. Não criar roteador próprio. O shell administra título/foco de rota; o formulário administra partes, retorno a campos e listas. Dados permanecem na mesma fonte de sessão ao visitar ajuda, organização, prévia e tutorial.
 
-Esta funcionalidade corresponde a etapa de elaboracao da Carta. Sucede o
-diagnostico e a organizacao das informacoes no fluxo completo, mas tambem deve funcionar por
-acesso independente, sem exigir diagnostico ou conclusao da lista da feature
-006. O formulario prepara os dados; nao cadastra nem publica na plataforma
-oficial e nao representa aprovacao pela GESED.
+## RF02 — Cinco partes
 
-## Usuarios impactados
+1. about-service: sete campos sobre o serviço.
+2. audience-requirements: públicos, perfis, quem pode utilizar, documentos, custo e prazo.
+3. service-flow: etapas com título, orientação e modalidade.
+4. service-attendance: agendamento e condições.
+5. final-information: adicionais e palavras-chave.
 
-- Servidor responsavel pelo levantamento e pela redacao da Carta.
-- Servidor responsavel pelo cadastro manual no Paraiba Digital, que precisa
-  revisar e transferir os dados preparados.
-- Equipe GESED, que precisa manter orientacoes e campos consistentes.
+A matriz é o inventário canônico de 25 definições. Partes podem ser visitadas e editadas livremente. “Parte X de 5” indica posição, não completude. Não preencher a Carta com exemplos ou placeholders. Valores de seletores vêm dos catálogos existentes.
 
-## Fontes de contexto
+## RF03 — Modelo e regras estruturais
 
-- `README.md` e `Readme Manual de Levantamento de Serviços.md`: formulario
-  dividido em partes, sessao temporaria e limites de validacao e exportacao.
-- `docs/produto/mvp.md`, `escopo.md`, `personas.md` e `fluxos.md`: usuarios,
-  jornada e acesso independente.
-- `docs/processo/constitution.md` e `docs/ia/regras-para-ia.md`: processo,
-  conteudo versionado e consulta visual antes da implementacao.
-- `docs/arquitetura/arquitetura-sistema.md` e `decisoes-tecnicas.md`: dados da
-  Carta no navegador, sem backend ou persistencia permanente.
-- `docs/design-system/mapa-figma-telas.md` e `tokens-e-componentes.md`:
-  referencias documentadas para formulario e componentes.
-- `specs/006-organizar-informacoes/spec.md` e `plan.md`: assuntos a levantar,
-  acesso sem bloqueio e preservacao da Carta.
-- `specs/012-copia-dados-tutorial/spec.md`: consumo da mesma Carta, incluindo
-  nome popular, dados parciais e retorno para edicao.
-- `src/app/routes.tsx`, `src/pages/FormularioCartaPage.tsx` e
-  `src/components/forms/FormField.tsx`: rota e componentes iniciais.
-- `src/features/carta/carta.types.ts`, `carta.schema.ts`, `carta.validation.ts`
-  e `carta.storage.ts`: contratos iniciais, ainda sujeitos a conciliacao.
+Usar exclusivamente CartaServico com versao: 3 e os grupos sobreServico, publicoRequisitos, etapas, atendimento e informacoesFinais. A lista atual contém dez obrigatórios gerais, conforme matriz. Até a revisão editorial MC-02, manter essa lista como baseline técnico, sem acrescentar obrigatórios por analogia.
 
-Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
-consulta direta ao Figma ou homologacao dos campos atuais do Paraiba Digital.
+- Descrição: até 20 palavras significativas no campo inteiro, conforme o [contrato compartilhado](../../docs/arquitetura/contrato-contagem-palavras.md), fechado documentalmente na T005; implementação pendente.
+- Categoria/subcategoria: relação válida do catálogo. Ao mudar categoria, limpar subcategoria incompatível com aviso claro; não converter a escolha em outra arbitrariamente.
+- Públicos específicos: até dois; perfis: ao menos um. Seleções de catálogo devem ser válidas e sem duplicatas.
+- Custos: escolha única; detalhe obrigatório em sob-consulta/com-taxa. Ao escolher gratuito, ocultar detalhe e retirar obrigatoriedade; preservar o texto na sessão para restauração, sem transferência enquanto inativo.
+- Prazo: máximo textual e unidade. Não inventar regra de número positivo, zero, decimal ou “Imediato”; MC-03 precisa ser fechada antes da validação semântica.
+- Documento: nome e ID estável. Etapa: ID, ordem, título, orientação e modalidade. Mínimo de itens e obrigatoriedade por item permanecem MC-04.
+- Ativo: booleano, default false; não interpretar como confirmação deliberada nem publicar/despublicar serviço externo. Significado editorial permanece MC-05.
+- URL externa: presença exigida quando ativa; protocolo/formato ainda depende de MC-06. Não consultar disponibilidade remota nem executar integração.
 
-## Requisitos funcionais
+Obrigatoriedade, tipo e pertinência ao catálogo são verificações diferentes. Dados malformados devem produzir retorno controlado, não exceção ou aprovação silenciosa. Não converter texto vazio em gratuidade, ausência de documentos ou ausência de agendamento.
 
-### RF01 — Acesso e integracao
+## RF04 — Listas e identidade
 
-- Disponibilizar o formulario em `/formulario-carta`, pela navegacao
-  compartilhada, etapa de elaboracao em `/explorar-por-etapas`, acao
-  `Preencher Carta` da 006 e URL direta, inclusive apos recarga.
-- Nao exigir diagnostico, lista marcada, login, previa ou exportacao anterior.
-- Reutilizar header e footer compartilhados, indicar a pagina atual na
-  navegacao quando houver item correspondente e apresentar breadcrumb com
-  retorno ao inicio.
-- Exibir titulo e introducao em linguagem simples, explicando que os dados
-  sao temporarios e que o cadastro oficial sera feito manualmente.
+Adicionar documento com nome vazio; adicionar etapa com título/orientação vazios e modalidade null. Gerar ID estável ao adicionar, nunca durante render. Os defaults dos novos itens são decisões técnicas deste contrato, não exemplos reais.
 
-### RF02 — Formulario dividido em partes
+Editar/remover um item sem alterar outros. Etapas podem ser reordenadas por teclado; IDs permanecem e ordem passa a refletir a sequência atual de 1 a N. Não exigir drag-and-drop. Campos e erros acompanham ID, não índice.
 
-Organizar os campos nas partes abaixo, com titulos e orientacoes identificaveis:
+Após adicionar, focar primeiro campo do novo item. Após remover, focar próximo item, anterior ou botão Adicionar se lista vazia. Após reordenar, manter foco no controle do mesmo item e anunciar posição. Remoção resulta de ação explícita; mudanças de parte ou condição não removem itens silenciosamente.
 
-| Parte | Informacoes |
+## RF05 — Orientações e validação
+
+Orientações seguem o [mapa e contrato da T006](../006-organizar-informacoes/contrato-orientacoes-v3.md), com reuso por vários controles e complementos específicos. Aplicação editorial ao TypeScript permanece em F006-03; Ativo continua em MC-05. Abrir/fechar orientação não modifica dado ou progresso de preparação. Associar label, instrução e erro; usar fieldset/legend nos grupos.
+
+Separar erros estruturais de sugestões editoriais da 008. Não reescrever texto automaticamente. Validar campos alterados no blur e todos os campos aplicáveis na revisão explícita; evitar erros prematuros ao abrir Carta vazia. Resumo ordenado pelo formulário permite abrir parte e focar controle/item correto.
+
+Sugestões editoriais não usam aria-invalid e não bloqueiam prévia, navegação, cópia ou CSV. Erros estruturais podem bloquear CSV pela 010, mas não edição, persistência parcial ou consulta.
+
+## RF06 — Sessão e recuperação
+
+Um CartaSessionProvider acima das páginas mantém a única Carta editável e usa sessionStorage na chave simplifica-carta:sessao. Serializar o objeto v3 diretamente, conforme contrato existente, sem envelope paralelo. Não usar localStorage, backend, login ou sincronização entre abas.
+
+Concluir leitura antes da primeira gravação. Estado válido parcial deve ser recuperado mesmo sem obrigatórios preenchidos. Validade de formato e completude são diferentes.
+
+Sem registro: criar Carta vazia. Registro v3 seguro: recuperar. JSON inválido, estrutura inválida, versão anterior/futura sem decoder seguro: iniciar Carta vazia em memória, informar recuperação indisponível e preservar registro original. Não converter automaticamente o false de versão anterior em resposta Não.
+
+Na recuperação inválida, suspender sobrescrita automática até ação explícita para usar a nova Carta nesta sessão. Permitir continuar editando apenas em memória. Falha de leitura/escrita mantém memória e aviso verdadeiro de limitação na recarga. Nunca anunciar salvamento quando a operação falhou. Limpeza exige ação explícita, sem apagar sessão ao concluir tutorial/exportação.
+
+Não truncar conteúdo para atender limites técnicos inventados; limites de carga, se necessários, devem ser medidos e documentados antes da implementação.
+
+## RF07 — Agendamento e aplicabilidade
+
+S = exigeAgendamento === true. E = S e sistemaAgendamento === sistema-externo.
+
+- null: não informado; false: Não explícito. Ambos ocultam configurações.
+- S ativa tipos e sistema, obrigatórios; aceitar Online, Presencial ou ambos conforme catálogo.
+- Sistema Paraíba Digital oculta link/exibição, mesmo com valores retidos.
+- E ativa link e exibição, obrigatórios.
+- Trocas preservam escolhas e textos na sessão; invalidam resultados dos campos que ficaram inativos.
+- Ao retornar à condição, restaurar valores para revisão.
+- Exibição dentro/fora da plataforma é apenas dado da Carta. Não abrir iframe, redirecionar ou agendar pela 007.
+
+O conteúdo atual de external-scheduling verifica só sistema; implementação deve aplicar E completa. A T006 definiu substituir a orientação “apenas online” por “se houver agendamento”, preservando S/E; atualização de conteúdo/metadados pendente (MC-07).
+
+## RF08 — Revisão e próximos passos
+
+“Tudo pronto para publicar” só aparece após revisão explícita do snapshot atual sem erros estruturais, com análise estrutural concluída. Mudança na Carta invalida essa confirmação até nova revisão. Revisão editorial pendente não impede a confirmação de completude estrutural, mas suas mensagens continuam visíveis e separadas.
+
+A expressão não significa aprovação institucional ou publicação. A copy deve explicar conclusão das informações obrigatórias e continuidade para revisão/publicação manual; a adaptação do conteúdo versionado será tarefa de implementação/conteúdo específica. Visitar cinco partes não basta.
+
+Manter acesso ao tutorial e prévia mesmo com Carta parcial, usando CTA neutro fora do estado de conclusão. Falha do validador estrutural não libera conclusão nem exportação.
+
+## RF09 — Consumidores e conteúdo
+
+009 compartilha componente/view model da prévia entre formulário e /previa. 010 exporta snapshot atual com regras estruturais da mesma revisão. 011 orienta transferência. 012 mostra todos os campos aplicáveis em cinco grupos na etapa 4; campos abertos preenchidos têm cópia, escolhas não têm botão. Nenhum consumidor modifica texto, inventa valores ou transfere condicionais inativos.
+
+Textos e catálogos são versionados, sem segunda fonte no JSX. A T006 manteve recorrência como preparação complementar, sem campo v3 ou transferência automática para informações adicionais.
+
+## Requisitos transversais e visual
+
+Preservar HTML como texto, acentos e quebras; não registrar conteúdo em logs. Reutilizar Inter/tokens/shell. Suportar teclado, leitor de tela, zoom e reflow com textos extensos. Anunciar revisão e ações de lista sem anúncio a cada tecla; não deslocar foco durante digitação.
+
+| Referência | Uso |
 | --- | --- |
-| Identificacao do servico | Nome, nome popular, descricao e publico-alvo. |
-| Requisitos de acesso | Criterios de acesso e documentos necessarios. |
-| Etapas do servico | Sequencia de acoes do pedido ate a conclusao. |
-| Atendimento | Prazo, custos, canais e agendamento. |
-| Informacoes adicionais | Orientacoes complementares ao cidadao. |
+| 653:1540 | Parte 1, principal |
+| 2024:269 | Parte 2; reconstruir formulário representado em imagem com controles reais |
+| 641:58 | Parte 3 |
+| 647:650 | Parte 4 |
+| 660:2533 | Parte 5 |
+| 811:306 / 811:382 | Form-Card sem/com orientação |
+| 821:308 | Prévia compartilhada 009 |
+| 651:317 | Label-Row |
 
-- Permitir consultar e editar todas as partes sem exigir completude da parte
-  anterior. A divisao organiza o preenchimento, sem criar uma barreira de acesso.
-- Preservar dados ao mudar de parte, retornar ou consultar orientacoes.
-- Renderizar uma parte ativa por vez conforme as cinco telas mapeadas, sem
-  criar cinco rotas nem exigir completar a parte anterior. Identificar a parte
-  atual semanticamente e preservar a Carta ao navegar entre elas.
-- Nao tratar mudanca de parte ou preenchimento como aprovacao da Carta.
+As cinco telas são estados da mesma rota. Consultar Design e Make antes do código visual. Conteúdo prevalece sobre copy do frame; não usar imagem, overlay ou mapa de cliques como formulário.
 
-### RF03 — Campos e contrato de dados
+## Critérios de aceite
 
-Cobrir os campos abaixo com rotulos claros, controles adequados e orientacoes
-versionadas. Os paths servem de referencia tecnica e nao aparecem na interface.
+IDs existentes preservados; redação migrada para v3.
 
-| Campo | Contrato de referencia | Comportamento |
-| --- | --- | --- |
-| Nome do servico | `identificacao.nome` | Texto que identifica o servico. |
-| Nome popular do servico | `identificacao.nomePopular` | Texto opcional com nome alternativo ou mais conhecido pelo cidadao, quando aplicavel; complementa o nome do servico sem substitui-lo. |
-| Descricao do servico | `identificacao.descricao` | Texto com finalidade e o que e oferecido ao cidadao. |
-| Publico-alvo | `identificacao.publicoAlvo` | Texto indicando quem pode utilizar o servico. |
-| Criterios de acesso | `requisitos.criterios` | Condicoes para utilizar o servico, quando aplicaveis. |
-| Documentos necessarios | `requisitos.documentos` | Lista de nomes de documentos e classificacao obrigatorio/opcional. |
-| Etapas do servico | `etapas` | Lista ordenada com descricao de cada etapa. |
-| Prazo | `atendimento.prazo` | Texto com estimativa e condicoes relevantes, sem prazo inventado. |
-| Custos | `atendimento.custo` | Texto com gratuidade explicita ou valores e condicoes aplicaveis. |
-| Canais de atendimento | `atendimento.canais` | Lista com tipo e descricao de acesso ao canal. |
-| Necessita de agendamento? | `atendimento.exigeAgendamento` | Escolha explicita entre Sim e Nao; inicialmente nao informado. |
-| Tipo de agendamento | `atendimento.tiposAgendamento` | Online, Presencial ou ambos; obrigatorio com Sim. |
-| Sistema de agendamento | `atendimento.sistemaAgendamento` | Paraiba Digital ou Outro sistema ou site; escolha unica obrigatoria com Sim. |
-| Link do agendamento | `atendimento.linkAgendamento` | URL obrigatoria somente para Outro sistema ou site. |
-| Como o agendamento sera exibido? | `atendimento.exibicaoAgendamento` | Dentro do Paraiba Digital ou Em uma nova pagina; escolha unica obrigatoria somente para Outro sistema ou site. |
-| Orientacoes de agendamento | `atendimento.orientacaoAgendamento` | Texto complementar opcional, somente com Sim. |
-| Informacoes adicionais | `informacoesComplementares` | Texto complementar, opcional. |
+| ID | Cenário / resultado |
+| --- | --- |
+| CA01 | Acesso direto e pelas entradas previstas sem gates. |
+| CA02 | Todos os 25 campos da matriz disponíveis, com catálogos e opcionais corretos. |
+| CA03 | Trocar parte preserva Carta parcial sem exigir completude. |
+| CA04 | CRUD de documentos preserva IDs e textos dos demais itens; não recria campos removidos do modelo. |
+| CA05 | Reordenar/remover etapas por teclado mantém identidade, sequência e foco. |
+| CA06 | Agendamento distingue null/Sim/Não, preservando dados inativos sem mostrá-los. |
+| CA07 | Custo/documentos vazios não geram inferência de gratuidade/dispensa. |
+| CA08 | Revisão encontra obrigatórios e condicionais; resumo abre parte e foca alvo. |
+| CA09 | Orientação e sugestão não alteram valor nem impedem navegação. |
+| CA10 | Visitar outras rotas e voltar mantém a mesma Carta em memória. |
+| CA11 | Recarga de v3 válido restaura valores, IDs e ordem. |
+| CA12 | Storage indisponível/inválido/anterior/futuro preserva original, mantém edição e mostra limite; sem sobrescrita inicial. |
+| CA13 | Prévia, CSV e cópia usam snapshot atual e aplicabilidade comum. |
+| CA14 | Labels, grupos, resumo e listas operáveis por teclado/leitor. |
+| CA15 | Textos longos e zoom não cortam campos nem criam rolagem horizontal da página. |
+| CA16 | HTML literal, acentos e quebras preservados sem execução. |
+| CA17 | Conteúdo versionado, sessão temporária e ausência de publicação automática verificáveis. |
+| CA18 | Consultas Figma e diferenças documentadas; shell/tokens reutilizados. |
+| CA19 | Não/null oculta configurações e retira obrigatoriedade condicional. |
+| CA20 | Sistema nativo oculta link/exibição e mantém valores retidos fora dos consumidores. |
+| CA21 | Externo/dentro registra configuração, sem executar incorporação. |
+| CA22 | Externo/nova página registra configuração, sem redirecionamento da 007. |
+| CA23 | Trocar/restaurar sistema preserva valores e remove resultados inativos. |
+| CA24 | S sem tipos/sistema ou E sem link/exibição gera erros correspondentes; formato URL conforme decisão MC-06. |
+| CA25 | Cinco partes usam referências corretas e layout adaptado ao conteúdo. |
+| CA26 | Orientação alterna variantes e anuncia expansão, sem mudar valor. |
+| CA27 | Prévia embutida reutiliza componente/projeção da 009. |
+| CA28 | Parte 2 é formulário real acessível, não imagem interativa. |
+| CA29 | Categoria inválida/subcategoria incompatível e escolhas inválidas não passam silenciosamente; trocar categoria limpa escolha incompatível com aviso. |
+| CA30 | Máximo dois públicos e mínimo um perfil; duplicatas não satisfazem cardinalidade. |
+| CA31 | Detalhe de custo só é exigido/transferido com K; prazo mantém valor/unidade separados. |
+| CA32 | Descrição com 20/21 palavras significativas segue limite do campo e fixtures CP01–CP13 do contrato compartilhado; a revisão por frase da 008 não bloqueia CSV. |
+| CA33 | Conclusão exige revisão estrutural atual bem-sucedida; editar invalida confirmação; tutorial continua acessível em Carta parcial. |
 
-- `nomePopular` ainda nao existe no tipo inicial; sua inclusao opcional deve
-  ser conciliada com schema, sessao e consumidores, atendendo a spec 012.
-- O booleano inicial `false` nao representa resposta do usuario. O contrato
-  deve distinguir nao informado, Sim e Nao e adaptar os consumidores; nao
-  converter ausencia de resposta em Nao.
-- Preservar orientacoes complementares na mesma Carta, sem substituir os campos estruturados.
+## Dependências, pendências e fora de escopo
 
-- A pergunta deve ser **Necessita de agendamento?**, sem resposta preselecionada.
-- Com Sim, exigir **Tipo de agendamento**, com selecao de Online, Presencial ou ambos, e
-  **Sistema de agendamento**, com escolha unica entre Paraíba Digital e Outro sistema ou
-  site.
-- Paraíba Digital registra agendamento pelo proprio Paraiba Digital. Nao mostrar nem
-  exigir Link do agendamento ou Como o agendamento será exibido?.
-- Outro sistema ou site mostra e exige **Link do agendamento** (URL do sistema externo,
-  por exemplo `https://agendamento.orgao.pb.gov.br`) e **Como o agendamento será
-  exibido?**, com escolha unica.
-- **Dentro do Paraíba Digital** registra que o cidadao permanece dentro da experiencia
-  do Paraiba Digital durante todo o agendamento, com exibicao/integracao externa e sem
-  redirecionamento. **Em uma nova página** registra redirecionamento para a URL externa
-  informada.
-- Com Nao ou nao informado, ocultar todas as configuracoes especificas de agendamento.
-  Com Paraiba Digital, ocultar somente as configuracoes externas. Campos inativos nao
-  sao obrigatorios.
-- Preservar valores condicionais anteriormente preenchidos na sessao, sem apagamento
-  silencioso, mas nao apresenta-los na previa, CSV ou copia como configuracao aplicavel.
-  Reativar os valores para revisao quando a condicao voltar a ser selecionada.
-- Orientacoes de agendamento continuam opcionais, visiveis e transferiveis somente com
-  Sim; nao substituem Tipo, Sistema, Link ou Exibicao.
-- Trata-se de uma unica configuracao com dois fluxos, independente dos canais de
-  atendimento. Simplifica Carta registra a configuracao para cadastro posterior; nao
-  executa o agendamento nem integra sistemas externos nesta feature.
+T005 fechou o contrato de contagem, ainda não implementado; T006 orientações; T007 regras editoriais; T008–T011 projeções; T015 navegação; T016 visual/acessibilidade. MC-02–MC-06 e MC-08 da matriz ainda exigem decisões/contratos antes das partes dependentes. Não declarar o plano integralmente pronto por encerrar T004/T005.
 
-```text
-Necessita de agendamento?
-└── Sim
-    ├── Tipo de agendamento: Online, Presencial ou ambos
-    └── Sistema de agendamento
-        ├── Paraíba Digital
-        │   └── Agendamento realizado pelo próprio Paraíba Digital
-        └── Outro sistema ou site
-            ├── Link do agendamento
-            └── Como o agendamento será exibido?
-                ├── Dentro do Paraíba Digital: cidadão permanece na experiência
-                └── Em uma nova página: cidadão é redirecionado para a URL externa
-```
+Fora do escopo: backend da Carta, rascunho permanente, integração/publicação externa, agenda real, IA/reescrita automática e novos campos sem decisão.
 
-- Para canais, cobrir os tipos locais online, presencial, telefone, e-mail e
-  outro, com descricao que comporte endereco ou instrucoes conforme o caso.
-- Nao presumir que documentos vazios significam ausencia de exigencia, custo
-  vazio significa gratuidade ou criterio vazio significa acesso irrestrito.
-  Orientar a confirmacao junto ao setor responsavel quando a informacao faltar.
-- Nao coletar anexos ou documentos pessoais do cidadao. O campo documentos
-  registra as exigencias do servico, sem upload.
-- Preservar acentos, pontuacao e quebras de linha. Exemplos e placeholders
-  nunca se tornam valores preenchidos automaticamente.
-
-### RF04 — Edicao de listas
-
-- Permitir adicionar, editar e remover documentos, etapas e canais de
-  atendimento durante a sessao.
-- Cada documento deve ter nome e escolha explicita de obrigatorio ou
-  opcional, sem inferir sua classificacao pela posicao.
-- Cada canal deve ter tipo e descricao de acesso, com rotulos compreensiveis.
-- Permitir definir e alterar a sequencia das etapas por controles acessiveis,
-  sem depender de arrastar com mouse. Manter ordem coerente apos adicao,
-  remocao ou reorganizacao, sem numeros duplicados ou lacunas no resultado.
-- Remover um item nao pode alterar os valores dos demais. Acoes devem
-  identificar o item afetado e manter foco em posicao coerente.
-- Itens ainda vazios podem existir durante a edicao, mas nao devem ser
-  apresentados aos consumidores como informacoes validas ou inventadas.
-  Definir seu tratamento na revisao sem descartar silenciosamente texto util.
-
-### RF05 — Orientacoes e validacao
-
-- Oferecer orientacao concreta para cada campo e identificar exemplos como
-  ilustrativos. Se houver painel expansivel, usar controle com estado
-  anunciado, sem apagar ou alterar o valor ao abrir e fechar.
-- Derivar a orientacao do item correspondente em
-  `src/content/pages/organizar-informacoes.ts`, mantendo fonte unica para
-  resumo, identificacao, evite/prefira, exemplos e dicas.
-- Suportar o Form-Card compacto (`811:306`) e com orientacao aberta (`811:382`).
-  Usar `aria-expanded` e associacao ao painel; campos sem orientacao mapeada
-  permanecem compactos e nao recebem texto inventado.
-- Identificar campos obrigatorios por texto e semantica, sem depender apenas
-  de asterisco ou cor. Manter rotulos, ajuda e mensagens associados ao controle.
-- Usar como referencia inicial de obrigatoriedade nome, descricao,
-  publico-alvo, prazo e custos, conforme `camposObrigatoriosCarta`. Nome
-  popular e informacoes adicionais sao opcionais nesta spec.
-- Nao ampliar obrigatoriedade para todos os assuntos por analogia. Regras
-  institucionais adicionais e verificacao das listas devem
-  ser conciliados com ERS e 008 no planejamento e registrados antes do codigo.
-- Ao solicitar revisao, identificar campos obrigatorios vazios ou contendo
-  apenas espacos, apresentar mensagens claras e permitir localizar e corrigir
-  os campos, inclusive em outra parte do formulario.
-- Erros nao podem impedir edicao, consulta de ajuda, mudanca de parte ou
-  manutencao de dados parciais. O bloqueio de exportacao com obrigatorios
-  ausentes pertence ao contrato de 010, consumindo as regras compartilhadas.
-- Integrar os pontos de exibicao da validacao e das sugestoes da feature 008,
-  sem criar nesta feature um motor de linguagem simples ou regras divergentes.
-  Sugestoes sao orientativas e nunca substituem textos automaticamente.
-- Nao anunciar que uma Carta sem erros locais foi aprovada ou sera aceita na
-  plataforma externa.
-
-### RF06 — Sessao temporaria e continuidade
-
-- Manter uma unica Carta da sessao, compartilhada com previa, exportacao e
-  copia no tutorial. Edicoes devem atualizar essa fonte, sem versoes editaveis
-  independentes em cada pagina.
-- Preservar os dados ao navegar para organizacao, ajuda, previa ou tutorial e
-  retornar ao formulario na mesma sessao. Abrir a pagina nao reinicializa a Carta.
-- Preservar dados em recargas quando o armazenamento temporario de sessao
-  estiver disponivel. Explicar o limite de sessao sem prometer rascunho
-  permanente, recuperacao futura ou sincronizacao entre abas e dispositivos.
-- Se armazenamento estiver indisponivel, manter o formulario utilizavel em
-  memoria e informar que os dados podem ser perdidos ao recarregar ou fechar.
-- Dados armazenados ausentes, malformados ou incompatíveis nao podem derrubar
-  a pagina. Validar a estrutura restaurada, aproveitar apenas dados seguros e
-  compativeis e informar quando nao for possivel recuperar o preenchimento.
-- A migracao dos contratos deve aceitar sessoes anteriores sem `nomePopular`
-  ou orientacao de agendamento. Um `false` legado sem evidencia de resposta
-  explicita deve ser tratado como nao informado, sem inventar confirmacao.
-- Nao limpar automaticamente a Carta ao sair, mudar de parte ou abrir ajuda.
-  Esta spec nao exige acao para apagar toda a Carta.
-
-### RF07 — Revisao e proximos passos
-
-- Oferecer acao para revisar as informacoes na rota `/previa`, mantendo os
-  valores atuais. Permitir revisar uma Carta parcial, identificando pendencias
-  sem obrigar o usuario a completar todos os campos para consultar a previa.
-- Disponibilizar acesso a `Preciso de ajuda` em `/ajuda`, reutilizando a acao
-  compartilhada quando existir, sem duplicar formulario de suporte.
-- Permitir retorno de `/previa` e do tutorial para editar a mesma Carta.
-- Quando houver previa dentro das telas do formulario, reutilizar o componente
-  `821:308` e a mesma projecao de dados da 009. Nao criar snapshot, seletor ou
-  markup de previa paralelo dentro da 007.
-- Nao implementar geracao de previa, exportacao CSV ou copia como parte da
-  007. Os consumidores devem receber um contrato documentado e consistente.
-
-### RF08 — Conteudo versionado
-
-- Manter titulos, rotulos, orientacoes, exemplos e mensagens editoriais fora
-  da apresentacao visual, seguindo a organizacao de `src/content/`.
-- Permitir revisao editorial sem alterar a navegacao ou as regras do estado.
-- Preservar linguagem simples e acentuacao na interface final.
-- Registrar a necessidade de validacao institucional dos textos e regras;
-  esta spec nao declara copy nem equivalencia com o Paraiba Digital homologadas.
-
-## Requisitos nao funcionais
-
-- Executar preenchimento e validacao localmente, sem backend, login, envio de
-  dados da Carta a servicos externos ou persistencia permanente.
-- Nao registrar valores preenchidos em logs ou telemetria.
-- Tratar entradas como texto, sem executar HTML ou scripts.
-- Funcionar por teclado e leitor de tela, com foco visivel, labels associados,
-  agrupamentos semanticos e anuncio de erros e alteracoes relevantes nas listas.
-- Manter ordem de leitura coerente; controles de listas e painéis de ajuda
-  devem ter nomes e estados acessiveis.
-- Funcionar em computador, tablet e smartphone, com texto ampliado, sem
-  cortes, sobreposicoes ou rolagem horizontal da pagina.
-- Reutilizar shell, tokens e fonte Inter com os fallbacks globais.
-- Validar os fluxos em Chrome, Edge, Firefox e Safari, incluindo armazenamento
-  indisponivel e dados de sessao invalidos.
-
-## Referencias visuais e pendencias
-
-A feature possui cinco telas/partes na mesma rota, na ordem do conteudo:
-
-| Parte | Node | Referencia |
-| --- | --- | --- |
-| 1. Sobre o servico | `653:1540` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=653-1540&m=dev) |
-| 2. Publico e requisitos | `2024:269` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=2024-269&m=dev) |
-| 3. Como o servico funciona | `641:58` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=641-58&m=dev) |
-| 4. Atendimento | `647:650` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=647-650&m=dev) |
-| 5. Informacoes finais | `660:2533` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=660-2533&m=dev) |
-
-Componentes compartilhados: `811:306` Form-Card compacto, `811:382` Form-Card
-com orientacao, `821:308` previa compartilhada com a 009 e `651:317` Label-Row.
-
-O layout deve se adaptar ao conteudo de
-`src/content/pages/formulario-carta.ts`; o Figma governa composicao e estilo,
-mas nao autoriza truncar, substituir ou duplicar copy. Textos longos aumentam
-a altura natural dos componentes, sem corte, ellipsis ou sobreposicao.
-
-No node `2024:269`, a representacao do formulario em imagem e somente
-referencia visual. Implementar formulario HTML/React real com inputs,
-textareas, selects, radios, checkboxes, fieldsets e listas editaveis, mantendo
-estrutura, hierarquia e estilo. Nao incorporar a imagem, mapear cliques sobre
-ela ou usa-la como substituto dos controles. A previa embutida segue `821:308`.
-
-Antes do codigo visual, consultar detalhadamente via MCP os cinco frames e os
-componentes, alem do Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
-
-O planejamento deve resolver a divisao visual em partes, regras condicionais,
-contrato de agendamento nao informado e sua orientacao, inclusao de nome popular,
-migracao da sessao e integracao com 008–012. Se o Figma trouxer campos ou
-comportamentos adicionais, registrar a divergencia antes de ampliar o escopo.
-
-## Fora de escopo
-
-- Executar ou exigir conclusao do diagnostico ou checklist da organizacao.
-- Aprovar ou publicar a Carta no Paraiba Digital ou integrar seus sistemas.
-- Login, historico, varias Cartas simultaneas, rascunhos permanentes e
-  sincronizacao entre dispositivos ou abas.
-- Upload de documentos, coleta de documentos pessoais e repositorio de anexos.
-- Motor de linguagem simples, IA para redacao ou alteracao automatica dos textos.
-- Implementacao interna do componente de previa, exportacao CSV, tutorial e
-  copia de campos. A 007 apenas integra a previa entregue pela 009.
-- Backend de atendimento, agendamento de suporte ou envio de mensagens.
-
-## Dependencias
-
-- `001-fundacao-do-projeto`: modelo, validacao e armazenamento iniciais.
-- `002-home-e-navegacao` e `003-explorar-por-etapas`: shell, links e entrada
-  independente para elaboracao da Carta.
-- `006-organizar-informacoes`: orientacoes de levantamento e entrada do fluxo.
-- `008-validacao-linguagem-simples`: regras compartilhadas e sugestoes.
-- `009-previa-html`, `010-exportacao-csv` e `012-copia-dados-tutorial`:
-  consumo da mesma Carta, valores atuais e campos adicionais.
-- `013-fluxo-de-ajuda`: destino de suporte.
-- `016-responsividade-acessibilidade`: alinhamento transversal, sem adiar os
-  requisitos desta pagina.
-- Validacao editorial e conciliacao com ERS e Figma antes da implementacao.
-
-Na criacao desta spec, as pastas 008–011, 013 e 016 ainda nao existem em
-`specs/`. Rotas, validadores e placeholders atuais nao comprovam sua conclusao.
-A tabela da spec 012 foi alinhada documentalmente com os campos e condicoes
-de agendamento da RF03. Validacao institucional e implementacao integrada
-dos consumidores continuam pendentes.
-
-## Criterios de aceite
-
-| ID | Cenario | Resultado esperado |
-| --- | --- | --- |
-| CA01 | Abrir `/formulario-carta` diretamente, pela 006 ou pela etapa de elaboracao. | Acessar o formulario sem exigir diagnostico, login ou dados previos. |
-| CA02 | Consultar as partes do formulario. | Encontrar todos os campos da tabela, com rotulos e orientacoes; nome popular e informacoes adicionais opcionais; nome popular complementar, sem substituir o nome do servico. |
-| CA03 | Preencher parcialmente e mudar de parte. | Manter valores e permitir continuar ou voltar sem exigir completude. |
-| CA04 | Adicionar, editar e remover documentos e canais. | Manter classificacao/tipo e descricao de cada item, sem alterar os demais. |
-| CA05 | Reorganizar ou remover etapas por teclado. | Preservar descricoes e produzir sequencia coerente, com foco acessivel. |
-| CA06 | Iniciar Carta sem responder agendamento e depois escolher Sim ou Nao. | Distinguir nao informado de Nao; aplicar campos condicionais de RF03 e preservar valores na sessao sem apresentar valores inativos. |
-| CA07 | Deixar custos ou documentos vazios. | Nao inferir gratuidade ou ausencia de exigencias; orientar confirmacao. |
-| CA08 | Solicitar revisao com obrigatorios vazios ou apenas espacos. | Identificar pendencias e permitir localizar/corrigir, sem apagar dados ou bloquear consulta de previa parcial. |
-| CA09 | Consultar orientacao ou receber sugestao de linguagem simples. | Manter o texto digitado e nao aplicar sugestoes automaticamente. |
-| CA10 | Visitar organizacao, ajuda, previa ou tutorial e retornar. | Recuperar todos os valores atuais da mesma Carta na sessao. |
-| CA11 | Recarregar com armazenamento temporario valido. | Restaurar dados e ordem das listas, sem criar rascunho permanente. |
-| CA12 | Usar armazenamento indisponivel, dados invalidos ou sessao legada. | Manter a pagina funcional, preservar dados seguros e informar limites; nao inferir resposta de agendamento do `false` legado. |
-| CA13 | Editar a Carta e consultar consumidores implementados. | Previa, CSV e copia usam valores atuais, incluindo nome popular e configuracao de agendamento somente quando aplicavel; campos externos somente para sistema externo. |
-| CA14 | Operar por teclado e leitor de tela. | Identificar campos, partes, erros e controles das listas, com foco e estados acessiveis. |
-| CA15 | Preencher textos longos em desktop, tablet, smartphone e com ampliacao. | Ler e editar sem corte, sobreposicao ou rolagem horizontal da pagina. |
-| CA16 | Digitar acentos, varias linhas ou marcacao HTML. | Preservar como texto sem executar codigo nem substituir por exemplos. |
-| CA17 | Revisar comunicacao e arquitetura. | Encontrar conteudo versionado, dados apenas de sessao e ausencia de publicacao, backend ou aprovacao institucional automatica. |
-| CA18 | Revisar implementacao visual futura. | Encontrar consultas Figma registradas, shell e tokens reutilizados e divergencias resolvidas. |
-| CA19 | Dado que o responsavel configura atendimento, quando informar Nao em Necessita de agendamento?. | Entao nao apresentar configuracoes especificas de agendamento nem exigir seus campos. |
-| CA20 | Dado que o servico necessita de agendamento, quando selecionar Paraiba Digital. | Entao identificar agendamento realizado pelo proprio Paraiba Digital; ocultar e nao exigir Link e Exibicao. |
-| CA21 | Dado que o servico necessita de agendamento, quando selecionar Outro sistema ou site, informar URL e Dentro do Paraiba Digital. | Entao registrar que o cidadao permanece dentro da experiencia do Paraiba Digital, sem redirecionamento. |
-| CA22 | Dado que o servico necessita de agendamento, quando selecionar Outro sistema ou site, informar URL e Em uma nova pagina. | Entao registrar redirecionamento para o endereco externo informado. |
-| CA23 | Dado que Outro sistema ou site foi selecionado e campos externos preenchidos, quando mudar para Paraiba Digital. | Entao ocultar Link e Exibicao e retirar sua obrigatoriedade; preservar valores na sessao, sem apresenta-los ou transferi-los como ativos. |
-| CA24 | Com Sim, revisar tipos/sistema ausentes; com sistema externo, revisar link/exibicao ausentes ou URL invalida. | Identificar pendencias condicionais e impedir exportacao conforme 008/010; aceitar Online, Presencial ou ambos; permitir previa parcial e edicao. |
-| CA25 | Navegar pelas cinco partes do formulario. | Usar os nodes `653:1540`, `2024:269`, `641:58`, `647:650` e `660:2533` como estados da mesma rota, preservando valores e adaptando layout ao conteudo. |
-| CA26 | Abrir e fechar a orientacao de um campo. | Alternar entre os estados `811:306` e `811:382`, anunciar o estado e mostrar conteudo correspondente da 006 sem alterar o valor. |
-| CA27 | Consultar a previa dentro do formulario. | Reutilizar componente/view model `821:308` da 009, sem duplicar seletores, markup ou estado da Carta. |
-| CA28 | Usar a parte representada no frame `2024:269`. | Interagir com formulario real, sem imagem, overlay ou mapa de cliques, preservando a estrutura visual do frame e semantica acessivel. |
-
-## Proximo passo
-
-Executar `/spec:planejar 007-formulario-carta-servico` para definir contratos,
-estado compartilhado, migracao, componentes e verificacoes. Depois, criar
-tarefas e `implementation-plan.md`, conciliar as pendencias e validar a
-documentacao antes de `/spec:implementar`.
+Histórico preservado em [spec anterior](historico/2026-10-19-pre-t004-spec.md). O histórico não orienta o código atual.

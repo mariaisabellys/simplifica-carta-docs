@@ -130,3 +130,14 @@ intocados por este comando. Nenhuma tarefa foi concluida automaticamente.
 Corrigir V007-01–V007-03, fechar as dependencias aplicaveis e repetir a
 validacao. Implementar apenas em etapa explicitamente autorizada para isso;
 nao considerar este relatorio aprovacao institucional ou visual.
+
+## Revalidação T019 — 22/10/2026
+
+Parecer atual: **modelo v3 consolidado, mas não liberado integralmente para
+implementação**. A antiga lacuna de CA19–CA24 está resolvida e a rastreabilidade
+ativa chega a CA33/F007-22. Permanecem decisões MC-02–MC-08 aplicáveis, em
+especial prazo, itens, Ativo, URL/detalhe de custo e caso presencial. Tipos,
+catálogos, schema, storage, validação e CSV existem; provider/formulário real
+não. Nodes das cinco partes, Form-Card e prévia responderam por metadados, sem
+aceite visual. Ver a
+[matriz T019](../../docs/verificacoes/t019-validacoes-features.md).

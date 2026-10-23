@@ -1,92 +1,56 @@
-# Verificacao: Atendimento agendado
+# Verificação T014 — Agenda e contratos
 
-> **Baseline visual atualizado em 16 de outubro de 2026:** o significado de
-> `425:201` foi corrigido para entrada compartilhada 014/015.
+21/10/2026. Escopo documental. T014 concluída documentalmente: contratos
+consolidados e decisões externas registradas como bloqueios, não aprovadas.
 
-## Resultado e escopo
+## Entregas
 
-Executado `/spec:implementar 014-atendimento-agendado` em 2026-10-05.
-Implementacao parcial: AttendanceFields/AttendancePayload adicionados em
-atendimento.types.ts; createAttempt e tipo Attempt em atendimento.attempt.ts;
-quatro testes em tests/atendimento.attempt.test.mjs. Contrato legado preservado.
-Helper sem consumidor ainda; T018 possui entrega isolada, sem tarefa concluida.
-Pagina permanece placeholder. Nao foram criados backend, banco, migrations,
-agenda, worker, armazenamento de operacao ou envios/requisicoes reais.
+[Contrato da agenda](contrato-agenda.md): quatro endpoints/contexto/CSRF/códigos/recovery/410,
+gate de novas criações, snapshot imutável, idempotência, worker e AG01–AG13.
+Sete artefatos reconciliados; sete originais preservados em
+historico/2026-10-21-pre-t014-*.md com links relativos ajustados.
+ADR-004 proposta criada; ADR-003 aceita preservada.
+IN01–IN08 identificam papéis responsáveis a consultar, evidência e impacto.
+Nenhum responsável nominal, prazo, fuso ou política institucional inventado.
 
-## Comportamento e evidencias
+## Revisão conceitual
 
-createAttempt usa crypto.getRandomValues com 32 bytes, captura timestamp e
-gera chave no formato v1.timestamp.hex previsto pelo plano. Captura apenas
-os seis campos e horarioId, sem spread de campos extras; congela snapshot e
-tentativa, preservando strings sem normalizacao/truncamento. Falha de crypto
-propaga, sem fallback fraco. Nao valida formato/limites institucionais, persiste,
-envia ou inicia retry. Consumidor futuro deve chamar somente na confirmacao de
-tentativa nova e reutilizar esse objeto em resultado incerto.
+R1–R6 do contrato: registro S captura intervalo A, resposta se perde, oferta
+muda para B e gate pausa; replay K/P válido retorna mesmo snapshot A, sem nova
+ocupação/outbox. Payload alterado gera 409; recuperação expirada gera 410,
+sem afirmar que registro não existe. Análise documental, sem execução de banco.
 
-| Check | Resultado |
+## Verificação local
+
+Resultados de checks documentais registrados abaixo.
+
+| Check em 21/10/2026 | Resultado |
 | --- | --- |
-| node --test tests/atendimento.attempt.test.mjs tests/clipboard.test.mjs tests/csv.test.mjs | 14 testes passaram, quatro novos |
-| npm.cmd run typecheck | Passou |
-| npm.cmd run build | Passou fora do sandbox para evitar bloqueio de leitura do esbuild previamente identificado; Vite 7.3.6 |
+| Script Node de integridade | Oito documentos ativos, sete artefatos vinculados ao contrato; 26 destinos de arquivo locais existentes |
+| IDs e matriz normativa | CA01–CA22, AG01–AG13, IN01–IN08 e R1–R6 completos; quatro endpoints |
+| Comparação com arquivos anteriores | Sete históricos íntegros, salvo ajuste de links relativos |
+| Replay R1–R6 | Coerência documental de snapshot/pausa/repetição/expiração; sem execução transacional |
+| ADR-004 e ADR-003 | Nova ADR explicitamente proposta/não aprovada; nenhuma alteração na ADR-003 aceita |
+| git diff --check | Sem erros |
+| git status --short -- src tests | Sem saída: nenhum código/conteúdo executável/teste alterado |
 
-Fixtures sinteticas verificam tamanho/formato da chave com crypto/relogio
-controlados, snapshot imutavel independente de edicoes, exclusao de dados
-extras e falha sem fallback. Nao comprovam idempotencia, seguranca de API,
-capacidade transacional, recuperacao, notificacao ou interface. Nenhum dado
-institucional real foi usado; nenhum contato recebeu mensagem.
+A primeira checagem encontrou ausência de vínculo explícito ao contrato neste
+registro; vínculo corrigido e script repetido com sucesso. Links foram
+verificados quanto à existência local, não conteúdo externo ou alvos DOM.
+Nenhum código/TypeScript/teste/configuração operacional alterado.
+Não executados: suíte, typecheck/build, migrations, banco/worker, rede/CSRF,
+SMTP, browser/clipboard, Figma/ERS ou validação institucional.
 
-## Documentacao
+## Pendências
 
-Analisados spec/plan/tasks/implementation-plan/validation da 014, ADR-003,
-contratos compartilhados 013/015 e codigo/inventario. Plan/tasks/plano detalhado
-foram atualizados para registrar GET contexto/CSRF e 410, cobertura de bootstrap,
-recusa CSRF, Retry-After e falha de lookup. Spec/validation intactos; validation
-continua registro da auditoria anterior. V014-02 recebeu alinhamento documental,
-sem alegar payload final ou classificacao por endpoint resolvidos. Alteracoes
-anteriores do workspace preservadas. Este relatorio e quickstart adicionados.
+IN01–IN08, aprovação ADR/ambientes, migração dos tipos/helper/descrição opcional,
+conteúdo T013, implementação e testes AG01–AG13/CA01–CA22.
+Fontes editoriais continuam atendimento pendente/e-mail ativo, sem nova ativação.
+Testes históricos do helper não comprovam API/snapshot/gate atuais.
 
-### Atualizacao editorial — 2026-10-07
+### Encerramento T013 — 21/10/2026
 
-O conteudo versionado foi reconciliado com RF06, RF07 e os limites do MVP:
-
-- `Atendimento agendado com Sucesso!` foi substituido por
-  `Solicitacao registrada`, sem confundir registro com confirmacao do atendimento;
-- removida a afirmacao de que um e-mail de confirmacao foi enviado ao solicitante;
-- removida a acao `Reagendar`, pois remarcacao self-service esta fora do escopo;
-- o envio passou a ser chamado de `Confirmar solicitacao`;
-- mes, data e horarios estaticos foram identificados como exemplos ilustrativos,
-  sem representar disponibilidade da agenda institucional.
-
-Esta correcao nao comprova backend, agenda, notificacao ou registro funcional.
-
-### Atualizacao Figma — 2026-10-08
-
-- `425:201`: pagina compartilhada de escolha de canal.
-- `425:296`: escolha de horario.
-- `446:206`: dados e revisao antes do envio.
-- `470:444`: solicitacao registrada.
-- Os quatro frames pertencem a uma rota; o conteudo versionado prevalece e o
-  layout deve acomodar estados reais, erros e textos longos.
-
-Esta atualizacao confirma o mapeamento, nao consulta MCP detalhada nem aceite visual.
-
-## Pendencias
-
-- V014-01: decidir se pausa editorial tambem bloqueia API, como consultar/
-  recuperar e tratar tentativa existente. Nao cancelar POST por aviso de card.
-- V014-03: definir imutabilidade ou captura de intervalo/fuso e comportamento
-  de oferta alterada entre revisao/envio, para replay/notificacao coerentes.
-- Agenda, fuso, capacidade, modalidade, confirmacao, campos/formatos/limites,
-  politica de dados/recuperacao e destinatario/provedor requerem decisao da equipe.
-- Stack/ADR/lock, PostgreSQL, proxy/CSRF, outbox/worker e ambiente de testes
-  transacionais inexistentes. Nenhuma escolha pendente foi aprovada por inferencia.
-- Constitution secao 6 exige: "Antes de implementar trabalho visual, o Codex
-  deve consultar via MCP". Figma MCP indisponivel nesta sessao; interface aguarda
-  consulta Design/Make. Fonte: ../../docs/processo/constitution.md. ERS e copy
-  tambem aguardam conferencia/validacao.
-- Navegacao/provider v2 e canais 013/015 ainda incompletos; testes de browser,
-  acessibilidade, PostgreSQL concorrente e SMTP falso permanecem pendentes.
-
-CA01–CA20 sem aceite integral. Helper nao registra solicitacao, reserva vaga
-ou prova que atendimento esta operacional. Segredo/timestamp ainda dependem
-da politica futura de validade/relogio; nao estabelecer prazo arbitrario.
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

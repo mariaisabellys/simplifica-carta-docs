@@ -173,3 +173,12 @@ do codigo que descreve o contrato atual.
    mantendo dependencias ausentes como pendentes e resultados em verification.md.
 
 Este relatorio nao autoriza iniciar codigo nem declara o produto aprovado.
+
+## Revalidação T019 — 22/10/2026
+
+Parecer atual: **contrato vigente coerente; implementação pendente**. As
+inconsistências deste registro antigo sobre dez assuntos estão superadas pelo
+contrato de três tópicos e 13 informações, sua ordem e os destinos v3. RF01–RF06
+e CA01–CA16 estão mapeados a F006-01–F006-14; copy/metadados e página continuam
+por implementar. O node `387:1918` respondeu por metadados, sem aceite visual.
+Ver a [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).

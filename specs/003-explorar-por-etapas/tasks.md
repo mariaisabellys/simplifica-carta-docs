@@ -318,3 +318,7 @@ A spec `003-explorar-por-etapas` estara concluida quando:
 - typecheck, build e testes aplicaveis estiverem aprovados;
 - os criterios de aceite tiverem evidencia e `/spec:revisar` nao apresentar
   bloqueios.
+
+## Complemento documental T015 — navegação (22/10/2026)
+
+Na implementação das tarefas de navegação, aplicar o [contrato central](../../docs/arquitetura/contrato-navegacao.md) e os cenários NV01–NV12 da [verificação T015](../../docs/verificacoes/t015-navegacao.md). Usar somente NavigationProvider, useAppLocation, useAppNavigate e AppLink; ButtonLink/breadcrumb/marca compõem AppLink, sem handlers locais ou prop onNavigate. Preservar pathname/search/hash, sem perda de query, e separar 404 da aplicação do fallback SPA. Tarefas funcionais continuam pendentes; este complemento não comprova execução.

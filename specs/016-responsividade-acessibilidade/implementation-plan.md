@@ -54,7 +54,7 @@ leitura assistiva, contraste ou build; nenhum pacote foi instalado.
 | Home | Conteudo inicial e links, sem entrega completa da 002 comprovada | Avaliar shell/conteudo presente; nao aprovar jornada planejada |
 | 004/007 | Paginas inspecionadas usam PlaceholderCard | Verificacao funcional pendente das features proprietarias |
 | Demais fluxos | Contratos documentados, entrega funcional nao comprovada | Revalidar codigo e inventario antes de testar |
-| 005/017 | Pastas ausentes no inventario atual | Diagnostico/deploy permanecem dependencias externas a esta feature |
+| 005/017 | 005 documentada e com rotas placeholder; 017 estruturada documentalmente, sem ambiente publicado | Diagnostico permanece dependencia funcional; deploy e testes publicados seguem o plano da 017 |
 | Testes | Apenas dev/build/preview/typecheck em package.json | Propor infraestrutura abaixo; reusar suite se entregue antes |
 
 Nao gerar baseline de acessibilidade por leitura de codigo. Diferenciar
@@ -67,13 +67,13 @@ Uma rota ou placeholder nao comprova processo entregue.
 | `/explorar-por-etapas` | 003 | Cards, destinos e ancoras; rota ainda ausente do codigo atual |
 | `/o-que-e-carta-de-servicos` | 004 | Leitura, secoes, imagens/listas e links |
 | `/diagnostico`, `/diagnostico/resultado` | 005 | Escolhas, resultado, retorno e continuidade |
-| `/organizar-informacoes` | 006 | Dez assuntos consultivos, textos longos, acesso livre |
+| `/organizar-informacoes` | 006 | Tres topicos e 13 informacoes, textos longos, acesso livre |
 | `/formulario-carta` | 007/008 | Partes, listas, condicionais, erros/sugestoes, recuperacao e memoria apenas |
 | `/previa`, exportacao | 009/010 | Vazia/parcial/completa, pendencias, dados longos, download/falha |
 | `/tutorial-paraiba-digital` | 011/012 | Passos, imagem indisponivel, copia/manual/recusa e retorno |
 | `/ajuda` | 013 | FAQ aberta/fechada, hash, destinos e pausa editorial |
 | `/ajuda/atendimento-agendado` | 014 | Agenda/vazio/falha, selecao, revisao, conflito, envio incerto e registro |
-| `/ajuda/suporte-email` | 015 | Contato, mailto, copia/falha e alternativa manual |
+| `/ajuda/suporte-email` | 015 | Contato, Copie o e-mail, cópia/falha e alternativa manual; layout 425:201 |
 
 A 014 e agendamento de suporte GESED, separado da configuracao de agendamento
 da Carta na 007. Nao executar agenda externa, abrir links preenchidos na Carta
@@ -81,25 +81,54 @@ ou enviar mensagens institucionais durante verificacoes.
 
 ## Referencias Figma e composicao transversal
 
-| Fonte/contexto | Referencia local | Situacao |
+| Contexto | Referencias identificadas | Situacao T016 e adaptacao obrigatoria |
 | --- | --- | --- |
-| Design oficial | YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2 | Consulta MCP pendente |
-| Home/shell | 310:175 | Referencia da 002, nao frame proprio da 016 |
-| Exploracao | 575:483 | Entrega de rota/componente pendente |
-| Conceito | 365:265 | Conteudo completo depende da 004 |
-| Diagnostico | 387:1020 | Nao absorver a 005 |
-| Formulario/ajuda de campo | 811:306, 811:382, 651:317 | Conferir controles, erro, foco e condicionais |
-| Previa | 821:308 | Conferir dados longos e acoes |
-| FAQ | 169:495 | Nao comprova tela de agenda ou e-mail |
-| Organizacao/tutorial/suporte/resultado | Sem frame completo confirmado | Localizar com a feature proprietaria |
-| Make | dVm7lEZdBFqOiiySWLWUqp, node 0:1 | Consulta de tokens/componentes pendente |
+| Design/Make | Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`; Make `dVm7lEZdBFqOiiySWLWUqp`/`0:1` | Acesso visual indisponivel; nenhum node inspecionado nesta rodada. |
+| Home, exploracao e conceito | `310:175`, `575:483`, `365:265` | Referencias de pagina; validar shell, texto longo, foco, menu e reflow. |
+| Diagnostico | `387:1020`, resultado `387:1362` | Perguntas/resultados vem da 005; o frame de resultado e apenas amostra de estado. |
+| Organizacao | `387:1918` | Adaptar aos tres topicos e 13 informacoes atuais; altura e navegacao acompanham conteudo. |
+| Formulario 007 | `653:1540`, `2024:269`, `641:58`, `647:650`, `660:2533` | Cinco partes da mesma rota. `2024:269` e imagem de referencia: reconstruir controles HTML reais. |
+| Campo, orientacao e label | `811:306`, `811:382`, `651:317` | Variantes sem/com orientacao; abertura nao modifica dados, foco ou progresso. |
+| Previa 007/009 | `821:308` | Um componente compartilhado; ampliar para conteudo integral e estados vazio/parcial/completo/falha. |
+| Tutorial 011/012 | `564:635`, `564:730`, `564:852`, `564:980`, `564:1232`, `564:1357` | Uma pagina com seis estados. `564:980` cresce para cinco grupos e 25 definicoes aplicaveis. |
+| FAQ | `169:495` | Pagina 013; FAQ aberta/fechada, hashes, canais e estados editoriais exigem verificacao. |
+| Ajuda 014/015 | `425:201`, `425:296`, `446:206`, `470:444` | Entrada compartilhada e variantes da 014; conteudo real substitui datas/dados de exemplo. |
 
 A composicao e a das paginas proprietarias: header/nav, main, h1, secoes,
 acoes e footer. A 016 verifica reflow e estados desses contextos; nao inventa
 um layout proprio. T004 registra nodes consultados, assets, estado, divergencia
-e adaptacao. Referencia desktop nao comprova uso movel ou foco. Atualizar mapa
-apenas com consulta real. Documentar adaptacoes necessarias quando o visual
-criar barreira, preservando informacao e hierarquia.
+e adaptacao. Na T016, tentativas web em `310:175`, `2024:269`, `564:980` e
+`425:201` falharam e nao havia navegador conectado ou MCP Figma. Referencia
+desktop nao comprova uso movel, teclado ou foco. O
+[registro T016](../../docs/verificacoes/t016-figma-acessibilidade.md) mantem
+pendencia por tela e estados. Atualizar evidencia visual somente apos consulta
+real; documentar adaptacoes quando o visual criar barreira, preservando
+informacao e hierarquia.
+
+### Adaptacoes que prevalecem sobre a amostra visual
+
+1. **Etapa 4 expandida (`564:980`):** altura e quantidade de linhas sao
+   determinadas pela sessao v3. Renderizar cinco grupos e todas as 25
+   definicoes aplicaveis; 13 campos abertos copiam somente quando preenchidos,
+   12 escolhas exibem a selecao sem botao. Colecoes repetem por ID e estados
+   K/S/E ocultam inativos. Ausencia, copia pendente/sucesso/falha e texto longo
+   nao podem ser truncados para reproduzir o frame.
+2. **Formulario real (`2024:269`):** a imagem do frame orienta composicao, mas
+   cada label, campo, grupo, lista e acao vira HTML/React operavel. Preservar
+   cinco partes, validacao, obrigatoriedade, condicionais, IDs estaveis, resumo
+   de erros, teclado e associacoes; nenhuma imagem, overlay ou mapa de cliques
+   substitui controles.
+3. **Orientacoes (`811:306`/`811:382`):** sao variantes do mesmo Form-Card.
+   Abrir/fechar explicacao vinda do contrato da 006 nao altera valor, progresso,
+   validacao nem foco inesperadamente; conteudo oculto sai da arvore/foco e o
+   acionador expoe estado.
+4. **Previa compartilhada (`821:308`):** 007 e 009 usam a mesma projecao e
+   estrutura semantica. O componente acomoda Carta vazia, parcial, completa,
+   erros estruturais, sugestoes separadas, colecoes e valores longos. Um card
+   isolado do Figma nao limita a pagina nem autoriza uma segunda previa.
+
+Essas adaptacoes sao contratos documentais; sua aparencia ainda depende de
+consulta Figma autenticada e verificacao nos ambientes definidos pela 016.
 
 ## Meta e matriz de criterios
 
@@ -165,7 +194,7 @@ registrar a avaliacao por controle e estado, conforme a
 Reusar NavigationProvider/useAppNavigate da 002 quando entregues; o hook
 retorna funcao de navegacao, nao objeto. Nao duplicar roteador/provider na 016.
 T005 consolida politica com 002: uma transicao identificada por chave/revisao,
-pathname e hash; titulo document.title atualizado depois do commit da rota;
+pathname/search/hash; título document.title atualizado depois do commit da rota;
 um unico responsavel por foco e scroll, sem efeito a cada edicao da Carta.
 
 | Evento | Politica proposta a conciliar |
@@ -173,42 +202,23 @@ um unico responsavel por foco e scroll, sem efeito a cada edicao da Carta.
 | Entrada direta sem hash | Titulo correto; nao roubar foco ja estabelecido sem necessidade |
 | Navegacao interna explicita | Focar h1 ou main apos montar; scroll ao inicio |
 | Hash inicial/interno | Abrir painel/parte necessario, focar alvo conhecido e posicionar |
-| Voltar/avancar | Restaurar destino/scroll seguro por entrada quando registrado; fallback h1/main |
+| Voltar/avancar | Restaurar URL completa, focar alvo de hash ou título após montagem; aplicar política central de scroll, sem histórico paralelo de coordenadas |
 | Re-render, digitacao, resize | Nao disparar foco de rota |
 | Alvo removido/inexistente | Fallback na parte ou main; nunca elemento desmontado |
 
-Estado de retorno usa identificador de UI e coordenadas, nunca texto da Carta
-na URL/history. Nao impedir comportamento nativo de mailto, externo, download,
-target diferente de _self ou clique modificado. Guard proposto para o handler
-compartilhado; validar callsites reais antes de adotar:
+Não criar histórico paralelo de foco/coordenadas; estado de navegação nunca
+contém textos da Carta em URL/history. Nao impedir comportamento nativo de mailto, externo, download,
+target diferente de _self ou clique modificado. Reutilizar a guarda existente em `src/lib/navigation.ts` no único `AppLink`,
+sem duplicar sua implementação nas features. Testar também URL malformada.
 
-```tsx
-import type { MouseEvent } from "react";
-
-export function shouldHandleInternalLink(event: MouseEvent<HTMLAnchorElement>) {
-  const anchor = event.currentTarget;
-  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
-      event.shiftKey || event.altKey || anchor.hasAttribute("download") ||
-      (anchor.target && anchor.target !== "_self")) return false;
-  const target = new URL(anchor.href, window.location.href);
-  return target.origin === window.location.origin &&
-    (target.protocol === "http:" || target.protocol === "https:");
-}
-
-// Dentro do unico handler compartilhado, com href real mantido no anchor:
-// if (!shouldHandleInternalLink(event)) return;
-// event.preventDefault(); navigate(anchor.pathname + anchor.search + anchor.hash);
-```
-
-O handler nao promete suporte a query desconhecida: conciliar resolucao de
-rota com 002. Clique no skip link e hash na mesma pagina deve cumprir sua
+O handler único preserva query desconhecida e hash, conforme o contrato central. Clique no skip link e hash na mesma pagina deve cumprir sua
 politica especifica, evitando handler concorrente com focus de rota.
 
 ```tsx
 // Trecho para integrar no AppShell, preservando estrutura atual:
-<a className="skip-link" href="#main-content">Ir para o conteúdo</a>
+<a className="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 // header/nav existentes
-<main id="main-content" className="site-main" tabIndex={-1}>{children}</main>
+<main id="conteudo-principal" className="site-main" tabIndex={-1}>{children}</main>
 // footer existente
 ```
 
@@ -320,7 +330,7 @@ Nao usar overflow-x:hidden no body para mascarar dados cortados.
 .skip-link:focus { transform: none; }
 .site-main, .form-field { min-inline-size: 0; }
 .site-main { overflow-wrap: anywhere; }
-#main-content, .site-main [id] {
+#conteudo-principal, .site-main [id] {
   scroll-margin-block-start: calc(var(--header-height, 0px) + var(--space-4));
 }
 .step-grid {
@@ -372,7 +382,8 @@ Mensagens vem de src/content da feature, sem motor paralelo na 016.
 Timers de confirmacao nao removem valor nem alternativa manual. A 010 anuncia
 download iniciado, nao arquivo salvo; a 012 copia, nao publica; a 014 distingue
 resultado incerto/registro/notificacao de confirmacao conforme decisao propria;
-a 015 nao confirma envio pelo mailto. A 016 verifica esses contratos.
+a 015 confirma somente cópia do endereço, sem abrir aplicativo ou anunciar
+envio. A 016 verifica esses contratos.
 
 ## Infraestrutura automatizada proposta
 
@@ -413,7 +424,7 @@ test("shell permite pular navegacao e nao apresenta violacoes detectadas", async
   const skip = page.getByRole("link", { name: "Ir para o conteúdo" });
   await expect(skip).toBeFocused();
   await page.keyboard.press("Enter");
-  await expect(page.locator("#main-content")).toBeFocused();
+  await expect(page.locator("#conteudo-principal")).toBeFocused();
   const result = await new AxeBuilder({ page }).analyze();
   expect(result.violations).toEqual([]);
 });
@@ -494,7 +505,7 @@ Roteiro T013–T015:
 6. Corrigir defeitos reproduzidos e retestar criterio/contexto e consumidores
    afetados. Ampliar regressao somente se mudanca/falha justificar.
 
-Documentos futuros, criados em T008/T017, sem resultados inventados agora:
+Documentos preparados em T008/T017, sem resultados de auditoria inventados:
 
 - `accessibility-matrix.md`: criterio, CA, pagina/processo, estado, metodo,
   dono, ambiente/versoes, commit/data, resultado, evidencia e justificativa.
@@ -557,6 +568,7 @@ politica de URLs pertencem a 007/011, nao sao decididas pela 016.
 
 Antes do aceite: executar checks e metodos manuais nos contextos entregues,
 resolver/retestar falhas pertinentes e manter ausencias como pendentes.
-005/017, fluxos placeholders, Figma e ambientes indisponiveis impedem aceite
-integral; nao impedem consolidar este plano documental. Proximo comando:
+005, fluxos placeholders, Figma e ambientes ainda indisponiveis impedem aceite
+integral. A 017 agora define como preparar esses ambientes, mas não comprova sua
+existência; isso não impede consolidar este plano documental. Proximo comando:
 `/spec:validar 016-responsividade-acessibilidade`.

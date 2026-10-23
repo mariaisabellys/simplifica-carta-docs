@@ -12,6 +12,8 @@ Codigo so deve ser escrito quando a etapa atual for `/spec:implementar`.
 
 Quando existir `implementation-plan.md`, ele deve ser usado como base principal da implementacao.
 
+A aplicabilidade dos sete artefatos, seus estados e a preservação de histórico seguem a [convenção documental](../../specs/README.md). Antes de implementar contratos dependentes, registrar a validação documental atual; registrar entrega e checks efetivos em `verification.md`. Prontidão documental, implementação, aceite funcional e aceite visual são estados distintos. Dispensa de plano detalhado para trabalho simples exige justificativa em `plan.md`; não decorre apenas da ausência de interface.
+
 ### 2. O produto orienta, nao substitui o Paraiba Digital
 
 O Simplifica Carta deve apoiar a preparacao das informacoes da Carta de Servicos, mas a publicacao oficial continua sendo feita manualmente no Paraiba Digital.
@@ -67,6 +69,8 @@ Cria ou revisa o `implementation-plan.md`. Deve consolidar contexto, referencias
 
 Compara `spec.md`, `plan.md`, `tasks.md` e `implementation-plan.md`, quando existir, com ERS, Figma Design, Figma Make, roadmap e constitution.
 
+Registra o parecer atual em `validation.md`, identificando base, fontes realmente consultadas, pendências e tarefas afetadas. Fontes não acessadas não podem ser declaradas verificadas. O histórico permanece identificado e separado das instruções vigentes.
+
 ### `/spec:implementar`
 
 Implementa codigo seguindo os documentos aprovados. Quando existir `implementation-plan.md`, deve segui-lo como base principal e adaptar apenas o necessario a estrutura real do projeto.
@@ -74,6 +78,8 @@ Implementa codigo seguindo os documentos aprovados. Quando existir `implementati
 ### `/spec:revisar`
 
 Revisa a funcionalidade implementada, considerando requisitos, acessibilidade, responsividade, aderencia ao Figma e lacunas tecnicas.
+
+Registra em `verification.md` os cenários e checks executados, ambiente, resultados, defeitos e pendências. O quickstart fornece o roteiro reproduzível; sua existência não comprova execução.
 
 ## Onde colocar cada tipo de informacao
 
@@ -85,5 +91,5 @@ Revisa a funcionalidade implementada, considerando requisitos, acessibilidade, r
 - `docs/ia`: regras de uso do Codex e prompts padroes.
 - `docs/implementation-plan.md`: estrategia geral de uso do `implementation-plan.md` nas specs.
 - `docs/decisoes`: ADRs.
-- `specs`: especificacoes, planos, tarefas, planos de implementacao e quickstarts por funcionalidade.
+- `specs`: especificações, planos, tarefas, planos de implementação, quickstarts, validações e verificações por funcionalidade; histórico datado separado dos contratos ativos.
 - Codigo: implementacao executavel, componentes, paginas, validadores e testes.

@@ -95,6 +95,7 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
 | E-mail institucional | Permitir contato sobre o atendimento. | Obrigatorio, formato de e-mail valido. |
 | Telefone | Permitir contato complementar. | Obrigatorio no contrato inicial, formato a definir. |
 | Assunto da duvida | Orientar a preparacao da equipe. | Obrigatorio, texto nao vazio. |
+| Breve descrição da dúvida | Contexto complementar já previsto no conteúdo. | Opcional; descricaoDuvida, limite institucional pendente. |
 | Data e horario | Identificar intervalo solicitado. | Obrigatorios, vinculados a disponibilidade valida. |
 
 - Conciliar obrigatoriedade final, limites de tamanho e formatos com ERS e
@@ -316,9 +317,36 @@ notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 | CA19 | Percorrer a jornada visual. | Usar `425:201`, `425:296`, `446:206` e `470:444` como estados da mesma rota, preservando selecoes e dados aplicaveis. |
 | CA20 | Comparar frame e conteudo versionado. | Adaptar layout ao conteudo e aos estados reais, sem reintroduzir disponibilidade ficticia, confirmacao antecipada, e-mail enviado ou remarcacao. |
 
-## Proximo passo
+## Contrato consolidado T014 — 21/10/2026
 
-Executar `/spec:planejar 014-atendimento-agendado` para definir backend,
-contratos, agenda, notificacoes, tratamento de dados e verificacoes. Depois,
-criar tarefas e `implementation-plan.md`, resolver pendencias e executar
-`/spec:validar` antes de `/spec:implementar`.
+Aplicar [contrato-agenda.md](contrato-agenda.md) como fonte única de API,
+payload/códigos, contexto/CSRF, pausa operacional, snapshot e recuperação.
+O payload contém seis campos obrigatórios, descricaoDuvida opcional e horarioId.
+Tipos existentes ainda precisam de migração; não são o schema final.
+
+Pausa editorial não desativa API: servidor possui gate próprio. Replay de
+operação registrada ainda válida precede gate e revalidação de oferta.
+Snapshot de início/fim/fuso é imutável; mudança de intervalo cria novo ID.
+410 indica recuperação expirada, nunca ausência de registro. Nenhuma chave
+nova automática por rede/timeout/pausa. Notificação não condiciona sucesso.
+
+| ID | Cenário adicional | Resultado esperado |
+| --- | --- | --- |
+| CA21 | Pausa concorrente com registro e recuperação | Nova criação bloqueada conforme gate serializado; resultado registrado continua recuperável, sem cancelamento inferido |
+| CA22 | Oferta/fuso mudam e mesma tentativa é repetida | Snapshot original no Receipt; sem mudar resultado ou duplicar ocupação/outbox |
+
+IN01–IN08 no contrato registram papéis responsáveis a consultar, não pessoas
+nomeadas ou decisões aprovadas. [ADR-004](../../docs/decisoes/adr-004-stack-atendimento.md)
+é proposta; ADR-003 não aprova stack/infraestrutura. Produção permanece bloqueada.
+
+## Próximo passo
+
+Obter decisões IN01–IN08, concluir migração do conteúdo T013 e autorizar
+implementação separadamente. Ver [tasks](tasks.md) e [verification](verification.md).
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.
