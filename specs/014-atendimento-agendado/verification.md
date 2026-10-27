@@ -44,9 +44,18 @@ SMTP, browser/clipboard, Figma/ERS ou validação institucional.
 ## Pendências
 
 IN01–IN08, aprovação ADR/ambientes, migração dos tipos/helper/descrição opcional,
-conteúdo T013, implementação e testes AG01–AG13/CA01–CA22.
+implementação e testes AG01–AG13/CA01–CA22. O conteúdo T013 foi encerrado no
+registro abaixo e não integra mais esta lista de pendências.
 Fontes editoriais continuam atendimento pendente/e-mail ativo, sem nova ativação.
 Testes históricos do helper não comprovam API/snapshot/gate atuais.
+
+## Abertura paralela de decisões — 27/10/2026
+
+IN01–IN08 foram abertas documentalmente, em paralelo com INF01–INF10, no
+[registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md). Foram
+conferidos para cada item pergunta, papel a consultar, evidência de encerramento,
+cruzamentos e impacto. Não há evidência de encaminhamento, responsável nominal,
+resposta ou aprovação; a operação e a implementação dependente seguem bloqueadas.
 
 ### Encerramento T013 — 21/10/2026
 

@@ -41,8 +41,9 @@ function previewConditions(carta: CartaServico) {
   const K = carta.publicoRequisitos.custo.tipo === "sob-consulta" ||
     carta.publicoRequisitos.custo.tipo === "com-taxa";
   const S = carta.atendimento.exigeAgendamento === true;
-  const E = S && carta.atendimento.sistemaAgendamento === "sistema-externo";
-  return { K, S, E };
+  const ON = S && carta.atendimento.tiposAgendamento.includes("online");
+  const E = ON && carta.atendimento.sistemaAgendamento === "sistema-externo";
+  return { K, S, ON, E };
 }
 ```
 
@@ -111,7 +112,7 @@ quickstart antes de entrega. Comparação visual/assistiva conforme F009-11/016.
 
 ## Pendências
 
-Consulta Figma/ERS e copy; semântica MC-05 (projeção conservadora definida);
-contratos defensivos/validação estrutural, provider e registro de foco reais;
+Consulta Figma/ERS e copy; implementação das decisões MC-02–MC-08 da 007;
+provider e registro de foco reais;
 ação CSV 010; recarga publicada/fallback 017; testes funcionais/visuais.
 T008 fecha projeção documental, não homologa modelo nem implementa a prévia.

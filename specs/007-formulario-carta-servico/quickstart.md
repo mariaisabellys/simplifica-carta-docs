@@ -30,7 +30,7 @@ formulário real, validação estrutural e consumidores estarem implementados.
 3. Abrir/fechar orientação; dados/progresso não mudam.
 4. Adicionar, editar, remover e reordenar documentos/etapas por teclado; IDs e
    foco permanecem estáveis.
-5. Trocar categoria/subcategoria e condições K/S/E; valores inativos ficam
+5. Trocar categoria/subcategoria e condições K/S/ON/E; valores inativos ficam
    fora da projeção, e os preservados reaparecem somente conforme contrato.
 6. Revisar: resumo abre parte e foca alvo autorizado; sugestão 008 não vira
    erro estrutural nem reescreve texto.

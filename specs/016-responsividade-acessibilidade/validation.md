@@ -1,5 +1,10 @@
 # Validação atual: Responsividade e acessibilidade
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após a
+> atualização da matriz transversal. Contrato coerente com as condições atuais;
+> auditorias reais continuam não executadas. Evidência no
+> [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 ## Parecer
 
 Validação documental registrada em 22/10/2026 após T015–T017. Spec, plan,

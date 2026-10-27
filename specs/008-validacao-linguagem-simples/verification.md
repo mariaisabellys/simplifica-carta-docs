@@ -28,8 +28,19 @@ Os cenários VE são testes previstos, não execuções do motor. Conferência d
 estrutura documental não comprova algoritmos, offsets, geometria, acessibilidade
 ou integrações. Não foram executados build/typecheck/testes de aplicação.
 
-## Pendências
+## Pendências registradas em 19/10/2026
 
 Aprovação V008-01/V008-03; implementação F008-02–09; consumidores, navegador,
 teclado/leitores e build F008-10–12. Helper legado de 240 caracteres permanece,
 assim como contagem total no helper da 007. Não declarar a feature concluída.
+
+## Registro de aprovação — 27/10/2026
+
+- V008-01 encerrada: `ls-pt-BR-v1`, 27 registros aprovados sem alteração de
+  ordem ou conversão em substituição automática.
+- V008-03 encerrada: `msg-pt-BR-v1`, MSG01–MSG17 aprovadas como copy editorial.
+- Responsável registrado: usuário responsável pelo conteúdo do projeto, por
+  solicitação explícita nesta execução.
+- Escopo: aprovação editorial para implementação. Não é homologação da GESED,
+  parecer jurídico, teste do motor ou aceite visual/acessível.
+- F008-01 concluída; execução retoma em F008-02.

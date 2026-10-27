@@ -1,5 +1,10 @@
 # Validação documental: Atendimento agendado
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após a
+> abertura de IN01–IN08. O contrato técnico permanece coerente, mas operação e
+> implementação dependente seguem bloqueadas até respostas e ADR-004 final.
+> Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 21/10/2026 — T014. **Contrato técnico reconciliado; produção/aceite funcional
 bloqueados por IN01–IN08 e implementação ausente.**
 [Validação anterior](historico/2026-10-21-pre-t014-validation.md) preservada.
@@ -14,8 +19,10 @@ bloqueados por IN01–IN08 e implementação ausente.**
   oferta mudada não altera replay. R1–R6 conferido conceitualmente.
 - Descrição opcional existente no conteúdo representada no contrato; tipos
   e helper antigos ainda precisam de migração, sem alteração nesta rodada.
-- IN01–IN08 indicam evidência necessária, papéis responsáveis e impacto.
-  Responsáveis nominais não foram inventados.
+- IN01–IN08 indicam evidência necessária, papéis responsáveis e impacto. As
+  consultas foram abertas documentalmente em 27/10/2026 no
+  [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md), sem
+  encaminhamento, resposta ou aprovação inferidos.
 - ADR-003 aceita não alterada; ADR-004 criada como proposta não aprovada.
   Versões/lock/worker/infra/testes reais continuam pendentes.
 - CA01–CA20 preservados e CA21–CA22 acrescentados; AG01–AG13 cobrem critérios.

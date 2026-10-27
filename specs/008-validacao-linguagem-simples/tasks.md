@@ -6,12 +6,14 @@ das tarefas globais. [Lista anterior](historico/2026-10-19-pre-t007-tasks.md).
 Contagem e matriz estão definidas documentalmente; nenhuma tarefa funcional abaixo
 foi executada pela T007.
 
-- [ ] F008-01 — Obter aprovação explícita do catálogo e mensagens (V008-01/03),
-  registrar responsável, data e versão; preservar os 21 pares recebidos e resolver
-  ressalvas sem trocar silenciosamente sugestões. Bloqueia ativação editorial.
+- [x] F008-01 — Aprovação explícita registrada em 27/10/2026: catálogo
+  `ls-pt-BR-v1` (6 registros originais + 21 adicionais) e mensagens
+  `msg-pt-BR-v1` (MSG01–MSG17). Responsável: usuário responsável pelo conteúdo
+  do projeto. Sugestões permanecem contextuais; não há substituição automática
+  nem homologação institucional implícita.
 - [ ] F008-02 — Criar tipos e conteúdo versionado: resultados por regra,
   seis estados agregados, intervalos, revisão, checklist e MSG01–MSG17.
-  Depende do contrato; mensagens/catálogo executáveis dependem de F008-01.
+  Depende do contrato; reproduzir exatamente as versões aprovadas em F008-01.
 - [ ] F008-03 — Implementar contagem compartilhada T005 e segmentação pt-BR;
   testar CP01–CP13 e VE01, abreviações, decimais, fallback/indisponibilidade.
   Remover 240 caracteres e não usar helper legado como fallback. Depende de F008-02.
@@ -26,7 +28,7 @@ foi executada pela T007.
   escolhida e equivalência real; testar VE11–VE13 em navegador. Depende de F008-02
   e controles reais da 007; DOM simulado sozinho não aprova geometria.
 - [ ] F008-07 — Implementar matriz dos 25 campos e classificação M, alvos por ID,
-  aplicabilidade K/S/E e vazios. Testar VE09/10/15; não analisar seletores/prazo/URL.
+  aplicabilidade K/S/ON/E e vazios. Testar VE09/10/15; não analisar seletores/prazo/URL.
   Depende de F008-02 e modelo/formulário v3.
 - [ ] F008-08 — Implementar agregação, invalidação por edição/versão/layout,
   descarte de resultados atrasados e checklist em memória fora da Carta.

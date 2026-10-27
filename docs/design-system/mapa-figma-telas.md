@@ -116,11 +116,12 @@ os controles e o mecanismo de copia montados exclusivamente na etapa 4 da 011.
 Revisão documental T011 — 20/10/2026: `564:980` é uma variante ampliável,
 sem limite de campos ou altura fixa. Deve acomodar os cinco grupos e todas
 as 25 definições aplicáveis da Carta: 13 abertas copiáveis quando preenchidas
-e 12 escolhas sem botão, com repetição por item e condições K/S/E.
+e 12 escolhas sem botão, com repetição por item e condições K/S/ON/E.
 Layout adapta-se ao conteúdo, sem truncar informações para reproduzir o frame.
 Exemplos e lorem ipsum nunca substituem dados ausentes da sessão.
 O [contrato da 011](../../specs/011-tutorial-paraiba-digital/contrato-integracao-v3.md)
-registra a migração ainda pendente do TypeScript, fontes operacionais e testes.
+registra a migração do TypeScript concluída em 27/10/2026; fontes operacionais,
+composição e testes continuam pendentes.
 Esta atualização do mapa não comprova consulta Figma nem implementação visual.
 
 ## Pagina compartilhada de ajuda e estados do atendimento agendado

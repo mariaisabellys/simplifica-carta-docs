@@ -3,9 +3,9 @@
 > **Contrato de URL confirmado:** `?etapa=1..6`, histórico, foco e normalização
 > seguem `docs/arquitetura/contrato-navegacao.md`.
 
-> **Revisão documental T011 — 20/10/2026:** integração v3 definida no
-> [contrato de integração](contrato-integracao-v3.md). Conteúdo TypeScript ainda
-> pendente de sincronização; não há aceite funcional ou operacional.
+> **Revisão T011 — conteúdo sincronizado em 27/10/2026:** integração v3 definida
+> no [contrato de integração](contrato-integracao-v3.md). O TypeScript aplica o
+> contrato 25/13/12 sem exemplos; não há aceite funcional ou operacional.
 
 ## Objetivo
 
@@ -138,7 +138,7 @@ com o fluxo externo verificado no planejamento:
   fonte/perfil/data. Não presumir equivalência, limite ou obrigatoriedade.
 - Copiar texto não comprova colagem, cadastro, análise ou publicação.
   Escolhas são apresentadas sem botão e preenchidas manualmente no destino.
-- Aplicar K/S/E e estados definidos pela 012, incluindo ausências e Ativo;
+- Aplicar K/S/ON/E e estados definidos pela 012, incluindo ausências e Ativo;
   preservar valores inativos sem apresentá-los ou copiá-los.
 - Links relacionados derivam apenas de alvos apresentados; fallback de falha
   conserva tutorial-dados. Não manter IDs ou seletores legados em código-base.
@@ -188,13 +188,13 @@ com o fluxo externo verificado no planejamento:
 - Submeter o passo a passo e a correspondencia dos campos a validacao da equipe
   responsavel. Esta spec nao declara copy ou fluxo externo homologados.
 
-Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
-agendamento (Online, Presencial ou ambos) e Sistema de agendamento (Paraiba Digital ou
-Outro sistema ou site) sao obrigatorios nesse estado. Link do agendamento e Como o
-agendamento sera exibido? sao obrigatorios e visiveis somente para Outro sistema ou
-site. Dentro do Paraiba Digital mantem o cidadao na experiencia; Em uma nova pagina
-redireciona para a URL externa. Paraiba Digital identifica agendamento pelo proprio
-sistema, sem link ou forma de exibicao externa.
+Configurações de agendamento só se aplicam com `exigeAgendamento === true`. Tipo de
+agendamento exige Online, Presencial ou ambos. Sistema de agendamento (Paraíba Digital
+ou Outro sistema ou site) só é obrigatório quando o tipo contém Online; Presencial
+exclusivo não apresenta sistema. Link e forma de exibição são obrigatórios somente
+para a parcela on-line em Outro sistema ou site. Dentro do Paraíba Digital mantém o
+cidadão na experiência; Em uma nova página redireciona para a URL externa. Paraíba
+Digital identifica agendamento pelo próprio sistema, sem link ou exibição externa.
 
 Ao mudar para Nao/nao informado ou de Outro sistema ou site para Paraiba Digital,
 preservar valores previamente preenchidos na mesma sessao, conforme o padrao da 007, sem
@@ -243,8 +243,8 @@ frames orientam layout, composicao, hierarquia, progresso e posicao dos blocos,
 mas devem se adaptar aos titulos, instrucoes, percentuais, campos e acoes
 versionados. Texto antigo, exemplo ou placeholder encontrado no Figma nao pode
 sobrescrever o conteudo. Divergencias devem ser registradas antes do codigo.
-Os valores apresentados são exclusivamente da Carta da sessão; a lista atual
-de exemplos nesse arquivo ainda precisa da migração descrita no contrato v3.
+Os valores apresentados são exclusivamente da Carta da sessão; o conteúdo
+sincronizado não mantém exemplos nem lista fixa de campos como fallback.
 O frame 564:980 não limita campos ou altura: deve acomodar os cinco grupos
 e as 25 definições aplicáveis, com coleções e condições da 012.
 
@@ -304,7 +304,7 @@ da implementacao conjunta.
 | CA06 | Usar Carta parcial com pendencias ou sugestoes. | Consultar tutorial e copiar valores preenchidos conforme 012, sem bloqueio global. |
 | CA07 | Editar a Carta e voltar ao tutorial. | Exibir dados atuais da mesma sessao, sem apagar valores ou manter versao editavel duplicada. |
 | CA08 | Consultar mapeamento entre Carta e campos externos. | Encontrar correspondencias verificadas e orientacao para diferencas, sem inventar valores ou equivalencia homologada. |
-| CA09 | Consultar agendamento null/false/true e campos condicionais. | null não vira Não; escolhas não têm cópia; condições S/E preservam valores inativos sem apresentá-los. |
+| CA09 | Consultar agendamento null/false/true e campos condicionais. | null não vira Não; escolhas não têm cópia; condições S/ON/E preservam valores inativos sem apresentá-los; presencial exclusivo não exige sistema. |
 | CA10 | Copiar ou falhar na copia de um campo. | Usar retorno e alternativa manual da 012, sem anunciar cadastro, colagem ou publicacao externos. |
 | CA11 | Abrir plataforma oficial por link. | Usar destino verificado e comportamento acessivel, preservando a Carta no app. |
 | CA12 | Consultar captura demonstrativa ou imagem que nao carrega. | Identificar contexto e legenda, continuar pela instrucao textual e nao expor dados reais ou credenciais. |
@@ -312,14 +312,14 @@ da implementacao conjunta.
 | CA14 | Consultar textos longos e capturas em telas pequenas e com ampliacao. | Manter leitura e acoes acessiveis sem corte, sobreposicao ou rolagem horizontal. |
 | CA15 | Encontrar tela externa diferente da referencia. | Receber orientacao de ajuda sem automacao, coleta de credenciais ou promessa de acompanhamento externo. |
 | CA16 | Revisar arquitetura, conteudo e implementacao visual futura. | Encontrar conteudo versionado, fontes e consultas Figma registradas, shell reutilizado e ausencia de integracao ou persistencia permanente. |
-| CA17 | Consultar ou transferir dados em Nao/Sim, Paraiba Digital, externo dentro/fora e apos troca de sistema. | Respeitar configurações ativas K/S/E conforme matriz v3 007/012; nao apresentar ou transferir valores inativos preservados na sessao; aplicar apenas validacao prevista por esta feature. |
+| CA17 | Consultar ou transferir dados em Não/Sim, presencial, Paraíba Digital, externo dentro/fora e após troca de sistema. | Respeitar configurações ativas K/S/ON/E conforme matriz v3 007/012; não apresentar ou transferir valores inativos preservados na sessão; aplicar apenas validação prevista por esta feature. |
 | CA18 | Abrir etapa 4 com Carta completa, parcial ou vazia. | Cinco grupos e todos os 25 campos aplicáveis; 13 definições abertas copiáveis quando preenchidas e 12 escolhas sem botão; nenhum exemplo como valor real. |
 | CA19 | Trocar etapa, editar/retornar, usar query/hash e histórico. | Uma etapa ativa, 012 só na 4, valores preservados, alvos reais/fallback e foco coordenado; nenhum feedback tardio. |
 | CA20 | Revisar conteúdo sincronizado e evidências externas. | Outras cinco etapas preservadas na migração; instruções, links, matriz e assets sem homologação presumida; fonte/data verdadeiras para aprovação operacional. |
 
 ## Próximo passo
 
-Concluir os itens pendentes de [tasks.md](tasks.md), começando pela sincronização
-do conteúdo sob autorização fora desta rodada documental. Fonte administrativa,
+Concluir os itens pendentes de [tasks.md](tasks.md). A sincronização T009 do
+conteúdo foi concluída; fonte administrativa,
 ERS/Figma, aprovação editorial, implementação e testes continuam pendentes.
 Ver [validation.md](validation.md) e [verification.md](verification.md).

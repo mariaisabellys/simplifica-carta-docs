@@ -19,7 +19,7 @@ matriz, agregações, contagem, segurança candidata e fixtures EX01–EX17.
   Usar dez paths gerais e condicionais da matriz central, sem lista local duplicada.
   Falha técnica/erro estrutural impede arquivo. 008 é editorial e não bloqueia.
 - RF03 — Representar as 25 definições em 22 registros de dados da matriz única.
-  Preservar texto útil, seleções, listas, ordem e fonte; condições K/S/E geram
+  Preservar texto útil, seleções, listas, ordem e fonte; condições K/S/ON/E geram
   valores vazios quando inativas. Nenhum campo novo ou removido por inferência.
 - RF04 — Duas colunas campo/valor, cabeçalho + matriz, vírgula, quoting integral,
   CRLF externo/final, quebras internas preservadas, UTF-8/BOM único no Blob,
@@ -42,7 +42,8 @@ não garantia ilimitada. Inter/tokens/reflow; consultar Figma para ação/estado
 no fluxo da prévia (referência local 821:308), sem criar página por analogia.
 Dependências: 007 (fonte/estrutura/foco), 009 (slot), 008 (editorial separado),
 011/012 (continuidade), 016/017 (ambientes). Consulta Figma/ERS e copy pendentes.
-Ativo false é representação técnica, sem confirmar estado externo; MC-05 aberta.
+Ativo false é exportado como Inativo e true como Ativo, sem confirmar estado
+externo ou interação deliberada.
 
 ## Critérios de aceite
 
@@ -66,7 +67,7 @@ Ativo false é representação técnica, sem confirmar estado externo; MC-05 abe
 | CA16 | Fixture representativa atende meta e responsividade medidas separadamente. |
 | CA17 | Tutorial/cópia/edição livres; sessão não apagada ao exportar. |
 | CA18 | Arquitetura/copy/visual conferidos, sem importação/publicação automática. |
-| CA19 | K/S/E respeitadas, rótulos legíveis e inativos vazios sem apagar fonte. |
+| CA19 | K/S/ON/E respeitadas, rótulos legíveis e inativos vazios sem apagar fonte. |
 | CA20 | Contagem derivada da matriz: 22 dados + cabeçalho, sem contar LF interno ou CRLF final como registro. |
 
 São critérios futuros; T009 não entrega implementação nem homologação.

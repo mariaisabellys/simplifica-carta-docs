@@ -169,19 +169,21 @@ Na recuperação, somente resultado mínimo, sem reexpor campos pessoais.
 
 ## Registro institucional e responsáveis por confirmar
 
-Todas as linhas abaixo: **pendente, sem nomeação/aprovação recebida**.
+As consultas foram **abertas documentalmente em 27/10/2026**, em paralelo com
+INF01–INF10, no [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
+Continuam sem encaminhamento comprovado, nomeação, resposta ou aprovação.
 Papéis são responsáveis a consultar, não atribuição a pessoas ou prazos reais.
 
-| ID | Decisão/evidência necessária | Papel responsável por confirmar | Impacto / bloqueio |
-| --- | --- | --- | --- |
-| IN01 | Registro ocupa capacidade aguardando confirmação; modalidade/duração/local/participação | Gestão do atendimento GESED | Fluxo de registro, textos e CA09/18 |
-| IN02 | Oferta, capacidade, antecedência, horizonte, feriados e manutenção | Coordenação da agenda | Oferta/slots/concorrência e ativação |
-| IN03 | Fuso IANA institucional (America/Fortaleza apenas candidato) | Coordenação da agenda + técnica | Exibição, consultas, snapshot e notificações |
-| IN04 | Campos/formatos/limites, telefone/ramal e descrição opcional | Gestão do atendimento + responsável por privacidade | Schema/formulário/dados reais |
-| IN05 | Destinatário/remetente/provedor, conteúdo e monitoramento da notificação | GESED + operação de comunicação | Worker/envio real; não usar contato 015 por inferência |
-| IN06 | Finalidade, aviso, acesso, retenção/exclusão/backups, validade da chave/tombstones e incidentes | Responsável institucional por dados/privacidade + infraestrutura | Persistência/recuperação/produção; sem base legal ou prazo inventado |
-| IN07 | Stack/lock, ambientes, banco, TLS, segredos, worker/leases/retry e supervisão | Coordenação técnica/infraestrutura | ADR-004, provisionamento/testes e deploy |
-| IN08 | Quem pausa/reativa, procedimento e sincronização editorial/operacional | Gestão GESED + operação técnica | Gate e retomada; nenhuma reativação automática |
+| ID | Estado | Decisão/evidência necessária | Papel responsável por confirmar | Impacto / bloqueio |
+| --- | --- | --- | --- | --- |
+| IN01 | Aberta em 27/10/2026 | Registro ocupa capacidade aguardando confirmação; modalidade/duração/local/participação | Gestão do atendimento GESED | Fluxo de registro, textos e CA09/18 |
+| IN02 | Aberta em 27/10/2026 | Oferta, capacidade, antecedência, horizonte, feriados e manutenção | Coordenação da agenda | Oferta/slots/concorrência e ativação |
+| IN03 | Aberta em 27/10/2026 | Fuso IANA institucional (America/Fortaleza apenas candidato) | Coordenação da agenda + técnica | Exibição, consultas, snapshot e notificações |
+| IN04 | Aberta em 27/10/2026 | Campos/formatos/limites, telefone/ramal e descrição opcional | Gestão do atendimento + responsável por privacidade | Schema/formulário/dados reais |
+| IN05 | Aberta em 27/10/2026 | Destinatário/remetente/provedor, conteúdo e monitoramento da notificação | GESED + operação de comunicação | Worker/envio real; não usar contato 015 por inferência |
+| IN06 | Aberta em 27/10/2026 | Finalidade, aviso, acesso, retenção/exclusão/backups, validade da chave/tombstones e incidentes | Responsável institucional por dados/privacidade + infraestrutura | Persistência/recuperação/produção; sem base legal ou prazo inventado |
+| IN07 | Aberta em 27/10/2026 | Stack/lock, ambientes, banco, TLS, segredos, worker/leases/retry e supervisão | Coordenação técnica/infraestrutura | ADR-004, provisionamento/testes e deploy |
+| IN08 | Aberta em 27/10/2026 | Quem pausa/reativa, procedimento e sincronização editorial/operacional | Gestão GESED + operação técnica | Gate e retomada; nenhuma reativação automática |
 
 Registrar futuramente responsável nominal, fonte/ata, decisão, data e aprovador
 em cada linha; até lá não considerar aprovação tácita. Limites candidatos:

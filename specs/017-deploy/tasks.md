@@ -6,11 +6,16 @@ decisão ou implementação. A criação desta lista não publica o produto.
 ## Bloco 0 — decisões
 
 - [ ] **F017-01 — Fechar responsáveis e decisões INF01–INF10**
+  - Abertura documental das dez consultas registrada em 27/10/2026 no
+    [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
+    Ainda faltam encaminhamento verificável, responsáveis nominais e respostas.
   - Nomear os papéis de aprovação, registrar fornecedor, domínio, base,
     ambientes, release, privacidade, observabilidade e operação.
   - Aceite: ADRs aprovadas e decisões sem inferência.
 
 - [ ] **F017-02 — Fechar dependências IN01–IN08 e ADR-004**
+  - Abertura documental das oito consultas registrada no mesmo controle; G6 e
+    a ADR-004 continuam sem aprovação.
   - Conciliar negócio, capacidade, fuso, formulário, SMTP, privacidade, stack e
     pausa com a feature 014.
   - Aceite: cada bloqueio tem evidência de aprovação ou permanece fechado.

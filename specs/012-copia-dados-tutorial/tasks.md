@@ -5,11 +5,12 @@ F012 são tarefas futuras locais; sem marcação de execução por esta reconcil
 Base: [contrato](contrato-transferencia-v3.md).
 
 - [ ] F012-01 — Conferir provider/retorno 007, utilitário clipboard, montagem/URL
-  011 e sincronização editorial T011 global. Registrar entregue versus planejado.
+  011 e sincronização editorial T011 global concluída em 27/10/2026. Registrar
+  conteúdo entregue versus composição ainda planejada.
 - [ ] F012-02 — Consultar node 564:980/Make e ERS; revisar copy e layout ampliado,
   sem retirar campos. Depende de F012-01.
 - [ ] F012-03 — Implementar matriz de 25 definições e cinco grupos com 13 tipos
-  abertos/12 escolhas, K/S/E, IDs de itens e ausências. Depende de F012-01.
+  abertos/12 escolhas, K/S/ON/E, IDs de itens e ausências. Depende de F012-01.
 - [ ] F012-04 — Implementar coordenador por identidade acima das rotas, trava
   imediata, revisão/A-B-A/generation, catch/finally e descarte tardio.
   Depende de F012-01; não alterar utilitário neutro por necessidade de domínio.
@@ -17,7 +18,8 @@ Base: [contrato](contrato-transferencia-v3.md).
   somente leitura sem botão; timers 5/10 s e feedback acessível. Depende de
   F012-02–04; não usar DOM como payload.
 - [ ] F012-06 — Integrar somente etapa 4, região/âncoras/retorno e CTAs únicos.
-  Depende de F012-05 e T011; outros passos sem UI/live regions da 012.
+  Depende de F012-05; conteúdo T011 já sincronizado. Outros passos sem
+  UI/live regions da 012.
 - [ ] F012-07 — Testar TR01–TR07: cobertura, valores, listas por item, escolhas
   sem botão, inativos e zero exemplos em payload. Fixture congelada.
   Depende de F012-03/05.

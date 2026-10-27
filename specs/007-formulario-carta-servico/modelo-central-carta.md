@@ -13,10 +13,12 @@ editável da Carta.
 
 A [matriz canônica de campos v3](matriz-campos-v3.md), registrada em 19/10/2026
 pela T003, detalha IDs, paths, controles, condições, consumidores e divergências
-observadas. A matriz distingue regras estabelecidas de decisões pendentes e
-comportamento atual do código. A reconciliação dos demais artefatos da 007
+observadas. A matriz distingue regras estabelecidas de implementação ainda
+pendente e comportamento atual do código. A reconciliação dos demais artefatos da 007
 foi registrada na T004; a T005 definiu o
 [contrato compartilhado de contagem](../../docs/arquitetura/contrato-contagem-palavras.md).
+As decisões estruturais MC-02–MC-08 foram encerradas documentalmente em
+27/10/2026 na matriz canônica.
 
 ## Cinco partes e campos
 
@@ -41,10 +43,17 @@ foi registrada na T004; a T005 definiu o
 - Público específico: zero a dois entre Servidor, Cidadão e Empresa.
 - Perfil do usuário: múltipla escolha com pelo menos um valor.
 - Custos: `gratuito`, `sob-consulta` ou `com-taxa`, nunca combinações. Detalhe
-  obrigatório para consulta ou taxa.
-- Prazo: valor máximo e unidade do catálogo oficial.
-- Agendamento: `null` significa não informado. Tipos e sistema só são
-  aplicáveis com `true`; link e exibição só são aplicáveis ao sistema externo.
+  obrigatório para consulta ou taxa; URL informada deve ser absoluta HTTP(S),
+  com hostname e sem credenciais.
+- Prazo: valor máximo como inteiro positivo canônico e unidade do catálogo.
+  Zero, decimal, imediato e ausência de estimativa não integram o modelo v3.
+- Documentos: coleção opcional; cada item existente exige nome útil.
+- Etapas: ao menos uma; cada item exige título, orientação e modalidade.
+- Ativo: estado configurado opcional; false significa Inativo, sem comprovar
+  interação do usuário, publicação ou despublicação externa.
+- Agendamento: `null` significa não informado. Tipos só são aplicáveis com
+  `true`; sistema só é aplicável quando tipos incluem on-line; link e exibição
+  só são aplicáveis quando essa parcela on-line usa sistema externo.
   Valores condicionais podem ser preservados na sessão, mas consumidores não
   os apresentam nem transferem quando estiverem inativos.
 - Documentos e etapas possuem IDs estáveis; IDs não são exportados nem exibidos.
@@ -65,4 +74,8 @@ foi registrada na T004; a T005 definiu o
 
 O storage usa `versao: 3`. Dados legados sem decoder seguro não são mesclados
 superficialmente; a aplicação inicia uma Carta v3 vazia e deve informar a falha
-de recuperação quando a interface do provider for implementada.
+de recuperação quando a interface do provider for implementada. O decoder é
+estrito para formato, tipos, propriedades, catálogos, relações presentes,
+cardinalidades máximas, IDs, ordem e duplicatas; não corrige nem deduplica
+silenciosamente. Incompletude é recuperada e tratada pela revisão, não como
+registro corrompido.

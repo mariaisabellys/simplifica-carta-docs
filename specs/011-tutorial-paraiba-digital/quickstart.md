@@ -2,13 +2,14 @@
 
 ## Status
 
-Roteiro criado documentalmente na T017. Não executado. T011 permanece parcial:
-a sincronização de `src/content/tutorial/paraiba-digital.ts`, fontes externas e
-assets autorizados ainda são dependências.
+Roteiro criado documentalmente na T017. Não executado. A sincronização de
+`src/content/tutorial/paraiba-digital.ts` foi concluída em 27/10/2026; fontes
+externas, assets autorizados, composição e testes ainda são dependências.
 
 ## Pré-condições
 
-- conteúdo das seis etapas sincronizado e revisado por fonte/data verdadeira;
+- conteúdo local das seis etapas sincronizado; instruções operacionais revisadas
+  posteriormente por fonte/data verdadeira;
 - navegação por `?etapa=1..6` e integração 012 implementadas;
 - provider Carta v3 disponível, sem gate para consultar instruções;
 - URL oficial/assets autorizados confirmados; dados sempre sintéticos.
@@ -16,7 +17,7 @@ assets autorizados ainda são dependências.
 ## Massa sintética
 
 - sessão vazia, parcial, completa e recuperação/storage indisponível;
-- cinco grupos/25 definições, coleções repetidas e condições K/S/E;
+- cinco grupos/25 definições, coleções repetidas e condições K/S/ON/E;
 - campos abertos vazios/preenchidos e escolhas diversas;
 - texto longo, imagem presente/ausente e clipboard permitido/recusado.
 

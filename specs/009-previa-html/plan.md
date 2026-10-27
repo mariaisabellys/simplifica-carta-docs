@@ -15,7 +15,8 @@ que aparentem sequência completa. Condicionais omitidos não são apagados.
 Estrutura da 007 gera resumo de pendências/falha; 008 não é gate de exportação
 nem motor duplicado. 010 captura/valida snapshot no clique. Seus contratos
 funcionais ainda precisam ser entregues/testados, não presumidos por documentos.
-Ativo tem projeção booleana conservadora; semântica MC-05 segue pendente.
+Ativo projeta Ativo/Inativo como estado configurado, sem afirmar estado externo;
+o default false isolado não torna a Carta preenchida.
 
 ## Componentes e arquivos futuros
 

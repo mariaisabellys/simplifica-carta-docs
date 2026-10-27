@@ -22,7 +22,8 @@ não usar split por linhas ou apenas um número fixo para comprovar cobertura.
 ## Matriz única: ordem, identificador, fonte e representação
 
 **A** = sempre; **K** = custo sob-consulta/com-taxa; **S** = exigeAgendamento true;
-**E** = S e sistema-agendamento sistema-externo. Manter registro inativo com valor
+**ON** = S e tipos contém online; **E** = ON e sistema-agendamento sistema-externo.
+Manter registro inativo com valor
 vazio, nunca remover linha nem transferir valor retido. Não exportar mensagens
 da prévia, obrigatoriedade, revisão editorial ou checklist de preparação.
 
@@ -34,7 +35,7 @@ da prévia, obrigatoriedade, revisão editorial ou checklist de preparação.
 | 04 | `categoria` | `sobreServico.categoria` | A | Rótulo selecionado ou vazio. |
 | 05 | `subcategoria` | `sobreServico.subcategoria` | A | Rótulo selecionado ou vazio. |
 | 06 | `topico` | `sobreServico.topico` | A | Texto livre. |
-| 07 | `ativo` | `sobreServico.ativo` | A | true → Sim; false → Não, sem inferir confirmação/publicação. |
+| 07 | `ativo` | `sobreServico.ativo` | A | true → Ativo; false → Inativo, sem inferir confirmação/publicação. |
 | 08 | `publicos_especificos` | `publicoRequisitos.publicosEspecificos` | A | Rótulos na ordem recebida, unidos por LF. |
 | 09 | `perfis_usuario` | `publicoRequisitos.perfisUsuario` | A | Rótulos na ordem recebida, unidos por LF. |
 | 10 | `quem_pode_utilizar` | `publicoRequisitos.quemPodeUtilizar` | A | Texto. |
@@ -45,7 +46,7 @@ da prévia, obrigatoriedade, revisão editorial ou checklist de preparação.
 | 15 | `etapas` | `etapas[].titulo`; `etapas[].orientacaoCidadao`; `etapas[].modalidade` | A | Blocos com número atual, título, orientação e modalidade, conforme regra abaixo. |
 | 16 | `exige_agendamento` | `atendimento.exigeAgendamento` | A | true → Sim; false → Não; null vazio. |
 | 17 | `tipos_agendamento` | `atendimento.tiposAgendamento` | S | Online / Presencial, na ordem recebida, unidos por LF. |
-| 18 | `sistema_agendamento` | `atendimento.sistemaAgendamento` | S | Paraíba Digital / Outro sistema ou site; null vazio. |
+| 18 | `sistema_agendamento` | `atendimento.sistemaAgendamento` | ON | Paraíba Digital / Outro sistema ou site; null vazio. |
 | 19 | `link_agendamento` | `atendimento.linkAgendamento` | E | Texto integral, sem acesso externo. |
 | 20 | `exibicao_agendamento` | `atendimento.exibicaoAgendamento` | E | Dentro do Paraíba Digital / Em uma nova página; null vazio. |
 | 21 | `informacoes_adicionais` | `informacoesFinais.informacoesAdicionais` | A | Texto. |
@@ -67,8 +68,10 @@ geram valor fictício nem classificação Obrigatório/Opcional. Omitir item
 inteiramente vazio não perde informação de usuário; a prévia identifica esse
 item para edição. Não inferir dispensa de documentos da célula vazia.
 
-Etapas: manter item se título, orientação ou modalidade tiver valor. Não filtrar
-item só por orientação vazia. Para cada item útil, produzir bloco:
+Etapas: após validação estrutural, manter todos os itens completos. O formatador
+continua tolerante para representar snapshot parcial em diagnóstico, mas a ação
+de exportar bloqueia item sem título, orientação ou modalidade. Para cada item
+útil, produzir bloco:
 
 ```text
 Etapa {ordem}
@@ -94,11 +97,10 @@ valores inválidos durante exportação: formato seguro/validação defensiva da
 deve preceder o mapeamento. Rótulos vêm do conteúdo/catálogos, não enums internos.
 
 Prazo parcial tem regra de formatação testável, mas exportação integrada deve
-continuar bloqueada se máximo/unidade obrigatório estiver ausente. Não converter
-Imediato em zero ou inventar unidade (MC-03). Custo zero não implica Gratuito.
-Ativo false é exportado como Não, com aviso de que o v3 não registra confirmação
-da escolha; não equivale a serviço publicado ou inativo no sistema externo.
-MC-05 permanece decisão de produto, não resolvida pela representação booleana.
+bloquear máximo/unidade ausente ou máximo que não seja inteiro positivo canônico.
+Não converter Imediato em zero nem inventar unidade. Custo zero não implica
+Gratuito. Ativo false é exportado como Inativo e true como Ativo; representa o
+estado configurado na Carta, sem equivaler à publicação ou comprovar interação.
 
 ## Snapshot e validação
 
@@ -206,11 +208,11 @@ também mudaram de estrutura, conforme matriz e regras acima.
 | --- | --- | --- |
 | EX01 | 25 campos com sentinelas distintas | 22 chaves na ordem; 23 registros com cabeçalho e duas células cada. |
 | EX02 | Aspas, vírgula, CR/LF/CRLF e Unicode | Parser CSV independente recupera células integrais; não contar linhas físicas. |
-| EX03 | Opcionais vazios, espaços, texto “0” e defaults | Vazio sem mensagem; texto útil intacto; Ativo Sim/Não sem inferência. |
+| EX03 | Opcionais vazios, espaços, texto “0” e defaults | Vazio sem mensagem; prazo “0” bloqueado pela estrutura; Ativo/Inativo sem inferência externa. |
 | EX04 | Documento vazio entre nomes multiline | Preservar nomes úteis/ordem, não classificação fictícia. |
 | EX05 | Etapas só título, só orientação, só modalidade e vazia | Três úteis com atributos presentes, vazia omitida e números atuais preservados. |
 | EX06 | Prazo parcial/zero; custo gratuito/não gratuito | Formatadores preservam partes; pipeline bloqueia incompletude estrutural; detalhe inativo vazio. |
-| EX07 | Sim/Não/null, Online/Presencial/ambos, nativo/externo | S/E corretos; quatro registros condicionais mantidos vazios quando inativos. |
+| EX07 | Sim/Não/null, Online/Presencial/ambos, nativo/externo | S/ON/E corretos; quatro registros condicionais mantidos vazios quando inativos. |
 | EX08 | Trocar condições com dados retidos | Nenhum dado inativo exportado ou apagado; nova captura reativa corretamente. |
 | EX09 | =1+1, +1, -1, @texto, largura completa e prefixos | Candidato aplicado à célula final; fronteiras dos intervalos testadas; fonte intacta. |
 | EX10 | Texto seguro, apóstrofo inicial e sinal no meio de lista | Sem proteção indevida/acumulada; quoting mantém uma célula. |

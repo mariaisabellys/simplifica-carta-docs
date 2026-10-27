@@ -26,7 +26,7 @@ Versão anterior preservada no [histórico](historico/2026-10-20-pre-t011-plan.m
 | --- | --- | --- |
 | 1 | Levantar fonte administrativa, ERS e autorização dos assets | Fonte/contexto/perfil/data por instrução; ausência mantém bloqueio operacional |
 | 2 | Preencher matriz externa de 25 paths | Contrato de integração; não confundir pendente com sem equivalente |
-| 3 | Sincronizar paraiba-digital.ts | Fora do escopo documental atual; preservar outras cinco etapas e compatibilidade de export |
+| 3 | Sincronizar paraiba-digital.ts | Concluído em 27/10/2026: contrato 25/13/12, sem exemplos; outras cinco etapas e export preservados |
 | 4 | Consultar Design/Make e conciliar layout | Seis nodes do mapa; consulta não homologa processo externo |
 | 5 | Integrar navegação e sessão compartilhadas | Provider acima das rotas e URL completa, sem parser paralelo |
 | 6 | Compor tutorial e montar região da 012 só na etapa 4 | CTAs únicos, alvos reais, isolamento de falha e dados atuais |

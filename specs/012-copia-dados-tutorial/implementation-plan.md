@@ -8,7 +8,8 @@ Fonte normativa: [contrato v3](contrato-transferencia-v3.md).
 
 Conferidos documentos 012, decisão docs/spec, matriz 007, conteúdo
 src/content/tutorial/paraiba-digital.ts e src/lib/clipboard.ts.
-O conteúdo continua limitado a exemplos; sua edição e integração 011 são T011.
+O conteúdo foi sincronizado em 27/10/2026 com o contrato 25/13/12 e não contém
+valores ilustrativos; a composição da região com a 011 continua pendente.
 Utilitário existente resolve success/failed após escrita e trata indisponibilidade;
 não possui coordenação, timers, projeção ou UI. Sem teste real nesta rodada.
 
@@ -70,5 +71,5 @@ depois provider/011 reais e clipboard em HTTPS/contexto seguro com dados sintét
 Mocks não comprovam gesto/permissão/colagem. Registrar versões/dispositivo/leitor,
 destino de colagem, normalizações, retorno/erro e limites entre abas/reload.
 Verificar 015 somente se utilitário compartilhado mudar, sem acoplar Carta ao e-mail.
-T011/Figma/ERS/copy, provider/foco e testes funcionais continuam pendentes;
+Composição 011, Figma/ERS/copy, provider/foco e testes funcionais continuam pendentes;
 nenhum snippet antigo é módulo compilado ou requisito de contagem vigente.

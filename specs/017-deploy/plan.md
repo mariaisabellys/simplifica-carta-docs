@@ -20,7 +20,9 @@ canais segue o contrato editorial das features 013–015.
 
 ## Fase 0 — decisões e responsáveis
 
-1. Nomear responsáveis pelas decisões INF01–INF10 e IN01–IN08.
+1. Abertura documental de INF01–INF10 e IN01–IN08 registrada em 27/10/2026;
+   nomear acompanhamento/destinatários, encaminhar e registrar respostas no
+   [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
 2. Aprovar domínio, raiz/subpath, ambientes, fornecedor e topologia.
 3. Aprovar política de release, rollback, logs, privacidade, backup e incidente.
 4. Aceitar, substituir ou rejeitar a proposta da ADR-004.

@@ -30,7 +30,8 @@ vários controles; seu número de marcações continua sendo um.
 
 Cobertura: 12 orientações alcançam 24 das 25 definições de campos da matriz.
 `active` não possui orientação da 006: não reutilizar recorrência ou publicar
-uma definição inventada de Ativo. Sua semântica/ajuda permanece em MC-05.
+uma definição inventada. Ativo é o estado configurado opcional definido pela
+007; sua ajuda específica pertence ao formulário.
 `document-name` é o ID proposto pela T004 para o filho da coleção, não um ID já
 existente no conteúdo. Na implementação, usar o mesmo texto de `documents`
 associado ao item por ID estável; não buscar orientação por índice ou por título.
@@ -100,27 +101,28 @@ Substituir a instrução “informe Imediato” pela ressalva:
 > estimativa, confirme com a equipe responsável como registrar o prazo; não
 > invente um valor ou uma unidade.
 
-Resolvida a promessa editorial de controle ausente. A representação de imediato,
-zero, decimal e ausência de estimativa **continua pendente em MC-03**, com decisão
-do responsável pelo produto antes da validação semântica. Não converter para
-“0 minutos”, não concatenar “Imediato” com uma unidade arbitrária e não declarar
-que o formulário já atende esse caso. Essa pendência não altera a contagem da 006.
+Resolvida a promessa editorial de controle ausente. MC-03 foi fechada pela 007:
+o v3 aceita apenas inteiro positivo canônico e unidade; zero, decimal, imediato
+e ausência de estimativa são inválidos. Não converter para “0 minutos”, não
+concatenar “Imediato” com unidade arbitrária e não declarar que o formulário
+atende esses casos. Uma representação futura exige nova versão do modelo. Isso
+não altera a contagem da 006.
 
 ### Agendamento e custos
 
-Trocar “Se o agendamento for online” por “Se houver agendamento” na orientação
-de sistema. O modelo exige tipos e sistema com Sim, mesmo se somente Presencial
-for selecionado. Tipo de agendamento não é modalidade da etapa: agendamento
-permite Online/Presencial ou ambos; etapa permite Online/Presencial/Híbrida.
+Manter a orientação de sistema condicionada ao tipo on-line. Com Sim, selecionar
+Online, Presencial ou ambos; o sistema é exigido apenas se a seleção contiver
+Online. Presencial exclusivo não mostra sistema. Tipo de agendamento não é
+modalidade da etapa: a etapa permite Online/Presencial/Híbrida.
 
-Link e exibição só se aplicam quando Sim **e** Outro sistema ou site; selecionar
-Não oculta esses dados, mesmo se retidos na sessão. A orientação explica a
+Link e exibição só se aplicam quando Sim, tipo Online e Outro sistema ou site;
+selecionar Não ou Presencial exclusivo oculta esses dados, mesmo se retidos na sessão. A orientação explica a
 configuração para cadastro posterior, não promete executar agendamento ou
 incorporar sites neste manual. Não criar campo de endereço presencial.
 
-O caso de agendamento apenas presencial sem sistema representável precisa de
-decisão do produto; não selecionar sistema fictício. O alinhamento aqui mantém
-o v3, não homologa cobertura da plataforma externa nem amplia seus enums.
+O caso presencial exclusivo está representado sem sistema. Com ambos, o sistema
+descreve a parcela on-line. O alinhamento não homologa cobertura da plataforma
+externa nem amplia seus enums.
 
 Em custos, alinhar rótulos a Gratuito, Sob consulta e Com taxa (escolha única).
 Relacionar “taxa fixa” a Com taxa sem restringir novos cenários por inferência.
@@ -155,6 +157,7 @@ aplicar as substituições em F006-03, antes de renderizar ou reutilizar as orie
 Não manter cópias divergentes no JSX da 007; a fonte editorial executável continua
 sendo `organizar-informacoes.ts`, com complementos por alvo versionados.
 
-Pendências fora da conclusão documental: revisão institucional, MC-03/MC-05,
-implementação de progresso/reuso, consulta visual e verificação integrada.
+Pendências fora da conclusão documental: revisão institucional, aplicação de
+MC-03/MC-05/MC-07 ao TypeScript, implementação de progresso/reuso, consulta
+visual e verificação integrada.
 O mapa local identifica `387:1918`; não houve consulta externa ao Figma nesta tarefa.

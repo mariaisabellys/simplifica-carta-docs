@@ -1,7 +1,12 @@
 # Validação documental: Tutorial Paraíba Digital
 
-20/10/2026 — T011 de docs/tasks.md, somente documentos.
-Resultado: **contratos locais reconciliados; sincronização do conteúdo e aceite
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após a
+> sincronização 25/13/12. Contrato e conteúdo local estão coerentes; fontes
+> administrativas, composição, assets e testes permanecem pendentes. Evidência
+> no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
+20/10/2026 — T011 de docs/tasks.md; revalidada em 27/10/2026 após conteúdo.
+Resultado: **contratos e conteúdo local reconciliados; implementação e aceite
 operacional/funcional ainda pendentes**. Não é autorização para publicar tutorial.
 
 ## Revisão atual
@@ -20,7 +25,7 @@ foi preservada como histórico, não como evidência de funcionalidade atual.
 | V011-03 — Cenários de modalidade/sistema incompletos | IT03/05–07 cobrem troca, restauração, recarga e operação pendente; execução pendente |
 | V011-04 — Classificação externa ambígua | 25 linhas pendentes; confirmar/complemento/sem equivalente somente após evidência |
 | V011-05 — Snippets/modelo legados | Substituídos no plano ativo; versões anteriores isoladas em histórico |
-| V011-06 — Conteúdo ainda com dez exemplos/seis copyLabel | Não resolvido em TypeScript: migração detalhada no contrato, tarefa local T009 |
+| V011-06 — Conteúdo ainda com dez exemplos/seis copyLabel | Resolvido em 27/10/2026: lista e exemplos removidos; conteúdo referencia projeção 012 com 25/13/12 |
 | V011-07 — Falta de evidência operacional | URL administrativa, menus, estados, matriz e GIFs continuam pendentes |
 
 ## Limites de aceite
@@ -28,8 +33,8 @@ foi preservada como histórico, não como evidência de funcionalidade atual.
 CA01–CA20 são critérios futuros, nenhum aprovado funcionalmente nesta rodada.
 Não houve nova consulta externa, leitura do PDF ERS, Figma MCP, aprovação
 institucional, browser/clipboard, teste, typecheck ou build.
-A fonte editorial atual não está sincronizada: T011 global permanece parcial.
-Preservar outras cinco etapas na futura migração não significa homologá-las.
+A fonte editorial está sincronizada, mas isso não implementa a região 012 nem
+homologa as outras cinco etapas ou as instruções da plataforma externa.
 
 Para fechar: executar migração autorizada de conteúdo e checks; obter evidência
 operacional/visual/ERS; implementar integrações e executar IT01–IT11 e testes
@@ -38,10 +43,10 @@ de revisão institucional. Checks locais desta rodada em [verification](verifica
 
 ## Revalidação T019 — 22/10/2026
 
-Parecer atual: **feature documentalmente parcial**. RF01–RF07/CA01–CA20 e
-IT01–IT11 estão destinados a T001–T018, mas `paraiba-digital.ts` ainda contém
-dez exemplos e seis `copyLabel`, incompatíveis com a projeção de 25 campos da
-etapa 4. Os seis nodes responderam por metadados e o portal público Paraíba
+Parecer histórico em 22/10/2026: a feature estava documentalmente parcial por
+causa dos exemplos. Essa parcela foi encerrada em 27/10/2026; RF01–RF07/CA01–CA20
+e IT01–IT11 continuam destinados a T001–T018. Os seis nodes responderam por
+metadados e o portal público Paraíba
 Digital está acessível; login, URL administrativa, menus, permissões e fluxo de
 cadastro não foram verificados. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).

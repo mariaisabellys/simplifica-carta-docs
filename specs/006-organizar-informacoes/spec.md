@@ -38,8 +38,8 @@ Preservar exemplos, Evite/Prefira, orientações adicionais e dicas quando prese
 Rotular exemplos como ilustrativos, nunca valores padrão ou regras universais.
 
 Doze orientações mapeiam 24 definições de campos; recorrência é complementar
-sem campo v3. Ativo não tem orientação correspondente e permanece em MC-05.
-Tópico é texto; prazo é valor/unidade sem opção Imediato; agendamento segue S/E
+sem campo v3. Ativo não tem tópico correspondente; sua semântica fechada pertence à 007.
+Tópico é texto; prazo é inteiro positivo/unidade sem opção Imediato; agendamento segue S/ON/E
 da matriz v3, não apenas Online. Aplicar as ressalvas e ajustes editoriais do
 contrato antes de reutilizar o conteúdo na 007. Não inferir gratuidade, dispensa
 de documentos ou resposta Não de informações desconhecidas.
@@ -87,7 +87,7 @@ Não houve consulta Figma nem ao PDF ERS nesta revisão.
 Dependências: 001/002 (fundação/shell), 003 (entrada), 004 (conceitos), 005
 (encaminhamento não obrigatório), 007 (formulário/reuso), 008 (regra editorial),
 013 (ajuda), 016 (acessibilidade), 017 (fallback).
-Documentos existentes não comprovam implementação. MC-03/MC-05 e revisão
+Documentos existentes não comprovam implementação. Aplicação de MC-03/MC-05/MC-07 e revisão
 institucional permanecem abertas nas entregas afetadas.
 
 ## Critérios de aceite
@@ -108,7 +108,7 @@ institucional permanecem abertas nas entregas afetadas.
 | CA12 | Referências visuais consultadas, comparação registrada e divergências resolvidas. |
 | CA13 | Inicial 0/13; marcar dois IDs dá 2/13, repetir não duplica, desmarcar reduz; exemplo não inicializa estado. |
 | CA14 | Navegação interna mantém marcações; recarga reinicia; expansão não altera progresso. |
-| CA15 | Reuso por controle respeita tópico aberto, limite da descrição, públicos e condições S/E. |
+| CA15 | Reuso por controle respeita tópico aberto, limite da descrição, públicos e condições S/ON/E. |
 | CA16 | Recorrência informa ausência de campo v3; imediato não induz valor/unidade fictícios. |
 
 Próxima entrega: aplicar o plano e as tarefas locais somente após autorização

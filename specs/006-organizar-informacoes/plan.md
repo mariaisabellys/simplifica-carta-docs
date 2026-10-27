@@ -24,8 +24,8 @@ Não criar persistência/API por conveniência.
 A 006 não importa hooks/storage de domínio da Carta. A 007 pode importar conteúdo
 editorial compartilhado e o mapa de orientação por controle, não o estado da 006.
 Complementos são dados versionados, não textos divergentes em componentes.
-Recorrência permanece sem destino de campo; Ativo sem orientação até MC-05.
-Tratamento semântico de prazo imediato permanece MC-03, não conversão automática.
+Recorrência permanece sem destino de campo; Ativo não recebe tópico novo e usa
+a semântica fechada na 007. Prazo imediato não integra o v3 e nunca é convertido.
 
 ## Interface e navegação
 
@@ -64,5 +64,5 @@ CA01–CA16 guiam a matriz no [plano detalhado](implementation-plan.md).
 Testar transições de marcação, estado em memória, expansão, independência da Carta,
 destinos reais e retorno por histórico; não apenas reproduzir o array num teste.
 Build/typecheck somente na implementação. Frame não consultado, ERS, homologação,
-prazo imediato, Ativo e componentes compartilhados são pendências explícitas,
+aplicação das decisões de prazo, Ativo, agendamento e componentes compartilhados são pendências explícitas,
 não aprovações implícitas. T006 fecha o alinhamento documental, não prontidão integral.

@@ -111,7 +111,7 @@ informacao e hierarquia.
    determinadas pela sessao v3. Renderizar cinco grupos e todas as 25
    definicoes aplicaveis; 13 campos abertos copiam somente quando preenchidos,
    12 escolhas exibem a selecao sem botao. Colecoes repetem por ID e estados
-   K/S/E ocultam inativos. Ausencia, copia pendente/sucesso/falha e texto longo
+   K/S/ON/E ocultam inativos. Ausencia, copia pendente/sucesso/falha e texto longo
    nao podem ser truncados para reproduzir o frame.
 2. **Formulario real (`2024:269`):** a imagem do frame orienta composicao, mas
    cada label, campo, grupo, lista e acao vira HTML/React operavel. Preservar
@@ -296,11 +296,12 @@ Autocomplete pessoal na 014 respeita finalidade real e nao amplia coleta.
 
 Agendamento da Carta segue RF03/CA19–CA24 da 007:
 
-- Nao/nao informado oculta todas as configuracoes. Sim exige tipo e sistema.
+- Nao/nao informado oculta todas as configuracoes. Sim exige tipo; sistema é
+  exigido somente quando o conjunto inclui Online. Presencial exclusivo não o mostra.
 - Tipo e conjunto Online, Presencial ou ambos. Nao marcar required em cada
   checkbox individual: isso exigiria ambos; validar o conjunto com a 008,
   usando legend/instrucao de obrigatoriedade e erro associado ao grupo.
-- Sistema e escolha unica: Paraiba Digital ou Outro sistema ou site.
+- Com Online, sistema é escolha única: Paraiba Digital ou Outro sistema ou site.
 - Paraiba Digital oculta link/exibicao; externo exige URL e escolha unica
   Dentro do Paraiba Digital/Em uma nova pagina. Apenas registra configuracao.
 - Troca de condicao preserva valores na sessao, retira mensagens inativas e

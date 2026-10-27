@@ -1,5 +1,10 @@
 # Validacao: Formulario da Carta de Servicos
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado sobre a
+> matriz/modelo central atuais. Resultado: pronta documentalmente, com 25 campos
+> e decisões MC-02–MC-08 fechadas; implementação e aceites permanecem pendentes.
+> Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 > **Validação histórica:** a divergência conteúdo/modelo foi resolvida pelo
 > contrato v3; validação funcional e visual continua pendente.
 
@@ -83,7 +88,7 @@ Nao e necessario decidir novamente se valores ocultos devem ser apagados:
 o padrao documentado e preserva-los na sessao, inclusive apos recarga,
 retirando apresentacao, obrigatoriedade e transferencia ativa.
 
-## Regras e contratos consistentes
+## Regras consideradas consistentes na rodada histórica
 
 - Uma Carta temporaria compartilhada, cinco partes e 17 campos logicos;
   listas agregadas nao representam limite de itens.
@@ -133,11 +138,36 @@ nao considerar este relatorio aprovacao institucional ou visual.
 
 ## Revalidação T019 — 22/10/2026
 
-Parecer atual: **modelo v3 consolidado, mas não liberado integralmente para
-implementação**. A antiga lacuna de CA19–CA24 está resolvida e a rastreabilidade
-ativa chega a CA33/F007-22. Permanecem decisões MC-02–MC-08 aplicáveis, em
+Parecer registrado naquela data: **modelo v3 consolidado, mas não liberado
+integralmente para implementação**. A antiga lacuna de CA19–CA24 estava resolvida
+e a rastreabilidade ativa chegava a CA33/F007-22. Naquele parecer, permaneciam decisões MC-02–MC-08 aplicáveis, em
 especial prazo, itens, Ativo, URL/detalhe de custo e caso presencial. Tipos,
 catálogos, schema, storage, validação e CSV existem; provider/formulário real
 não. Nodes das cinco partes, Form-Card e prévia responderam por metadados, sem
 aceite visual. Ver a
-[matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+[matriz T019](../../docs/verificacoes/t019-validacoes-features.md). Esse estado
+foi substituído pela revalidação de 27/10/2026 abaixo.
+
+## Revalidação de MC-02–MC-08 — 27/10/2026
+
+Parecer atual: **decisões estruturais encerradas documentalmente; feature 007
+liberada para iniciar implementação, ainda sem aceite funcional ou visual**.
+Esta seção substitui o estado de pendência registrado nas rodadas anteriores;
+os trechos anteriores permanecem como histórico da auditoria.
+
+| Decisão | Contrato fechado | Verificação documental |
+| --- | --- | --- |
+| MC-02 | Mantidos dez obrigatórios gerais, justificados por identidade, classificação, público, custo, prazo e condição de atendimento; opcionais não foram elevados. | Matriz, modelo, RF03 e CA02/08/31 conferidos. |
+| MC-03 | Prazo máximo é inteiro positivo canônico + unidade; rejeitar zero, decimal, sinal, zeros à esquerda, Imediato e Sem estimativa. | RF03, CA34, plano e consumidores 009/010/012 alinhados. |
+| MC-04 | Documentos admitem zero itens; item existente exige nome. Etapas exigem ao menos um item com título, orientação e modalidade. | RF03/RF04, CA04/05/35 e matrizes de prévia/exportação reconciliados. |
+| MC-05 | Ativo é estado configurado opcional; false = Inativo. Não comprova interação, publicação ou despublicação e o default isolado não cria conteúdo. | Modelo central e representações 009/010/012 usam Ativo/Inativo sem certificação externa. |
+| MC-06 | Detalhe K aceita valor, orientação ou URL; URLs são absolutas HTTP(S), com hostname e sem credenciais, sem teste de disponibilidade. | RF03/CA24 e contratos de projeção, exportação e cópia conferidos. |
+| MC-07 | S exige tipo; ON exige sistema; E exige link/exibição. Presencial exclusivo não exige sistema; ambos configura a parcela on-line. | RF07/CA36 e condições K/S/ON/E propagadas a 008–012 e ao mapa Figma. |
+| MC-08 | Decoder estrito rejeita formato inseguro, relações presentes, máximos, duplicatas, IDs e ordem inválidos, mas recupera incompletude; revisão separada aplica obrigatórios/mínimos/semântica. Não coage/repara nem sobrescreve registro. | RF03/RF06, CA12/29/30/37, plan e implementation-plan conferidos. |
+
+Verificações executadas nesta rodada: busca de referências ativas a decisões
+abertas e às condições antigas K/S/E; conferência dos 25 campos e dos contratos
+consumidores; validação de links Markdown locais; `git diff --check`. Nenhum
+TypeScript, teste funcional, build, navegador ou Figma foi executado. F007-01
+foi marcada como concluída; F007-02–F007-22 continuam pendentes de implementação
+e evidência executável.

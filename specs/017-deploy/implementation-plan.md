@@ -2,8 +2,11 @@
 
 Criado em 22 de outubro de 2026. **Não executado.** Este documento traduz a
 spec em uma sequência técnica independente de fornecedor. Configurações finais
-só serão escritas após INF01–INF10; backend só inicia após IN01–IN08 e decisão
-sobre a ADR-004.
+de cada trilho só serão escritas após as INF aplicáveis: INF01–INF04 e as
+parcelas de INF08–INF10 usadas pelo frontend para o trilho A; INF05–INF10 para
+o trilho B. O backend só inicia após IN01–IN08 e decisão sobre a ADR-004. A
+matriz vigente está no
+[registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
 
 ## 1. Linha de base técnica
 

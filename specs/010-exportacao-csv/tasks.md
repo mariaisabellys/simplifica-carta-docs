@@ -12,7 +12,7 @@ Base: [contrato](contrato-exportacao-v3.md) e [plano técnico](implementation-pl
   e validação estrutural da mesma revisão, com falha distinta de sucesso vazio.
   Depende de F010-01; testar EX12/13, sem gate editorial.
 - [ ] F010-04 — Implementar matriz/rótulos/formatadores dos 22 registros com
-  K/S/E, listas parciais, prazo, Ativo e ausência. Depende de F010-01.
+  K/S/ON/E, listas parciais, prazo, Ativo e ausência. Depende de F010-01.
   Testar EX01/03–08, congelando fonte e comparando todas as chaves.
 - [ ] F010-05 — Implementar candidato de safety e testes de fronteiras Unicode,
   células finais/listas, quoting e não acumulação. Depende de F010-02/04.

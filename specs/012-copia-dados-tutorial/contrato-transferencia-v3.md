@@ -8,7 +8,8 @@ Node `564:980` é variante da página 011, não página independente nem limite 
 ## Matriz normativa
 
 Cinco grupos da 007, nesta ordem. A = sempre; K = custo sob-consulta/com-taxa;
-S = exigeAgendamento true; E = S e sistema-externo. “Sim” na coluna Copiar
+S = exigeAgendamento true; ON = S e tipos contém online; E = ON e
+sistema-externo. “Sim” na coluna Copiar
 exige campo aplicável com texto útil; somente espaços não habilitam ação.
 
 | Nº | Grupo / ID | Path v3 | Condição | Copiar |
@@ -33,7 +34,7 @@ exige campo aplicável com texto útil; somente espaços não habilitam ação.
 | 18 | Fluxo / `modality` | `etapas[].modalidade` | A | Não |
 | 19 | Atendimento / `requires-scheduling` | `atendimento.exigeAgendamento` | A | Não |
 | 20 | Atendimento / `scheduling-type` | `atendimento.tiposAgendamento` | S | Não |
-| 21 | Atendimento / `scheduling-system` | `atendimento.sistemaAgendamento` | S | Não |
+| 21 | Atendimento / `scheduling-system` | `atendimento.sistemaAgendamento` | ON | Não |
 | 22 | Atendimento / `scheduling-link` | `atendimento.linkAgendamento` | E | Sim |
 | 23 | Atendimento / `scheduling-display` | `atendimento.exibicaoAgendamento` | E | Não |
 | 24 | Finais / `important-additional-information` | `informacoesFinais.informacoesAdicionais` | A | Sim |
@@ -62,10 +63,9 @@ não a opção; URL é campo aberto. Não importar formatadores do CSV da 010.
 - Seleções: rótulos do catálogo da 007, multisseleções na ordem recebida.
   null é “Não informado”, [] é ausência de seleção, nunca Não/gratuito.
   Agendamento false é “Não” e true é “Sim”, ambos sem cópia.
-- Ativo false exibe Não com a mesma ressalva conservadora da 009: “Este valor
-  pode ser o estado inicial; a confirmação dessa escolha não é registrada.”
-  True exibe Sim; nunca afirmar publicação/ativação externa. MC-05 segue aberta.
-- K/S/E inativos: não montar valor, controle, botão ou âncora do campo; não
+- Ativo false exibe Inativo e true exibe Ativo. É o estado configurado na Carta;
+  nunca afirmar publicação, despublicação ou confirmação de interação.
+- K/S/ON/E inativos: não montar valor, controle, botão ou âncora do campo; não
   revelar valores retidos nem apagar fonte. Parte apenas fechada da 007 não
   torna campos inativos. Reativar deriva dados atuais, sem feedback antigo.
 - Uma Carta parcial permite cópia por texto preenchido. Erros estruturais da
@@ -80,19 +80,19 @@ Nunca ler innerText/textarea.value para montar payload. Dado original pode
 conter HTML, URL, = ou acentos: renderizar como texto literal sem recursos remotos.
 Não aplicar BOM, escape, prefixo de fórmula ou rótulo de CSV ao clipboard.
 
-`src/content/tutorial/paraiba-digital.ts` ainda tem exemplos e lista limitada:
-**a implementação atual não está sincronizada**. T011 deverá atualizar somente
-o contrato pertinente, preservando as outras cinco etapas, introdução, edição,
-anterior/próxima e seis etapas. A matriz acima prevalece sobre copyLabel legado.
-Exemplos de certificado, endereço fictício e lorem ipsum nunca substituem vazio
-nem são transferidos como valor real. Labels vêm do conteúdo/formulário; mapa
-de controles, não existência de copyLabel, determina elegibilidade.
+`src/content/tutorial/paraiba-digital.ts` foi sincronizado em 27/10/2026: a
+lista limitada, os `copyLabel` e os valores ilustrativos foram removidos. A
+etapa 4 referencia a projeção completa da 012 com cinco grupos, 25 definições,
+13 textos copiáveis e 12 escolhas. As outras cinco etapas, introdução, edição,
+anterior/próxima e o export de compatibilidade foram preservados. Labels vêm
+do conteúdo/formulário; o mapa de controles determina elegibilidade.
 
 011 controla URL, etapa ativa, progresso e CTAs. 012 fornece região única
 `tutorial-dados`, grupos, projeção e operações de cópia. Só montar na etapa 4;
 outras etapas sem controles/live regions da 012. A UI amplia o frame para os
 cinco grupos, sem truncar campos para caber. Consulta visual detalhada é futura.
-T011 atualizará links/mapa/content; T010 não altera esses artefatos nem TypeScript.
+Links, mapa e conteúdo já estão reconciliados documentalmente; a composição e
+os componentes continuam pendentes de implementação.
 
 Gerar âncoras dos alvos realmente apresentados: prefixo `tutorial-carta-` mais
 ID de campo, e coleção + ID estável + propriedade para repetidos. Codificar IDs
@@ -168,9 +168,9 @@ Sem logs, telemetria de conteúdo, leitura de clipboard, backend ou segunda Cart
 | --- | --- | --- |
 | TR01 | 25 definições completas com K/E | Cinco grupos, 13 tipos abertos copiáveis, 12 escolhas sem botão. |
 | TR02 | Documento/etapas múltiplos, reordenados e parciais | Cópia individual dos textos, sem número/modalidade/concatenação; ID estável. |
-| TR03 | Prazo máximo “0”, unidade; custo/detalhe; URL | Só textos abertos copiam original; opções apenas exibidas. |
+| TR03 | Prazo positivo/unidade; custo/detalhe; URL válida | Só textos abertos copiam original; opções apenas exibidas; estrutura inválida impede estado concluído. |
 | TR04 | Vazio/null/false/[]/default Ativo | Ausências identificadas, nenhum placeholder copiado, false legível sem botão. |
-| TR05 | K/S/E alternados com valores retidos | Inativos não aparecem/copiáveis; fonte preservada. |
+| TR05 | K/S/ON/E alternados com valores retidos | Inativos não aparecem/copiáveis; presencial exclusivo não mostra sistema; fonte preservada. |
 | TR06 | Carta vazia com exemplos no conteúdo | Cinco grupos sem valores ilustrativos; nenhum botão de cópia habilitado. |
 | TR07 | Unicode/HTML/CR/LF/CRLF e texto longo | Original enviado integralmente; UI literal/manual com quebras visíveis. |
 | TR08 | API ausente, contexto inseguro, recusa ou exceção | Falha verdadeira, manual disponível, sem leitura/fallback secreto. |

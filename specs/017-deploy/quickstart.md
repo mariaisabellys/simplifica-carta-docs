@@ -11,7 +11,9 @@ estática e backend da agenda.
 
 ## Pré-condições
 
-- decisões INF01–INF04 aprovadas para o frontend;
+- decisões INF01–INF04 aprovadas para o frontend e parcelas aplicáveis de
+  INF08–INF10 aprovadas quando houver credenciais, logs, monitoramento ou
+  operação do ambiente;
 - commit e artefato identificados;
 - runtime suportado e dependências instaláveis pelo lockfile;
 - navegação oficial implementada;

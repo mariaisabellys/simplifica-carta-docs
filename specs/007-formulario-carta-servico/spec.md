@@ -1,6 +1,7 @@
 # Spec — Formulário da Carta de Serviço
 
-Baseline documental: 19/10/2026, T004. Modelo: v3. Implementação integrada e aceite visual/funcional pendentes.
+Baseline documental: 27/10/2026, com MC-02–MC-08 fechadas. Modelo: v3.
+Implementação integrada e aceite visual/funcional pendentes.
 
 ## Objetivo e escopo
 
@@ -24,18 +25,18 @@ A matriz é o inventário canônico de 25 definições. Partes podem ser visitad
 
 ## RF03 — Modelo e regras estruturais
 
-Usar exclusivamente CartaServico com versao: 3 e os grupos sobreServico, publicoRequisitos, etapas, atendimento e informacoesFinais. A lista atual contém dez obrigatórios gerais, conforme matriz. Até a revisão editorial MC-02, manter essa lista como baseline técnico, sem acrescentar obrigatórios por analogia.
+Usar exclusivamente CartaServico com versao: 3 e os grupos sobreServico, publicoRequisitos, etapas, atendimento e informacoesFinais. São dez obrigatórios gerais: nome, descrição, categoria, subcategoria, ao menos um perfil, quem pode utilizar, tipo de custo, prazo máximo, tipo de prazo e resposta sobre agendamento. Eles cobrem identidade, classificação, público, custo, previsibilidade e a condição de atendimento. Não elevar opcionais por analogia.
 
 - Descrição: até 20 palavras significativas no campo inteiro, conforme o [contrato compartilhado](../../docs/arquitetura/contrato-contagem-palavras.md), fechado documentalmente na T005; implementação pendente.
 - Categoria/subcategoria: relação válida do catálogo. Ao mudar categoria, limpar subcategoria incompatível com aviso claro; não converter a escolha em outra arbitrariamente.
 - Públicos específicos: até dois; perfis: ao menos um. Seleções de catálogo devem ser válidas e sem duplicatas.
 - Custos: escolha única; detalhe obrigatório em sob-consulta/com-taxa. Ao escolher gratuito, ocultar detalhe e retirar obrigatoriedade; preservar o texto na sessão para restauração, sem transferência enquanto inativo.
-- Prazo: máximo textual e unidade. Não inventar regra de número positivo, zero, decimal ou “Imediato”; MC-03 precisa ser fechada antes da validação semântica.
-- Documento: nome e ID estável. Etapa: ID, ordem, título, orientação e modalidade. Mínimo de itens e obrigatoriedade por item permanecem MC-04.
-- Ativo: booleano, default false; não interpretar como confirmação deliberada nem publicar/despublicar serviço externo. Significado editorial permanece MC-05.
-- URL externa: presença exigida quando ativa; protocolo/formato ainda depende de MC-06. Não consultar disponibilidade remota nem executar integração.
+- Prazo: máximo aparado em inteiro decimal positivo canônico (`^[1-9]\\d*$`) e unidade. Rejeitar zero, decimal, sinal, zeros à esquerda, “Imediato” e “Sem estimativa”; o v3 não representa esses dois últimos estados.
+- Documento: coleção pode ficar vazia; item existente exige ID estável e nome útil. Etapa: mínimo uma; cada item exige ID, ordem, título, orientação e modalidade.
+- Ativo: booleano opcional, default false = Inativo. É o estado configurado na Carta, sem comprovar interação deliberada nem publicar/despublicar serviço externo; sozinho não torna a Carta preenchida.
+- Detalhe de custo K: texto útil com valor, orientação de consulta ou URL. URL de custo e link externo devem ser absolutos HTTP(S), com hostname e sem credenciais. Não consultar disponibilidade remota nem executar integração.
 
-Obrigatoriedade, tipo e pertinência ao catálogo são verificações diferentes. Dados malformados devem produzir retorno controlado, não exceção ou aprovação silenciosa. Não converter texto vazio em gratuidade, ausência de documentos ou ausência de agendamento.
+Obrigatoriedade, tipo e pertinência ao catálogo são verificações diferentes. O decoder rejeita propriedades/tipos/enums desconhecidos, relações inválidas já presentes, duplicatas em seleções ou IDs e ordem de etapas existentes não contígua, mas aceita Carta parcial e itens incompletos. A revisão separada aplica obrigatórios, mínimos, prazo, URL e condicionais. Dados malformados devem produzir retorno controlado, não exceção, coerção, deduplicação, reparo ou aprovação silenciosa. Não converter texto vazio em gratuidade, ausência de documentos ou ausência de agendamento.
 
 ## RF04 — Listas e identidade
 
@@ -47,7 +48,7 @@ Após adicionar, focar primeiro campo do novo item. Após remover, focar próxim
 
 ## RF05 — Orientações e validação
 
-Orientações seguem o [mapa e contrato da T006](../006-organizar-informacoes/contrato-orientacoes-v3.md), com reuso por vários controles e complementos específicos. Aplicação editorial ao TypeScript permanece em F006-03; Ativo continua em MC-05. Abrir/fechar orientação não modifica dado ou progresso de preparação. Associar label, instrução e erro; usar fieldset/legend nos grupos.
+Orientações seguem o [mapa e contrato da T006](../006-organizar-informacoes/contrato-orientacoes-v3.md), com reuso por vários controles e complementos específicos. Aplicação editorial ao TypeScript permanece em F006-03; a ajuda de Ativo deve explicar a semântica fechada em MC-05. Abrir/fechar orientação não modifica dado ou progresso de preparação. Associar label, instrução e erro; usar fieldset/legend nos grupos.
 
 Separar erros estruturais de sugestões editoriais da 008. Não reescrever texto automaticamente. Validar campos alterados no blur e todos os campos aplicáveis na revisão explícita; evitar erros prematuros ao abrir Carta vazia. Resumo ordenado pelo formulário permite abrir parte e focar controle/item correto.
 
@@ -67,17 +68,18 @@ Não truncar conteúdo para atender limites técnicos inventados; limites de car
 
 ## RF07 — Agendamento e aplicabilidade
 
-S = exigeAgendamento === true. E = S e sistemaAgendamento === sistema-externo.
+S = exigeAgendamento === true. ON = S e tiposAgendamento contém online. E = ON e sistemaAgendamento === sistema-externo.
 
 - null: não informado; false: Não explícito. Ambos ocultam configurações.
-- S ativa tipos e sistema, obrigatórios; aceitar Online, Presencial ou ambos conforme catálogo.
+- S ativa tipos, com ao menos um; aceitar Online, Presencial ou ambos conforme catálogo.
+- ON ativa sistema obrigatório. Presencial exclusivo mantém sistema, link e exibição inativos; com ambos, o sistema descreve a parcela on-line.
 - Sistema Paraíba Digital oculta link/exibição, mesmo com valores retidos.
 - E ativa link e exibição, obrigatórios.
 - Trocas preservam escolhas e textos na sessão; invalidam resultados dos campos que ficaram inativos.
 - Ao retornar à condição, restaurar valores para revisão.
 - Exibição dentro/fora da plataforma é apenas dado da Carta. Não abrir iframe, redirecionar ou agendar pela 007.
 
-O conteúdo atual de external-scheduling verifica só sistema; implementação deve aplicar E completa. A T006 definiu substituir a orientação “apenas online” por “se houver agendamento”, preservando S/E; atualização de conteúdo/metadados pendente (MC-07).
+O conteúdo atual de external-scheduling verifica só sistema; implementação deve aplicar E completa. Metadados e orientação devem distinguir S/ON/E e não pedir sistema no presencial exclusivo. A aplicação ao conteúdo/TypeScript permanece trabalho de implementação, não decisão aberta.
 
 ## RF08 — Revisão e próximos passos
 
@@ -139,7 +141,7 @@ IDs existentes preservados; redação migrada para v3.
 | CA21 | Externo/dentro registra configuração, sem executar incorporação. |
 | CA22 | Externo/nova página registra configuração, sem redirecionamento da 007. |
 | CA23 | Trocar/restaurar sistema preserva valores e remove resultados inativos. |
-| CA24 | S sem tipos/sistema ou E sem link/exibição gera erros correspondentes; formato URL conforme decisão MC-06. |
+| CA24 | S sem tipos, ON sem sistema ou E sem link/exibição gera erros correspondentes; URL aceita somente formato absoluto HTTP(S), hostname e ausência de credenciais. |
 | CA25 | Cinco partes usam referências corretas e layout adaptado ao conteúdo. |
 | CA26 | Orientação alterna variantes e anuncia expansão, sem mudar valor. |
 | CA27 | Prévia embutida reutiliza componente/projeção da 009. |
@@ -149,10 +151,14 @@ IDs existentes preservados; redação migrada para v3.
 | CA31 | Detalhe de custo só é exigido/transferido com K; prazo mantém valor/unidade separados. |
 | CA32 | Descrição com 20/21 palavras significativas segue limite do campo e fixtures CP01–CP13 do contrato compartilhado; a revisão por frase da 008 não bloqueia CSV. |
 | CA33 | Conclusão exige revisão estrutural atual bem-sucedida; editar invalida confirmação; tutorial continua acessível em Carta parcial. |
+| CA34 | Prazo aceita inteiro positivo canônico e rejeita zero, decimal, sinal, zeros à esquerda, imediato e sem estimativa. |
+| CA35 | Zero documentos é válido; item existente exige nome; ao menos uma etapa exige título, orientação e modalidade. |
+| CA36 | Presencial exclusivo não exige sistema; Online ou ambos exige sistema; externo exige link/exibição. |
+| CA37 | Decoder rejeita formato, relações presentes, duplicatas, IDs e ordem inválidos sem reparar/sobrescrever, mas recupera Carta parcial; revisão aponta incompletude separadamente. |
 
 ## Dependências, pendências e fora de escopo
 
-T005 fechou o contrato de contagem, ainda não implementado; T006 orientações; T007 regras editoriais; T008–T011 projeções; T015 navegação; T016 visual/acessibilidade. MC-02–MC-06 e MC-08 da matriz ainda exigem decisões/contratos antes das partes dependentes. Não declarar o plano integralmente pronto por encerrar T004/T005.
+T005 fechou o contrato de contagem; MC-02–MC-08 foram fechadas em 27/10/2026; T006 orientações; T007 regras editoriais; T008–T011 projeções; T015 navegação; T016 visual/acessibilidade. Os contratos estão prontos para implementação, mas código, fixtures, consulta visual e aceite continuam pendentes.
 
 Fora do escopo: backend da Carta, rascunho permanente, integração/publicação externa, agenda real, IA/reescrita automática e novos campos sem decisão.
 

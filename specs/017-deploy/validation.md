@@ -1,5 +1,10 @@
 # Validação documental: Deploy e ambientes
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após a
+> abertura de INF01–INF10 e a separação das decisões aplicáveis por trilho.
+> Plano coerente; nenhum ambiente, pipeline ou publicação foi entregue.
+> Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 Data: 22 de outubro de 2026.
 
 ## Base e fontes consultadas
@@ -37,13 +42,15 @@ ambientes publicados. Nenhum fornecedor foi selecionado.
 | V017-05 | Variável pública não é tratada como segredo | Atendido por DP07/DP13 |
 | V017-06 | API, proxy, banco, worker/outbox e SMTP falso têm destino | Atendido por DP10–DP14 |
 | V017-07 | Ambiente sintético não usa dados reais | Atendido por DP14 e quickstart |
-| V017-08 | Stack e fornecedor não foram inferidos | Atendido; INF01–INF10 abertos |
+| V017-08 | Stack e fornecedor não foram inferidos | Atendido; INF01–INF10 abertas documentalmente em 27/10/2026, ainda sem resposta |
 | V017-09 | Deploy estático pode avançar sem agenda ativa | Atendido por DP16, mantendo canal indisponível/pausado |
 | V017-10 | Nenhum teste/deploy foi declarado executado | Atendido nos sete artefatos |
 
 ## Pendências abertas
 
-- INF01–INF10 da própria feature.
+- INF01–INF10 da própria feature, com abertura documentada no
+  [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md) e
+  encaminhamento/respostas ainda pendentes.
 - IN01–IN08 e aprovação/substituição da ADR-004.
 - implementação das lacunas da T015 e aceites transversais da 016.
 - criação futura de pipeline, adaptador, ambiente, backend e runbooks.

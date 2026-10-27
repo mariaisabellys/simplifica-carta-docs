@@ -49,7 +49,7 @@ os nodes permanecem **pendentes de inspeção visual autenticada**.
 | Organização — 006 | `387:1918` | três tópicos, 13 informações, orientação expandida/recolhida, progresso e conteúdo longo | Contrato atual corrigido; visual pendente |
 | Formulário — 007/008 | cinco partes; `811:306`, `811:382`, `651:317` | vazio/parcial/revisão; orientação; erro/sugestão; listas vazias/repetidas; condicionais; storage/loading/falha | Formulário real obrigatório; visual/fluxo pendentes |
 | Prévia/exportação — 009/010 | `821:308` | provider carregando/ausente; Carta vazia/parcial/completa; erro/sugestão; validar/baixar/sucesso/falha | Componente compartilhado; visual/fluxo pendentes |
-| Tutorial/cópia — 011/012 | `564:635`–`564:1357`; etapa 4 `564:980` | seis etapas; imagem carregando/falha; sessão vazia/parcial; campos K/S/E; cópia pendente/sucesso/falha; conteúdo longo | Etapa 4 ampliável; visual/fluxo pendentes |
+| Tutorial/cópia — 011/012 | `564:635`–`564:1357`; etapa 4 `564:980` | seis etapas; imagem carregando/falha; sessão vazia/parcial; campos K/S/ON/E; cópia pendente/sucesso/falha; conteúdo longo | Etapa 4 ampliável; visual/fluxo pendentes |
 | FAQ/apoio — 013 | `169:495` | FAQ fechada/aberta, hash/foco, canais ativo/pendente/pausado/indisponível, texto longo | IDs/contrato conferidos; visual pendente |
 | Atendimento — 014 | `425:201`, `425:296`, `446:206`, `470:444` | calendário loading/disponível/vazio/erro; data/horário; formulário vazio/erro/revisão; envio pendente/conflito/incerto/expirado/registrado | Dados do frame são exemplos; visual/API pendentes |
 | E-mail — 015 | entrada `425:201` | canal ativo/inativo; cópia ociosa/pendente/sucesso/falha; seleção manual e texto longo | Conteúdo real conferido; visual/clipboard pendentes |

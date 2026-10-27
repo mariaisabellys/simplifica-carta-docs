@@ -255,18 +255,23 @@ serviço. A feature não atribui nomes ou fornecedores por inferência.
 
 ## Decisões pendentes
 
-| ID | Decisão necessária | Responsável a confirmar | Impacto |
-| --- | --- | --- | --- |
-| INF01 | Fornecedor(es), contas, regiões e custos | Infraestrutura/gestão | Pipeline, recursos e operação |
-| INF02 | Domínio, DNS, raiz ou subpath e certificados | Infraestrutura/comunicação | Base Vite, links, TLS e testes |
-| INF03 | Ambientes, promoção, branch/tag e aprovações | Engenharia/gestão | Processo de release |
-| INF04 | Headers, CSP, analytics, monitoramento e source maps | Segurança/engenharia | Browser, privacidade e diagnóstico |
-| INF05 | Stack/versões definitivas da agenda | Coordenação técnica | Backend, imagem, patches e suporte |
-| INF06 | Banco, região, HA, backup e recuperação | Infraestrutura/dados | Persistência e continuidade |
-| INF07 | Execução/supervisão do worker e SMTP institucional | Infraestrutura/GESED | Notificações e suporte |
-| INF08 | Cofre, donos, rotação e resposta a segredo exposto | Segurança/infraestrutura | Proteção operacional |
-| INF09 | Retenção, privacidade, acesso e logs | Encarregado/gestão | Tratamento de dados |
-| INF10 | SLOs, alertas, plantão e incidente | Operação/gestão | Disponibilidade e reação |
+As consultas INF01–INF10 foram **abertas documentalmente em 27/10/2026**, em
+paralelo com IN01–IN08, no
+[registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md). A abertura
+não comprova encaminhamento, resposta ou aprovação; os gates continuam fechados.
+
+| ID | Estado | Decisão necessária | Responsável a confirmar | Impacto |
+| --- | --- | --- | --- | --- |
+| INF01 | Aberta em 27/10/2026 | Fornecedor(es), contas, regiões e custos | Infraestrutura/gestão | Pipeline, recursos e operação |
+| INF02 | Aberta em 27/10/2026 | Domínio, DNS, raiz ou subpath e certificados | Infraestrutura/comunicação | Base Vite, links, TLS e testes |
+| INF03 | Aberta em 27/10/2026 | Ambientes, promoção, branch/tag e aprovações | Engenharia/gestão | Processo de release |
+| INF04 | Aberta em 27/10/2026 | Headers, CSP, analytics, monitoramento e source maps | Segurança/engenharia | Browser, privacidade e diagnóstico |
+| INF05 | Aberta em 27/10/2026 | Stack/versões definitivas da agenda | Coordenação técnica | Backend, imagem, patches e suporte |
+| INF06 | Aberta em 27/10/2026 | Banco, região, HA, backup e recuperação | Infraestrutura/dados | Persistência e continuidade |
+| INF07 | Aberta em 27/10/2026 | Execução/supervisão do worker e SMTP institucional | Infraestrutura/GESED | Notificações e suporte |
+| INF08 | Aberta em 27/10/2026 | Cofre, donos, rotação e resposta a segredo exposto | Segurança/infraestrutura | Proteção operacional |
+| INF09 | Aberta em 27/10/2026 | Retenção, privacidade, acesso e logs | Encarregado/gestão | Tratamento de dados |
+| INF10 | Aberta em 27/10/2026 | SLOs, alertas, plantão e incidente | Operação/gestão | Disponibilidade e reação |
 
 IN01–IN08 permanecem no contrato da 014 e não são substituídos por INF01–INF10.
 

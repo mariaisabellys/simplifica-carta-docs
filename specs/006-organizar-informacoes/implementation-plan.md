@@ -81,7 +81,7 @@ assets somente após consulta visual; contraste/foco medidos, não presumidos.
 | CA11 | Nenhuma mensagem de aprovação/publicação; 13 marcas não ativam conclusão na 007. |
 | CA12 | Comparação com fontes efetivamente consultadas; divergências e adaptações documentadas. |
 | CA13–14 | 0 → marcar A/B → 2 → repetir B → 2 → retirar A → 1; expansão não muda; navegação preserva; recarga zera. |
-| CA15–16 | 24 campos mapeados; tópico texto; descrição <=20 significativas; público contextual; S/E; ressalvas de imediato/recorrência. |
+| CA15–16 | 24 campos mapeados; tópico texto; descrição <=20 significativas; público contextual; S/ON/E; ressalvas de imediato/recorrência. |
 
 Testar Chrome/Edge+NVDA, Firefox, Safari/VoiceOver e dispositivos móveis conforme
 ambientes disponíveis da 016, registrando versão, ausência e limitações.
@@ -93,11 +93,11 @@ antes da entrega integrada. Relatórios anteriores não são aceite desta versã
 ## Pendências delimitadas
 
 - F006-03: aplicar conteúdo alinhado e complementos; não concluído por esta rodada.
-- MC-03: definição de prazo imediato/zero/decimal/sem estimativa, decisão do produto.
-  A orientação com ressalva pode ser preparada; validação semântica depende disso.
-- MC-05: significado/ajuda de Ativo; não inventar orientação por analogia.
-- Caso presencial sem sistema representável: confirmar necessidade de mudança
-  deliberada do v3 com o produto; manter S/E e não inventar escolha.
+- Aplicar MC-03: somente inteiro positivo canônico + unidade; imediato, zero,
+  decimal e sem estimativa não integram v3.
+- Aplicar MC-05: Ativo/Inativo é estado configurado; não criar tópico por analogia.
+- Aplicar MC-07: manter S/ON/E; presencial exclusivo não pede sistema e ambos
+  configura o sistema da parcela on-line.
 - Consulta Design/Make, confronto ERS e revisão institucional (responsável/data).
 - Entrega de navegação/formulário e entradas/destinos reais; fallback publicado.
 - Testes funcionais, visuais e assistivos ainda não executados.

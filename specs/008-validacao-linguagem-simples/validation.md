@@ -1,5 +1,10 @@
 # Validação documental: Linguagem simples
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado sobre
+> `ls-pt-BR-v1`, `msg-pt-BR-v1` e consumidores. Contrato pronto
+> documentalmente; motor, geometria, integração e testes seguem pendentes.
+> Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 ## Estado em 19/10/2026 — T007
 
 Autor do registro: Codex. Base: estado local sobre HEAD 7948d35, incluindo
@@ -26,8 +31,9 @@ Sem consulta externa Figma, ERS, aprovação institucional ou teste funcional.
 | V008-08 | Resolvido documentalmente: detecção por token/construção, flexões explícitas, acentos preservados, sobreposição e offsets. | F008-04, catálogo ainda condicionado a V008-01. |
 | V008-09 | Resolvido documentalmente: heurísticas LS04/05 limitadas com confirmação humana; LS06 manual, jargão não catalogado revisado humanamente. | F008-05; não prometer cobertura gramatical completa. |
 
-MC-12 da matriz da 007 resolvida no escopo documental pela matriz campo × regra;
-as decisões estruturais MC-02–MC-08 não são resolvidas por este motor editorial.
+MC-12 da matriz da 007 foi resolvida no escopo documental pela matriz campo ×
+regra. MC-02–MC-08 foram fechadas pela 007 em 27/10/2026; este motor apenas
+consome aplicabilidade e alvos, sem duplicar validação estrutural.
 
 ## Prontidão e limites
 
@@ -49,3 +55,25 @@ palavras significativas continua único, mas catálogo, MSG01–MSG17, heurísti
 geometria e execução precisam de aprovação/implementação. Metadados dos
 Form-Card estão disponíveis; não houve teste visual. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Revalidação editorial — 27/10/2026
+
+Parecer atual: **V008-01 e V008-03 encerradas; feature 008 pronta
+documentalmente para implementação, sem aceite funcional ou institucional**.
+Esta seção substitui o estado de aprovação pendente das rodadas anteriores.
+
+| ID | Decisão aprovada | Evidência / limite |
+| --- | --- | --- |
+| V008-01 | Catálogo `ls-pt-BR-v1`: 27 registros, sendo 6 originais e 21 adicionais, na ordem documentada. | Aprovação explícita do usuário responsável pelo conteúdo em 27/10/2026. Sugestões são contextuais; termos ambíguos exigem reescrita/revisão humana. |
+| V008-03 | Mensagens `msg-pt-BR-v1`: MSG01–MSG17 exatamente como registradas no contrato. | Copy limita “aprovado” ao escopo editorial, preserva continuidade e não promete correção factual, jurídica ou aprovação da Carta. |
+
+F008-01 foi marcada como concluída. F008-02–F008-12 continuam pendentes para
+conteúdo executável, motor, geometria, integração, navegadores, acessibilidade,
+typecheck, build e evidências. Alterar entrada, sugestão ou mensagem exige nova
+versão e aprovação; indisponibilidade/versão incompatível retorna
+`inconclusivo`, sem fallback para o catálogo legado.
+
+Checks documentais desta rodada: 27 registros do catálogo, 17 mensagens,
+18 fixtures e 18 critérios conferidos; busca de referências ativas a aprovação
+pendente; links Markdown locais e `git diff --check`. Nenhum código do motor,
+teste funcional, build, navegador ou Figma foi executado.

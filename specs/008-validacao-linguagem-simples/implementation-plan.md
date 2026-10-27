@@ -2,8 +2,9 @@
 
 ## Estado
 
-Atualizado pela T007 documental em 19 de outubro de 2026. Nenhuma regra
-nova está implementada. O helper de 240 caracteres é legado.
+Atualizado em 27 de outubro de 2026. Catálogo `ls-pt-BR-v1` e mensagens
+`msg-pt-BR-v1` estão aprovados; nenhuma regra nova está implementada. O helper
+de 240 caracteres é legado.
 
 ## Contratos técnicos
 
@@ -55,7 +56,7 @@ export const languageLimits = {
 ```
 
 O arquivo também conterá catálogo, sugestões, exemplos e mensagens. A tabela
-normalizada só vira catálogo executável após aprovação V008-01/F008-01.
+executável deve reproduzir exatamente as versões aprovadas em V008-01/F008-01.
 
 ## Motor textual
 
@@ -119,9 +120,9 @@ Não usar tamanho total do campo como substituto de frase ou parágrafo.
 
 ## Gate
 
-Antes de ativar catálogo/copy: concluir F008-01; confirmar integração real com
-paths/IDs da 007; validar copy;
-confirmar estados no Figma/design system sem inventar página independente.
+F008-01 está concluída. Antes da entrega integrada: confirmar correspondência
+exata das versões executáveis, integração real com paths/IDs da 007 e estados
+no Figma/design system, sem inventar página independente.
 
 ## Evidência esperada
 

@@ -51,7 +51,7 @@ Não executados: testes funcionais, suíte, typecheck, build, clipboard real,
 browser, consulta Figma/ERS ou validação administrativa. As alterações desta
 rodada estão restritas a Markdown, incluindo históricos e mapa.
 
-## Pendências e retomada
+## Pendências e retomada — estado em 20/10/2026
 
 Autorizar uma rodada de conteúdo para executar o item 1/T009 local, mantendo
 as demais etapas e verificando consumidores. Só então reavaliar o aceite
@@ -61,4 +61,20 @@ implementação e testes reais seguem pendentes. Não anunciar publicação auto
 ou correspondência homologada. Consultas históricas não foram repetidas aqui.
 Destino de `Concluir Guia` fechado documentalmente na T015: home `/`, sem
 limpar a Carta ou comprovar publicação. O conteúdo tipado ainda expõe somente
-`kind: finish`; a migração funcional permanece em T009/T011.
+`kind: finish`; a ligação funcional do destino permanece em T013.
+
+## Sincronização de conteúdo — 27/10/2026
+
+T009 local e a parcela de conteúdo da T011 global foram concluídas. Em
+`src/content/tutorial/paraiba-digital.ts`, a etapa 4 deixou de conter dez
+`quickCopyFields`, seis `copyLabel`, lorem ipsum, URL e valores ilustrativos.
+`tutorialCartaDataContent` passou a referenciar a projeção da feature 012 com
+cinco grupos, 25 definições, 13 textos copiáveis e 12 escolhas informativas.
+As outras cinco etapas, IDs, percentuais, ações e o export de compatibilidade
+foram preservados.
+
+Checks executados: busca pelos identificadores/valores removidos, conferência
+das cardinalidades 25/13/12, `npm run typecheck`, `npm run build`, links locais
+dos artefatos alterados e `git diff --check`. A página continua provisória e a
+região da 012 ainda não foi implementada; não foram executados clipboard,
+IT01–IT11, browser, inspeção Figma/ERS ou validação da plataforma externa.

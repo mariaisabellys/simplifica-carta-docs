@@ -50,8 +50,9 @@ qualquer implementacao.
   `002-home-e-navegacao`.
 - Nao existe infraestrutura de testes automatizados no `package.json`.
 - Os icones do frame ainda nao estao armazenados localmente.
-- O conteudo normativo do prototipo ainda precisa de validacao editorial em
-  fontes oficiais.
+- O conteúdo normativo foi revalidado em fontes oficiais; em 27/10/2026, o
+  resumo do Decreto nº 9.756/2019 foi alinhado à ementa do Planalto sobre a
+  unificação dos canais digitais do Governo federal.
 
 A implementacao da 004 deve partir do estado real da feature 002. Ela nao deve
 copiar header, navegacao ou footer para dentro da pagina nem reintroduzir

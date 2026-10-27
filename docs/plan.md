@@ -66,13 +66,13 @@ Para a 012, usar a tabela de 25 definições de `docs/spec.md` como ponto de par
 - 015 copia somente o endereço GESED, sem mailto.
 - Conteúdo determina os textos e o layout se adapta a ele.
 
-## Decisões a fechar durante as tarefas
+## Decisões acompanhadas durante as tarefas
 
 | Decisão | Tarefa | Informação necessária |
 | --- | --- | --- |
 | Regras estruturais ainda incompletas | T003–T004 | Obrigatoriedade, prazo, listas, defaults e URLs documentados por campo. |
 | Destino de recorrência e divergências da 006 | T006 | Escolha de produto sem ampliação implícita da Carta. |
-| Catálogo e mensagens da 008 | T007 | Aceite explícito e orientação contextual para pares ambíguos. |
+| Catálogo e mensagens da 008 — resolvida em 27/10/2026 | T007 / F008-01 | `ls-pt-BR-v1` e `msg-pt-BR-v1` aprovados; pares ambíguos permanecem contextuais. |
 | Parágrafo e resultado inconclusivo | T007 | Medição, zoom, campo oculto, checklist e estados sem falso sucesso. |
 | Contrato final CSV | T009 | Agregações e representação do v3, incluindo enums. |
 | Plataforma externa | T011 | URL/fonte/data, correspondência e instruções verificadas. |

@@ -1,6 +1,7 @@
 # Plan — Formulário da Carta v3
 
-Baseline: T004, 19/10/2026. Prontidão documental: requer fechamento das pendências listadas. Implementação integrada: não iniciada neste lote.
+Baseline: 27/10/2026. Prontidão documental: MC-02–MC-08 fechadas;
+implementação integrada e verificações executáveis ainda não iniciadas.
 
 ## Fontes
 
@@ -16,9 +17,12 @@ Modelo persistido: objeto CartaServico v3 diretamente, na chave simplifica-carta
 
 Ações tipadas para textos de sobreServico/publicoRequisitos/informacoesFinais, escolhas de catálogo, custo/prazo, agendamento e itens por ID. Não aceitar um setter genérico sem validação de propriedade/valor. Coleções usam IDs gerados uma vez; etapas renumeram ordem após alteração da sequência, preservando IDs.
 
-Troca de categoria limpa subcategoria incompatível e gera aviso. Troca de custo preserva detalhe inativo; troca de agendamento preserva configurações. Aplicabilidade K/S/E deve ser reutilizada nos consumidores.
+Troca de categoria limpa subcategoria incompatível e gera aviso. Troca de custo preserva detalhe inativo; troca de agendamento preserva configurações. Aplicabilidade K/S/ON/E deve ser reutilizada nos consumidores.
 
-Ativo permanece boolean false inicial; a interface não afirma confirmação do usuário. Cardinalidades e semântica pendentes não são inferidas de tipo de controle.
+Ativo permanece boolean false inicial e opcional: false representa Inativo na
+Carta, sem afirmar interação ou estado externo. Documentos admitem zero itens;
+cada item existente exige nome. Etapas exigem ao menos um item completo. Prazo
+aceita inteiro positivo canônico e unidade, conforme a matriz.
 
 ## Sessão e falhas
 
@@ -28,7 +32,12 @@ Hidratação antecede gravação. Registro inválido/anterior/futuro permanece i
 
 Não persistir feedback, foco, erros ou checklist editorial como campos da Carta. Snapshot de revisão inclui revisão do conteúdo; mudança invalida confirmação antiga. Não depender de unmount para salvar últimas alterações; estratégia de escrita após atualização deve ser testada antes de adotar debounce.
 
-O decoder verifica formato e segurança dos dados, não completude. IDs vazios/duplicados e ordem inválida precisam de tratamento seguro explícito; baseline conservador é rejeitar recuperação ambígua, sem reparar silenciosamente dados do usuário. Migração parcial futura só entra com contrato e fixtures aprovados.
+O decoder verifica formato e segurança, não completude. Deve rejeitar
+propriedades, tipos, enums, relações entre escolhas presentes, máximo de públicos,
+valores repetidos em seleções, IDs e ordem inválidos. Deve recuperar campos/listas
+obrigatórios ainda vazios e itens incompletos para que a revisão aponte os erros.
+A recuperação é estrita e atômica: não coagir, deduplicar nem reparar
+silenciosamente. Migração futura só entra com contrato e fixtures aprovados.
 
 ## Identidade e foco
 
@@ -59,13 +68,13 @@ Estado de conclusão: revisão estrutural completa, sem erros e revision igual �
 
 | Arquivo/área | Trabalho futuro |
 | --- | --- |
-| carta.types/schema/catalogs | Manter v3; completar regras aprovadas sem duplicar fonte. |
+| carta.types/schema/catalogs | Manter v3; implementar prazo, listas e condições K/S/ON/E sem duplicar fonte. |
 | carta.storage | Retorno discriminado, preservação do registro inválido e escrita controlada. |
 | CartaSessionProvider / useCartaSession | Criar fonte única acima das páginas. |
 | carta.reducer / registro de campos | Ações tipadas, aplicabilidade, IDs, partes e foco. |
 | FormularioCartaPage / componentes por parte | Compor cinco partes e listas reais com conteúdo versionado. |
 | FormField / resumo / orientações | Associar instruções, erros e controles acessíveis. |
-| Conteúdo formulario-carta | Ajustar condição E, filho de documento, kind de detalhe e copy de conclusão. |
+| Conteúdo formulario-carta | Ajustar condições S/ON/E, filho de documento, kind de detalhe, mensagens e copy de conclusão. |
 | Testes de domínio e UI | Sessão, condições, listas, foco, consumidores e regressão v3. |
 
 ## Verificação e riscos
@@ -78,6 +87,9 @@ Não conservar limites antigos candidatos de 8 MiB/1000 itens como regras aprova
 
 ## Dependências antes de implementar cada parte
 
-Fechar MC-02 (justificativa dos obrigatórios), MC-03 (prazo), MC-04 (listas), MC-05 (Ativo), MC-06 (URL), MC-08 (runtime); T005 definiu o contrato de contagem e T007 tratará regras editoriais. A contagem ainda exige implementação. Componentes visuais dependem de consulta Figma e estados definidos. Modelos/provider podem ser preparados após os contratos correspondentes estarem completos, sem declarar features consumidoras prontas.
+MC-02–MC-08 estão fechadas na matriz de 27/10/2026. T005 definiu a contagem e
+T007 as regras editoriais; ambas ainda exigem implementação. Componentes visuais
+dependem de consulta Figma. Modelo, decoder, provider e UI já podem seguir os
+contratos, sem declarar consumidoras prontas antes dos testes integrados.
 
 Histórico: [plano anterior](historico/2026-10-19-pre-t004-plan.md).

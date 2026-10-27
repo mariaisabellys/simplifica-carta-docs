@@ -54,6 +54,11 @@ linhas e zero divergências de ID, path ou condição. O conteúdo atual de
 `copyLabel`; essa incompatibilidade é de implementação/conteúdo, bloqueia o
 aceite integrado da etapa 4 e continua atribuída à tarefa T009 da feature 011.
 
+Atualização em 27/10/2026: a incompatibilidade acima foi encerrada no conteúdo.
+A lista fixa, os exemplos e `copyLabel` foram removidos; a etapa 4 referencia
+a projeção 012 com 25 definições, 13 textos copiáveis e 12 escolhas. O aceite
+integrado continua pendente de composição e testes.
+
 ## Cadeia de ajuda — 013 a 015
 
 O contrato compartilhado mantém uma única origem para estado, endereço e ação

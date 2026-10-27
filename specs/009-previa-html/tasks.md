@@ -9,7 +9,7 @@ Base: [spec](spec.md), [contrato](contrato-projecao-v3.md), [plano detalhado](im
 - [ ] F009-02 — Consultar Design 821:308/Make, ERS e revisar copy; registrar
   estados nos dois contextos e adaptações sem omitir campos. Depende de F009-01.
 - [ ] F009-03 — Implementar view model readonly e seletor dos 25 campos,
-  condições K/S/E, hasContent, listas e defaults. Não migrar/alterar fonte.
+  condições K/S/ON/E, hasContent, listas e defaults. Não migrar/alterar fonte.
   Depende de F009-01 e autorização de implementação.
 - [ ] F009-04 — Versionar labels/mensagens e renderizar CartaPreview seguro:
   texto literal, listas, ausências, prefixo único e heading contextual.

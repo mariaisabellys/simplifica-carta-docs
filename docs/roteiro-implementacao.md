@@ -2,6 +2,11 @@
 
 Publicado em 23 de outubro de 2026, após a auditoria documental T020.
 
+Revalidação seletiva em 27 de outubro de 2026: `/spec:validar` foi reexecutado
+somente nas features com contratos alterados — 006–012, 014, 016 e 017. O
+[registro consolidado](verificacoes/revalidacao-contratos-2026-10-27.md)
+preserva fontes consultadas, resultados, checks e dependências ainda abertas.
+
 Fontes: [spec da consolidação](spec.md), [plano documental](plan.md),
 [tarefas documentais](tasks.md), [auditoria T020](verificacoes/t020-auditoria-cruzada-final.md)
 e tarefas de cada feature.
@@ -25,14 +30,14 @@ acessibilidade, homologação institucional ou validação em ambiente publicado
 | 001 — Fundação | Pronta com dependência explícita | Base técnica já existe; conferir integração durante o lote 1. | Navegação central, 404, metadados e ambiente publicado. |
 | 002 — Home e navegação | Pronta documentalmente | T007–T014; depois T015–T029. | Inspeção visual real, rota 003 e verificações NV/016. |
 | 003 — Explorar por etapas | Pronta documentalmente | T011–T032 após a API central de navegação estar disponível. | Registrar rota, validar quatro destinos e executar aceite visual/acessível. |
-| 004 — O que é a Carta | Bloqueada localmente por decisão editorial | Assets e preparação independentes podem avançar. | Corrigir e aprovar a paráfrase do Decreto nº 9.756/2019 antes de renderizar o conteúdo legal. |
+| 004 — O que é a Carta | Pronta documentalmente | Executar T014–T039 depois da infraestrutura compartilhada da 002. | Testar links oficiais e concluir aceite visual/acessível. |
 | 005 — Diagnóstico | Pronta documentalmente | T008–T050, preservando a ordem local. | Motor exaustivo `3^8`, sessão, jornada, resultado e aceite visual/acessível. |
 | 006 — Organizar informações | Pronta documentalmente | F006-01–F006-07; F006-08 acompanha a 007. | Aplicar copy/metadados contratados e validar integração de orientações. |
-| 007 — Formulário | Bloqueada por decisões de produto | Inventário técnico sem consolidar comportamento pode avançar. | Fechar MC-02–MC-08 aplicáveis em F007-01/F007-02 antes do provider e da UI dependente. |
-| 008 — Linguagem simples | Bloqueada por aprovação editorial | Preparação técnica e fixtures podem ser revisadas sem ativar regras. | Aprovar catálogo e mensagens em F008-01 antes do motor/copy de produção. |
+| 007 — Formulário | Pronta documentalmente | Executar F007-02–F007-22 sobre a matriz v3 fechada. | Implementar MC-01–MC-12 contratadas, consultar Figma e executar testes funcionais/visuais/integrados. |
+| 008 — Linguagem simples | Pronta documentalmente | Executar F008-02–F008-12 com `ls-pt-BR-v1` e `msg-pt-BR-v1`. | Implementar motor, geometria, integração, acessibilidade e testes sem alterar a copy aprovada. |
 | 009 — Prévia HTML | Pronta com dependência explícita | Preparar view model após o contrato executável da 007. | Provider 007, estados estruturais e interface editorial 008. |
 | 010 — Exportação CSV | Pronta com dependência explícita | Implementar snapshot/matriz depois do provider 007. | Homologar mitigação de fórmulas e compatibilidade em planilhas reais. |
-| 011 — Tutorial | Pronta com dependências explícitas | T001–T009; sincronizar conteúdo 25/13/12 antes da composição. | Fonte administrativa autorizada, assets e integração real com 012. |
+| 011 — Tutorial | Pronta com dependências explícitas | Conteúdo 25/13/12 sincronizado; executar T001–T008 e seguir de T010, respeitando dependências. | Fonte administrativa autorizada, assets e integração real com 012. |
 | 012 — Cópia de dados | Pronta com dependência explícita | F012-01/F012-02 podem preparar; UI depende de 007 e 011/T009. | Etapa 4 real, 25 campos, 13 cópias por tipo, clipboard e âncoras. |
 | 013 — Fluxo de ajuda | Pronta documentalmente | T001–T015, reutilizando o resolvedor já versionado. | Interface, destinos, nove combinações de canais e acessibilidade. |
 | 014 — Atendimento agendado | Bloqueada por decisão institucional | Nenhum backend ou promessa operacional deve começar. | IN01–IN08, ADR-004 final, responsáveis, política e infraestrutura aprovados. |
@@ -44,20 +49,26 @@ acessibilidade, homologação institucional ou validação em ambiente publicado
 
 Estes gates não devem interromper os lotes independentes:
 
-1. **G1 — Conteúdo legal 004:** responsável editorial/jurídico aprova a
-   paráfrase do Decreto nº 9.756/2019 com fonte e data.
-2. **G2 — Modelo 007:** produto fecha MC-02–MC-08, especialmente
-   obrigatoriedade, prazo, listas, Ativo, custo/URL e atendimento presencial.
-3. **G3 — Linguagem 008:** responsável editorial aprova catálogo e mensagens;
-   pares contextuais não viram substituição literal por omissão.
+1. **G1 — Conteúdo legal 004 — resolvido em 27/10/2026:** ementa do Decreto nº
+   9.756/2019 reconsultada no Planalto; resumo alinhado à unificação dos canais
+   digitais do Governo federal. Teste de link e vigência continuam no aceite.
+2. **G2 — Modelo 007 — resolvido em 27/10/2026:** MC-02–MC-08 fechadas na
+   matriz canônica: dez obrigatórios, prazo positivo, listas, Ativo, custo/URL,
+   condição ON para sistema e decoder estrito. Implementação/testes permanecem.
+3. **G3 — Linguagem 008 — resolvido em 27/10/2026:** catálogo
+   `ls-pt-BR-v1` (27 registros) e mensagens `msg-pt-BR-v1` (MSG01–MSG17)
+   aprovados; sugestões continuam contextuais e nunca automáticas.
 4. **G4 — Segurança 010:** produto/segurança homologa política contra fórmulas
    e conjunto de planilhas-alvo.
 5. **G5 — Tutorial 011:** equipe responsável fornece URL administrativa,
    permissões, fluxo, nomenclatura e mídia autorizada, com fonte e data.
-6. **G6 — Agenda 014:** responsáveis institucionais fecham IN01–IN08 e a
-   ADR-004; o canal permanece `pendente` até homologação.
-7. **G7 — Deploy 017:** infraestrutura fecha INF01–INF10, hospedagem,
-   ambientes, responsáveis e política de promoção/rollback.
+6. **G6 — Agenda 014 — aberto documentalmente em 27/10/2026:** IN01–IN08
+   aguardam encaminhamento, responsáveis nominais e respostas; ADR-004 e o
+   canal permanecem pendentes até homologação.
+7. **G7 — Deploy 017 — aberto documentalmente em 27/10/2026:** INF01–INF10
+   aguardam encaminhamento, responsáveis nominais e respostas sobre hospedagem,
+   ambientes, operação e promoção/rollback. Ver o
+   [registro conjunto](decisoes/registro-g6-g7-agenda-deploy.md).
 
 ## Lotes de implementação
 
@@ -67,12 +78,13 @@ Objetivo: preservar o estado documental e abrir os gates sem alterar o produto.
 
 1. Criar um checkpoint versionado da documentação atual antes do primeiro
    lote de código.
-2. Encaminhar G1–G7 aos responsáveis; registrar resposta, fonte e data nos
-   documentos indicados, sem transformar silêncio em aprovação.
+2. G6/G7 já têm abertura documental conjunta; nomear contatos, encaminhar as
+   consultas e registrar resposta, fonte e data por ID, sem transformar silêncio
+   em aprovação. Encaminhar também G4/G5 e preservar as evidências de G1–G3.
 3. Manter 014 indisponível e 017 sem publicação enquanto seus gates estiverem
    abertos.
 
-Saída: baseline recuperável e decisões localizadas. G1–G7 não bloqueiam o
+Saída: baseline recuperável e decisões localizadas. G4–G7 não bloqueiam o
 início do lote 1, exceto nos componentes diretamente afetados.
 
 ### Lote 1 — Fundação e navegação compartilhada
@@ -109,8 +121,8 @@ Ordem:
    enumeração das 6.561 combinações, sem persistir respostas além do contrato.
 2. 006/F006-01–F006-07 aplica conteúdo contratado, estado 0/13 e página de
    preparação; a ligação editorial com a 007 aguarda o lote 3.
-3. Após G1, 004 revalida as evidências editoriais das T006/T013 e executa
-   T014–T039.
+3. 004 usa a evidência legal encerrada em G1 e executa T014–T039 depois dos
+   contratos compartilhados necessários da 002.
 
 Checks mínimos: typecheck/build, testes do motor e sessão, URLs direta e de
 resultado inválido, conteúdo/links oficiais, comparação Figma, teclado,
@@ -118,29 +130,30 @@ leitores, 320–1440 px, zoom 200% e reflow 400% conforme a matriz 016.
 
 ### Lote 3 — Provider e formulário da Carta
 
-Features: 006 e 007; depende do lote 1 e do gate G2.
+Features: 006 e 007; depende do lote 1. O gate G2 já está encerrado.
 
 Ordem:
 
-1. 007/F007-01/F007-02 registra as decisões G2 no contrato antes do código.
+1. 007/F007-01 já registrou as decisões G2; executar F007-02 para integrar
+   contagem, orientações, mensagens e condições no inventário de implementação.
 2. Implementar provider único, sessão/storage v3, IDs estáveis, recuperação e
    cinco partes conforme F007-03–F007-17, sem envelope ou paths v2.
 3. Integrar 006/F006-08 por mapa explícito; orientação abre a parte e o alvo
    corretos sem criar outro estado da Carta.
 4. Executar F007-18–F007-22 e F006-10–F006-14.
 
-Checks mínimos: fixtures CP01–CP13, dez paths gerais, K/S/E, listas por ID,
+Checks mínimos: fixtures CP01–CP13, dez paths gerais, K/S/ON/E, listas por ID,
 storage ausente/inválido/futuro, foco após montagem, perda de dados, 20 palavras
 significativas e cinco partes. Typecheck/build e auditoria 016 são obrigatórios.
 
 ### Lote 4 — Regras, prévia e exportação
 
-Features: 008, 009 e 010; depende do provider 007, do G3 e do G4 para o aceite
+Features: 008, 009 e 010; depende do provider 007 e do G4 para o aceite
 completo.
 
 Ordem:
 
-1. Após G3, 008/F008-02–F008-12 implementa o motor editorial para os 25 campos,
+1. Com G3 encerrado, 008/F008-02–F008-12 implementa o motor editorial para os 25 campos,
    estados inconclusivos e checklist humano; revisão editorial não bloqueia
    navegação, prévia ou CSV.
 2. 009/F009-01–F009-12 implementa um único view model/componente para a prévia
@@ -168,7 +181,7 @@ Ordem:
 
 Checks mínimos: IT01–IT11, TR01–TR17, query `etapa=1..6`, recarga/histórico,
 clipboard seguro/negado/indisponível, concorrência, retorno para edição,
-ausências, K/S/E, comparação dos seis frames e auditoria 016.
+ausências, K/S/ON/E, comparação dos seis frames e auditoria 016.
 
 ### Lote 6 — FAQ e suporte por e-mail
 
@@ -221,7 +234,7 @@ backup/restore, promoção e rollback. Dados devem ser sintéticos.
 
 A primeira tarefa liberada é **feature 002, T007 — criar o conteúdo
 compartilhado da navegação e do rodapé**, seguida de T008 e dos componentes do
-shell. Ela não depende dos gates G1–G7 e prepara todas as páginas seguintes.
+shell. Ela não depende dos gates G4–G7 e prepara todas as páginas seguintes.
 
 Comando interno para iniciar, depois do checkpoint documental:
 

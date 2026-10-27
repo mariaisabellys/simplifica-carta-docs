@@ -21,3 +21,11 @@ relativos ajustados. Não alterados src/tests/content ou documentos da 011.
 Utilitário existente não entrega UI/coordenador; decisões de trava, manual e
 retorno tardio precisam de testes previstos. Consulta Figma/ERS/copy e ambientes
 funcionais/assistivos não foram executados. Próxima tarefa global: T011.
+
+## Atualização de dependência — 27/10/2026
+
+A sincronização de conteúdo T011 foi concluída e verificada por typecheck/build:
+cinco grupos, 25 definições, 13 textos copiáveis e 12 escolhas informativas,
+sem lista fixa, `copyLabel` ou valores ilustrativos. Isso encerra somente a
+dependência editorial; seletor, componentes, clipboard integrado, âncoras e
+TR01–TR17 continuam pendentes nas tarefas F012.

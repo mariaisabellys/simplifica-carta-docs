@@ -288,7 +288,9 @@ ou alterar decisao arquitetural sem documentar a escolha.
 - Agenda e destinatarios institucionais, provedor de notificacao, regras de
   confirmacao, politica de dados e referencias visuais validadas.
 
-Na criacao desta spec, 015–017 ainda nao possuem pastas em `specs/`.
+Nota histórica: na criação inicial desta spec, 015–017 ainda não possuíam
+artefatos. Hoje as três features estão documentadas; a 017 mantém os gates de
+infraestrutura no [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
 O placeholder e o tipo inicial nao comprovam disponibilidade, registro ou
 notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 
@@ -335,14 +337,16 @@ nova automática por rede/timeout/pausa. Notificação não condiciona sucesso.
 | CA21 | Pausa concorrente com registro e recuperação | Nova criação bloqueada conforme gate serializado; resultado registrado continua recuperável, sem cancelamento inferido |
 | CA22 | Oferta/fuso mudam e mesma tentativa é repetida | Snapshot original no Receipt; sem mudar resultado ou duplicar ocupação/outbox |
 
-IN01–IN08 no contrato registram papéis responsáveis a consultar, não pessoas
-nomeadas ou decisões aprovadas. [ADR-004](../../docs/decisoes/adr-004-stack-atendimento.md)
+IN01–IN08 no contrato estão abertas documentalmente desde 27/10/2026 e
+registram papéis responsáveis a consultar, não pessoas nomeadas ou decisões
+aprovadas. [ADR-004](../../docs/decisoes/adr-004-stack-atendimento.md)
 é proposta; ADR-003 não aprova stack/infraestrutura. Produção permanece bloqueada.
 
 ## Próximo passo
 
-Obter decisões IN01–IN08, concluir migração do conteúdo T013 e autorizar
-implementação separadamente. Ver [tasks](tasks.md) e [verification](verification.md).
+Encaminhar e obter respostas para IN01–IN08, decidir a ADR-004 e autorizar a
+implementação separadamente. A migração de conteúdo T013 já foi concluída.
+Ver [tasks](tasks.md) e [verification](verification.md).
 
 ### Encerramento T013 — 21/10/2026
 

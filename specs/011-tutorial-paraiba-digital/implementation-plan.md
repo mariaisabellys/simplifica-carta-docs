@@ -22,7 +22,7 @@ e [navegação](../../docs/arquitetura/contrato-navegacao.md).
 - 011 não importa página da 012 e 012 não depende do conteúdo de página da 011:
   compartilhar contratos neutros, sem ciclo.
 - Cinco grupos sempre representados; 13 definições abertas copiáveis, 12
-  escolhas apenas informativas; coleções por item/ID e K/S/E conforme 012.
+  escolhas apenas informativas; coleções por item/ID e K/S/ON/E conforme 012.
 - Estado raiz vazio, recuperação, carregamento e falha são distintos. Default
   Ativo não prova preenchimento nem publicação. Nenhum gate global de validação.
 
@@ -30,7 +30,7 @@ e [navegação](../../docs/arquitetura/contrato-navegacao.md).
 
 | Ordem | Área / arquivo proposto | Responsabilidade / aceite |
 | --- | --- | --- |
-| 1 | src/content/tutorial/paraiba-digital.ts | Aplicar migração do contrato; não tocar outras cinco etapas nesta sincronização; IT11 |
+| 1 | src/content/tutorial/paraiba-digital.ts | Concluído em 27/10/2026: conteúdo 25/13/12 sem valores de fallback; outras cinco etapas preservadas; IT11 ainda requer composição |
 | 2 | Contratos neutros / projeção da 012 | Integração com tipos reais da 007; não criar modelo no tutorial; IT02/03 |
 | 3 | src/pages/TutorialParaibaDigitalPage.tsx | Uma etapa por URL, shell/breadcrumb, editorial independente da Carta; IT01/04 |
 | 4 | Componentes tutorial de progresso/etapa/navegação | IDs estáveis, instruções/fontes e CTAs; IT04/09/10 |

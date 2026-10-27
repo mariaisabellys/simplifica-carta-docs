@@ -60,7 +60,8 @@ explicação imediata é zero. Detectar somente entradas do catálogo versionado
 indicar o trecho e permitir revisão humana. Somente confirmação humana de
 explicação imediata, vinculada ao trecho e à revisão atual, pode resolver a
 ocorrência sem editar o termo. Pontuação sozinha não comprova explicação.
-Nunca substituir o texto automaticamente. Catálogo permanece pendente V008-01.
+Nunca substituir o texto automaticamente. Catálogo `ls-pt-BR-v1` aprovado em
+27/10/2026; mudanças exigem nova versão e aprovação.
 
 | Termo ou construção observada | Sugestão contextual |
 | --- | --- |
@@ -93,8 +94,8 @@ Nunca substituir o texto automaticamente. Catálogo permanece pendente V008-01.
 | `pleitear` | `pedir` |
 
 O anexo trouxe as duas primeiras entradas em linhas quebradas. Esta leitura
-semântica e os pares acrescentados pelo responsável do conteúdo permanecem
-como catálogo proposto até a aprovação editorial explícita. Cada novo par foi
+semântica e os pares acrescentados pelo responsável do conteúdo formam o
+catálogo aprovado `ls-pt-BR-v1`. Cada novo par foi
 registrado exatamente na ordem recebida: primeiro o termo a identificar e,
 depois, a sugestão. A implementação deve ignorar caixa, comparar palavras ou
 construções inteiras e nunca substituir automaticamente.
@@ -176,7 +177,7 @@ operacional. LS04/LS05 não são classificadores gramaticais completos; LS06 é 
 | CA15 | Análise necessária falha/indisponível ou texto editado. | Falha/inconclusivo/não analisado; nunca manter aprovação obsoleta. |
 | CA16 | Dois parágrafos curtos ou campo com padding/altura mínima. | Medir cada bloco; não usar altura total como número de linhas. |
 | CA17 | Seletor, palavras-chave, custo misto e prazo estruturado. | Aplicar apenas regras da matriz; classificação ambígua fica inconclusiva. |
-| CA18 | Catálogo pendente, flexões ou construções sobrepostas. | Sem ativação sem aprovação; comparação e deduplicação conforme contrato. |
+| CA18 | Catálogo ausente/versão incompatível, flexões ou construções sobrepostas. | Resultado inconclusivo sem catálogo aprovado carregado; comparação e deduplicação conforme contrato. |
 
 ## Dependências
 

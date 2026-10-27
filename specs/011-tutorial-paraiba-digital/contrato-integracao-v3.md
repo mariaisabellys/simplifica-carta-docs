@@ -1,15 +1,15 @@
 # Contrato de integração do tutorial com a Carta v3
 
 20/10/2026 — parte documental da T011 de [docs/tasks](../../docs/tasks.md).
-Esta revisão não altera TypeScript nem comprova tutorial implementado.
-A sincronização do conteúdo executável permanece pendente.
+Sincronização do conteúdo executável concluída em 27/10/2026. Isso não comprova
+que o tutorial, a projeção da 012 ou a plataforma externa foram implementados.
 
 ## Fontes e responsabilidades
 
 - [Modelo central 007](../007-formulario-carta-servico/modelo-central-carta.md) e [matriz de campos](../007-formulario-carta-servico/matriz-campos-v3.md): valores, tipos, catálogos, condições, recuperação e edição.
 - [Contrato 012](../012-copia-dados-tutorial/contrato-transferencia-v3.md): apresentação integral, elegibilidade e operações de cópia.
 - [Navegação compartilhada](../../docs/arquitetura/contrato-navegacao.md): URL, histórico, foco e preservação da sessão.
-- [Conteúdo atual](../../src/content/tutorial/paraiba-digital.ts): fonte editorial existente, ainda não sincronizada com a matriz v3.
+- [Conteúdo atual](../../src/content/tutorial/paraiba-digital.ts): fonte editorial sincronizada com o contrato 25/13/12, sem valores ilustrativos da Carta.
 - [Mapa visual](../../docs/design-system/mapa-figma-telas.md): uma página, seis estados; referência não é homologação da interface externa.
 
 011 controla página, passos, progresso, instruções e CTAs. 012 controla a região
@@ -25,38 +25,39 @@ A matriz da 012 tem 25 definições: 13 abertas copiáveis quando preenchidas e
 12 escolhas sem botão, nem mesmo desabilitado. Coleções repetem controles
 por ID/propriedade; número de botões não é constante.
 
-K = custo sob-consulta/com-taxa; S = exigeAgendamento true;
-E = S e sistema-externo. Campos inativos não montam valores, controles ou
+K = custo sob-consulta/com-taxa; S = exigeAgendamento true; ON = S e tipos
+contém online; E = ON e sistema-externo. Campos inativos não montam valores, controles ou
 âncoras, mas permanecem na fonte. Não apagar dados ao navegar.
 Abertos vazios não copiam “Não informado”. Coleções vazias não geram item.
-null não significa Não ou gratuito. Ativo false é exibido com a ressalva da
-012 sobre default não confirmado, sem prometer publicação externa.
+null não significa Não ou gratuito. Ativo false é exibido como Inativo e true
+como Ativo, sem prometer publicação externa ou confirmação da interação.
 
 Não bloquear cópia por incompletude, avaliação editorial, diagnóstico ou CSV.
 Copiar somente a string original aberta, por item, sem rótulo, unidade,
 numeração, agregação, proteção CSV ou texto de exemplo. Escolhas exibem os
 rótulos do catálogo local; transferência externa dessas escolhas é manual.
 
-## Migração editorial pendente em paraiba-digital.ts
+## Migração editorial executada em paraiba-digital.ts
 
-O arquivo foi inspecionado em 20/10/2026: seis etapas; etapa 4 contém dez
-`quickCopyFields`, seis `copyLabel` e exemplos. Isso não implementa a matriz.
+Em 27/10/2026, a lista fixa de dez `quickCopyFields`, os seis `copyLabel` e
+todos os valores ilustrativos foram retirados da etapa 4. O conteúdo agora
+referencia `tutorialCartaDataContent`, cuja projeção pertence à feature 012 e
+declara cinco grupos, 25 definições, 13 textos copiáveis e 12 escolhas somente
+informativas. A lista canônica continua na matriz 007/012, sem duplicação no
+conteúdo da 011.
 
-| Elemento atual | Destino exigido na futura alteração de conteúdo |
+| Elemento anterior | Tratamento aplicado |
 | --- | --- |
-| Dez entradas quickCopyFields e seis copyLabel | Substituir lista fixa por referência à projeção completa da 012; elegibilidade vem do tipo/condição, não da existência de copyLabel. |
-| Valores de certificado, documentos e público | Remover da fonte usada para valores reais. Exemplos só podem existir em bloco explicitamente ilustrativo separado, nunca fallback de sessão. |
-| Lorem ipsum em additional-information | Retirar de valores do tutorial; se necessário à demonstração, preservar somente em fixture sintética identificada, fora do fluxo real. |
-| Online: www.url.com e Gratuito | Retirar como valores de fallback; agendamento e custo vêm da Carta, sem inferência. |
-| Prazo “Até 5 dias úteis” | Separar prazo máximo aberto e unidade selecionada, conforme 007/012; não transformar string nem adivinhar unidade. |
-| Introdução aos atalhos | Explicar que todos os dados são apresentados, textos preenchidos têm Copiar e escolhas devem ser selecionadas manualmente no destino. |
-| Editar na minha Carta | Manter uma única ação para /formulario-carta; vazio usa Preencher Carta. Não duplicar CTA dentro da 012. |
-| Etapas 1–3/5–6, IDs, percentuais e ações | Preservar nesta migração. Instruções operacionais continuam candidatas até confirmação institucional. |
+| Dez entradas quickCopyFields e seis copyLabel | Substituídos pela referência à projeção completa da 012; elegibilidade vem do tipo/condição. |
+| Valores de certificado, documentos e público | Removidos; valores reais virão exclusivamente da sessão da Carta. |
+| Lorem ipsum em additional-information | Removido do fluxo real; eventual demonstração pertence a fixture sintética separada. |
+| Online: www.url.com e Gratuito | Removidos; agendamento e custo vêm da Carta, sem inferência. |
+| Prazo “Até 5 dias úteis” | Removido; prazo máximo e unidade permanecem controles distintos na 007/012. |
+| Introdução aos atalhos | Substituída por orientação sobre textos copiáveis e escolhas manuais. |
+| Editar na minha Carta | Preservada como uma única ação para `/formulario-carta`; vazio será tratado pela integração da 012. |
+| Etapas 1–3/5–6, IDs, percentuais e ações | Preservados. Instruções operacionais continuam candidatas até confirmação institucional. |
 
-Texto candidato para introdução da etapa 4:
-“Confira as informações da sua Carta. Copie os campos de texto preenchidos e
-selecione manualmente as opções correspondentes na plataforma oficial.”
-Não é aprovação institucional nem alteração do conteúdo nesta rodada.
+A introdução sincronizada não constitui aprovação institucional.
 Não colocar valores da sessão no arquivo editorial ou consultar DOM para obtê-los.
 Preservar o export de compatibilidade existente ou migrar seus consumidores
 explicitamente na implementação; não assumir que ele é o objeto completo.
@@ -172,8 +173,8 @@ Todos pendentes de implementação e execução; não são resultados desta revi
 | ID | Cenário | Verificação / critérios |
 | --- | --- | --- |
 | IT01 | Entradas e sessão vazia/parcial/recuperação inválida/storage bloqueado | Instruções livres; cinco grupos vazios/parciais na etapa 4 sem exemplos; CA01/05/06 |
-| IT02 | Carta completa, múltiplos documentos/etapas e textos abertos “0” | Todos os 25 campos aplicáveis, 13 tipos abertos/12 escolhas; cópia por item e sem gate; CA06/08/10/18 |
-| IT03 | K/S/E, null/false, Ativo default, ambas modalidades e sistemas | Exibir só aplicáveis, valores retidos intactos, ressalva Ativo; CA09/17/18 |
+| IT02 | Carta completa, prazo positivo, múltiplos documentos/etapas e detalhe de custo “0” | Todos os 25 campos aplicáveis, 13 tipos abertos/12 escolhas; cópia por item e sem gate editorial; CA06/08/10/18 |
+| IT03 | K/S/ON/E, null/false, Ativo default, modalidades e sistemas | Exibir só aplicáveis; presencial exclusivo sem sistema; valores retidos intactos; CA09/17/18 |
 | IT04 | Etapas 1–6 e query inválida/duplicada/ausente + parâmetros desconhecidos | Uma etapa, percentuais 17/33/50/67/83/100; 012 só na 4; normalização/histórico; CA01/02/13/19 |
 | IT05 | Editar e voltar, reordenar/remover itens, recarregar sessão válida | Mesmo provider, valores atuais/ordem estável e alvos autorizados; CA07/17/19 |
 | IT06 | Âncora ativa missing, inativa, removida, falha da região e hash fora da 4 | Sem link quebrado ou ID duplicado; fallback correto, foco coordenado; CA09/13/17/19 |

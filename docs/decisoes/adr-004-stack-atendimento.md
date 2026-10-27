@@ -24,6 +24,11 @@ desta proposta e testes equivalentes, não mudança silenciosa dos contratos.
 
 ## Aprovação pendente
 
+A consulta desta ADR está aberta documentalmente por IN07 e INF05 desde
+27/10/2026, conforme o
+[registro G6/G7](registro-g6-g7-agenda-deploy.md). Não há encaminhamento,
+resposta ou aprovação comprovados; o status permanece **Proposta**.
+
 Coordenação técnica/infraestrutura deve nomear responsável, aprovar hospedagem,
 stack/lock, banco, TLS/proxy, worker, backups, segredos, monitoramento e custos.
 Nenhuma pessoa, conta ou ambiente foi provisionado/atribuído nesta tarefa.

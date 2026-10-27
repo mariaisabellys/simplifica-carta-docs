@@ -1,6 +1,8 @@
 # Implementation Plan — Formulário da Carta v3
 
-Baseline 19/10/2026. Requer fechamento das decisões da matriz e validação atual antes das entregas dependentes. Esta rodada é documental; nenhum snippet foi compilado e nenhum código funcional alterado.
+Baseline atualizado em 27/10/2026. MC-02–MC-08 estão fechadas; implementação,
+validação executável e aceite ainda são entregas futuras. Esta rodada é
+documental; nenhum snippet foi compilado e nenhum código funcional foi alterado.
 
 ## Fontes, escopo e estado observado
 
@@ -53,19 +55,23 @@ Testar StrictMode/remount, escrita inicial, última edição antes de navegar e 
 ```ts
 const schedulingActive = (c: CartaServico) =>
   c.atendimento.exigeAgendamento === true;
+const onlineSchedulingActive = (c: CartaServico) =>
+  schedulingActive(c) && c.atendimento.tiposAgendamento.includes("online");
 const externalSchedulingActive = (c: CartaServico) =>
-  schedulingActive(c) &&
+  onlineSchedulingActive(c) &&
   c.atendimento.sistemaAgendamento === "sistema-externo";
 const costDetailActive = (c: CartaServico) =>
   c.publicoRequisitos.custo.tipo === "sob-consulta" ||
   c.publicoRequisitos.custo.tipo === "com-taxa";
 ```
 
-Condições propostas são puras e compartilháveis. Não alterar metadados do formulário sem conferir que agrupadores aninhados respeitam ambas as condições externas.
+Condições são puras e compartilháveis: K/S/ON/E. Não alterar metadados do
+formulário sem conferir os agrupadores aninhados. Presencial exclusivo não
+ativa sistema; ambos ativa o sistema para a parcela on-line.
 
 Criar ações específicas para categoria/subcategoria, público/perfil, custo/detalhe, prazo, escolhas de agendamento, textos e CRUD por ID. Atualizações produzem novo estado sem perder irmãos. Categoria incompatível limpa subcategoria e informa motivo. Custo gratuito preserva detalhe oculto. Não/null e sistema nativo preservam configurações externas ocultas.
 
-Coleções: adicionar documento com id e nome vazio; etapa com id, ordem seguinte, título/orientação vazios, modalidade null. Remoção e reordenação renumeram etapas atuais; consumidores usam essa mesma sequência. Não gerar IDs em render nem usar índice como key.
+Coleções: adicionar documento com id e nome vazio; etapa com id, ordem seguinte, título/orientação vazios, modalidade null. Na revisão, coleção de documentos vazia é válida, item existente exige nome e deve existir ao menos uma etapa com título/orientação/modalidade. Remoção e reordenação renumeram etapas atuais; consumidores usam essa mesma sequência. Não gerar IDs em render nem usar índice como key.
 
 ## Registro de campos e foco
 
@@ -102,9 +108,16 @@ Conteúdo de conclusão precisa dizer que informações obrigatórias estão pre
 
 Usar tokens/Inter e CSS do projeto. Não fixar alturas que cortem conteúdo, não truncar texto para caber no Figma. Confirmar composição responsiva nas consultas e em navegador.
 
-## Decisões pendentes e liberação parcial
+## Decisões fechadas e liberação parcial
 
-MC-02–MC-06/MC-08: justificativa dos obrigatórios, prazo, regras por item, Ativo, URL e runtime. Não criar requisitos arbitrários durante UI. MC-01/T005 tem [contrato documental fechado](../../docs/arquitetura/contrato-contagem-palavras.md), mas adaptar o helper e testar CP01–CP13 ainda é necessário para entregar a contagem. MC-12/T007 permanece pendente para validação editorial. MC-09/T006 tem [contrato de orientações fechado](../006-organizar-informacoes/contrato-orientacoes-v3.md), com aplicação editorial/reuso futuros em F006-03/F006-08; MC-03/MC-05 não foram resolvidas por analogia.
+MC-02–MC-08 foram fechadas em 27/10/2026 na matriz canônica: dez obrigatórios,
+prazo inteiro positivo, regras de documentos/etapas, semântica de Ativo, URL
+HTTP(S), condição ON para sistema e decoder estrito. MC-01/T005 tem
+[contrato documental fechado](../../docs/arquitetura/contrato-contagem-palavras.md),
+mas adaptar o helper e testar CP01–CP13 ainda é necessário. MC-12/T007 aguarda
+implementação/aprovação editorial. MC-09/T006 tem
+[contrato de orientações fechado](../006-organizar-informacoes/contrato-orientacoes-v3.md),
+com aplicação editorial/reuso futuros em F006-03/F006-08.
 
 MC-10 e MC-11 receberam contrato técnico nesta T004: alvo por ID e políticas de categoria/custo. Implementação e conteúdo correspondente permanecem futuros. A lista de pendências atual será revalidada em T019; relatórios antigos continuam históricos.
 
@@ -114,9 +127,10 @@ MC-10 e MC-11 receberam contrato técnico nesta T004: alvo por ID e políticas d
 | --- | --- | --- |
 | V3/catálogos | 25 campos; tipos inválidos; categorias/subcategorias; perfis/públicos e duplicatas | CA02/29/30 |
 | Contagem | 20/21 significativas no campo inteiro; regra por frase separada | CA32 |
-| Custos/prazos | três custos, detalhe ativo/inativo, restauração, prazo/unidade | CA07/31 |
-| Agendamento | null/false/true; modalidades; nativo/externo; ambas exibições; valores retidos | CA06/19–24 |
-| Coleções | add/edit/remove/reorder, IDs/ordem, item parcial e foco | CA04/05/14 |
+| Custos/prazos | três custos, detalhe/URL, restauração, inteiro positivo/unidade e rejeições | CA07/31/34 |
+| Agendamento | null/false/true; presencial exclusivo; ON; nativo/externo; ambas exibições; valores retidos | CA06/19–24/36 |
+| Coleções | zero documentos; item nomeado; mínimo uma etapa completa; add/edit/remove/reorder, IDs/ordem e foco | CA04/05/14/35 |
+| Decoder | propriedades, tipos, enums, relações, duplicatas, IDs e ordem inválidos; preservação atômica | CA12/29/30/37 |
 | Storage | ausência, v3 parcial, JSON inválido, anterior/futuro, falha leitura/escrita e substituição explícita | CA10–12 |
 | Revisão | erro estrutural/editorial, parte oculta, alvo removido/inativo e revisão obsoleta | CA08/09/33 |
 | Consumidores | snapshot único, condicionais omitidos, todos os campos da 012 | CA13/27 |

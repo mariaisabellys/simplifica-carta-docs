@@ -5,8 +5,9 @@
 
 ## Status documental
 
-A copy da feature 004 foi aprovada e versionada em 25 de setembro de 2026. O
-antigo bloqueio editorial `B001` esta resolvido.
+A copy da feature 004 está versionada. Em 27 de outubro de 2026, o resumo do
+Decreto nº 9.756/2019 foi revalidado no Planalto e alinhado à ementa oficial. O
+bloqueio legal/editorial registrado na T019 está resolvido documentalmente.
 
 ## Pre-condicoes
 
@@ -20,8 +21,10 @@ antigo bloqueio editorial `B001` esta resolvido.
 ## Fonte editorial
 
 Validar todos os textos renderizados contra
-`src/content/pages/o-que-e-carta.ts`. Os resumos aprovados dos decretos devem
-ser preservados sem substituicao silenciosa por ementas alternativas.
+`src/content/pages/o-que-e-carta.ts`. O resumo versionado do Decreto nº
+9.756/2019 deve mencionar a unificação dos canais digitais do Governo federal;
+qualquer alteração futura exige nova conferência da fonte oficial e registro da
+decisão editorial.
 
 ## Verificacao funcional
 

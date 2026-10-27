@@ -27,7 +27,8 @@ validador editorial ou estado de edição. Página/formulário coordenam os cont
 ## Matriz de cobertura — 25 definições
 
 Partes e ordem são as cinco da 007. **A** = sempre aplicável; **K** = custo
-sob-consulta/com-taxa; **S** = exigeAgendamento true; **E** = S e sistema-externo.
+sob-consulta/com-taxa; **S** = exigeAgendamento true; **ON** = S e tipos contém
+online; **E** = ON e sistema-externo.
 Campos aplicáveis vazios, inclusive opcionais, permanecem identificados em Carta
 com dados; não omitir nome popular/adicionais como no contrato anterior.
 
@@ -39,7 +40,7 @@ com dados; não omitir nome popular/adicionais como no contrato anterior.
 | 04 | Sobre / `category` | `sobreServico.categoria` | A | Categoria selecionada ou ausência. |
 | 05 | Sobre / `subcategory` | `sobreServico.subcategoria` | A | Subcategoria selecionada ou ausência; não escolher automaticamente. |
 | 06 | Sobre / `topic` | `sobreServico.topico` | A | Tópico textual, não catálogo inferido. |
-| 07 | Sobre / `active` | `sobreServico.ativo` | A | Ativo: Sim/Não; ressalva de default abaixo. |
+| 07 | Sobre / `active` | `sobreServico.ativo` | A | Estado configurado: Ativo/Inativo; sem inferir publicação. |
 | 08 | Público / `specific-audience` | `publicoRequisitos.publicosEspecificos` | A | Lista de grupos selecionados ou ausência. |
 | 09 | Público / `user-profile` | `publicoRequisitos.perfisUsuario` | A | Lista de perfis selecionados ou ausência. |
 | 10 | Público / `who-can-use` | `publicoRequisitos.quemPodeUtilizar` | A | Quem pode utilizar; texto integral ou ausência. |
@@ -53,7 +54,7 @@ com dados; não omitir nome popular/adicionais como no contrato anterior.
 | 18 | Fluxo / `modality` | `etapas[].modalidade` | A | Online, Presencial, Híbrida ou ausência por etapa. |
 | 19 | Atendimento / `requires-scheduling` | `atendimento.exigeAgendamento` | A | Sim, Não ou Não informado; false é resposta, null é ausência. |
 | 20 | Atendimento / `scheduling-type` | `atendimento.tiposAgendamento` | S | Online, Presencial ou ambas as escolhas como lista. |
-| 21 | Atendimento / `scheduling-system` | `atendimento.sistemaAgendamento` | S | Paraíba Digital ou Outro sistema ou site. |
+| 21 | Atendimento / `scheduling-system` | `atendimento.sistemaAgendamento` | ON | Paraíba Digital ou Outro sistema ou site. |
 | 22 | Atendimento / `scheduling-link` | `atendimento.linkAgendamento` | E | Link textual integral, sem navegação/iframe. |
 | 23 | Atendimento / `scheduling-display` | `atendimento.exibicaoAgendamento` | E | Dentro do Paraíba Digital ou Em uma nova página. |
 | 24 | Finais / `important-additional-information` | `informacoesFinais.informacoesAdicionais` | A | Informações adicionais importantes; texto ou ausência. |
@@ -79,20 +80,19 @@ da 007, não devem vazar como enums técnicos ou causar exceção na apresentaç
   etapas intermediárias: usar ordem atual da 007 (1 a N) e ID estável. Após
   reordenação/remoção, refletir a sequência renumerada pelo formulário; não
   renumerar nem ordenar in-place no seletor. Documentos seguem sua ordem recebida.
-- Uma etapa só com modalidade é dado parcial legítimo para leitura: mostrar
-  modalidade e ausências de título/orientação. Nome vazio de documento não
-  implica documento inválido por esta feature; regras por item ainda são MC-04.
-- Dados K/S/E inativos são omitidos da projeção, sem “Não informado” e sem
+- Uma etapa parcial continua legível na prévia durante edição: mostrar valores e
+  ausências, embora a revisão estrutural da 007 exija título, orientação e
+  modalidade e ao menos uma etapa. Documento vazio é exibido como pendência do
+  item; coleção sem documentos é válida.
+- Dados K/S/ON/E inativos são omitidos da projeção, sem “Não informado” e sem
   revelar conteúdo retido. Nunca apagá-los da sessão. Reativar recalcula valores
   atuais. Ocultar a parte do formulário não torna seus campos inativos.
 - Não concatenar máximo/unidade ou custo/detalhe como única string: manter
   rótulos separados para ausências parciais. Zero informado não equivale a
   Gratuito; só a seleção explícita gratuito recebe esse rótulo.
-- Ativo false tem default técnico indistinguível de desmarcação deliberada no
-  v3. Mostrar “Não” com nota separada: “Este valor pode ser o estado inicial;
-  a confirmação dessa escolha não é registrada.” True mostra “Sim”. Não rotular
-  como publicado, aprovado, desativado na plataforma ou escolha confirmada.
-  Essa projeção conservadora não resolve a semântica de negócio MC-05.
+- Ativo false mostra “Inativo” e true mostra “Ativo”. É o estado configurado na
+  Carta; não rotular como publicado, aprovado, despublicado ou escolha
+  confirmada. O default false isolado continua fora de `hasContent`.
 
 `hasContent`: existe texto não vazio em campo aplicável, seleção unitária não
 null, multisseleção não vazia, nome de documento, qualquer título/orientação/
@@ -166,10 +166,10 @@ Sem ellipsis, resumo automático ou omissão de dados por largura. Ação de edi
 | PV06 | Prazo só valor / só unidade / “0” / texto Imediato | Preservar cada valor e ausência separadamente; sem conversão ou homologação semântica. |
 | PV07 | Documento vazio entre preenchidos; etapas só modalidade ou título | Todos os itens identificáveis, sem inventar classificação/atributos; ID/ordem atuais. |
 | PV08 | Remover/reordenar etapas na 007 | Mesmos IDs restantes, sequência atual, fonte intacta; foco por ID. |
-| PV09 | Não/null com dados de agendamento retidos | Nenhum descendente S/E visível; Não explícito conta como conteúdo. |
+| PV09 | Não/null com dados de agendamento retidos | Nenhum descendente S/ON/E visível; Não explícito conta como conteúdo. |
 | PV10 | Sim sem tipos/sistema; Online/Presencial/ambos | Campos S identificados; seleções integrais, sem confundir com modalidade Híbrida. |
 | PV11 | Sistema nativo com dados externos retidos; externo dentro/fora | Somente E revela link/exibição; texto sem anchor/iframe; reativação mantém valores. |
-| PV12 | Só ativo false e depois outra informação | Vazio primeiro; card depois mostra Não com nota de default, sem certificação. |
+| PV12 | Só ativo false e depois outra informação | Vazio primeiro; card depois mostra Inativo como estado configurado, sem certificação externa. |
 | PV13 | Alterar provider com ambas as prévias montadas | Mesma revisão e valores atuais; IDs DOM distintos; foco não é roubado. |
 | PV14 | HTML/scripts/URL, Unicode, quebras e string longa | Texto literal, zero execução/recurso remoto; fonte congelada permanece igual. |
 | PV15 | Storage bloqueado/inválido, provider ausente e carregamento | Estados distintos da 007; sem decoder paralelo ou sobrescrita de registro inválido. |

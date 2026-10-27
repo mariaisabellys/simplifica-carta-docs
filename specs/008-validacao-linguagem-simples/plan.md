@@ -5,9 +5,10 @@
 Implementar o contrato de `spec.md` integrado à Carta v3 da 007 e separado da
 validação estrutural/obrigatória.
 
-Revisão documental T007 em 19/10/2026: seguir o
+Revisão documental atualizada em 27/10/2026: seguir o
 [contrato operacional](contrato-validacao-editorial.md), incluindo matriz de
-25 campos, mensagens MSG01–MSG17 e fixtures VE01–VE18. Código não alterado.
+25 campos, catálogo `ls-pt-BR-v1`, mensagens `msg-pt-BR-v1` e fixtures
+VE01–VE18. Catálogo/copy aprovados; código não alterado.
 
 ## Decisões
 
@@ -74,7 +75,7 @@ campo oculto ou geometria não confiável retorna inconclusivo, conforme contrat
 
 ## Ordem
 
-1. Aprovar tabela/copy (V008-01/V008-03), mantendo pares e ressalvas contextuais.
+1. Usar tabela/copy aprovadas em V008-01/V008-03, sem alterar pares ou ressalvas.
 2. Criar tipos, conteúdo e fixtures.
 3. Implementar/testar motor puro.
 4. Integrar formulário da 007.

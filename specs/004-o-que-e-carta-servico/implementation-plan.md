@@ -2,9 +2,10 @@
 
 ## Status
 
-Revisado em 25 de setembro de 2026 com a copy aprovada e versionada. O bloqueio
-editorial anterior foi resolvido; nao ha bloqueio documental aberto para o
-conteudo.
+Revisado em 27 de outubro de 2026. O resumo do Decreto nº 9.756/2019 foi
+revalidado na fonte oficial e alinhado à ementa vigente, encerrando o bloqueio
+editorial registrado na T019. Não há bloqueio documental aberto para esse
+conteúdo; implementação e aceite visual permanecem pendentes.
 
 ## Fontes consultadas
 
@@ -34,7 +35,8 @@ conteudo.
 - fontes oficiais da Presidencia da Republica:
   - [Lei nº 13.460/2017](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/l13460.htm);
   - [Decreto nº 9.094/2017](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/decreto/d9094.htm);
-  - [Decreto nº 9.756/2019](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm).
+  - [Decreto nº 9.756/2019](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm),
+    reconsultado em 27/10/2026.
 
 O Figma Make retornou links para `src/App.tsx`, `src/index.css` e
 `design-system-spec.md`, mas o conector nao permitiu ler esses recursos nesta
@@ -143,7 +145,7 @@ Aplicar acentuacao correta em portugues no conteudo implementado.
 | --- | --- | --- |
 | Lei nº 13.460/2017 | URL oficial do Planalto registrada | Usar o resumo aprovado e versionado |
 | Decreto nº 9.094/2017 | URL oficial do Planalto registrada | Usar o resumo aprovado que menciona a Lei nº 13.460/2017 e a simplificacao do atendimento |
-| Decreto nº 9.756/2019 | URL oficial do Planalto registrada | Usar o resumo aprovado sobre o Portal Unico gov.br e a migracao de sitios e portais |
+| Decreto nº 9.756/2019 | Ementa e URL oficial do Planalto revalidadas em 27/10/2026 | Usar o resumo versionado sobre o portal único gov.br e a unificação dos canais digitais do Governo federal |
 
 A obrigatoriedade da Carta possui suporte direto no art. 7 da Lei nº
 13.460/2017. Para evitar extrapolacao, a copy deve dizer que os orgaos e
@@ -157,8 +159,8 @@ Copy aprovada e versionada:
 - Decreto nº 9.094/2017: `Regulamenta dispositivos da Lei nº 13.460/2017 e
   dispõe sobre simplificação do atendimento prestado aos usuários dos serviços
   públicos federais.`;
-- Decreto nº 9.756/2019: `Institui o Portal Único “gov.br” e dispõe sobre as
-  regras para migração dos sítios e portais da administração pública federal.`.
+- Decreto nº 9.756/2019: `Institui o portal único “gov.br” e dispõe sobre as
+  regras de unificação dos canais digitais do Governo federal.`.
 
 ## Mapeamento de tokens
 
@@ -355,7 +357,7 @@ export const legalReferences = [
     kind: "Decreto Federal",
     number: "9.756",
     year: 2019,
-    summary: "Institui o Portal Único “gov.br” e dispõe sobre as regras para migração dos sítios e portais da administração pública federal.",
+    summary: "Institui o portal único “gov.br” e dispõe sobre as regras de unificação dos canais digitais do Governo federal.",
     actionLabel: "Consultar",
     href: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm",
   },

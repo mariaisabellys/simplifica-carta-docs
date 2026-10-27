@@ -54,3 +54,12 @@ typecheck, teste, preview, servidor, migration ou deploy foi executado.
 INF01–INF10, IN01–IN08, implementação da navegação, pipeline, ambiente, testes
 publicados e todos os gates da agenda. Essas pendências não impedem o fechamento
 documental da T018; impedem qualquer declaração de prontidão operacional.
+
+## Abertura paralela de decisões — 27/10/2026
+
+INF01–INF10 foram abertas documentalmente, em paralelo com IN01–IN08, no
+[registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md). Foram
+conferidos para cada item pergunta, papel a consultar, evidência de encerramento,
+aplicação por trilho, cruzamentos e impacto. F017-01/F017-02 permanecem abertas:
+não há encaminhamento comprovado, responsável nominal, resposta, fornecedor,
+ambiente ou aprovação.

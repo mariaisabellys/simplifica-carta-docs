@@ -69,7 +69,7 @@ Não elevar orçamento ou impor corte para esconder regressão.
 
 ## Pendências de liberação
 
-Política candidata de fórmulas e compatibilidade real; validação defensiva/contador
-T005 da 007; MC-03/04/05/08 quando afetarem validade; provider/ação/slot/foco;
+Política candidata de fórmulas e compatibilidade real; implementação da validação
+defensiva/contador e decisões MC-03/04/05/08 já fechadas na 007; provider/ação/slot/foco;
 copy/Figma/ERS; ambientes e desempenho. Não resolver decisão de negócio por
 formatação. Build/testes só após implementação autorizada e com evidências atuais.

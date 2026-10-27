@@ -18,7 +18,9 @@ Worker fora da transação, retry de evento, sem garantia de entrega única fís
 
 ## Ordem e bloqueios
 
-1. Conferir decisões IN01–IN08 e obter responsáveis nominais/aprovação com fonte/data.
+1. Abertura documental de IN01–IN08 registrada em 27/10/2026; encaminhar as
+   oito consultas em paralelo e obter responsáveis nominais, respostas e
+   aprovação com fonte/data conforme o [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
 2. Aprovar ou revisar ADR-004, selecionar versões/lock e preparar ambiente isolado.
 3. Migrar types/helper/conteúdo para contrato; preservar Carta, nenhuma PII em URL.
 4. Implementar configuração/gate, snapshots, API, CSRF e transações.

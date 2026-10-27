@@ -1,16 +1,19 @@
 # Contrato operacional da validação editorial
 
-Versão documental 1 — 19/10/2026, T007 global. Complementa a [spec](spec.md)
-e utiliza o [contrato único de contagem](../../docs/arquitetura/contrato-contagem-palavras.md).
-Não implementa motor, não aprova catálogo institucional nem altera a Carta.
+Versão editorial `ls-pt-BR-v1` / mensagens `msg-pt-BR-v1`, aprovada em
+27/10/2026 por solicitação explícita do responsável pelo conteúdo do projeto.
+Complementa a [spec](spec.md) e utiliza o
+[contrato único de contagem](../../docs/arquitetura/contrato-contagem-palavras.md).
+Não implementa motor, não homologa conteúdo jurídico/institucional nem altera a Carta.
 
 ## Catálogo: estado e correspondência
 
-O catálogo normativo proposto é a tabela LS03 da spec, preservada integralmente:
-seis linhas originais e 21 pares adicionais. **Aprovação editorial pendente
-(V008-01)**: os pares enviados são requisitos registrados, não evidência de
-homologação. Não ativar LS03 em produção antes de responsável/data/versão aprovados.
-Não reverter silenciosamente ao catálogo legado de 240 caracteres.
+O catálogo normativo aprovado é a tabela LS03 da spec, preservada integralmente:
+seis linhas originais e 21 pares adicionais, totalizando 27 registros. A
+aprovação V008-01 cobre leitura, ordem, sugestões contextuais e regras de
+detecção da versão `ls-pt-BR-v1`. Alteração de entrada, sugestão ou semântica
+exige nova versão e nova aprovação editorial. Não reativar silenciosamente a
+regra legada de 240 caracteres como fallback.
 
 Todos os pares são sugestões contextuais, nunca substituições automáticas.
 Especial atenção a requerente → solicitar, pertinente → considerar,
@@ -20,7 +23,7 @@ encaminhamento → enviar: exigem reescrever a construção, não trocar um toke
 Providenciar → resolver e conceder → liberar também dependem do sentido;
 não presumir equivalência jurídica. Preservar pares até decisão explícita.
 
-Detecção proposta para a implementação após aprovação:
+Detecção aprovada para implementação:
 
 1. Analisar cópia NFC e minúsculas pt-BR, mantendo acentos. Comparar tokens
    inteiros segundo o tokenizador compartilhado, não substring ou `\b` ASCII.
@@ -148,7 +151,7 @@ Precedência do agregado, mantendo lista de todas as ocorrências:
 
 1. `falha`: alguma análise necessária retornou error.
 2. `inconclusivo`: alguma necessária está unknown (geometria, classificação,
-   segmentação ou catálogo indisponível/não aprovado).
+   segmentação ou catálogo indisponível/versão incompatível).
 3. `revisao-necessaria`: review ou checklist pending.
 4. `nao-analisado`: alvos aplicáveis novos/editados aguardam análise.
 5. `aprovado`: ao menos um alvo aplicável, todas as análises necessárias atuais,
@@ -162,7 +165,7 @@ mesmo sem guidance. “Continuar sem revisar” permite a ação, mas não resol
 Nenhum desses estados bloqueia edição, navegação, prévia, cópia ou CSV: só a
 validação estrutural da 007 controla suas próprias restrições.
 
-## Mensagens versionadas — propostas editoriais v1
+## Mensagens versionadas — aprovadas (`msg-pt-BR-v1`)
 
 | ID | Mensagem/template | Uso |
 | --- | --- | --- |
@@ -185,10 +188,12 @@ validação estrutural da 007 controla suas próprias restrições.
 | MSG17 | O texto se dirige ao público de forma clara e adequada ao campo? | LS05 manual |
 
 Razões MSG11 limitadas a códigos versionados: geometria indisponível, fonte
-carregando, segmentação indisponível, classificação pendente, catálogo pendente,
-intervalo não mapeado. Não mostrar stack trace ou conteúdo sensível em logs.
-Placeholders são texto escapado; nunca HTML interpretado. Estas mensagens estão
-definidas documentalmente, mas aprovação editorial da copy ainda é V008-03.
+carregando, segmentação indisponível, classificação pendente, catálogo
+indisponível, versão incompatível ou intervalo não mapeado. Não mostrar stack
+trace ou conteúdo sensível em logs.
+Placeholders são texto escapado; nunca HTML interpretado. V008-03 aprova as
+mensagens exatamente como registradas; mudança de texto exige `msg-pt-BR-v2`
+ou posterior e nova aprovação.
 
 ## Medição de parágrafos
 
@@ -239,7 +244,8 @@ Se fonte falhar e fallback estabilizar, medir fallback real e registrar contexto
 | VE15 | Editar, reordenar, remover e inativar item | Revisões e IDs seguem o contrato, sem resultado no alvo errado. |
 | VE16 | Ignorar sugestão e copiar/exportar | Texto original intacto; bloqueios somente estruturais. |
 | VE17 | Revisão explícita por teclado/leitor | Anúncio único, resumo por ordem da Carta, abrir/focar alvo correto. |
-| VE18 | Catálogo não aprovado ou segmentador indisponível | Inconclusivo para regra necessária; não usar legado silenciosamente. |
+| VE18 | Catálogo ausente/versão incompatível ou segmentador indisponível | Inconclusivo para regra necessária; não usar legado silenciosamente. |
 
-São resultados esperados, não testes executados nesta tarefa. A prontidão
-documental é separada da homologação editorial, implementação e aceite funcional.
+São resultados esperados, não testes executados nesta tarefa. A aprovação
+editorial do catálogo/copy é separada da implementação, homologação institucional
+e aceite funcional.

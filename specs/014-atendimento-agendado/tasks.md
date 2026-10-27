@@ -6,7 +6,8 @@
 ## Convencoes e status
 
 - Base: spec.md e plan.md da 014, ADR-003 e contratos de 002/007/013/015/016.
-- Todas as tarefas estao pendentes. Esta lista nao comprova agenda, backend,
+- As tarefas de implementação estão pendentes. A abertura documental das
+  decisões IN01–IN08 foi registrada em 27/10/2026; ela não comprova agenda, backend,
   notificacao, politica de dados validada, consulta Figma ou prontidao operacional.
 - Codigo somente em `/spec:implementar`, depois de implementation-plan e
   `/spec:validar` sem bloqueios relevantes.
@@ -16,9 +17,15 @@
   propostas a consolidar, sem assumir aprovacao institucional.
 - Concorrencia exige PostgreSQL e conexoes reais; SQLite/mocks nao comprovam locks.
 - Testes usam dados sinteticos e SMTP de teste, sem solicitacoes institucionais
-  ou mensagens reais. Deploy pertence a 017, ainda a detalhar.
+  ou mensagens reais. Deploy pertence ao contrato já detalhado na feature 017.
 
 ## Fase 1 — Decisoes e contratos
+
+- [x] **Abertura documental — IN01–IN08**
+  - Oito consultas abertas em paralelo em 27/10/2026 no
+    [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
+  - Não houve encaminhamento comprovado, resposta ou aprovação; T002–T005 e
+    os gates de implementação continuam pendentes.
 
 - [ ] **T001 — Inventariar fontes e integracoes reais**
   - Conferir ERS, manual textual, MVP, arquitetura, ADR-003, constitution e regras de IA.
@@ -333,6 +340,7 @@ funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implement
 Fonte normativa: [contrato-agenda.md](contrato-agenda.md). Usar CA01–CA22,
 AG01–AG13, snapshot imutável e descrição opcional, inclusive nos testes.
 IN01–IN08 relacionam decisões externas, responsáveis por confirmar e impacto.
+Sua abertura documental está registrada, mas não fecha nenhuma tarefa de decisão.
 T001 e revisão/fixtures documentais estão liberadas no escopo documental.
 T002–T004 dependem de confirmação institucional; T005 depende ADR-004 proposta
 antes da configuração concreta. Tarefas de backend, schema final, oferta,

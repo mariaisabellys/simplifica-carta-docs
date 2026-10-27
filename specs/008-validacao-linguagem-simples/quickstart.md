@@ -2,8 +2,9 @@
 
 ## Status
 
-Roteiro documental criado na T017. Não foi executado. Catálogo/copy ainda
-dependem da aprovação registrada no contrato editorial antes de ativação.
+Roteiro documental criado na T017. Não foi executado. Catálogo `ls-pt-BR-v1`
+e mensagens `msg-pt-BR-v1` foram aprovados em 27/10/2026; implementação e
+ativação continuam pendentes.
 
 ## Pré-condições
 

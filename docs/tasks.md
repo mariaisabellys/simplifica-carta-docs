@@ -183,7 +183,7 @@ Aceite: todos os campos aplicáveis aparecem; controles abertos têm cópia conf
 
 Verificação concluída em 20/10/2026, retomando os ajustes iniciados em 19/10: criado o [contrato de transferência v3](../specs/012-copia-dados-tutorial/contrato-transferencia-v3.md), reconciliados os sete artefatos da 012 e vinculada a referência na matriz da 007. Preservadas sete versões anteriores em `specs/012-copia-dados-tutorial/historico/2026-10-19-pre-t010-*.md`, com links relativos ajustados. Conferidos os 25 paths contra a matriz central e a decisão de docs/spec: cinco grupos, 13 definições abertas copiáveis e 12 escolhas sem botão, com repetição por item e K/S/E. Documentados vazio/null/false/default Ativo, cópia de string original, alternativa manual, trava por identidade acima das rotas e descarte de respostas tardias. Checks: CA01–CA20, TR01–TR17, 36 links locais válidos, busca sem seletores antigos ativos, `git diff --check` sem erros e nenhum diff em `src`, `tests` ou documentos da 011. Nenhuma execução de clipboard, testes funcionais, build ou consulta externa Figma/ERS. Conteúdo atual ainda tem a lista antiga: sincronização de `paraiba-digital.ts`, da 011 e do mapa fica explicitamente para T011. Implementação, revisão editorial/visual e testes reais permanecem pendentes. Próxima tarefa: T011.
 
-### [ ] T011 — Sincronizar a 011 e o conteúdo da etapa 4
+### [x] T011 — Sincronizar a 011 e o conteúdo da etapa 4
 
 Dependência: T010. Cobre DOC-02/DOC-04/DOC-13.
 
@@ -198,6 +198,15 @@ Dependência: T010. Cobre DOC-02/DOC-04/DOC-13.
 Aceite: conteúdo e 011/012 descrevem a mesma tela completa; nenhuma promessa de publicação automática ou correspondência externa sem evidência.
 
 Execução documental em 20/10/2026: criado o [contrato de integração v3](../specs/011-tutorial-paraiba-digital/contrato-integracao-v3.md), reconciliados os seis documentos da 011 e atualizado o mapa Figma. Matriz externa com 25 paths, cinco grupos, integração da 012 (13 definições abertas/12 escolhas), condições K/S/E, âncoras/fallback, edição/retorno e IT01–IT11 registrados. Seis versões anteriores preservadas em histórico. Destino de exemplos/lorem ipsum e migração do conteúdo especificados, sem alterar TypeScript conforme o escopo solicitado. **T011 permanece desmarcada/parcial:** item 1 e aplicação no conteúdo dos itens 2–3 ainda pendentes; não afirmar conteúdo sincronizado. Fontes/URL administrativa, instruções e GIFs sem homologação presumida. Checks e limites em [verification.md](../specs/011-tutorial-paraiba-digital/verification.md). Retomada: autorizar alteração do conteúdo para concluir a sincronização; implementação e testes reais são etapas posteriores.
+
+Conclusão em 27/10/2026, após autorização para sincronizar o conteúdo: a etapa
+4 passou a referenciar a projeção 012 com cinco grupos, 25 definições, 13 textos
+copiáveis e 12 escolhas informativas. Foram removidos lista fixa, valores de
+certificado, lorem ipsum, URL e demais fallbacks ilustrativos; outras cinco
+etapas, IDs, percentuais, ações e export foram preservados. Typecheck e build
+passaram. T011 está concluída no escopo documental e de conteúdo; composição,
+clipboard, IT01–IT11, fontes administrativas, assets, Figma/ERS e homologação
+operacional permanecem nas tarefas de implementação da feature.
 
 ## Lote D — Ajuda, agenda e navegação
 
@@ -482,7 +491,7 @@ Classes: **conflito ativo** = instruções incompatíveis; **decisão de produto
 | DOC-01 | Conflito ativo | `007/plan.md` ainda propõe `{ version: 2, carta }`; modelo central e `carta.types.ts` usam v3; schema lista dez paths gerais. | T003/T004; execução técnica documental, decisões de produto pelo usuário. |
 | DOC-02 | Conflito ativo + implementação não entregue | Specs e planos de 009–012 conservam paths `identificacao`, `requisitos` e campos removidos, com notas de precedência v3. Essas notas não tornam snippets reutilizáveis. | T003/T008–T011; matriz central e consumidores. |
 | DOC-03 | Conflito ativo | `010/spec.md` exige 17 registros; contagem das entradas de `carta.csv.ts` confirma 22 dados mais cabeçalho. | T009; definir matriz oficial, sem homologar helper apenas por existir. |
-| DOC-04 | Conflito ativo; decisão de produto já estabelecida | `012/spec.md` CA17 ainda limita dez blocos/seis cópias; conteúdo do tutorial mantém seis `copyLabel`; `docs/spec.md` registra expansão solicitada em 19/10. | T010/T011; aplicar decisão do usuário a todos os campos aplicáveis. |
+| DOC-04 | Histórico resolvido em 27/10/2026 | 012 e conteúdo do tutorial adotam cinco grupos, 25 definições, 13 textos copiáveis e 12 escolhas; lista fixa e `copyLabel` removidos. | T010/T011 concluídas no escopo documental/conteúdo; implementação e aceite permanecem locais. |
 | DOC-05 | Conflito ativo; limite decidido | Modelo central da 007 descreve tokens totais; conteúdo diz palavras significativas e 008 já exclui catálogo de artigos/preposições. | T005; contagem única com dois escopos. V008-02 não deve ser reaberta. |
 | DOC-06 | Decisão de produto + implementação não entregue | `008/validation.md` mantém V008-01 e V008-03–05 pendentes; catálogo proposto, mensagens e matriz campo × regra ainda incompletos. | T007; usuário aprova conteúdo; implementação posterior verifica comportamento. |
 | DOC-07 | Decisão de produto + conflito de orientação | `organizar-informacoes.ts` contém recorrência e exemplo de progresso 2/13; modelo central exclui recorrência do v3, permitindo orientação complementar. | T006; recorrência não é defeito por si só: esclarecer destino e instrução com o usuário. |
@@ -522,7 +531,7 @@ Somente este arquivo foi editado nesta execução. Nenhuma correção dos contra
 | T008 | Concluída documentalmente | 19/10/2026 | Projeção v3 com 25 campos, 21 critérios, 18 cenários e componente compartilhado documentado | Executar T009; implementação/aceites continuam pendentes |
 | T009 | Concluída documentalmente | 19/10/2026 | Matriz CSV v3 de 22 dados/25 campos, pipeline/snapshot e 17 cenários documentados | Executar T010; segurança e aceite integrado seguem pendentes |
 | T010 | Concluída documentalmente | 20/10/2026 | Matriz 012 de 25 campos, 13 abertos/12 escolhas, clipboard e testes previstos reconciliados | Executar T011 para sincronizar tutorial/conteúdo/mapa |
-| T011 | Parcial — parte documental executada | 20/10/2026 | Contrato v3, matriz de 25 campos, seis documentos, mapa e testes previstos reconciliados; verificação registrada | Sincronizar paraiba-digital.ts em rodada autorizada de conteúdo; não declarar aceite integral |
+| T011 | Concluída — documentação e conteúdo | 27/10/2026 | Contrato v3 e conteúdo sincronizados em 25/13/12; exemplos removidos; typecheck/build aprovados | Implementar composição 011/012, obter fontes/assets e executar testes/aceites |
 | T012 | Concluída documentalmente | 20/10/2026 | Sete documentos 015 reconciliados, histórico preservado, referências 013/016 e matriz de cópia atualizadas | Executar T013; implementação e testes reais da 015 pendentes |
 | T013 | Concluída — documentação e conteúdo | 21/10/2026 | Resolvedor único, conteúdo/consumidores migrados, 11 novos testes; typecheck/build e suíte 36/36 | Implementação visual/calendário/clipboard e API continuam nas features; IN01–IN08 não aprovadas |
 | T014 | Concluída documentalmente | 21/10/2026 | Contrato da agenda, sete artefatos, ADR proposta, IN01–IN08 e replay conceitual verificados | Obter decisões externas antes da implementação dependente; seguir T015 documental |

@@ -15,7 +15,7 @@ compartilhado de prévia estarem integrados em 007 e `/previa`.
 ## Dados sintéticos
 
 - Carta vazia, parcial e completa;
-- todos os tipos de custo/agendamento e condicionais K/S/E;
+- todos os tipos de custo/agendamento e condicionais K/S/ON/E;
 - vários documentos/etapas, itens vazios/parciais e IDs estáveis;
 - textos/URLs extensos, HTML literal e palavras-chave múltiplas;
 - erro estrutural, sugestões editoriais e provider carregando/ausente.

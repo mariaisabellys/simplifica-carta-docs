@@ -16,7 +16,7 @@ Nenhuma tarefa de implementação é concluída pela reconciliação documental.
   Depende de F006-01. Não declarar homologação por existir um frame.
 - [ ] F006-03 — Aplicar ao conteúdo as substituições do contrato: descrição,
   público por controle, categoria/tópico, custos, agendamento, prazo e recorrência.
-  Preservar 13 IDs e três tópicos; manter ressalvas MC-03/MC-05. Versionar mapa
+  Preservar 13 IDs e três tópicos; aplicar ressalvas MC-03/MC-05/MC-07. Versionar mapa
   e complementos por alvo sem duplicação no JSX. Conferir exemplo de descrição.
   Depende de F006-01 e revisão editorial de F006-02; exige autorização de código/conteúdo.
 - [ ] F006-04 — Revalidar documentos atuais e decisões pendentes antes da UI;

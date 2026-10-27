@@ -39,7 +39,7 @@ Exibir cinco partes na ordem da 007 e 25 definições do contrato da projeção:
 7 sobre o serviço, 8 público/requisitos, 3 por etapa, 5 atendimento e 2 finais.
 Categorias, tópico, Ativo, públicos/perfis, custo/prazo separados, títulos/
 orientações/modalidade das etapas e palavras-chave estão incluídos.
-Condições K/S/E omitem somente valores inativos, preservados na fonte.
+Condições K/S/ON/E omitem somente valores inativos, preservados na fonte.
 Rótulos vêm do conteúdo/catálogos da 007; textos nunca são resumidos/corrigidos.
 Nenhum consumidor amplia o modelo por orientação da 006.
 
@@ -51,7 +51,8 @@ aplicáveis, inclusive opcionais vazios, como Não informado.
 Manter itens de edição com ausências identificadas, sem filtrar etapas/lacunas.
 Lista vazia não significa dispensa. Sem conteúdo, exibir mensagem e Preencher
 Carta; itens vazios podem gerar aviso separado, não card fictício.
-Ativo exibe estado booleano com ressalva de default; MC-05 continua aberta.
+Ativo exibe Ativo/Inativo como estado configurado; o default isolado não cria
+conteúdo e a prévia não afirma publicação nem confirmação da interação.
 
 ### RF05 — Pendências e retorno
 
@@ -121,7 +122,7 @@ Rotas existentes não comprovam jornadas entregues.
 | CA16 | Texto extenso, mobile, zoom/reflow preservam conteúdo integral. |
 | CA17 | Fonte única e copy versionada; nenhuma publicação, persistência própria ou HTML/PDF. |
 | CA18 | Referências consultadas e layout adaptado ao conteúdo, com evidência visual futura. |
-| CA19 | Condições K/S/E respeitadas, sem revelar/apagar valores inativos retidos. |
+| CA19 | Condições K/S/ON/E respeitadas, sem revelar/apagar valores inativos retidos. |
 | CA20 | Mesmo componente/view model nos dois contextos, sem IDs DOM repetidos. |
 | CA21 | Ativo false não comprova confirmação; seleções isoladas e prazo parcial não somem. |
 

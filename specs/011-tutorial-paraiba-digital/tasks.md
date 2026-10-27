@@ -24,7 +24,7 @@ e [contrato de integração v3](contrato-integracao-v3.md). Antecedentes no
   Separar pendente de sem equivalente comprovado; entradas de listas/opções
   são manuais, sem equivalência/importação presumidas. Depende T002; CA08/17/18/20.
 - [ ] **T004 — Conferir integração com 012.**
-  Adotar matriz já reconciliada de 25 campos, 13 abertos/12 escolhas, K/S/E,
+  Adotar matriz já reconciliada de 25 campos, 13 abertos/12 escolhas, K/S/ON/E,
   itens por ID, vazio/default e coordenador acima das rotas. Não reintroduzir
   campos legados. Definir interface sem ciclo, CTA único e alvos reais.
   Depende T001; CA06–10/17–19. Documento não comprova componentes prontos.
@@ -47,13 +47,17 @@ e [contrato de integração v3](contrato-integracao-v3.md). Antecedentes no
 
 ## Conteúdo e integração
 
-- [ ] **T009 — Sincronizar conteúdo tipado.**
+- [x] **T009 — Sincronizar conteúdo tipado.**
   Aplicar tabela de migração do contrato em paraiba-digital.ts: projeção completa
   em vez de dez entradas, escolhas sem cópia, exemplos/lorem ipsum fora dos
   valores reais. Preservar outras cinco etapas, IDs, ações, percentuais e
   compatibilidade do export; labels versionados, valores apenas da sessão.
   Não inventar fonte/data/href. Depende T008; CA16/18/20 e IT11.
-  Esta alteração TypeScript não foi executada na T011 documental.
+  Executada em 27/10/2026: `tutorialCartaDataContent` referencia a projeção da
+  012 com cinco grupos/25 definições/13 textos copiáveis/12 escolhas; lista
+  fixa, exemplos, URL fictícia e lorem ipsum removidos. Outras etapas e export
+  de compatibilidade preservados. Typecheck e build executados; a região da 012
+  e os testes IT continuam nas tarefas seguintes.
 - [ ] **T010 — Compor página por etapa ativa.**
   Reusar shell/breadcrumb, um h1, progresso e seis estados por query; CTAs por
   posição e percentuais 17/33/50/67/83/100. Não exigir Carta/login/CSV.
@@ -83,7 +87,7 @@ e [contrato de integração v3](contrato-integracao-v3.md). Antecedentes no
   assets autorizados; distinguir salvar/analisar/publicar sem automatizar.
   Depende T009/011/013; CA02–04/08/11/12/15/20.
 - [ ] **T016 — Executar integração.**
-  IT01–IT11 com fixtures v3 sintéticas; reutilizar TR da 012. Cobrir K/S/E,
+  IT01–IT11 com fixtures v3 sintéticas; reutilizar TR da 012. Cobrir K/S/ON/E,
   null/false/default, múltiplos itens, query/hash/history, edição/retorno,
   falha de região, manual e promise pendente ao sair/voltar. Preservar fonte,
   não executar HTML e não reintroduzir exemplos. Depende T012/013;

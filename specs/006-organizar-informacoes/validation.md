@@ -1,5 +1,10 @@
 # Validacao: Organizar informacoes
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após as
+> alterações do contrato v3. Resultado: contrato documentalmente coerente;
+> aplicação do conteúdo, integração, revisão institucional e aceites continuam
+> pendentes. Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
 > **Superada em 6 de outubro de 2026:** esta validacao avaliou o contrato antigo
 > de dez assuntos sem progresso. A decisao atual adotou o conteudo versionado de
 > tres topicos e 13 informacoes. Reexecutar `/spec:validar` depois de reconciliar
@@ -182,3 +187,11 @@ contrato de três tópicos e 13 informações, sua ordem e os destinos v3. RF01�
 e CA01–CA16 estão mapeados a F006-01–F006-14; copy/metadados e página continuam
 por implementar. O node `387:1918` respondeu por metadados, sem aceite visual.
 Ver a [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Revalidação cruzada com a 007 — 27/10/2026
+
+MC-03, MC-05 e MC-07 foram fechadas na matriz da 007. Spec, plan,
+implementation-plan, tasks e contrato de orientações da 006 agora registram:
+prazo v3 somente como inteiro positivo + unidade; Ativo sem criar tópico novo;
+e condições S/ON/E, nas quais presencial exclusivo não exige sistema. A
+aplicação ao conteúdo TypeScript e os testes continuam pendentes.

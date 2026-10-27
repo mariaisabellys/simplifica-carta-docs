@@ -122,6 +122,12 @@ atual, não evidência de aprovação.
 2. **007:** fechar MC-02–MC-08 aplicáveis antes do formulário dependente.
 3. **008:** obter aprovação editorial do catálogo/mensagens.
 4. **011:** migrar o conteúdo da etapa 4 de dez exemplos para a projeção v3.
+
+### Atualização posterior — 27/10/2026
+
+A pendência de conteúdo da 011 registrada acima foi encerrada: a etapa 4 agora
+referencia a projeção 25/13/12 da 012 e não contém exemplos nem `copyLabel`.
+Permanece pendente validar o fluxo administrativo real e executar os aceites.
 5. **002/003:** entregar provider, rota ausente e 404 antes de validar URLs.
 6. **014/017:** manter agenda fechada até IN01–IN08, ADR final e infraestrutura.
 7. **016:** executar visual, teclado, leitores, contraste, reflow e zoom; nodes

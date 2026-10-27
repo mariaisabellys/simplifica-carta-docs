@@ -2,8 +2,9 @@
 
 ## Parecer
 
-Validação documental registrada em 22/10/2026. Foram confrontados os artefatos,
-perguntas, respostas, condições, ações, tipos atuais, duas rotas e T015/T016.
+Validação documental registrada em 22/10/2026 e atualizada em 27/10/2026. Foram
+confrontados os artefatos, perguntas, respostas, condições, ações, tipos atuais,
+duas rotas e T015/T016.
 
 Resultado: **regra e conteúdo documentados, implementação integrada ainda
 bloqueada por migração técnica e testes exaustivos**.
@@ -18,10 +19,12 @@ bloqueada por migração técnica e testes exaustivos**.
 | V005-04 | aberto para implementação | `diagnostico.types.ts` mantém contrato legado; alinhar aos IDs/valores aprovados. |
 | V005-05 | aberto para testes | Enumerar `3^8` combinações, precedência/contradições, acesso inválido e cliques repetidos. |
 | V005-06 | aguardando visual | Nodes `387:1020`/`387:1362` identificados, sem inspeção visual T016. |
+| V005-07 | resolvido documentalmente | O quickstart vigente não exige `npm run test`: declara que o script ainda não existe e requer registrar o comando real depois de implementar a infraestrutura de testes. |
 
-O quickstart menciona `npm run test`, script inexistente hoje. Antes de executar,
-usar o runner realmente adotado ou adicionar script em implementação autorizada;
-esta validação não executou nem aprovou testes.
+O package ainda não possui script agregado `test`. A tarefa T038 continua
+responsável por configurar ou reutilizar a infraestrutura, definir o comando
+real e registrá-lo antes do aceite. A correção de V005-07 não executa nem aprova
+testes e não altera V005-05.
 
 ## Revalidação T019 — 22/10/2026
 
