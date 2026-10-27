@@ -1,32 +1,37 @@
-# Quickstart: Copia de dados no tutorial
+# Quickstart: Cópia de dados no tutorial
 
-## Estado atual
+T010 documental — 19/10/2026.
+[Anterior](historico/2026-10-19-pre-t010-quickstart.md).
+Roteiro futuro; não constitui teste executado.
 
-Entrega parcial: apenas src/lib/clipboard.ts esta implementado. O tutorial
-nao oferece os 17 campos copiaveis previstos. Consultar verification.md para
-dependencias, decisoes e ambientes ainda pendentes.
+## Estado e checks locais
 
-## Verificar o utilitario
+Utilitário src/lib/clipboard.ts existe; projeção/controlador/UI v3 não comprovados
+entregues. Conteúdo da etapa 4 foi sincronizado na T011; sua composição com a
+012 ainda não foi implementada. Em Node compatível com import de
+TypeScript dos testes (histórico usa Node 24), com dependências instaladas:
 
-Com dependencias instaladas e Node 24.20.0 (suporte nativo a TypeScript):
-
-```powershell
+```sh
 node --test tests/clipboard.test.mjs tests/csv.test.mjs
-npm.cmd run typecheck
-npm.cmd run build
+npm run typecheck
+npm run build
 ```
 
-Testes usam mocks e nao acessam a area de transferencia real. Para futura
-integracao, chamar copiarTexto diretamente no handler do gesto com a string
-derivada original, aguardar resultado e tratar unavailable/write-failed.
-Nao anunciar sucesso antes da resolucao nem aplicar escape/prefixos de CSV.
+PowerShell pode usar npm.cmd. Mocks não acessam clipboard real e não comprovam UI.
 
-## Verificacao futura da jornada
+## Roteiro após implementação
 
-Implementar os 17 campos conforme a ordem e convencoes do implementation-plan,
-respeitando aplicabilidade de agendamento e preservacao de valores inativos.
-Resolver primeiro a copia manual com CR/CRLF e a trava entre instancias.
-Testar em HTTPS com dados sinteticos: copiar/colar em destino controlado,
-recusa/API ausente, selecao manual, texto longo e operacao demorada. Registrar
-browser/versao/dispositivo e resultado observado conforme T016. Mocks nao
-substituem esses testes; nao adicionar leitura de clipboard ao produto.
+1. Confirmar F012-01–06 e o conteúdo T011 sincronizado; abrir /tutorial-paraiba-digital?etapa=4.
+2. Usar Carta sintética completa, parcial e vazia. Conferir matriz de 25 definições,
+   cinco grupos, botões só nos abertos presentes, escolhas sem ação.
+3. Conferir cópia por nome de documento/título/orientação de etapa e ID estável;
+   máximo sem unidade, detalhe sem opção, URL original. Sem exemplos/lorem ipsum.
+4. Alternar K/S/ON/E, reordenar/remover itens, sair/retornar enquanto promise aguarda;
+   verificar trava por identidade e nenhuma confirmação obsoleta.
+5. Executar TR01–TR17 do [contrato](contrato-transferencia-v3.md).
+   Em origem segura, colar texto sintético em destino controlado; não acrescentar
+   leitura de clipboard ao produto. Testar falha/manual/teclado/toque.
+6. Registrar string passada à API separadamente do DOM/resultado da colagem,
+   sem prometer terminadores exatos no ambiente. Registrar CA/ambiente/reteste.
+
+Não executar testes reais com dados pessoais nem confundir sucesso de cópia com cadastro.

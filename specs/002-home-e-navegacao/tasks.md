@@ -1,5 +1,8 @@
 # Tasks: Home e Navegacao
 
+> **Contrato consolidado:** não implementar handlers locais em navbar,
+> breadcrumb ou botões; consumir a navegação compartilhada documentada.
+
 ## Convencoes
 
 - As tarefas devem ser executadas na ordem das dependencias indicadas.
@@ -272,3 +275,7 @@ A spec `002-home-e-navegacao` estara concluida quando:
 - typecheck, build e testes aplicaveis estiverem aprovados;
 - todos os criterios de aceite da spec estiverem atendidos;
 - `/spec:revisar 002-home-e-navegacao` estiver concluido.
+
+## Complemento documental T015 — navegação (22/10/2026)
+
+Na implementação das tarefas de navegação, aplicar o [contrato central](../../docs/arquitetura/contrato-navegacao.md) e os cenários NV01–NV12 da [verificação T015](../../docs/verificacoes/t015-navegacao.md). Usar somente NavigationProvider, useAppLocation, useAppNavigate e AppLink; ButtonLink/breadcrumb/marca compõem AppLink, sem handlers locais ou prop onNavigate. Preservar pathname/search/hash, sem perda de query, e separar 404 da aplicação do fallback SPA. Tarefas funcionais continuam pendentes; este complemento não comprova execução.

@@ -1,236 +1,163 @@
 # Spec: Suporte por e-mail
 
-## Objetivo
+Revisão documental T012 — 20/10/2026. Contrato vigente de exibição e cópia,
+conforme decisão de produto de 16/10/2026. Versão anterior no
+[histórico](historico/2026-10-20-pre-t012-spec.md), sem força normativa atual.
 
-Permitir que o servidor encontre o contato institucional de suporte, entenda
-como descrever sua duvida e inicie uma mensagem em seu aplicativo de e-mail,
-com alternativa manual que mantenha o canal utilizavel sem aplicativo configurado.
+## Objetivo e limites
 
-## Problema e contexto
+Permitir consultar e copiar o endereço da GESED para que o usuário prepare,
+revise e envie sua própria mensagem no serviço de e-mail que preferir.
+A única ação oficial de contato no portal é **Copie o e-mail**.
+Não abrir aplicativo, gerar assunto/corpo predefinidos, enviar mensagem,
+criar protocolo ou anunciar recebimento, leitura ou resposta.
 
-O servidor pode precisar de orientacao sem solicitar atendimento agendado.
-Precisa identificar o destinatario correto e preparar uma mensagem clara,
-sem confundir abertura de aplicativo com envio ou recebimento pela equipe.
+Acesso independente por /ajuda/suporte-email, entrada da 013 e alternativa da
+014, inclusive URL direta/recarga. Não exigir login, diagnóstico, Carta, CSV
+ou atendimento anterior. Suporte orientativo não aprova nem publica Cartas.
+Notificações de agendamento pertencem à 014, não a esta feature.
 
-Esta feature ocupa `/ajuda/suporte-email`, destino da escolha de canal da 013
-e alternativa da 014. O escopo inicial e contato via e-mail do usuario, sem
-formulario de envio no aplicativo ou backend de mensagens. Notificacoes do
-agendamento permanecem responsabilidade da 014.
+## Fontes e evidências
 
-O suporte e orientativo sobre levantamento, organizacao e elaboracao da Carta
-e preparacao do cadastro manual. Nao substitui revisao oficial da GESED,
-aprova Cartas ou publica servicos no Paraiba Digital.
+- [Contato](../../src/content/support/contatos.ts): supportContacts.gesed,
+  endereço editorial gesed.semtd@gmail.com, confirmado documentalmente em 07/10.
+- [Canais](../../src/content/support/canais.ts): supportChannels e
+  supportDestinations; e-mail ativo para exibição/cópia pela decisão de 16/10.
+- [Conteúdo da página](../../src/content/ajuda/suporte-email.ts) e
+  [cards](../../src/content/ajuda/canais.ts): consumidores das fontes acima.
+- [Navegação](../../docs/arquitetura/contrato-navegacao.md),
+  [mapa visual](../../docs/design-system/mapa-figma-telas.md), specs 013/014/016.
+- [Utilitário de cópia](../../src/lib/clipboard.ts): implementação neutra
+  existente, não prova de interface integrada.
 
-## Usuarios impactados
-
-- Servidor que precisa esclarecer uma duvida por e-mail.
-- Equipe GESED, que precisa receber mensagens com contexto suficiente e
-  manter o canal institucional atualizado.
-
-## Fontes de contexto
-
-- `README.md` e `Readme Manual de Levantamento de Serviços.md`: canal de
-  suporte orientativo e contato institucional `gesed.semtd@gmail.com`.
-- `docs/produto/mvp.md`, `escopo.md`, `personas.md` e `fluxos.md`: escolha
-  independente de e-mail ou atendimento agendado.
-- `docs/arquitetura/decisoes-tecnicas.md` e
-  `docs/decisoes/adr-003-backend-atendimento.md`: backend para registro e
-  notificacoes do atendimento, sem armazenamento da Carta.
-- `docs/processo/constitution.md` e `docs/ia/regras-para-ia.md`: processo,
-  conteudo versionado e consulta visual antes de implementar.
-- `specs/013-fluxo-de-ajuda/spec.md`: encaminhamento sem envio automatico,
-  contato validado e preservacao da Carta.
-- `specs/014-atendimento-agendado/spec.md`: alternativa por e-mail e
-  separacao de notificacoes do agendamento.
-- `src/app/routes.tsx` e `src/pages/SuporteEmailPage.tsx`: rota existente e
-  placeholder que apresenta o mesmo endereco registrado no material local.
-- `docs/design-system/mapa-figma-telas.md`: ausencia de frame especifico
-  identificado para suporte por e-mail.
-
-Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
-consulta direta ao Figma ou verificacao de atividade, titularidade e recebimento
-do endereco de suporte. A equipe deve confirmar o contato antes da publicacao.
+Confirmação editorial/estado ativo não comprovam titularidade, atividade,
+recebimento ou prazo operacional. Não enviar mensagem de teste ao endereço.
+Não houve consulta Figma/ERS ou validação institucional nesta revisão.
 
 ## Requisitos funcionais
 
-### RF01 — Acesso e apresentacao
+### RF01 — Acesso e apresentação
 
-- Disponibilizar `/ajuda/suporte-email` pela escolha de canal da 013,
-  alternativa da 014 e URL direta, inclusive apos recarga.
-- Nao exigir login no aplicativo, diagnostico, Carta preenchida, exportacao
-  ou solicitacao anterior.
-- Reutilizar shell e breadcrumb com retorno ao inicio e a `/ajuda`.
-- Exibir titulo `Suporte por e-mail` e orientacao em linguagem simples sobre
-  finalidade do canal e preparacao da mensagem.
-- Nao prometer resposta imediata, prazo, horario de funcionamento ou aprovacao
-  da Carta sem validacao institucional desses compromissos.
+Reusar shell, breadcrumb, título/foco e links internos compartilhados,
+preservando a Carta. Referência 425:201, compartilhada com 014, apresenta
+Atendimento Agendado e Suporte por e-mail. Card de e-mail mostra endereço,
+instrução e um botão de cópia; não criar segunda ação de contato.
+A rota direta permanece; posição/entrada compartilhada é consolidada em T013.
 
-### RF02 — Endereco institucional e manutencao
+### RF02 — Fonte única e disponibilidade
 
-- Apresentar endereco legivel e selecionavel, com destinatario identico ao
-  usado na acao de contato e em eventual acao de copia.
-- Usar `gesed.semtd@gmail.com` como referencia documentada inicial, sujeita a
-  confirmacao da equipe responsavel. Nao substituir por endereco inventado.
-- Manter contato e rotulos em fonte versionada unica, reutilizavel pela 013,
-  evitando destinatarios divergentes em arquivos distintos.
-- Registrar a validacao do contato no planejamento antes da implementacao;
-  formato sintaticamente valido nao comprova que o canal esta operacional.
-- Se houver indisponibilidade confirmada, informar de forma verdadeira e
-  oferecer retorno a ajuda ou atendimento agendado quando operacional, sem
-  anunciar recebimento de mensagem.
-- Diferenciar o suporte orientativo da GESED de canais tecnicos externos da
-  plataforma. Contatos externos adicionais dependem de verificacao e escopo.
+Endereço exibido e payload de cópia derivam de supportContacts.gesed.email,
+sem literal duplicado no JSX, cards ou controladores. Estado/aviso vêm de
+supportChannels["suporte-email"]; destinos vêm de supportDestinations.
+Não confundir rótulos editoriais da página com nova configuração de contato.
 
-### RF03 — Orientacoes para escrever a mensagem
+Estado atual é ativo para exibição/cópia. Não rebaixá-lo a pendente por ausência
+de homologação operacional, nem afirmar que ativo garante resposta.
+Pendente/pausado suspendem a ação oficial e mostram aviso verdadeiro e retorno
+à ajuda; falha de clipboard não altera estado do canal. Apresentação não ativa segue o contrato de canais: endereço de referência
+selecionável com aviso, sem botão ou incentivo a contato; ambos indisponíveis
+mantêm orientações e retornos. Não aplicar fallback ativo.
 
-- Orientar o usuario a informar nome, orgao/setor e contexto da duvida no
-  proprio e-mail, com assunto claro e etapa do manual relacionada quando util.
-- Recomendar descricao objetiva do problema e resultado esperado, sem exigir
-  no aplicativo o preenchimento desses dados como formulario.
-- Identificar exemplos de assunto ou corpo como ilustrativos, sem inserir
-  dados ficticios como se fossem informacoes reais do solicitante.
-- Orientar a nao enviar senhas, documentos pessoais ou dados de cidadaos.
-  Nao exigir anexos, a Carta completa ou exportacao CSV para obter suporte.
-- Nao afirmar que a equipe revisara ou aprovara formalmente toda Carta enviada.
-- Manter instrucoes utilizaveis por quem usa webmail, aplicativo de escritorio
-  ou dispositivo movel, sem depender de um provedor especifico.
+### RF03 — Orientação
 
-### RF04 — Acao explicita de contato
+Explicar como copiar o endereço e colá-lo no campo de destinatário do serviço
+de e-mail escolhido pelo usuário. Recomendar contexto da dúvida, órgão/setor
+e etapa relacionada sem coletar esses dados no portal. O usuário escolhe
+assunto e texto; não preencher mensagem nem exigir anexos/Carta/CSV.
+Orientar a não enviar senhas ou dados pessoais de cidadãos. Sem compromisso
+de prazo, atendimento imediato ou aprovação formal de rascunhos.
 
-- Oferecer link com rotulo claro, como `Abrir aplicativo de e-mail`, usando
-  `mailto:` para o contato validado.
-- Acionar somente por escolha explicita. Abrir a pagina nao abre o aplicativo,
-  envia mensagem ou solicita atendimento automaticamente.
-- Explicar que a acao abre o aplicativo de e-mail configurado e que o usuario
-  deve revisar e enviar a mensagem nesse aplicativo.
-- O planejamento deve definir se ha assunto ou corpo generico predefinido;
-  se adotado, usar texto versionado, codificacao adequada de parametros e
-  preservar destinatario fixo, sem incluir valores da sessao ou credenciais.
-- Nao capturar campos da Carta, respostas do diagnostico ou dados de atendimento
-  para embuti-los no link. O usuario decide o conteudo da mensagem externa.
-- Nao exibir `Mensagem enviada`, `Solicitacao recebida`, protocolo ou sucesso
-  de entrega com base na abertura do link. O app nao acompanha envio, leitura
-  ou resposta externos.
+### RF04 — Cópia explícita
 
-### RF05 — Alternativa manual e copia do endereco
+Botão type=button com rótulo **Copie o e-mail**. Montagem, foco ou navegação
+não copiam automaticamente. Payload é somente o endereço exato da fonte,
+sem protocolo, assunto, corpo, rótulo, markup ou dados da sessão.
+Não ler clipboard, exigir consulta prévia de permissão ou usar fallback oculto.
+Reusar copiarTexto sem dependência do domínio Carta/tutorial.
+A página não utiliza mailto; o helper legado está fora da interface vigente.
 
-- Manter endereco e instrucoes visiveis e selecionaveis mesmo quando o link
-  nao abrir aplicativo ou nao houver configuracao de e-mail.
-- Orientar a abrir o webmail/aplicativo de preferencia, criar mensagem e usar
-  o endereco apresentado como destinatario, sem bloquear outras acoes.
-- Nao presumir que o navegador informa confiavelmente se o aplicativo abriu;
-  disponibilizar a alternativa manual independentemente dessa deteccao.
-- Oferecer `Copiar endereco de e-mail` como conveniencia, somente por acao
-  explicita, copiando o endereco sem `mailto:`, assunto, corpo ou markup.
-- Confirmar copia apenas apos sucesso. Em falha ou indisponibilidade, informar
-  que o endereco pode ser selecionado e copiado manualmente; permitir tentativa
-  posterior e nao ler a area de transferencia.
-- Diferenciar `Endereco copiado` de mensagem enviada. Evitar acionamentos
-  duplicados enquanto a mesma copia estiver em andamento.
-- Reutilizar utilitario compartilhado de copia quando houver; nao acoplar
-  copia de contato ao estado da Carta ou exigir a feature 012 para mostrar o canal.
+### RF05 — Retorno e alternativa manual
 
-### RF06 — Continuidade e alternativas
+Sucesso somente após retorno success: **E-mail copiado!**.
+Falha/unavailable/write-failed: **Não foi possível copiar. Selecione o endereço e copie manualmente.**
+Esses textos vêm de emailSupportContent.copyAction. Endereço legível e
+selecionável no canal ativo antes/depois da tentativa, inclusive sem API.
+Cópia manual não depende de detectar aplicativo instalado.
+Trava imediata impede clique duplicado; revisão do endereço/estado invalida
+retorno antigo. Não anunciar sucesso antecipado ou mensagem enviada.
+Foco permanece no controle; status acessível local, sem depender só de cor/toast.
 
-- Preservar integralmente a Carta da sessao ao entrar, copiar contato, abrir
-  aplicativo de e-mail ou voltar ao formulario.
-- Nao inicializar, limpar, ler ou transmitir dados da Carta para renderizar
-  o canal; nao manter uma segunda versao de dados ou rascunho de mensagem no app.
-- Oferecer retorno a `/ajuda`, alternativa `/ajuda/atendimento-agendado` e
-  acesso a `/formulario-carta` com rotulos claros.
-- Nao reservar horario nem enviar solicitacao ao escolher a alternativa.
-- Funcionar por acesso direto sem depender exclusivamente do historico do
-  navegador. Indisponibilidade do backend da 014 nao impede consulta do contato.
+### RF06 — Continuidade
 
-### RF07 — Conteudo versionado
+Não importar/ler/limpar/transmitir Carta ou diagnóstico para mostrar/copiar
+contato. Preservar provider acima das rotas, sem segunda sessão ou rascunho.
+Retornos explícitos para /ajuda e /formulario-carta; alternativa de atendimento
+segue estado/destino compartilhado, sem prometer vagas ou criar solicitação.
+Backend da agenda não é requisito de consulta/cópia do contato.
 
-- Manter titulo, introducao, contato, instrucoes, exemplos e mensagens de
-  copia fora da apresentacao visual, seguindo `src/content/`.
-- Validar redacao, contato e escopo com a equipe responsavel antes de publicar.
-- Preservar acentuacao e linguagem simples. Alteracao do contato deve atualizar
-  endereco exibido, link e copia a partir da mesma fonte.
+### RF07 — Conteúdo e segurança
 
-## Requisitos nao funcionais
+Textos, rótulos, instruções e estados ficam em src/content; dados renderizados
+como texto literal. Sem backend/SMTP, formulários, anexos automáticos, logs de
+mensagem/Carta, credenciais ou persistência de mensagens.
+Alterar a fonte de contato deve atualizar texto e payload juntos.
 
-- Funcionar no frontend sem formulario de envio, backend, SMTP, login no app
-  ou persistencia de mensagens. O aplicativo externo de e-mail realiza o envio
-  sob controle do usuario.
-- Nao registrar valores da Carta, mensagens ou dados pessoais em logs ou
-  telemetria. Nao incluir segredos ou credenciais de provedor no frontend.
-- Tratar conteudo como texto, sem executar HTML ou scripts. Manter destinatario
-  controlado e parametros do link construidos a partir de conteudo versionado.
-- Oferecer links/botoes com nomes acessiveis, foco visivel e operacao por teclado.
-  Anunciar retorno da copia sem mudar foco inesperadamente ou depender de cor.
-- Funcionar em desktop, tablet e smartphone, com ampliacao de texto, endereco
-  longo e ausencia de corte, sobreposicao ou rolagem horizontal da pagina.
-- Reutilizar shell, tokens e Inter com os fallbacks globais.
-- Validar em Chrome, Edge, Firefox e Safari, incluindo aplicativo configurado,
-  ausencia de aplicativo e copia automatica indisponivel. Os testes nao devem
-  enviar mensagens reais ao canal institucional.
+## Visual, acessibilidade e dependências
 
-## Referencias visuais e pendencias
+Node 425:201 do [mapa](../../docs/design-system/mapa-figma-telas.md) é a referência,
+não 169:495 da FAQ. Layout se adapta ao conteúdo versionado. Consultar Design
+e Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 antes do trabalho visual; consulta pendente.
+Reusar Inter/tokens, um main/h1 conforme shell, foco visível, ordem semântica,
+botões por teclado, status local e endereço integral sem corte ou caracteres
+inseridos por quebra visual. Verificar seleção por teclado/toque, reflow e zoom.
 
-O mapa local ainda nao identifica frame especifico de suporte por e-mail.
-O node `169:495` pertence a FAQ/entrada de ajuda e nao define sozinho esta pagina.
+Dependências: 001/002 navegação/shell, 007 preservação de sessão, 013 entrada
+e estados, 014 alternativa, 016 acessibilidade. Reuso apenas de utilitário
+neutro de clipboard; não exigir página 012 montada. ERS, revisão institucional,
+implementação e ambientes reais permanecem pendentes.
 
-Antes da implementacao visual, identificar e consultar o frame via MCP no
-Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
-Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar composicao, contato,
-acoes, estados de copia, assets e responsividade no `implementation-plan.md`
-e atualizar o mapa. Resolver divergencias antes de implementar.
+## Critérios de aceite
 
-O planejamento deve conciliar ERS, contato ativo, textos, comportamento do
-`mailto:`, alternativa manual e eventual utilitario de copia. Se o prototipo
-trouxer formulario de envio no app, registrar e resolver a divergencia de
-escopo antes de adicionar backend ou coleta de dados.
-
-## Fora de escopo
-
-- Enviar e-mail pelo aplicativo, integrar SMTP/API de mensagens ou receber
-  respostas dentro do Simplifica Carta.
-- Criar formulario de contato, anexos, protocolo, tickets ou acompanhamento.
-- Detectar envio, entrega, leitura ou prazo de resposta da mensagem externa.
-- Notificacoes do atendimento agendado, que pertencem a 014.
-- Anexar automaticamente Carta, CSV, documentos ou dados da sessao.
-- Chat, triagem automatica, login, historico ou rascunhos permanentes.
-- Aprovar, cadastrar ou publicar servicos no Paraiba Digital.
-
-## Dependencias
-
-- `001-fundacao-do-projeto` e `002-home-e-navegacao`: rota, shell e links.
-- `013-fluxo-de-ajuda`: escolha do canal e conteudo institucional compartilhado.
-- `014-atendimento-agendado`: alternativa, sem tornar seu backend requisito
-  para consultar o contato por e-mail.
-- `007-formulario-carta-servico`: continuidade da Carta na navegacao.
-- `016-responsividade-acessibilidade`: alinhamento transversal, sem adiar
-  os requisitos desta pagina.
-- Confirmacao institucional do endereco, validacao editorial e frame oficial.
-
-Na criacao desta spec, 016 ainda nao possui pasta em `specs/`. O placeholder
-de e-mail nao comprova atividade do contato ou funcionalidade de suas acoes.
-Nenhuma mensagem real foi enviada nesta etapa.
-
-## Criterios de aceite
-
-| ID | Cenario | Resultado esperado |
+| ID | Cenário | Resultado esperado |
 | --- | --- | --- |
-| CA01 | Abrir pela ajuda, alternativa de agendamento, URL direta ou recarga. | Consultar o canal sem login, diagnostico, Carta ou exportacao. |
-| CA02 | Consultar endereco e iniciar contato. | Encontrar contato validado identico no texto, link e copia. |
-| CA03 | Acionar link com aplicativo de e-mail configurado. | Solicitar abertura da mensagem para o destinatario correto, com texto generico definido, sem envio automatico. |
-| CA04 | Usar ambiente sem aplicativo configurado ou abertura indisponivel. | Encontrar endereco selecionavel e instrucao de uso manual por webmail/aplicativo. |
-| CA05 | Copiar o endereco com sucesso ou falha. | Confirmar somente copia concluida; em falha, oferecer selecao manual sem falso sucesso. |
-| CA06 | Consultar orientacoes para descrever a duvida. | Encontrar contexto recomendado e exemplos identificados, sem coleta no app ou exigencia de anexos. |
-| CA07 | Abrir canal com Carta preenchida e voltar ao formulario. | Preservar dados e nao inclui-los no link, copia de contato ou transmissao automatica. |
-| CA08 | Abrir link ou copiar endereco. | Nao anunciar envio, recebimento, protocolo, entrega ou leitura de mensagem. |
-| CA09 | Alterar contato na fonte versionada. | Atualizar texto, link e copia sem destinatarios divergentes. |
-| CA10 | Escolher atendimento agendado ou retornar a ajuda por acesso direto. | Navegar aos destinos corretos sem depender de historico ou criar solicitacao. |
-| CA11 | Usar teclado, leitor de tela e texto ampliado em telas pequenas. | Identificar contato/acoes e retorno de copia, com foco coerente e sem corte ou scroll horizontal. |
-| CA12 | Revisar indisponibilidade confirmada e textos institucionais. | Oferecer alternativa verdadeira sem prazo inventado, promessa de aprovacao ou confusao com suporte externo. |
-| CA13 | Revisar arquitetura e implementacao visual futura. | Encontrar conteudo versionado, consultas Figma registradas e ausencia de backend de envio, coleta, anexos automaticos ou persistencia de mensagens. |
+| CA01 | Entradas, URL direta e recarga | Canal acessível sem login, Carta, diagnóstico ou CSV |
+| CA02 | Consultar contato ativo | Endereço legível igual à fonte e ao payload da única ação de cópia |
+| CA03 | Acionar Copie o e-mail | Copiar somente endereço por gesto; não abrir aplicativo nem gerar mensagem/assunto |
+| CA04 | Cópia indisponível | Endereço selecionável e orientação manual no canal ativo, sem depender de aplicativo |
+| CA05 | Resolver, falhar ou repetir cópia | Sucesso somente após success, falha verdadeira, trava e ausência de feedback obsoleto |
+| CA06 | Consultar orientações | Contexto recomendado sem coleta, mensagem preenchida ou anexos exigidos |
+| CA07 | Navegar e retornar com Carta | Preservar dados, nenhum valor da Carta em payload/URL/requests |
+| CA08 | Copiar ou falhar | Não anunciar envio, recebimento, leitura ou protocolo |
+| CA09 | Mudar contato na fonte | Texto/payload atualizados juntos, retorno antigo invalidado |
+| CA10 | Ajuda/formulário/alternativa | Destinos explícitos e coerentes com estado, sem reservar ou solicitar |
+| CA11 | Teclado/leitor/zoom/endereço longo | Foco e status coerentes; seleção integral e sem corte/overflow |
+| CA12 | Estado ativo/pendente/pausado | Estado compartilhado, sem promessa operacional; política não ativa conforme contrato de canais |
+| CA13 | Arquitetura e layout | Conteúdo único, node 425:201, sem backend de envio/coleta/rascunho |
 
-## Proximo passo
+Critérios são futuros; nenhum aceite funcional é inferido desta limpeza documental.
 
-Executar `/spec:planejar 015-suporte-email` para definir fonte do contato,
-link, copia, composicao e verificacoes. Depois, criar tarefas e
-`implementation-plan.md`, resolver pendencias e executar `/spec:validar`
-antes de `/spec:implementar`.
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. E-mail ativo: Copie o e-mail e alternativa manual. Pendente/pausado: aviso,
+endereço de referência selecionável, sem botão ou instrução incentivando contato.
+Ambos os canais indisponíveis: orientações e retornos, sem ação operacional.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

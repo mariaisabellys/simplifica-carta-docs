@@ -156,9 +156,9 @@
 
 - [ ] **T017 — Expor navegacao compartilhada para as paginas**
   - Reutilizar o contrato da feature 002, se existente.
-  - Caso ausente, extrair `NavigationContext` de `App.tsx` com `navigate` e
-    opcao `replace`.
-  - Preservar `popstate`, URL real, rolagem e foco.
+  - Entregar/reutilizar NavigationProvider, useAppLocation, useAppNavigate e
+    AppLink do contrato central, sem API local concorrente.
+  - Preservar pathname/search/hash, popstate, rolagem e foco do shell.
   - Nao adicionar React Router nem roteador interno na feature.
   - Dependencias: T002, T007.
   - Evidencia: paginas navegam pelo mesmo contrato do shell.

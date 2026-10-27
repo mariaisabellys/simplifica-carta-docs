@@ -1,5 +1,15 @@
 # Validacao: Organizar informacoes
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após as
+> alterações do contrato v3. Resultado: contrato documentalmente coerente;
+> aplicação do conteúdo, integração, revisão institucional e aceites continuam
+> pendentes. Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
+> **Superada em 6 de outubro de 2026:** esta validacao avaliou o contrato antigo
+> de dez assuntos sem progresso. A decisao atual adotou o conteudo versionado de
+> tres topicos e 13 informacoes. Reexecutar `/spec:validar` depois de reconciliar
+> spec, plano, tarefas e plano detalhado.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 006-organizar-informacoes` em 2026-10-05.
@@ -135,7 +145,7 @@ nao foram executados.
 | CA09 | T009/T012 | Larguras/texto/reflow previstos; medicao/interface reais pendentes |
 | CA10 | T003/T006/T007/T014 | Conteudo/escopo coerentes; ajustar proibicao generica de hooks, V006-05 |
 | CA11 | T003/T006/T010 | Comunicacao sem aprovacao/publicacao automatica coerente; validacao editorial pendente |
-| CA12 | T002/T004/T005/T009/T012/T014 | Nao verificavel contra Figma nesta sessao; frame desconhecido |
+| CA12 | T002/T004/T005/T009/T012/T014 | Node `387:1918` identificado posteriormente; consulta MCP detalhada, implementacao e comparacao visual permanecem pendentes |
 
 Todos RF01–RF06 e CA01–CA12 possuem tarefas relacionadas. A existencia da
 rastreabilidade nao resolve inconsistencias, comprova implementacao ou
@@ -168,3 +178,20 @@ do codigo que descreve o contrato atual.
    mantendo dependencias ausentes como pendentes e resultados em verification.md.
 
 Este relatorio nao autoriza iniciar codigo nem declara o produto aprovado.
+
+## Revalidação T019 — 22/10/2026
+
+Parecer atual: **contrato vigente coerente; implementação pendente**. As
+inconsistências deste registro antigo sobre dez assuntos estão superadas pelo
+contrato de três tópicos e 13 informações, sua ordem e os destinos v3. RF01–RF06
+e CA01–CA16 estão mapeados a F006-01–F006-14; copy/metadados e página continuam
+por implementar. O node `387:1918` respondeu por metadados, sem aceite visual.
+Ver a [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Revalidação cruzada com a 007 — 27/10/2026
+
+MC-03, MC-05 e MC-07 foram fechadas na matriz da 007. Spec, plan,
+implementation-plan, tasks e contrato de orientações da 006 agora registram:
+prazo v3 somente como inteiro positivo + unidade; Ativo sem criar tópico novo;
+e condições S/ON/E, nas quais presencial exclusivo não exige sistema. A
+aplicação ao conteúdo TypeScript e os testes continuam pendentes.

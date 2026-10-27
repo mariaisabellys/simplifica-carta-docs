@@ -1,10 +1,33 @@
 # Spec: Fluxo de ajuda
 
+> **Integracao visual atualizada em 16 de outubro de 2026:** o CTA de apoio
+> leva ao node compartilhado `425:201`, onde o usuario encontra os cards de
+> atendimento agendado e suporte por e-mail. A FAQ continua no node `169:495`.
+
 ## Objetivo
 
-Oferecer uma entrada clara para esclarecer duvidas sobre levantamento,
-organizacao, elaboracao e cadastro manual da Carta de Servicos, com perguntas
-frequentes e acesso ao suporte por e-mail ou atendimento agendado.
+Oferecer respostas rapidas para duvidas frequentes durante o cadastro dos
+servicos e encaminhar o usuario que ainda precisa de apoio para as orientacoes
+de atendimento da feature 014.
+
+## Contrato editorial oficial — 2026-10-07
+
+`src/content/pages/ajuda.ts` e a fonte oficial da pagina `/ajuda`. Prevalece
+sobre listas candidatas ou exemplos anteriores nos demais documentos da 013:
+
+- titulo `Duvidas frequentes`, tagline `Uma resposta quando voce precisa.` e
+  subtitulo versionado;
+- CTA `Ainda preciso de ajuda ->` para `/ajuda#precisa-de-apoio`;
+- secao `Perguntas frequentes` com exatamente quatro itens versionados: diferenca
+  por publico, dependencia de outro orgao, fluxo digital/presencial e
+  responsabilidade pela atualizacao da Carta;
+- secao `Precisa de apoio?`, direcionada a `/ajuda/atendimento-agendado`;
+- nenhum card de suporte por e-mail e nenhuma FAQ adicional nesta pagina.
+
+A seção de apoio segue o [contrato compartilhado de canais](../../docs/arquitetura/contrato-canais-ajuda.md): atendimento ativo usa
+“Consultar atendimento ->”; pendente/pausado usa “Ver canais de apoio ->”, com
+aviso verdadeiro. Em ambos, destino canônico da 014 abre a entrada compartilhada.
+Título e CTA fixos “Agende/Agendar visita” no conteúdo atual ainda precisam de migração.
 
 ## Problema e contexto
 
@@ -60,26 +83,22 @@ homologacao editorial das respostas.
   exportacao, login ou solicitacao anterior.
 - Reutilizar header e footer, indicar pagina atual semanticamente na
   navegacao e apresentar breadcrumb com retorno ao inicio.
-- Exibir titulo `Preciso de ajuda` e introducao em linguagem simples indicando
-  que o usuario pode consultar respostas ou escolher um canal de orientacao.
+- Exibir titulo, tagline, subtitulo e CTA exatamente a partir do conteudo
+  versionado, sem substituir `Duvidas frequentes` por `Preciso de ajuda`.
 - Explicar o escopo do suporte: levantamento, organizacao, elaboracao e
   preparacao para cadastro manual, sem prometer aprovacao, publicacao ou
   resolucao de toda demanda da plataforma externa.
 
 ### RF02 — Perguntas frequentes
 
-Disponibilizar respostas de consulta que cubram os assuntos abaixo, com
-redacao institucional a validar antes da implementacao:
+Disponibilizar exatamente as quatro perguntas versionadas:
 
-| Assunto | Cobertura minima |
+| Assunto | Cobertura oficial |
 | --- | --- |
-| Funcao do Simplifica Carta | Preparacao e orientacao; cadastro e publicacao continuam manuais. |
-| Acesso por etapas | Possibilidade de consultar qualquer etapa sem concluir anteriores. |
-| Informacoes a reunir | Encaminhamento a `/organizar-informacoes` e confirmacao com o setor responsavel. |
-| Continuidade do preenchimento | Dados temporarios da sessao, limites de recuperacao e ausencia de rascunho permanente. |
-| Validacao e linguagem simples | Diferenca entre obrigatorios ausentes e sugestoes orientativas, sem aprovacao automatica. |
-| Previa, CSV e copia | Funcao de cada recurso e orientacao para revisar dados antes da transferencia manual. |
-| Como obter orientacao | Diferenca entre suporte por e-mail e solicitacao de atendimento agendado. |
+| Servico diferente conforme o publico | Separar servicos quando regras, documentos, etapas ou resultados mudarem muito; registrar pequenas diferencas no mesmo servico. |
+| Servico dependente de outro orgao | Explicar a responsabilidade de cada orgao e onde buscar atendimento. |
+| Parte digital e parte presencial | Informar todas as etapas em ordem e identificar sua modalidade. |
+| Atualizacao depois da publicacao | Atribuir ao orgao responsavel a manutencao de documentos, etapas, prazos, canais e demais condicoes. |
 
 - Manter respostas coerentes com os contratos finais de 007–012. Nao
   prometer recuperacao futura, importacao CSV ou procedimentos externos nao
@@ -92,17 +111,16 @@ redacao institucional a validar antes da implementacao:
 - A FAQ nao exige busca, filtros, chat, avaliacao de resposta ou registro de
   conclusao. Sua composicao final deve ser conciliada com o Figma.
 
-### RF03 — Escolha do canal
+### RF03 — Encaminhamento para apoio
 
-Apresentar as duas opcoes com descricao objetiva e link de acao identificavel:
+Apresentar a secao versionada `Precisa de apoio?`, com descricao e destino
+`/ajuda/atendimento-agendado`. Esse destino usa a composicao `425:201`, com os
+dois cards de canal. A feature 015 nao vira card da FAQ; ela compoe a pagina de
+apoio aberta depois do CTA.
 
-| Opcao | Destino | Comportamento nesta feature |
-| --- | --- | --- |
-| Atendimento agendado | `/ajuda/atendimento-agendado` | Encaminhar para consultar disponibilidade e solicitar atendimento na 014. |
-| Suporte por e-mail | `/ajuda/suporte-email` | Encaminhar para orientacoes de contato e uso do canal na 015. |
-
-- Explicar que selecionar uma opcao apenas abre o fluxo correspondente.
-  Nao cria solicitacao, reserva horario, envia mensagem ou notifica a equipe.
+- Na FAQ, o CTA apenas navega à entrada compartilhada. Nela, atendimento
+  ativo abre calendário interno na rota 014; e-mail ativo copia o endereço.
+  Nenhuma dessas ações cria solicitação, reserva horário ou envia mensagem.
 - Permitir escolha independente, sem classificar automaticamente a duvida
   ou exigir dados pessoais na pagina de entrada.
 - Nao exibir datas, horarios ou disponibilidade ficticia; esses dados pertencem
@@ -112,8 +130,8 @@ Apresentar as duas opcoes com descricao objetiva e link de acao identificavel:
   links. Indisponibilidade de um fluxo nao deve impedir a leitura da ajuda.
 - Quando houver indisponibilidade confirmada de um canal, oferecer mensagem
   verdadeira e alternativa disponivel, sem afirmar solicitacao recebida.
-  O mecanismo de disponibilidade deve ser conciliado com 014 e 015, sem criar
-  monitoramento ou agenda nesta feature.
+  A apresentação segue o contrato compartilhado, sem criar monitoramento
+  ou agenda nesta feature; efeitos da pausa sobre API ficam para T014.
 - Rotas placeholder nao comprovam canais operacionais. O aceite integrado
   de encaminhamento depende da implementacao real de 014 e 015.
 
@@ -140,10 +158,9 @@ Apresentar as duas opcoes com descricao objetiva e link de acao identificavel:
   `src/content/pages/`.
 - Submeter respostas e descricoes a validacao da equipe responsavel e
   preservar linguagem simples e acentuacao.
-- O placeholder de suporte menciona `gesed.semtd@gmail.com`, sem verificacao
-  nesta etapa. A validacao do endereco, forma de uso e contato final pertence
-  ao planejamento da 015; a 013 nao cria um endereco alternativo nem assume
-  que esse canal esta ativo.
+- Endereço vem de supportContacts.gesed e estado/aviso de supportChannels.
+  E-mail atualmente ativo editorialmente; isso não prova recebimento ou resposta.
+  A FAQ não mostra endereço nem cria card adicional; somente a entrada compartilhada.
 - Nao duplicar contatos em varios arquivos nem publicar dados institucionais
   provisórios como definitivos. Reutilizar o contrato de conteudo da 015 se
   houver necessidade de mostrar contato nesta pagina.
@@ -220,9 +237,9 @@ canais. Testes de encaminhamento completo ficam dependentes dessas features.
 | ID | Cenario | Resultado esperado |
 | --- | --- | --- |
 | CA01 | Abrir `/ajuda` pela acao compartilhada, URL direta ou recarga. | Exibir consulta e opcoes sem login, Carta ou percurso anterior. |
-| CA02 | Consultar apresentacao e FAQ. | Encontrar escopo orientativo e cobertura dos assuntos da tabela, com respostas coerentes e versionadas. |
+| CA02 | Consultar apresentacao e FAQ. | Encontrar titulo, tagline, subtitulo, CTA e as quatro perguntas/respostas exatamente como versionados. |
 | CA03 | Escolher atendimento agendado. | Navegar para `/ajuda/atendimento-agendado` sem reservar, enviar ou confirmar solicitacao. |
-| CA04 | Escolher suporte por e-mail. | Navegar para `/ajuda/suporte-email` sem enviar mensagem ou anunciar recebimento. |
+| CA04 | Procurar suporte por e-mail na FAQ. | Nao encontrar card adicional fora do conteudo versionado; a rota da 015 permanece independente. |
 | CA05 | Abrir ajuda com Carta parcialmente preenchida e retornar ao formulario. | Preservar integralmente os dados e retomar o preenchimento. |
 | CA06 | Acessar ajuda diretamente e usar retorno ao formulario. | Abrir `/formulario-carta` sem depender de historico previo. |
 | CA07 | Consultar ajuda e selecionar canal. | Nao coletar dados, enviar Carta, respostas ou valores de sessao em URL ou mensagem automatica. |
@@ -240,3 +257,29 @@ Executar `/spec:planejar 013-fluxo-de-ajuda` para definir conteudo, composicao,
 FAQ, contratos de navegacao e verificacoes. Depois, criar tarefas e
 `implementation-plan.md`, conciliar pendencias e executar `/spec:validar`
 antes de `/spec:implementar`.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

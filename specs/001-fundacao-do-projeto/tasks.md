@@ -1,5 +1,8 @@
 # Tasks: Fundacao do Projeto
 
+> **Baseline de navegação:** tarefas futuras devem entregar o contrato único de
+> `docs/arquitetura/contrato-navegacao.md` antes das páginas dependentes.
+
 ## Fundacao documental
 
 - [x] Conferir pasta atual.

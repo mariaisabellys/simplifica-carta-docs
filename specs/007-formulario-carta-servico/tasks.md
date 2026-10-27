@@ -1,304 +1,61 @@
-# Tasks: Formulario da Carta de Servicos
+# Tasks — Formulário da Carta v3
 
-## Convencoes e status
+Baseline 19/10/2026, T004. Tarefas de implementação abaixo ainda pendentes.
+IDs F007 identificam esta lista vigente; tarefas T001–T027 do documento anterior
+permanecem apenas no histórico, não correspondem às tarefas globais de docs/tasks.md.
 
-- Base: spec.md e plan.md da 007; executar conforme dependencias indicadas.
-- Todas as tarefas estao pendentes. Esta lista nao comprova consulta Figma,
-  validacao editorial, implementacao ou testes executados.
-- Codigo somente em `/spec:implementar`, depois do implementation-plan e
-  validacao documental sem bloqueios relevantes.
-- Uma unica Carta temporaria, sem backend, login, localStorage, anexos,
-  sincronizacao entre abas ou publicacao externa.
-- As specs 008–016 agora existem; notas de ausencia nos documentos sao
-  historicas. Consumidores placeholders continuam pendentes de aceite integrado.
-- Cada tarefa deve registrar evidencia e resultado; dependencias indisponiveis
-  nao podem ser marcadas como concluidas por existir uma rota.
+## Contratos e preparação
 
-## Fase 1 — Preparacao e contratos
+- [x] F007-01 — Fechar MC-02–MC-08 da matriz com regras e mensagens, sem ampliar campos. Evidência: matriz, modelo central, spec, plan, implementation-plan, contratos consumidores e validation atualizados em 27/10/2026.
+- [ ] F007-02 — Integrar decisões de contagem T005, orientações T006 e regras T007. Conferir cada um dos 25 campos, catálogos, IDs e condições K/S/ON/E.
+- [ ] F007-03 — Consultar Design/Make e registrar cinco partes, Form-Card, Label-Row e prévia; definir estados ausentes com design system. Reconstruir imagem da parte 2 com controles reais.
+- [ ] F007-04 — Revalidar spec/plan/tasks/implementation-plan e emitir validation atual. Não liberar dependência com decisão obrigatória ainda aberta.
 
-- [ ] **T001 — Inventariar codigo e contratos compartilhados**
-  - Conferir App, shell, links, breadcrumb, FormField, tipos, schema, storage,
-    validacao, CSV e consumidores atuais; identificar todos os callsites afetados.
-  - Conferir entradas de 003/006, destino 013 e provider/navegacao previstos
-    na 002; separar contratos planejados de componentes efetivamente entregues.
-  - Evidencia: inventario e donos das lacunas no implementation-plan da 007.
-    Cobertura: RF01/RF06/RF07, CA01/CA10/CA13.
+## Domínio e sessão — após autorização de implementação
 
-- [ ] **T002 — Conciliar jornada, campos e regras com documentos**
-  - Conferir ERS e fontes institucionais; registrar o que foi efetivamente lido.
-  - Resolver descricao da jornada da spec, preservando organizacao entre
-    diagnostico e formulario e acesso independente por qualquer entrada.
-  - Fechar nome popular, orientacaoAgendamento, escolhas null/Sim/Nao e
-    classificacao/tipo nao informados; manter cinco obrigatorios gerais e condicionais
-    de agendamento com 008.
-  - Revisar documentalmente 012: false apenas quando explicito no novo contrato,
-    null nao copia Nao e como agendar incluido; registrar alteracoes explicitas.
-  - Conciliar 009/010/011/012 sem implementar seus fluxos nesta tarefa.
-  - Dependencia: T001. Evidencia: contratos documentados e divergencias
-    resolvidas antes do codigo; cobertura RF02–07, CA02/CA06–09/CA13.
+- [ ] F007-05 — Criar registro de campos e ações tipadas sobre v3; testar categoria/subcategoria, custo, agendamento e escolhas inválidas sem mutação.
+- [ ] F007-06 — Criar operações de documentos e etapas por ID; defaults vazios, modalidade null, ordem 1..N e IDs preservados após reordenação.
+- [ ] F007-07 — Evoluir storage com resultado discriminado, decoder defensivo e preservação de registro inválido/anterior/futuro. Recuperar Carta parcial segura; testar original incompatível intacto e ausência de gravação antes de hidratar.
+- [ ] F007-08 — Criar provider único e hook; manter estado entre rotas, avisos de memória apenas e ação explícita de substituir registro inválido. Testar falha de leitura/escrita e recarga válida.
+- [ ] F007-09 — Integrar validação estrutural/editorial separada e revisão por snapshot; invalidar confirmação ao editar. Erro técnico não equivale a ausência de pendências.
 
-- [ ] **T003 — Consultar Figma e fechar composicao visual**
-  - Consultar via MCP Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`,
-    nodes `811:306`, `811:382` e `651:317`; identificar tela completa.
-  - Consultar Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
-  - Definir exibicao simultanea ou por partes, indice, orientacoes, campos,
-    estados, acoes, assets e responsividade, sem gates de completude.
-  - Atualizar mapa quando houver frame confirmado; resolver campos/interacoes
-    adicionais antes de ampliar escopo. Sem referencia suficiente, registrar bloqueio.
-  - Dependencias: T001–T002. Evidencia: consultas e decisoes visuais; CA18.
+## Interface — depende dos contratos e referências aplicáveis
 
-- [ ] **T004 — Consolidar conteudo e contrato de acessibilidade**
-  - Preparar labels, cinco partes, orientacoes, exemplos ilustrativos, avisos
-    de sessao, recuperacao e acoes; validar copy com equipe responsavel.
-  - Definir IDs de campos/itens, ajuda/erros, grupos, foco de listas e retorno
-    de pendencia em outra parte, sem valores pessoais na URL.
-  - Definir integracao de mensagens da 008 sem motor editorial duplicado.
-  - Dependencias: T002–T003. Evidencia: copy validada e contratos de
-    componentes/controle; pendencias institucionais permanecem explicitas.
+- [ ] F007-10 — Compor cinco partes a partir do conteúdo e registro, sem estado editável duplicado. Implementar navegação livre, posição da parte e preservação de valores.
+- [ ] F007-11 — Implementar controles sobre serviço e público, catálogos e mensagens. Limite de descrição usa contagem significativa; selecionar categoria limpa subcategoria incompatível com aviso.
+- [ ] F007-12 — Implementar documentos, etapas e ações acessíveis; após adicionar/remover/reordenar, aplicar foco por ID e anunciar resultado sem perder texto.
+- [ ] F007-13 — Implementar custo/prazo e agendamento K/S/ON/E; preservar inativos e retirá-los de validação/projeções. Corrigir metadados e testar presencial exclusivo, ambos e restauração.
+- [ ] F007-14 — Implementar adicionais/palavras-chave e orientações 006 com variantes 811:306/811:382, sem modificar valores.
+- [ ] F007-15 — Implementar resumo e retorno a parte/campo/item; destino removido ou inativo tem fallback conhecido, coordenado com shell.
+- [ ] F007-16 — Integrar prévia compartilhada 009 e ações para tutorial/ajuda, preservando fonte e acesso parcial. Marcar integração pendente enquanto consumidor não existir.
+- [ ] F007-17 — Ajustar conteúdo e estado de conclusão: revisão estrutural atual bem-sucedida, CTA neutro para Carta parcial, nenhuma promessa de aprovação/publicação automática.
 
-- [ ] **T005 — Criar plano detalhado e estrategia de testes**
-  - Executar `/spec:plano-implementacao 007-formulario-carta-servico`.
-  - Consolidar T001–T004, modelo, reducer, provider, decoder v2, storage,
-    componentes, arquivos, codigo base, foco, CSS e adaptacoes de consumidores.
-  - Definir limites tecnicos de payload/listas restauradas e estrategia segura
-    para IDs ausentes/duplicados e ordens legadas invalidas, sem inventar dados.
-  - Definir escrita apos hidratacao e substituicao de registro incompatível
-    somente apos alteracao explicita; documentar preservacao de conteudo seguro.
-  - Reutilizar testes existentes ou propor Vitest/Testing Library para migracao,
-    listas e integracao; fixar decisao e comandos, sem instalar nesta etapa.
-  - Dependencias: T001–T004. Evidencia: implementation-plan.md completo.
+## Verificação e entrega
 
-- [ ] **T006 — Validar documentos antes de codigo**
-  - Executar `/spec:validar 007-formulario-carta-servico` contra ERS, MVP,
-    constitution, Figma e contratos das features consumidoras.
-  - Conferir RF01–RF08, CA01–CA24, migracao e fora de escopo; resolver bloqueios.
-  - Dependencia: T005. Evidencia: validacao documental registrada.
-
-## Fase 2 — Modelo e sessao
-
-- [ ] **T007 — Evoluir tipos e factory inicial**
-  - Alterar carta.types.ts/carta.schema.ts conforme contrato fechado: nomePopular,
-    orientacaoAgendamento, boolean|null, IDs e escolhas parciais de listas.
-  - Incluir tiposAgendamento, sistemaAgendamento, linkAgendamento e exibicaoAgendamento
-    com defaults vazios, enums fechados e selecao multipla de tipos.
-  - Decoder aceita v2 sem esses campos sem inferir valores do texto; conservar dados
-    inativos na sessao e testar recarga/troca de sistema.
-  - Factory produz objetos/arrays independentes; textos vazios e listas vazias,
-    sem defaults que representem resposta do usuario.
-  - Preservar fonte unica dos cinco obrigatorios gerais e condicionais de agendamento com 008.
-  - Dependencia: T006 e comando `/spec:implementar`.
-  - Evidencia: modelo parcial tipado e factory sem referencias compartilhadas;
-    cobertura CA02/CA06–07/CA17.
-
-- [ ] **T008 — Implementar operacoes puras da Carta**
-  - Criar carta.reducer.ts ou contrato equivalente fechado em T005.
-  - Atualizar campos tipados e adicionar/editar/remover documentos/canais/etapas
-    por ID, sem mutacao ou setter de path arbitrario.
-  - Mover etapas com controles direcionais; renumerar 1..N sem mudar IDs/textos.
-  - Preservar itens parciais e orientacao de agendamento ao alternar resposta.
-  - Dependencia: T007. Evidencia: operacoes isoladas verificaveis; CA03–07.
-
-- [ ] **T009 — Implementar decoder e migracao de sessao**
-  - Criar carta.migration.ts: envelope `{ version: 2, carta }` e legado sem envelope.
-  - Validar por propriedade/item, ignorar campos desconhecidos, preservar strings
-    seguras exatamente e informar recuperacao parcial/impossivel.
-  - Legado sem campos novos recebe vazio; false ambiguo vira null, true vira Sim;
-    false v2 continua Nao. Criar IDs validos/estaveis uma vez conforme T005.
-  - Respeitar ordem numerica legada valida e fallback documentado antes de renumerar.
-  - Versao futura nao e sucesso nem pode ser sobrescrita automaticamente.
-  - Decodificar tiposAgendamento como lista de enums online/presencial, separada
-    das listas de objetos; preservar modalidades validas e ordem, marcando
-    recuperacao parcial para repeticoes/entradas invalidas. Ausencia esperada
-    no legado/v2 anterior inicializa os quatro campos sem inferir valores.
-  - Dependencia: T007. Evidencia: resultados tipados de migracao; CA11–12/CA16.
-
-- [ ] **T010 — Proteger leitura e escrita temporarias**
-  - Evoluir carta.storage.ts mantendo `simplifica-carta:sessao`; proteger acesso,
-    get, parse e set, incluindo excecao/quota; integrar decoder.
-  - Nao escrever vazio antes de concluir hidratacao nem trocar registro
-    incompatível sem alteracao explicita do usuario.
-  - Persistir valores parciais com estrategia definida em T005; falha mantém
-    memoria e aviso verdadeiro, sem fallback permanente ou logs de conteudo.
-  - Dependencia: T009. Evidencia: acesso bloqueado/JSON invalido nao derruba
-    formulario, com escrita e recuperacao verificaveis; CA11–12/CA17.
-
-- [ ] **T011 — Montar provider unico acima das rotas**
-  - Criar CartaSessionProvider/useCartaSession e integrar em App sem remontar
-    a fonte a cada rota. Recuperar uma vez, expor operacoes e estados de sessao.
-  - Separar UI de parte/painel/foco dos dados; nao criar Carta editavel por pagina.
-  - Reentrada, ajuda e previa nao limpam estado; falha de storage permite edicao.
-  - Dependencias: T008–T010. Evidencia: edicoes sucessivas e navegacao usam
-    mesma instancia, sem sobrescrever atualizacoes; CA03/CA10–12.
-
-- [ ] **T012 — Adaptar consumidores existentes ao novo modelo**
-  - Ajustar apenas callsites reais afetados, especialmente carta.validation.ts
-    e carta.csv.ts; null nao vira Nao e IDs nao viram dado exportavel.
-  - Documentar cobertura de campos novos e tratamento de itens parciais para
-    008–012; manter compilacao sem implementar previa/download/copia completos.
-  - Dependencias: T007 e contratos de T002/T005; integrar provider quando consumidor existir.
-  - Evidencia: adaptacoes minimas coerentes e typecheck; CA13 continua pendente
-    de verificacao com consumidores reais.
-
-## Fase 3 — Formulario e navegacao
-
-- [ ] **T013 — Criar conteudo editorial versionado**
-  - Criar `src/content/pages/formulario-carta.ts` com copy fechada em T004.
-  - Manter mensagens/regras de validacao no contrato compartilhado com 008;
-    exemplos/placeholders nao inicializam valores e paths tecnicos nao aparecem.
-  - Dependencia: T006. Evidencia: conteudo fora do JSX; RF08, CA02/CA17.
-
-- [ ] **T014 — Integrar FormField e orientacoes acessiveis**
-  - Evoluir FormField com contrato explicito de id, ajuda, erro e associacoes
-    do controle; evitar clonagem arbitraria de children.
-  - Usar semantica de obrigatoriedade e aria-invalid apenas para erros;
-    sugestoes nao invalidam controle. Agrupar escolhas com contexto anunciado.
-  - Paineis de orientacao expõem estado e nao alteram texto/foco indevidamente.
-  - Dependencias: T004–T006/T013. Evidencia: labels/ajuda/erros associados,
-    controles por teclado e consumidores compartilhados conferidos; CA08–09/CA14.
-
-- [ ] **T015 — Compor cinco partes e campos textuais**
-  - Substituir placeholder em FormularioCartaPage e criar secoes conforme Figma.
-  - Renderizar identificacao, requisitos, etapas, atendimento e adicionais,
-    com input/textarea adequados e acesso livre entre partes.
-  - Vincular valores ao provider; preservar acentos, quebras e markup como texto.
-  - Exibir estados de recuperacao/memoria apenas com limite de sessao verdadeiro.
-  - Dependencias: T011/T013–T014. Evidencia: todos os campos presentes, edicao
-    parcial sem gates ou reset; CA01–03/CA12/CA16–17.
-
-- [ ] **T016 — Implementar editores de documentos e canais**
-  - Criar/reutilizar DocumentosEditor/CanaisEditor com adicao, edicao e remocao
-    por ID; classificacao e tipo explicitamente nao informados no item novo.
-  - Preservar valores vizinhos e itens parciais; sem upload ou coleta de documentos.
-  - Botoes type=button com nomes contextuais e foco apos adicionar/remover.
-  - Dependencias: T008/T014–T015. Evidencia: listas editaveis por teclado/leitor
-    de tela, sem inferencias de opcionalidade/tipo; CA04/CA07/CA14.
-
-- [ ] **T017 — Implementar editor e ordem de etapas**
-  - Criar/reutilizar EtapasEditor com descricoes, adicionar/remover e subir/descer,
-    limites claros e anuncio moderado de movimento.
-  - Manter foco associado ao ID e renumeracao coerente, sem arraste obrigatorio.
-  - Dependencias: T008/T014–T015. Evidencia: nenhuma perda de texto/identidade
-    ou ordem duplicada apos operacoes; CA05/CA14.
-
-- [ ] **T018 — Implementar agendamento e orientacao preservada**
-  - Mostrar escolha nao informada/Sim/Nao conforme contrato; null nao e Nao.
-  - Configuracoes de agendamento so se aplicam com `exigeAgendamento === true`. Tipo de
-    agendamento (Online, Presencial ou ambos) e Sistema de agendamento (Paraiba Digital
-    ou Outro sistema ou site) sao obrigatorios nesse estado. Link do agendamento e Como
-    o agendamento sera exibido? sao obrigatorios e visiveis somente para Outro sistema
-    ou site. Dentro do Paraiba Digital mantem o cidadao na experiencia; Em uma nova
-    pagina redireciona para a URL externa. Paraiba Digital identifica agendamento pelo
-    proprio sistema, sem link ou forma de exibicao externa.
-  - Ao mudar para Nao/nao informado ou de Outro sistema ou site para Paraiba Digital,
-    preservar valores previamente preenchidos na mesma sessao, conforme o padrao da 007,
-    sem apagar silenciosamente. Valores inativos nao sao exibidos, validados como
-    obrigatorios nem transferidos como configuracao ativa; ao retornar a condicao
-    correspondente, ficam disponiveis para revisao.
-  - Testar CA19–CA24: Nao, Paraiba Digital, externo dentro/fora, troca de sistema e obrigatoriedade.
-  - Dependencia: T015. Evidencia: alternar resposta nao apaga texto; CA06–07.
-
-- [ ] **T019 — Integrar revisao, mensagens e retorno ao campo**
-  - Usar contrato compartilhado da 008 para cinco obrigatorios gerais e condicionais, resumo e erros
-    por campo/item; nao duplicar heuristicas no formulario.
-  - Revisao explicita identifica espacos/ausencias e abre/foca campo em outra parte.
-  - Manter previa parcial acessivel; required nativo nao pode bloquear esse fluxo.
-    Sugestao nunca aplica texto automaticamente ou anuncia aprovacao.
-  - Se 008 ainda nao estiver entregue, registrar integracao pendente, sem tratar
-    slots vazios como validacao funcional ou implementar motor editorial na 007.
-  - Dependencias: T014–T018 e contrato/implementacao de 008 para aceite integrado.
-  - Evidencia: CA08–09 executados com retorno acessivel e valores intactos.
-
-- [ ] **T020 — Integrar entradas e proximos passos**
-  - Reutilizar breadcrumb, titulo/foco e links internos de 002; acesso direto
-    sem diagnostico, acao 006 e entrada de elaboracao 003 quando entregues.
-  - Oferecer `/previa` e `/ajuda`, preservando memoria, href real, historico
-    e cliques com modificadores; sem router/shell duplicado ou dados em URL.
-  - Dependencias: T011/T015/T019 e contrato de navegacao confirmado em T001.
-  - Evidencia: CA01/CA10 e previa parcial sem bloqueio; destinos placeholders
-    ficam registrados como pendencia, sem absorver suas features.
-
-- [ ] **T021 — Aplicar layout e estados responsivos**
-  - Usar estilos/tokens confirmados, Inter e assets inventariados em T003.
-  - Conferir labels extensos, listas, mensagens, foco, contraste, reflow e
-    teclado virtual; sem alturas fixas ou truncamento dos dados.
-  - Preservar ordem DOM e estado ao mudar tamanho/parte; evitar overlays do shell.
-  - Dependencias: T015–T020. Evidencia: composicao visual e estados coerentes;
-    CA14–15/CA18, conforme requisitos da 016.
-
-## Fase 4 — Testes e aceite
-
-- [ ] **T022 — Testar modelo, reducer e listas**
-  - Verificar factory independente, IDs estaveis/unicos, updates sucessivos,
-    remover sem afetar vizinhos e mover/renumerar preservando textos.
-  - Cobrir itens parciais, escolhas null e orientacao ao alternar agendamento.
-  - Dependencias: T007–T008 e infraestrutura definida em T005.
-  - Evidencia: testes de comportamento aprovados; CA03–07.
-
-- [ ] **T023 — Testar migracao, storage e hidratacao**
-  - Cobrir legado/v2, false legado/v2, campos novos ausentes, JSON invalido,
-    grupos/tipos incorretos, IDs/ordens problematicos e versao futura.
-  - Simular acesso/get/set recusados e quota; conferir recuperacao parcial,
-    nenhum overwrite precoce e substituicao apenas apos edicao explicita.
-  - Verificar ultimos valores e listas apos recarga; sem logs de conteudo.
-  - Cobrir modalidades ausentes no v2 anterior, enums validos/invalidos,
-    repeticoes e tipo nao array, preservando modalidades seguras e o registro
-    original em recuperacao parcial. Inativos permanecem apos recarga.
-  - Dependencias: T009–T011 e infraestrutura de T005.
-  - Evidencia: CA11–12 sem falsa restauracao/salvamento e sem perda silenciosa.
-
-- [ ] **T024 — Testar formulario, revisao e continuidade**
-  - Preencher todos os grupos; trocar partes/orientacoes, editar listas e revisar
-    obrigatorios vazios/espacos, custo `0` e opcionais vazios.
-  - Visitar 006, ajuda, previa e tutorial e retornar por links/historico,
-    inclusive em memoria apenas; comparar valores e ordem da mesma Carta.
-  - Conferir HTML digitado como texto e ausencia de exemplos como valores.
-  - Dependencias: T015–T020/T022–T023; destinos reais para aceite integrado.
-  - Evidencia: CA01–12/CA16; testes de destinos ainda placeholders ficam pendentes.
-
-- [ ] **T025 — Verificar consumidores reais e contrato atualizado**
-  - Editar e consultar 008–012 entregues, conferindo valores atuais, nome popular,
-    orientacaoAgendamento, null, false explicito e listas parciais sem IDs visiveis.
-  - Revalidar conciliacao documental da 012 e diferenca de ausencia por consumidor.
-  - Dependencias: T012/T024 e entrega das features consumidoras.
-  - Evidencia: CA13 por consumidor; ausencia de entrega permanece pendente.
-
-- [ ] **T026 — Verificar acessibilidade e matriz de navegadores**
-  - Executar teclado/leitor de tela: partes, grupos, listas, erros, paineis,
-    foco e retorno ao campo; incluir teclado virtual e fonte fallback.
-  - Conferir Chrome/Edge/Firefox/Safari, larguras 1440/1024/768/390/320 px,
-    texto 200%, zoom/reflow da 016 e textos/listas longos.
-  - Registrar ambientes/versoes, contraste, resultados, defeitos e retestes;
-    falta de ambiente fica pendente, sem generalizar conformidade.
-  - Dependencia: T021. Evidencia: CA14–15/CA18 e estados de falha utilizaveis.
-
-- [ ] **T027 — Executar checks e consolidar evidencias**
-  - Executar `npm run typecheck`, `npm run build` e suite configurada; verificar
-    consumidores de FormField/links alterados e corrigir regressao relevante.
-  - Registrar resultado por CA01–CA24, Figma, validacao editorial e pendencias
-    em verification.md ou documento adotado pelo implementation-plan.
-  - Conferir ausencia de backend, persistencia permanente, envio, coleta/logs
-    de valores ou promessas de aprovacao/publicacao.
-  - Dependencias: T022–T026; pendencias de integracao impedem aceite integral.
-  - Evidencia: checks registrados e rastreabilidade de tarefas, defeitos e retestes.
+- [ ] F007-18 — Testar domínio/decoder/provider: Carta parcial recuperável, formato/tipos/catálogos, duplicatas, IDs, ordem, sessão, revisão separada, leitura/escrita e falhas; registrar evidência reproduzível.
+- [ ] F007-19 — Testar formulário com todas as partes, dados sintéticos, listas, foco, condicionais, HTML literal, acentos e retorno entre rotas.
+- [ ] F007-20 — Testar integração 008/009/010/011/012 sobre a mesma Carta, incluindo novos campos e todos os abertos copiáveis na etapa 4; sem gate editorial.
+- [ ] F007-21 — Verificar Figma, teclado/leitor, zoom/reflow e mensagens longas em ambientes registrados. Não marcar aceite de ambiente não executado.
+- [ ] F007-22 — Executar checks pertinentes, atualizar quickstart/verification e revalidar. Distinguir código parcial de entrega integrada.
 
 ## Rastreabilidade
 
-| Requisito/criterios | Tarefas principais |
+| Aceite | Tarefas |
 | --- | --- |
-| Agendamento condicional, CA19–24 | T018, T019, T022–T025 |
-| RF01, CA01 | T001, T015, T020, T024 |
-| RF02, CA02–03 | T003–T004, T013, T015, T024 |
-| RF03, CA06–07/CA16 | T002, T007, T018, T022–T024 |
-| RF04, CA04–05 | T008, T016–T017, T022, T026 |
-| RF05, CA08–09 | T002, T004, T014, T019, T024 |
-| RF06, CA10–12 | T009–T011, T020, T023–T024 |
-| RF07, CA13 | T002, T012, T020, T025 |
-| RF08/arquitetura, CA17 | T004, T013, T027 |
-| Acessibilidade/reflow, CA14–15 | T014, T021, T026 |
-| Visual, CA18 | T003, T005–T006, T021, T026–T027 |
+| CA01–CA03 | F007-02/08/10/19 |
+| CA04–CA05 | F007-06/12/18/19 |
+| CA06–CA07, CA19–CA24 | F007-01/05/09/13/18–20 |
+| CA08–CA09 | F007-02/09/14/15/19 |
+| CA10–CA12 | F007-07/08/18/19 |
+| CA13 | F007-16/20 |
+| CA14–CA16 | F007-10–15/19/21 |
+| CA17–CA18 | F007-03/04/17/21/22 |
+| CA25–CA28 | F007-03/10–16/19/21 |
+| CA29–CA32 | F007-01/02/05/09/11/13/18–20 |
+| CA33 | F007-09/17/19 |
+| CA34 | F007-01/02/05/09/13/18/19 |
+| CA35 | F007-01/06/09/12/18/19 |
+| CA36 | F007-01/05/09/13/18–20 |
+| CA37 | F007-01/05/07/09/18/19 |
 
-## Proximo passo
-
-Executar `/spec:plano-implementacao 007-formulario-carta-servico`, consolidando
-contratos e evidencias de preparacao. Depois executar `/spec:validar` antes de
-`/spec:implementar`. Esta etapa criou somente tarefas; nenhum codigo foi alterado.
+Histórico: [tarefas anteriores](historico/2026-10-19-pre-t004-tasks.md).

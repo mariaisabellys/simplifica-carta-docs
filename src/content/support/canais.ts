@@ -1,3 +1,6 @@
+import { resolveSupportPresentation } from "./apresentacao";
+import { supportContacts } from "./contatos";
+
 export const supportDestinations = {
   "atendimento-agendado": "/ajuda/atendimento-agendado",
   "suporte-email": "/ajuda/suporte-email",
@@ -13,3 +16,22 @@ export type SupportChannelState =
 export type SupportChannels = Readonly<
   Record<SupportChannelId, SupportChannelState>
 >;
+
+export const supportChannels: SupportChannels = {
+  "atendimento-agendado": {
+    status: "pendente",
+    notice:
+      "O atendimento agendado ainda não está disponível. A agenda e o fluxo de confirmação aguardam validação operacional.",
+  },
+  "suporte-email": {
+    status: "ativo",
+  },
+};
+
+export function getSupportPresentation(context: SupportChannelId) {
+  return resolveSupportPresentation({
+    channels: supportChannels,
+    destinations: supportDestinations,
+    email: supportContacts.gesed.email,
+  }, context);
+}

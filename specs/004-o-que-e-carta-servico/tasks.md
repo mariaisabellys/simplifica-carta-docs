@@ -70,6 +70,9 @@
     para aprovacao editorial.
   - Dependencia: T001.
   - Evidencia: matriz de validacao normativa no `implementation-plan.md`.
+  - Revalidação em 27/10/2026: a ementa oficial do Decreto nº 9.756/2019 foi
+    reconsultada; resumo, conteúdo, plano detalhado, validação e verificação
+    foram alinhados à “unificação dos canais digitais do Governo federal”.
 
 - [x] **T007 — Fechar a estrategia de testes**
   - Verificar se Vitest, Testing Library e `jest-dom` foram configurados por

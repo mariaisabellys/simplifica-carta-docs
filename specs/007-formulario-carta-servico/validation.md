@@ -1,5 +1,13 @@
 # Validacao: Formulario da Carta de Servicos
 
+> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado sobre a
+> matriz/modelo central atuais. Resultado: pronta documentalmente, com 25 campos
+> e decisões MC-02–MC-08 fechadas; implementação e aceites permanecem pendentes.
+> Evidência no [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
+
+> **Validação histórica:** a divergência conteúdo/modelo foi resolvida pelo
+> contrato v3; validação funcional e visual continua pendente.
+
 ## Resultado e escopo
 
 Executado `/spec:validar 007-formulario-carta-servico` em 2026-10-05.
@@ -33,6 +41,24 @@ locais a nodes nao constituem consulta ao Design ou Make, nem homologacao
 visual. O frame completo do formulario e os textos institucionais ainda
 precisam de confronto com as fontes oficiais.
 
+### Atualizacao das referencias e do contrato visual — 2026-10-08
+
+Foram identificadas cinco telas/partes: `653:1540`, `2024:269`, `641:58`,
+`647:650` e `660:2533`. `653:1540` e o node principal da rota; os demais sao
+partes/variantes da mesma jornada. `811:306`/`811:382` sao estados do Form-Card,
+e `821:308` e a previa compartilhada com a 009.
+
+O layout deve adaptar-se a `src/content/pages/formulario-carta.ts`, sem usar
+copy do Figma como segunda fonte. Orientacoes derivam da 006 por ID. O formulario
+mostrado como imagem em `2024:269` deve ser reconstruido com controles reais,
+nunca incorporado como imagem interativa. A identificacao dos nodes esta
+resolvida; consulta MCP detalhada e validacao visual continuam pendentes.
+
+Permanece uma divergencia de conteudo/modelo: a 006 possui orientacoes para
+keywords, prazo e recorrencia sem controles equivalentes no conteudo atual da
+007, enquanto a spec/modelo 007 ainda cita criterios, canais e prazo. Resolver
+essa consolidacao antes do codigo, sem deixar o Figma decidir campos.
+
 ## Inconsistencias e lacunas documentais
 
 | ID | Gravidade | Evidencia | Impacto e correcao indicada |
@@ -50,7 +76,7 @@ preservacao de valores condicionais nem transformar modalidades em canais.
 | ID | Ponto | Acao antes da entrega dependente |
 | --- | --- | --- |
 | P007-01 | ERS, copy e Figma sem confronto integral | Consultar fontes oficiais, confirmar frame/composicao e registrar evidencias em T001–T004 e CA18. Nao afirmar conformidade visual ou editorial nesta rodada. |
-| P007-02 | API compartilhada de navegacao | A 002 propoe useAppNavigate retornando funcao; o exemplo Breadcrumb da 003 usa useNavigation retornando objeto. A propria 007 reconhece a divergencia nas linhas 523–526. Conciliar em 002/003 e entregar contexto/props antes de importar exemplos; nao criar contexto paralelo na 007. Ver tambem V006-03. |
+| P007-02 | API compartilhada de navegacao | Divergencia documental resolvida em 16 de outubro de 2026 por `docs/arquitetura/contrato-navegacao.md`: `NavigationProvider`, `useAppLocation`, `useAppNavigate` e `AppLink` sao contratos unicos. Implementacao e testes continuam pendentes; a 007 nao cria contexto paralelo. |
 | P007-03 | Decoder dos novos campos | O plano detalhado aceita v2 sem os quatro campos novos e exige enums/lista sem duplicatas. Seu algoritmo generico de listas descreve itens objeto; explicitar que essa regra trata documentos/canais/etapas e detalhar separadamente tiposAgendamento, uma lista de enums. Cobrir ausencia esperada em v2, valores invalidos, duplicatas, recuperacao parcial e politica de escrita em T009/T023. Nao supor descarte de modalidades validas. |
 | P007-04 | Limites tecnicos candidatos | Consolidar 8 MiB/1000 itens, resposta a excesso e preservacao do registro original. Sao propostas tecnicas do plano, nao limites institucionais homologados. |
 | P007-05 | URL e integracao externa | Consolidar protocolos aceitos e mensagens com a 008; nao inventar regra HTTPS exclusiva. A 007 registra configuracao: nao executa incorporacao, redirecionamento ou agendamento real. Mecanismo de integracao pertence ao sistema que consumir esses dados. |
@@ -62,7 +88,7 @@ Nao e necessario decidir novamente se valores ocultos devem ser apagados:
 o padrao documentado e preserva-los na sessao, inclusive apos recarga,
 retirando apresentacao, obrigatoriedade e transferencia ativa.
 
-## Regras e contratos consistentes
+## Regras consideradas consistentes na rodada histórica
 
 - Uma Carta temporaria compartilhada, cinco partes e 17 campos logicos;
   listas agregadas nao representam limite de itens.
@@ -109,3 +135,39 @@ intocados por este comando. Nenhuma tarefa foi concluida automaticamente.
 Corrigir V007-01–V007-03, fechar as dependencias aplicaveis e repetir a
 validacao. Implementar apenas em etapa explicitamente autorizada para isso;
 nao considerar este relatorio aprovacao institucional ou visual.
+
+## Revalidação T019 — 22/10/2026
+
+Parecer registrado naquela data: **modelo v3 consolidado, mas não liberado
+integralmente para implementação**. A antiga lacuna de CA19–CA24 estava resolvida
+e a rastreabilidade ativa chegava a CA33/F007-22. Naquele parecer, permaneciam decisões MC-02–MC-08 aplicáveis, em
+especial prazo, itens, Ativo, URL/detalhe de custo e caso presencial. Tipos,
+catálogos, schema, storage, validação e CSV existem; provider/formulário real
+não. Nodes das cinco partes, Form-Card e prévia responderam por metadados, sem
+aceite visual. Ver a
+[matriz T019](../../docs/verificacoes/t019-validacoes-features.md). Esse estado
+foi substituído pela revalidação de 27/10/2026 abaixo.
+
+## Revalidação de MC-02–MC-08 — 27/10/2026
+
+Parecer atual: **decisões estruturais encerradas documentalmente; feature 007
+liberada para iniciar implementação, ainda sem aceite funcional ou visual**.
+Esta seção substitui o estado de pendência registrado nas rodadas anteriores;
+os trechos anteriores permanecem como histórico da auditoria.
+
+| Decisão | Contrato fechado | Verificação documental |
+| --- | --- | --- |
+| MC-02 | Mantidos dez obrigatórios gerais, justificados por identidade, classificação, público, custo, prazo e condição de atendimento; opcionais não foram elevados. | Matriz, modelo, RF03 e CA02/08/31 conferidos. |
+| MC-03 | Prazo máximo é inteiro positivo canônico + unidade; rejeitar zero, decimal, sinal, zeros à esquerda, Imediato e Sem estimativa. | RF03, CA34, plano e consumidores 009/010/012 alinhados. |
+| MC-04 | Documentos admitem zero itens; item existente exige nome. Etapas exigem ao menos um item com título, orientação e modalidade. | RF03/RF04, CA04/05/35 e matrizes de prévia/exportação reconciliados. |
+| MC-05 | Ativo é estado configurado opcional; false = Inativo. Não comprova interação, publicação ou despublicação e o default isolado não cria conteúdo. | Modelo central e representações 009/010/012 usam Ativo/Inativo sem certificação externa. |
+| MC-06 | Detalhe K aceita valor, orientação ou URL; URLs são absolutas HTTP(S), com hostname e sem credenciais, sem teste de disponibilidade. | RF03/CA24 e contratos de projeção, exportação e cópia conferidos. |
+| MC-07 | S exige tipo; ON exige sistema; E exige link/exibição. Presencial exclusivo não exige sistema; ambos configura a parcela on-line. | RF07/CA36 e condições K/S/ON/E propagadas a 008–012 e ao mapa Figma. |
+| MC-08 | Decoder estrito rejeita formato inseguro, relações presentes, máximos, duplicatas, IDs e ordem inválidos, mas recupera incompletude; revisão separada aplica obrigatórios/mínimos/semântica. Não coage/repara nem sobrescreve registro. | RF03/RF06, CA12/29/30/37, plan e implementation-plan conferidos. |
+
+Verificações executadas nesta rodada: busca de referências ativas a decisões
+abertas e às condições antigas K/S/E; conferência dos 25 campos e dos contratos
+consumidores; validação de links Markdown locais; `git diff --check`. Nenhum
+TypeScript, teste funcional, build, navegador ou Figma foi executado. F007-01
+foi marcada como concluída; F007-02–F007-22 continuam pendentes de implementação
+e evidência executável.

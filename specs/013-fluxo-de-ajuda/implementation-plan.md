@@ -1,5 +1,8 @@
 # Implementation Plan: Fluxo de ajuda
 
+> **Integracao visual atualizada em 16 de outubro de 2026:** a escolha de
+> canais pertence ao node `425:201`; a FAQ permanece `169:495`.
+
 ## Objetivo e status
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao 013-fluxo-de-ajuda`.
@@ -20,6 +23,10 @@ Atualizacao em 2026-10-05 por `/spec:implementar`: entregue apenas o mapa de
 destinos e tipos compartilhados em src/content/support/canais.ts. O inventario
 abaixo registra a preparacao anterior. Configuracao de estados/copy, consumidores
 e interface continuam pendentes; evidencias atuais em verification.md.
+
+> Revisão T013: exemplos antigos de perguntas/cards/código foram removidos
+> da base ativa e preservados em historico/2026-10-20-pre-t013-implementation-plan.md.
+> Usar conteúdo existente e contrato compartilhado, não reconstruir as fontes.
 
 ## Fontes efetivamente consultadas
 
@@ -46,7 +53,7 @@ pela equipe e nenhum teste de interface/build executado.
 | Area | Estado atual | Pre-condicao futura |
 | --- | --- | --- |
 | Rota /ajuda | specId 013, node 169:495, layout support | Preservar identidade; confirmar associacao visual |
-| AjudaPage | PageHeader e dois PlaceholderCards, sem acoes | FAQ/cards/retorno reais |
+| AjudaPage | PageHeader e dois PlaceholderCards, sem acoes | FAQ e apoio por estado; entrada de canais em 014/015 |
 | FAQ/hash | FAQ e ancora ausentes em src | Efetivar duvidas-frequentes pelo contrato 002 |
 | Canais | Rotas existem, paginas placeholder | Entrega 014/015 e evidencia separada dos links |
 | Contato | Placeholder 015 menciona endereco nao validado | Fonte unica validada da 015; nao duplicar na ajuda |
@@ -64,7 +71,7 @@ como props. Preservacao decorre da navegacao e provider acima das rotas.
 
 | Fonte | Consulta necessaria | Evidencia atual |
 | --- | --- | --- |
-| Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2, node 169:495 | FAQ/entrada, canais e retorno; localizar frames adicionais se necessario | Referencia local FAQ, sem consulta MCP |
+| Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2, node 169:495 | FAQ e seção de apoio; canais usam 425:201 | Referencia local FAQ, sem consulta MCP |
 | Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 | Tokens/cards/links/expansao/foco/estados/reflow | Resumo local, sem consulta direta |
 
 Confirmar ordem das regioes, perguntas abertas/fechadas, canais, pausas,
@@ -77,250 +84,38 @@ reusar sistema existente com aria-hidden para decoracao. Nao gerar imagens
 ou exportar URLs temporarias do Figma por antecipacao. Texto identifica todas
 as acoes, mesmo sem icone. Inter/fallbacks seguem decisao local do projeto.
 
-## FAQ e copy proposta para validacao
+## FAQ, conteúdo e fontes
 
-Adotar inicialmente `details`/`summary` nativos, multiplas respostas abertas,
-sem estado React/persistencia/progresso. Essa e a estrategia tecnica unica
-deste plano, condicionada a conciliacao visual. Se Figma exigir outro controle,
-revisar plano antes de codigo; nao manter duas implementacoes concorrentes.
+Usar src/content/pages/ajuda.ts: quatro perguntas, tagline, introdução e CTA
+superior para #precisa-de-apoio. Não acrescentar cards ou perguntas.
+Título/CTA da seção de apoio migram conforme estado do atendimento; conteúdo
+atual ainda tem Agendar visita fixo. A revisão é documental, não implementação.
 
-Cada pergunta tem ID tecnico estavel; texto pode mudar sem mudar key. Toda
-resposta e texto React e links estruturados, sem HTML/Markdown interpretado.
-Abrir FAQ nao e pre-requisito para escolher canal. Nao acrescentar busca,
-chat, triagem, avaliacao ou formulario de duvidas.
+## Estados e composição compartilhada
 
-| ID | Pergunta candidata | Cobertura / referencia |
-| --- | --- | --- |
-| funcao-manual | O Simplifica Carta publica o serviço por mim? | Preparacao local; publicacao manual, conforme MVP |
-| acesso-etapas | Preciso seguir todas as etapas em ordem? | Acesso independente; 003 |
-| reunir-informacoes | Quais informações preciso reunir? | Consulta da 006 e revisao com setor responsavel |
-| continuidade-sessao | Posso continuar o preenchimento depois? | Sessao temporaria/memoria apenas; 007, sem rascunho permanente |
-| validacao-textos | As sugestões de linguagem simples são obrigatórias? | Obrigatorios versus sugestoes; 008, sem aprovacao automatica |
-| previa-csv-copia | Qual a diferença entre prévia, CSV e cópia? | Revisao, arquivo local e texto individual; 009–012 |
-| escolher-orientacao | Como escolho um canal de orientação? | Destinos 014/015 e estados editoriais, sem prazo/vagas prometidos |
+O [contrato compartilhado de canais](../../docs/arquitetura/contrato-canais-ajuda.md) define a matriz de estados, rótulos e transições,
+incluindo endereço de referência sem ação em não ativo e ambos indisponíveis.
+supportChannels/supportDestinations e supportContacts já existem. Atendimento
+pendente, e-mail ativo editorialmente; não afirmar que ambos estão pendentes
+ou que configuração de canais está ausente.
 
-Titulo: Preciso de ajuda. Introducao candidata: "Consulte as dúvidas frequentes
-ou escolha um canal de orientação para preparar a Carta de Serviços."
-Escopo candidato: "A orientação apoia o levantamento, a organização e a
-elaboração das informações. O cadastro e a publicação no Paraíba Digital
-continuam manuais."
+Não criar novo mapa local ou resolver divergência com fallback ativo.
+helpChannelsContent alimenta composição 425:201 somente na entrada 014/015.
+A página FAQ não importa controlador clipboard nem formulário de atendimento.
 
-Antes de publicar, validar respostas/descricoes com equipe e registrar
-responsavel, fonte e data efetiva em verification.md ou registro editorial.
-Nao usar data de criacao deste plano como aprovacao. Referencias a recursos
-planejados precisam ser verificadas contra entrega real, sem anunciar placeholders
-como funcionamento. Nenhuma instrucao administrativa externa e inventada aqui.
+## Contrato de implementação e testes
 
-## Estados editoriais dos canais e fonte unica
+Substituir antigos exemplos TS/JSX por consumo dos objetos reais; não copiar
+snippets históricos que colocam canais dentro da FAQ. Resolvedor compartilhado
+de apresentação deve usar canal/estado/contexto para título/aviso/ação.
+Botão interno da 014 muda entrada → calendário; entrada 015 navega à rota 014.
+CTA da FAQ apenas navega à entrada, mesmo se indisponível, pois destino explica.
+Nenhum link circular para abrir calendário, href # ou botão inerte.
 
-ID/destino fechado:
-
-- atendimento-agendado -> `/ajuda/atendimento-agendado`.
-- suporte-email -> `/ajuda/suporte-email`.
-
-Proposta neutra em `src/content/support/canais.ts`: estado
-`pendente | ativo | pausado`, alinhado ao plan 015. ativo significa fluxo
-validado/publicado, equivalente a publicado no plan 013; nao significa vagas,
-resposta imediata ou monitoramento. pausado exige indisponibilidade confirmada
-e aviso validado. pendente significa sem confirmacao para publicacao ativa;
-nao e prova de falha operacional. Estado atual documentado: ambos pendentes.
-
-013 e 014/015 consomem mesma configuracao, sem constantes contraditorias.
-Contato da 015, em contatos.ts, referencia o ID/estado compartilhado; endereco
-e titularidade continuam propriedade/validacao da 015. A 013 nao precisa
-exibir endereco e nao o repete. Conciliar esta extracao com implementacoes
-reais antes de criar arquivos; nao mudar planos executaveis silenciosamente.
-
-O contrato tipado de canais.ts ja existe, sem objeto supportChannels ou avisos
-editoriais publicados. Nao inferir ativo pela existencia do mapa. V013-01 ainda
-exige definir na 014 o comportamento de acesso direto em pendente/pausado e
-de tentativas em andamento; nao usar estado editorial como gate de API sem
-essa decisao. A 013 apenas encaminha, sem cancelar ou criar solicitacoes.
-
-Sempre manter link real para pagina de orientacao do proprio canal, inclusive
-pausado, desde que destino implementado explique pausa. Rotulo pausado:
-"Ver orientações do canal". Nao oferecer acao que prometa agendar/enviar nessa
-condicao. Em pendente, publicar card definitivo somente depois de conciliar
-status/copy; exemplo abaixo mostra aviso sem afirmar operacao. Essa estrategia
-nao dispensa entrega de destinos nem aprova CA13.
-
-Alternativa de outro canal somente quando sua configuracao estiver ativo e
-entrega real tiver sido confirmada. Se ambos pendentes/pausados, manter FAQ e
-formulario e nao inventar alternativa de atendimento. Destino ativo tambem
-pode encontrar agenda vazia/erro de API: esses estados pertencem a 014 e nao
-alteram automaticamente a configuracao editorial da ajuda.
-
-Sem chamada de agenda, health check, SMTP ou backend da entrada. Selecionar
-canal apenas navega; nao reservar, enviar, registrar, notificar ou coletar.
-
-## Contratos TypeScript e conteudo: codigo base
-
-Exemplos sao proposta editorial, nao objetos aprovados para producao. Completar
-imports nos caminhos reais e conferir consumidores. Metadados de validacao
-ficam documentais, sem expor checklist interno no fluxo do usuario.
-
-```ts
-// src/content/support/canais.ts — fonte compartilhada 013/014/015
-export const supportDestinations = {
-  "atendimento-agendado": "/ajuda/atendimento-agendado",
-  "suporte-email": "/ajuda/suporte-email",
-} as const;
-export type SupportChannelId = keyof typeof supportDestinations;
-export type SupportChannelState =
-  | { status: "ativo" }
-  | { status: "pendente"; notice: string }
-  | { status: "pausado"; notice: string };
-export type SupportChannels = Readonly<Record<SupportChannelId, SupportChannelState>>;
-
-// src/content/pages/ajuda.ts
-export type HelpHref = "/organizar-informacoes" | "/explorar-por-etapas"
-  | "/formulario-carta" | "/previa" | "/tutorial-paraiba-digital"
-  | typeof supportDestinations[SupportChannelId];
-export type FaqItem = {
-  id: string; question: string; paragraphs: readonly string[];
-  links?: readonly { label: string; href: HelpHref }[];
-};
-export type HelpChannel = {
-  id: SupportChannelId; title: string; description: string;
-  actionLabel: string;
-};
-export const ajudaContent = {
-  title: "Preciso de ajuda",
-  introduction: "Consulte as dúvidas frequentes ou escolha um canal de orientação para preparar a Carta de Serviços.",
-  scope: "A orientação apoia o levantamento, a organização e a elaboração das informações. O cadastro e a publicação no Paraíba Digital continuam manuais.",
-  faqTitle: "Dúvidas frequentes", channelsTitle: "Canais de orientação",
-  choiceNotice: "Escolher um canal abre suas orientações. Nenhuma mensagem ou solicitação é enviada nesta página.",
-  returnLabel: "Ir para o formulário da Carta",
-  pausedAction: "Ver orientações do canal",
-  alternativeLabel: (title: string) => `Consultar ${title}`,
-  faq: [
-    { id: "funcao-manual", question: "O Simplifica Carta publica o serviço por mim?",
-      paragraphs: ["O Simplifica Carta ajuda a preparar e revisar as informações. O cadastro e a publicação na plataforma oficial continuam manuais."] },
-    { id: "acesso-etapas", question: "Preciso seguir todas as etapas em ordem?",
-      paragraphs: ["Você pode consultar cada etapa sem concluir as anteriores."],
-      links: [{ label: "Explorar as etapas", href: "/explorar-por-etapas" }] },
-    { id: "reunir-informacoes", question: "Quais informações preciso reunir?",
-      paragraphs: ["Consulte as orientações de organização e confirme os dados com o setor responsável pelo serviço."],
-      links: [{ label: "Organizar as informações", href: "/organizar-informacoes" }] },
-    { id: "continuidade-sessao", question: "Posso continuar o preenchimento depois?",
-      paragraphs: ["Os dados ficam disponíveis durante a sessão. O aplicativo não oferece salvamento permanente de rascunhos.",
-        "Se o armazenamento da sessão estiver indisponível, os dados em memória podem ser perdidos ao recarregar ou sair. Não conte com recuperação em outra sessão."],
-      links: [{ label: "Abrir o formulário da Carta", href: "/formulario-carta" }] },
-    { id: "validacao-textos", question: "As sugestões de linguagem simples são obrigatórias?",
-      paragraphs: ["As sugestões orientam a revisão do texto e não precisam ser aceitas para copiar campos ou exportar. Campos obrigatórios ausentes impedem a exportação CSV.",
-        "A verificação não representa aprovação institucional da Carta."] },
-    { id: "previa-csv-copia", question: "Qual a diferença entre prévia, CSV e cópia?",
-      paragraphs: ["A prévia ajuda a revisar as informações. O CSV gera um arquivo local. A cópia transfere o texto de um campo para colagem manual.",
-        "Confira os dados depois de colar. Esses recursos não publicam o serviço nem garantem importação automática do CSV na plataforma oficial."],
-      links: [{ label: "Revisar a Carta", href: "/previa" },
-        { label: "Consultar o tutorial de cadastro manual", href: "/tutorial-paraiba-digital" }] },
-    { id: "escolher-orientacao", question: "Como escolho um canal de orientação?",
-      paragraphs: ["Consulte as orientações de suporte por e-mail ou de atendimento agendado. A solicitação ocorre no fluxo escolhido, conforme as condições informadas.",
-        "Escolher o canal não envia mensagem nem reserva horário."] },
-  ] satisfies readonly FaqItem[],
-  channels: [
-    { id: "atendimento-agendado", title: "Atendimento agendado",
-      description: "Consulte as orientações para solicitar atendimento, conforme a disponibilidade apresentada no fluxo.",
-      actionLabel: "Ver atendimento agendado" },
-    { id: "suporte-email", title: "Suporte por e-mail",
-      description: "Consulte as orientações de contato para esclarecer dúvidas por escrito.",
-      actionLabel: "Ver suporte por e-mail" },
-  ] satisfies readonly HelpChannel[],
-} as const;
-```
-
-Mapear href por ID, nunca por indice ou string livre. Configuracao de canais
-real nao e preenchida com ativo por default. Avisos precisam ser verdadeiros/
-validados; status desconhecido nao deve virar ativo por fallback. Tipos nao
-substituem conferencia editorial de destino/entrega.
-
-## Componentes React: codigo base
-
-```tsx
-// src/components/ajuda/FaqSection.tsx — imports conteudo/AppLink reais
-export function FaqSection({ items }: { items: readonly FaqItem[] }) {
-  return (
-    <section id="duvidas-frequentes" tabIndex={-1} aria-labelledby="ajuda-faq-title"
-      className="help-faq">
-      <h2 id="ajuda-faq-title">{ajudaContent.faqTitle}</h2>
-      {items.map(item => (
-        <details key={item.id} className="help-faq-item">
-          <summary>{item.question}</summary>
-          <div className="help-faq-answer">
-            {item.paragraphs.map((text, index) => <p key={index}>{text}</p>)}
-            {item.links?.length ? (
-              <ul>{item.links.map(link => (
-                <li key={link.href}><AppLink href={link.href}>{link.label}</AppLink></li>
-              ))}</ul>
-            ) : null}
-          </div>
-        </details>
-      ))}
-    </section>
-  );
-}
-
-// src/components/ajuda/HelpChannelCard.tsx
-export function HelpChannelCard({ channel, state, alternative }: {
-  channel: HelpChannel; state: SupportChannelState; alternative?: HelpChannel;
-}) {
-  const titleId = `help-channel-${channel.id}`;
-  return (
-    <article className="help-channel-card" aria-labelledby={titleId}>
-      <h3 id={titleId}>{channel.title}</h3>
-      <p>{channel.description}</p>
-      {state.status !== "ativo" ? <p>{state.notice}</p> : null}
-      <AppLink href={supportDestinations[channel.id]}>
-        {state.status === "ativo" ? channel.actionLabel : ajudaContent.pausedAction}
-      </AppLink>
-      {alternative ? <AppLink href={supportDestinations[alternative.id]}>
-        {ajudaContent.alternativeLabel(alternative.title)}
-      </AppLink> : null}
-    </article>
-  );
-}
-
-// src/pages/AjudaPage.tsx — sem hooks/props de Carta/diagnostico
-export function AjudaPage() {
-  const c = ajudaContent;
-  return (
-    <>
-      <Breadcrumb items={[{ label: "Início", href: "/" }, { label: c.title }]} />
-      <PageHeader title={c.title} description={c.introduction} />
-      <p>{c.scope}</p>
-      <FaqSection items={c.faq} />
-      <section aria-labelledby="help-channels-title">
-        <h2 id="help-channels-title">{c.channelsTitle}</h2>
-        <p>{c.choiceNotice}</p>
-        <div className="help-channels">
-          {c.channels.map(channel => {
-            const state = supportChannels[channel.id]; // objeto compartilhado validado
-            const alternative = state.status !== "ativo" ? c.channels.find(other =>
-              other.id !== channel.id && supportChannels[other.id].status === "ativo") : undefined;
-            return <HelpChannelCard key={channel.id} channel={channel} state={state}
-              alternative={alternative} />;
-          })}
-        </div>
-      </section>
-      <AppLink href="/formulario-carta">{c.returnLabel}</AppLink>
-    </>
-  );
-}
-```
-
-AppLink/Breadcrumb/supportChannels sao contratos a adaptar/criar no comando
-de implementacao, nao componentes/configuracao prontos em src. O mapa
-supportDestinations e tipos compartilhados ja existem; importar de canais.ts
-em vez de duplicar. Reusar
-ButtonLink com onNavigate conforme contrato 002 se equivalente; nao adicionar
-router paralelo. PageHeader ja produz unico h1; shell fornece main/header/footer.
-
-summary recebe comportamento/estado nativos; nao adicionar role=button ou
-aria-expanded manual concorrente. Sem name agrupando details para exclusividade;
-permitir comparar respostas. Conteudo fechado e links seguem comportamento
-nativo; verificar com teclado/leitor de tela nos browsers reais. Sem live
-regions de resposta inteira ou foco automatico ao expandir. Estado local de
-abertura nao persiste ao trocar rota; nao grava storage ou diagnostico.
+Testar CJ01–CJ12 do contrato e manter critérios CA01–CA14 da spec. Falhas de
+rede/agenda vazia não alteram estado editorial. Retornos não leem Carta.
+Pausa sobre POST incerto/recuperação é dependência da T014; não apagar tentativa.
+Integração deve coordenar foco com shell, sem novas queries ou dados na URL.
 
 ## Ancora, navegacao e continuidade
 
@@ -329,7 +124,7 @@ section tabindex=-1 identificado, sem exigir abrir respostas. Fragmento e
 ID tecnico fixo; nao construir seletor CSS com hash arbitrario do usuario.
 Resolver IDs conhecidos via getElementById ou helper compartilhado seguro.
 
-- Shell deve tratar pathname/hash, hashchange/popstate e montar rota antes
+- NavigationProvider trata pathname/search/hash e eventos; shell monta rota antes
   de focar/rolar. Na mesma rota com novo hash, nao descartar navegacao nem
   aplicar scrollTo(0) depois de rolar para FAQ.
 - Acesso direto/recarga/voltar/avancar respeitam hash sem novo pushState.
@@ -379,7 +174,7 @@ ordem DOM/visual e reflow conforme 016. Nenhum asset novo presumido.
 
 | Arquivo | Intervencao / tarefa |
 | --- | --- |
-| src/content/pages/ajuda.ts | FAQ/copy/canais/destinos tipados; T007 |
+| src/content/pages/ajuda.ts | FAQ/copy/apoio por estado e destino canônico; T007 |
 | src/content/support/canais.ts | Fonte neutra de estado editorial; T003/T009 |
 | src/content/support/contatos.ts da 015 | Referenciar fonte compartilhada quando criada; endereco so na 015 |
 | src/components/ajuda/FaqSection.tsx | details/summary/ancora; T008 |
@@ -396,7 +191,7 @@ T001 possui inventario; T002/T003 possuem proposta, sem validacao da equipe
 ou operacao confirmada. T004 Figma pendente. T005 possui este artefato, sem
 dependencias encerradas. Executar T006 validar documentos; implementar
 conteudo/FAQ/cards/entrada/estilos; verificar T012–T015. Nao alterar backend,
-solicitacao 014, mailto 015 ou schema/provider para renderizar entrada de ajuda.
+solicitação 014, mecanismo de cópia 015 ou schema/provider para renderizar entrada de ajuda.
 
 ## Verificacao futura e matriz de ambientes
 
@@ -472,3 +267,29 @@ validar copy, ancora/navegacao 002 e configuracao dos canais 014/015. V013-02
 teve vocabulario/cenarios sincronizados em plan/tasks; isso nao aprova estados
 operacionais. T003 possui contrato tipado parcial; nenhuma tarefa marcada
 concluida. Resultados de checks e limites atuais em verification.md.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

@@ -51,3 +51,36 @@ Nenhuma tarefa concluida; alteracoes anteriores do workspace preservadas.
 
 CA01–CA15 sem aceite integral ou declaracao de conformidade. Consultar
 accessibility-matrix.md para limites por criterio e tarefas proprietarias.
+
+## Atualizacao documental T016 — 22/10/2026
+
+Escopo desta atualização: somente documentação. O mapa e as specs proprietárias
+foram reconciliados no
+[registro T016](../../docs/verificacoes/t016-figma-acessibilidade.md). Tentativas
+de acesso web aos nodes representativos `310:175`, `2024:269`, `564:980` e
+`425:201` falharam; não havia navegador conectado nem MCP Figma. Portanto,
+nenhuma inspeção visual, comparação pixel a pixel ou homologação de frame foi
+registrada.
+
+Foram documentados:
+
+- inventário de páginas, variantes e componentes compartilhados 002–016;
+- ampliação da etapa 4, formulário real, orientação e prévia única;
+- loading, vazio, erro, revisão, falha e conteúdo longo ausentes dos frames;
+- matriz por contexto e métodos de foco, teclado, anúncios, contraste, reflow,
+  zoom/texto/espaçamento, toque, estados e conteúdo extremo;
+- pendência explícita de inspeção por node e separação entre Figma, contrato
+  local e evidência funcional.
+
+Checks documentais finais constam no registro central. Nenhum código/teste,
+build, servidor, browser assistivo ou atendimento real foi alterado/executado.
+Os resultados CA01–CA15 continuam pendentes; esta rodada fecha apenas o aceite
+documental da T016 e não declara conformidade WCAG nem aceite visual.
+
+## Atualizacao documental T017 — 22/10/2026
+
+`validation.md` foi criado com parecer atual e separacao entre contrato,
+implementacao, ambientes e fontes pendentes. A feature 016 passa a possuir os
+sete artefatos convencionados. Isso não altera CA01–CA15 nem representa nova
+execução de testes, browser, Figma ou tecnologia assistiva. Registro central:
+[verificação T017](../../docs/verificacoes/t017-artefatos-baseline.md).

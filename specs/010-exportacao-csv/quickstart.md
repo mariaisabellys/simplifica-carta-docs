@@ -1,41 +1,46 @@
-# Quickstart: Exportacao CSV
+# Quickstart: Exportação CSV
 
-## Estado atual
+Atualizado em 19/10/2026 — roteiro, não execução.
+[Versão anterior](historico/2026-10-19-pre-t009-quickstart.md).
 
-Implementado somente serializador generico com quoting integral e CRLF.
-Nao existe acao de exportacao funcional na previa; gerador da Carta ainda
-usa oito campos legados. Consulte verification.md antes de avaliar a feature.
+## Estado
 
-## Verificacao local
+Serializador genérico existe; carta.csv.ts já mapeia 22 dados v3.
+Isso não entrega pipeline validado, rótulos finais, safety, BOM/Blob ou download.
+[Contrato atual](contrato-exportacao-v3.md) e [verificação](verification.md).
 
-Com Node 24 (ambiente verificado), executar na raiz:
+## Checks locais disponíveis
 
-```powershell
+Na raiz, com Node compatível com import de TypeScript usado pelo teste
+(o registro histórico usa Node 24) e dependências do lockfile instaladas:
+
+```sh
 node --test tests/csv.test.mjs
-npm.cmd run typecheck
-npm.cmd run build
+npm run typecheck
+npm run build
 ```
 
-Os testes importam TypeScript pelo suporte nativo do Node, sem framework.
-Instale dependencias do lockfile com npm.cmd ci se ausentes para checks/build.
-Esses comandos nao exportam dados reais, abrem planilha ou iniciam download.
+No PowerShell, npm.cmd pode ser usado. Se dependências faltarem, instalar pelo
+fluxo autorizado do projeto; esta tarefa não instala nem executa checks.
+Os três testes existentes não cobrem exportação completa ou fórmulas em planilha.
 
-## Contrato e limites
+## Roteiro após implementação
 
-criarCsv recebe registros de strings, preserva conteudo, duplica aspas e
-delimita todas as celulas com aspas. Usa virgula e CRLF entre registros/final;
-quebras internas continuam dentro das celulas. Sem registros, retorna vazio.
+1. Conferir F010-01–08 entregues; usar Carta sintética v3 estruturalmente válida
+   conforme 007, descrição dentro de 20 significativas e condicionais completos.
+2. Preencher sentinelas em todas as definições, inclusive etapas/documentos e E;
+   congelar snapshot no teste e acionar exportação pela prévia real.
+3. Conferir arquivo fixo, BOM único, MIME, duas colunas e 22 dados + cabeçalho
+   via parser independente. Nunca contar linhas por split LF.
+4. Verificar EX01–EX08, parciais nos formatadores e bloqueio estrutural no pipeline.
+   Testar texto literal/multilinha, fonte intacta e condições retidas não exportadas.
+5. Executar casos de safety sintéticos locais sem acesso externo (ex.: =1+1).
+   Excel/Calc: abertura padrão, importação Texto e salvar/reabrir são evidências
+   separadas; sem aprovação da política, não apresentar recurso como seguro.
+6. Editar/exportar novamente, tentar reentrada, simular falhas/cleanup e navegar
+   imediatamente. Memória sem storage deve funcionar, sem apagar Carta.
+7. Registrar versões/locale/opções, CA/EX, defeitos e retestes, desempenho e
+   acessibilidade; caminho indisponível fica pendente, nunca aprovado por build.
 
-BOM, duas colunas fixas campo/valor e 17 dados mais cabecalho pertencem ao
-artefato completo ainda pendente. O serializador generico nao valida Carta,
-protege formulas, adiciona BOM ou solicita download. Quoting nao e politica
-de seguranca de planilhas; nao afirmar abertura segura pelo teste unitario.
-
-Fluxo final planejado: snapshot atual da Carta, required compartilhado,
-formatacao de 17 dados ativos, protecao validada, serializacao, Blob UTF-8/BOM
-e download explicito. Listas sao texto multiline para leitura, sem contrato
-reversivel por split LF; valores inativos ficam vazios, preservados na Carta.
-
-Importacao/compatibilidade em Excel/Calc e browsers ainda nao verificadas.
-Politica de formulas, referencias visuais e contratos 007–009 permanecem
-pendentes, conforme verification.md e implementation-plan.md.
+Não usar dados pessoais ou fórmulas com rede/execução. Download iniciado não
+confirma salvamento. CSV não é importação homologada da plataforma.

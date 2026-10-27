@@ -1,5 +1,8 @@
 # Implementation Plan: Explorar por Etapas
 
+> **Plano parcialmente superado:** snippets de `NavigationContext` e links
+> devem ser substituídos pelo contrato arquitetural compartilhado.
+
 ## Status
 
 Validado documentalmente em 24 de setembro de 2026, sem bloqueios abertos.

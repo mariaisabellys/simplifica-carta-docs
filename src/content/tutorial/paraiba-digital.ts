@@ -25,6 +25,25 @@ const platformPreview = {
   placeholder: "Aqui serão adicionados GIFs reais da seção de cadastro.",
 } as const;
 
+export const tutorialCartaDataContent = {
+  title: "Informações da sua Carta",
+  description:
+    "Confira as informações da sua Carta. Copie os campos de texto preenchidos e selecione manualmente as opções correspondentes na plataforma oficial.",
+  projection: {
+    owner: "feature-012",
+    source: "carta-v3",
+    groupCount: 5,
+    fieldDefinitionCount: 25,
+    copyableTextDefinitionCount: 13,
+    displayOnlyChoiceDefinitionCount: 12,
+  },
+  copyActionLabelTemplate: "Copiar {field}",
+  emptyTextValue: "Não informado",
+  emptyCollectionValue: "Nenhum item informado",
+  manualChoiceNotice:
+    "As opções escolhidas devem ser selecionadas manualmente na plataforma oficial.",
+} as const;
+
 export const tutorialParaibaDigitalContent = {
   title: "Publique sua Carta de Serviço",
   description:
@@ -94,64 +113,7 @@ export const tutorialParaibaDigitalContent = {
       title: "Cadastre as informações de sua Carta",
       description:
         "Preencha os campos do formulário na plataforma oficial utilizando os dados consolidados.",
-      quickCopyIntroduction: "Utilize os atalhos de cópia rápida abaixo:",
-      quickCopyFields: [
-        {
-          id: "service-name",
-          label: "Nome do serviço",
-          value: "Solicitar segunda via de certificado",
-          copyLabel: "Copiar",
-        },
-        {
-          id: "popular-name",
-          label: "Nome popular",
-          value: "Solicitar certificado",
-          copyLabel: "Copiar",
-        },
-        {
-          id: "service-description",
-          label: "O que é o serviço",
-          value:
-            "Serviço que permite ao cidadão obter cópia autenticada do histórico escolar emitido pela rede pública.",
-          copyLabel: "Copiar",
-        },
-        {
-          id: "required-documents",
-          label: "Documentos necessários",
-          value:
-            "Documentos de identificação oficial com foto (RG ou CNH);\nCPF do solicitante;\nComprovante de residência atualizado.",
-          copyLabel: "Copiar",
-        },
-        {
-          id: "audience",
-          label: "Quem pode utilizar",
-          value: "Estudantes matriculados ou concluintes na Rede Estadual de Ensino",
-          copyLabel: "Copiar",
-        },
-        {
-          id: "additional-information",
-          label: "Outras informações",
-          value:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        },
-        {
-          id: "keywords",
-          label: "Palavras-chave",
-          value: "certificado, histórico escolar, escola pública, segunda via",
-        },
-        {
-          id: "scheduling",
-          label: "Agendamento",
-          value: "Online: www.url.com",
-        },
-        { id: "cost", label: "Custo:", value: "Gratuito" },
-        {
-          id: "service-deadline",
-          label: "Prazo de atendimento",
-          value: "Até 5 dias úteis",
-          copyLabel: "Copiar",
-        },
-      ],
+      cartaData: tutorialCartaDataContent,
       editPrompt: "Precisa alterar alguma informação?",
       editAction: { label: "Editar na minha Carta", href: "/formulario-carta" },
       actions: [

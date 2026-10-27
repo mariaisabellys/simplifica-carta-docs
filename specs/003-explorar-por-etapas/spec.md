@@ -1,5 +1,8 @@
 # Spec: Explorar por Etapas
 
+> **Fonte única de navegação — 16 de outubro de 2026:** links, foco, histórico
+> e rota seguem `docs/arquitetura/contrato-navegacao.md`.
+
 ## Objetivo
 
 Especificar a pagina `Explorar por etapas`, que permite ao usuario acessar

@@ -9,6 +9,12 @@ npm.cmd run typecheck
 npm.cmd run build
 ```
 
+O teste do helper legado incluído na suíte acima não é requisito de interface
+da 015. Seu contrato vigente é “Copie o e-mail” no layout `425:201`, com
+clipboard e alternativa manual, sem abertura de aplicativo. O guard genérico
+de navegação continua preservando protocolos externos; isso não cria uma
+ação de contato na 015. Ver o [quickstart da 015](../015-suporte-email/quickstart.md).
+
 Verificacao futura em browser: navegar pelo shell com clique primario e Ctrl/
 Cmd/Shift/clique central, comparar destino e abertura nativa. Conferir teclado
 e foco separadamente; teste do guard nao comprova esses resultados.

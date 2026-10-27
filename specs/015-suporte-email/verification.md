@@ -1,50 +1,95 @@
-# Verificacao: Suporte por e-mail
+# Verificação T012 — Suporte por e-mail
 
-## Resultado
+Revisão atual: [verificação T013](../../docs/verificacoes/t013-canais-ajuda.md).
+A seção “Integração compartilhada — T013” ao final registra o contrato vigente.
 
-Executado `/spec:implementar 015-suporte-email` em 2026-10-05.
-Entrega parcial: src/lib/mailto.ts e tests/mailto.test.mjs. criarMailto segue
-o codigo base do plano: mailbox ASCII unico dentro do escopo documentado,
-rejeicao de CR/LF/NUL no assunto e percent-encoding uma vez por componente.
-Nao abre aplicativo ou envia mensagem. Nenhum contato real foi integrado.
-T009 possui entrega isolada; nenhuma tarefa marcada concluida. Pagina
-permanece placeholder; hook/controlador e interface ainda ausentes.
+## Registro anterior — evidência histórica, não estado atual dos canais
 
-## Verificacao executada
+20/10/2026. Escopo documental; nenhuma implementação, envio de mensagem ou
+acesso ao clipboard. T012 global concluída documentalmente; aceite funcional
+da 015 permanece pendente.
 
-| Check | Resultado |
+## Alterações e cobertura
+
+- Sete artefatos revisados: spec, plan, tasks, implementation-plan, quickstart,
+  validation e verification. Objetivo/RF/CA/tarefas/testes previstos usam só cópia.
+- Endereço de supportContacts.gesed.email; estado/aviso/destinos de
+  supportChannels/supportDestinations. Conteúdo em ajuda/suporte-email.ts e
+  ajuda/canais.ts já deriva dessas fontes, sem alterar TypeScript.
+- Copie o e-mail, E-mail copiado! e falha/manual alinhados ao conteúdo.
+- EM01–EM12 cobrem CA01–CA13, incluindo clipboard/concorrência, layout 425:201
+  e preservação de sessão; quickstart não exige aplicativo de e-mail.
+- Referências pontuais dos consumidores 013/016 ajustadas; 014/mapa conferidos.
+  Consolidação completa de estados/transições continua na T013 global.
+
+## Histórico preservado
+
+Sete originais em historico/2026-10-20-pre-t012-*.md, links relativos ajustados.
+A [verificação anterior](historico/2026-10-20-pre-t012-verification.md) registra
+entrega isolada de src/lib/mailto.ts e tests/mailto.test.mjs em 05/10/2026,
+com 19 testes históricos (cinco do helper), typecheck e build.
+Não repetidos nesta rodada. O helper permanece no repositório, fora da
+interface vigente; não removido, integrado nem usado como aceite da cópia.
+Nenhuma tarefa funcional local foi marcada concluída pela limpeza documental.
+
+## Inventário conferido
+
+supportContacts/canais e copyAction existem. SuporteEmailPage ainda apresenta
+PlaceholderCard e não renderiza o botão de copyAction; src/lib/clipboard.ts
+existe. Logo conteúdo e utilitário não comprovam controlador/página entregues.
+Estado e-mail ativo para exibição/cópia; atendimento pendente na configuração.
+Não há evidência nova de titularidade/atividade/resposta institucional.
+
+## Checks desta rodada
+
+Resultados documentais registrados após a edição abaixo.
+Sem execução funcional, typecheck/build, Figma MCP, ERS ou consulta externa.
+Não abrir aplicativo, enviar mensagem, modificar estado de canal ou agenda.
+
+| Check executado em 20/10/2026 | Resultado |
 | --- | --- |
-| node --test tests/mailto.test.mjs tests/atendimento.attempt.test.mjs tests/clipboard.test.mjs tests/csv.test.mjs | 19 testes passaram, cinco novos de mailto |
-| npm.cmd run typecheck | Passou |
-| npm.cmd run build | Passou fora do sandbox para evitar bloqueio de leitura do esbuild previamente identificado; Vite 7.3.6 |
+| Leitura dos sete artefatos ativos, fontes e utilitário | Uma ação oficial; conteúdo/estado atuais distinguidos da página placeholder |
+| Script Node: IDs e links locais | RF01–RF07, CA01–CA13, EM01–EM12 e T001–T015 completos; 29 destinos de arquivo válidos nos sete documentos |
+| Comparação das mensagens com conteúdo existente | Rótulo, sucesso e falha iguais a emailSupportContent.copyAction; fonte do payload e card conferida |
+| Busca de mailto/subject/criarMailto na 015 ativa | Somente menções delimitando proibição/legado e este registro de busca; nenhuma tarefa ou roteiro exigindo a ação antiga |
+| Busca nos consumidores 013/014/016 | Exigências específicas antigas corrigidas; menções de navegação genérica, proibição e registros históricos preservadas |
+| Histórico | Sete originais conferidos integralmente, salvo links relativos ajustados |
+| git diff --check | Sem erros |
+| git status --short -- src tests | Sem saída; código/conteúdo executável/testes intactos |
 
-Fixtures sinteticas verificam acentos/Unicode, mais, espacos e delimitadores,
-decodificacao sem dupla codificacao, ausencia de parametros extras, rejeicao
-de endereco fora do escopo e quebras/NUL. Helper puro nao exige browser.
-Regex e guarda do escopo previsto, nao validador universal ou prova de contato
-ativo. Nenhum aplicativo aberto, clipboard acessado ou e-mail enviado. Testes
-nao comprovam handler real, selecao manual, foco ou acessibilidade.
+Os links foram verificados quanto à existência de arquivos, não conteúdo
+externo ou alvos DOM futuros. A suíte genérica da 016 pode incluir o teste
+legado, explicitamente sem torná-lo requisito ou aceite da interface 015.
 
-## Documentacao e pendencias
+## Pendências
 
-Analisados spec/plan/tasks/implementation-plan/validation da 015 e contratos
-012–014/codigo. Plan/tasks/plano detalhado atualizados: contatos.ts guarda
-ID/equipe/endereco, canais.ts guarda estado/aviso compartilhado, sem segunda
-constante. V015-01 corrigido documentalmente; configuracao operacional ainda
-nao implementada. Spec/validation intactos. Relatorio e quickstart adicionados;
-alteracoes anteriores preservadas.
+T013 global fecha apresentação dos estados e entrada compartilhada.
+Implementação/controlador/navegação e testes reais EM01–EM12 permanecem futuros,
+assim como consulta visual e revisão institucional. Não declarar CA01–CA13
+aprovados só pela consistência documental. Próxima tarefa documental: T013.
 
-- V015-02 aberto: equipe decide referencia selecionavel/instrucao manual em
-  pendente/pausado e avisos por estado. JSX candidato incondicional recebeu
-  ressalva explicita antes de implementacao; nenhuma regra inventada.
-- Confirmar titularidade/atividade/endereco e assunto/textos. Referencia
-  gesed.semtd@gmail.com continua documental, sem novo contato ou status ativo.
-- Constitution secao 6 exige: "Antes de implementar trabalho visual, o Codex
-  deve consultar via MCP". Figma MCP indisponivel nesta sessao; Design/Make e
-  ERS pendentes. Fonte: ../../docs/processo/constitution.md.
-- Clipboard neutro entregue na 012 pode ser reutilizado; hook de trava/
-  revisao/timers e consumidores faltam. Nao declarar corridas resolvidas.
-- Navegacao/provider 002/007 e alternativa real 014 incompletos. Configuracao
-  de canais ainda nao existe; mapa/tipos da 013 nao tornam canal operacional.
-- Testes reais de handlers/browsers/leitores/reflow e aceite CA01–CA13
-  continuam pendentes. Sem interface integrada, checks nao encerram criterios.
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. E-mail ativo: Copie o e-mail e alternativa manual. Pendente/pausado: aviso,
+endereço de referência selecionável, sem botão ou instrução incentivando contato.
+Ambos os canais indisponíveis: orientações e retornos, sem ação operacional.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

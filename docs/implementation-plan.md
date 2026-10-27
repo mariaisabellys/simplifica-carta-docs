@@ -10,7 +10,7 @@ O objetivo e reduzir dependencia de consultas longas ao Codex, ao MCP do Figma e
 
 ## Onde fica
 
-Cada funcionalidade deve ter seu proprio `implementation-plan.md` dentro da pasta da spec:
+Cada funcionalidade visual ou complexa deve ter seu próprio `implementation-plan.md` dentro da pasta da spec. Para escopos simples, a dispensa deve ser justificada em `plan.md`, conforme a [convenção documental](../specs/README.md). Fundação e features sem interface são avaliadas pela complexidade dos contratos, não apenas pela presença de tela.
 
 ```txt
 specs/
@@ -43,6 +43,7 @@ Fluxo recomendado:
 /spec:planejar
 /spec:tarefas
 /spec:plano-implementacao
+/spec:validar
 /spec:implementar
 /spec:revisar
 ```
@@ -104,6 +105,10 @@ Cada arquivo tem uma funcao:
 - `tasks.md`: quebra o trabalho em tarefas pequenas.
 - `implementation-plan.md`: mostra como implementar, com codigo base e referencias visuais.
 - `quickstart.md`: explica como verificar a funcionalidade depois de pronta.
+- `validation.md`: registra consistência e prontidão documental atuais.
+- `verification.md`: registra entrega parcial/final e verificações efetivamente executadas.
+
+O quickstart pode ser preparado antes da implementação, com os passos identificados como previstos. O relatório de verificação diferencia esses passos dos resultados observados.
 
 ## O que deve conter
 
@@ -308,6 +313,14 @@ O `implementation-plan.md` deve ser obrigatorio para:
 
 Pode ser opcional para ajustes pequenos, correcao de texto ou mudancas internas muito simples.
 
+Registrar a dispensa e a cobertura equivalente em `plan.md`, com escopo, motivo, data e responsável. As regras completas de aplicabilidade e estados ficam em [specs/README.md](../specs/README.md).
+
+## Atualização e evidência
+
+O plano detalhado deve acompanhar o modelo e os contratos vigentes. Snippets não compilados devem ser identificados como exemplos não verificados; snippets incompatíveis com a versão atual devem ser corrigidos ou movidos ao histórico datado, preservando requisitos ainda válidos. Uma nota de precedência no topo não torna código antigo uma base segura para implementação.
+
+Registrar fontes realmente consultadas e consultas pendentes separadamente. O status documental não substitui aceite funcional/visual. Antes de executar tarefas dependentes, conferir o parecer atual em `validation.md`; após trabalho e checks, registrar resultados em `verification.md`. Seguir a convenção de histórico de `specs/README.md` sem alterar retroativamente evidências anteriores.
+
 ## Template sugerido
 
 ```md
@@ -315,7 +328,7 @@ Pode ser opcional para ajustes pequenos, correcao de texto ou mudancas internas 
 
 ## Status
 
-Pronto para implementacao.
+Em elaboração. Informar a base examinada e as dependências; atualizar a prontidão após validação documental registrada em validation.md.
 
 ## Fontes consultadas
 

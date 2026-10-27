@@ -1,5 +1,8 @@
 # Quickstart: Home e Navegacao
 
+> Roteiro previsto; não executado na T017. O package atual não possui script
+> `test`; resultados só podem ser registrados em `verification.md` após execução.
+
 ## Objetivo
 
 Verificar a home e o shell compartilhado depois da implementacao da spec
@@ -17,14 +20,14 @@ Verificar a home e o shell compartilhado depois da implementacao da spec
 Executar:
 
 ```bash
-npm run test
+node --test tests/navigation.test.mjs
 npm run typecheck
 npm run build
 ```
 
-Os tres comandos devem terminar sem erros. Se a infraestrutura de testes ainda
-nao estiver instalada, ela deve ser adicionada conforme o
-`implementation-plan.md` antes de considerar a implementacao concluida.
+O teste existente cobre apenas a guarda de links, não a home, foco ou navegação
+integrada. Criar/usar a infraestrutura de UI prevista antes do aceite e
+registrar os resultados realmente observados.
 
 ## Executar localmente
 

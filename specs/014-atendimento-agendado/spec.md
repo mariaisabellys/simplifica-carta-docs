@@ -1,5 +1,10 @@
 # Spec: Atendimento agendado
 
+> **Referencia compartilhada atualizada em 16 de outubro de 2026:** o node
+> `425:201` e a entrada dos canais de ajuda e pertence tambem a 015. O card de
+> atendimento inicia a jornada da 014; o card de e-mail exibe o contato da
+> GESED e a acao `Copie o e-mail`.
+
 ## Objetivo
 
 Permitir que o servidor consulte datas e horarios disponiveis, revise seus
@@ -40,8 +45,8 @@ explicita envia os dados. O atendimento nao aprova Cartas nem publica servicos.
 - `src/app/routes.tsx`, `src/pages/AtendimentoAgendadoPage.tsx` e
   `src/features/atendimento/atendimento.types.ts`: rota, placeholder e tipo
   inicial; ainda nao existem API, banco ou fluxo de envio implementados.
-- `docs/design-system/mapa-figma-telas.md`: nenhum frame especifico de
-  agendamento identificado no mapa atual.
+- `docs/design-system/mapa-figma-telas.md`: quatro frames da jornada de
+  atendimento, com `425:201` como pagina inicial.
 
 Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
 consulta direta ao Figma, agenda operacional ou validacao juridica da politica
@@ -90,6 +95,7 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
 | E-mail institucional | Permitir contato sobre o atendimento. | Obrigatorio, formato de e-mail valido. |
 | Telefone | Permitir contato complementar. | Obrigatorio no contrato inicial, formato a definir. |
 | Assunto da duvida | Orientar a preparacao da equipe. | Obrigatorio, texto nao vazio. |
+| Breve descrição da dúvida | Contexto complementar já previsto no conteúdo. | Opcional; descricaoDuvida, limite institucional pendente. |
 | Data e horario | Identificar intervalo solicitado. | Obrigatorios, vinculados a disponibilidade valida. |
 
 - Conciliar obrigatoriedade final, limites de tamanho e formatos com ERS e
@@ -195,6 +201,15 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
   e aviso de tratamento de dados antes da implementacao.
 - Separar configuracao de horarios, credenciais e contatos operacionais de
   textos editoriais; nao incluir segredos no repositorio ou no bundle frontend.
+- O conteudo oficial nao pode afirmar atendimento agendado, envio de e-mail ao
+  solicitante ou disponibilidade real usando dados de exemplo. Depois de uma
+  resposta valida do backend, comunicar apenas `Solicitacao registrada`, com
+  referencia, resumo e aviso de que o registro ainda nao confirma o atendimento.
+- Nao oferecer `Reagendar` enquanto cancelamento/remarcacao self-service estiver
+  fora do escopo. A alternativa segura e retornar a ajuda; novos fluxos dependem
+  de contrato institucional, backend e criterios de aceite proprios.
+- Meses, datas e horarios mantidos para documentacao visual devem ser marcados
+  explicitamente como ilustrativos e nunca compor a disponibilidade operacional.
 
 ## Requisitos nao funcionais
 
@@ -220,15 +235,30 @@ de dados. As regras institucionais pendentes devem ser resolvidas no planejament
 
 ## Referencias visuais e pendencias
 
-O mapa local ainda nao identifica frame de selecao de horario, formulario,
-revisao ou confirmacao de atendimento. `169:495` pertence a FAQ/entrada de
-ajuda e nao define essas telas.
+O primeiro frame e a entrada compartilhada das features 014 e 015; os demais
+representam estados da jornada de atendimento:
 
-Antes da implementacao visual, identificar e consultar os frames via MCP no
-Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
-Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar composicao, estados,
-componentes, assets e responsividade no `implementation-plan.md` e atualizar
-o mapa. Resolver divergencias antes de implementar.
+| Estado | Node | Referencia |
+| --- | --- | --- |
+| Escolha de canal: atendimento ou e-mail | `425:201` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
+| Escolha um horario | `425:296` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-296&m=dev) |
+| Dados e revisao antes do envio | `446:206` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=446-206&m=dev) |
+| Solicitacao registrada | `470:444` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=470-444&m=dev) |
+
+`425:201` e a composicao compartilhada de entrada; os demais sao
+variantes/etapas do atendimento, nao novas features. `169:495` continua sendo
+a FAQ. A 015 controla o conteudo e a copia do card de e-mail.
+
+O layout deve adaptar-se a `src/content/ajuda/atendimento-agendado.ts` e aos
+estados reais da API. Texto ou exemplo do Figma nao substitui o conteudo
+versionado. Em especial, manter `Confirmar solicitacao`, `Solicitacao registrada`
+e o aviso de que o registro nao confirma o atendimento; nao restaurar promessa
+de e-mail enviado, sucesso de agendamento ou acao de reagendar.
+
+Mes, datas, horarios, nome, orgao e assunto exibidos no Figma sao exemplos.
+Disponibilidade e resumo reais sempre vem da API/solicitacao. Antes do codigo
+visual, consultar detalhadamente via MCP os quatro nodes e o Figma Make
+`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`; registrar divergencias e responsividade.
 
 O planejamento deve conciliar ERS e ADR-003, definir stack concreta do backend,
 API, banco, oferta de horarios, capacidade, fuso, confirmacao institucional,
@@ -258,7 +288,9 @@ ou alterar decisao arquitetural sem documentar a escolha.
 - Agenda e destinatarios institucionais, provedor de notificacao, regras de
   confirmacao, politica de dados e referencias visuais validadas.
 
-Na criacao desta spec, 015–017 ainda nao possuem pastas em `specs/`.
+Nota histórica: na criação inicial desta spec, 015–017 ainda não possuíam
+artefatos. Hoje as três features estão documentadas; a 017 mantém os gates de
+infraestrutura no [registro G6/G7](../../docs/decisoes/registro-g6-g7-agenda-deploy.md).
 O placeholder e o tipo inicial nao comprovam disponibilidade, registro ou
 notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 
@@ -284,10 +316,41 @@ notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 | CA16 | Consultar disponibilidade e acesso operacional aos registros. | Nao expor dados de solicitantes publicamente; restringir registros a processos autorizados. |
 | CA17 | Operar por teclado/leitor de tela e em telas pequenas com ampliacao. | Selecionar, revisar, corrigir e confirmar com estados e foco acessiveis, sem corte ou scroll horizontal. |
 | CA18 | Revisar prontidao para producao. | Encontrar API, agenda, capacidade, fuso, notificacoes, politica de dados e operacao definidos, com consultas Figma e textos validados. |
+| CA19 | Percorrer a jornada visual. | Usar `425:201`, `425:296`, `446:206` e `470:444` como estados da mesma rota, preservando selecoes e dados aplicaveis. |
+| CA20 | Comparar frame e conteudo versionado. | Adaptar layout ao conteudo e aos estados reais, sem reintroduzir disponibilidade ficticia, confirmacao antecipada, e-mail enviado ou remarcacao. |
 
-## Proximo passo
+## Contrato consolidado T014 — 21/10/2026
 
-Executar `/spec:planejar 014-atendimento-agendado` para definir backend,
-contratos, agenda, notificacoes, tratamento de dados e verificacoes. Depois,
-criar tarefas e `implementation-plan.md`, resolver pendencias e executar
-`/spec:validar` antes de `/spec:implementar`.
+Aplicar [contrato-agenda.md](contrato-agenda.md) como fonte única de API,
+payload/códigos, contexto/CSRF, pausa operacional, snapshot e recuperação.
+O payload contém seis campos obrigatórios, descricaoDuvida opcional e horarioId.
+Tipos existentes ainda precisam de migração; não são o schema final.
+
+Pausa editorial não desativa API: servidor possui gate próprio. Replay de
+operação registrada ainda válida precede gate e revalidação de oferta.
+Snapshot de início/fim/fuso é imutável; mudança de intervalo cria novo ID.
+410 indica recuperação expirada, nunca ausência de registro. Nenhuma chave
+nova automática por rede/timeout/pausa. Notificação não condiciona sucesso.
+
+| ID | Cenário adicional | Resultado esperado |
+| --- | --- | --- |
+| CA21 | Pausa concorrente com registro e recuperação | Nova criação bloqueada conforme gate serializado; resultado registrado continua recuperável, sem cancelamento inferido |
+| CA22 | Oferta/fuso mudam e mesma tentativa é repetida | Snapshot original no Receipt; sem mudar resultado ou duplicar ocupação/outbox |
+
+IN01–IN08 no contrato estão abertas documentalmente desde 27/10/2026 e
+registram papéis responsáveis a consultar, não pessoas nomeadas ou decisões
+aprovadas. [ADR-004](../../docs/decisoes/adr-004-stack-atendimento.md)
+é proposta; ADR-003 não aprova stack/infraestrutura. Produção permanece bloqueada.
+
+## Próximo passo
+
+Encaminhar e obter respostas para IN01–IN08, decidir a ADR-004 e autorizar a
+implementação separadamente. A migração de conteúdo T013 já foi concluída.
+Ver [tasks](tasks.md) e [verification](verification.md).
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.

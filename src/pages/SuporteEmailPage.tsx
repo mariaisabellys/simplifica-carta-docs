@@ -1,16 +1,23 @@
 import { PageHeader } from "../components/ui/PageHeader";
 import { PlaceholderCard } from "../components/ui/PlaceholderCard";
+import { emailSupportContent } from "../content/ajuda/suporte-email";
 
 export function SuporteEmailPage() {
+  const content = emailSupportContent;
+
   return (
     <>
       <PageHeader
         eyebrow="E-mail"
-        title="Suporte por e-mail"
-        description="Placeholder para orientacoes de contato institucional."
+        title={content.title}
+        description={content.description}
       />
-      <PlaceholderCard title="Contato">
-        O canal institucional registrado no material de requisitos e gesed.semtd@gmail.com.
+      <PlaceholderCard title={content.contact.addressLabel}>
+        <p>{content.contact.address}</p>
+        {content.channelState.status !== "ativo" ? (
+          <p>{content.channelState.notice}</p>
+        ) : null}
+        {content.action ? <a href={content.action.href}>{content.action.label}</a> : null}
       </PlaceholderCard>
     </>
   );

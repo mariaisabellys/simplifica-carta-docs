@@ -1,34 +1,35 @@
-export type HelpChannelId = "scheduled-service" | "email-support";
+import { getSupportPresentation, type SupportChannelId } from "../support/canais";
 
-export const helpChannelsContent = {
-  title: "Ainda precisa de ajuda?",
-  description:
-    "Receba orientação da equipe responsável para tirar dúvidas sobre a identificação, organização ou elaboração da Carta de Serviço.",
-  channels: [
-    {
-      id: "scheduled-service",
-      title: "Atendimento Agendado",
-      description:
-        "Agende uma reunião com nossa equipe especialista em governo digital, linguagem simples e carta de serviços.",
-      action: {
-        label: "Agendar atendimento",
-        href: "/ajuda/atendimento-agendado",
+export type HelpChannelId = SupportChannelId;
+
+export function getHelpChannelsContent(context: SupportChannelId) {
+  const presentation = getSupportPresentation(context);
+  return {
+    title: "Ainda precisa de ajuda?",
+    description: "Receba orientação da equipe responsável para tirar dúvidas sobre a identificação, organização ou elaboração da Carta de Serviço.",
+    unavailableNotice: presentation.unavailableNotice,
+    returns: presentation.returns,
+    channels: [
+      {
+        id: "atendimento-agendado",
+        title: "Atendimento Agendado",
+        description: "Consulte a disponibilidade de orientação com a equipe de governo digital, linguagem simples e carta de serviços.",
+        state: presentation.appointment.state,
+        action: presentation.appointment.action,
       },
-    },
-    {
-      id: "email-support",
-      title: "Suporte por e-mail",
-      description:
-        "Envie suas dúvidas técnicas detalhadas ou rascunhos da carta de serviço do seu órgão para nossa central de atendimento.",
-      action: {
-        label: "Enviar e-mail",
-        href: "/ajuda/suporte-email",
+      {
+        id: "suporte-email",
+        title: "Suporte por e-mail",
+        description: presentation.email.description,
+        email: presentation.email.address,
+        addressLabel: presentation.email.addressLabel,
+        copyInstruction: presentation.email.copyInstruction,
+        state: presentation.email.state,
+        action: presentation.email.action,
       },
-    },
-  ] satisfies readonly {
-    id: HelpChannelId;
-    title: string;
-    description: string;
-    action: { label: string; href: string };
-  }[],
-} as const;
+    ],
+  } as const;
+}
+
+// Compatibilidade para a entrada principal; a rota 015 deve passar seu contexto.
+export const helpChannelsContent = getHelpChannelsContent("atendimento-agendado");

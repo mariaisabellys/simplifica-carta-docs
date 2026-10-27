@@ -122,7 +122,7 @@ export const aboutCharterPageContent = {
         number: "9.756",
         year: 2019,
         summary:
-          "Institui o Portal Único “gov.br” e dispõe sobre as regras para migração dos sítios e portais da administração pública federal.",
+          "Institui o portal único “gov.br” e dispõe sobre as regras de unificação dos canais digitais do Governo federal.",
         actionLabel: "Consultar",
         href: "https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm",
       },

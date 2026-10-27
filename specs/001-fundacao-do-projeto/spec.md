@@ -1,5 +1,9 @@
 # Spec: Fundacao do Projeto
 
+> **Contrato transversal atualizado em 16 de outubro de 2026:** roteamento e
+> navegação devem seguir `docs/arquitetura/contrato-navegacao.md`. Esta rodada
+> é somente documental.
+
 ## Objetivo
 
 Organizar a base documental e preparar a fundacao tecnica do Simplifica Carta para permitir desenvolvimento guiado por especificacoes.

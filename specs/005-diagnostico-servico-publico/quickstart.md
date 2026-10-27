@@ -1,5 +1,8 @@
 # Quickstart: Diagnostico de Servico Publico
 
+> Roteiro previsto; não executado na T017. O package atual não possui script
+> `test` e ainda não há suite enumerativa do diagnóstico.
+
 ## Objetivo
 
 Verificar o questionario em `/diagnostico`, o motor de decisao e a pagina
@@ -22,7 +25,7 @@ Verificar o questionario em `/diagnostico`, o motor de decisao e a pagina
 - decisoes consolidadas de tokens e estados aplicadas;
 - assets oficiais salvos localmente e sem URLs temporarias;
 - dependencias instaladas;
-- infraestrutura de testes configurada com script `npm run test`.
+- infraestrutura de testes do diagnóstico implementada e comando registrado.
 
 ## Fontes de verdade
 
@@ -44,13 +47,13 @@ antiga exibida no estado de amostra do node `387:1362`.
 ## Comandos tecnicos
 
 ```sh
-npm run test
 npm run typecheck
 npm run build
 ```
 
-Os tres comandos devem terminar sem erros. A suite deve incluir a enumeracao
-das `3^8 = 6.561` combinacoes validas.
+Typecheck/build não validam a árvore de decisão. Antes do aceite, criar e
+executar uma suite que enumere as `3^8 = 6.561` combinações válidas e registrar
+o comando/resultado observado em `verification.md`.
 
 ## Executar localmente
 

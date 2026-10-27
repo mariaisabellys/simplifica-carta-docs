@@ -1,5 +1,10 @@
 # Validacao: Fluxo de ajuda
 
+Revisão atual: [verificação T013](../../docs/verificacoes/t013-canais-ajuda.md).
+A seção “Integração compartilhada — T013” ao final registra o contrato vigente.
+
+## Registro anterior — evidência histórica, não estado atual dos canais
+
 ## Resultado e escopo
 
 Executado `/spec:validar 013-fluxo-de-ajuda` em 2026-10-05.
@@ -109,3 +114,38 @@ Os quatro artefatos e src permaneceram intocados, sem tarefas concluidas
 automaticamente. Consolidar V013-01/V013-02 e dependencias aplicaveis antes
 de repetir a validacao e implementar trabalho dependente. Este relatorio
 nao aprova canais, copy ou implementacao visual/funcional.
+
+## Integração compartilhada — T013, 20/10/2026
+
+Aplicar o [contrato de canais](../../docs/arquitetura/contrato-canais-ajuda.md)
+como definição única de estado/endereço/destino, apresentação, transições e
+migração editorial. FAQ sem cards adicionais, CTA de apoio por estado, destino canônico da 014.
+Na entrada compartilhada, atendimento ativo abre calendário interno na própria
+014, e-mail ativo copia; a FAQ apenas navega.
+
+Estado atual inspecionado: atendimento pendente, e-mail ativo editorialmente.
+Ativo não prova vagas, recebimento ou implementação. Agenda vazia/erro de rede
+e falha de clipboard são estados operacionais distintos, não mudam supportChannels.
+As decisões de apresentação antes abertas em V013-01/V015-02 estão definidas
+no contrato; efeitos de pausa na API/recuperação seguem contrato-agenda.md da 014;
+as decisões institucionais IN01–IN08 permanecem pendentes.
+Migração de conteúdo concluída em 21/10/2026; resolvedor compartilhado e
+consumidores conferidos em tests/support.presentation.test.mjs. Isso não entrega
+calendário/API/clipboard ou composição visual completa. Não há aceite
+funcional nesta revisão; testar CJ01–CJ12 e critérios locais após implementar.
+
+### Encerramento T013 — 21/10/2026
+
+A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
+CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
+Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
+implementação/validação visual ou operacional desta feature; preservar suas pendências.
+
+## Revalidação T019 — 22/10/2026
+
+Parecer atual: **documentação e conteúdo compartilhado coerentes; interface
+completa pendente**. V013-01/V013-02 continuam encerrados pelo contrato de
+canais e pelo resolvedor; RF01–RF05/CA01–CA14 seguem para T001–T015 e CJ01–CJ12.
+AjudaPage já renderiza FAQ e CTA, mas isso não comprova jornada integral dos
+canais. O node `169:495` respondeu por metadados, sem aceite visual. Ver a
+[matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
