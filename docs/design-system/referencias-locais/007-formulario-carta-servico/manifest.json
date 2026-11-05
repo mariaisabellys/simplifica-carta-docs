@@ -1,0 +1,16 @@
+{
+  "feature": "007-formulario-carta-servico",
+  "route": "/formulario-carta",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5" },
+  "capturedAt": "2026-11-03",
+  "references": [
+    { "part": 1, "nodeId": "653:1540", "path": "parte-1-desktop.png", "viewport": { "width": 1440, "height": 1986 }, "sha256": "66e23eb00b1e9bd3672111c2e2dd539d9b1f235ce09e920a7f1c8639f9be0b5e" },
+    { "part": 2, "nodeId": "2024:269", "path": "parte-2-desktop.png", "viewport": { "width": 1440, "height": 2050 }, "sha256": "c5db5d4b864b77f5296aa20f7369bfde12974def73d172769a2b19dff8c061fb" },
+    { "part": 3, "nodeId": "641:58", "path": "parte-3-desktop.png", "viewport": { "width": 1440, "height": 2268 }, "sha256": "f1d9a2b670fdbdb129dfceb58eaed5383b55422278d5e56e572e78f8b05fbdf5" },
+    { "part": 4, "nodeId": "647:650", "path": "parte-4-desktop.png", "viewport": { "width": 1440, "height": 2278 }, "sha256": "d1559759e9a0923fd369519e1a3d910eb863ff6aaff7d017e5abaf1077175876" },
+    { "part": 5, "nodeId": "660:2533", "path": "parte-5-desktop.png", "viewport": { "width": 1440, "height": 1801 }, "sha256": "442307027234ebccec5539d0a76045619a577e6debaf486842d87ff71fefac90" }
+  ],
+  "contentSource": "src/content/pages/formulario-carta.ts",
+  "contractSources": ["specs/007-formulario-carta-servico/modelo-central-carta.md", "specs/007-formulario-carta-servico/matriz-campos-v3.md", "specs/008-validacao-linguagem-simples/contrato-validacao-editorial.md"],
+  "assets": ["src/assets/formulario-carta/chevron-up.svg", "src/assets/formulario-carta/chevron-down.svg", "src/assets/formulario-carta/check.svg", "src/assets/formulario-carta/trash.svg", "src/assets/formulario-carta/file.svg", "src/assets/formulario-carta/sparkles.svg"]
+}

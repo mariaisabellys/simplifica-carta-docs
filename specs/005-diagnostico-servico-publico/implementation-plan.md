@@ -21,6 +21,8 @@ decisoes correspondentes estao versionadas neste documento e em
   `decisoes-tecnicas.md`;
 - `docs/design-system/mapa-figma-telas.md`, `tokens-e-componentes.md` e
   `referencia-figma-make.md`;
+- pacote visual local normativo em
+  `docs/design-system/referencias-locais/005-diagnostico-servico-publico/`;
 - `docs/implementation-plan.md`;
 - codigo atual em `src/` e scripts do `package.json`;
 - Figma Design:
@@ -36,6 +38,9 @@ decisoes correspondentes estao versionadas neste documento e em
   - os resource links internos permaneceram indisponiveis para leitura direta;
   - tokens e estados foram reconciliados com o resumo oficial local, os dois
     frames de alta fidelidade e os requisitos acessiveis abaixo.
+
+O pacote local, o conteúdo versionado e os contratos funcionais são suficientes
+para implementação. Nova consulta ao Figma é auditoria opcional.
 
 ## Objetivo da implementacao
 
@@ -803,7 +808,7 @@ setup compartilhado; nao criar runner exclusivo da feature.
 ## Ordem de implementacao
 
 1. validar este plano com `/spec:validar`;
-2. reconsultar ou obter export dos recursos do Figma Make;
+2. conferir o pacote visual local e seus assets versionados;
 3. consolidar tipos e remover contrato legado;
 4. adicionar opcoes versionadas;
 5. configurar testes;

@@ -208,8 +208,8 @@ Sem uma home bem definida, o usuario pode nao compreender:
 - Tokens CSS iniciais em `src/styles/tokens.css`.
 - Componentes iniciais de layout e UI em `src/components/`.
 - Mapa de Figma em `docs/design-system/mapa-figma-telas.md`.
-- Consulta ao Figma Design via MCP antes de planejar/implementar.
-- Consulta ao Figma Make via MCP antes de implementar estilos finais.
+- Usar o pacote visual local da 002 antes de planejar/implementar; consulta ao
+  Figma Design/Make é opcional para atualização de referência.
 
 ## Criterios de aceite
 

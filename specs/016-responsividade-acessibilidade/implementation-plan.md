@@ -4,7 +4,7 @@
 
 Preparado em 2026-10-05 para `/spec:plano-implementacao
 016-responsividade-acessibilidade` (comando recebido: plano-implentacao).
-**Plano tecnico documental; pendente de conciliacao ERS/WCAG, consulta Figma
+**Plano tecnico documental; pendente de conciliacao ERS/WCAG, testes de interface
 e disponibilidade dos ambientes assistivos. Nao representa auditoria executada
 nem prontidao para aceite transversal.** Todas as tarefas continuam pendentes.
 
@@ -127,8 +127,8 @@ informacao e hierarquia.
    erros estruturais, sugestoes separadas, colecoes e valores longos. Um card
    isolado do Figma nao limita a pagina nem autoriza uma segunda previa.
 
-Essas adaptacoes sao contratos documentais; sua aparencia ainda depende de
-consulta Figma autenticada e verificacao nos ambientes definidos pela 016.
+Essas adaptacoes sao contratos documentais; sua aparencia deve ser conferida
+contra os pacotes locais e verificada nos ambientes definidos pela 016.
 
 ## Meta e matriz de criterios
 
@@ -313,7 +313,7 @@ Agendamento da Carta segue RF03/CA19–CA24 da 007:
 
 ## Reflow, tokens, foco e preferencias: CSS base
 
-As classes/tokens abaixo sao propostas funcionais. Consultar Figma e medir
+As classes/tokens abaixo sao propostas funcionais. Usar os pacotes locais e medir
 estados antes de adotar valores visuais; nao afirmar contraste aprovado.
 Nao usar overflow-x:hidden no body para mascarar dados cortados.
 
@@ -560,10 +560,10 @@ Nenhuma checkbox e marcada como concluida por criacao deste documento.
 | CA12 | Preferencias, fonte/imagem e teclado virtual reais | T010/T012/T014 |
 | CA13 | Ambientes/versoes reais, automacao e leitura manual | T003/T008/T013–T017 |
 | CA14 | Matriz por criterio/processo, defeitos/retestes e lacunas | T002/T008/T016–T017 |
-| CA15 | Consulta Figma/adaptacoes, dados sinteticos e escopo preservado | T003–T004/T010/T014/T016–T017 |
+| CA15 | Pacotes locais/adaptacoes, dados sinteticos e escopo preservado | T003–T004/T010/T014/T016–T017 |
 
 Antes do codigo: conciliar ERS/meta, confirmar politica de foco com 002 e
-retorno com 007/008/014, consultar Figma dos ajustes, definir infraestrutura,
+retorno com 007/008/014, usar os pacotes locais dos ajustes, definir infraestrutura,
 ambientes/donos e massa sintetica. Capacidade do Paraiba Digital externo e
 politica de URLs pertencem a 007/011, nao sao decididas pela 016.
 

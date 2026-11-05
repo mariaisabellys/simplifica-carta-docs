@@ -1,0 +1,15 @@
+{
+  "feature": "002-home-e-navegacao",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5", "nodeId": "310:175" },
+  "capturedAt": "2026-10-27",
+  "viewport": { "width": 1440, "height": 1627 },
+  "reference": { "path": "desktop.png", "sha256": "1ee05499a0a8fcd9b97ea8f4f94acfcc84c0b0a32e6e2cfc24482366166af656" },
+  "contentSource": "src/content/pages/home.ts",
+  "assets": [
+    "src/assets/home/hero-carta-servico.png",
+    "src/assets/brand/semt-d-branco.png",
+    "src/assets/home/play.svg",
+    "src/assets/home/text-align-start.svg",
+    "src/assets/home/arrow-right.svg"
+  ]
+}

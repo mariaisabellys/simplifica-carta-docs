@@ -23,7 +23,7 @@ associacoes por indice ou usar ativo como estado padrao de rotas placeholder.
 
 ## Verificacao apos integracao
 
-Apos Figma, copy e contratos pendentes resolvidos, verificar /ajuda por entrada
+Após os pacotes locais, copy e contratos pendentes resolvidos, verificar /ajuda por entrada
 compartilhada, URL direta e recarga; /ajuda#duvidas-frequentes com foco/hash e
 voltar/avancar; FAQ por teclado; retorno fixo /formulario-carta e preservacao
 da sessao inclusive com storage indisponivel. Conferir ambos os destinos e

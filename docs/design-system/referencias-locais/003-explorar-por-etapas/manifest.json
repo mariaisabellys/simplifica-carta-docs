@@ -1,0 +1,16 @@
+{
+  "feature": "003-explorar-por-etapas",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5", "nodeId": "575:483" },
+  "capturedAt": "2026-10-27",
+  "viewport": { "width": 1440, "height": 2134 },
+  "reference": { "path": "desktop.png", "sha256": "31ebf1824a28d740004427e32575f8ff9fe59377934274877ba233697d22576c" },
+  "contentSource": "src/content/pages/explorar-por-etapas.ts",
+  "assets": [
+    "src/assets/explorar-por-etapas/help-circle.svg",
+    "src/assets/explorar-por-etapas/check-square.svg",
+    "src/assets/explorar-por-etapas/file-text.svg",
+    "src/assets/explorar-por-etapas/book-open.svg",
+    "src/assets/explorar-por-etapas/chevron-right-breadcrumb.svg",
+    "src/assets/explorar-por-etapas/chevron-right.svg"
+  ]
+}

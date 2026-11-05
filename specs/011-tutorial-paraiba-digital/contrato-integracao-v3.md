@@ -121,7 +121,7 @@ são históricas e não confirmaram acesso administrativo.
 | 5 review-data | Campos revisados e ação Salvar rascunho | Não obtida / não verificada | Rever referência genérica a canais sem criar campo local |
 | 6 publish-service | Salvar, envio para análise, avaliação e publicação | Não obtida / não verificada | Não prometer fluxo comprovado ou publicação automática |
 | Imagens/GIFs nas etapas 1–3/5–6 | Origem, autorização, contexto, captura, legenda e alt | Apenas placeholder no conteúdo | Assets reais pendentes |
-| Figma/ERS | Consulta detalhada dos seis frames/Make e confronto com ERS | Links mapeados; sem nova consulta | Pendente |
+| Figma/ERS | Consulta detalhada dos seis frames e confronto com ERS | Seis capturas e pacote local / 04/11/2026 | Visual concluído; ERS pendente |
 
 Obter material institucional autorizado se a interface não for pública; não
 solicitar credenciais, acessar conta ou criar cadastro real para esta tarefa.

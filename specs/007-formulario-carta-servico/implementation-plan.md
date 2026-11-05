@@ -8,7 +8,12 @@ documental; nenhum snippet foi compilado e nenhum código funcional foi alterado
 
 Usar [spec](spec.md), [plan](plan.md), [tasks](tasks.md), [matriz canônica](matriz-campos-v3.md) e modelo central. Types/schema/catalogs/storage/validation/CSV v3 existem. Formulário/provider e integração não são entregues por esses helpers. O storage atual retorna Carta vazia sem distinguir motivo de falha; precisa de evolução futura.
 
-Design: arquivo YaVUdqYa3boHpvGrxf4ZJ5; partes 653:1540, 2024:269, 641:58, 647:650, 660:2533; componentes 811:306, 811:382, 651:317 e 821:308. Make: dVm7lEZdBFqOiiySWLWUqp, node 0:1. São referências identificadas, não evidência de consulta nesta rodada.
+Design: arquivo YaVUdqYa3boHpvGrxf4ZJ5; partes 653:1540, 2024:269, 641:58,
+647:650 e 660:2533, extraídas em
+`docs/design-system/referencias-locais/007-formulario-carta-servico/`.
+Componentes relacionados: 811:306, 811:382, 651:317 e 821:308. Make:
+dVm7lEZdBFqOiiySWLWUqp, node 0:1. O pacote local e os contratos v3 são
+suficientes; reconsulta remota é auditoria opcional.
 
 ## Contratos técnicos propostos
 

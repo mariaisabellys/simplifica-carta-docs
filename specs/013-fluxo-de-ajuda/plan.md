@@ -11,7 +11,7 @@ Reutilizar shell/navegacao, preservar Carta e manter consulta independente
 de preenchimento, backend ou leitura de dados da sessao.
 
 Este plano prepara `/spec:tarefas`. Antes de codigo/estilos, criar tarefas e
-implementation-plan, validar copy e destinos e consultar Figma via MCP.
+implementation-plan, validar copy e destinos e usar o pacote visual local.
 Nao implementa agenda, coleta de solicitacoes ou envio de e-mail.
 
 > Atualizacao editorial de 2026-10-07: a fonte oficial e
@@ -126,11 +126,10 @@ de cópia da 015 ou estado/storage da Carta como parte da página de entrada.
 
 ## Visual, responsividade e acessibilidade
 
-Consultar via MCP Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`,
-node `169:495`. Verificar se ele cobre FAQ, dois canais e acoes de retorno ou
-se ha frame adicional. Consultar Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node
-`0:1`. Registrar layout, estados de paineis/canais, assets e adaptacao
-responsiva no implementation-plan; nao tratar referencia local como consulta.
+Usar o pacote local de 013 (`visual-spec.md`, `desktop.png` e `manifest.json`)
+para FAQ, ações e adaptação responsiva. A entrada de canais é coberta pelos
+pacotes locais de 014/015; Figma Design/Make é apenas proveniência histórica.
+Registrar layout, estados, assets e adaptação responsiva no implementation-plan.
 
 Usar um h1 e h2 por regiao, nav/breadcrumb com nomes claros, labels de links
 especificos e icones decorativos ocultos. Textos extensos crescem naturalmente;

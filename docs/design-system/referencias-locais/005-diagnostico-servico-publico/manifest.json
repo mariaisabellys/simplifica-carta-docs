@@ -1,0 +1,15 @@
+{
+  "feature": "005-diagnostico-servico-publico",
+  "routes": ["/diagnostico", "/diagnostico/resultado"],
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5", "nodes": [
+    { "nodeId": "387:1020", "state": "questionario" },
+    { "nodeId": "387:1362", "state": "resultado" }
+  ]},
+  "capturedAt": "2026-11-03",
+  "references": [
+    { "state": "questionario", "path": "diagnostico-desktop.png", "viewport": { "width": 1440, "height": 1106 }, "sha256": "f5ef59838ca831f0fca2223fe98a314fe8c431061e34ecf7b5888e4b0d6d1c62" },
+    { "state": "resultado", "path": "resultado-desktop.png", "viewport": { "width": 1440, "height": 1106 }, "sha256": "0e10c9a27df4b8374c6d33789d09478aaf4f2193533a158520b433dbb3484b92" }
+  ],
+  "contentSources": ["src/content/diagnostico/perguntas.ts", "src/content/diagnostico/respostas.ts", "src/content/diagnostico/condicoes.ts", "src/content/diagnostico/acoes.ts"],
+  "assets": ["src/assets/diagnostico/resultado-fundo.svg", "src/assets/diagnostico/resultado-tela.svg", "src/assets/diagnostico/resultado-personagem.svg", "src/assets/brand/semt-d-branco.png"]
+}

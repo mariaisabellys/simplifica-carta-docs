@@ -29,4 +29,5 @@ Riscos: interpretação como fórmula, perda de campos agregados, mistura de
 revisões, renumeração de listas e sucesso falso. Mitigações e limitações no
 contrato; nenhum marcador universalmente seguro é presumido.
 Aprovação de segurança não é resultado de build nem de teste com parser.
-Figma/ERS, validação defensiva 007, UI/assistivo e planilhas continuam pendentes.
+Pacote visual local disponível; ERS, validação defensiva 007, UI/assistivo e
+planilhas continuam pendentes.

@@ -1,0 +1,24 @@
+{
+  "feature": "014-atendimento-agendado",
+  "route": "/ajuda/atendimento-agendado",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5" },
+  "capturedAt": "2026-11-04",
+  "references": [
+    { "state": "entry", "nodeId": "425:201", "path": "entrada-desktop.png", "viewport": { "width": 1440, "height": 1176 }, "sha256": "490efd0c0d97c87cc865b52df26c02d4b77727f59d80b8fd47fde04f441fff16" },
+    { "state": "date-time", "nodeId": "425:296", "path": "horario-desktop.png", "viewport": { "width": 1440, "height": 1480 }, "sha256": "c126be62ca30e156f65d37aa6dd0bea53652276f637e64f693b0d32df22f97d4" },
+    { "state": "details-review", "nodeId": "446:206", "path": "revisao-desktop.png", "viewport": { "width": 1440, "height": 1320 }, "sha256": "010e0ab201cfc432cbe0963ddbeaa613075d7f739fbe08221c2443c3fb12e197" },
+    { "state": "request-registered", "nodeId": "470:444", "path": "solicitacao-desktop.png", "viewport": { "width": 1440, "height": 1320 }, "sha256": "7701d638405323f5597af57ddce4cdb474e8c3d1013d5b59e63c4f4ca894fedf" }
+  ],
+  "contentSource": "src/content/ajuda/atendimento-agendado.ts",
+  "contractSources": [
+    "specs/014-atendimento-agendado/contrato-agenda.md",
+    "docs/arquitetura/contrato-canais-ajuda.md"
+  ],
+  "integrations": ["013-fluxo-de-ajuda", "015-suporte-email"],
+  "assets": [
+    "src/assets/ajuda/calendar.svg",
+    "src/assets/ajuda/mail.svg",
+    "src/assets/ajuda/circle-check.svg",
+    "src/assets/brand/semt-d-branco.png"
+  ]
+}

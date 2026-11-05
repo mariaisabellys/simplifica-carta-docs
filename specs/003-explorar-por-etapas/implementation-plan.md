@@ -17,6 +17,8 @@ Pronto para `/spec:implementar 003-explorar-por-etapas`.
 - MVP e fluxos: `docs/produto/mvp.md` e `docs/produto/fluxos.md`;
 - mapa e tokens: `docs/design-system/mapa-figma-telas.md` e
   `docs/design-system/tokens-e-componentes.md`;
+- pacote visual local em
+  `docs/design-system/referencias-locais/003-explorar-por-etapas/`;
 - estrategia: `docs/implementation-plan.md`;
 - planos e contratos previstos na feature `002-home-e-navegacao`;
 - codigo React, rotas, shell, componentes, conteudo e CSS existentes em `src/`;
@@ -190,17 +192,16 @@ O `get_design_context` retornou os seguintes vetores relevantes:
 | Check square | `575:600` | `src/assets/explorar-por-etapas/check-square.svg` | Etapa 2, decorativo |
 | File text | `575:609` | `src/assets/explorar-por-etapas/file-text.svg` | Etapa 3, decorativo |
 | Book open | `575:615` | `src/assets/explorar-por-etapas/book-open.svg` | Etapa 4, decorativo |
-| Chevron do breadcrumb | `575:594` (`imgChevronRight`) | `src/assets/explorar-por-etapas/chevron-breadcrumb.svg` | Separador do breadcrumb, 10 × 10 px, decorativo |
-| Chevron de acao | `575:597`, `575:606`, `575:612`, `575:618` (`imgChevronRight1`) | `src/assets/explorar-por-etapas/chevron-action.svg` | Botoes dos cards, 16 × 16 px, decorativo |
+| Chevron do breadcrumb | `575:594` (`imgChevronRight`) | `src/assets/explorar-por-etapas/chevron-right-breadcrumb.svg` | Separador do breadcrumb, 10 × 10 px, decorativo |
+| Chevron de acao | `575:597`, `575:606`, `575:612`, `575:618` (`imgChevronRight1`) | `src/assets/explorar-por-etapas/chevron-right.svg` | Botoes dos cards, 16 × 16 px, decorativo |
 
 O logo institucional `SEMTD-branco` e os demais elementos do footer pertencem
 ao shell da feature 002 e nao devem ser baixados novamente por esta feature.
 Linhas, fundos, badges e capsulas sao geometria simples e devem ser CSS.
 
-As URLs retornadas pelo MCP expiram. Durante `/spec:implementar`, chamar
-`download_assets` para o node `575:483`, salvar os bytes exatos e inspecionar os
-arquivos antes de nomea-los. Nunca manter URL `figma.com/api/mcp/asset` no
-codigo e nunca recriar os SVGs manualmente.
+Os bytes exatos foram baixados e inspecionados no lote visual de 27/10/2026.
+Usar os arquivos locais; não reconsultar o Figma nem usar URL temporária do MCP
+em runtime. Nunca recriar os SVGs manualmente.
 
 ## Arquivos a alterar
 
@@ -227,8 +228,8 @@ codigo e nunca recriar os SVGs manualmente.
 - `src/assets/explorar-por-etapas/check-square.svg`;
 - `src/assets/explorar-por-etapas/file-text.svg`;
 - `src/assets/explorar-por-etapas/book-open.svg`;
-- `src/assets/explorar-por-etapas/chevron-breadcrumb.svg`;
-- `src/assets/explorar-por-etapas/chevron-action.svg`;
+- `src/assets/explorar-por-etapas/chevron-right-breadcrumb.svg`;
+- `src/assets/explorar-por-etapas/chevron-right.svg`;
 - `src/app/NavigationContext.tsx`, somente se ainda nao existir;
 - `src/test/setup.ts`, somente se ainda nao existir.
 
@@ -357,7 +358,7 @@ fonte editorial.
 ### `src/components/explorar/ExploreStepCard.tsx`
 
 ```tsx
-import chevronAction from "../../assets/explorar-por-etapas/chevron-action.svg";
+import chevronAction from "../../assets/explorar-por-etapas/chevron-right.svg";
 import type { ExploreStep } from "../../content/pages/explorar-por-etapas";
 import { ButtonLink } from "../ui/ButtonLink";
 

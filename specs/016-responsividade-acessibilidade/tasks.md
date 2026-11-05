@@ -59,15 +59,15 @@
   - Dependencias: T001–T002. Evidencia: matriz viavel com responsaveis pelas
     execucoes indisponiveis; RF08, CA12–CA15.
 
-- [ ] **T004 — Consultar Figma dos contextos afetados**
-  - Consultar via MCP frames pertinentes do Design YaVUdqYa3boHpvGrxf4ZJ5,
-    pagina 167:2, e Make dVm7lEZdBFqOiiySWLWUqp, node 0:1.
-  - Usar mapa atual e identificar frames faltantes; nao presumir frame proprio
-    da 016 ou deduzir reflow/teclado apenas da referencia desktop.
+- [x] **T004 — Consolidar referências locais dos contextos afetados**
+  - Usar os pacotes locais das features 002–015 e o contrato de componentes
+    compartilhados; a 016 não cria frame próprio.
+  - Não deduzir reflow/teclado apenas da captura desktop: aplicar as regras
+    responsivas e assistivas dos contratos e registrar divergências.
   - Registrar tokens, estados, composicao, assets e adaptacoes necessarias
     quando referencia visual criar barreira, preservando informacao/hierarquia.
-  - Dependencias: T001–T003. Evidencia: fontes/nodes e divergencias no plano;
-    CA15. Referencia insuficiente fica pendencia antes de ajustes visuais.
+  - Dependencias: T001–T003. Evidencia: pacotes locais e divergências no plano;
+    CA15. Ausência de pacote local é a única condição para consulta remota.
 
 - [ ] **T005 — Fechar contratos compartilhados de navegacao e formularios**
   - Conciliar com 002 titulo por rota, skip link/main, foco/scroll de rota,

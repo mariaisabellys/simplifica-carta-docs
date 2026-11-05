@@ -1,5 +1,10 @@
 # Implementation Plan: Fluxo de ajuda
 
+> **Atualização 04/11/2026:** a referência visual da FAQ foi extraída para
+> `docs/design-system/referencias-locais/013-fluxo-de-ajuda/` (node `169:495`).
+> A implementação deve usar esse pacote local; ERS, canais e aceite continuam
+> sendo pendências funcionais/editoriais.
+
 > **Integracao visual atualizada em 16 de outubro de 2026:** a escolha de
 > canais pertence ao node `425:201`; a FAQ permanece `169:495`.
 
@@ -13,8 +18,9 @@ Substituir o placeholder de `/ajuda` por consulta orientativa com FAQ,
 encaminhamento aos dois canais e retorno explicito ao formulario. A pagina
 funciona independentemente de Carta, diagnostico, CSV, login ou backend.
 
-**Plano tecnico documental pendente de consulta Figma, conferencia do PDF
-do ERS, validacao editorial e confirmacao dos canais reais 014/015.** Nao
+**Plano tecnico documental pendente de conferencia do PDF do ERS, validacao
+editorial e confirmacao dos canais reais 014/015.** A referência visual local
+da 013 está concluída; não
 declara canais ativos, layout confirmado ou criterios de aceite aprovados.
 Esta etapa cria somente este documento; nao altera src, instala bibliotecas,
 marca tarefas, envia mensagens ou registra solicitacoes.
@@ -44,8 +50,7 @@ e interface continuam pendentes; evidencias atuais em verification.md.
   estilos sticky/foco e inventario/package.json das etapas desta conversa.
 
 PDF ERS nao extraido/validado; manual textual nao equivale a leitura desse
-PDF. Figma nao consultado via MCP: nenhuma ferramenta Figma exposta nesta
-sessao. Nenhum canal foi verificado operacionalmente, nenhuma FAQ validada
+PDF. Nenhum canal foi verificado operacionalmente, nenhuma FAQ validada
 pela equipe e nenhum teste de interface/build executado.
 
 ## Inventario real e dependencias
@@ -188,7 +193,7 @@ ordem DOM/visual e reflow conforme 016. Nenhum asset novo presumido.
 | specs/013-fluxo-de-ajuda/quickstart.md | Entradas/FAQ/canais/retorno apos entrega; T015 |
 
 T001 possui inventario; T002/T003 possuem proposta, sem validacao da equipe
-ou operacao confirmada. T004 Figma pendente. T005 possui este artefato, sem
+ou operacao confirmada. T004 visual concluído no pacote local. T005 possui este artefato, sem
 dependencias encerradas. Executar T006 validar documentos; implementar
 conteudo/FAQ/cards/entrada/estilos; verificar T012–T015. Nao alterar backend,
 solicitação 014, mecanismo de cópia 015 ou schema/provider para renderizar entrada de ajuda.
@@ -262,7 +267,7 @@ nao consulta agenda/backend para FAQ e nao promete reserva/aprovacao/publicacao.
 
 ## Proximo passo
 
-Continuar `/spec:implementar` apos resolver V013-01, consultar Figma/ERS e
+Continuar `/spec:implementar` apos resolver V013-01 e consultar ERS/canais e
 validar copy, ancora/navegacao 002 e configuracao dos canais 014/015. V013-02
 teve vocabulario/cenarios sincronizados em plan/tasks; isso nao aprova estados
 operacionais. T003 possui contrato tipado parcial; nenhuma tarefa marcada

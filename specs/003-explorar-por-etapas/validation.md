@@ -17,7 +17,7 @@ existem no registro do aplicativo.
 | V003-02 | resolvido documentalmente | Breadcrumb/links usam AppLink e contrato de URL completa, sem handler local. |
 | V003-03 | aberto para implementação | Registrar `/explorar-por-etapas`, página e metadata; hoje são 12 paths planejados e 11 registrados. |
 | V003-04 | dependência de destinos | 005/006/007/011 podem estar parciais; card não deve fingir maturidade do destino. |
-| V003-05 | aguardando fonte | Node `575:483` identificado, sem inspeção visual autenticada na T016. |
+| V003-05 | fonte local resolvida; aceite pendente | Node `575:483` inspecionado e exportado em 27/10/2026. Captura, spec, manifesto e SVGs estão locais; falta comparação no browser e responsividade. |
 
 Nenhum teste, build, browser ou Figma foi executado nesta validação.
 
@@ -28,3 +28,11 @@ Parecer atual: **documentação/conteúdo coerentes; rota e página ausentes**.
 T011–T032 cobrem assets, rota, composição e testes. O node `575:483` existe e
 respondeu por metadados; isso não valida layout. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Lote visual local — 27/10/2026
+
+A lacuna de fonte da T016/T019 foi encerrada para a 003. O pacote em
+`docs/design-system/referencias-locais/003-explorar-por-etapas/` registra o
+frame desktop, adaptações e limites; os seis SVGs necessários estão em
+`src/assets/explorar-por-etapas/`. A rota/página e o aceite visual continuam
+pendentes.

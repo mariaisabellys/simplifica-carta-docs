@@ -9,7 +9,9 @@ Não copiar código-base histórico para implementação v3.
 [Spec CA01–CA20](spec.md), [plano](plan.md), [contrato de integração v3](contrato-integracao-v3.md),
 [matriz 007](../007-formulario-carta-servico/matriz-campos-v3.md),
 [transferência 012](../012-copia-dados-tutorial/contrato-transferencia-v3.md)
-e [navegação](../../docs/arquitetura/contrato-navegacao.md).
+e [navegação](../../docs/arquitetura/contrato-navegacao.md). Referência visual
+normativa: [pacote local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/visual-spec.md),
+extraído em 04/11/2026.
 
 ## Contratos antes do código
 
@@ -47,9 +49,9 @@ da implementação. Não afirmar ausência de utilitário só por falta de compo
 
 Uma rota, node principal 564:635. Variantes 564:730, 564:852, 564:980,
 564:1232 e 564:1357 correspondem às etapas 2–6.
-Consultar os links do [mapa](../../docs/design-system/mapa-figma-telas.md)
-e Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 antes da implementação visual.
-Essa consulta não foi feita na T011. Expandir 564:980 para todos os grupos,
+Usar as seis capturas e o manifesto do pacote local antes da implementação.
+A consulta remota foi concluída pelo lote visual; o Make não é dependência.
+Expandir 564:980 para todos os grupos,
 textos longos, listas e estados; sem altura fixa/corte para caber no frame.
 Figma não sobrescreve conteúdo nem valida a plataforma oficial.
 

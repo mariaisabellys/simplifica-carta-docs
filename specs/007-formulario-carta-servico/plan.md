@@ -5,7 +5,7 @@ implementação integrada e verificações executáveis ainda não iniciadas.
 
 ## Fontes
 
-[Spec](spec.md), [matriz](matriz-campos-v3.md), [modelo central](modelo-central-carta.md), conteúdo/tipos/catálogos/schema/validação/storage/CSV locais e contrato de navegação compartilhado. Não houve consulta Figma/ERS nesta rodada.
+[Spec](spec.md), [matriz](matriz-campos-v3.md), [modelo central](modelo-central-carta.md), conteúdo/tipos/catálogos/schema/validação/storage/CSV locais, contrato de navegação e pacote visual local. A ausência de consulta Figma desta rodada histórica foi superada pela extração de 03/11/2026; ERS permanece fora do escopo visual.
 
 ## Arquitetura proposta
 
@@ -81,7 +81,7 @@ Estado de conclusão: revisão estrutural completa, sem erros e revision igual �
 
 Testar Carta inicial, preenchimento parcial, catálogos inválidos, cardinalidades, custo/prazo, null/false/true, externo/nativo, condições retidas e mutação indevida. Testar ID estável, add/remove/reorder por teclado, última tecla antes de navegação e recarga, storage bloqueado, JSON inválido e versão não suportada sem sobrescrita.
 
-Verificação de consumidores exige implementações reais; helper isolado não comprova integração. Visual exige consulta aos nodes registrados na spec e inspeção em navegador, com 320/390/768/1024/1440 px, zoom/texto ampliado, teclado e leitores disponíveis.
+Verificação de consumidores exige implementações reais; helper isolado não comprova integração. Visual exige comparação com as capturas locais e inspeção em navegador, com 320/390/768/1024/1440 px, zoom/texto ampliado, teclado e leitores disponíveis.
 
 Não conservar limites antigos candidatos de 8 MiB/1000 itens como regras aprovadas. Definir limites técnicos por necessidade e medição, sem truncamento.
 
@@ -89,7 +89,8 @@ Não conservar limites antigos candidatos de 8 MiB/1000 itens como regras aprova
 
 MC-02–MC-08 estão fechadas na matriz de 27/10/2026. T005 definiu a contagem e
 T007 as regras editoriais; ambas ainda exigem implementação. Componentes visuais
-dependem de consulta Figma. Modelo, decoder, provider e UI já podem seguir os
+dependem do pacote local, sem consulta remota obrigatória. Modelo, decoder,
+provider e UI já podem seguir os
 contratos, sem declarar consumidoras prontas antes dos testes integrados.
 
 Histórico: [plano anterior](historico/2026-10-19-pre-t004-plan.md).

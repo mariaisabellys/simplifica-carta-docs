@@ -1,0 +1,12 @@
+{
+  "feature": "componentes-compartilhados",
+  "capturedAt": "2026-11-04",
+  "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5",
+  "references": [
+    { "nodeId": "310:175", "name": "home-shell", "path": "../referencias-locais/002-home-e-navegacao/desktop.png", "sha256": "1ee05499a0a8fcd9b97ea8f4f94acfcc84c0b0a32e6e2cfc24482366166af656" },
+    { "nodeId": "651:317", "name": "Label-Row", "path": "../mapa-figma-telas.md#componentes-identificados" }
+  ],
+  "components": ["AppShell", "Header", "Footer", "Breadcrumb", "PageHeader", "Button", "ButtonLink", "Card", "LabelRow", "Stepper", "Alert"],
+  "tokenSource": "docs/design-system/tokens-e-componentes.md",
+  "assetSources": ["src/assets/brand/semt-d-branco.png", "src/assets/home/arrow-right.svg", "src/assets/ajuda/calendar.svg", "src/assets/ajuda/mail.svg", "src/assets/ajuda/circle-check.svg"]
+}

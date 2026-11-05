@@ -28,7 +28,7 @@ e [contrato de integração v3](contrato-integracao-v3.md). Antecedentes no
   itens por ID, vazio/default e coordenador acima das rotas. Não reintroduzir
   campos legados. Definir interface sem ciclo, CTA único e alvos reais.
   Depende T001; CA06–10/17–19. Documento não comprova componentes prontos.
-- [ ] **T005 — Consultar página e variantes Figma.**
+- [x] **T005 — Consolidar página e variantes no pacote local.**
   Consultar seis nodes/Make do mapa; 564:635 inicial, 564:980 variante da etapa 4
   ampliável para todos os dados. Registrar tokens, estados, responsividade e
   divergências; conteúdo prevalece sobre exemplos visuais. Depende T004; CA13/14/16/18.
@@ -100,7 +100,7 @@ e [contrato de integração v3](contrato-integracao-v3.md). Antecedentes no
   Executar suíte/typecheck/build; criar quickstart, registrar cada CA01–CA20
   com evidência ou pendência e revisão institucional real. Sem logs da Carta,
   storage próprio ou publicação automática. Depende T015–017; não marcar
-  aceite integral quando faltarem fonte, ERS, consulta visual ou testes.
+  aceite integral quando faltarem fonte, ERS, comparação no navegador ou testes.
 
 Rastreabilidade dos cenários por critério: matriz IT01–IT11 do contrato.
 Nenhum item foi marcado concluído apenas pela reformulação deste documento.

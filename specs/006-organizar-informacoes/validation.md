@@ -108,8 +108,8 @@ agendamento ou enviar dados para fechar seu conteudo consultivo.
   mas sua confirmacao frente ao PDF continua em P006-01.
 - A 006 aparece no roadmap e a rota existente tem path, specId, layoutType
   e showInNav coerentes. A pagina atual e placeholder, nao entrega da feature.
-- Codigo apenas em /spec:implementar e consulta Figma antes de trabalho
-  visual sao respeitados nesta rodada; nao houve alteracao executavel.
+- Código apenas em /spec:implementar e consulta ao pacote visual local antes do
+  trabalho visual são respeitados; não houve alteração executável nesta rodada.
 - Inter/tokens, shell unico e requisitos de acessibilidade sao previstos;
   isso nao comprova contraste, teclado ou fidelidade visual.
 - Agendamento da Carta e item unico de levantamento, separado do suporte

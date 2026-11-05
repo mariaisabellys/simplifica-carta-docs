@@ -8,13 +8,15 @@ Código proposto abaixo é contrato de implementação futura, não arquivo entr
 
 Consultados os seis documentos anteriores da 009, tipos/schema/catálogos v3,
 PreviaCartaPage (ainda placeholder), matriz e contratos de sessão/foco da 007,
-regras editoriais T007 e mapa/referências locais. Sem consulta externa Figma/ERS,
-compilação ou testes funcionais. Provider/cartão/projeção precisam de entrega real.
+regras editoriais T007, mapa e pacote visual local extraído em 04/11/2026. Sem
+consulta ao ERS, compilação ou testes funcionais. Provider/cartão/projeção precisam
+de entrega real.
 
 Fontes normativas: [projeção v3](contrato-projecao-v3.md) e
 [navegação](../../docs/arquitetura/contrato-navegacao.md).
-Design: YaVUdqYa3boHpvGrxf4ZJ5, node 821:308; Make dVm7lEZdBFqOiiySWLWUqp/0:1.
-Não afirmar medidas/estados confirmados sem consulta futura.
+Referência normativa: [visual-spec local](../../docs/design-system/referencias-locais/009-previa-html/visual-spec.md),
+captura `componente-desktop.png` e manifesto. Design
+YaVUdqYa3boHpvGrxf4ZJ5/node 821:308 é proveniência histórica.
 
 ## Contrato técnico do view model
 
@@ -93,7 +95,7 @@ White-space pre-wrap/overflow-wrap e altura natural; sem ellipsis, recorte ou
 colunas que mudem a leitura. Inter/tokens e fonte fallback. Avisos distintos
 dos valores; estado Ativo não equivale à publicação. Dois contextos compartilham
 as mesmas regras, variando só composição/níveis de heading/prefixo/ações.
-Consultar Figma para medidas/assets e testar mudanças de conteúdo no layout.
+Usar medidas/assets do pacote local e testar mudanças de conteúdo no layout.
 
 ## Plano de testes e evidência
 
@@ -112,7 +114,7 @@ quickstart antes de entrega. Comparação visual/assistiva conforme F009-11/016.
 
 ## Pendências
 
-Consulta Figma/ERS e copy; implementação das decisões MC-02–MC-08 da 007;
+Consulta ERS e revisão de copy; implementação das decisões MC-02–MC-08 da 007;
 provider e registro de foco reais;
 ação CSV 010; recarga publicada/fallback 017; testes funcionais/visuais.
 T008 fecha projeção documental, não homologa modelo nem implementa a prévia.

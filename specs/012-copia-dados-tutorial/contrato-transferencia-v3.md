@@ -90,7 +90,8 @@ do conteúdo/formulário; o mapa de controles determina elegibilidade.
 011 controla URL, etapa ativa, progresso e CTAs. 012 fornece região única
 `tutorial-dados`, grupos, projeção e operações de cópia. Só montar na etapa 4;
 outras etapas sem controles/live regions da 012. A UI amplia o frame para os
-cinco grupos, sem truncar campos para caber. Consulta visual detalhada é futura.
+cinco grupos, sem truncar campos para caber. A referência detalhada foi
+versionada no pacote local em 04/11/2026.
 Links, mapa e conteúdo já estão reconciliados documentalmente; a composição e
 os componentes continuam pendentes de implementação.
 
@@ -185,4 +186,4 @@ Sem logs, telemetria de conteúdo, leitura de clipboard, backend ou segunda Cart
 | TR17 | HTTPS desktop/mobile, teclado/leitor e colagem manual | Evidência real de gesto/seleção/feedback; mock não substitui ambiente. |
 
 Fixtures são requisitos de testes, não execução nesta tarefa. T011, implementação,
-consulta Figma/ERS/copy e testes reais permanecem pendentes.
+ERS/copy e testes reais permanecem pendentes; a extração visual foi concluída.

@@ -25,7 +25,7 @@ ao ERS/Figma, instalação, build, testes, servidor ou navegador nesta validaç�
 | V001-03 | aberto na 003 | `/explorar-por-etapas` não está registrada; delegação da 001 continua válida. |
 | V001-04 | resolvido documentalmente | Modelo Carta v3, conteúdo e testes existem; inventários não devem chamá-los ausentes. Integração não é inferida. |
 | V001-05 | aguardando 017/ambiente | Fallback SPA, HTTPS e deploy não possuem evidência; tratar na T018. |
-| V001-06 | aguardando fonte | Inspeção visual Figma continua pendente conforme T016. |
+| V001-06 | resolvido documentalmente | Pacotes visuais locais 002–015 e contrato de componentes compartilhados substituem a inspeção remota obrigatória. |
 
 ## Liberação e limites
 

@@ -1,5 +1,9 @@
 # Validacao: Fluxo de ajuda
 
+> **Atualização visual — 04/11/2026:** `169:495` foi extraído, conferido e
+> versionado no pacote local da 013. ERS, operação, implementação e testes
+> de navegador/assistivos ainda não foram executados.
+
 Revisão atual: [verificação T013](../../docs/verificacoes/t013-canais-ajuda.md).
 A seção “Integração compartilhada — T013” ao final registra o contrato vigente.
 
@@ -9,7 +13,8 @@ A seção “Integração compartilhada — T013” ao final registra o contrato
 
 Executado `/spec:validar 013-fluxo-de-ajuda` em 2026-10-05.
 **Resultado: requer consolidacao documental dos estados compartilhados;
-ERS, Figma, copy e aceite dos canais reais permanecem pendentes.**
+ERS, copy e aceite dos canais reais permanecem pendentes. A referência visual
+local foi concluída no lote 013–015.**
 
 Foram avaliados SPEC, PLAN, TASK e IMPLEMENTATION-PLAN. Somente este relatorio
 foi criado; os quatro artefatos e codigo-fonte nao foram alterados. Nenhuma

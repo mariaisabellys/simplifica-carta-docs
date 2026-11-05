@@ -11,8 +11,9 @@ Autor: Codex. Base: HEAD 7948d35 e alterações documentais anteriores preservad
 **Contrato v3 e conteúdo T011 reconciliados; integração e aceite funcional pendentes.**
 [Relatório anterior](historico/2026-10-19-pre-t010-validation.md).
 
-Fontes locais: sete documentos 012, docs/spec, matriz 007, conteúdo do tutorial e
-utilitário clipboard. Sem consulta externa Figma/ERS ou operação real de clipboard.
+Fontes locais: sete documentos 012, docs/spec, matriz 007, conteúdo do tutorial,
+utilitário clipboard e pacote visual extraído em 04/11/2026. Sem consulta ao ERS
+ou operação real de clipboard.
 
 | ID | Estado documental | Destino |
 | --- | --- | --- |
@@ -26,8 +27,8 @@ utilitário clipboard. Sem consulta externa Figma/ERS ou operação real de clip
 Os achados estão resolvidos quanto ao contrato e ao conteúdo, não à implementação.
 A lista de dez blocos/seis `copyLabel` foi removida em 27/10/2026; a etapa 4
 referencia a projeção 25/13/12, mas nenhum componente 012 foi entregue por isso.
-Implementação de MC-02–MC-08, foco da 007, consulta visual/copy/ERS e clipboard
-real permanecem pendências de entrega. Não declarar aprovação institucional/visual.
+Implementação de MC-02–MC-08, foco da 007, copy/ERS, comparação no navegador e
+clipboard real permanecem pendências. Não declarar aprovação institucional/visual.
 
 ## Revalidação T019 — 22/10/2026
 

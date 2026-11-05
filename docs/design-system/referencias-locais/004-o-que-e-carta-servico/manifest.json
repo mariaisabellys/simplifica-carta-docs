@@ -1,0 +1,10 @@
+{
+  "feature": "004-o-que-e-carta-servico",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5", "nodeId": "365:265" },
+  "capturedAt": "2026-10-27",
+  "viewport": { "width": 1440, "height": 2778 },
+  "reference": { "path": "desktop.png", "sha256": "5c2ace0ca05907de19f4afe339f5b1e46f33301647e481d829a44ed36cee9075" },
+  "contentSource": "src/content/pages/o-que-e-carta.ts",
+  "assetDirectory": "src/assets/o-que-e-carta-servico",
+  "sharedAssets": ["src/assets/brand/semt-d-branco.png"]
+}

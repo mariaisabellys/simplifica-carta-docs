@@ -63,3 +63,8 @@ A migração de conteúdo antes pendente foi aplicada e testada: fontes únicas,
 CTA da FAQ, estados e ações por contexto. Ver [registro atualizado](../../docs/verificacoes/t013-canais-ajuda.md).
 Onze testes novos, suíte 36/36, typecheck e build passaram. Não equivalem à
 implementação/validação visual ou operacional desta feature; preservar suas pendências.
+# Verificação visual atual — 04/11/2026
+
+Os quatro nodes da jornada estão disponíveis no pacote local da 014; isso
+encerra a pendência de extração, mas não comprova agenda, implementação ou
+aceite no navegador.

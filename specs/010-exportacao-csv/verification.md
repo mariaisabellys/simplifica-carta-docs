@@ -28,4 +28,5 @@ mas ainda usa enums internos/formatadores diferentes. Não equivale a pipeline
 com snapshot/validação/safety/BOM/download. Histórico de três testes do serializador
 não prova matriz completa, proteção, navegador ou Excel/Calc.
 Fixtures são expectativas futuras. F010-01–12, compatibilidade, performance,
-copy/Figma/ERS e decisões estruturais pertinentes permanecem pendentes.
+copy/ERS e decisões estruturais pertinentes permanecem pendentes. O pacote
+visual integrado à 009 foi concluído em 04/11/2026.

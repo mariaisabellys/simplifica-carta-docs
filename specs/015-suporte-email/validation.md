@@ -73,3 +73,8 @@ RF01–RF07/CA01–CA13 seguem para T001–T015 e EM01–EM12. O e-mail, estado 
 botão/controlador de clipboard. O node compartilhado `425:201` respondeu por
 metadados, sem aceite visual ou operacional. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+# Atualização visual — 04/11/2026
+
+A composição compartilhada `425:201` foi extraída e versionada no pacote local
+da 015. Clipboard, ERS, validação institucional, implementação e testes reais
+continuam pendentes.

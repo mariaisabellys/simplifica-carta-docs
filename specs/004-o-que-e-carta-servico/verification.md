@@ -27,3 +27,12 @@ Não houve consulta externa, Figma, servidor, build ou teste funcional.
 
 Resultado: bloqueio V004-04 encerrado documentalmente. Os testes do link e a
 verificação visual permanecem nas tarefas T035–T037.
+
+## Registro visual local — 27/10/2026
+
+O node `365:265` foi inspecionado e exportado. Captura, especificação e
+manifesto estão em
+`docs/design-system/referencias-locais/004-o-que-e-carta-servico/`; os SVGs
+estão em `src/assets/o-que-e-carta-servico/`. A fonte visual deixou de ser
+pendência. Permanecem a implementação, a comparação no browser, a
+responsividade e os testes funcionais T035–T037.

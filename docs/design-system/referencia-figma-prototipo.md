@@ -2,8 +2,10 @@
 
 ## Papel desta referencia
 
-O arquivo Figma do prototipo sera usado como referencia oficial para layout,
-fluxo, composicao e hierarquia das telas do Simplifica Carta.
+O arquivo Figma é a origem do protótipo. Para implementação, a referência
+oficial é a evidência versionada no repositório: mapa, tokens e pacotes em
+[`referencias-locais/`](referencias-locais/README.md). Isso garante o mesmo
+contrato para pessoas e IAs sem acesso ao arquivo privado.
 
 Referencia oficial das telas:
 
@@ -18,13 +20,14 @@ O projeto possui duas fontes visuais complementares:
 - Figma Make: orienta design system, tokens, componentes, cores, tipografia,
   espacamentos, formularios, botoes, cards e padroes visuais reutilizaveis.
 
-Em trabalho visual, o Codex deve consultar as duas referencias quando a tarefa
-envolver tela, componente, layout, estilo, responsividade ou aderencia visual.
+Em trabalho visual, consultar primeiro as fontes locais. O Figma Design e o
+Figma Make só precisam ser acessados para telas ainda sem pacote local ou para
+uma auditoria explícita; descobertas remotas devem ser versionadas antes de
+orientar a equipe.
 
-## Consulta obrigatoria via MCP
+## Proveniência e consulta opcional via MCP
 
-Antes de implementar ou revisar qualquer tela, o Codex deve consultar este
-arquivo pelo MCP do Figma.
+Os parâmetros abaixo permitem auditar a origem quando houver acesso:
 
 Parametros oficiais do arquivo:
 
@@ -48,23 +51,23 @@ feature `003-explorar-por-etapas`. Ela apresenta quatro cards com acesso
 independente ao diagnostico, organizacao das informacoes, elaboracao da Carta e
 tutorial de publicacao.
 
-Quando a tarefa envolver uma tela especifica, usar preferencialmente um link
-Figma com `node-id` da tela ou componente. Se o link disponivel apontar apenas
-para o arquivo, o Codex deve usar o MCP para listar paginas/nos e identificar
-o node correto antes de chamar `get_design_context`.
+Quando a tela já possuir captura, manifesto e `visual-spec.md`, não é necessário
+abrir o link. Se o pacote estiver ausente, usar o node específico, extrair a
+evidência e criar o pacote antes de distribuir a implementação.
 
 ## Ordem de uso em trabalho visual
 
-1. Consultar a spec da funcionalidade em `specs/`.
-2. Consultar o Figma Design para layout, fluxo e composicao da tela.
-3. Consultar o Figma Make para tokens, componentes e padroes visuais.
-4. Implementar no codigo seguindo a estrutura do projeto.
-5. Validar responsividade, acessibilidade e aderencia visual.
+1. Consultar a spec e o conteúdo da funcionalidade.
+2. Consultar o pacote em `referencias-locais/` e os tokens versionados.
+3. Implementar no código seguindo a estrutura do projeto.
+4. Validar responsividade, acessibilidade e aderência contra a captura local.
+5. Consultar o Figma apenas se a referência local não existir ou se a tarefa
+   pedir uma atualização da origem.
 
 ## Regra de fallback
 
-Se o MCP do Figma nao retornar informacao suficiente do prototipo, o Codex deve
-avisar antes de implementar a tela e solicitar uma destas alternativas:
+Se uma tela ainda não tiver pacote local e o MCP não retornar informação
+suficiente, registrar o bloqueio e solicitar uma destas alternativas:
 
 - link Figma com `node-id` da tela especifica;
 - captura atualizada da tela;

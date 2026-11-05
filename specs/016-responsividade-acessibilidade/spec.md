@@ -221,11 +221,11 @@ barreiras ou resultados por teste executado.
 ## Referencias visuais e pendencias
 
 Esta feature usa os frames de cada pagina, sem frame proprio presumido.
-Antes de implementar ajustes visuais, consultar os nodes pertinentes via MCP
-no Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e o Figma Make
-`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Identificar referencias pendentes para
-telas ainda sem frame e registrar responsividade, estados e divergencias no
-`implementation-plan.md`.
+Antes de implementar ajustes visuais, usar os pacotes locais de cada feature,
+`docs/design-system/componentes-compartilhados/` e os tokens versionados.
+Consultar Figma apenas se uma tela realmente não tiver pacote local ou se a
+equipe solicitar atualização; registrar responsividade, estados e divergências
+no `implementation-plan.md`.
 
 O layout desktop do prototipo nao define sozinho reflow, teclado ou leitura
 assistiva. Quando a referencia visual criar barreira, documentar a adaptacao
@@ -280,7 +280,7 @@ a implementacao das funcionalidades ausentes.
 | CA12 | Reduzir movimento, falhar fonte ou imagem e usar teclado virtual. | Manter informacao e acoes acessiveis, sem conteudo essencial dependente de efeito/asset. |
 | CA13 | Executar matriz de navegadores e leitores de tela. | Registrar versoes, resultados e defeitos, com verificacoes automatizadas e manuais complementares. |
 | CA14 | Revisar prontidao transversal. | Encontrar criterios A/AA aplicaveis avaliados, defeitos corrigidos/retestados e pendencias sem falsa declaracao de conformidade. |
-| CA15 | Revisar ajustes visuais e dados usados nas evidencias. | Encontrar consultas Figma, adaptacoes documentadas e dados sinteticos, sem alteracao indevida de negocio ou exposicao pessoal. |
+| CA15 | Revisar ajustes visuais e dados usados nas evidencias. | Encontrar pacotes locais, adaptacoes documentadas e dados sinteticos, sem alteracao indevida de negocio ou exposicao pessoal. |
 
 ## Proximo passo
 

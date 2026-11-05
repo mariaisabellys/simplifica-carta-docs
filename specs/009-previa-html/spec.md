@@ -93,9 +93,9 @@ Verificar Chrome/Edge/Firefox/Safari e leitores conforme disponibilidade da 016.
 ## Referências e dependências
 
 Node 821:308 é referência compartilhada do card, não evidência de página completa.
-Consultar Design YaVUdqYa3boHpvGrxf4ZJ5 e Make dVm7lEZdBFqOiiySWLWUqp/0:1
-antes de implementar visual; adaptar layout à cobertura, não o contrário.
-Figma e ERS não foram consultados externamente nesta rodada; copy requer revisão.
+Usar o [pacote visual local](../../docs/design-system/referencias-locais/009-previa-html/visual-spec.md)
+e sua captura antes da implementação; adaptar layout à cobertura, não o contrário.
+O Figma permanece apenas como proveniência. ERS e copy ainda requerem revisão.
 Dependências: 001/002 (shell), 007 (v3/sessão/estrutura/foco), 008 (editorial),
 010 (CSV), 011/012 (tutorial/cópia), 013 (ajuda), 016/017 (acessibilidade/deploy).
 Rotas existentes não comprovam jornadas entregues.
@@ -121,7 +121,7 @@ Rotas existentes não comprovam jornadas entregues.
 | CA15 | Teclado/leitor identifica regiões e ações; sem foco/anúncio integral em atualizações. |
 | CA16 | Texto extenso, mobile, zoom/reflow preservam conteúdo integral. |
 | CA17 | Fonte única e copy versionada; nenhuma publicação, persistência própria ou HTML/PDF. |
-| CA18 | Referências consultadas e layout adaptado ao conteúdo, com evidência visual futura. |
+| CA18 | Pacote visual local aplicado e layout adaptado ao conteúdo, com comparação futura no navegador. |
 | CA19 | Condições K/S/ON/E respeitadas, sem revelar/apagar valores inativos retidos. |
 | CA20 | Mesmo componente/view model nos dois contextos, sem IDs DOM repetidos. |
 | CA21 | Ativo false não comprova confirmação; seleções isoladas e prazo parcial não somem. |

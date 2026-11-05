@@ -19,8 +19,8 @@ relativos ajustados. Não alterados src/tests/content ou documentos da 011.
 - Nenhum diff em src/tests; não executados testes, build ou clipboard real.
 
 Utilitário existente não entrega UI/coordenador; decisões de trava, manual e
-retorno tardio precisam de testes previstos. Consulta Figma/ERS/copy e ambientes
-funcionais/assistivos não foram executados. Próxima tarefa global: T011.
+retorno tardio precisam de testes previstos. ERS/copy e ambientes funcionais/
+assistivos não foram executados. A extração visual foi concluída em 04/11/2026.
 
 ## Atualização de dependência — 27/10/2026
 

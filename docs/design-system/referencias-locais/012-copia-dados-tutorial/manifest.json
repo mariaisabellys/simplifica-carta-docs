@@ -1,0 +1,22 @@
+{
+  "feature": "012-copia-dados-tutorial",
+  "route": null,
+  "owner": "011-tutorial-paraiba-digital",
+  "state": "etapa-4",
+  "capturedAt": "2026-11-04",
+  "references": [
+    {
+      "kind": "integrated-region",
+      "nodeId": "564:980",
+      "path": "../011-tutorial-paraiba-digital/etapa-4-desktop.png",
+      "viewport": { "width": 1280, "height": 1294 },
+      "sha256": "47ab1e62fb8a1aa7433a06269499dd1e24468c5d3c9c0da9a9146cbb922154be"
+    }
+  ],
+  "contentSource": "src/content/tutorial/paraiba-digital.ts",
+  "contractSources": [
+    "specs/012-copia-dados-tutorial/contrato-transferencia-v3.md",
+    "specs/007-formulario-carta-servico/matriz-campos-v3.md"
+  ],
+  "assets": ["src/assets/tutorial/clipboard.svg", "src/assets/tutorial/copy.svg"]
+}

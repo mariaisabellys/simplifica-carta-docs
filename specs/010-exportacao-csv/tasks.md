@@ -6,8 +6,9 @@ Base: [contrato](contrato-exportacao-v3.md) e [plano técnico](implementation-pl
 
 - [ ] F010-01 — Conferir provider/estrutura/foco 007 e slot 009; registrar gaps
   reais, sem interpretar helper como exportação entregue.
-- [ ] F010-02 — Consultar Figma/ERS, revisar copy e política candidata de fórmulas;
-  definir ambientes/caminhos suportados e responsáveis pela decisão de segurança.
+- [ ] F010-02 — Usar o pacote visual local; consultar ERS, revisar copy e política
+  candidata de fórmulas; definir ambientes/caminhos suportados e responsáveis
+  pela decisão de segurança. A extração visual foi concluída em 04/11/2026.
 - [ ] F010-03 — Implementar snapshot independente de todos os grupos/arrays v3
   e validação estrutural da mesma revisão, com falha distinta de sucesso vazio.
   Depende de F010-01; testar EX12/13, sem gate editorial.

@@ -1,0 +1,18 @@
+{
+  "feature": "015-suporte-email",
+  "route": "/ajuda/suporte-email",
+  "owner": "014-atendimento-agendado",
+  "capturedAt": "2026-11-04",
+  "references": [
+    {
+      "kind": "shared-entry",
+      "nodeId": "425:201",
+      "path": "../014-atendimento-agendado/entrada-desktop.png",
+      "viewport": { "width": 1440, "height": 1176 },
+      "sha256": "490efd0c0d97c87cc865b52df26c02d4b77727f59d80b8fd47fde04f441fff16"
+    }
+  ],
+  "contentSource": "src/content/ajuda/suporte-email.ts",
+  "contractSources": ["docs/arquitetura/contrato-canais-ajuda.md"],
+  "assets": ["src/assets/ajuda/mail.svg"]
+}

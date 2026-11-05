@@ -230,10 +230,10 @@ Nao reimplementar funcionalidade ausente sob nome de correcao transversal.
 
 ## Figma e criterios de aceite
 
-Consultar via MCP frames pertinentes de cada pagina no Design
-`YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e Make
-`dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, antes de ajustes visuais.
-Usar mapa atual e identificar frames faltantes. Registrar estados, breakpoints
+Usar os pacotes locais pertinentes em `docs/design-system/referencias-locais/`
+e o contrato de componentes compartilhados antes de ajustes visuais. Consultar
+Figma apenas para uma tela sem pacote local ou atualização solicitada.
+Registrar estados, breakpoints
 e divergencias no implementation-plan; desktop isolado nao define uso movel.
 
 | Criterios da spec | Evidencia de aceite futura |

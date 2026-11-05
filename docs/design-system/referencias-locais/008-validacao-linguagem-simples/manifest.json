@@ -1,0 +1,12 @@
+{
+  "feature": "008-validacao-linguagem-simples",
+  "route": null,
+  "integrationOwner": "007-formulario-carta-servico",
+  "capturedAt": "2026-11-03",
+  "referencePackage": "../007-formulario-carta-servico",
+  "representativeReference": "../007-formulario-carta-servico/parte-1-desktop.png",
+  "states": ["aprovado", "revisao-necessaria", "falha", "inconclusivo", "nao-analisado", "nao-aplicavel"],
+  "contractSource": "specs/008-validacao-linguagem-simples/contrato-validacao-editorial.md",
+  "plannedContentSource": "src/content/validation/linguagem-simples.ts",
+  "notes": "Feature integrada; não criar screenshot ou página independente."
+}

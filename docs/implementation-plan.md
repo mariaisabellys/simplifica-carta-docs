@@ -67,8 +67,9 @@ Ao receber esse comando, o Codex deve:
 - identificar a funcionalidade;
 - ler `spec.md`, `plan.md` e `tasks.md`;
 - consultar o ERS, roadmap e documentos em `docs/`;
-- consultar o Figma Design quando houver tela envolvida;
-- consultar o Figma Make quando houver componentes, tokens ou estilos;
+- consultar primeiro `docs/design-system/referencias-locais/`, os contratos de
+  componentes e os tokens versionados; consultar Figma Design/Make somente se
+  a tela ainda não possuir pacote local ou se houver uma atualização explícita;
 - ler o codigo existente;
 - escrever um `implementation-plan.md` detalhado;
 - incluir codigo base suficiente para orientar a implementacao.
@@ -153,7 +154,9 @@ Sempre que possivel, o plano deve informar o `nodeId` especifico da tela.
 
 ## Uso do Figma Make
 
-Quando a funcionalidade envolver componentes, tokens, estilos ou responsividade, o `implementation-plan.md` deve registrar a consulta ao Figma Make.
+Quando a funcionalidade envolver componentes, tokens, estilos ou responsividade,
+o `implementation-plan.md` deve registrar o pacote local e os contratos usados;
+consulta ao Figma Make é opcional quando esse pacote já existir.
 
 Referencia atual do design system:
 

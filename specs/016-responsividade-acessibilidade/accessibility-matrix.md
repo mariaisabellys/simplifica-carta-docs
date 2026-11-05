@@ -24,7 +24,7 @@ a atribuir em T003. Sem commit criado nesta rodada. Evidencia: verification.md.
 | CA12 | Paginas / T014 | Preferencias/assets/teclado virtual | Pendente |
 | CA13 | Produto / T003/T013–T015 | Browsers/leitores desktop e movel | Ambientes/versoes a confirmar; nao executado |
 | CA14 | Produto / T002/T016–T017 | Matriz A/AA completa e retestes | Pendente; nenhuma nao aplicabilidade presumida |
-| CA15 | Ajustes visuais / T004 | Consultas Figma/adaptacoes | Figma indisponivel; nenhum ajuste visual realizado |
+| CA15 | Ajustes visuais / T004 | Pacotes locais/adaptacoes | Pacotes locais 002–015 e contrato compartilhado disponíveis; ajustes e retestes reais pendentes |
 
 Node 24.20.0/testes de mocks nao sao ambientes de leitura assistiva. Chrome,
 Edge, Firefox, Safari, NVDA, VoiceOver e dispositivos reais nao foram testados.

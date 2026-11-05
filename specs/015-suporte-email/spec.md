@@ -1,5 +1,9 @@
 # Spec: Suporte por e-mail
 
+> **Atualização visual — 04/11/2026:** a composição compartilhada está
+> documentada em [`docs/design-system/referencias-locais/015-suporte-email/`](../../docs/design-system/referencias-locais/015-suporte-email/)
+> e aponta para a captura da entrada `425:201` da 014.
+
 Revisão documental T012 — 20/10/2026. Contrato vigente de exibição e cópia,
 conforme decisão de produto de 16/10/2026. Versão anterior no
 [histórico](historico/2026-10-20-pre-t012-spec.md), sem força normativa atual.
@@ -32,7 +36,8 @@ Notificações de agendamento pertencem à 014, não a esta feature.
 
 Confirmação editorial/estado ativo não comprovam titularidade, atividade,
 recebimento ou prazo operacional. Não enviar mensagem de teste ao endereço.
-Não houve consulta Figma/ERS ou validação institucional nesta revisão.
+A extração visual de `425:201` foi concluída e conferida; ERS e validação
+institucional do contato continuam pendentes.
 
 ## Requisitos funcionais
 
@@ -105,8 +110,8 @@ Alterar a fonte de contato deve atualizar texto e payload juntos.
 ## Visual, acessibilidade e dependências
 
 Node 425:201 do [mapa](../../docs/design-system/mapa-figma-telas.md) é a referência,
-não 169:495 da FAQ. Layout se adapta ao conteúdo versionado. Consultar Design
-e Make dVm7lEZdBFqOiiySWLWUqp, node 0:1 antes do trabalho visual; consulta pendente.
+não 169:495 da FAQ. Layout se adapta ao conteúdo versionado. Usar o pacote local
+da 015 antes do trabalho visual; Figma e Make permanecem apenas como proveniência.
 Reusar Inter/tokens, um main/h1 conforme shell, foco visível, ordem semântica,
 botões por teclado, status local e endereço integral sem corte ou caracteres
 inseridos por quebra visual. Verificar seleção por teclado/toque, reflow e zoom.

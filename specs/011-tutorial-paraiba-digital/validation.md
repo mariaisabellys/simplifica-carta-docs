@@ -50,3 +50,10 @@ metadados e o portal público Paraíba
 Digital está acessível; login, URL administrativa, menus, permissões e fluxo de
 cadastro não foram verificados. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Atualização visual — 04/11/2026
+
+Os seis frames foram inspecionados e versionados no
+[pacote local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/visual-spec.md).
+Isso encerra a dependência de consulta remota ao Figma, mas não implementa a
+página, não valida o ERS/plataforma externa e não substitui testes no navegador.

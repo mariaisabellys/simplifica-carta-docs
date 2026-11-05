@@ -59,8 +59,9 @@ durante erro/pending. Anúncios curtos por campo/item, sem foco roubado por prom
 Retorno usa NavigationProvider/AppLink e registro da 007; alvo inativo/removido
 vai à condição/grupo. Fallback tutorial-dados não recria campos ocultos.
 
-Referência local Design YaVUdqYa3boHpvGrxf4ZJ5 node 564:980; Make
-dVm7lEZdBFqOiiySWLWUqp/0:1 a consultar. Não houve consulta visual nesta rodada.
+Referência normativa: [pacote visual local](../../docs/design-system/referencias-locais/012-copia-dados-tutorial/visual-spec.md),
+extraído do Design YaVUdqYa3boHpvGrxf4ZJ5, node 564:980, em 04/11/2026. Não há
+página própria nem dependência obrigatória do Make.
 Layout adapta-se aos 25 campos e quantidade variável de itens/botões; Inter/tokens,
 reflow e seleção acessível. Não criar página nem copiar texto ilustrativo do frame.
 
@@ -71,5 +72,5 @@ depois provider/011 reais e clipboard em HTTPS/contexto seguro com dados sintét
 Mocks não comprovam gesto/permissão/colagem. Registrar versões/dispositivo/leitor,
 destino de colagem, normalizações, retorno/erro e limites entre abas/reload.
 Verificar 015 somente se utilitário compartilhado mudar, sem acoplar Carta ao e-mail.
-Composição 011, Figma/ERS/copy, provider/foco e testes funcionais continuam pendentes;
+Composição 011, ERS/copy, provider/foco e testes funcionais continuam pendentes;
 nenhum snippet antigo é módulo compilado ou requisito de contagem vigente.

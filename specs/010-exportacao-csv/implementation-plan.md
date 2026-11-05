@@ -12,7 +12,11 @@ tests/csv.test.mjs e package.json. Helper atual tem 22 registros; serializador
 já usa quoting integral/CRLF. Os três testes existentes cobrem só serializador.
 Não foram executados nesta rodada. BOM/safety/download/snapshot integrado
 não são comprovados pelos helpers. Consulta OWASP atual registrada no contrato;
-Figma/ERS e ferramentas de planilha não consultados/executados.
+o pacote visual local foi extraído em 04/11/2026, mas ERS e ferramentas de
+planilha não foram consultados/executados.
+
+Referência normativa: [visual-spec local](../../docs/design-system/referencias-locais/010-exportacao-csv/visual-spec.md),
+integrada ao cabeçalho da 009; não existe página própria da 010.
 
 ## Contratos técnicos
 
@@ -71,5 +75,5 @@ Não elevar orçamento ou impor corte para esconder regressão.
 
 Política candidata de fórmulas e compatibilidade real; implementação da validação
 defensiva/contador e decisões MC-03/04/05/08 já fechadas na 007; provider/ação/slot/foco;
-copy/Figma/ERS; ambientes e desempenho. Não resolver decisão de negócio por
+copy/ERS; ambientes e desempenho. Não resolver decisão de negócio por
 formatação. Build/testes só após implementação autorizada e com evidências atuais.

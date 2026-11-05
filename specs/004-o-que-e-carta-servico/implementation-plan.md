@@ -18,6 +18,8 @@ conteúdo; implementação e aceite visual permanecem pendentes.
 - arquitetura: `docs/arquitetura/arquitetura-sistema.md`;
 - design system: `docs/design-system/mapa-figma-telas.md` e
   `docs/design-system/tokens-e-componentes.md`;
+- pacote visual local em
+  `docs/design-system/referencias-locais/004-o-que-e-carta-servico/`;
 - estrategia geral: `docs/implementation-plan.md`;
 - planos das features 002 e 003;
 - codigo React, rotas, shell, componentes, conteudo e CSS existentes em `src/`;
@@ -38,11 +40,9 @@ conteúdo; implementação e aceite visual permanecem pendentes.
   - [Decreto nº 9.756/2019](https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2019/decreto/d9756.htm),
     reconsultado em 27/10/2026.
 
-O Figma Make retornou links para `src/App.tsx`, `src/index.css` e
-`design-system-spec.md`, mas o conector nao permitiu ler esses recursos nesta
-sessao. Os tokens deste plano combinam os valores observados no Figma Design
-com o resumo versionado do design system. Antes de implementar, reconsultar o
-Make se os recursos voltarem a ficar acessiveis.
+Os tokens deste plano, a captura local e o resumo versionado do design system
+formam contrato suficiente para implementação. A consulta ao Make é opcional e
+não pode bloquear quem não possui acesso ao arquivo remoto.
 
 ## Objetivo da implementacao
 
@@ -72,7 +72,8 @@ No momento da criacao deste plano:
 - a rota 004 existe, mas ainda nao possui `figmaNodeId`;
 - `OQueECartaPage.tsx` ainda usa `PageHeader` e `PlaceholderCard`;
 - nao ha infraestrutura de testes automatizados;
-- os 14 SVGs proprios da pagina ainda nao estao locais;
+- os SVGs próprios da página estão versionados em
+  `src/assets/o-que-e-carta-servico/`;
 - Inter ja e a fonte principal em `src/styles/tokens.css`.
 
 A implementacao deve preferir o resultado real da feature 002 caso ela seja
@@ -98,7 +99,7 @@ footer dentro da pagina.
 - As tres normas serao uma lista; cada acao sera link externo real.
 - Nao adicionar CTA final, formulario, progresso ou estado React de negocio.
 - O conteudo fica em `src/content/pages/o-que-e-carta.ts`.
-- Os SVGs oficiais ficam em `src/assets/o-que-e-carta/`.
+- Os SVGs oficiais ficam em `src/assets/o-que-e-carta-servico/`.
 - Todos os icones sao decorativos porque os textos adjacentes comunicam o
   significado completo.
 - `Material de apoio` nao entra na header.
@@ -211,30 +212,29 @@ texto navy/branco no hover apenas se o contraste for validado.
 
 ## Inventario de assets
 
-Os nomes de hash abaixo sao apenas rastreabilidade do retorno MCP. Na
-implementacao, usar nomes semanticos e baixar novamente com `download_assets`.
+Os nomes de hash abaixo preservam a rastreabilidade do retorno MCP. Os arquivos
+com nomes semânticos já foram baixados no lote visual de 27/10/2026.
 
 | Node | Hash MCP | Arquivo local | Uso/tamanho do frame |
 | --- | --- | --- | --- |
-| `375:351` | `836f9.svg` | `importance-citizen.svg` | importancia, 24 × 24 |
-| `375:354` e `375:357` | `026b5.svg` | `importance-check.svg` | orgao e gestao, 24 × 24 |
-| `377:396` | `836f9.svg` | `foundation-citizen.svg` | fundamento cidadao, 24 × 24 |
-| `377:403` | `dfe90.svg` | `foundation-agency.svg` | fundamento orgao, 25 × 25 |
-| `388:448` | `dffc9.svg` | `field-name.svg` | nome, 35 × 35 |
-| `388:474` | `6b59c.svg` | `field-description.svg` | o que e, 35 × 35 |
-| `388:493` | `a09b3.svg` | `field-audience.svg` | publico, 35 × 35 |
-| `388:461` | `1fef1.svg` | `field-documents.svg` | documentos, 35 × 35 |
-| `388:592` | `ae7e8.svg` | `field-steps.svg` | etapas, 35 × 35 |
-| `388:585` | `6e38a.svg` | `field-deadline.svg` | prazo, 35 × 35 |
-| `388:633` | `92460.svg` | `field-costs.svg` | custos, 35 × 35 |
-| `388:637` | `baef9.svg` | `field-channels.svg` | canais, 35 × 35 |
-| `388:641` | `322e4.svg` | `field-scheduling.svg` | agendamento, 35 × 35 |
-| `388:662` | `3c7c4.svg` | `field-additional.svg` | adicionais, 35 × 35 |
+| `375:351` | `836f9.svg` | `para-o-cidadao.svg` | importancia, 24 × 24 |
+| `375:354` e `375:357` | `026b5.svg` | `importancia.svg` | orgao e gestao, 24 × 24 |
+| `377:396` | `836f9.svg` | `para-o-cidadao.svg` | fundamento cidadao, 24 × 24 |
+| `377:403` | `dfe90.svg` | `para-o-orgao-publico.svg` | fundamento orgao, 25 × 25 |
+| `388:448` | `dffc9.svg` | `nome-do-servico.svg` | nome, 35 × 35 |
+| `388:474` | `6b59c.svg` | `o-que-e.svg` | o que e, 35 × 35 |
+| `388:493` | `a09b3.svg` | `quem-pode-utilizar.svg` | publico, 35 × 35 |
+| `388:461` | `1fef1.svg` | `documentos-necessarios.svg` | documentos, 35 × 35 |
+| `388:592` | `ae7e8.svg` | `etapas.svg` | etapas, 35 × 35 |
+| `388:585` | `6e38a.svg` | `prazo.svg` | prazo, 35 × 35 |
+| `388:633` | `92460.svg` | `custos.svg` | custos, 35 × 35 |
+| `388:637` | `baef9.svg` | `canais-de-atendimento.svg` | canais, 35 × 35 |
+| `388:641` | `322e4.svg` | `agendamento.svg` | agendamento, 35 × 35 |
+| `388:662` | `3c7c4.svg` | `informacoes-adicionais.svg` | adicionais, 35 × 35 |
 | `411:224` | `e849c.svg` | `legislation.svg` | cabecalho legal, 40 × 40 |
 
-`importance-citizen.svg` e `foundation-citizen.svg` apontam para o mesmo vetor
-no retorno atual. Pode haver um unico arquivo local compartilhado se os bytes
-forem identicos. Nao deduplicar apenas pelo nome do hash sem conferir o arquivo.
+Os usos de importância e fundamento para cidadão apontam para o mesmo vetor e
+reutilizam `para-o-cidadao.svg`, após conferência do retorno.
 
 Assets do header/footer (`SEMTD-branco`, divisores e marca) pertencem a feature
 002 e nao devem ser baixados novamente. O breadcrumb do node nao expos um SVG
@@ -260,7 +260,7 @@ marcada como decorativa.
 - `src/components/ui/Breadcrumb.tsx`, se ainda nao existir;
 - `src/styles/pages/o-que-e-carta.css`, se a organizacao de CSS for aprovada;
 - `src/pages/OQueECartaPage.test.tsx`, se testes forem configurados;
-- `src/assets/o-que-e-carta/` com os SVGs do inventario;
+- `src/assets/o-que-e-carta-servico/` com os SVGs do inventario (já criado);
 - `src/test/setup.ts`, somente se ainda nao existir.
 
 ## Contratos TypeScript
@@ -853,8 +853,7 @@ resumos legais foram registrados com seus links oficiais no arquivo tipado.
 
 - A feature 002 ainda nao esta implementada; a 004 deve verificar o shell real
   antes do codigo e nao duplicar infraestrutura compartilhada.
-- O Figma Make retornou os recursos estruturados, mas eles nao puderam ser
-  lidos nesta sessao. Os tokens possuem base suficiente no frame e na
-  documentacao local, com reconsulta obrigatoria quando possivel.
+- Os tokens, a captura e os assets locais formam base suficiente. Reconsulta ao
+  Figma Make é auditoria opcional e não bloqueia a implementação.
 - A infraestrutura de testes ainda nao existe. O plano ja determina sua
   inclusao caso continue ausente no momento da implementacao.

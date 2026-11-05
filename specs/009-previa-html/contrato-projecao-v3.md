@@ -14,9 +14,9 @@ mostra a Carta toda, não só os campos da parte aberta.
 
 Referência local do componente: node `821:308` (card-servico-completo), conforme
 mapa Figma. O node não comprova composição completa da rota nem todos os estados.
-Consultar referências antes do layout; adaptar dimensões ao conteúdo integral.
-Não omitir campos para reproduzir o tamanho do frame. Nenhuma consulta externa
-ao Figma ocorreu nesta tarefa documental.
+Usar o [pacote visual local](../../docs/design-system/referencias-locais/009-previa-html/visual-spec.md)
+antes do layout; adaptar dimensões ao conteúdo integral. Não omitir campos para
+reproduzir o tamanho do frame. A extração foi concluída em 04/11/2026.
 
 O seletor recebe exclusivamente Carta v3 de formato seguro, entregue pelo
 provider da 007, incluindo Cartas parciais. Não decodifica storage, migra versões,
@@ -177,5 +177,5 @@ Sem ellipsis, resumo automático ou omissão de dados por largura. Ação de edi
 | PV17 | Review/falha editorial; pendência/falha estrutural; CSV | Prévia/edição/tutorial livres; só 010 valida seu snapshot para exportar. |
 | PV18 | Teclado/leitor, zoom e 320–1440 px | Ordem, texto integral, foco, contraste e reflow; registrar ambiente real. |
 
-Fixtures são roteiro futuro, não testes executados na T008. Figma/ERS, copy,
+Fixtures são roteiro futuro, não testes executados na T008. ERS, copy,
 provider/retorno, validação defensiva e 010 exigem verificações antes do aceite.

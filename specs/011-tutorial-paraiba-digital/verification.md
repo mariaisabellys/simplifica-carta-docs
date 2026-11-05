@@ -78,3 +78,10 @@ das cardinalidades 25/13/12, `npm run typecheck`, `npm run build`, links locais
 dos artefatos alterados e `git diff --check`. A página continua provisória e a
 região da 012 ainda não foi implementada; não foram executados clipboard,
 IT01–IT11, browser, inspeção Figma/ERS ou validação da plataforma externa.
+
+## Extração visual — 04/11/2026
+
+Os seis nodes foram extraídos como PNG, seus hashes foram registrados no
+manifesto e os SVGs semânticos foram internalizados. A inspeção Figma está
+concluída; ERS, plataforma administrativa, implementação, browser e IT01–IT11
+permanecem pendentes.

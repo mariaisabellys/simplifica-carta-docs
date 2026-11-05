@@ -2,13 +2,17 @@
 
 ## Papel desta referencia
 
-O Figma Make sera usado como referencia visual e tecnica para o design system do Simplifica Carta.
+O Figma Make é a proveniência visual e técnica do design system. O contrato de
+implementação está versionado em `tokens-e-componentes.md` e nos pacotes de
+`referencias-locais/`, para que a equipe não dependa de acesso ao arquivo.
 
 Referencia oficial do design system:
 
 - [Organize Design System - Figma Make](https://www.figma.com/make/dVm7lEZdBFqOiiySWLWUqp/Organize-Design-System--Copy-?t=rgWuly5cbaPi1E9B-20&fullscreen=1)
 
-Este repositorio nao armazena o codigo gerado pelo Figma Make. A fonte visual oficial do design system e o link acima.
+O repositório não armazena o código gerado pelo Figma Make, pois ele não deve
+ser copiado diretamente. Os tokens e padrões reconciliados no repositório são
+a fonte oficial para o código.
 
 O layout e a composicao das telas devem ser guiados pelo arquivo Figma do
 prototipo documentado em
@@ -32,12 +36,12 @@ Ele deve orientar:
 - padroes de tela;
 - comportamento visual responsivo.
 
-## Como usar esta referencia
+## Como usar esta referência
 
 Antes de criar ou alterar telas, componentes e estilos, consultar:
 
-1. o Figma Design do prototipo para layout, fluxo e composicao da tela;
-2. o Figma Make para confirmar:
+1. o pacote visual local da tela para layout, fluxo e composição;
+2. `tokens-e-componentes.md` para confirmar:
 
 - tokens visuais;
 - hierarquia tipografica;
@@ -48,11 +52,11 @@ Antes de criar ou alterar telas, componentes e estilos, consultar:
 - responsividade;
 - padroes de espacamento.
 
-## Consulta obrigatoria via MCP
+## Consulta opcional via MCP
 
-Antes de implementar qualquer tela, componente visual, token ou estilo, o Codex
-deve consultar este Figma Make via MCP. Quando houver tela envolvida, tambem
-deve consultar o arquivo Figma Design do prototipo via MCP.
+Uma pessoa com acesso pode auditar a origem via MCP. A consulta não é
+pré-requisito para implementar telas com pacote local e não pode introduzir
+mudanças que ainda não tenham sido revisadas e versionadas.
 
 Parametros de leitura:
 
@@ -72,15 +76,18 @@ Arquivos de referencia esperados na resposta do MCP:
 - imagens em `src/imports/`
 - arquivos de configuracao do Vite
 
-O Figma Make deve ser tratado como referencia tecnica ativa para desenvolvimento, nao apenas como link de consulta humana.
+O Figma Make deve ser tratado como origem rastreável, não como dependência de
+execução ou fonte remota obrigatória.
 
-Se o MCP nao conseguir retornar o conteudo visual ou tecnico necessario, o Codex deve interromper a implementacao visual, informar a limitacao e solicitar uma destas alternativas:
+Se uma tela ainda não tiver pacote local e o MCP não retornar o conteúdo
+necessário, registrar o bloqueio e solicitar uma destas alternativas:
 
 - link Figma em formato `/design/...` com `node-id`;
 - exportacao dos arquivos principais do Figma Make;
 - prints ou assets das telas/componentes necessarios.
 
-As informacoes abaixo sao um resumo operacional para orientar a implementacao. Em caso de divergencia, o Figma Make deve prevalecer.
+As informações abaixo orientam a implementação. Em caso de divergência, o
+estado versionado prevalece até uma atualização deliberada da equipe.
 
 ## Observacoes extraidas
 
@@ -111,6 +118,9 @@ referencia, mas nao substituem a decisao do projeto.
 
 ## Regra de uso
 
-Antes de implementar telas, consultar o Figma Design do prototipo para fluxo e composicao, e consultar o Figma Make via MCP para tokens, componentes e padroes visuais.
+Antes de implementar telas, consultar o pacote visual local para fluxo e
+composição e os tokens versionados para componentes e padrões. Usar o Figma via
+MCP somente quando esse material ainda não existir ou quando houver auditoria
+explícita.
 
 Nao criar uma pasta de codigo do design system dentro deste repositorio sem decisao tecnica especifica. A implementacao dos tokens e componentes deve acontecer dentro da aplicacao quando a fundacao tecnica for implementada.
