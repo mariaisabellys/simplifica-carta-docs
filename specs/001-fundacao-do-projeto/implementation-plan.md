@@ -81,6 +81,7 @@ históricos. Figma/assistividade/deploy exigem evidências próprias.
 
 - navegação compartilhada e rota 003: implementação futura;
 - provider/interface da Carta, diagnóstico e páginas: features proprietárias;
-- Figma visual: acesso autenticado pendente conforme T016;
+- Figma visual: pacotes locais 002–015 disponíveis; acesso remoto não é
+  pré-requisito para implementação visual;
 - agenda operacional e deploy: T014/T018;
 - revalidação atual e execução de checks: T019/implementação.

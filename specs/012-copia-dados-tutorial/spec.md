@@ -47,7 +47,9 @@ Labels, feedback e ajuda versionados; nomes acessíveis incluem campo/item,
 foco estável, anúncios curtos, manual por teclado/toque, Inter/tokens/reflow.
 
 Node 564:980 é variante ampliável da etapa 4. Layout adapta-se aos cinco grupos;
-não limitar cobertura para caber no frame. Consulta visual/ERS/copy pendentes.
+não limitar cobertura para caber no frame. Usar o
+[pacote visual local](../../docs/design-system/referencias-locais/012-copia-dados-tutorial/visual-spec.md);
+ERS e revisão de copy permanecem pendentes.
 007 fornece dados/retorno; 008 não impõe gate; 011 recebe região; 015 pode
 reutilizar utilitário neutro sem importar domínio da Carta; 016 orienta testes.
 

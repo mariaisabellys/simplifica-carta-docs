@@ -6,6 +6,11 @@ Atualizado em 27 de outubro de 2026. Catálogo `ls-pt-BR-v1` e mensagens
 `msg-pt-BR-v1` estão aprovados; nenhuma regra nova está implementada. O helper
 de 240 caracteres é legado.
 
+O contrato visual local está em
+`docs/design-system/referencias-locais/008-validacao-linguagem-simples/` e
+reutiliza as cinco referências da 007. A feature não possui página própria;
+consulta ao Figma é opcional e não deve bloquear a implementação.
+
 ## Contratos técnicos
 
 ```ts
@@ -122,7 +127,7 @@ Não usar tamanho total do campo como substituto de frase ou parágrafo.
 
 F008-01 está concluída. Antes da entrega integrada: confirmar correspondência
 exata das versões executáveis, integração real com paths/IDs da 007 e estados
-no Figma/design system, sem inventar página independente.
+no contrato visual local/design system, sem inventar página independente.
 
 ## Evidência esperada
 

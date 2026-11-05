@@ -244,7 +244,8 @@ que aumenta tempo, friccao e possibilidade de abandono.
   - `/tutorial-paraiba-digital` — spec `011-tutorial-paraiba-digital`.
 - Tokens e componentes base em `src/styles/` e `src/components/`.
 - Figma Design node `575:483` consultado via MCP.
-- Figma Make `0:1` a consultar novamente antes de implementar estilos finais.
+- tokens locais e pacote visual versionado são suficientes para implementar;
+  a consulta ao Figma Make é auditoria opcional, não pré-requisito.
 - Textos finais versionados a adicionar posteriormente, antes da implementacao
   definitiva do conteudo editorial.
 

@@ -9,7 +9,7 @@ no código; criado parecer de validação atual. Nenhum código foi alterado.
 | --- | --- |
 | Artefatos esperados | Sete presentes após T017 |
 | Navegação documental | Contrato único T015 referenciado; sem API local concorrente |
-| Figma | Node mapeado; inspeção T016 indisponível, portanto pendente |
+| Referência visual | Node `310:175` inspecionado; pacote local e assets versionados em 27/10/2026; aceite no browser pendente |
 | Implementação | Home/shell legados identificados, sem falso aceite |
 
 Não foram executados comandos npm, servidor, navegação real, responsividade ou

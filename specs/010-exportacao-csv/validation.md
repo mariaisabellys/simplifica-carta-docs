@@ -13,7 +13,8 @@ Autor: Codex. Base: HEAD 7948d35 e alterações documentais T003–T008 preserva
 
 Fontes: sete artefatos 010, matriz 007, projeção 009, helpers CSV/validação,
 tipos/schema, tests/csv.test.mjs e package.json. OWASP CSV Injection consultada
-em 19/10, link no contrato. Sem Figma/ERS ou execução em browser/planilha.
+em 19/10, link no contrato. O pacote visual foi concluído em 04/11/2026; sem ERS
+ou execução em browser/planilha.
 
 | ID | Estado / resolução | Próxima ação |
 | --- | --- | --- |

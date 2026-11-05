@@ -80,9 +80,10 @@ altura fixa ou reordenar leitura em colunas. Não validar/exportar a Carta aqui.
 ## Referências e dependências
 
 Mapa local: node 387:1918 da 006; 575:483 é entrada da 003, não esta página.
-Consultar Design/Make e registrar composição, estados e divergências antes
-do layout. Layout adapta-se ao conteúdo, não elimina informações para caber.
-Não houve consulta Figma nem ao PDF ERS nesta revisão.
+Usar o pacote local para composição, estados e divergências antes do layout.
+Layout adapta-se ao conteúdo e não elimina informações para caber. A ausência
+de consulta Figma nesta revisão histórica foi superada pela extração de
+03/11/2026; o PDF ERS continua fora desta evidência visual.
 
 Dependências: 001/002 (fundação/shell), 003 (entrada), 004 (conceitos), 005
 (encaminhamento não obrigatório), 007 (formulário/reuso), 008 (regra editorial),

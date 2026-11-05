@@ -53,3 +53,8 @@ encerramento acima; não altera IN01–IN08. RF01–RF09/CA01–CA22 seguem para
 T001–T024 e AG01–AG13/R1–R6. Página, API, banco, worker e SMTP não existem. Os
 quatro nodes responderam por metadados, sem validar a jornada. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+# Atualização visual — 04/11/2026
+
+Os quatro estados da jornada foram extraídos e versionados no pacote local da
+014. Agenda, ERS, implementação e testes de navegador/assistivos continuam
+pendentes.

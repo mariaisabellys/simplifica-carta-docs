@@ -32,5 +32,6 @@ integrada nesta rodada. Página atual foi inspecionada e permanece placeholder.
 ## Próximos passos
 
 T009 global trata exportação CSV; implementação 009 segue F009-01–12.
-Pendências editoriais, implementação de MC-02–MC-08, provider/foco, 010, Figma/ERS,
+Pendências editoriais, implementação de MC-02–MC-08, provider/foco, 010, ERS,
 deploy e ambientes assistivos continuam explícitas em validation e plano detalhado.
+O pacote visual local foi extraído e validado estruturalmente em 04/11/2026.

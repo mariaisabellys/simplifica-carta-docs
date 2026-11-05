@@ -19,7 +19,7 @@ Utilitário src/lib/clipboard.ts já existe, mas não entrega seletor/controlado
 
 ## Ordem futura
 
-1. Conferir provider/registro/011 e a sincronização T011 concluída; consultar visual.
+1. Conferir provider/registro/011, a sincronização T011 e o pacote visual local.
 2. Implementar matriz, estados/âncoras e projeção de cinco grupos.
 3. Implementar coordenador, feedback e manual conforme contrato.
 4. Integrar etapa 4 e testar controles, foco, remount e source intacta.
@@ -29,4 +29,5 @@ Riscos: exemplos transferidos, escolhas copiáveis, valores inativos expostos,
 agregação indevida de listas, confirmação obsoleta e trava perdida em remount.
 TR01–TR17 cobrem os casos. Sem timers fingindo cancelamento externo.
 Não liberar implementação integral por existência deste plano: provider,
-composição 011, Figma/ERS/copy e ambientes reais permanecem dependências.
+composição 011, ERS/copy e ambientes reais permanecem dependências. A consulta
+remota ao Figma foi substituída pelo pacote local de 04/11/2026.

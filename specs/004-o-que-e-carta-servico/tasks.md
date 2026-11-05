@@ -10,8 +10,8 @@
   validado antes da implementacao.
 - Os checkboxes permanecem desmarcados ate existir evidencia de conclusao no
   repositorio ou no registro de validacao.
-- O frame Figma `365:265` orienta layout e composicao; o Figma Make `0:1`
-  orienta tokens e componentes.
+- O pacote visual local proveniente do frame `365:265` orienta layout e
+  composição; os tokens versionados orientam componentes.
 - A pagina permanece informativa: nao deve acessar backend, estado, progresso
   ou armazenamento da Carta.
 - Conteudo juridico do Figma nao deve ser tratado como fonte oficial sem
@@ -34,8 +34,8 @@
   - Dependencia: T001.
   - Evidencia: integracoes e lacunas registradas no `implementation-plan.md`.
 
-- [x] **T003 — Consultar e mapear o Figma Design**
-  - Consultar via MCP o arquivo `YaVUdqYa3boHpvGrxf4ZJ5`, node `365:265`.
+- [x] **T003 — Mapear a referência visual local**
+  - Usar o pacote local da 004, mantendo `365:265` apenas como proveniência.
   - Confirmar hierarquia, medidas, containers, espacamentos, ordem das secoes,
     grades, linhas legais e comportamento visual dos links.
   - Tratar classes Tailwind e coordenadas absolutas retornadas como referencia,
@@ -44,7 +44,8 @@
   - Evidencia: mapeamento visual registrado no `implementation-plan.md`.
 
 - [x] **T004 — Confirmar tokens e estados no Figma Make**
-  - Consultar via MCP o arquivo `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
+  - Usar tokens e componentes compartilhados versionados localmente; o Make é
+    apenas auditoria opcional.
   - Mapear cores, gradiente, tipografia Inter, espacamentos, bordas, raios,
     sombras e estados interativos.
   - Reconciliar os valores com `src/styles/tokens.css` e com a feature 002.
@@ -134,14 +135,15 @@
   - Dependencias: T006, T009.
   - Evidencia: tres referencias tipadas com URLs oficiais validadas.
 
-- [ ] **T014 — Preparar os assets locais**
+- [x] **T014 — Preparar os assets locais**
   - Exportar ou baixar do Figma todos os assets aprovados no inventario.
-  - Salvar em `src/assets/o-que-e-carta/` ou no diretorio compartilhado definido
-    no plano detalhado.
+  - Salvar em `src/assets/o-que-e-carta-servico/` ou no diretório compartilhado
+    definido no plano detalhado.
   - Conferir formato, integridade, dimensoes e correspondencia node-a-node.
   - Eliminar qualquer dependencia de URL temporaria do Figma.
   - Dependencias: T005, T008.
   - Evidencia: assets oficiais nao vazios e versionados localmente.
+  - Registro: concluído no lote visual local de 27/10/2026.
 
 ## Fase 3 — Rota e componentes
 
@@ -333,8 +335,9 @@
   - Dependencias: T030, T031, T034.
   - Evidencia: checklist responsivo e acessivel concluido.
 
-- [ ] **T037 — Comparar a entrega com o Figma**
-  - Comparar a pagina desktop com o node `365:265`.
+- [ ] **T037 — Comparar a entrega com a referência visual local**
+  - Comparar a página desktop com `referencias-locais/004-o-que-e-carta-servico/desktop.png`;
+    o node `365:265` permanece como proveniência.
   - Confirmar composicao, hierarquia, gradiente, cards, legislacao e estados.
   - Conferir cada asset local contra node, slot e geometria efetiva.
   - Registrar divergencias intencionais de MVP, incluindo a ausencia de
@@ -362,15 +365,15 @@ A spec `004-o-que-e-carta-servico` estara concluida quando:
 
 - a rota `/o-que-e-carta-de-servicos` funcionar por navegacao interna, URL
   direta, recarga e historico;
-- a pagina seguir a hierarquia do Figma Design `365:265` e os tokens
-  confirmados no Figma Make;
+- a página seguir a captura local proveniente do node `365:265` e os tokens
+  versionados;
 - breadcrumb, introducao, importancia, fundamentos, dez campos e legislacao
   estiverem presentes na ordem prevista;
 - as tres referencias normativas estiverem validadas, aprovadas e ligadas a
   fontes oficiais;
 - os links externos informarem a nova aba e aplicarem os atributos de
   seguranca;
-- todos os assets visiveis corresponderem aos assets oficiais do Figma;
+- todos os assets visíveis corresponderem aos arquivos oficiais versionados;
 - header e footer vierem do shell compartilhado, sem `Material de apoio` na
   header;
 - nao existir CTA final, formulario, progresso, backend ou persistencia nesta

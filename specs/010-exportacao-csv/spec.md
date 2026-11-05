@@ -38,10 +38,11 @@ matriz, agregações, contagem, segurança candidata e fixtures EX01–EX17.
 Sem backend, logs de valores, envio externo, XLSX/PDF/HTML/ZIP, importador,
 histórico de arquivos ou execução de fórmulas. Arquivo baixado é externo à sessão.
 Meta <=5 s até Blob e responsividade conforme fixture/ambientes do contrato,
-não garantia ilimitada. Inter/tokens/reflow; consultar Figma para ação/estados
-no fluxo da prévia (referência local 821:308), sem criar página por analogia.
+não garantia ilimitada. Inter/tokens/reflow; usar o
+[pacote visual local](../../docs/design-system/referencias-locais/010-exportacao-csv/visual-spec.md)
+para a ação/estados no fluxo da prévia, sem criar página por analogia.
 Dependências: 007 (fonte/estrutura/foco), 009 (slot), 008 (editorial separado),
-011/012 (continuidade), 016/017 (ambientes). Consulta Figma/ERS e copy pendentes.
+011/012 (continuidade), 016/017 (ambientes). ERS e copy permanecem pendentes.
 Ativo false é exportado como Inativo e true como Ativo, sem confirmar estado
 externo ou interação deliberada.
 

@@ -135,7 +135,7 @@ IDs existentes preservados; redação migrada para v3.
 | CA15 | Textos longos e zoom não cortam campos nem criam rolagem horizontal da página. |
 | CA16 | HTML literal, acentos e quebras preservados sem execução. |
 | CA17 | Conteúdo versionado, sessão temporária e ausência de publicação automática verificáveis. |
-| CA18 | Consultas Figma e diferenças documentadas; shell/tokens reutilizados. |
+| CA18 | Pacote visual local e diferenças documentadas; shell/tokens reutilizados. |
 | CA19 | Não/null oculta configurações e retira obrigatoriedade condicional. |
 | CA20 | Sistema nativo oculta link/exibição e mantém valores retidos fora dos consumidores. |
 | CA21 | Externo/dentro registra configuração, sem executar incorporação. |
@@ -158,7 +158,7 @@ IDs existentes preservados; redação migrada para v3.
 
 ## Dependências, pendências e fora de escopo
 
-T005 fechou o contrato de contagem; MC-02–MC-08 foram fechadas em 27/10/2026; T006 orientações; T007 regras editoriais; T008–T011 projeções; T015 navegação; T016 visual/acessibilidade. Os contratos estão prontos para implementação, mas código, fixtures, consulta visual e aceite continuam pendentes.
+T005 fechou o contrato de contagem; MC-02–MC-08 foram fechadas em 27/10/2026; T006 orientações; T007 regras editoriais; T008–T011 projeções; T015 navegação; T016 visual/acessibilidade. Os contratos e o pacote visual local estão prontos para implementação; código, fixtures e aceite continuam pendentes.
 
 Fora do escopo: backend da Carta, rascunho permanente, integração/publicação externa, agenda real, IA/reescrita automática e novos campos sem decisão.
 

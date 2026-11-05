@@ -1,5 +1,9 @@
 # Spec: Atendimento agendado
 
+> **Atualização visual — 04/11/2026:** os quatro estados visuais da jornada
+> estão versionados em [`docs/design-system/referencias-locais/014-atendimento-agendado/`](../../docs/design-system/referencias-locais/014-atendimento-agendado/),
+> com capturas dos nodes `425:201`, `425:296`, `446:206` e `470:444`.
+
 > **Referencia compartilhada atualizada em 16 de outubro de 2026:** o node
 > `425:201` e a entrada dos canais de ajuda e pertence tambem a 015. O card de
 > atendimento inicia a jornada da 014; o card de e-mail exibe o contato da
@@ -39,7 +43,7 @@ explicita envia os dados. O atendimento nao aprova Cartas nem publica servicos.
 - `docs/decisoes/adr-003-backend-atendimento.md`: separacao de dados e
   persistencia minima para atendimento.
 - `docs/processo/constitution.md` e `docs/ia/regras-para-ia.md`: processo,
-  conteudo versionado e consulta visual antes da implementacao.
+  conteudo versionado e pacote visual local antes da implementacao.
 - `specs/013-fluxo-de-ajuda/spec.md`: escolha de canal sem envio, preservacao
   da Carta e ausencia de promessas sobre disponibilidade ou prazo de resposta.
 - `src/app/routes.tsx`, `src/pages/AtendimentoAgendadoPage.tsx` e
@@ -257,7 +261,7 @@ de e-mail enviado, sucesso de agendamento ou acao de reagendar.
 
 Mes, datas, horarios, nome, orgao e assunto exibidos no Figma sao exemplos.
 Disponibilidade e resumo reais sempre vem da API/solicitacao. Antes do codigo
-visual, consultar detalhadamente via MCP os quatro nodes e o Figma Make
+visual, usar detalhadamente o pacote local com os quatro nodes e o manifesto;
 `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`; registrar divergencias e responsividade.
 
 O planejamento deve conciliar ERS e ADR-003, definir stack concreta do backend,
@@ -315,7 +319,7 @@ notificacao operacionais. Nenhuma solicitacao real foi criada nesta etapa.
 | CA15 | Solicitar atendimento com Carta preenchida. | Preservar Carta no navegador e nao envia-la ou persisti-la no backend. |
 | CA16 | Consultar disponibilidade e acesso operacional aos registros. | Nao expor dados de solicitantes publicamente; restringir registros a processos autorizados. |
 | CA17 | Operar por teclado/leitor de tela e em telas pequenas com ampliacao. | Selecionar, revisar, corrigir e confirmar com estados e foco acessiveis, sem corte ou scroll horizontal. |
-| CA18 | Revisar prontidao para producao. | Encontrar API, agenda, capacidade, fuso, notificacoes, politica de dados e operacao definidos, com consultas Figma e textos validados. |
+| CA18 | Revisar prontidao para producao. | Encontrar API, agenda, capacidade, fuso, notificacoes, politica de dados e operacao definidos, com pacote visual local e textos validados. |
 | CA19 | Percorrer a jornada visual. | Usar `425:201`, `425:296`, `446:206` e `470:444` como estados da mesma rota, preservando selecoes e dados aplicaveis. |
 | CA20 | Comparar frame e conteudo versionado. | Adaptar layout ao conteudo e aos estados reais, sem reintroduzir disponibilidade ficticia, confirmacao antecipada, e-mail enviado ou remarcacao. |
 

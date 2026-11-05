@@ -19,7 +19,7 @@ T016 não conseguiu repetir a inspeção e não fornece aceite visual atual.
 | V004-02 | aberto para implementação | `OQueECartaPage` continua com PageHeader/PlaceholderCard, sem conteúdo completo. |
 | V004-03 | dependência compartilhada | Breadcrumb/header/footer/links devem usar navegação 002/T015. |
 | V004-04 | resolvido documentalmente | Decreto nº 9.756/2019 reconsultado no Planalto em 27/10/2026; resumo alinhado à ementa sobre a unificação dos canais digitais do Governo federal. Links das três normas permanecem sujeitos ao teste funcional T035. |
-| V004-05 | aguardando visual | Node `365:265` mapeado; inspeção atual e responsividade pendentes. |
+| V004-05 | fonte local resolvida; aceite pendente | Node `365:265` inspecionado e exportado em 27/10/2026. Captura, spec, manifesto e SVGs estão locais; falta comparação no browser e responsividade. |
 
 Nenhum link externo foi aberto e nenhum teste/build/browser foi executado.
 
@@ -45,3 +45,11 @@ feature passaram a usar essa redação.
 Esta correção aprova documentalmente o resumo e a URL consultada; não comprova
 renderização, abertura do link, vigência futura, aceite visual ou funcionamento
 da página. V004-02, V004-03 e V004-05 permanecem inalterados.
+
+## Lote visual local — 27/10/2026
+
+A lacuna de fonte da T016/T019 foi encerrada para a 004. O pacote em
+`docs/design-system/referencias-locais/004-o-que-e-carta-servico/` registra o
+frame desktop e as divergências editoriais; os SVGs estão em
+`src/assets/o-que-e-carta-servico/`. V004-05 agora representa somente o aceite
+da implementação no browser e a validação responsiva.

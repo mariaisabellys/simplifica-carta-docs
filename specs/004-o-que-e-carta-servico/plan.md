@@ -31,9 +31,9 @@ alterados em `/spec:implementar`, depois da criacao de `tasks.md`, do
 - Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, conforme a documentacao
   local do design system.
 
-O `/spec:plano-implementacao` deve consultar novamente o Figma Design e o Figma
-Make para consolidar medidas, tokens, estados e inventario de assets antes de
-qualquer implementacao.
+O `/spec:plano-implementacao` deve usar o pacote visual local e os tokens
+versionados para consolidar medidas, estados e inventário de assets antes de
+qualquer implementação. Consulta remota ao Figma é auditoria opcional.
 
 ## Estado atual e pre-condicoes
 
@@ -49,7 +49,7 @@ qualquer implementacao.
 - Header e footer ainda pertencem a `AppShell` e devem evoluir pela feature
   `002-home-e-navegacao`.
 - Nao existe infraestrutura de testes automatizados no `package.json`.
-- Os icones do frame ainda nao estao armazenados localmente.
+- Os ícones do frame foram armazenados localmente no lote visual de 27/10/2026.
 - O conteúdo normativo foi revalidado em fontes oficiais; em 27/10/2026, o
   resumo do Decreto nº 9.756/2019 foi alinhado à ementa do Planalto sobre a
   unificação dos canais digitais do Governo federal.
@@ -233,10 +233,9 @@ O frame contem icones para:
 - os dez campos informativos;
 - a secao de legislacao.
 
-No `/spec:plano-implementacao`, inventariar node ID, funcao, dimensao e nome de
-arquivo de cada asset. Na implementacao, baixar os SVGs pelos recursos
-fornecidos pelo Figma e armazena-los em
-`src/assets/o-que-e-carta/`.
+O plano detalhado registra node ID, função, dimensão e nome de cada asset. Na
+implementação, usar os SVGs já armazenados em
+`src/assets/o-que-e-carta-servico/`.
 
 Regras:
 
@@ -324,7 +323,7 @@ A pagina e somente informativa:
   confirmada;
 - `src/components/o-que-e-carta/LegalReferenceItem.tsx`, se a extracao for
   confirmada;
-- `src/assets/o-que-e-carta/`, para os assets oficiais exportados;
+- `src/assets/o-que-e-carta-servico/`, para os assets oficiais exportados;
 - testes da pagina e dos componentes, caso a infraestrutura seja adicionada ou
   ja exista no momento da implementacao.
 
@@ -456,5 +455,5 @@ Este plano estara pronto para `/spec:tarefas` quando:
 - responsividade, acessibilidade e testes estiverem definidos;
 - nenhuma persistencia, backend, formulario ou CTA fora do frame estiver
   planejado;
-- a consulta detalhada ao Figma Design e ao Figma Make estiver reservada para
-  `/spec:plano-implementacao` antes do codigo.
+- o pacote visual local e os contratos compartilhados estiverem referenciados
+  antes do codigo; consulta remota fica opcional para atualização.

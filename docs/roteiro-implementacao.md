@@ -33,7 +33,7 @@ acessibilidade, homologação institucional ou validação em ambiente publicado
 | 004 — O que é a Carta | Pronta documentalmente | Executar T014–T039 depois da infraestrutura compartilhada da 002. | Testar links oficiais e concluir aceite visual/acessível. |
 | 005 — Diagnóstico | Pronta documentalmente | T008–T050, preservando a ordem local. | Motor exaustivo `3^8`, sessão, jornada, resultado e aceite visual/acessível. |
 | 006 — Organizar informações | Pronta documentalmente | F006-01–F006-07; F006-08 acompanha a 007. | Aplicar copy/metadados contratados e validar integração de orientações. |
-| 007 — Formulário | Pronta documentalmente | Executar F007-02–F007-22 sobre a matriz v3 fechada. | Implementar MC-01–MC-12 contratadas, consultar Figma e executar testes funcionais/visuais/integrados. |
+| 007 — Formulário | Pronta documentalmente | Executar F007-02–F007-22 sobre a matriz v3 fechada e o pacote visual local. | Implementar MC-01–MC-12 contratadas e executar testes funcionais/visuais/integrados; consulta Figma é opcional. |
 | 008 — Linguagem simples | Pronta documentalmente | Executar F008-02–F008-12 com `ls-pt-BR-v1` e `msg-pt-BR-v1`. | Implementar motor, geometria, integração, acessibilidade e testes sem alterar a copy aprovada. |
 | 009 — Prévia HTML | Pronta com dependência explícita | Preparar view model após o contrato executável da 007. | Provider 007, estados estruturais e interface editorial 008. |
 | 010 — Exportação CSV | Pronta com dependência explícita | Implementar snapshot/matriz depois do provider 007. | Homologar mitigação de fórmulas e compatibilidade em planilhas reais. |

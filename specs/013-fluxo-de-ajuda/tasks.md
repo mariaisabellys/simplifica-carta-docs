@@ -60,13 +60,11 @@
   - Dependencias: T001–T002. Evidencia: contrato e estados documentados;
     RF03/RF05, CA03–CA04/CA11–CA13.
 
-- [ ] **T004 — Consultar Figma e fechar comportamento da FAQ**
-  - Consultar via MCP Design YaVUdqYa3boHpvGrxf4ZJ5, pagina 167:2,
-    node 169:495; confirmar FAQ, dois canais e retorno ou localizar frame adicional.
-  - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar tokens,
+- [x] **T004 — Fechar comportamento da FAQ com pacote local**
+  - Usar o pacote local de 013 e o manifesto do node `169:495`; registrar tokens,
     ordem/composicao, paineis, estados dos canais, assets e responsividade.
-  - Confirmar associacao no mapa de telas; referencia insuficiente fica
-    pendencia visual, sem inserir formulario/agenda para completar prototipo.
+  - Confirmar associacao no mapa de telas; ausencia de pacote local e a unica
+    condicao para nova consulta remota, sem inserir formulario/agenda.
   - Escolher FAQ aberta ou expansiva conforme referencia; preferir details/
     summary se adequado. Accordion controlado exige button, aria-expanded e
     painel associado, com IDs estaveis e estado local sem persistencia.

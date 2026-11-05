@@ -1,0 +1,19 @@
+{
+  "feature": "013-fluxo-de-ajuda",
+  "route": "/ajuda",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5" },
+  "capturedAt": "2026-11-04",
+  "references": [
+    {
+      "state": "faq-collapsed",
+      "nodeId": "169:495",
+      "path": "desktop.png",
+      "viewport": { "width": 1440, "height": 1085 },
+      "sha256": "58e15d0afe7833b5dc9b2953d716200d1bd4db98bfe26dd40090c774c6e25a7f"
+    }
+  ],
+  "contentSource": "src/content/pages/ajuda.ts",
+  "contractSources": ["docs/arquitetura/contrato-canais-ajuda.md"],
+  "integrations": ["014-atendimento-agendado", "015-suporte-email"],
+  "assets": ["src/assets/home/arrow-right.svg"]
+}

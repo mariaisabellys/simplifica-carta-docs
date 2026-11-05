@@ -33,8 +33,8 @@
   - Evidencia: integracoes e eventuais lacunas registradas no
     `implementation-plan.md`.
 
-- [x] **T003 — Consultar e mapear o Figma Design**
-  - Consultar via MCP o arquivo `YaVUdqYa3boHpvGrxf4ZJ5`, node `575:483`.
+- [x] **T003 — Mapear a referência visual local**
+  - Usar o pacote local da 003, mantendo `575:483` apenas como proveniência.
   - Confirmar hierarquia, dimensoes, grid, espacamentos, ordem das regioes e
     comportamento visual dos quatro cards e do CTA final.
   - Tratar classes Tailwind e coordenadas absolutas retornadas como referencia,
@@ -43,7 +43,7 @@
   - Evidencia: mapeamento visual registrado no `implementation-plan.md`.
 
 - [x] **T004 — Confirmar tokens e estados no Figma Make**
-  - Consultar via MCP o arquivo `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
+  - Usar tokens e componentes compartilhados versionados; o Make é auditoria opcional.
   - Mapear tipografia, cores, gradiente, bordas, sombras, raios, espacamentos e
     estados interativos para tokens semanticos.
   - Resolver divergencias com `src/styles/tokens.css` e com os tokens da 002 sem
@@ -111,7 +111,7 @@
   - Dependencia: T009.
   - Evidencia: dados e rotas sem divergencias.
 
-- [ ] **T011 — Preparar os assets locais**
+- [x] **T011 — Preparar os assets locais**
   - Exportar ou baixar do Figma os quatro icones, o chevron de breadcrumb e o
     chevron de acao confirmados no inventario.
   - Salvar os arquivos em `src/assets/explorar-por-etapas/` ou no diretorio
@@ -119,6 +119,7 @@
   - Conferir formato, integridade, nome e correspondencia de cada arquivo.
   - Dependencias: T005, T007.
   - Evidencia: assets reais versionados localmente, sem URL temporaria.
+  - Registro: concluído no lote visual local de 27/10/2026.
 
 ## Fase 3 — Rota e componentes
 
@@ -275,8 +276,9 @@
   - Dependencias: T023, T024, T027.
   - Evidencia: checklist responsivo e acessivel concluido.
 
-- [ ] **T030 — Comparar a entrega com o Figma**
-  - Comparar a pagina desktop com o node `575:483`.
+- [ ] **T030 — Comparar a entrega com a referência visual local**
+  - Comparar a página desktop com `referencias-locais/003-explorar-por-etapas/desktop.png`;
+    o node `575:483` permanece como proveniência.
   - Confirmar composicao, hierarquia, cards, tokens, icones, estados e CTA.
   - Registrar divergencias intencionais de MVP, incluindo a ausencia de
     `Materiais de apoio` e `Guia de Linguagem Simples`.
@@ -303,8 +305,8 @@ A spec `003-explorar-por-etapas` estara concluida quando:
 
 - a rota `/explorar-por-etapas` funcionar por navegacao interna, URL direta e
   recarga;
-- a pagina seguir a hierarquia do Figma Design `575:483` e os tokens confirmados
-  no Figma Make;
+- a página seguir a captura local proveniente do node `575:483` e os tokens
+  versionados;
 - breadcrumb, hero, quatro cards e CTA final estiverem presentes na ordem
   prevista;
 - os cards exibirem identificador, icone, titulo, descricao, acao e destino

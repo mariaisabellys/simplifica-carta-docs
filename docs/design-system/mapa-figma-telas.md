@@ -27,6 +27,9 @@ consulta autenticada futura, todos os nodes permanecem com evidência visual
 pendente. A implementação deve consultar o frame antes do trabalho visual e
 registrar data, mecanismo, node e divergências encontradas.
 
+Este parágrafo registra o estado histórico da T016. Para 002–004, ele foi
+superado pelo lote visual local de 27/10/2026 descrito abaixo.
+
 ## Adendo de disponibilidade T019 — 22/10/2026
 
 O conector Figma autenticado passou a estar disponível e respondeu metadados
@@ -41,21 +44,60 @@ Portanto, as pendências de implementação/aceite visual da T016 continuam
 abertas. Evidência consolidada na
 [verificação T019](../verificacoes/t019-validacoes-features.md).
 
+## Lote visual local 002–004 — 27/10/2026
+
+Os nodes `310:175`, `575:483` e `365:265` foram inspecionados por
+`get_design_context`, exportados por `download_assets` e conferidos localmente.
+As capturas integrais, especificações de composição/responsividade e manifestos
+estão em [referências visuais locais](referencias-locais/README.md). Os assets de
+runtime foram salvos em `src/assets/` com nomes semânticos.
+
+Para essas três features, a consulta ao Figma deixou de ser pré-requisito de
+implementação. O aceite visual final continua pendente até comparar o browser
+implementado com as capturas locais e testar responsividade; a extração do
+frame desktop, isoladamente, não comprova esse aceite.
+
+## Lote visual local 005–008 — 03/11/2026
+
+Os oito frames de 005–007 foram extraídos e a integração visual da 008 foi
+documentada sobre a 007. Para essas features, os pacotes locais substituem a
+consulta remota obrigatória; implementação e aceite continuam pendentes.
+
+## Lote visual local 009–012 — 04/11/2026
+
+O componente `821:308` da prévia e os seis estados `564:635`, `564:730`,
+`564:852`, `564:980`, `564:1232` e `564:1357` do tutorial foram inspecionados e
+exportados. A 010 foi documentada como ação integrada à 009 e a 012 como região
+integrada à etapa 4 da 011; nenhuma tela artificial foi criada para elas.
+
+Os pacotes locais, manifestos e assets semânticos substituem a consulta remota
+obrigatória para 009–012. Implementação, comparação com navegador, estados não
+representados e testes responsivos/assistivos continuam pendentes.
+
+## Lote visual local 013–015 — 04/11/2026
+
+O frame `169:495` da FAQ e os estados `425:201`, `425:296`, `446:206` e `470:444`
+da jornada de atendimento foram exportados e conferidos localmente. A 015 foi
+documentada como composição compartilhada da entrada `425:201`; não há tela
+independente do suporte por e-mail. Os pacotes locais substituem a consulta
+remota obrigatória para 013–015; implementação, ERS, operação e aceite visual
+no navegador continuam pendentes.
+
 ## Mapa atual
 
 | Rota | Tela ou secao no Figma | Node ID | Spec relacionada | Observacao |
 | --- | --- | --- | --- | --- |
-| `/` | home | `310:175` | `002-home-e-navegacao` | Frame oficial atual da home, com hero, processo, CTA sobre Carta de Servicos e footer. |
-| `/explorar-por-etapas` | explorar-por-etapas-v2 | `575:483` | `003-explorar-por-etapas` | Pagina para acesso independente as quatro etapas do cadastro, sem exigir o fluxo completo. |
-| `/o-que-e-carta-de-servicos` | O que e a Carta? | `365:265` | `004-o-que-e-carta-servico` | Pagina educativa com contexto, fundamentos, campos da Carta e legislacao aplicavel. |
-| `/diagnostico` | diagnostico | `387:1020` | `005-diagnostico-servico-publico` | Frame atual para a experiencia de diagnostico. Usar somente na spec propria. |
-| `/diagnostico/resultado` | resposta | `387:1362` | `005-diagnostico-servico-publico` | Frame oficial da pagina de resposta. O estado exibido no frame e uma amostra visual; textos e acoes devem seguir o conteudo versionado e o resultado calculado. |
-| `/organizar-informacoes` | organizar informaçoes | `387:1918` | `006-organizar-informacoes` | Referencia visual da etapa 2. O contrato editorial oficial atual possui tres topicos e 13 informacoes; divergencias com o frame devem ser documentadas. |
-| `/ajuda` | FAQ | `169:495` | `013-fluxo-de-ajuda` | Frame atual para duvidas frequentes e CTA de apoio. Nao faz parte da home atual. |
-| `/formulario-carta` | Formulario — parte 1 | `653:1540` | `007-formulario-carta-servico` | Pagina inicial da jornada de cinco partes; node principal da rota. |
-| `/previa` | card-servico-completo | `821:308` | `009-previa-html` | Referencia visual para previa/cartao completo do servico, tambem reutilizado dentro da 007. |
-| `/tutorial-paraiba-digital` | Tutorial — Etapa 1: Acesse a plataforma | `564:635` | `011-tutorial-paraiba-digital` | Pagina principal do tutorial. As etapas 2–6 sao variantes de estado da mesma pagina, detalhadas abaixo. Conteudo e regras vêm do arquivo versionado da feature. |
-| `/ajuda/atendimento-agendado` e `/ajuda/suporte-email` | Ainda precisa de ajuda? — escolha de canal | `425:201` | `014-atendimento-agendado` e `015-suporte-email` | Pagina compartilhada com cards de atendimento agendado e suporte por e-mail. O card de e-mail exibe o contato da GESED e a acao `Copie o e-mail`. |
+| `/` | home | `310:175` | `002-home-e-navegacao` | Pacote local: [`002-home-e-navegacao`](referencias-locais/002-home-e-navegacao/visual-spec.md). Hero, processo, CTA educativo e footer. |
+| `/explorar-por-etapas` | explorar-por-etapas-v2 | `575:483` | `003-explorar-por-etapas` | Pacote local: [`003-explorar-por-etapas`](referencias-locais/003-explorar-por-etapas/visual-spec.md). Acesso independente às quatro etapas. |
+| `/o-que-e-carta-de-servicos` | O que e a Carta? | `365:265` | `004-o-que-e-carta-servico` | Pacote local: [`004-o-que-e-carta-servico`](referencias-locais/004-o-que-e-carta-servico/visual-spec.md). Contexto, fundamentos, campos e legislação. |
+| `/diagnostico` | diagnostico | `387:1020` | `005-diagnostico-servico-publico` | Pacote local: [`005-diagnostico-servico-publico`](referencias-locais/005-diagnostico-servico-publico/visual-spec.md), estado questionário. |
+| `/diagnostico/resultado` | resposta | `387:1362` | `005-diagnostico-servico-publico` | Mesmo pacote local da 005, estado resultado; conteúdo calculado prevalece sobre a amostra. |
+| `/organizar-informacoes` | organizar informaçoes | `387:1918` | `006-organizar-informacoes` | Pacote local: [`006-organizar-informacoes`](referencias-locais/006-organizar-informacoes/visual-spec.md). Três tópicos e 13 informações prevalecem. |
+| `/ajuda` | FAQ | `169:495` | `013-fluxo-de-ajuda` | Pacote local: [`013-fluxo-de-ajuda`](referencias-locais/013-fluxo-de-ajuda/visual-spec.md). Quatro perguntas e CTA para a entrada compartilhada. |
+| `/formulario-carta` | Formulario — parte 1 | `653:1540` | `007-formulario-carta-servico` | Pacote local: [`007-formulario-carta-servico`](referencias-locais/007-formulario-carta-servico/visual-spec.md), com cinco partes e integração visual da 008. |
+| `/previa` | card-servico-completo | `821:308` | `009-previa-html` | Pacote local: [`009-previa-html`](referencias-locais/009-previa-html/visual-spec.md). A 010 ocupa a ação de CSV no cabeçalho; o mesmo componente é reutilizado na 007. |
+| `/tutorial-paraiba-digital` | Tutorial — Etapa 1: Acesse a plataforma | `564:635` | `011-tutorial-paraiba-digital` | Pacote local: [`011-tutorial-paraiba-digital`](referencias-locais/011-tutorial-paraiba-digital/visual-spec.md), com seis estados. A 012 integra somente a etapa 4. |
+| `/ajuda/atendimento-agendado` e `/ajuda/suporte-email` | Ainda precisa de ajuda? — escolha de canal | `425:201` | `014-atendimento-agendado` e `015-suporte-email` | Pacotes locais: [`014-atendimento-agendado`](referencias-locais/014-atendimento-agendado/visual-spec.md) e [`015-suporte-email`](referencias-locais/015-suporte-email/visual-spec.md). Entrada compartilhada, calendário interno e cópia de e-mail conforme estados. |
 
 ## Paginas, partes e componentes do formulario da Carta
 
@@ -96,12 +138,12 @@ etapa altera o estado apresentado, sem criar seis rotas ou seis features.
 
 | Classificacao | Etapa e conteudo correspondente | Node ID | Link |
 | --- | --- | --- | --- |
-| Pagina — estado inicial | Etapa 1: Acesse a plataforma | `564:635` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-635&m=dev) |
-| Variante da pagina | Etapa 2: Faca login | `564:730` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-730&m=dev) |
-| Variante da pagina | Etapa 3: Localize o cadastro | `564:852` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-852&m=dev) |
-| Variante da pagina — integra 012 | Etapa 4: Cadastre as informacoes de sua Carta | `564:980` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev) |
-| Variante da pagina | Etapa 5: Revise os dados | `564:1232` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1232&m=dev) |
-| Variante da pagina | Etapa 6: Publique o servico | `564:1357` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1357&m=dev) |
+| Pagina — estado inicial | Etapa 1: Acesse a plataforma | `564:635` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-1-desktop.png) |
+| Variante da pagina | Etapa 2: Faca login | `564:730` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-2-desktop.png) |
+| Variante da pagina | Etapa 3: Localize o cadastro | `564:852` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-3-desktop.png) |
+| Variante da pagina — integra 012 | Etapa 4: Cadastre as informacoes de sua Carta | `564:980` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-4-desktop.png) |
+| Variante da pagina | Etapa 5: Revise os dados | `564:1232` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-5-desktop.png) |
+| Variante da pagina | Etapa 6: Publique o servico | `564:1357` | [Referência local](referencias-locais/011-tutorial-paraiba-digital/etapa-6-desktop.png) |
 
 Os frames definem composicao, hierarquia e variacoes visuais. Titulos, textos,
 percentuais, instrucoes e acoes editoriais devem ser renderizados a partir
@@ -122,7 +164,8 @@ Exemplos e lorem ipsum nunca substituem dados ausentes da sessão.
 O [contrato da 011](../../specs/011-tutorial-paraiba-digital/contrato-integracao-v3.md)
 registra a migração do TypeScript concluída em 27/10/2026; fontes operacionais,
 composição e testes continuam pendentes.
-Esta atualização do mapa não comprova consulta Figma nem implementação visual.
+Esta atualização do mapa comprova a extração dos frames, mas não a implementação
+nem o aceite visual no navegador.
 
 ## Pagina compartilhada de ajuda e estados do atendimento agendado
 
@@ -133,10 +176,10 @@ canais de ajuda. Os demais frames pertencem ao fluxo da 014. O conteudo vem de
 
 | Classificacao | Estado/etapa | Node ID | Link |
 | --- | --- | --- | --- |
-| Pagina compartilhada — entrada | Escolha de canal: atendimento agendado ou suporte por e-mail | `425:201` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-201&m=dev) |
-| Variante da pagina | Escolha um horario | `425:296` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=425-296&m=dev) |
-| Variante da pagina | Dados do agendamento e revisao antes do envio | `446:206` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=446-206&m=dev) |
-| Variante da pagina | Solicitacao registrada | `470:444` | [Abrir no Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=470-444&m=dev) |
+| Pagina compartilhada — entrada | Escolha de canal: atendimento agendado ou suporte por e-mail | `425:201` | [Referência local](referencias-locais/014-atendimento-agendado/entrada-desktop.png) |
+| Variante da pagina | Escolha um horario | `425:296` | [Referência local](referencias-locais/014-atendimento-agendado/horario-desktop.png) |
+| Variante da pagina | Dados do agendamento e revisao antes do envio | `446:206` | [Referência local](referencias-locais/014-atendimento-agendado/revisao-desktop.png) |
+| Variante da pagina | Solicitacao registrada | `470:444` | [Referência local](referencias-locais/014-atendimento-agendado/solicitacao-desktop.png) |
 
 Figma orienta composicao e hierarquia. O conteudo versionado prevalece,
 especialmente as correcoes editoriais que distinguem solicitacao registrada de
@@ -155,7 +198,7 @@ seleção manual permanece disponível no canal ativo. A T012 documental de
 apresentação não ativa e transições compartilhadas foram definidas documentalmente
 na T013 pelo [contrato de canais](../arquitetura/contrato-canais-ajuda.md).
 O conteúdo TypeScript foi migrado em 21/10/2026 por resolvedor compartilhado;
-a implementação visual dos cards/calendário e a verificação Figma continuam pendentes.
+a implementação visual dos cards/calendário e a operação dos canais continuam pendentes.
 
 Na FAQ `169:495`, não inserir os cards: a seção de apoio leva à entrada da 014.
 Em `425:201`, na própria rota 014, “Consultar datas e horários” é botão de
@@ -164,9 +207,15 @@ o card de atendimento navega à entrada 014; o de e-mail ativo copia localmente.
 Calendário é estado interno de expansão da jornada, sem node novo presumido;
 `425:296` referencia seleção de horário. Pendente/pausado mostram avisos, sem
 ação operacional; ambos indisponíveis mantêm orientações e retornos.
-Layout adapta-se a esses estados; definição documental não comprova consulta Figma.
+Layout adapta-se a esses estados; o pacote local documenta a consulta visual,
+mas não comprova operação nem aceite no navegador.
 
 ## Componentes identificados
+
+O contrato consolidado de componentes e assets compartilhados está em
+[componentes-compartilhados](componentes-compartilhados/README.md), com manifesto
+e referência reaproveitada da captura da home. Ele cobre shell, header, footer,
+breadcrumb, botões, cards, `Label-Row`, stepper e feedback.
 
 | Componente | Node ID | Uso esperado |
 | --- | --- | --- |
@@ -191,7 +240,9 @@ devem ser usados como referencia principal nas proximas specs:
 
 ## Regra de uso
 
-Antes de implementar uma tela, consultar o node correspondente com
-`get_design_context`. A resposta deve ser adaptada para a stack do projeto
-React + TypeScript + CSS modular/global, sem copiar Tailwind diretamente e sem
-instalar Tailwind apenas por causa do output do Figma.
+Se houver pacote em `referencias-locais/`, implementar a partir da captura,
+manifesto, especificação e assets versionados; nenhuma consulta remota é
+obrigatória. Para telas ainda sem pacote local, consultar o node correspondente
+com `get_design_context` e, em seguida, versionar o mesmo conjunto de evidências
+antes de distribuir a implementação. Sempre adaptar para React + TypeScript +
+CSS modular/global, sem copiar Tailwind nem coordenadas absolutas.

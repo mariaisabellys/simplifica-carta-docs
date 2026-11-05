@@ -45,6 +45,6 @@ Não copiar antigas props de navegação como API vigente.
 
 Riscos: defaults falsamente confirmados, omissão de seleções, dados inativos
 expostos, listas filtradas, IDs DOM duplicados, foco roubado e aprovação falsa.
-Mitigações no contrato e PV01–PV18. Figma/ERS/copy, semântica MC-05,
+Mitigações no contrato e PV01–PV18. Pacote visual local disponível; ERS/copy, semântica MC-05,
 validação defensiva da 007, exportação e ambientes reais seguem dependências.
 A documentação não comprova implementação; testes e build são futuros.

@@ -85,13 +85,13 @@
   - Dependencias: T002–T004. Evidencia: contratos e decisao arquitetural;
     RF02–08, CA06–CA08/CA10/CA16/CA18.
 
-- [ ] **T006 — Consultar Figma e fechar fluxo frontend**
-  - Consultar via MCP os nodes `425:201`, `425:296`, `446:206` e `470:444`
-    no Design YaVUdqYa3boHpvGrxf4ZJ5; `169:495` pertence a FAQ.
+- [x] **T006 — Fechar fluxo frontend com pacote visual local**
+  - Usar as capturas e o manifesto dos nodes `425:201`, `425:296`, `446:206`
+    e `470:444`; `169:495` pertence a FAQ.
   - Tratar os nodes como estados da mesma rota: data, horario, dados/revisao e
     solicitacao registrada. Nao criar quatro rotas ou paginas independentes.
-  - Consultar Make dVm7lEZdBFqOiiySWLWUqp, node 0:1; registrar tokens,
-    controles, assets e estados de vazio/falha/conflito/processamento/resultado incerto.
+  - Registrar no pacote local tokens, controles, assets e estados de
+    vazio/falha/conflito/processamento/resultado incerto.
   - Confirmar foco/resumo de erros, selecao nativa quando adequada, responsividade
     e breadcrumb; atualizar mapa de telas com frames efetivamente identificados.
   - Comparar cada frame com `scheduledServiceContent`; adaptar o layout ao

@@ -13,10 +13,11 @@ bloqueio legal/editorial registrado na T019 está resolvido documentalmente.
 
 - `spec.md`, `plan.md`, `tasks.md` e `implementation-plan.md` presentes;
 - node Figma Design `365:265` acessivel;
-- Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, disponivel para reconsulta;
+- tokens versionados e pacote visual local disponíveis; reconsulta ao Figma
+  Make `dVm7lEZdBFqOiiySWLWUqp` é opcional;
 - feature 002 implementada ou contratos reais do shell novamente conferidos;
 - copy normativa versionada em `src/content/pages/o-que-e-carta.ts`;
-- assets oficiais baixados para `src/assets/o-que-e-carta/`.
+- assets oficiais disponíveis em `src/assets/o-que-e-carta-servico/`.
 
 ## Fonte editorial
 

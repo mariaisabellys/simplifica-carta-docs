@@ -40,6 +40,8 @@
   - Dependencias: T001, T002.
   - Evidencia: inventario com origem, nome de arquivo, formato e texto
     alternativo no `implementation-plan.md`.
+  - Execução complementar de 27/10/2026: captura e assets foram baixados,
+    conferidos e registrados no pacote visual local da 002.
 
 - [x] **T004 — Fechar a estrategia de testes**
   - Decidir se Vitest, Testing Library e `jest-dom` entram nesta spec.
@@ -239,8 +241,9 @@
   - Dependencias: T022, T024.
   - Evidencia: checklist acessivel concluido sem bloqueios.
 
-- [ ] **T027 — Comparar a entrega com o Figma**
-  - Comparar a home desktop com o node `310:175`.
+- [ ] **T027 — Comparar a entrega com a referência visual local**
+  - Comparar a home desktop com `referencias-locais/002-home-e-navegacao/desktop.png`;
+    o node `310:175` permanece como proveniência.
   - Confirmar hierarquia, composicao, tokens, assets, estados e adaptacoes
     responsivas.
   - Registrar divergencias intencionais, incluindo a ausencia de `Material de

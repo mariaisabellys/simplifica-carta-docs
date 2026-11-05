@@ -1,5 +1,10 @@
 # Spec: Fluxo de ajuda
 
+> **Atualização visual — 04/11/2026:** o pacote local
+> [`docs/design-system/referencias-locais/013-fluxo-de-ajuda/`](../../docs/design-system/referencias-locais/013-fluxo-de-ajuda/)
+> registra a extração conferida do node `169:495`; ele é a referência normativa
+> de composição, sem dependência de consulta remota.
+
 > **Integracao visual atualizada em 16 de outubro de 2026:** o CTA de apoio
 > leva ao node compartilhado `425:201`, onde o usuario encontra os cards de
 > atendimento agendado e suporte por e-mail. A FAQ continua no node `169:495`.
@@ -69,9 +74,9 @@ orientativo e nao substitui revisao oficial da GESED ou publica servicos.
 - `src/features/atendimento/atendimento.types.ts`: contrato inicial de
   solicitacao, a detalhar na feature 014.
 
-Esta spec usa fontes textuais locais. Nao declara leitura do PDF do ERS,
-consulta direta ao Figma, verificacao de disponibilidade dos canais ou
-homologacao editorial das respostas.
+Esta spec usa fontes textuais locais e o pacote visual local acima. A extração
+visual foi concluída; ERS, disponibilidade dos canais e homologação editorial
+das respostas continuam pendentes.
 
 ## Requisitos funcionais
 
@@ -190,11 +195,13 @@ Esta spec inclui FAQ na entrada de ajuda; o planejamento deve conferir se o
 frame cobre tambem a escolha dos dois canais ou se existem referencias adicionais.
 O node nao representa, por si so, os formularios de 014 e 015.
 
-Antes da implementacao visual, consultar via MCP o Figma Design
+Antes da implementacao visual, usar o `visual-spec.md`, `desktop.png` e
+`manifest.json` do pacote local. A proveniência histórica é o Figma Design
 `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, com a referencia `169:495`, e o
 Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar no
 `implementation-plan.md` composicao, FAQ, acoes, estados, assets e responsividade.
-Atualizar o mapa quando a associacao do frame for confirmada ou modificada.
+Nenhuma consulta remota é obrigatória; atualizar o mapa apenas se a proveniência
+ou o pacote local forem alterados.
 
 Conciliar ERS, textos institucionais, disponibilidade dos canais e contratos
 de navegacao com 014 e 015. Divergencias do prototipo devem ser resolvidas antes
@@ -249,7 +256,7 @@ canais. Testes de encaminhamento completo ficam dependentes dessas features.
 | CA11 | Encontrar indisponibilidade confirmada de um canal. | Manter consulta funcional e informar alternativa verdadeira, sem horarios ou promessas ficticias. |
 | CA12 | Revisar textos sobre contato, suporte e publicacao. | Encontrar conteudo validado, sem prazo inventado, aprovacao automatica ou confusao com suporte externo. |
 | CA13 | Testar os canais completos depois da entrega de 014 e 015. | Chegar aos fluxos reais; nao declarar canal operacional apenas pela existencia de placeholder. |
-| CA14 | Revisar arquitetura e implementacao visual futura. | Encontrar conteudo separado, ausencia de coleta/backend na entrada, consultas Figma registradas e shell/tokens reutilizados. |
+| CA14 | Revisar arquitetura e implementacao visual futura. | Encontrar conteudo separado, ausencia de coleta/backend na entrada, pacote visual local registrado e shell/tokens reutilizados. |
 
 ## Proximo passo
 

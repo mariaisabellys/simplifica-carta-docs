@@ -22,8 +22,8 @@ alterados em `/spec:implementar`, depois da criacao de `tasks.md` e do
 - `docs/produto/fluxos.md`;
 - `docs/design-system/mapa-figma-telas.md`;
 - `docs/design-system/tokens-e-componentes.md`;
-- Figma Design `YaVUdqYa3boHpvGrxf4ZJ5`, node `310:175`, consultado via MCP;
-- Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, consultado via MCP;
+- pacote visual local da 002 e contratos compartilhados; consulta ao Figma é
+  opcional apenas para atualizar uma referência;
 - estrutura atual de `src/app`, `src/components`, `src/content`, `src/pages` e
   `src/styles`.
 

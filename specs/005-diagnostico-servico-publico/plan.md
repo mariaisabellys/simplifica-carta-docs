@@ -32,9 +32,10 @@ somente deve ocorrer em `/spec:implementar`, depois de `tasks.md`,
 - Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, conforme a documentacao
   local.
 
-O `/spec:plano-implementacao` deve consultar novamente o Figma Design e o
-Figma Make para confirmar layout, dimensoes, estados, tokens, responsividade e
-assets antes do codigo definitivo.
+O pacote local em
+`docs/design-system/referencias-locais/005-diagnostico-servico-publico/`
+confirma layout, dimensões, estados, responsividade e assets. Consulta ao Figma
+Design ou Make é auditoria opcional antes do código definitivo.
 
 ## Estado atual
 
@@ -612,5 +613,4 @@ O plano estara pronto quando:
 - estrategia exaustiva de testes cobrir as 6.561 combinacoes;
 - riscos de persistencia, acesso direto e roteador paralelo estiverem
   mitigados;
-- consulta detalhada ao Figma estiver reservada para
-  `/spec:plano-implementacao` antes do codigo.
+- pacote visual local estiver registrado como fonte normativa antes do código.

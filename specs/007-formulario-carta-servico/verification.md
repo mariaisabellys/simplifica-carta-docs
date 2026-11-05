@@ -45,14 +45,11 @@ nao aprovam fontes, compilacao, migracao ou preservacao real de dados.
 Esta atualizacao e documental. Nao comprova consulta MCP detalhada,
 implementacao, correspondencia pixel a pixel ou testes funcionais.
 
-- Consulta atual da integracao Figma confirmou installed=false. Nao houve
-  confirmacao de conexao ou ferramenta de leitura utilizavel; a sugestao
-  anterior nao foi repetida. Os cinco frames de pagina, os componentes
-  `811:306`/`811:382`/`821:308`/`651:317` e o Make
-  `dVm7lEZdBFqOiiySWLWUqp` node `0:1` continuam sem consulta detalhada.
-- `docs/ia/regras-para-ia.md` exige consulta visual via MCP antes de
-  implementar. Disposicao simultanea/por partes, estados, tokens e assets
-  precisam de referencia real, sem inferir layout definitivo dos snippets.
+- Os cinco frames da página e os componentes `811:306`/`811:382`/`821:308`/
+  `651:317` estão versionados no pacote visual local da 007; o Make é apenas
+  proveniência histórica.
+- Disposição simultânea/por partes, estados, tokens e assets devem seguir o
+  pacote local e os contratos, sem inferir layout de snippets remotos.
 - ERS PDF nao inspecionado e redacao institucional nao homologada. Nao
   substituir evidencia por existencia de manual textual ou plano.
 - Limites candidatos de recuperacao (8 MiB/1000 itens) continuam sujeitos

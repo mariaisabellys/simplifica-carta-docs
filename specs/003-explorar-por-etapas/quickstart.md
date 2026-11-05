@@ -84,8 +84,8 @@ Conferir que os arquivos locais correspondem aos nodes corretos:
 - `check-square.svg` — `575:600`;
 - `file-text.svg` — `575:609`;
 - `book-open.svg` — `575:615`;
-- `chevron-breadcrumb.svg` — `575:594`, 10 × 10 px;
-- `chevron-action.svg` — `575:597` e equivalentes, 16 × 16 px.
+- `chevron-right-breadcrumb.svg` — `575:594`, 10 × 10 px;
+- `chevron-right.svg` — `575:597` e equivalentes, 16 × 16 px.
 
 Os dois chevrons sao assets diferentes e nao devem ser substituidos por um
 unico arquivo. Nenhum asset pode usar URL temporaria do Figma.

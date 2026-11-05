@@ -48,12 +48,13 @@ aprova nem publica servicos automaticamente.
   `src/content/tutorial/paraiba-digital.ts`: rota existente, pagina ainda
   provisoria e conteudo editorial completo das seis etapas, ainda sem a
   composicao visual ou integracao de copia previstas.
-- `docs/design-system/mapa-figma-telas.md`: pagina principal e cinco variantes
-  de etapa do tutorial, nodes `564:635`, `564:730`, `564:852`, `564:980`,
-  `564:1232` e `564:1357`.
+- `docs/design-system/referencias-locais/011-tutorial-paraiba-digital/`:
+  capturas, especificação e manifesto da página principal e cinco variantes,
+  nodes `564:635`, `564:730`, `564:852`, `564:980`, `564:1232` e `564:1357`.
 
-Esta spec utiliza fontes textuais locais. Nao declara leitura do PDF do ERS,
-consulta direta ao Figma ou verificacao da interface atual do Paraiba Digital.
+Esta spec utiliza fontes textuais e visuais locais. O lote de 04/11/2026
+consultou os seis frames do Figma, mas não declara leitura do PDF do ERS nem
+verificação da interface atual do Paraíba Digital.
 As etapas abaixo definem cobertura editorial; nomes de menus, URLs e regras
 externas devem ser verificados antes de redigir instrucoes operacionais finais.
 
@@ -231,12 +232,12 @@ variantes da mesma pagina, nao novas rotas:
 
 | Tipo | Etapa do conteudo versionado | Node | Referencia |
 | --- | --- | --- | --- |
-| Pagina — estado inicial | 1. Acesse a plataforma | `564:635` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-635&m=dev) |
-| Variante | 2. Faca login | `564:730` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-730&m=dev) |
-| Variante | 3. Localize o cadastro | `564:852` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-852&m=dev) |
-| Variante | 4. Cadastre as informacoes de sua Carta | `564:980` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-980&m=dev) |
-| Variante | 5. Revise os dados | `564:1232` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1232&m=dev) |
-| Variante | 6. Publique o servico | `564:1357` | [Figma](https://www.figma.com/design/YaVUdqYa3boHpvGrxf4ZJ5/Manual-de-levantamento-dos-servi%C3%A7os--Copy-?node-id=564-1357&m=dev) |
+| Pagina — estado inicial | 1. Acesse a plataforma | `564:635` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-1-desktop.png) |
+| Variante | 2. Faca login | `564:730` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-2-desktop.png) |
+| Variante | 3. Localize o cadastro | `564:852` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-3-desktop.png) |
+| Variante | 4. Cadastre as informacoes de sua Carta | `564:980` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-4-desktop.png) |
+| Variante | 5. Revise os dados | `564:1232` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-5-desktop.png) |
+| Variante | 6. Publique o servico | `564:1357` | [Local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/etapa-6-desktop.png) |
 
 `src/content/tutorial/paraiba-digital.ts` e a fonte editorial oficial. Os
 frames orientam layout, composicao, hierarquia, progresso e posicao dos blocos,
@@ -250,11 +251,10 @@ e as 25 definições aplicáveis, com coleções e condições da 012.
 
 Nao usar o card de entrada de `Explorar por etapas` como layout desta pagina.
 
-Antes da implementacao visual, consultar via MCP os seis frames no Figma
-Design `YaVUdqYa3boHpvGrxf4ZJ5`, pagina `167:2`, e consultar o Figma
-Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`. Registrar no
-`implementation-plan.md` composicao, passos, integracao da copia, assets,
-estados vazio/parcial/preenchido e responsividade; atualizar o mapa de telas.
+Antes da implementação visual, usar o
+[pacote local](../../docs/design-system/referencias-locais/011-tutorial-paraiba-digital/visual-spec.md),
+seu manifesto, as seis capturas e os assets versionados. A consulta remota ao
+Figma não é obrigatória; o arquivo permanece como proveniência histórica.
 
 Figma orienta a apresentacao; nao comprova sozinho que instrucoes operacionais,
 URLs e campos externos estao atuais. O planejamento deve verificar ERS e fontes
@@ -321,5 +321,6 @@ da implementacao conjunta.
 
 Concluir os itens pendentes de [tasks.md](tasks.md). A sincronização T009 do
 conteúdo foi concluída; fonte administrativa,
-ERS/Figma, aprovação editorial, implementação e testes continuam pendentes.
+ERS, aprovação editorial, implementação, comparação no navegador e testes
+continuam pendentes; a extração visual do Figma foi concluída em 04/11/2026.
 Ver [validation.md](validation.md) e [verification.md](verification.md).

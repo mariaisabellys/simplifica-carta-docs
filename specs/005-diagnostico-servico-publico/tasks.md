@@ -36,8 +36,8 @@
   - Dependencia: T001.
   - Evidencia: lacunas e integracoes registradas no plano detalhado.
 
-- [x] **T003 — Consultar e mapear o Figma Design**
-  - Consultar via MCP o arquivo `YaVUdqYa3boHpvGrxf4ZJ5`, nodes `387:1020` e
+- [x] **T003 — Mapear as referências visuais locais**
+  - Usar o pacote local da 005, mantendo os nodes `387:1020` e
     `387:1362`.
   - Confirmar hierarquia, card, progresso, opcoes, botoes, estados, medidas,
     espacamentos, resultado e responsividade observavel.
@@ -46,7 +46,7 @@
   - Evidencia: leitura visual detalhada no `implementation-plan.md`.
 
 - [x] **T004 — Confirmar tokens e estados no Figma Make**
-  - Consultar via MCP o arquivo `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`.
+  - Usar tokens e componentes compartilhados versionados; o Make é auditoria opcional.
   - Mapear Inter, cores, bordas, raios, sombras, espacamentos e estados de
     radio, card, progresso e botoes.
   - Reconciliar valores com `src/styles/tokens.css`.

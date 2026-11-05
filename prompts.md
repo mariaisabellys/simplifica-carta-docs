@@ -1,0 +1,19 @@
+com base nessa varredura e no que voce encontrou, crie um documento de spec.md, plan.md e tasks.md para resolver essas questoes, coloque estes documentos na pasta docs, ele servirao como base para que voce faca todas as correcoes necessarias. Seja detalhista nas tasks, e diga como podemos executa-las uma a uma, ate que o projeto esteja mais redondo e completo. Apos esses documentos criados nos iniciaremos as correcoes. Uma observacao importante, para a feature 012, na tela que aparecem os dados para serem copiados, devem aparecer para o usuario todos os campos da carta de servico, os campos abertos devem possui o botao de copiar, enquanto que os outros tipos de campo devem aparecer apenas com a informacao escolhida pelo usuario no momento em que ele respondeu o formulario da carta
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

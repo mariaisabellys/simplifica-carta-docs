@@ -1,5 +1,10 @@
 # Plano de implementação: Suporte por e-mail
 
+> **Atualização 04/11/2026:** a 015 reutiliza a captura compartilhada `425:201`,
+> documentada em `docs/design-system/referencias-locais/015-suporte-email/`.
+> Usar o pacote local e `src/assets/ajuda/mail.svg`; não depender de Figma Make
+> remoto para implementar a composição.
+
 Reconciliado em 20/10/2026 — T012 documental. [Spec](spec.md), [plan](plan.md),
 [tasks](tasks.md), [quickstart](quickstart.md).
 Código-base anterior preservado no [histórico](historico/2026-10-20-pre-t012-implementation-plan.md);
@@ -66,9 +71,9 @@ Não expandir modelo da Carta para guardar contato/operação.
 | Estilos/tokens/shell | Inter, reflow, foco, breadcrumb e status local |
 | Testes de componente/integração | Matriz abaixo, sem rede/envio real |
 
-Figma: 425:201 no Design YaVUdqYa3boHpvGrxf4ZJ5, compartilhado com 014.
-Consultar via MCP e conferir Make dVm7lEZdBFqOiiySWLWUqp node 0:1 antes de
-implementar visualmente. [Mapa](../../docs/design-system/mapa-figma-telas.md).
+A referência visual é a captura compartilhada `425:201` no pacote local da 015,
+documentada no [mapa](../../docs/design-system/mapa-figma-telas.md). Figma e Make
+permanecem somente como proveniência histórica.
 FAQ 169:495 não substitui esse frame. Layout deve acomodar copy atual,
 endereço longo e estados de cópia, sem reprodução de texto antigo do desenho.
 

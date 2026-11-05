@@ -31,13 +31,12 @@ Nao houve envio, acesso a banco, migrations ou dados pessoais reais.
 
 Analisados spec/plan/tasks/implementation-plan e codigo de shell/App/routes/
 FormField. A 016 ainda nao possui validation.md; leitura desta rodada nao
-substitui `/spec:validar` contra ERS/Figma. Tasks/plano detalhado receberam
+substitui `/spec:validar` contra ERS nem testes reais. Tasks/plano detalhado receberam
 registro parcial; spec/plan intactos. Matriz inicial e quickstart adicionados.
 Nenhuma tarefa concluida; alteracoes anteriores do workspace preservadas.
 
-- Constitution secao 6 exige: "Antes de implementar trabalho visual, o Codex
-  deve consultar via MCP". Fonte: ../../docs/processo/constitution.md. Figma
-  MCP indisponivel; nenhum ajuste visual realizado antes dessa consulta.
+- Os pacotes locais 002–015 e o contrato de componentes compartilhados cobrem
+  a referência visual; nenhum ajuste depende de consulta MCP remota.
 - Conciliacao ERS/meta WCAG, politica de foco/hash/navegacao 002 e associacoes
   dos formularios 007/008/014 ainda pendentes. FormField nao tem consumidores
   reais atuais, portanto contrato nao foi declarado integrado.

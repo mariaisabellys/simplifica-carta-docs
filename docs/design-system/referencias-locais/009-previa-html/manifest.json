@@ -1,0 +1,22 @@
+{
+  "feature": "009-previa-html",
+  "route": "/previa",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5" },
+  "capturedAt": "2026-11-04",
+  "references": [
+    {
+      "kind": "shared-component",
+      "nodeId": "821:308",
+      "path": "componente-desktop.png",
+      "viewport": { "width": 539, "height": 1775 },
+      "sha256": "57b5ed0e0c98e349129880d03ecb9551676b777e05cb2ff3dd5f84f3fdc80540"
+    }
+  ],
+  "contentSource": "specs/007-formulario-carta-servico/matriz-campos-v3.md",
+  "contractSources": [
+    "specs/009-previa-html/contrato-projecao-v3.md",
+    "specs/007-formulario-carta-servico/modelo-central-carta.md"
+  ],
+  "integrations": ["007-formulario-carta-servico", "010-exportacao-csv"],
+  "assets": ["src/assets/previa/file.svg", "src/assets/previa/download.svg"]
+}

@@ -19,6 +19,8 @@ Pronto para `/spec:implementar 002-home-e-navegacao`.
 - MVP e fluxo: `docs/produto/mvp.md` e `docs/produto/fluxos.md`;
 - mapa e tokens: `docs/design-system/mapa-figma-telas.md` e
   `docs/design-system/tokens-e-componentes.md`;
+- pacote visual local em
+  `docs/design-system/referencias-locais/002-home-e-navegacao/`;
 - estrategia: `docs/implementation-plan.md`;
 - codigo React, rotas, shell, conteudo e CSS existentes em `src/`;
 - Figma Design, consultado via `get_design_context`:
@@ -149,16 +151,16 @@ representados legitimamente por CSS, pois nao sao glifos autorais.
 
 | Asset no frame | Node/identificacao | Arquivo local | Regra |
 | --- | --- | --- | --- |
-| Arte principal da Carta | `325:201`, imagem `ChatGPT Image...` | `src/assets/home/carta-servico.png` | baixar o raster original; imagem informativa com alt |
-| Marca institucional branca | `690:403`, `SEMTD-branco 1` | `src/assets/home/semtd-branco.png` | baixar o raster original; alt institucional |
-| Icone play | `322:171`, `play 1` | `src/assets/home/icon-play.svg` | baixar o SVG exato; `aria-hidden` |
-| Icone lista | `325:184`, `text-align-start 1` | `src/assets/home/icon-list.svg` | baixar o SVG exato; `aria-hidden` |
-| Seta do CTA | asset `imgArrowRight` | `src/assets/home/icon-arrow-right.svg` | baixar o SVG exato; `aria-hidden` |
+| Arte principal da Carta | `325:201`, imagem `ChatGPT Image...` | `src/assets/home/hero-carta-servico.png` | raster versionado; imagem informativa com alt |
+| Marca institucional branca | `690:403`, `SEMTD-branco 1` | `src/assets/brand/semt-d-branco.png` | raster compartilhado versionado; alt institucional |
+| Icone play | `322:171`, `play 1` | `src/assets/home/play.svg` | SVG versionado; `aria-hidden` |
+| Icone lista | `325:184`, `text-align-start 1` | `src/assets/home/text-align-start.svg` | SVG versionado; `aria-hidden` |
+| Seta do CTA | asset `imgArrowRight` | `src/assets/home/arrow-right.svg` | SVG versionado; `aria-hidden` |
 
 Linhas, divisores, circulos numerados e conectores do processo devem ser CSS,
-nao arquivos, pois sao geometria de layout sem glifo. As URLs do MCP sao
-temporarias; durante `/spec:implementar`, chamar `download_assets` novamente e
-salvar os bytes exatos. Nunca manter URL `figma.com/api/mcp/asset` no codigo.
+nao arquivos, pois sao geometria de layout sem glifo. Os assets necessários já
+foram baixados e conferidos no lote visual de 27/10/2026; não reconsultar o
+Figma nem manter URL `figma.com/api/mcp/asset` no código.
 
 Se a marca institucional estiver incorporada a uma das quatro imagens sem
 identificacao suficiente, inspecionar os arquivos baixados antes de nomear. Nao
@@ -185,11 +187,11 @@ adivinhar a correspondencia pelo indice da resposta.
 - `src/app/NavigationContext.tsx`;
 - `src/content/navigation.ts`;
 - `src/types/content.ts`;
-- `src/assets/home/carta-servico.png`;
-- `src/assets/home/semtd-branco.png`;
-- `src/assets/home/icon-play.svg`;
-- `src/assets/home/icon-list.svg`;
-- `src/assets/home/icon-arrow-right.svg`;
+- `src/assets/home/hero-carta-servico.png` (já criado);
+- `src/assets/brand/semt-d-branco.png` (já criado e compartilhado);
+- `src/assets/home/play.svg` (já criado);
+- `src/assets/home/text-align-start.svg` (já criado);
+- `src/assets/home/arrow-right.svg` (já criado);
 - `src/test/setup.ts`;
 - `src/pages/HomePage.test.tsx`;
 - `src/components/layout/MainNavigation.test.tsx`.
@@ -501,7 +503,8 @@ Cenarios obrigatorios:
 
 ## Regras de implementacao
 
-- Reconsultar e baixar assets do Figma somente em `/spec:implementar`.
+- Usar e versionar os assets do pacote local; consultar Figma somente para uma
+  atualização explícita da referência.
 - Inspecionar cada imagem antes de nomear e versionar.
 - Nao copiar Tailwind nem instalar biblioteca de UI.
 - Nao usar posicionamento absoluto para reproduzir a pagina inteira.

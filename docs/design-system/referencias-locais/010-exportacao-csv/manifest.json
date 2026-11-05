@@ -1,0 +1,17 @@
+{
+  "feature": "010-exportacao-csv",
+  "route": null,
+  "owner": "009-previa-html",
+  "capturedAt": "2026-11-04",
+  "references": [
+    {
+      "kind": "integrated-action",
+      "nodeId": "821:308",
+      "path": "../009-previa-html/componente-desktop.png",
+      "viewport": { "width": 539, "height": 1775 },
+      "sha256": "57b5ed0e0c98e349129880d03ecb9551676b777e05cb2ff3dd5f84f3fdc80540"
+    }
+  ],
+  "contractSources": ["specs/010-exportacao-csv/contrato-exportacao-v3.md"],
+  "assets": ["src/assets/previa/download.svg"]
+}

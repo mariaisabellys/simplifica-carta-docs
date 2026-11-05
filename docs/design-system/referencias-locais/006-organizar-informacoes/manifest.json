@@ -1,0 +1,10 @@
+{
+  "feature": "006-organizar-informacoes",
+  "route": "/organizar-informacoes",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5", "nodeId": "387:1918" },
+  "capturedAt": "2026-11-03",
+  "reference": { "path": "desktop.png", "viewport": { "width": 1440, "height": 2188 }, "sha256": "b0b14e74bf89b89f35c1744f1347d50ea4c84721d55be990a1f81ce3761b2e7e" },
+  "contentSource": "src/content/pages/organizar-informacoes.ts",
+  "contractSource": "specs/006-organizar-informacoes/contrato-orientacoes-v3.md",
+  "assets": ["src/assets/organizar-informacoes/check-circle.svg", "src/assets/organizar-informacoes/arrow-right.svg", "src/assets/organizar-informacoes/help-circle.svg", "src/assets/organizar-informacoes/sparkles.svg"]
+}

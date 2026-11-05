@@ -32,9 +32,9 @@ alterados em `/spec:implementar`, depois da criacao de `tasks.md`, do
 - Figma Make `dVm7lEZdBFqOiiySWLWUqp`, node `0:1`, conforme a documentacao
   local do design system.
 
-A consulta detalhada dos nodes do Figma, incluindo medidas, tokens, estados e
-assets, deve ser refeita via MCP em `/spec:plano-implementacao`. O plano nao
-deve cristalizar valores visuais antes dessa confirmacao.
+As medidas, tokens, estados e assets devem vir do pacote visual local da 003;
+consulta remota ao Figma é opcional para atualizar a referência. O plano não
+deve cristalizar valores visuais fora desse pacote.
 
 ## Estado atual e pre-condicoes
 
@@ -203,7 +203,8 @@ causem sobreposicao.
 
 ### 6. Reconciliar tokens e assets no plano detalhado
 
-O `implementation-plan.md` deve consultar o Figma Design e o Figma Make para:
+O `implementation-plan.md` deve usar o pacote visual local e os tokens
+versionados para:
 
 - mapear gradiente do hero, fundos, bordas, sombras e cores dos quatro cards;
 - confirmar tipografia, tamanhos, pesos, espacamentos, raios e largura do
@@ -212,8 +213,8 @@ O `implementation-plan.md` deve consultar o Figma Design e o Figma Make para:
 - identificar os icones reais de cada etapa e qualquer elemento institucional;
 - decidir quais elementos visuais sao assets e quais sao geometria simples de
   CSS;
-- exportar icones reais durante a implementacao, sem redesenhar SVGs autorais e
-  sem manter URLs temporarias do MCP.
+- usar os ícones reais já exportados, sem redesenhar SVGs autorais e sem manter
+  URLs temporárias do MCP.
 
 Valores confirmados devem ser adicionados a tokens semanticos ou reutilizar os
 tokens da feature 002. Variacoes de cor dos cards podem ser expostas por
@@ -305,9 +306,9 @@ dependencia e limitar alteracoes compartilhadas ao minimo.
 
 Risco: copiar cores ou medidas do frame sem reconciliar o design system.
 
-Mitigacao: consultar ambos os arquivos via MCP no plano de implementacao,
-registrar o mapeamento e priorizar o Figma Design para composicao e o Figma Make
-para componentes e tokens.
+Mitigacao: usar o pacote visual local e os tokens versionados, registrando o
+mapeamento no plano. Uma auditoria remota futura só altera o contrato depois de
+versionada.
 
 ### Confusao entre indice e progresso
 
@@ -353,5 +354,5 @@ Este plano estara pronto para `/spec:tarefas` quando:
 - nao houver logica de progresso ou persistencia planejada;
 - os cinco destinos estiverem mapeados corretamente;
 - riscos, testes e verificacoes estiverem definidos;
-- a consulta detalhada do Figma estiver reservada para
-  `/spec:plano-implementacao` antes de qualquer codigo.
+- o pacote visual local estiver referenciado antes de qualquer codigo; consulta
+  remota fica opcional para atualização.

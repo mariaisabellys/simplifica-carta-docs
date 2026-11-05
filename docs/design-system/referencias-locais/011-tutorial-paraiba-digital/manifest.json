@@ -1,0 +1,33 @@
+{
+  "feature": "011-tutorial-paraiba-digital",
+  "route": "/tutorial-paraiba-digital",
+  "figma": { "fileKey": "YaVUdqYa3boHpvGrxf4ZJ5" },
+  "capturedAt": "2026-11-04",
+  "references": [
+    { "step": 1, "nodeId": "564:635", "path": "etapa-1-desktop.png", "viewport": { "width": 1280, "height": 1215 }, "sha256": "d6b4706d08551a827b103d7f34cdf4e2f8f01146513ce871ba2fdd475f6fd2c4" },
+    { "step": 2, "nodeId": "564:730", "path": "etapa-2-desktop.png", "viewport": { "width": 1280, "height": 1312 }, "sha256": "99eab28bdd2c60e399a2b5cbd65b5536d64deb4e505bd665ccaa8c52794ffcab" },
+    { "step": 3, "nodeId": "564:852", "path": "etapa-3-desktop.png", "viewport": { "width": 1280, "height": 1201 }, "sha256": "7e6d7513811ed180855abd060b3df843b9ceea134c98d827cf3a01da0981c485" },
+    { "step": 4, "nodeId": "564:980", "path": "etapa-4-desktop.png", "viewport": { "width": 1280, "height": 1294 }, "sha256": "47ab1e62fb8a1aa7433a06269499dd1e24468c5d3c9c0da9a9146cbb922154be" },
+    { "step": 5, "nodeId": "564:1232", "path": "etapa-5-desktop.png", "viewport": { "width": 1280, "height": 1354 }, "sha256": "f11bd34645ef654888ff592be4d1417c27c06d6ee62adb1bbe71ec67504427ea" },
+    { "step": 6, "nodeId": "564:1357", "path": "etapa-6-desktop.png", "viewport": { "width": 1280, "height": 1251 }, "sha256": "9570f4dcce430997602d66eee642ac2a16aae3b7c28c2aff262d50d854b882d4" }
+  ],
+  "contentSource": "src/content/tutorial/paraiba-digital.ts",
+  "contractSources": [
+    "specs/011-tutorial-paraiba-digital/contrato-integracao-v3.md",
+    "specs/012-copia-dados-tutorial/contrato-transferencia-v3.md"
+  ],
+  "integrations": ["007-formulario-carta-servico", "012-copia-dados-tutorial"],
+  "assets": [
+    "src/assets/tutorial/external-link.svg",
+    "src/assets/tutorial/computer.svg",
+    "src/assets/tutorial/lightbulb.svg",
+    "src/assets/tutorial/check.svg",
+    "src/assets/tutorial/key.svg",
+    "src/assets/tutorial/search.svg",
+    "src/assets/tutorial/home.svg",
+    "src/assets/tutorial/clipboard.svg",
+    "src/assets/tutorial/copy.svg",
+    "src/assets/tutorial/list-check.svg",
+    "src/assets/tutorial/rocket.svg"
+  ]
+}

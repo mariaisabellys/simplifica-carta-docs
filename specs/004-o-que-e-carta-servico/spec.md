@@ -287,7 +287,8 @@ coordenadas absolutas.
 - Fonte principal `Inter` definida nos tokens globais do projeto.
 - Texto institucional final a validar com a equipe responsavel.
 - Figma Design node `365:265` consultado via MCP.
-- Assets do frame a exportar pelo Figma antes da implementacao visual.
+- Assets locais do pacote visual da 004 antes da implementacao visual; não usar
+  URLs temporárias do Figma.
 - Referencias normativas e respectivos links a validar em fontes oficiais.
 
 ## Criterios de aceite

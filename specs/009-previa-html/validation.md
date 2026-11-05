@@ -13,7 +13,8 @@ Autor: Codex. Base: HEAD 7948d35 e alterações locais T003–T007 preservadas.
 
 Fontes: seis artefatos 009, modelo/matriz v3 e contratos 007/008, tipos/schema/
 catálogos, PreviaCartaPage, referências locais de navegação/Figma.
-Sem consulta externa ao Figma/ERS ou aprovação institucional.
+A consulta visual foi concluída posteriormente no lote local de 04/11/2026;
+ERS e aprovação institucional permanecem pendentes.
 
 ## Achados
 
@@ -33,7 +34,7 @@ As decisões antigas ficam no histórico, sem reescrever evidências anteriores.
 ## Prontidão delimitada
 
 Contrato permite preparar implementação de projeção/fixtures, mediante autorização.
-Antes da entrega visual/integrada: consultar Design/Make/ERS, revisar copy,
+Antes da entrega visual/integrada: usar o pacote local, consultar ERS, revisar copy,
 entregar provider/foco e validação estrutural da 007, ação 010 e destinos reais.
 MC-03/04/05/08 foram fechadas na matriz da 007; a prévia apenas projeta seus
 resultados e não duplica validação de negócio. Fallback publicado e ambiente assistivo

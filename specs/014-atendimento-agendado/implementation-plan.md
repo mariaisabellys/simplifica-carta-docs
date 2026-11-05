@@ -1,5 +1,10 @@
 # Plano de implementação: Atendimento agendado
 
+> **Atualização 04/11/2026:** os estados `425:201`, `425:296`, `446:206` e
+> `470:444` estão disponíveis em `docs/design-system/referencias-locais/014-atendimento-agendado/`.
+> O pacote local substitui consulta remota obrigatória; agenda, ERS e aceite
+> funcional permanecem pendentes.
+
 21/10/2026 — T014 documental, não implementação. A base anterior com snippets
 Django/TS foi preservada no [histórico](historico/2026-10-21-pre-t014-implementation-plan.md);
 não copiar código que deriva Receipt da oferta mutável ou ignora gate/descrição.
@@ -71,7 +76,8 @@ de SMTP. Não implementar confirmação ao solicitante nesta proposta.
 Entrada/calendário/dados/revisão/resultado preservam fonte e foco. Pausa impede
 nova ação, não apaga formulário/tentativa ou resultado. API é autoridade de
 gate; config editorial ativa sozinha não libera novas solicitações.
-Consulta visual 425:201/425:296/446:206/470:444 e Make permanece futura.
+Consulta visual 425:201/425:296/446:206/470:444 está versionada no pacote local
+da 014; não há consulta remota futura obrigatória.
 Sem backend da Carta, mailto na 015 ou transmissão de dados ao consultar FAQ.
 
 ## Evidência necessária

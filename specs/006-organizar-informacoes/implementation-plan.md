@@ -7,16 +7,16 @@ Os exemplos antigos de lista estática não orientam a implementação atual.
 ## Base e estado
 
 Consultados documentos ativos da 006, conteúdo das páginas 006/007, matriz v3,
-modelo central, contrato de contagem, navegação compartilhada e mapa Figma local.
-Nenhuma consulta externa ao Figma, ERS PDF, build ou teste funcional nesta rodada.
+modelo central, contrato de contagem, navegação compartilhada, mapa Figma local
+e `docs/design-system/referencias-locais/006-organizar-informacoes/`.
+Nenhum build ou teste funcional foi executado nesta rodada.
 A implementação futura deve seguir [spec](spec.md), [plan](plan.md) e
 [contrato de orientações](contrato-orientacoes-v3.md), que detalha o mapa 13 → 24
 e os textos de substituição. O TypeScript continua pendente de atualização.
 
-O mapa identifica Design YaVUdqYa3boHpvGrxf4ZJ5, node 387:1918; Make
-dVm7lEZdBFqOiiySWLWUqp, node 0:1 permanece fonte a consultar.
-575:483 é entrada da 003. Registrar composição, medidas/tokens, estados,
-assets e adaptação responsiva após consulta real, sem inventar fidelidade visual.
+O Design `YaVUdqYa3boHpvGrxf4ZJ5`, node `387:1918`, foi extraído localmente.
+Captura, composição, estados, assets e responsividade estão no pacote visual;
+nova consulta ao Design ou Make é auditoria opcional. `575:483` é entrada da 003.
 
 ## Contrato de conteúdo e reuso
 
@@ -67,7 +67,8 @@ global em vez de copiar antigas APIs incompatíveis.
 CSS com escopo de página; Inter/tokens existentes, altura natural, quebra de
 textos e ordem DOM/visual coerente. Não usar CSS columns/order para alterar a
 sequência. Uma coluna em telas estreitas quando necessário. Definir medidas e
-assets somente após consulta visual; contraste/foco medidos, não presumidos.
+assets somente a partir do pacote visual local; contraste/foco devem ser medidos,
+não presumidos.
 
 ## Verificações futuras por aceite
 

@@ -30,14 +30,20 @@ Orientacoes, exemplos, perguntas, etapas e textos institucionais devem ficar ver
 
 As telas devem funcionar em computador, tablet e smartphone, com navegacao clara, contraste adequado, foco visivel e linguagem simples.
 
-### 6. Design guiado pelo Figma
+### 6. Design com referência versionada
 
-O Figma Design do prototipo orienta fluxo, layout, composicao, ordem das secoes e comportamento das telas. O Figma Make orienta tokens, componentes, cores, tipografia, espacamentos, botoes, cards, navegacao e formularios.
+As capturas, especificações e tokens versionados orientam fluxo, layout,
+composição, componentes e estilo. Figma Design e Make preservam a proveniência
+e servem para atualizar telas ainda sem pacote local.
 
-Antes de implementar trabalho visual, o Codex deve consultar via MCP:
+Antes de implementar trabalho visual, a IA deve consultar:
 
-- Figma Design do prototipo: `fileKey YaVUdqYa3boHpvGrxf4ZJ5`, pagina raiz atual `167:2`, node inicial recomendado `310:175`.
-- Figma Make do design system: `fileKey dVm7lEZdBFqOiiySWLWUqp`, `nodeId 0:1`.
+- `docs/design-system/referencias-locais/` e o pacote da feature;
+- `docs/design-system/tokens-e-componentes.md`.
+
+Se esses arquivos não cobrirem a tela, consultar via MCP o Figma Design
+`YaVUdqYa3boHpvGrxf4ZJ5` e o Make `dVm7lEZdBFqOiiySWLWUqp`, e versionar a
+evidência obtida antes de distribuir a implementação.
 
 ### 7. Dados da Carta sem persistencia permanente no MVP
 

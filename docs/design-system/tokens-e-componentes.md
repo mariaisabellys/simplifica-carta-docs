@@ -1,8 +1,14 @@
 # Tokens e Componentes
 
-## Fonte oficial
+## Fonte oficial versionada
 
-Os tokens e componentes deste documento devem ser tratados como resumo de implementacao. A referencia oficial para design system e:
+Este documento e os pacotes em
+[`referencias-locais/`](referencias-locais/README.md) são a fonte de
+implementação disponível no repositório. Eles permitem trabalhar sem conta,
+MCP ou acesso ao arquivo privado do Figma.
+
+O arquivo de origem do design system permanece registrado apenas como
+proveniência:
 
 - [Organize Design System - Figma Make](https://www.figma.com/make/dVm7lEZdBFqOiiySWLWUqp/Organize-Design-System--Copy-?t=rgWuly5cbaPi1E9B-20&fullscreen=1)
 
@@ -10,13 +16,18 @@ A referencia oficial para layout, fluxo e composicao das telas esta documentada 
 
 - [Referencia Figma do prototipo](referencia-figma-prototipo.md)
 
-Este repositorio nao possui uma pasta com o codigo do design system exportado do Figma Make. Durante a implementacao, os tokens necessarios devem ser criados dentro da aplicacao, por exemplo em `src/styles/tokens.css`, `tailwind.config.*` ou arquivo equivalente definido na fundacao tecnica.
+Os tokens necessários devem ser criados em `src/styles/tokens.css` e
+reconciliados com os valores versionados abaixo e com o `visual-spec.md` da
+feature. O projeto usa CSS global/modular; não instalar Tailwind para reproduzir
+o código de referência do Figma.
 
-Em caso de divergencia entre este resumo e o Figma Make, usar o Figma Make como fonte principal para tokens e componentes. Em caso de divergencia sobre layout de tela, usar o Figma Design do prototipo como fonte principal.
+Em caso de divergência com o arquivo remoto, o estado versionado do repositório
+prevalece até que a equipe revise e versione uma atualização. Para texto e
+comportamento, `src/content/` e os contratos da feature sempre prevalecem.
 
-## Regra para implementacao
+## Rastreabilidade opcional
 
-Antes de transformar estes tokens e componentes em codigo, consultar o Figma Make via MCP com:
+Quem possuir acesso pode auditar a origem pelo MCP com:
 
 ```txt
 fileKey: dVm7lEZdBFqOiiySWLWUqp
@@ -24,7 +35,9 @@ nodeId: 0:1
 skill: figma-design-to-code
 ```
 
-Usar este documento apenas como mapa resumido. Os valores finais de cor, tipografia, espacamento e estados devem ser confirmados no Figma Make no momento da implementacao. Layout e composicao de paginas devem ser confirmados no Figma Design do prototipo.
+Essa consulta não é pré-requisito para implementar uma feature que possua
+captura, manifesto e especificação visual local. Alterações observadas no remoto
+só entram no produto depois de serem incorporadas aos arquivos versionados.
 
 ## Cores primitivas
 
@@ -107,6 +120,11 @@ Escala baseada em multiplos de 4px:
 - Space / 20: 80px
 
 ## Componentes esperados
+
+O contrato consolidado e a proveniência estão em
+[`componentes-compartilhados/README.md`](componentes-compartilhados/README.md)
+e [`manifest.json`](componentes-compartilhados/manifest.json). Features devem
+reutilizar esses contratos antes de criar variantes locais.
 
 Os componentes abaixo devem seguir aparencia, estados e espacamentos do Figma Make:
 

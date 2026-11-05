@@ -22,7 +22,8 @@ Fluxo de trabalho adotado:
 ## Stack definida para o MVP
 
 - Frontend: React, TypeScript e Vite.
-- Estilizacao: Tailwind CSS ou CSS modular baseado nos tokens do Figma Make.
+- Estilizacao: CSS global/modular baseado nos tokens versionados no projeto;
+  Tailwind nao e dependencia do MVP.
 - Conteudo: arquivos versionados no projeto, em TypeScript, JSON, Markdown ou MDX.
 - Validacao: executada no navegador.
 - Previa HTML: gerada dinamicamente no frontend.
@@ -56,6 +57,7 @@ armazenamento de sessao, validacao obrigatoria e CSV local.
 - [Decisoes tecnicas](docs/arquitetura/decisoes-tecnicas.md)
 - [Referencia Figma do prototipo](docs/design-system/referencia-figma-prototipo.md)
 - [Mapa Figma das telas](docs/design-system/mapa-figma-telas.md)
+- [Referências visuais locais](docs/design-system/referencias-locais/README.md)
 - [Referencia Figma Make](docs/design-system/referencia-figma-make.md)
 - [Tokens e componentes](docs/design-system/tokens-e-componentes.md)
 - [Implementation Plan](docs/implementation-plan.md)
@@ -82,7 +84,8 @@ Use estes comandos na conversa com o Codex:
 - `/spec:planejar`: cria ou revisa o `plan.md`.
 - `/spec:tarefas`: cria ou revisa o `tasks.md`.
 - `/spec:plano-implementacao`: cria ou revisa o `implementation-plan.md` com codigo base e referencias visuais.
-- `/spec:validar`: verifica consistencia entre documentacao, ERS, Figma Design, Figma Make, implementation-plan e roadmap.
+- `/spec:validar`: verifica consistencia entre documentação, ERS, referências
+  visuais locais, implementation-plan e roadmap.
 - `/spec:implementar`: implementa a funcionalidade no codigo.
 - `/spec:revisar`: revisa requisitos, acessibilidade, responsividade e aderencia visual.
 
