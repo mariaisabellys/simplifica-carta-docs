@@ -1,6 +1,7 @@
 import { camposObrigatoriosCarta } from "./carta.schema";
 import { subcategoriasPorCategoria } from "./carta.catalogs";
 import type { CartaServico } from "./carta.types";
+import { significantCount } from "./carta.language";
 
 export type ValidacaoCarta = {
   campo: string;
@@ -48,11 +49,27 @@ export function validarCartaObrigatoria(carta: CartaServico): ValidacaoCarta[] {
     if (!carta.atendimento.linkAgendamento.trim()) erros.push({ campo: "atendimento.linkAgendamento", mensagem: "Informe o link do agendamento externo." });
     if (carta.atendimento.exibicaoAgendamento === null) erros.push({ campo: "atendimento.exibicaoAgendamento", mensagem: "Selecione como o agendamento externo será exibido." });
   }
+  if (carta.publicoRequisitos.prazo.maximo && !/^[1-9]\d*$/.test(carta.publicoRequisitos.prazo.maximo.trim())) {
+    erros.push({ campo: "publicoRequisitos.prazo.maximo", mensagem: "Informe um inteiro positivo, sem zeros à esquerda." });
+  }
+  if (carta.etapas.length > 0) {
+    carta.etapas.forEach((etapa) => {
+      if (!etapa.titulo.trim()) erros.push({ campo: `etapas.${etapa.id}.titulo`, mensagem: "Informe o título da etapa." });
+      if (!etapa.orientacaoCidadao.trim()) erros.push({ campo: `etapas.${etapa.id}.orientacaoCidadao`, mensagem: "Informe a orientação ao cidadão." });
+      if (!etapa.modalidade) erros.push({ campo: `etapas.${etapa.id}.modalidade`, mensagem: "Selecione a modalidade da etapa." });
+    });
+  }
+  if (carta.atendimento.exigeAgendamento === true && carta.atendimento.sistemaAgendamento === "sistema-externo" && carta.atendimento.linkAgendamento.trim()) {
+    try {
+      const url = new URL(carta.atendimento.linkAgendamento);
+      if (!/^https?:$/.test(url.protocol) || !url.hostname || url.username || url.password) throw new Error("invalid");
+    } catch { erros.push({ campo: "atendimento.linkAgendamento", mensagem: "Use um link absoluto HTTP(S), sem credenciais." }); }
+  }
   return erros;
 }
 
 export function contarPalavras(texto: string): number {
-  return texto.trim().match(/[\p{L}\p{N}]+(?:[-’'][\p{L}\p{N}]+)*/gu)?.length ?? 0;
+  return significantCount(texto);
 }
 
 function getValueByPath(source: CartaServico, path: string): unknown {

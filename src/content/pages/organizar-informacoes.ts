@@ -106,12 +106,12 @@ export const organizeInformationPageContent = {
       title: "O que é o serviço",
       summary: "Explique o que o serviço oferece e qual resultado o público pode obter.",
       howToIdentify: [
-        "Responda de forma simples: para que esse serviço serve e o que a pessoa recebe ou consegue ao utilizá-lo?",
+        "Responda de forma simples: para que esse serviço serve e o que a pessoa recebe ou consegue ao utilizá-lo? Use até 20 palavras significativas.",
       ],
       avoid: "explicar procedimentos internos do órgão;",
       prefer: "apresentar a finalidade e o resultado do serviço.",
       example:
-        "“Serviço que permite solicitar a segunda via do certificado de conclusão do Ensino Médio, permitindo comprovar a escolaridade para fins de emprego, matrícula em cursos superiores ou concursos públicos.”",
+        "“Solicite a segunda via do certificado do Ensino Médio para comprovar sua escolaridade em empregos, cursos ou concursos.”",
       tips: [
         "Vá direto ao objetivo do serviço;",
         "Evite repetir o nome;",
@@ -147,12 +147,12 @@ export const organizeInformationPageContent = {
         "Subcategoria: detalha a área dentro da categoria escolhida;",
         "Tópico: especifica ainda mais o assunto relacionado ao serviço.",
         "Pense primeiro na finalidade do serviço e na necessidade que ele atende, e não apenas no órgão responsável.",
-        "Comece escolhendo a categoria mais adequada. Depois, quando houver opções disponíveis, selecione a subcategoria e o tópico que melhor representem o assunto do serviço.",
+        "Comece escolhendo a categoria e uma subcategoria disponível. No campo Tópico, escreva o assunto mais específico, se houver; ele é um campo de texto, não uma lista.",
       ],
       avoid: "escolher uma categoria apenas porque ela está relacionada ao órgão responsável;",
       prefer: "classificar o serviço de acordo com o assunto e a necessidade atendida.",
       example:
-        "Categoria: Educação e Pesquisa\nSubcategoria: Ensino Superior\nTópico: selecione, quando houver, o assunto mais específico relacionado ao serviço.",
+        "Categoria: Educação e Pesquisa\nSubcategoria: Ensino Superior\nTópico: escreva o assunto específico, se houver.",
       tips: [
         "Escolha a categoria mais próxima da finalidade principal;",
         "Evite categorias muito amplas quando houver uma opção mais adequada.",
@@ -306,15 +306,15 @@ export const organizeInformationPageContent = {
       summary: "Informe se o serviço precisa ser realizado novamente após determinado período.",
       howToIdentify: [
         "Considere se a pessoa, empresa ou instituição precisa repetir o serviço regularmente, como a cada determinado número de dias, meses ou anos.",
-        "Se o serviço for recorrente, informe:",
+        "Se o serviço for recorrente, reúna o intervalo e a unidade para confirmar com a equipe responsável:",
         "Tipo de recorrência: período utilizado para calcular a repetição, como dia, mês ou ano;",
         "Quantidade: número correspondente ao intervalo entre uma realização e outra.",
-        "Se o serviço não precisar ser realizado novamente de forma periódica, não marque a opção de serviço recorrente.",
+        "Esta informação é complementar: não há campo de recorrência no formulário da Carta deste manual.",
       ],
       example:
         "Se o serviço precisa ser realizado a cada 6 meses:\nTipo de recorrência: Mês\nQuantidade: 6",
       tips: [
-        "Marque como recorrente apenas quando houver necessidade de repetir o serviço após um período definido;",
+        "Confirme se o serviço precisa ser realizado novamente após um período definido;",
         "Informe o intervalo real entre uma realização e outra;",
         "Não confunda recorrência com prazo: o prazo indica quanto tempo leva para receber o resultado do serviço; a recorrência indica quando o serviço precisará ser realizado novamente;",
         "Se não houver um período definido para repetir o serviço, não o considere recorrente.",
