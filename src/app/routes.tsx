@@ -4,6 +4,7 @@ import { AtendimentoAgendadoPage } from "../pages/AtendimentoAgendadoPage";
 import { DiagnosticoPage } from "../pages/DiagnosticoPage";
 import { FormularioCartaPage } from "../pages/FormularioCartaPage";
 import { HomePage } from "../pages/HomePage";
+import { ExplorarPorEtapasPage } from "../pages/ExplorarPorEtapasPage";
 import { OQueECartaPage } from "../pages/OQueECartaPage";
 import { OrganizarInformacoesPage } from "../pages/OrganizarInformacoesPage";
 import { PreviaCartaPage } from "../pages/PreviaCartaPage";
@@ -39,6 +40,14 @@ export const routes: AppRoute[] = [
     figmaNodeId: "365:265",
     specId: "004-o-que-e-carta-servico",
     layoutType: "section",
+  },
+  {
+    path: "/explorar-por-etapas",
+    label: "Explorar por etapas",
+    Component: ExplorarPorEtapasPage,
+    figmaNodeId: "575:483",
+    specId: "003-explorar-por-etapas",
+    layoutType: "page",
   },
   {
     path: "/diagnostico",

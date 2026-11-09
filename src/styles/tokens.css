@@ -45,4 +45,57 @@
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
   --shadow-sm: 0 1px 2px rgba(11, 42, 74, 0.08);
+
+  --color-home-navy: #00395b;
+  --color-home-footer: #002b45;
+  --color-home-cyan: #12b5d0;
+  --color-home-orange: #ff760f;
+  --color-home-secondary-action: #265174;
+  --color-home-secondary-border: #3b6282;
+  --color-home-muted: #666666;
+  --color-home-nav-muted: #848b96;
+  --color-home-cta-background: #ffebd1;
+  --color-home-footer-muted: #8fbce5;
+  --gradient-home-hero: linear-gradient(108deg, #033a5d 21%, #0f3e66 48%, #0388af 99%);
+  --container-home: 1216px;
+  --radius-xl: 1.25rem;
+
+  --color-explore-hero-start: #022b45;
+  --color-explore-hero-middle: #094c6d;
+  --color-explore-hero-end: #0e6c91;
+  --color-explore-breadcrumb: #8fbce5;
+  --color-explore-hero-text: #e2f1ff;
+  --color-explore-muted: #475569;
+  --color-explore-step-1: #0088a5;
+  --color-explore-step-1-soft: #e1ffff;
+  --color-explore-step-2: #f97304;
+  --color-explore-step-2-soft: #fff2e1;
+  --color-explore-step-3: #0f3f67;
+  --color-explore-step-3-soft: #e2e8f0;
+  --color-explore-step-4: #7c1b1f;
+  --color-explore-step-4-soft: #f9eff1;
+  --radius-explore-card: 1.5rem;
+  --radius-explore-icon: 1rem;
+  --shadow-explore-card: 0 8px 12px rgba(15, 23, 42, 0.03);
+  --shadow-explore-cta: 0 4px 6px rgba(15, 23, 42, 0.02);
+  --container-wide: 1280px;
+  --gradient-explore-hero: linear-gradient(90deg, var(--color-explore-hero-start), var(--color-explore-hero-middle) 50%, var(--color-explore-hero-end));
+
+  --color-charter-navy: #00395b;
+  --color-charter-navy-alt: #0c326f;
+  --color-charter-cyan: #12b5d0;
+  --color-charter-orange: #f97304;
+  --color-charter-muted: #666666;
+  --color-charter-cream-strong: rgba(255, 235, 209, 0.7);
+  --color-charter-cream-soft: rgba(255, 235, 209, 0.57);
+  --gradient-charter-foundations: linear-gradient(90deg, #033a5d, #0f3e66 50%, #0388af);
+  --radius-charter-card: 1.25rem;
+  --color-diagnostic-navy: #0f3f67;
+  --color-diagnostic-heading: #00395b;
+  --color-diagnostic-cyan: #12b5d0;
+  --color-diagnostic-orange: #f97304;
+  --color-diagnostic-muted: #666666;
+  --color-diagnostic-option-border: #bcc3ce;
+  --shadow-diagnostic-card: 0 4px 4px rgba(0, 0, 0, 0.25);
+  --radius-diagnostic-card: 1.25rem;
 }

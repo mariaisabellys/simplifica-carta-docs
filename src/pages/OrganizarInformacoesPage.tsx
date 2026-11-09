@@ -1,18 +1,14 @@
-import { PageHeader } from "../components/ui/PageHeader";
-import { PlaceholderCard } from "../components/ui/PlaceholderCard";
+import { useMemo, useState } from "react";
+import { Breadcrumb } from "../components/ui/Breadcrumb";
+import { ButtonLink } from "../components/ui/ButtonLink";
+import { organizeInformationPageContent, type PreparationTopicId } from "../content/pages/organizar-informacoes";
 
 export function OrganizarInformacoesPage() {
-  return (
-    <>
-      <PageHeader
-        eyebrow="Organizacao"
-        title="Organizar informacoes"
-        description="Checklist inicial das informacoes necessarias para preencher a Carta de Servicos."
-      />
-      <PlaceholderCard title="Campos esperados">
-        Nome, descricao, publico-alvo, documentos, etapas, prazos, custos, canais,
-        agendamento e informacoes complementares.
-      </PlaceholderCard>
-    </>
-  );
+  const [activeTopic, setActiveTopic] = useState<PreparationTopicId>("about-service");
+  const [marked, setMarked] = useState<Set<string>>(() => new Set());
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const information = useMemo(() => organizeInformationPageContent.information.filter((item) => item.topicId === activeTopic), [activeTopic]);
+  const toggleMarked = (id: string) => setMarked((current) => { const next = new Set(current); if (next.has(id)) next.delete(id); else next.add(id); return next; });
+  const topicIndex = organizeInformationPageContent.topics.findIndex((item) => item.id === activeTopic);
+  return <div className="organize-page"><div className="organize-container"><Breadcrumb items={[{ label: "Início", href: "/" }, { label: "Organizar informações", current: true }]} /><header className="organize-header"><p className="eyebrow">{organizeInformationPageContent.preparation.title}</p><h1>{organizeInformationPageContent.title}</h1><p>{organizeInformationPageContent.description}</p></header><div className="organize-layout"><aside className="organize-sidebar" aria-label="Progresso da preparação"><div className="organize-progress"><span>Progresso da preparação</span><strong aria-live="polite">{marked.size} de {organizeInformationPageContent.information.length} informadas</strong><div className="organize-progress__bar"><i style={{ width: `${(marked.size / organizeInformationPageContent.information.length) * 100}%` }} /></div><small>Marcar confirma que você reuniu a informação ou confirmou que ela não se aplica. Isso não aprova nem publica a Carta.</small></div><nav className="organize-topics" aria-label={organizeInformationPageContent.topicsLabel}><h2>{organizeInformationPageContent.topicsLabel}</h2>{organizeInformationPageContent.topics.map((topic) => <button type="button" className={activeTopic === topic.id ? "is-active" : ""} key={topic.id} onClick={() => setActiveTopic(topic.id)}>{topic.title}<span>{organizeInformationPageContent.information.filter((item) => item.topicId === topic.id).length}</span></button>)}</nav></aside><main className="organize-content"><section className="organize-topic-heading"><p className="eyebrow">Tópico {topicIndex + 1} de {organizeInformationPageContent.topics.length}</p><h2>{organizeInformationPageContent.topics[topicIndex].title}</h2><p>Revise cada informação e marque somente quando tiver reunido os dados ou confirmado que ela não se aplica.</p></section><div className="organize-information-list">{information.map((item) => { const isExpanded = expanded === item.id; const panelId = `orientacao-${item.id}`; const number = organizeInformationPageContent.information.findIndex((entry) => entry.id === item.id) + 1; return <article className={`organize-information-card ${marked.has(item.id) ? "is-marked" : ""}`} key={item.id}><div className="organize-information-card__top"><span className="organize-information-card__number">{number}</span><div className="organize-information-card__copy"><h3>{item.title}</h3><p>{item.summary}</p></div><label className="organize-check"><input type="checkbox" checked={marked.has(item.id)} onChange={() => toggleMarked(item.id)} /><span>Informação reunida ou não aplicação confirmada</span></label><button type="button" className="organize-expand" aria-expanded={isExpanded} aria-controls={panelId} onClick={() => setExpanded((current) => current === item.id ? null : item.id)}>{isExpanded ? "Ocultar orientação" : "Ver orientação"}</button></div>{isExpanded ? <div className="organize-guidance" id={panelId}><p>{item.howToIdentify.join(" ")}</p>{item.avoid || item.prefer ? <div className="organize-guidance__compare">{item.avoid ? <p><strong>Evite:</strong> {item.avoid}</p> : null}{item.prefer ? <p><strong>Prefira:</strong> {item.prefer}</p> : null}</div> : null}{item.example ? <p><strong>Exemplo ilustrativo:</strong><br />{item.example}</p> : null}{item.additionalGuidance ? <div><h4>{item.additionalGuidance.title}</h4>{item.additionalGuidance.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div> : null}<ul className="organize-tips">{item.tips.map((tip) => <li key={tip}>{tip}</li>)}</ul></div> : null}</article>; })}</div><aside className="organize-notice"><strong>Uma preparação independente</strong><p>Esta etapa ajuda a reunir informações antes de preencher a Carta. Ela não coleta dados da Carta, não substitui a revisão do órgão e não representa aprovação ou publicação.</p></aside><div className="organize-actions"><ButtonLink href="/ajuda" variant="secondary">Precisa de ajuda?</ButtonLink><ButtonLink href="/formulario-carta" variant="primary">Preencher Carta</ButtonLink></div></main></div></div></div>;
 }

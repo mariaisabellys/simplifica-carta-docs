@@ -69,3 +69,9 @@ export const diagnosticoContent = {
 } as const;
 
 export const perguntasDiagnostico = diagnosticoContent.questions;
+
+export const opcoesDiagnostico = [
+  { value: "sim", label: "Sim" },
+  { value: "nao", label: "Não" },
+  { value: "nao-tenho-certeza", label: "Não tenho certeza" },
+] as const;
