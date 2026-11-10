@@ -34,10 +34,12 @@ export function HomePage() {
         <ol className="process-grid">
           {homeContent.process.steps.map((step) => (
             <li className="process-step" key={step.id}>
-              <span className="process-step__number" aria-hidden="true">{step.number}</span>
-              <p className="process-step__eyebrow">{step.eyebrow}</p>
-              <h3>{step.title}</h3>
-              <p>{step.description}</p>
+              <a className="process-step__link" href={step.href}>
+                <span className="process-step__number" aria-hidden="true">{step.number}</span>
+                <p className="process-step__eyebrow">{step.eyebrow}</p>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </a>
             </li>
           ))}
         </ol>
