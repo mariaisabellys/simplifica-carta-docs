@@ -3,20 +3,18 @@ export type TutorialStepId =
   | "sign-in"
   | "locate-registration"
   | "fill-information"
-  | "review-data"
   | "publish-service";
 
 export type TutorialAction = {
   label: string;
-  kind: "official-platform" | "previous" | "next" | "finish";
+  kind: "previous" | "next" | "finish";
 };
 
 const tutorialNavigation = [
   { id: "access-platform", label: "Acesse a plataforma" },
   { id: "sign-in", label: "Faça login" },
   { id: "locate-registration", label: "Localize o cadastro" },
-  { id: "fill-information", label: "Preencha as informações" },
-  { id: "review-data", label: "Revise os dados" },
+  { id: "fill-information", label: "Cadastre as informações de sua Carta" },
   { id: "publish-service", label: "Publique o serviço" },
 ] as const;
 
@@ -45,12 +43,20 @@ export const tutorialCartaDataContent = {
 } as const;
 
 export const tutorialParaibaDigitalContent = {
+  completion: {
+    title: "Guia concluído!",
+    description: "Você concluiu todas as etapas do guia para publicar sua Carta de Serviço.",
+    guidance: "Agora, confira se todas as informações foram cadastradas corretamente na plataforma oficial. Após o envio, o serviço seguirá para análise antes da publicação no Paraíba Digital.",
+    homeLabel: "Voltar ao início",
+    platformLabel: "Acessar plataforma oficial",
+  },
+  officialPlatformUrl: "https://gestor.paraibadigital.pb.gov.br/",
   title: "Publique sua Carta de Serviço",
   description:
-    "Siga o guia interativo de 6 etapas para publicar as informações do seu serviço de forma simples, direta e acessível.",
+    "Siga o guia interativo de 5 etapas para publicar as informações do seu serviço de forma simples, direta e acessível.",
   progress: {
     title: "Progresso do tutorial",
-    totalSteps: 6,
+    totalSteps: 5,
     navigation: tutorialNavigation,
     stepLabelTemplate: "Etapa {current} de {total}",
     completionLabelTemplate: "{percentage}% concluído",
@@ -59,20 +65,19 @@ export const tutorialParaibaDigitalContent = {
     {
       id: "access-platform",
       number: 1,
-      percentage: 17,
+      percentage: 20,
       title: "Acesse a plataforma",
       description:
         "Abra a plataforma oficial utilizada para cadastrar e gerenciar os serviços do seu órgão.",
       platformPreview,
       actions: [
-        { label: "Acessar plataforma oficial", kind: "official-platform" },
         { label: "Próxima etapa", kind: "next" },
       ] satisfies readonly TutorialAction[],
     },
     {
       id: "sign-in",
       number: 2,
-      percentage: 33,
+      percentage: 40,
       title: "Faça login",
       description: "Utilize suas credenciais institucionais para acessar o sistema.",
       instructionsTitle: "Como fazer",
@@ -90,7 +95,7 @@ export const tutorialParaibaDigitalContent = {
     {
       id: "locate-registration",
       number: 3,
-      percentage: 50,
+      percentage: 60,
       title: "Localize o cadastro",
       description:
         "Encontre a seção de cadastro de novas Cartas de Serviço no menu interno.",
@@ -109,10 +114,8 @@ export const tutorialParaibaDigitalContent = {
     {
       id: "fill-information",
       number: 4,
-      percentage: 67,
+      percentage: 80,
       title: "Cadastre as informações de sua Carta",
-      description:
-        "Preencha os campos do formulário na plataforma oficial utilizando os dados consolidados.",
       cartaData: tutorialCartaDataContent,
       editPrompt: "Precisa alterar alguma informação?",
       editAction: { label: "Editar na minha Carta", href: "/formulario-carta" },
@@ -122,29 +125,8 @@ export const tutorialParaibaDigitalContent = {
       ] satisfies readonly TutorialAction[],
     },
     {
-      id: "review-data",
-      number: 5,
-      percentage: 83,
-      title: "Revise os dados",
-      description:
-        "Antes de finalizar a publicação, revise todos os dados cadastrados. Erros comuns de redação ou links quebrados dificultam o acesso do cidadão ao serviço público.",
-      instructionsTitle: "Como fazer",
-      instructions: [
-        "Verifique se o nome do serviço está correto de acordo com as diretrizes do guia.",
-        "Confirme se a descrição do que é o serviço está objetiva e acessível para o cidadão comum.",
-        "Revise os documentos necessários e certifique-se de que estão em linguagem simples.",
-        "Confira os prazos estimados e os canais de atendimento indicados.",
-        "Clique em ‘Salvar rascunho’ se notar que ainda precisa de ajustes nos textos.",
-      ],
-      platformPreview,
-      actions: [
-        { label: "Etapa anterior", kind: "previous" },
-        { label: "Próxima etapa", kind: "next" },
-      ] satisfies readonly TutorialAction[],
-    },
-    {
       id: "publish-service",
-      number: 6,
+      number: 5,
       percentage: 100,
       title: "Publique o serviço",
       description:
