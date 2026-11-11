@@ -61,8 +61,7 @@ export function TutorialParaibaDigitalPage() {
         <div className="tutorial-container">
         <nav aria-label="Breadcrumb" className="tutorial-breadcrumb">
           <a href="/">Início</a><span aria-hidden="true">›</span>
-          <span>Como publicar</span><span aria-hidden="true">›</span>
-          <span aria-current="page">Passo a Passo</span>
+          <span aria-current="page">Tutorial de publicação</span>
         </nav>
         <h1>{content.title}</h1>
         <p>{content.description}</p>

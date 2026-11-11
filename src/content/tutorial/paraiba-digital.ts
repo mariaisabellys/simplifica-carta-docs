@@ -68,7 +68,7 @@ export const tutorialParaibaDigitalContent = {
       percentage: 20,
       title: "Acesse a plataforma",
       description:
-        "Abra a plataforma oficial utilizada para cadastrar e gerenciar os serviços do seu órgão.",
+        "Abra a plataforma oficial utilizada para cadastrar e gerenciar os serviços do seu órgão, clicando no botão abaixo.",
       platformPreview,
       actions: [
         { label: "Próxima etapa", kind: "next" },
