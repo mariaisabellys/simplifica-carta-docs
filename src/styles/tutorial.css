@@ -1,7 +1,7 @@
 .site-main:has(.tutorial-page) { width: 100%; max-width: none; padding: 0 0 var(--space-20); }
 .tutorial-page { --tutorial-muted: #566c88; --tutorial-cyan: #1B9E95; --tutorial-orange: #b94700; --tutorial-gutter: clamp(var(--space-4), 6.25vw, var(--space-20)); }
 .tutorial-container { width: min(var(--container-home), calc(100% - 2 * var(--tutorial-gutter))); margin-inline: auto; }
-.tutorial-banner { width: 100%; background: var(--color-brand-navy); color: white; padding-block: var(--space-8) var(--space-10); }
+.tutorial-banner { width: 100%; background: var(--gradient-explore-hero); color: white; padding-block: var(--space-8) var(--space-10); }
 .tutorial-banner h1 { color: white; font-size: clamp(1.8rem, 3vw, 2rem); max-width: none; margin: 16px 0; }
 .tutorial-banner p { color: #b4c6d9; line-height: 1.6; margin: 0; }
 .tutorial-breadcrumb { display: flex; flex-wrap: wrap; gap: 12px; font-size: .8rem; }
