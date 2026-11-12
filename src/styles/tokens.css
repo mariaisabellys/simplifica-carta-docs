@@ -26,6 +26,11 @@
   --color-form-label: #1e293b;
   --color-badge-required-background: #fff3d1;
   --color-badge-required-text: #a05e03;
+  --color-brand-orange-light: #FFF3E0;
+  --color-feedback-warning: #D97706;
+  --color-warning-background: var(--color-brand-orange-light);
+  --color-warning-border: var(--color-brand-orange);
+  --color-warning-text: var(--color-feedback-warning);
 
   --font-display: "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
