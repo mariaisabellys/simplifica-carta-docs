@@ -1,32 +1,28 @@
 import { Breadcrumb } from "../components/ui/Breadcrumb";
+import { ArrowRight, Route } from "lucide-react";
 import { ButtonLink } from "../components/ui/ButtonLink";
-import { ExploreStepCard } from "../components/explorar/ExploreStepCard";
+import { ExploreStepsCarousel } from "../components/explorar/ExploreStepsCarousel";
 import { explorePageContent } from "../content/pages/explorar-por-etapas";
-import helpCircle from "../assets/explorar-por-etapas/help-circle.svg";
-import checkSquare from "../assets/explorar-por-etapas/check-square.svg";
-import fileText from "../assets/explorar-por-etapas/file-text.svg";
-import bookOpen from "../assets/explorar-por-etapas/book-open.svg";
-
-const stepIcons = [helpCircle, checkSquare, fileText, bookOpen] as const;
 
 export function ExplorarPorEtapasPage() {
   return (
     <div className="explore-page">
-      <section className="explore-hero">
-        <div className="explore-container">
-          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: explorePageContent.title, current: true }]} />
-          <h1>{explorePageContent.title}</h1>
-          <p>{explorePageContent.description}</p>
-        </div>
-      </section>
-
       <div className="explore-content explore-container">
-        <ol className="explore-step-grid">
-          {explorePageContent.steps.map((step, index) => <li key={step.id}><ExploreStepCard step={step} icon={stepIcons[index]} /></li>)}
-        </ol>
+        <header className="explore-intro">
+          <Breadcrumb items={[{ label: "Início", href: "/" }, { label: explorePageContent.title, current: true }]} />
+          <h1>{explorePageContent.introTitle}</h1>
+          <p>{explorePageContent.description}</p>
+          <span className="explore-intro__accent" aria-hidden="true" />
+        </header>
+        <ExploreStepsCarousel />
         <section className="explore-guide-cta" aria-labelledby="explore-guide-title">
-          <p>{explorePageContent.guideCta.prompt}</p>
-          <ButtonLink href={explorePageContent.guideCta.href} variant="outline-navy">
+          <span className="explore-guide-cta__icon" aria-hidden="true"><Route /></span>
+          <div className="explore-guide-cta__content">
+            <p className="explore-guide-cta__label">{explorePageContent.guideCta.label}</p>
+            <h2 id="explore-guide-title">{explorePageContent.guideCta.title}</h2>
+            <p>{explorePageContent.guideCta.description}</p>
+          </div>
+          <ButtonLink href={explorePageContent.guideCta.href} variant="primary" iconRight={<ArrowRight size={16} aria-hidden="true" />}>
             {explorePageContent.guideCta.actionLabel}
           </ButtonLink>
         </section>

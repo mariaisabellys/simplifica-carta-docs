@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "../components/ui/ButtonLink";
 import { homeContent } from "../content/pages/home";
 import heroImage from "../assets/home/hero-carta-servico.png";
@@ -16,7 +17,7 @@ export function HomePage() {
             <p>{homeContent.hero.description}</p>
             <div className="hero-actions">
               {homeContent.hero.actions.map((action) => (
-                <ButtonLink key={action.href} href={action.href} variant={action.variant} icon={action.icon === "play" ? playIcon : listIcon}>
+                <ButtonLink key={action.href} href={action.href} variant={action.variant} icon={action.icon === "list" ? listIcon : undefined} iconRight={action.icon === "play" ? <ArrowRight size={16} aria-hidden="true" /> : undefined}>
                   {action.label}
                 </ButtonLink>
               ))}
@@ -50,7 +51,7 @@ export function HomePage() {
             <h2 id="intro-cta-title">{homeContent.introCta.title}</h2>
             <p>{homeContent.introCta.description}</p>
           </div>
-          <ButtonLink href={homeContent.introCta.actionHref} variant="primary" icon={arrowIcon}>
+          <ButtonLink href={homeContent.introCta.actionHref} variant="primary" iconRight={<ArrowRight size={16} aria-hidden="true" />}>
             {homeContent.introCta.actionLabel}
           </ButtonLink>
         </div>

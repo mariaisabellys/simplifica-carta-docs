@@ -10,7 +10,7 @@ export type ExploreStepHref =
   | "/diagnostico"
   | "/organizar-informacoes"
   | "/formulario-carta"
-  | "/tutorial-paraiba-digital";
+  | "/tutorial-paraiba-digital?etapa=1&origem=etapas";
 
 export type ExploreStep = {
   id: ExploreStepId;
@@ -24,8 +24,9 @@ export type ExploreStep = {
 
 export const explorePageContent = {
   title: "Explorar por etapas",
+  introTitle: "Explore do seu jeito",
   description:
-    "Acesse qualquer parte do manual diretamente, sem precisar seguir o fluxo completo. Escolha a etapa que você precisa para agilizar a criação da sua Carta de Serviço.",
+    "Acesse diretamente a parte do manual que você precisa, sem precisar seguir todo o fluxo. Escolha uma etapa e continue de onde fizer mais sentido para você.",
   steps: [
     {
       id: "identificar-servico",
@@ -65,11 +66,19 @@ export const explorePageContent = {
       description:
         "Veja como cadastrar o serviço na plataforma oficial do Estado da Paraíba passo a passo acompanhado de dicas visuais e orientações.",
       actionLabel: "Ver tutorial",
-      href: "/tutorial-paraiba-digital",
+      href: "/tutorial-paraiba-digital?etapa=1&origem=etapas",
     },
   ] satisfies readonly ExploreStep[],
+  introduction: {
+    label: "NO SEU RITMO",
+    title: "Comece por onde você precisa.",
+    description: "Cada etapa tem um papel na criação da sua Carta de Serviço. Acesse a que faz sentido agora e retome as outras quando precisar.",
+    note: "Quatro etapas. Você escolhe o caminho.",
+  },
   guideCta: {
-    prompt: "Prefere seguir o fluxo completo do manual de forma linear?",
+    label: "PREFERE UM GUIA COMPLETO?",
+    title: "Siga o fluxo completo do manual",
+    description: "Acesse o guia passo a passo para acompanhar a sequência completa do Simplifica Carta.",
     actionLabel: "Ir para o guia passo a passo",
     href: "/diagnostico",
   },

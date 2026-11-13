@@ -20,7 +20,7 @@ export const helpPageContent = {
   description:
     "Encontre respostas rápidas para dúvidas que podem surgir durante o cadastro dos serviços.",
   primaryAction: {
-    label: "Ainda preciso de ajuda ->",
+    label: "Ainda preciso de ajuda",
     href: "/ajuda#precisa-de-apoio",
   },
   faq: {
