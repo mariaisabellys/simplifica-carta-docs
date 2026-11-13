@@ -68,7 +68,8 @@
 .tutorial-notice-icon { flex-shrink: 0; color: var(--color-warning-text); }
 .tutorial-notice-content { min-width: 0; margin: 0; overflow-wrap: anywhere; }
 .tutorial-notice-content a { color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; }
-.tutorial-actions { display: flex; justify-content: space-between; gap: 16px; margin-top: 48px; }
+.tutorial-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 48px; }
+.tutorial-actions > :is(.button-link, .tutorial-button) { font-family: var(--font-body); font-size: .875rem; font-weight: 700; line-height: 1.5; display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); }
 .tutorial-actions > :only-child { margin-left: auto; }
 .tutorial-edit { margin: 32px 0 0; color: var(--tutorial-muted); font-size: .8rem; line-height: 1.6; }
 .tutorial-edit a { color: var(--tutorial-orange); font-weight: 700; }
