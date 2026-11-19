@@ -94,6 +94,6 @@ export const charterFormPageContent = {
   completion: {
     title: "Tudo pronto para publicar",
     description: "Você revisou as 5 partes da sua Carta de Serviço. Agora que ela está completa, avance para a próxima etapa e veja como publicá-la no Paraíba Digital.",
-    action: { label: "Ver tutorial de publicação", href: "/tutorial-paraiba-digital" },
+    action: { label: "Ver tutorial de publicação", href: "/tutorial-paraiba-digital?etapa=1&origem=guia" },
   },
 } as const;

@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { tutorialParaibaDigitalContent as content } from "../../content/tutorial/paraiba-digital";
 import completionIllustration from "../../assets/tutorial/guia-concluido.png";
@@ -41,7 +42,7 @@ export function TutorialCompletionDialog({ onClose }: { onClose: () => void }) {
     <p id="tutorial-completion-description">{content.completion.description}</p>
     <p id="tutorial-completion-guidance">{content.completion.guidance}</p>
     <div className="tutorial-completion-actions">
-      <a className="tutorial-button tutorial-button--secondary" href="/">{content.completion.homeLabel}</a>
+      <a className="tutorial-button tutorial-button--secondary" href="/"><ArrowLeft size={16} aria-hidden="true" />{content.completion.homeLabel}</a>
       <a className="tutorial-button" href={content.officialPlatformUrl} target="_blank" rel="noopener noreferrer">
         {content.completion.platformLabel}<img src={externalLink} width={16} height={16} alt="" />
         <span className="tutorial-sr-only"> (abre em nova aba)</span>

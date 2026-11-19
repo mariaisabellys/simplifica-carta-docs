@@ -35,3 +35,21 @@ T009 global trata exportação CSV; implementação 009 segue F009-01–12.
 Pendências editoriais, implementação de MC-02–MC-08, provider/foco, 010, ERS,
 deploy e ambientes assistivos continuam explícitas em validation e plano detalhado.
 O pacote visual local foi extraído e validado estruturalmente em 04/11/2026.
+
+## Execução funcional — 18/11/2026
+
+Implementados o view model readonly, o conteúdo versionado, `CartaPreview`, a
+rota `/previa` e a instância embutida no formulário. A referência visual local
+foi aplicada com cabeçalho azul, rótulos, divisores, cartões de etapas e reflow;
+o botão de download foi deliberadamente omitido até a feature 010.
+
+Evidências executadas:
+
+- `node --test tests/carta-preview.test.mjs`: 11/11 testes aprovados;
+- `npm run typecheck`: aprovado;
+- `npm run build`: aprovado;
+- `node --test tests/*.test.mjs`: 74/74 testes aprovados;
+- consulta via Computer Use: indisponível por ausência de navegador no ambiente.
+
+Permanecem abertos ERS/copy institucional, provider global e retorno com foco,
+integração CSV 010, PV15–PV18 e matriz manual de navegadores/leitores/zoom.

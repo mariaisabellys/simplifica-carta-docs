@@ -1,6 +1,6 @@
+import { ArrowRight } from "lucide-react";
 import type { ExploreStep } from "../../content/pages/explorar-por-etapas";
 import { ButtonLink } from "../ui/ButtonLink";
-import chevronRight from "../../assets/explorar-por-etapas/chevron-right.svg";
 
 type ExploreStepCardProps = {
   step: ExploreStep;
@@ -18,7 +18,7 @@ export function ExploreStepCard({ step, icon }: ExploreStepCardProps) {
         <h2>{step.title}</h2>
         <p>{step.description}</p>
       </div>
-      <ButtonLink href={step.href} variant="step" icon={chevronRight}>
+      <ButtonLink href={step.href} variant="step" iconRight={<ArrowRight size={16} aria-hidden="true" />}>
         {step.actionLabel}
       </ButtonLink>
     </article>

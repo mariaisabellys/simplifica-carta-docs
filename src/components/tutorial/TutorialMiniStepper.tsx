@@ -29,12 +29,12 @@ export function TutorialMiniStepper({ title, steps, emptyText }: {
           <button type="button" className="tutorial-internal-arrow" disabled={current === 0}
             aria-label="Voltar item anterior" aria-controls={`${id}-panel-${steps[current].id}`}
             onClick={() => setCurrent(value => value - 1)}>
-            <ArrowLeft size={20} aria-hidden="true" />
+            <ArrowLeft size={16} aria-hidden="true" />
           </button>
           <button type="button" className="tutorial-internal-arrow" disabled={current === steps.length - 1}
             aria-label="Avançar para o próximo item" aria-controls={`${id}-panel-${steps[current].id}`}
             onClick={() => setCurrent(value => value + 1)}>
-            <ArrowRight size={20} aria-hidden="true" />
+            <ArrowRight size={16} aria-hidden="true" />
           </button>
         </div>
       </div>}

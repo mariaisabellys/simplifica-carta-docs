@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { MonitorCog, KeyRound, ScanSearch, FilePlusCorner, Rocket } from "lucide-react";
+import { ArrowLeft, ArrowRight, MonitorCog, KeyRound, ScanSearch, FilePlusCorner, Rocket } from "lucide-react";
 import { tutorialParaibaDigitalContent as content } from "../content/tutorial/paraiba-digital";
 import { TutorialCartaData } from "../components/tutorial/TutorialCartaData";
 import acessarPlataformaIllustration from "../assets/tutorial/acessar-plataforma.png";
 import computer from "../assets/tutorial/computer.svg";
 import { TutorialCompletionDialog } from "../components/tutorial/TutorialCompletionDialog";
+import { ButtonLink } from "../components/ui/ButtonLink";
 import "../styles/tutorial.css";
 
 const icons = [MonitorCog, KeyRound, ScanSearch, FilePlusCorner, Rocket];
@@ -14,8 +15,14 @@ function readStep() {
   return value && /^[1-5]$/.test(value) ? Number(value) : 1;
 }
 
+function readReturnHref() {
+  const origin = new URLSearchParams(window.location.search).get("origem");
+  return origin === "guia" ? "/formulario-carta" : "/explorar-por-etapas";
+}
+
 export function TutorialParaibaDigitalPage() {
   const [number, setNumber] = useState(readStep);
+  const [returnHref, setReturnHref] = useState(readReturnHref);
   const [finished, setFinished] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
   const explicitChange = useRef(false);
@@ -28,6 +35,7 @@ export function TutorialParaibaDigitalPage() {
     const onPopState = () => {
       explicitChange.current = true;
       setNumber(readStep());
+      setReturnHref(readReturnHref());
       setFinished(false);
     };
     window.addEventListener("popstate", onPopState);
@@ -105,10 +113,11 @@ export function TutorialParaibaDigitalPage() {
             <div className="tutorial-preview-body"><img src={computer} alt="" /><h3>{step.platformPreview.title}</h3><p>{step.platformPreview.placeholder}</p></div>
           </section>}
           <div className="tutorial-actions">
+            {number === 1 && <ButtonLink href={returnHref} variant="secondary" iconLeft={<ArrowLeft size={16} aria-hidden="true" />}>Voltar</ButtonLink>}
             {step.actions.map(action =>
-              <button className={`tutorial-button ${action.kind === "previous" ? "tutorial-button--secondary" : ""}`} key={action.kind} type="button"
+              <button className={action.kind === "previous" ? "button-link button-link--secondary" : "tutorial-button"} key={action.kind} type="button"
                 onClick={() => action.kind === "finish" ? setFinished(true) : navigate(number + (action.kind === "previous" ? -1 : 1))}>
-                {action.kind === "previous" && <span aria-hidden="true">← </span>}{action.label}{action.kind === "next" && <span aria-hidden="true"> →</span>}
+                {action.kind === "previous" && <ArrowLeft size={16} aria-hidden="true" />}{action.label}{action.kind === "next" && <ArrowRight size={16} aria-hidden="true" />}
               </button>)}
           </div>
         </section>

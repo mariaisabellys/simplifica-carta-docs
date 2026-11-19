@@ -44,3 +44,49 @@ test("next and previous actions traverse five steps and publication finishes", (
   assert(page.includes('action.kind === "finish" ? setFinished(true)'));
   assert(page.includes("const icons = [MonitorCog, KeyRound, ScanSearch, FilePlusCorner, Rocket]"));
 });
+
+const returnReader = page.match(/function readReturnHref\(\) \{[\s\S]*?\n\}/)[0];
+function readReturnHref(search) {
+  return runInNewContext(`${returnReader}\nreadReturnHref()`, { URLSearchParams, window: { location: { search } } });
+}
+
+test("entry links declare their origin and return to existing routes", () => {
+  const explore = readFileSync(new URL("../src/content/pages/explorar-por-etapas.ts", import.meta.url), "utf8");
+  const form = readFileSync(new URL("../src/pages/FormularioCartaPage.tsx", import.meta.url), "utf8");
+  assert(explore.includes('href: "/tutorial-paraiba-digital?etapa=1&origem=etapas"'));
+  assert(form.includes('href="/tutorial-paraiba-digital?etapa=1&origem=guia"'));
+  assert.equal(readReturnHref("?etapa=1&origem=etapas"), "/explorar-por-etapas");
+  assert.equal(readReturnHref("?etapa=1&origem=guia"), "/formulario-carta");
+  assert(page.includes('href={returnHref} variant="secondary"'));
+});
+
+test("step navigation preserves origin and return destination after reload", () => {
+  const navigate = page.match(/  function navigate\(next: number\) \{[\s\S]*?\n  \}/)[0].replace("next: number", "next");
+  for (const origin of ["etapas", "guia"]) {
+    let href = `https://example.test/tutorial-paraiba-digital?etapa=1&origem=${origin}`;
+    let number = 1;
+    const context = {
+      URL, number, explicitChange: { current: false },
+      window: {
+        location: { href },
+        history: { pushState: (_state, _title, url) => { href = String(url); context.window.location.href = href; } },
+      },
+      setFinished: () => {},
+      setNumber: value => { number = value; context.number = value; },
+    };
+    for (const next of [2, 3, 4, 5, 4, 3, 2, 1]) {
+      runInNewContext(`${navigate}\nnavigate(${next})`, context);
+      const search = new URL(href).search;
+      assert.equal(new URLSearchParams(search).get("origem"), origin);
+      assert.equal(readStep(search), next);
+      assert.equal(number, next);
+      assert.equal(readReturnHref(search), origin === "guia" ? "/formulario-carta" : "/explorar-por-etapas");
+    }
+  }
+});
+
+test("direct access and unknown origins safely return to explore", () => {
+  for (const search of ["", "?etapa=3", "?etapa=2&origem=", "?etapa=5&origem=unknown"]) {
+    assert.equal(readReturnHref(search), "/explorar-por-etapas");
+  }
+});
