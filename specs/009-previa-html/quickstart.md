@@ -1,15 +1,17 @@
-# Quickstart previsto: Prévia HTML
+# Quickstart: Prévia HTML
 
 ## Status
 
-Roteiro documental T017, ainda não executado. Usar após provider v3 e componente
-compartilhado de prévia estarem integrados em 007 e `/previa`.
+Projeção e componente compartilhado implementados em 18/11/2026. Os checks
+técnicos foram executados; o procedimento manual de navegador/tecnologia
+assistiva e o provider global continuam pendentes.
 
 ## Pré-condições
 
 - matriz v3 e contrato de projeção vigentes;
-- CartaSessionProvider persistente acima das rotas;
-- registro de alvos 007 e navegação T015 implementados;
+- sessão v3 válida (integração atual); migrar para CartaSessionProvider quando a
+  lacuna da 007 for entregue;
+- registro de alvos 007 e navegação T015 são pré-condições para testar retorno/foco;
 - 010 integrada somente quando ação CSV real estiver disponível.
 
 ## Dados sintéticos
@@ -36,7 +38,8 @@ compartilhado de prévia estarem integrados em 007 e `/previa`.
 ## Checks técnicos previstos
 
 ```sh
-node --test tests/carta-model.test.mjs
+node --test tests/carta-preview.test.mjs
+node --test tests/*.test.mjs
 npm run typecheck
 npm run build
 ```

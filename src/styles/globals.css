@@ -1326,3 +1326,43 @@ h3 {
 @media (prefers-reduced-motion: reduce) {
   .explore-step-card, .explore-step-card::before, .explore-carousel__controls button { transition: none; }
 }
+
+/* Carta preview — shared by the form and /previa. */
+.preview-page { min-height: 100%; padding: 2rem 0 5rem; background: var(--color-neutral-50); }
+.preview-page__container { width: min(920px, calc(100% - 2rem)); margin: 0 auto; }
+.preview-page .breadcrumb { margin-bottom: 2rem; }
+.preview-page__header { max-width: 760px; margin-bottom: 2rem; }
+.preview-page__header h1 { margin: .45rem 0 .8rem; color: var(--color-home-navy); font-size: clamp(2.25rem, 5vw, 3.6rem); line-height: 1.08; }
+.preview-page__header > p:last-child { color: var(--color-home-muted); font-size: 1.08rem; line-height: 1.6; }
+.preview-page__notice { margin: 0 0 1rem; padding: 1rem 1.25rem; color: var(--color-neutral-700); background: #effcff; border-left: 4px solid var(--color-home-cyan); border-radius: .6rem; }
+.preview-page__notice--warning { background: #fff8ef; border-left-color: var(--color-home-orange); }
+.preview-page__notice p { margin: .25rem 0 0; line-height: 1.5; }
+.preview-page__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.carta-preview-card { overflow: hidden; color: var(--color-neutral-800); background: #fff; border: 1px solid var(--color-neutral-200); border-radius: 1.1rem; box-shadow: 0 1rem 2.5rem rgba(0, 43, 69, .12); }
+.carta-preview-card__header { display: flex; align-items: center; gap: .75rem; padding: 1.25rem 1.5rem; color: #fff; background: var(--color-home-navy); }
+.carta-preview-card__header h2, .carta-preview-card__header h3 { margin: 0; color: inherit; font-size: 1.15rem; }
+.carta-preview-card__icon { width: 1rem; height: 1rem; }
+.carta-preview-card__body { padding: clamp(1.25rem, 4vw, 2rem); }
+.carta-preview-section { padding: 0 0 1.6rem; border-bottom: 1px solid var(--color-neutral-200); }
+.carta-preview-section + .carta-preview-section { padding-top: 1.6rem; }
+.carta-preview-section:last-child { padding-bottom: 0; border-bottom: 0; }
+.carta-preview-section > h3, .carta-preview-section > h4 { margin: 0 0 1.25rem; color: var(--color-home-orange); font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+.carta-preview-section dl { display: grid; gap: 1.25rem; margin: 0; }
+.carta-preview-field { min-width: 0; }
+.carta-preview-field dt { margin: 0 0 .35rem; color: var(--color-neutral-500); font-size: .72rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; }
+.carta-preview-field dd { margin: 0; color: var(--color-neutral-800); line-height: 1.55; overflow-wrap: anywhere; white-space: pre-wrap; }
+.carta-preview-field.is-missing dd, .carta-preview-empty-list { color: var(--color-neutral-500); font-style: italic; }
+.carta-preview-field ul { margin: 0; padding-left: 1.2rem; }
+.carta-preview-field li + li { margin-top: .3rem; }
+.carta-preview-items { display: grid; gap: .75rem; margin-top: 1.25rem; }
+.carta-preview-item { padding: 1rem; background: var(--color-neutral-50); border: 1px solid var(--color-neutral-200); border-radius: .75rem; }
+.carta-preview-item h4, .carta-preview-item h5 { margin: 0 0 .85rem; color: var(--color-home-navy); font-size: .95rem; }
+.carta-preview-empty-list { margin: 0; }
+.carta-preview-empty { padding: 2rem; text-align: center; background: #fff; border: 1px dashed var(--color-neutral-300); border-radius: 1rem; }
+.carta-preview-empty h2, .carta-preview-empty h3 { margin: 0 0 .65rem; color: var(--color-home-navy); }
+.carta-preview-empty p { max-width: 38rem; margin: 0 auto; color: var(--color-home-muted); line-height: 1.55; }
+.charter-inline-preview { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--color-neutral-200); }
+.charter-inline-preview__heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1.25rem; }
+.charter-inline-preview__heading h2 { margin: .3rem 0 0; color: var(--color-home-navy); font-size: 1.5rem; }
+.charter-inline-preview .carta-preview-card { box-shadow: var(--shadow-sm); }
+@media (max-width: 620px) { .preview-page__actions, .charter-inline-preview__heading { align-items: stretch; flex-direction: column; }.preview-page__actions .button-link, .charter-inline-preview__heading .button-link { width: 100%; text-align: center; }.carta-preview-card__body { padding: 1.1rem; } }

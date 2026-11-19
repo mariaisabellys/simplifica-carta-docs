@@ -1,8 +1,8 @@
 # Validação documental: Prévia HTML
 
-> **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado após a
+> **Implementação parcial vigente — 18/11/2026:** `/spec:implementar` executado após a
 > propagação do modelo v3. Projeção dos 25 campos e condições atuais está
-> coerente; provider, composição e aceites continuam pendentes. Evidência no
+> implementada; provider global, retorno por foco, CSV e aceites manuais continuam pendentes. Evidência no
 > [registro seletivo](../../docs/verificacoes/revalidacao-contratos-2026-10-27.md).
 
 ## Estado em 19/10/2026 — T008
@@ -38,14 +38,28 @@ Antes da entrega visual/integrada: usar o pacote local, consultar ERS, revisar c
 entregar provider/foco e validação estrutural da 007, ação 010 e destinos reais.
 MC-03/04/05/08 foram fechadas na matriz da 007; a prévia apenas projeta seus
 resultados e não duplica validação de negócio. Fallback publicado e ambiente assistivo
-exigem execução própria. PreviaCartaPage continua placeholder.
+exigem execução própria. `PreviaCartaPage` agora renderiza a prévia real e o
+formulário incorpora o mesmo componente.
 Conferências desta rodada em [verification](verification.md).
 
 ## Revalidação T019 — 22/10/2026
 
-Parecer atual: **projeção v3 coerente; componente e integração ausentes**.
+Parecer histórico: **projeção v3 coerente; componente e integração ausentes**.
 RF01–RF07/CA01–CA21 estão mapeados a F009-01–F009-12, mantendo dados vazios,
 parciais, condicionais e sugestões separadas. `PreviaCartaPage` continua
 placeholder. O node compartilhado `821:308` respondeu por metadados, sem
 comparação visual. Ver a
 [matriz T019](../../docs/verificacoes/t019-validacoes-features.md).
+
+## Implementação F009 — 18/11/2026
+
+- `carta.preview.ts` implementa `hasContent`, 25 definições, K/S/ON/E, listas,
+  ausências, ordem estável e projeção sem mutação.
+- `CartaPreview` renderiza texto literal, IDs prefixados, níveis contextuais e
+  estado vazio sem card fictício; nenhum dado vira HTML, iframe ou link ativo.
+- `/previa` apresenta resumo estrutural separado, avisos e destinos livres. O
+  formulário usa a mesma projeção/componente nas cinco partes.
+- CSV não foi simulado: a ação permanece ausente até a entrega real da 010.
+- 11 testes focados passaram; typecheck, build e 74 testes totais passaram.
+- Inspeção visual automatizada em navegador não foi possível porque nenhum
+  navegador estava disponível no ambiente; PV18 continua pendente.
