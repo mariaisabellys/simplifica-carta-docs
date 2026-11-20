@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AlertTriangle, Copy } from "lucide-react";
 import { tutorialCartaDataContent as content } from "../../content/tutorial/paraiba-digital";
-import { carregarCartaDaSessao } from "../../features/carta/carta.storage";
+import { useCartaSession } from "../../features/carta/CartaSessionProvider";
 import { hasMissingTutorialInformation, projectCartaForTutorial, type TutorialField } from "../../features/carta/carta.tutorial";
 import { TutorialMiniStepper } from "./TutorialMiniStepper";
 import { organizeTutorialSteps } from "./tutorial.steps";
@@ -57,7 +57,7 @@ function CopyField({ field }: { field: TutorialField }) {
 }
 
 export function TutorialCartaData() {
-  const [carta] = useState(carregarCartaDaSessao);
+  const { carta } = useCartaSession();
   const groups = organizeTutorialSteps(projectCartaForTutorial(carta));
   return <section id="tutorial-dados" className="tutorial-data" aria-labelledby="tutorial-step-title" tabIndex={-1}>
     <p className="tutorial-description">{content.description}</p>

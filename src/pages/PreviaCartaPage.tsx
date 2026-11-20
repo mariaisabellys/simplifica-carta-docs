@@ -1,17 +1,15 @@
 import { ArrowLeft, ArrowRight, CircleHelp } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { CartaPreview } from "../components/carta/CartaPreview";
 import { Breadcrumb } from "../components/ui/Breadcrumb";
 import { ButtonLink } from "../components/ui/ButtonLink";
 import { previaCartaContent } from "../content/pages/previa-carta";
 import { criarModeloPreviaCarta } from "../features/carta/carta.preview";
-import { criarCartaServicoInicial } from "../features/carta/carta.schema";
-import { carregarCartaDaSessao } from "../features/carta/carta.storage";
+import { useCartaSession } from "../features/carta/CartaSessionProvider";
 import { validarCartaObrigatoria } from "../features/carta/carta.validation";
-import type { CartaServico } from "../features/carta/carta.types";
 
 export function PreviaCartaPage() {
-  const [carta] = useState<CartaServico>(() => { try { return carregarCartaDaSessao(); } catch { return criarCartaServicoInicial(); } });
+  const { carta } = useCartaSession();
   const model = useMemo(() => criarModeloPreviaCarta(carta), [carta]);
   const issues = useMemo(() => validarCartaObrigatoria(carta), [carta]);
   return <div className="preview-page"><div className="preview-page__container">
