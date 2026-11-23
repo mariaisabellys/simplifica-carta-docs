@@ -1,5 +1,9 @@
 # Validacao: Formulario da Carta de Servicos
 
+> **Estado de código atualizado em 18/11/2026:** existe formulário parcial em
+> cinco partes. A validação documental abaixo continua vigente; lacunas atuais
+> estão no [inventário reconciliado](../../docs/verificacoes/estado-implementacao-2026-11-18.md).
+
 > **Revalidação vigente — 27/10/2026:** `/spec:validar` reexecutado sobre a
 > matriz/modelo central atuais. Resultado: pronta documentalmente, com 25 campos
 > e decisões MC-02–MC-08 fechadas; implementação e aceites permanecem pendentes.
@@ -171,3 +175,14 @@ consumidores; validação de links Markdown locais; `git diff --check`. Nenhum
 TypeScript, teste funcional, build, navegador ou Figma foi executado. F007-01
 foi marcada como concluída; F007-02–F007-22 continuam pendentes de implementação
 e evidência executável.
+
+## Revalidação de implementação — 19/11/2026
+
+O núcleo funcional da 007 está implementado. F007-02–F007-18 possuem evidência
+em código e testes; o formulário usa provider único, decoder estrito, revisão
+estrutural versionada, foco por alvo e as condições K/S/ON/E. A prévia 009 e a
+projeção do tutorial consomem a Carta do mesmo contexto.
+
+O aceite permanece delimitado: F007-19–F007-22 exigem navegador real, CSV 010,
+ambientes assistivos e inspeção visual. Não interpretar a conclusão do núcleo
+como homologação institucional, publicação automática ou aceite desses ambientes.

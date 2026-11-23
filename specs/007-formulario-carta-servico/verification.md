@@ -74,3 +74,29 @@ Retomar a implementacao com referencias e decisoes pertinentes resolvidas,
 entregar modelo/reducer/decoder/storage/provider com testes de recuperacao,
 depois formulario/estados/navegacao e checks reais. Registrar por criterio os
 resultados e as dependencias que ainda impedirem aceite integral.
+
+## Execução funcional — 19/11/2026
+
+Implementados provider único acima das rotas, storage discriminado, decoder
+defensivo, revisão por snapshot/revisão, cinco partes editáveis, orientações,
+operações por ID e foco, reordenação de etapas, resumo navegável e integração da
+mesma Carta com prévia e tutorial. Registros inválidos ou de outra versão não são
+sobrescritos até confirmação explícita.
+
+Correções de domínio incluídas: descrição com contagem significativa; zero
+documentos válido; ao menos uma etapa completa; prazo inteiro positivo; sistema
+de agendamento exigido apenas quando há modalidade on-line; link/exibição apenas
+para sistema externo; valores condicionais inativos preservados e omitidos.
+
+Evidências executadas:
+
+- `node --test tests/carta-form.test.mjs`: 12/12 testes aprovados;
+- `node --test tests/*.test.mjs`: 86/86 testes aprovados;
+- `tsc -p tsconfig.app.json`: aprovado;
+- `git diff --check`: aprovado;
+- `npm run build`: typecheck aprovado; empacotamento Vite interrompido após 90 s
+  sem erro por bloqueio de I/O na pasta sincronizada pelo OneDrive.
+
+Permanecem abertos F007-19–F007-22: jornada real em navegador, integração CSV
+010, matriz manual de teclado/leitor/zoom e aceite visual. Essas verificações não
+invalidam o núcleo implementado, mas impedem declarar homologação integral.

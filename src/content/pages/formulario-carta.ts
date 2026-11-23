@@ -23,7 +23,7 @@ export const charterFormPageContent = {
       fields: [
         { id: "service-name", label: "Nome do serviço", kind: "text" },
         { id: "popular-name", label: "Nome popular", kind: "text" },
-        { id: "service-description", label: "O que é o serviço", kind: "text", meaningfulWordLimit: 20, helpText: "Use até 20 palavras significativas." },
+        { id: "service-description", label: "O que é o serviço", kind: "textarea", meaningfulWordLimit: 20, helpText: "Use até 20 palavras significativas em toda a descrição." },
         { id: "category", label: "Categoria", kind: "select", options: categoriasServico },
         { id: "subcategory", label: "Subcategoria", kind: "select", optionsByField: { fieldId: "category", values: subcategoriasPorCategoria } },
         { id: "topic", label: "Tópico", kind: "text" },
@@ -69,11 +69,11 @@ export const charterFormPageContent = {
       fields: [
         { id: "requires-scheduling", label: "Necessita de agendamento?", kind: "select", options: ["Sim", "Não"] },
         { id: "scheduling-type", label: "Tipo de agendamento", kind: "checkbox-group", options: ["Online", "Presencial"], visibleWhen: { fieldId: "requires-scheduling", equals: "Sim" } },
-        { id: "scheduling-system", label: "Sistema de agendamento", kind: "radio-group", visibleWhen: { fieldId: "requires-scheduling", equals: "Sim" }, options: [
+        { id: "scheduling-system", label: "Sistema de agendamento", kind: "radio-group", visibleWhen: { fieldId: "scheduling-type", includes: "Online" }, options: [
           { id: "paraiba-digital", label: "Paraíba Digital", description: "O agendamento será feito pelo próprio Paraíba Digital." },
           { id: "sistema-externo", label: "Outro sistema ou site", description: "O agendamento será realizado em um sistema ou site externo." },
         ] },
-        { id: "external-scheduling", visibleWhen: { fieldId: "scheduling-system", equals: "sistema-externo" }, fields: [
+        { id: "external-scheduling", visibleWhenAll: [{ fieldId: "scheduling-type", includes: "Online" }, { fieldId: "scheduling-system", equals: "sistema-externo" }], fields: [
           { id: "scheduling-link", label: "Link do agendamento", kind: "text" },
           { id: "scheduling-display", label: "Como o agendamento será exibido?", kind: "radio-group", options: [
             { id: "dentro-paraiba-digital", label: "Dentro do Paraíba Digital", description: "O cidadão permanece no Paraíba Digital durante todo o processo de agendamento." },
@@ -92,8 +92,8 @@ export const charterFormPageContent = {
     },
   ] satisfies readonly { id: CharterFormPartId; title: string; description: string; fields: readonly Record<string, unknown>[] }[],
   completion: {
-    title: "Tudo pronto para publicar",
-    description: "Você revisou as 5 partes da sua Carta de Serviço. Agora que ela está completa, avance para a próxima etapa e veja como publicá-la no Paraíba Digital.",
+    title: "Informações obrigatórias concluídas",
+    description: "A revisão estrutural do snapshot atual não encontrou pendências. Isso não representa aprovação institucional nem publicação automática.",
     action: { label: "Ver tutorial de publicação", href: "/tutorial-paraiba-digital?etapa=1&origem=guia" },
   },
 } as const;

@@ -1,9 +1,10 @@
-# Quickstart previsto: Formulário da Carta de Serviço
+# Quickstart: Formulário da Carta de Serviço
 
 ## Status
 
-Roteiro documental T017, não executado. Aplicar somente após provider v3,
-formulário real, validação estrutural e consumidores estarem implementados.
+Provider v3, formulário real, validação estrutural e consumidores de prévia e
+tutorial implementados em 19/11/2026. O roteiro manual de navegador e tecnologia
+assistiva continua pendente; use somente dados sintéticos.
 
 ## Pré-condições
 
@@ -42,7 +43,8 @@ formulário real, validação estrutural e consumidores estarem implementados.
 ## Checks técnicos previstos
 
 ```sh
-node --test tests/carta-model.test.mjs
+node --test tests/carta-form.test.mjs
+node --test tests/*.test.mjs
 npm run typecheck
 npm run build
 ```

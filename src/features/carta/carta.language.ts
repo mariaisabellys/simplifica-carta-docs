@@ -1,4 +1,4 @@
-import { jargonCatalog, languageLimits, languageRuleVersion, significantExclusions } from "../../content/validation/linguagem-simples";
+import { jargonCatalog, languageLimits, languageRuleVersion, significantExclusions } from "../../content/validation/linguagem-simples.ts";
 import type { CartaServico } from "./carta.types";
 import type { LanguageOccurrence, LanguageReview, LanguageRuleId } from "./carta.language.types";
 
